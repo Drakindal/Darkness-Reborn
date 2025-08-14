@@ -278,7 +278,7 @@ import Units
     ..setHideMinimapDisplay(true)
 
     new BuildingDefinition(BUILDING_10, UnitIds.goblinmerchant)
-    ..setName("Late game items")
+    ..setName("Late game items (1)")
     ..setGroundTexture("")
     ..setNormalAbilities(commaList(SHOP_SHARE, 'Avul', 'Abds', 'Apit'))
     ..setScalingValue(0.5)
@@ -296,7 +296,7 @@ import Units
     ..setHideMinimapDisplay(true)
 
     new BuildingDefinition(BUILDING_11, UnitIds.goblinmerchant)
-    ..setName("Late game items")
+    ..setName("Late game items (2)")
     ..setGroundTexture("")
     ..setNormalAbilities(commaList(SHOP_SHARE, 'Avul', 'Abds', 'Apit'))
     ..setScalingValue(0.5)
@@ -314,7 +314,7 @@ import Units
     ..setHideMinimapDisplay(true)
 
     new BuildingDefinition(BUILDING_12, UnitIds.goblinmerchant)
-    ..setName("Provides decent items")
+    ..setName("Provides decent items (3)")
     ..setGroundTexture("")
     ..setNormalAbilities(commaList(SHOP_SHARE, 'Avul', 'Abds', 'Apit'))
     ..setScalingValue(0.5)
@@ -333,7 +333,7 @@ import Units
     ..setHideMinimapDisplay(true)
 
     new BuildingDefinition(BUILDING_13, UnitIds.goblinmerchant)
-    ..setName("End game items")
+    ..setName("End game items (4)")
     ..setGroundTexture("")
     ..setNormalAbilities(commaList(SHOP_SHARE, 'Avul', 'Abds', 'Apit'))
     ..setScalingValue(0.5)
