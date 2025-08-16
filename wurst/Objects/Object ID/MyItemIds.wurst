@@ -198,11 +198,11 @@ public constant ITEM_187 = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_188 = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_189 = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_190 = compiletime(ITEM_ID_GEN.next())
-public constant ITEM_191 = compiletime(ITEM_ID_GEN.next())
-public constant ITEM_192 = compiletime(ITEM_ID_GEN.next())
+public constant ITEM_LANCELOT_RING = compiletime(ITEM_ID_GEN.next())
+public constant ITEM_GUINEVERES_RING = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_193 = compiletime(ITEM_ID_GEN.next())
-public constant ITEM_194 = compiletime(ITEM_ID_GEN.next())
-public constant ITEM_195 = compiletime(ITEM_ID_GEN.next())
+public constant ITEM_JEWELRY_OF_MANA = compiletime(ITEM_ID_GEN.next())
+public constant ITEM_JEWELRY_OF_LIFE = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_196 = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_197 = compiletime(ITEM_ID_GEN.next())
 public constant ITEM_198 = compiletime(ITEM_ID_GEN.next())
@@ -864,7 +864,7 @@ function compileItems()
     ITEM_324,
     ITEM_325,
     ITEM_326,
-    ITEM_195,
+    ITEM_JEWELRY_OF_LIFE,
     ITEM_327,
     ITEM_328,
     ITEM_329,

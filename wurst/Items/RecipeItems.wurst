@@ -220,11 +220,11 @@ function recipeItemReplace()
             u.addItemById(ITEM_241)
 
         // Half of Arkenstone
-        else if u.hasItemById(ITEM_49) and u.hasItemById(ITEM_193) and u.hasItemById(ITEM_191) and u.hasItemById(ITEM_192)
+        else if u.hasItemById(ITEM_49) and u.hasItemById(ITEM_193) and u.hasItemById(ITEM_LANCELOT_RING) and u.hasItemById(ITEM_GUINEVERES_RING)
             RemoveItem(u.getItemById(ITEM_49))
             RemoveItem(u.getItemById(ITEM_193))
-            RemoveItem(u.getItemById(ITEM_191))
-            RemoveItem(u.getItemById(ITEM_192))
+            RemoveItem(u.getItemById(ITEM_LANCELOT_RING))
+            RemoveItem(u.getItemById(ITEM_GUINEVERES_RING))
             u.addItemById(ITEM_198)
 
         // Light Armor
@@ -745,31 +745,31 @@ function recipeItemReplace()
         else if u.hasItemById(ITEM_37) and u.hasItemById(ITEM_38)
             RemoveItem(u.getItemById(ITEM_37))
             RemoveItem(u.getItemById(ITEM_38))
-            u.addItemById(ITEM_195)
+            u.addItemById(ITEM_JEWELRY_OF_LIFE)
 
         //Lancelot's ring
-        else if u.hasItemById(ITEM_194) and u.hasItemById(ITEM_36)
-            RemoveItem(u.getItemById(ITEM_194))
+        else if u.hasItemById(ITEM_JEWELRY_OF_MANA) and u.hasItemById(ITEM_36)
+            RemoveItem(u.getItemById(ITEM_JEWELRY_OF_MANA))
             RemoveItem(u.getItemById(ITEM_36))
-            u.addItemById(ITEM_191)
+            u.addItemById(ITEM_LANCELOT_RING)
 
         //Guinevere's Ring
-        else if u.hasItemById(ITEM_37) and u.hasItemById(ITEM_195) and u.hasItemById(ITEM_15)
+        else if u.hasItemById(ITEM_37) and u.hasItemById(ITEM_JEWELRY_OF_LIFE) and u.hasItemById(ITEM_15)
             RemoveItem(u.getItemById(ITEM_37))
-            RemoveItem(u.getItemById(ITEM_195))
+            RemoveItem(u.getItemById(ITEM_JEWELRY_OF_LIFE))
             RemoveItem(u.getItemById(ITEM_15))
-            u.addItemById(ITEM_192)
+            u.addItemById(ITEM_GUINEVERES_RING)
 
         //Jewelry of Mana
         else if u.hasItemById(ITEM_36) and u.hasItemById(ITEM_35)
             RemoveItem(u.getItemById(ITEM_36))
             RemoveItem(u.getItemById(ITEM_35))
-            u.addItemById(ITEM_194)
+            u.addItemById(ITEM_JEWELRY_OF_MANA)
 
         //ArkenstoneFragment
-        else if u.hasItemById(ITEM_192) and u.hasItemById(ITEM_191) and u.hasItemById(ITEM_35)
-            RemoveItem(u.getItemById(ITEM_192))
-            RemoveItem(u.getItemById(ITEM_191))
+        else if u.hasItemById(ITEM_GUINEVERES_RING) and u.hasItemById(ITEM_LANCELOT_RING) and u.hasItemById(ITEM_35)
+            RemoveItem(u.getItemById(ITEM_GUINEVERES_RING))
+            RemoveItem(u.getItemById(ITEM_LANCELOT_RING))
             RemoveItem(u.getItemById(ITEM_35))
             u.addItemById(ITEM_193)
 

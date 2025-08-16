@@ -147,7 +147,9 @@ function createSetup()
     CreateUnit(p, BUILDING_11, posX, posY, 270.000) // Late Game Items
     posY = posY + dividend
     CreateUnit(p, BUILDING_10, posX, posY, 270.000) // Late Game Items
- 
+
+    createRecipesTips()
+
     posX = GetRectCenterX(gg_rct_Base)
     posY = GetRectCenterY(gg_rct_Base) + 200
 
@@ -160,6 +162,17 @@ function createSetup()
     elementalSoul.onDefeat()
 
     teleportToMobs(easyGrounds, intermediateGrounds, eliteGrounds, endGamebosses)
+
+function createRecipesTips()
+    let p = players[10]
+
+    var posX = GetRectMinX(gg_rct_Recipes) + 100
+    var posY = GetRectMaxY(gg_rct_Recipes) - 100
+
+    CreateUnit(p, BUILDING_RECIPE_ARKENSTONE, posX, posY, 270.000) // Recipe arkenstone
+
+    CreateTextTagLocBJ("Advanced recipes", Location(posX, posY), 4, 10, 255, 214, 191, 18)
+
 
 function dialogBoxClick()
     preWaveSetup()

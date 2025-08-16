@@ -1,0 +1,118 @@
+package Object_Recipes
+
+import ItemObjEditing
+import AbilityObjEditing
+import ItemIds
+import MyItemIds
+import MyRecipeIds
+import ObjectIds
+import MyAbilityIds
+import Icons
+import Abilities
+
+init
+
+@compiletime function createArkenstoneRecipes()
+    let basicShop1 = "(|c007EBFF1Basic Shop 1|r)\n"
+    let basicShop2 = "(|c007EBFF1Basic Shop 2|r)\n"
+    let basicShop3 = "(|c007EBFF1Basic Shop 3|r)\n"
+    let basicShop4 = "(|c007EBFF1Basic Shop 4|r)\n"
+
+    let recipeShop1 = "(|c00e61c1cRecipe Shop 1|r)\n"
+    let recipeShop2 = "(|c00e61c1cRecipe Shop 2|r)\n"
+    let recipeShop3 = "(|c00e61c1cRecipe Shop 3|r)\n"
+    let recipeShop4 = "(|c00e61c1cRecipe Shop 4|r)\n"
+
+    let effectStr = "|c00FFFC01Effect:|r\n"
+    let craftRecipeStr = "\n|c00FEBA0ECraft recipe:|r\n"
+
+    let recipesVaultArkenstone = "(|c00d6bf12Recipes Vault (1) Arkenstone|r)\n"
+    
+    new ItemDefinition(RECIPE_JEWELRY_OF_LIFE, ITEM_JEWELRY_OF_LIFE)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Jewelry_Ring_04.blp")
+    ..setTooltipBasic("Craft recipe Jewelry of Life")
+    ..setTooltipExtended(effectStr
+    +"+1000 HP\n"
+    +"+10 HP/s\n"
+    +craftRecipeStr
+    +"Periapt of Vitality " + basicShop4
+    +"Khadgar's Pendant of Health " + basicShop4)
+
+
+    new ItemDefinition(RECIPE_GUINEVERES_RING, ITEM_GUINEVERES_RING)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInjusticeRing.blp")
+    ..setTooltipBasic("Craft recipe Guinevere's Ring")
+    ..setTooltipExtended(effectStr
+    +"+2000 HP\n"
+    +"+20 HP/s\n"
+    +craftRecipeStr
+    +"Jewelry of Life " + recipesVaultArkenstone
+    +"Ring of regeneration " + basicShop2
+    +"Periapt of Vitality " + basicShop4)
+
+    new ItemDefinition(RECIPE_JEWELRY_OF_MANA, ITEM_JEWELRY_OF_MANA)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Jewelry_Ring_05.blp")
+    ..setTooltipBasic("Craft recipe Jewelry of Mana")
+    ..setTooltipExtended(effectStr
+    +"+1000 MP\n"
+    +"+100% Mana Regeneration\n"
+    +craftRecipeStr
+    +"Pendant of Mana " + basicShop4
+    +"Pendant of Energy " + basicShop4)
+
+    new ItemDefinition(RECIPE_LANCELOT_RING, ITEM_LANCELOT_RING)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Ring.blp")
+    ..setTooltipBasic("Craft recipe Lancelot's Ring")
+    ..setTooltipExtended(effectStr
+    +"+2000 MP\n"
+    +"+150% Mana Regeneration\n"
+    +craftRecipeStr
+    +"Jewelry of Mana" + recipesVaultArkenstone
+    +"Pendant of Energy " + basicShop4)
+    
+    new ItemDefinition(RECIPE_ARKENSTONE_FRAGMENTS, ITEM_198)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTopaz.BLP")
+    ..setTooltipBasic("Craft recipe Arkenstone Fragments")
+    ..setTooltipExtended(effectStr
+    +"+2500 HP\n"
+    +"+25 HP/s\n"
+    +"+2500 MP\n"
+    +"+200% Mana Regeneration\n"
+    +craftRecipeStr
+    +"Guinevere's Ring" + recipesVaultArkenstone
+    +"Lancelot's Ring" + recipesVaultArkenstone
+    +"Pendant of Energy " + basicShop4)
+    
+    new ItemDefinition(RECIPE_HALF_ARKENSTONE, ITEM_198)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Misc_Gem_Opal_02.blp")
+    ..setTooltipBasic("Craft recipe Half Arkenstone")
+    ..setTooltipExtended(effectStr
+    +"+5.000 HP\n"
+    +"+50 HP/s\n"
+    +"+5.000 MP\n"
+    +"+300% Mana Regeneration\n"
+    +craftRecipeStr
+    +"Recipe Half Arkenstone" + recipeShop1
+    +"Arkenstone Fragments" + recipesVaultArkenstone
+    +"Guinevere's Ring" + recipesVaultArkenstone
+    +"Lancelot's Ring" + recipesVaultArkenstone)
+
+    new ItemDefinition(RECIPE_ARKENSTONE, ITEM_198)
+    ..setStockMaximum(0)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Misc_Gem_Opal_02.blp")
+    ..setTooltipBasic("Craft recipe Perfect Arkenstone")
+    ..setTooltipExtended(effectStr
+    +"+5.000 HP\n"
+    +"+50 HP/s\n"
+    +"+5.000 MP\n"
+    +"+300% Mana Regeneration\n"
+    +craftRecipeStr
+    +"Recipe Perfect Arkenstone" + recipeShop1
+    +"Half Arkenstone" + recipesVaultArkenstone
+    +"Arkenstone Fragments" + recipesVaultArkenstone)

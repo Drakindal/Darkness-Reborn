@@ -7,6 +7,7 @@ import ObjectIds
 import MyBuildingsIds
 import MyUnitIds
 import MyItemIds
+import MyRecipeIds
 import Abilities
 import AbilityIds
 import MyAbilityIds
@@ -417,6 +418,27 @@ import Units
     ..setPlacementRequires("")
     ..setItemsMade("")
     ..setItemsSold(commaList(ITEM_163, ITEM_164, ITEM_165, ITEM_166))
+    ..setHideMinimapDisplay(true)
+
+@compiletime function recipeBuildings()
+
+    new BuildingDefinition(BUILDING_RECIPE_ARKENSTONE, UnitIds.arcanevault)
+    ..setName("Recipes Vault (1) Arkenstone")
+    ..setGroundTexture("")
+    ..setNormalAbilities(commaList(RECIPES_SHARE, 'Avul'))
+    ..setScalingValue(0.5)
+    ..setSelectionScale(0.5)
+    ..setShadowTextureBuilding("")
+    ..setTintingColorRed(214)
+    ..setTintingColorGreen(191)
+    ..setTintingColorBlue(18)
+    ..setArmorType(ArmorType.Unarmored)
+    ..setPathingMap("")
+    ..setPlacementRequires("")
+    ..setItemsMade("")
+    ..setItemsSold(commaList(RECIPE_JEWELRY_OF_LIFE, RECIPE_GUINEVERES_RING,
+        RECIPE_JEWELRY_OF_MANA, RECIPE_LANCELOT_RING, RECIPE_ARKENSTONE_FRAGMENTS,
+        RECIPE_HALF_ARKENSTONE, RECIPE_ARKENSTONE))
     ..setHideMinimapDisplay(true)
 
 @compiletime function tinkerBuildings()

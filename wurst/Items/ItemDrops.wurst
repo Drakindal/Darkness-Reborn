@@ -164,7 +164,7 @@ function leftCreepEnumerate3()
     chanceSingleDropHash.put(LEFT_CREEP[22], slimeTable)
     // Tormentor
     let tormentorTable = new ChanceItemTable(20)
-    tormentorTable.populateTable(ITEM_326, ITEM_195)
+    tormentorTable.populateTable(ITEM_326, ITEM_JEWELRY_OF_LIFE)
     chanceSingleDropHash.put(LEFT_CREEP[23], tormentorTable)
     // Voidwalker
     let voidwalkerTable = new ChanceItemTable(20)

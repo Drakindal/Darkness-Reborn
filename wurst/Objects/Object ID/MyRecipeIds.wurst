@@ -1,0 +1,14 @@
+package MyRecipeIds
+
+import ObjectIdGenerator
+// -------------------------
+
+public constant RECIPE_JEWELRY_OF_LIFE = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_GUINEVERES_RING = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_JEWELRY_OF_MANA = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_LANCELOT_RING = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_ARKENSTONE_FRAGMENTS = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_HALF_ARKENSTONE = compiletime(ITEM_ID_GEN.next())
+public constant RECIPE_ARKENSTONE = compiletime(ITEM_ID_GEN.next())
+
+// -------------------------

@@ -30,6 +30,7 @@ public constant BUILDING_14 = compiletime(UNIT_ID_GEN.next())
 public constant BUILDING_15 = compiletime(UNIT_ID_GEN.next())
 public constant BUILDING_16 = compiletime(UNIT_ID_GEN.next())
 public constant BUILDING_17 = compiletime(UNIT_ID_GEN.next())
+public constant BUILDING_RECIPE_ARKENSTONE = compiletime(UNIT_ID_GEN.next())
 
 public int array BUILDING = []
 
@@ -53,3 +54,4 @@ init
     BUILDING[16] = BUILDING_15
     BUILDING[17] = BUILDING_16
     BUILDING[18] = BUILDING_17
+    BUILDING[19] = BUILDING_RECIPE_ARKENSTONE

@@ -1,0 +1,11 @@
++"|c00FEBA0ERecipe:|r\n"
+
+
+..setDescription("|cffffcc00Effect|r: +15.000 HP\n+15.000 MP\n+150HP/s\n+500% Mana Regeneration")
+..setName("|cffffcc00Sphere of Chaos|r")
+..setTooltipBasic("|cffffcc00Sphere of Chaos|r")
+..setTooltipExtended("|cffffcc00Effect|r: +15.000 HP\n+15.000 MP\n+150HP/s\n+500% Mana Regeneration")
+
+
+    +"Lancelot's Ring|c00FF0303 (|c007EBFF1Combination|r)|r\n"
+    +"Guinevere's Ring|c00FF0303 (|c007EBFF1Combination|r)|r")

@@ -7918,7 +7918,7 @@ init
     ..setHotkey("F")
 
 //I029
-    new ItemDefinition(ITEM_191, ItemIds.ringofProtection2)
+    new ItemDefinition(ITEM_LANCELOT_RING, ItemIds.ringofProtection2)
     ..setAbilities(commaList('A06R', 'A06P'))
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Ring.blp")
     ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdl")
@@ -7955,7 +7955,7 @@ init
     ..setHotkey("2")
 
 //I028
-    new ItemDefinition(ITEM_192, ItemIds.ringofProtection2)
+    new ItemDefinition(ITEM_GUINEVERES_RING, ItemIds.ringofProtection2)
     ..setAbilities(commaList('A02U', 'A045'))
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInjusticeRing.blp")
     ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdl")
@@ -7985,7 +7985,7 @@ init
     ..setValidTargetForTransformation(false)
     ..setRequirements("")
     ..setRequirementsLevels("")
-    ..setDescription("Boosts armor by 2.")
+    ..setDescription("|c00FFFC01Effect:|r  \n+2000 HP\n+20 HP/s")
     ..setName("Guinevere's Ring")
     ..setTooltipBasic("Purchase Guinevere's Ring")
     ..setTooltipExtended("|c00FFFC01Effect:|r  \n+2000 HP\n+20 HP/s")
@@ -8029,7 +8029,7 @@ init
     ..setHotkey("")
 
 //I027
-    new ItemDefinition(ITEM_194, ItemIds.ringofProtection2)
+    new ItemDefinition(ITEM_JEWELRY_OF_MANA, ItemIds.ringofProtection2)
     ..setAbilities(commaList('A02X', 'A06F', 'A06F'))
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Jewelry_Ring_05.blp")
     ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdl")
@@ -8059,14 +8059,18 @@ init
     ..setValidTargetForTransformation(false)
     ..setRequirements("")
     ..setRequirementsLevels("")
-    ..setDescription("Item Secret")
+    ..setDescription("|c00FFFC01Effect:|r\n"
+    +"+1000 MP\n"
+    +"+100% Mana Regeneration\n\n")
     ..setName("Jewelry of Mana")
     ..setTooltipBasic("Purchase Jewelry of Mana")
-    ..setTooltipExtended("|c00FFFC01Effect:|r  \n+1000 MP\n+100% Mana Regeneration")
+    ..setTooltipExtended("|c00FFFC01Effect:|r\n"
+    +"+1000 MP\n"
+    +"+100% Mana Regeneration\n\n")
     ..setHotkey("2")
 
 //I026
-    new ItemDefinition(ITEM_195, ItemIds.ringofProtection2)
+    new ItemDefinition(ITEM_JEWELRY_OF_LIFE, ItemIds.ringofProtection2)
     ..setAbilities(commaList('A022', 'A044'))
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNINV_Jewelry_Ring_04.blp")
     ..setModelUsed("Objects\\InventoryItems\\TreasureChest\\treasurechest.mdl")
@@ -8099,7 +8103,12 @@ init
     ..setDescription("Item Secret")
     ..setName("Jewelry of Life")
     ..setTooltipBasic("Purchase Jewelry of Life")
-    ..setTooltipExtended("|c00FFFC01Effect:|r  \n+1000HP\n+10HP/s")
+    ..setTooltipExtended("|c00FFFC01Effect:|r\n"
+    +"+1000HP\n"
+    +"+10HP/s\n"
+    +"|c00FEBA0ERecipe:|r\n"
+    +"Periapt of Vitality (|c007EBFF1" + basicShop4 + "|r)\n"
+    +"Khadgar's Pendant of Health (|c007EBFF1" + basicShop4 + "|r)\n")
     ..setHotkey("2")
 
 //I00B
@@ -14599,7 +14608,7 @@ init
     ..setRequirementsLevels("")
     ..setDescription("|cffffcc00Effect|r: +15.000 HP\n+15.000 MP\n+150HP/s\n+500% Mana Regeneration")
     ..setName("|cffffcc00Sphere of Chaos|r")
-    ..setTooltipBasic("|cffffcc00Sphere of Fire|r")
+    ..setTooltipBasic("|cffffcc00Sphere of Chaos|r")
     ..setTooltipExtended("|cffffcc00Effect|r: +15.000 HP\n+15.000 MP\n+150HP/s\n+500% Mana Regeneration")
     ..setHotkey("K")
 

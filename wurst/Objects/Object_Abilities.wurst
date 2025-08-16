@@ -383,6 +383,11 @@ import OrderIds
     ..presetActivationRadius(lvl -> 32000)
     ..setShowSelectUnitButton(1, false)
 
+    new AbilityDefinitionShopSharing(RECIPES_SHARE)
+    ..setLevels(1)
+    ..presetActivationRadius(lvl -> 32000)
+    ..setShowSelectUnitButton(1, false)
+
 @compiletime function fountainAbils()
     new AbilityDefinitionNeutralRegenhealthonly(FOUNTAIN_HEALING)
     ..setAreaofEffect(1, 400)
