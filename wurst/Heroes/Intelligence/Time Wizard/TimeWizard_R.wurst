@@ -4,7 +4,7 @@ import ClosureEvents
 import ClosureTimers
 import StandardTextTags
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 import MyAbilityIds
 
 texttag hourglass
@@ -33,7 +33,7 @@ public function hourglass()
         caster..removeAbility('A0NG')..addAbility(ABILITY_HERO_TP)
         forUnitsInRange(caster.getPos(), 99999, true) (unit u) ->
             if caster.isEnemyOf(u)
-                caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
             else
                 if u.getOwner() != Player(10)
                     if(u.getHP() + dmg < u.getMaxHP())

@@ -8,7 +8,7 @@ import MyBuffIds
 import Abilities
 import DummyCaster
 import Global_Variables
-import codeDamageTypings
+import DamageTarget
 import Firelord_Blaze
 
 public function conflagration()
@@ -20,10 +20,10 @@ public function conflagration()
                 if caster.isEnemyOf(u)
                     blaze(caster, u)
                     flashEffect(Abilities.fireLordDeathExplode, target.getPos())
-                    caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.Magical)
                     new DummyCaster()..owner(caster.getOwner())..origin(caster.getPos())..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
         else
             flashEffect(Abilities.fireLordDeathExplode, target.getPos())
-            caster.damageTargetCode(dmg, target, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.MAGICAL)
+            caster.damageTargetCode(dmg, target, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.Magical)
             blaze(caster, target)
             new DummyCaster()..owner(caster.getOwner())..origin(caster.getPos())..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, target)

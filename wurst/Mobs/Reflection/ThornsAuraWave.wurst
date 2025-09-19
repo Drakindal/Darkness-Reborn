@@ -1,5 +1,5 @@
 package ThornsAuraWave
 
-import codeDamageTypings
+import DamageTarget
 public function thornsAuraWave(unit holder, unit attacker, real dam)
-    holder.damageTargetCode(dam * 0.1, attacker, null, -1, damageType.PHYSICALRANGED)
+    holder.damageTargetCode(dam * 0.1, attacker, null, -1, damageType.PhysicalRanged)

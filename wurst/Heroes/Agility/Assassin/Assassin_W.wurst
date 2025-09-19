@@ -4,7 +4,7 @@ import ClosureTimers
 import Abilities
 import ClosureEvents
 import PauseAllocation
-import codeDamageTypings
+import DamageTarget
 
 public function quickSlash()
     EventListener.onTargetCast('A0DC') (unit caster, unit target) ->
@@ -16,7 +16,7 @@ public function quickSlash()
             target.pauseIndef()
             doPeriodicallyCounted(0.2, 3) (CallbackCounted cb) ->
                 caster.setAnimation("attack")
-                caster.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALMELEE)
+                caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
                 flashEffect(Abilities.meatwagonMissile, target.getPos())
                 if cb.isLast()
                     caster.unPauseUnitIndef()

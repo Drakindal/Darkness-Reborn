@@ -4,7 +4,7 @@ import DeathKnight_Q
 import ClosureEvents
 import ClosureForGroups
 import Abilities
-import codeDamageTypings
+import DamageTarget
 
 
 public function tasteOfDeath()
@@ -13,5 +13,5 @@ public function tasteOfDeath()
         let dmg = (10.*lvl)*souls
         forUnitsInRange(caster.getPos(), 500, true) (unit u) ->
             if caster.isEnemyOf(u)
-                caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                 flashEffect(Abilities.illidanMissile, u.getPos(), 1)

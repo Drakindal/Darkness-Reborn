@@ -18,7 +18,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNFrostFireSwords.blp") 
     ..setClassification("Artifact")
     ..addStats(addDamage(400))
-    ..addStats(addCrit(5, 28))
+    ..addStats(addCrit(0.28, 5))
     ..addStats(addAbilityFreezePassive(30, 3000, 0.5, 5))
     ..addComponents(
     ITEM_FIRE_SWORD,
@@ -53,7 +53,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSword.blp")
     ..setClassification("Artifact")
     ..addStats(addDamage(700))
-    ..addStats(addCrit(8.6, 25))
+    ..addStats(addCrit(0.25, 8.6))
     ..addComponents(
     ITEM_FIRE_SWORD,
     ITEM_KRAKEN_DAGGER,
@@ -70,7 +70,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(500))
     ..addStats(addStr(120))
-    ..addStats(addBash(25, 1000, 0.25, 3))
+    ..addStats(addBash(0.25, 1000, 0.25, 3))
     ..addComponents(
     ITEM_SILVER_HAMMER,
     ITEM_KRAKEN_DAGGER,
@@ -87,7 +87,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(200))
     ..addStats(addAttackSpeed(1.8))
-    ..addStats(addArmorPen(10))
+    ..addStats(addArmorPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_GLOVES_OF_SPEED,
     ITEM_CLAWS_OF_ATTACK)
@@ -136,7 +136,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNShinyArmor.blp")
     ..setClassification("Artifact")
     ..addStats(addArmor(100))
-    ..addStats(addMagicResist(30))
+    ..addStats(addResist(resType.Magical, 0.30))
     ..addStats(addHp(3000))
     ..addStats(addHpReg(20))
     ..addComponents(
@@ -171,7 +171,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHoly Armor.blp")
     ..setClassification("Artifact")
     ..addStats(addArmor(200))
-    ..addStats(addMagicResist(60))
+    ..addStats(addResist(resType.Magical, 0.60))
     ..addStats(addHp(5000))
     ..addStats(addHpReg(40))
     ..addStats("Permanently changes your armor type to 'Hero' if picked up".setColor("|c643a9bae"))

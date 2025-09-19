@@ -4,7 +4,7 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import Jacksmith_Q
-import codeDamageTypings
+import DamageTarget
 import StatsType
 
 init
@@ -132,7 +132,7 @@ init
     ..addStats(addDamage(280))
     ..addStats(addInt(180))
     ..addStats(addMpReg(2.5))
-    ..addStats(addAbilityDealDamageStats(3, 0.12, statsType.Int, damageType.MAGICAL))
+    ..addStats(addAbilityDealDamageStats(3, 0.12, statsType.Int, damageType.Magical))
     ..addComponents(
     ITEM_GOLDEN_STAFF_L3,
     ITEM_FORGE_STAFF_L3,
@@ -146,7 +146,7 @@ init
     ..addStats(addDamage(350))
     ..addStats(addInt(250))
     ..addStats(addMpReg(3))
-    ..addStats(addAbilityDealDamageStats(5, 0.18, statsType.Int, damageType.MAGICAL))
+    ..addStats(addAbilityDealDamageStats(5, 0.18, statsType.Int, damageType.Magical))
     ..addComponents(
     ITEM_NERUBIAN_STAFF_L1,
     ITEM_FORGE_STAFF_L4,
@@ -160,7 +160,7 @@ init
     ..addStats(addDamage(800))
     ..addStats(addInt(400))
     ..addStats(addMpReg(4))
-    ..addStats(addAbilityDealDamageStats(8, 0.25, statsType.Int, damageType.MAGICAL))
+    ..addStats(addAbilityDealDamageStats(8, 0.25, statsType.Int, damageType.Magical))
     ..addComponents(
     ITEM_DEAD_EYES,
     ITEM_BOOK_OF_RAIN,

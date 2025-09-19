@@ -8,7 +8,7 @@ import MyUnitIds
 import MyBuffIds
 import KingOfLoas_W
 import DamageEvent
-import codeDamageTypings
+import DamageTarget
 
 // Embodiment of Gral
 
@@ -32,7 +32,7 @@ public function embodimentOfGral()
                         ..owner(targ.getOwner())
                         ..castTarget(ABILITY_55, 1, OrderIds.innerfire, targ)
                         doPeriodicallyTimed(1, 5) (CallbackCounted cb) ->
-                            src.damageTargetCode(src.getInt(true) * 1., targ, null, -1, damageType.PHYSICALRANGED)
+                            src.damageTargetCode(src.getInt(true) * 1., targ, null, -1, damageType.PhysicalRanged)
                         doAfter(0.01) ->
                             shark.setAnimation(0)
                             gralBite.playOnPoint(targ.getPos3Real())

@@ -4,7 +4,7 @@ import ClosureForGroups
 import ClosureEvents
 import Abilities
 import ClosureTimers
-import codeDamageTypings
+import DamageTarget
 
 public function naturalOrb()
     EventListener.onPointCast('A0TU') (unit caster, vec2 target) ->
@@ -19,6 +19,6 @@ public function naturalOrb()
             sfx.setPos(sfx.getPos().polarOffset(angle, 13))
             forUnitsInRange(sfx.getPos(), 350, true) (unit u) ->
                 if caster.isEnemyOf(u) and u.isAlive()
-                    caster.damageTargetCode(output, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(output, u, null, -1, damageType.Magical)
             if(cb.isLast())
                 sfx.destr()

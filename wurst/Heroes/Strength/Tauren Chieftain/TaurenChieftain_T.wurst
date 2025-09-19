@@ -4,7 +4,7 @@ import ClosureEvents
 import ClosureForGroups
 import ClosureTimers
 import Abilities
-import codeDamageTypings
+import DamageTarget
 
 public function warStomp()
     EventListener.onCast('A01A') (unit caster) ->
@@ -17,7 +17,7 @@ public function warStomp()
         doAfter(0.25) -> 
             forUnitsAll() (unit u) ->
                 if caster.isEnemyOf(u)
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.PURE)
+                    caster.damageTargetCode(dmg, u, null, -1, damageType.Pure)
                     u.pause()
                     doAfter(10) -> 
                         u.unpause()

@@ -129,7 +129,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_axe_98.blp")    
     ..setClassification("Purchasable")
     ..addStats(addDamage(300))
-    ..addStats(addCleave(0.3, 500))
+    ..addStats(addCleave(0.30, 500))
     ..addComponents(
     ITEM_EXOTIC_AXE_L3,
     ITEM_SCALE_AXE)
@@ -151,7 +151,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_axe_98.blp")    
     ..setClassification("Purchasable")
     ..addStats(addDamage(500))
-    ..addStats(addCleave(0.4, 500))
+    ..addStats(addCleave(0.40, 500))
     ..addComponents(
     ITEM_FIRE_AXE_L2,
     ITEM_DURATION_AXE)
@@ -162,7 +162,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNGromHellscreamsAxe.blp")
     ..setClassification("Campaign")
     ..addStats(addDamage(2000))
-    ..addStats(addCrit(3, 100))
+    ..addStats(addCrit(1.00, 3))
     ..addComponents(
     ITEM_EXOTIC_AXE_L6,
     ITEM_GOLD_AXE)
@@ -173,7 +173,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNragingstrike.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(1500))
-    ..addStats(addCrit(2, 100))
+    ..addStats(addCrit(1.00, 2))
     ..addComponents(
     ITEM_CRITICAL_AXE,
     ITEM_GOLD_AXE)
@@ -194,7 +194,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(8000))
-    ..addStats(addArmorPen(4))
+    ..addStats(addArmorPen(penType.Physical, 0.04))
     ..register()
 
 //I0FM
@@ -202,7 +202,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(10000))
-    ..addStats(addArmorPen(8))
+    ..addStats(addArmorPen(penType.Physical, 0.08))
     ..register()
 
 //I0FL
@@ -210,7 +210,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(12000))
-    ..addStats(addArmorPen(12))
+    ..addStats(addArmorPen(penType.Physical, 0.12))
     ..register()
 
 //I0FN
@@ -218,7 +218,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")
     ..setClassification("Campaign")
     ..addStats(addDamage(16000))
-    ..addStats(addArmorPen(16))
+    ..addStats(addArmorPen(penType.Physical, 0.16))
     ..register()
 
 //I0FO
@@ -226,5 +226,5 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(22000))
-    ..addStats(addArmorPen(20))
+    ..addStats(addArmorPen(penType.Physical, 0.20))
     ..register()

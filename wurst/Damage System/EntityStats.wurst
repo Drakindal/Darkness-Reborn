@@ -1,0 +1,138 @@
+package EntityStats
+import DamageTypes
+
+// ----------------------------------------------------------------------------
+
+public function clipNumber(real value) returns real
+    if (value > 1)
+        return 1
+    else if (value < 0)
+        return 0
+    else
+        return value
+
+// ----------------------------------------------------------------------------
+
+public class ResPenPair
+    real res = 0
+    real pen = 0
+
+    function calcDamage(real damage, real unreducedDamage) returns real
+        let reducedByArmor = unreducedDamage - damage
+        let reducedByRes   = damage * res
+
+        let plain          = damage - reducedByRes
+        let penetrated     = pen * (reducedByArmor + reducedByRes)
+        return plain + penetrated
+
+    function clear()
+        res = 0
+        pen = 0
+
+    function copyFrom(ResPenPair other)
+        this.res = other.res
+        this.pen = other.pen
+
+    function addStats(ResPenPair other)
+        this.res += other.res
+        this.pen += other.pen
+
+    function clip()
+        res = clipNumber(res)
+        pen = clipNumber(pen)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+// Run-time stats of unit/item
+public class EntityStats
+    private ResPenPair physDamage  = new ResPenPair()
+    private ResPenPair magicDamage = new ResPenPair()
+
+    private real universalRes = 0
+
+    ondestroy
+        destroy physDamage
+        destroy magicDamage
+    
+    function clear()
+        physDamage.clear()
+        magicDamage.clear()
+        universalRes = 0
+
+    function copyFrom(EntityStats other)
+        if (other != null)
+            this.physDamage.copyFrom(other.physDamage)
+            this.magicDamage.copyFrom(other.magicDamage)
+            this.universalRes = other.universalRes
+        else
+            clear()
+
+    function addStats(EntityStats other)
+        if other != null
+            this.physDamage.addStats(other.physDamage)
+            this.magicDamage.addStats(other.magicDamage)
+            this.universalRes += other.universalRes
+    
+    function clip()
+        physDamage.clip()
+        magicDamage.clip()
+        universalRes = clipNumber(universalRes)
+
+// ----------------------------------------------------------------------------
+
+    function getPen(penType penType) returns real
+        switch penType
+            case penType.Physical
+                return physDamage.pen
+            case penType.Magical
+                return magicDamage.pen
+
+    function getRes(resType resType) returns real
+        switch resType
+            case resType.Physical
+                return physDamage.res
+            case resType.Magical
+                return magicDamage.res
+            case resType.Universal
+                return universalRes
+
+// ----------------------------------------------------------------------------
+
+    function setPen(penType penType, real value)
+        switch penType
+            case penType.Physical
+                physDamage.pen = value
+            case penType.Magical
+                magicDamage.pen = value
+
+    function setRes(resType resType, real value)
+        switch resType
+            case resType.Physical
+                physDamage.res = value
+            case resType.Magical
+                magicDamage.res = value
+            case resType.Universal
+                universalRes = value
+
+// ----------------------------------------------------------------------------
+
+    function addPen(penType penType, real value)
+        setPen(penType, value + getPen(penType))
+
+    function addRes(resType resType, real value)
+        setRes(resType, value + getRes(resType))
+
+// ----------------------------------------------------------------------------
+
+    function calcDamage(damageType damageType, real damage, real unreducedDamage) returns real
+        switch damageType
+            case damageType.Pure
+                return unreducedDamage * universalRes
+            case damageType.PhysicalMelee | damageType.PhysicalRanged
+                return physDamage.calcDamage(damage, unreducedDamage) * universalRes
+            case damageType.Magical
+                return magicDamage.calcDamage(damage, unreducedDamage) * universalRes
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------

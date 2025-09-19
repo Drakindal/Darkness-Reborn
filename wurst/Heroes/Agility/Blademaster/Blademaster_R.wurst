@@ -3,7 +3,7 @@ package Blademaster_R
 import ClosureTimers
 import Abilities
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 import PauseAllocation
 import ClosureEvents
 
@@ -23,7 +23,7 @@ function rampage2(unit caster, unit target)
                 else
                     caster.setAnimation("attack")
                     flashEffect(Abilities.warStompCaster, target.getPos())
-                    caster.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALMELEE)
+                    caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
         if cb.isLast()
             caster.unPauseUnitIndef()
             caster.setInvulnerable(false)

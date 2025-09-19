@@ -5,7 +5,7 @@ import OrderIds
 import ClosureForGroups
 import ClosureTimers
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import DamageEvent
 // Storm of Akunda
 
@@ -28,4 +28,4 @@ public function superKingOfloasE()
                                 ..origin(src.getPos())
                                 ..castTarget(ABILITY_49, 1, OrderIds.forkedlightning, u)
                                 doAfter(0.05) -> 
-                                    src.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                                    src.damageTargetCode(dmg, u, null, -1, damageType.Magical)

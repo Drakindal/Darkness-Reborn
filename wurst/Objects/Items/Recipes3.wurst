@@ -84,7 +84,7 @@ init
     ..setClassification("Permanent")
     ..addStats(addDamage(100))
     ..addStats(addStr(30))
-    ..addStats(addCleave(0.4, 400))
+    ..addStats(addCleave(0.40, 400))
     ..addComponents(
     ITEM_DURATION_AXE,
     ITEM_SCROLL_OF_FUSION,
@@ -102,7 +102,7 @@ init
     ..addStats(addDamage(220))
     ..addStats(addAttackSpeed(1))
     ..addStats(addAllStats(12))
-    ..addStats(addCrit(3, 18))
+    ..addStats(addCrit(0.18, 3))
     ..addComponents(
     ITEM_FIRE_SWORD,
     ITEM_GLOVES_OF_SPEED,

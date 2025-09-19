@@ -12,8 +12,6 @@ public function initDebug()
     if (not DEBUG)
         return
 
-    let p = players[10]
-
     for i = 0 to 9
         players[i].addGold(100000000)
         players[i].addLumber(100000000)
@@ -26,17 +24,17 @@ public function initDebug()
     createItem(ITEM_BATTLE_AXE_L5, vec2(posX, posY))
 
     // Add tinker's blacksmith and shops near the fountain
-    CreateUnit(p, BUILDING_TINKER_BLACKSMITH, posX - 200, posY, 270.000)
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_TINKER_BLACKSMITH, posX - 200, posY, 270.000)
     ..addPermanentAbility(AbilityIds.invulnerable)
-    SetPlayerTechResearched(p, blacksmithInventoryUpgrade, 6)
+    SetPlayerTechResearched(PLAYER_ALLY_BASE, blacksmithInventoryUpgrade, 6)
     
-    CreateUnit(p, BUILDING_TINKER_SHOP_RECIPES, posX + 200, posY, 270.000)
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_TINKER_SHOP_RECIPES, posX + 200, posY, 270.000)
     ..addPermanentAbility(AbilityIds.invulnerable)
     
-    CreateUnit(p, BUILDING_TINKER_SHOP_TOMES, posX - 200, posY + 400, 270.000)
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_TINKER_SHOP_TOMES, posX - 200, posY + 400, 270.000)
     ..addPermanentAbility(AbilityIds.invulnerable)
 
-    CreateUnit(p, BUILDING_TINKER_SHOP_LUMBER, posX + 200, posY + 400, 270.000)
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_TINKER_SHOP_LUMBER, posX + 200, posY + 400, 270.000)
     ..addPermanentAbility(AbilityIds.invulnerable)
     
     // Spawn supportive heroes

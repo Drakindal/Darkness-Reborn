@@ -5,7 +5,8 @@ import StandardTextTags
 import ClosureEvents
 import MyAbilityIds
 import Global_Variables
-import codeDamageTypings
+import DamageTarget
+import UnitStats
 
 public int spirits = 0
 texttag spiritText
@@ -27,7 +28,7 @@ public function quilBeast()
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         let summoner = GetSummoningUnit()
         if(summoner.getTypeId() == HERO_BEASTMASTER)
-            let summon = GetSummonedUnit()
+            let summon = GetSummonedUnit()..registerStats()
             let str = summoner.getStr(true)
             
             if summon.getTypeId() == MISHABEAR
@@ -35,7 +36,7 @@ public function quilBeast()
                 summon.setMaxHP(((0.25*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
                 summon.setBaseDamage((0.15 * str + lvl * 10).toInt(), 0)
-                summon.enumeratePhysicalPenetration(summoner.getPen(penetrationType.PHYSICAL) * lvl)
+                summon.getStats().setBasePen(penType.Physical, summoner.getStats().getPen(penType.Physical) * lvl)
                 if lvl == 8
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 5)
                 if lvl == 9
@@ -46,7 +47,7 @@ public function quilBeast()
                 summon.setMaxHP(((0.01*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.15 * summoner.getArmor() + lvl * 4)
                 summon.setBaseDamage((0.4 * str).toInt() + lvl * 15, 0)
-                summon.enumeratePhysicalPenetration(summoner.getPen(penetrationType.PHYSICAL) * 2 * lvl)
+                summon.getStats().setBasePen(penType.Physical, summoner.getStats().getPen(penType.Physical) * 2 * lvl)
                 if lvl > 5
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 5)
                 if lvl == 9
@@ -56,7 +57,7 @@ public function quilBeast()
                 summon.setMaxHP(((0.05*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.1 * summoner.getArmor() + lvl * 2)
                 summon.setBaseDamage((0.75 * str).toInt() + lvl * 20, 0)
-                summon.enumeratePhysicalPenetration(summoner.getPen(penetrationType.PHYSICAL) * 3 * lvl)
+                summon.getStats().setBasePen(penType.Physical, summoner.getStats().getPen(penType.Physical) * 3 * lvl)
                 if lvl > 5
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 5)
                 if lvl == 9

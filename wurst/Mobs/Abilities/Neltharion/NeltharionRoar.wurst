@@ -4,7 +4,7 @@ import ClosureEvents
 import MyUnitIds
 import ClosureTimers
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 
 bool neltharionBeam = false
 
@@ -26,4 +26,4 @@ function neltharionBeam(unit caster)
         forUnitsInRange(caster.getPos(), 2500) (unit u) ->
             if(u.isEnemyOf(caster) and u.isType(UNIT_TYPE_STRUCTURE) == false)
                 flashEffect("Units\\Mobs\\Soul Beam Red.mdx", u.getPos())
-                caster.damageTargetCode(3500, u, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(3500, u, null, -1, damageType.Magical)

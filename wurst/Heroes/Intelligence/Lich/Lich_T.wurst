@@ -4,7 +4,7 @@ import ClosureEvents
 import ClosureForGroups
 import ClosureTimers
 import Abilities
-import codeDamageTypings
+import DamageTarget
 
 public function deathandnDecay()
     EventListener.onPointCast('A0SF') (unit caster, vec2 target) ->
@@ -15,4 +15,4 @@ public function deathandnDecay()
             forUnitsInRange(target, 250, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     flashEffect(Abilities.deathandDecayTarget, u.getPos())
-                    caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, damageType.Magical)

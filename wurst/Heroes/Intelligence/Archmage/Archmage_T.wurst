@@ -1,7 +1,7 @@
 package Archmage_T
 
 import ClosureEvents
-import codeDamageTypings
+import DamageTarget
 import MyAbilityIds
 
 public function lightRemoval()
@@ -11,6 +11,6 @@ public function lightRemoval()
         flashEffect("Effects\\Archmage\\ShadowSlam(Normal Size).mdl", target, "chest")
         let buffs = UnitCountBuffsEx(target, false, false, true, false, false, false, false).toReal()
         if buffs > 0
-            caster.damageTargetCode(dmg * Pow(2, buffs), target, null, -1, damageType.MAGICAL)
+            caster.damageTargetCode(dmg * Pow(2, buffs), target, null, -1, damageType.Magical)
         else
-            caster.damageTargetCode(dmg, target, null, -1, damageType.MAGICAL)
+            caster.damageTargetCode(dmg, target, null, -1, damageType.Magical)

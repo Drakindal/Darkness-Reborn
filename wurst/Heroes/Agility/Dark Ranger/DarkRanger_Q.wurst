@@ -5,7 +5,7 @@ import MyAbilityIds
 import ClosureEvents
 import OrderIds
 import Abilities
-import codeDamageTypings
+import DamageTarget
 import Projectile
 
 public function imageArrow()
@@ -24,7 +24,7 @@ public function imageArrow()
             let proj = new Projectile(target, sfx, 2)
             proj.moveForward(false) (effect detectionUnit, unit target) ->
                 let damage = caster.getAgi(true) * 0.6 * lvl
-                caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(damage, target, null, -1, damageType.Magical)
 
         for int i = 1 to 3
             let polarProj = caster.getPos().polarOffset(angle.op_minus(225.0.asAngleRadians()), -200.*i)
@@ -38,4 +38,4 @@ public function imageArrow()
             let proj = new Projectile(target, sfx, 2)
             proj.moveForward(false) (effect detectionUnit, unit target) ->
                 let damage = caster.getAgi(true) * 0.6 * lvl
-                caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(damage, target, null, -1, damageType.Magical)

@@ -6,7 +6,7 @@ import DummyCaster
 import OrderIds
 import ClosureEvents
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 // Avatar of Bwonsamdi
 
 public function avatarOfBwonsamdi()
@@ -21,4 +21,4 @@ public function avatarOfBwonsamdi()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())
                         ..castTarget(ABILITY_36, 1, OrderIds.slow, u)
-                        caster.damageTargetCode(caster.getInt(true) * 4., u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(caster.getInt(true) * 4., u, null, -1, damageType.Magical)

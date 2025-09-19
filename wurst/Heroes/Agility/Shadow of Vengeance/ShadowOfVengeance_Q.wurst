@@ -3,7 +3,7 @@ package ShadowOfVengeance_Q
 import DummyCaster
 import OrderIds
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import ClosureEvents
 import DamageEvent
 
@@ -26,4 +26,4 @@ public function furyPeak()
                         ..owner(GetOwningPlayer(src))
                         ..origin(src.getPos())
                         ..castTarget(DARK_VENGEANCE_ABILITY_Q_DUMMY, 1, OrderIds.thunderbolt, targ)
-                        src.damageTargetCode(missingHp, targ, null, -1, damageType.MAGICAL)
+                        src.damageTargetCode(missingHp, targ, null, -1, damageType.Magical)

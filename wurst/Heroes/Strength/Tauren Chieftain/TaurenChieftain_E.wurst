@@ -3,7 +3,7 @@ package TaurenChieftain_E
 import ClosureTimers
 import Objects
 import TerrainUtils
-import codeDamageTypings
+import DamageTarget
 import MyAbilityIds
 import DamageEvent
 
@@ -24,7 +24,7 @@ public function pulverize()
                         let angle = casterPos.angleTo(targetPos)
                         let sfx = addEffect(Objects.impaleTargetDust, targetPos)
                         let pathable = addEffect(".mdl", targetPos)
-                        caster.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALMELEE)
+                        caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
                         doPeriodicallyTimed(0.03, 0.5) (CallbackCounted cb) ->
                             if pathable.getPos().isTerrainWalkable()
                                 distance = distance + 15

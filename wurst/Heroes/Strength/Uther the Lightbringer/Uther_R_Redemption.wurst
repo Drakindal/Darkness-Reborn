@@ -1,6 +1,6 @@
 package Uther_R_Redemption
 
-import codeDamageTypings
+import DamageTarget
 import ClosureEvents
 import MyAbilityIds
 import HashSet
@@ -27,7 +27,7 @@ public function redemptionHoly()
                         let amount = str * 0.5 + 75 * lvl
                         let heal = str * lvl * 0.2
                         flashEffect(Abilities.holyBoltSpecialArt, targ.getPos())
-                        src.damageTargetCode(amount, targ, null, -1, damageType.PHYSICALMELEE)
+                        src.damageTargetCode(amount, targ, null, -1, damageType.PhysicalMelee)
                         src.addHP(heal)
                         addHolyPower((lvl*0.25).ceil())
 

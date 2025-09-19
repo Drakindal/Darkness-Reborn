@@ -6,7 +6,7 @@ import ClosureTimers
 import DummyCaster
 import OrderIds
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 
 public function ultima()
     EventListener.onPointCast(ARCHMAGE_ABILITY_E) (unit caster, vec2 target) ->
@@ -20,9 +20,9 @@ public function ultima()
                 if caster.isEnemyOf(u)
                     let buffs = UnitCountBuffsEx(u, false, false, true, false, false, false, false) - 1.
                     if buffs > 0
-                        caster.damageTargetCode(dmg * Pow(2, buffs), u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dmg * Pow(2, buffs), u, null, -1, damageType.Magical)
                     else
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))
                     ..origin(caster.getPos())

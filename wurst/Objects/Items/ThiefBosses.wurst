@@ -82,8 +82,8 @@ init
     ..setClassification("Campaign")
     ..addStats(addDamage(7700))
     ..addStats(addStr(600))
-    ..addStats(addCrit(10, 10))
-    ..addStats(addArmorPen(10))
+    ..addStats(addCrit(0.10, 10))
+    ..addStats(addArmorPen(penType.Physical, 0.10))
     ..addStats(addAbilityDrainHpRel(0.01, 0.15))
     ..register()
 

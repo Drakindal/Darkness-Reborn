@@ -104,7 +104,7 @@ init
 
     ..addStats(addAllStats(600))
     ..addStats(addArmor(240))
-    ..addStats(addMagicResist(50))
+    ..addStats(addResist(resType.Magical, 0.50))
 
     ..addStats(addRevive(7, 30))
 

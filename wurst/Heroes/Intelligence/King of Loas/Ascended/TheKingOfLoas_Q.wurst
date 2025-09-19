@@ -8,7 +8,7 @@ import DummyCaster
 import OrderIds
 import ClosureEvents
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 
 constant real array POISON_SPIT_AOE = [350, 350, 350, 350, 350, 350, 350, 350, 350]
 real array POISON_SPIT_DURATION = [5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -29,7 +29,7 @@ public function superShadraPoison()
                     ..castTarget(ABILITY_37, 1, OrderIds.slow, u)
                     ..castTarget(ABILITY_45, 1, OrderIds.innerfire, u)
                     var dmg = I2R(caster.getAbilityLevel(ABILITY_46) * GetHeroInt(caster, true))
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                     doPeriodicallyCounted(1, 4) (CallbackCounted cb) ->
                         dmg = I2R(caster.getAbilityLevel(ABILITY_46) * GetHeroInt(caster, true))
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)

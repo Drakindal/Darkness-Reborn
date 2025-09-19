@@ -4,7 +4,7 @@ import ClosureForGroups
 import ClosureEvents
 import ClosureTimers
 import Abilities
-import codeDamageTypings
+import DamageTarget
 import Projectile
 import Units
 
@@ -29,7 +29,7 @@ public function hawkeyeSplit()
                     let proj = new Projectile(u, sfx, 4)
                     proj.moveForward(false) (effect detectionUnit, unit target) ->
                         let output = (caster.getInt(true) * 0.25 + 5.) * lvl
-                        caster.damageTargetCode(output, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(output, u, null, -1, damageType.Magical)
                         
             if(cb.isLast())
                 owl.destr()

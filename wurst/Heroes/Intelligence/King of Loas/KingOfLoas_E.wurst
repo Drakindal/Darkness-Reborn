@@ -3,7 +3,7 @@ package KingOfLoas_E
 import MyAbilityIds
 import Abilities
 import OrderIds
-import codeDamageTypings
+import DamageTarget
 import DamageEvent
 
 public function thunderOfAkunda()
@@ -19,6 +19,6 @@ public function thunderOfAkunda()
                         let target = DamageEvent.getTarget()
                         let dmg = (lvl*1.50)*src.getInt(true)
                         flashEffect(Abilities.chimaeraLightningMissile, target.getPos())
-                        src.damageTargetCode(dmg, target, null, -1, damageType.MAGICAL)
+                        src.damageTargetCode(dmg, target, null, -1, damageType.Magical)
                         if(target.isAlive() == false)
                             src.issueImmediateOrderById(OrderIds.stop)

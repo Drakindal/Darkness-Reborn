@@ -15,7 +15,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(5))
     ..addStats(addHpReg(5))
-    ..addStats(addMagicResist(5))
+    ..addStats(addResist(resType.Magical, 0.05))
     ..register()
 
 //I08A
@@ -24,7 +24,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(15))
     ..addStats(addHpReg(15))
-    ..addStats(addMagicResist(15))
+    ..addStats(addResist(resType.Magical, 0.15))
     ..register()
 
 //I08B
@@ -33,7 +33,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(25))
     ..addStats(addHpReg(25))
-    ..addStats(addMagicResist(25))
+    ..addStats(addResist(resType.Magical, 0.25))
     ..register()
 
 //I08C
@@ -42,7 +42,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(45))
     ..addStats(addHpReg(45))
-    ..addStats(addMagicResist(45))
+    ..addStats(addResist(resType.Magical, 0.45))
     ..register()
 
 //I084
@@ -51,7 +51,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(10))
     ..addStats(addHpReg(10))
-    ..addStats(addMagicResist(10))
+    ..addStats(addResist(resType.Magical, 0.10))
     ..addComponents(
     ITEM_FORGE_HELM_L1,
     ITEM_RING_OF_REGENERATION)
@@ -63,7 +63,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(20))
     ..addStats(addHpReg(20))
-    ..addStats(addMagicResist(20))
+    ..addStats(addResist(resType.Magical, 0.20))
     ..addComponents(
     ITEM_DREAD_HELM_L1,
     ITEM_BLADEBANE_ARMOR)
@@ -75,7 +75,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(50))
     ..addStats(addHpReg(50))
-    ..addStats(addMagicResist(40))
+    ..addStats(addResist(resType.Magical, 0.40))
     ..addComponents(
     ITEM_DREAD_HELM_L2,
     ITEM_AMULET_OF_SPELL_SHIELD,
@@ -88,7 +88,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(100))
     ..addStats(addHpReg(100))
-    ..addStats(addMagicResist(50))
+    ..addStats(addResist(resType.Magical, 0.50))
     ..addComponents(
     ITEM_DREAD_HELM_L3,
     ITEM_BLOOD_GEM,
@@ -101,7 +101,7 @@ init
     ..setClassification("Purchasable")
     ..addStats(addArmor(200))
     ..addStats(addHpReg(200))
-    ..addStats(addMagicResist(70))
+    ..addStats(addResist(resType.Magical, 0.70))
     ..addComponents(
     ITEM_DREAD_HELM_L4,
     ITEM_FORGE_HELM_L3,
@@ -114,7 +114,7 @@ init
     ..setClassification("Campaign")
     ..addStats(addArmor(350))
     ..addStats(addHpReg(300))
-    ..addStats(addMagicResist(80))
+    ..addStats(addResist(resType.Magical, 0.80))
     ..addComponents(
     ITEM_DREAD_HELM_L5,
     ITEM_FORGE_HELM_L4,

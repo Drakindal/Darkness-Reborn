@@ -2,7 +2,7 @@ package Assassin_T
 
 import Abilities
 import ClosureTimers
-import codeDamageTypings
+import DamageTarget
 import DamageEvent
 
 bool once = true
@@ -23,7 +23,7 @@ public function lastKiller()
                             let lvl = ((GetUnitAbilityLevel(src, 'A0GJ'))*5)+37
                             let dmg = src.getAgi(true)*lvl.toReal()
                             flashEffect(Abilities.meatwagonMissile, target.getPos()) 
-                            src.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALMELEE)
+                            src.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
                             src.removeAbility('B00W')
                             doAfter(3) -> 
                                 once = true

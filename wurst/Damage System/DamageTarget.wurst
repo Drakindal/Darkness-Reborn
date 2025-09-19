@@ -1,0 +1,25 @@
+package DamageTarget
+
+import DamageEvent
+import public DamageTypes
+
+// ----------------------------------------------------------------------------
+
+public function unit.damageTargetCode(real amount, unit target, DamageElement element, integer id, damageType damageType) returns bool
+    DamageEvent.setNextDamageElement(element)
+    DamageEvent.setNextDamageFromCode()
+    if(id > -1)
+        DamageEvent.setNextDamageId(id)
+
+    switch damageType
+        case damageType.Pure
+            this.damageTarget(target, amount, false, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS)
+        case damageType.PhysicalMelee
+            this.damageTarget(target, amount, false, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_CLAW_MEDIUM_SLICE)
+        case damageType.PhysicalRanged
+            this.damageTarget(target, amount, false, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        case damageType.Magical
+            this.damageTarget(target, amount, false, false, ATTACK_TYPE_MELEE, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+    return true
+
+// ----------------------------------------------------------------------------

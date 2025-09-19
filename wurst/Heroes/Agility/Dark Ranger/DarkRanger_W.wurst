@@ -4,9 +4,10 @@ import MyUnitIds
 import OrderIds
 import MyAbilityIds
 import ClosureEvents
-import codeDamageTypings
+import DamageTarget
 import LinkedList
 import DamageEvent
+import UnitStats
 
 let arrowToggle = new LinkedList<unit>
 
@@ -36,5 +37,6 @@ public function darkArrow()
                         let dmg = (src.getAgi(true)*lvl*0.5)
                         if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(DARKRANGER_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
                             src.issueImmediateOrderById(OrderIds.flamingarrows + 1)
-                        src.damageTargetCode(dmg, target, null, -1, damageType.MAGICAL)
-                        src.addHP(dmg * 0.5* (1-target.getRes(resistanceType.MAGICAL)))
+                        src.damageTargetCode(dmg, target, null, -1, damageType.Magical)
+                        // WIP. Move all damage calculations to DamageSystem
+                        src.addHP(dmg * 0.5 * (1 - target.getStats().getRes(resType.Magical)))

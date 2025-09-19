@@ -1,0 +1,14 @@
+package UnitInventory
+
+import LinkedList
+
+// ----------------------------------------------------------------------------
+
+public function getUnitInventory(unit u) returns LinkedList<item>
+    let unitInventory = new LinkedList<item>
+    for int i = 0 to 5
+        if(u.itemInSlot(i) != null)
+            unitInventory.add(u.itemInSlot(i))
+    return unitInventory
+
+// ----------------------------------------------------------------------------

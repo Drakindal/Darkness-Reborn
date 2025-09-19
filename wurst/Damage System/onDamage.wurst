@@ -1,9 +1,10 @@
-package onDamage
+package OnDamage
+
 import MyUnitIds
 // import DamageDetection
 import DamageEvent
 import MyAbilityIds
-import codeDamageTypings
+import EntityStats
 import MyBuffIds
 import WaveHeroSetup
 import DragonTurtle
@@ -13,54 +14,63 @@ import Global_Variables
 import AbilitiesList
 import Pitlord_R
 import Pitlord_E
+import DamageTypes
+import UnitStats
 
 @configurable constant DETECT_NATIVE_ABILITIES = true
-
 
 let difficultyDamageIncrease = [0.5, 0.75, 1., 1.5, 2.]
 
 texttag justaposeCrit
 
-function unit.calculateMagicRes() returns real
-    let magicResCalc = this.getRes(resistanceType.MAGICAL)
-    return 1-(magicResCalc)
+function getReducedDamage() returns real
 
-function returnReducedDamage() returns real
     return DamageEvent.getUnreducedOriginalAmount() - DamageEvent.getAmount()
 
 init
     DamageEvent.addListener(0) -> 
-        let src = DamageEvent.getSource()
+        let src  = DamageEvent.getSource()
         let targ = DamageEvent.getTarget()
         src.wasAttacked()
-        if(src.isEnemyOf(players[10]))
+
+        // Change damage dealt by enemies to players due to game difficulty
+
+        // WIP. We increase only DamageAmount, but also should change DamageUnreducedAmount.
+        // But there are no function to change it.
+        if(src.isEnemyOf(PLAYER_ALLY_BASE))
             DamageEvent.setAmount(DamageEvent.getAmount() * difficultyDamageIncrease[gameMode])
+        
         switch DamageEvent.getType()
             case ATTACK
-                if(returnReducedDamage() > 0)
-                    DamageEvent.addAmount(returnReducedDamage() * src.getPen(penetrationType.PHYSICAL))
-                if src.isRanged()
-                    physicalDamageChecks(0, src, targ, WEAPON_TYPE_AXE_MEDIUM_CHOP)
-                else
-                    physicalDamageChecks(0, src, targ, WEAPON_TYPE_WHOKNOWS)
+                let dt = src.isRanged() ? damageType.PhysicalRanged : damageType.PhysicalMelee
+
+                DamageEvent.setAmount(targ.getStats().calcDamage(dt, DamageEvent.getAmount(), DamageEvent.getUnreducedAmount()))
+                
+                if not src.isRanged()
+                    reflectionChecks(src, targ)
+
+                physicalDamageChecks(src, targ)
 
                 // Warden T ability.
                 if src.hasAbility('B003')
                     src.removeAbility('B003')
 
             case SPELL
-                magicDamageChecks(0, src, targ)
+                DamageEvent.setAmount(targ.getStats().calcDamage(damageType.Magical, DamageEvent.getAmount(), DamageEvent.getUnreducedAmount()))
+
+                magicDamageChecks(src, targ)
                 
             case CODE
-                let damId = DamageEvent.getId()
-                // Why increase the damage?
-                // DamageEvent.setAmount(DamageEvent.getAmount() * 1.111111111)
+                let dt = (DamageEvent.getDamageType() == DAMAGE_TYPE_NORMAL) ? damageType.PhysicalRanged : damageType.Magical
+                
+                DamageEvent.setAmount(targ.getStats().calcDamage(dt, DamageEvent.getAmount(), DamageEvent.getUnreducedAmount()))
+
                 if(DamageEvent.getDamageType() == DAMAGE_TYPE_NORMAL)
-                    if(returnReducedDamage() > 0 and unitStatMap.has(src.getTypeId()))
-                        DamageEvent.addAmount(returnReducedDamage() * src.getPen(penetrationType.PHYSICAL))
-                    physicalDamageChecks(damId, src, targ, DamageEvent.getWeaponType())
+                    if not src.isRanged()
+                        reflectionChecks(src, targ)
+                    physicalDamageChecks(src, targ)
                 else if (DamageEvent.getDamageType() == DAMAGE_TYPE_MAGIC)
-                    magicDamageChecks(damId, src, targ)
+                    magicDamageChecks(src, targ)
             default
 
     DamageEvent.addListener(1) ->
@@ -88,21 +98,17 @@ init
                         if (src.hasItemById(abilityInfo.itemId))
                             abilityInfo.runHandler(src, targ)
 
-function magicDamageChecks(int damId, unit src, unit targ)
+function magicDamageChecks(unit src, unit targ)
     if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
         DamageEvent.setAmount(DamageEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
-    DamageEvent.setAmount(DamageEvent.getAmount() * targ.calculateMagicRes())
 
-function physicalDamageChecks(int damId, unit src, unit targ, weapontype notRanged)
+function physicalDamageChecks(unit src, unit targ)
     // Uther Damage reduction
     if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
         DamageEvent.setAmount(DamageEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
     // Wolfman attack
     if src.hasAbility(WOLF_BUFF_1)
         src.addHP(DamageEvent.getAmount() * 0.25)
-    // Reflection non-ranged
-    if(notRanged == WEAPON_TYPE_WHOKNOWS)
-        reflectionChecks(src, targ)
 
 function reflectionChecks(unit src, unit targ)
     let dam = DamageEvent.getAmount()

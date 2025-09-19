@@ -3,9 +3,11 @@ package DefenseStats
 import ObjectIdGenerator
 import AbilityObjEditing
 import CommonDescriptions
-import codeDamageTypings
+import DamageTarget
 import ObjectIds
 import ItemStatsDef
+import DS_DataCompileTime
+import public DamageTypes
 import Format
 
 // ----------------------------------------------------------------------------
@@ -94,11 +96,11 @@ public function addEvasion(real chance) returns ItemStats
 
 // ----------------------------------------------------------------------------
 
-public function addMagicResist(real value) returns ItemStats
-    let effects = wordMagicResist.format(realToString(value, 0))
+public function addResist(resType resType, real value) returns ItemStats
+    let effects = wordResist.format(realToString(value, 0), resType.toString())
     
     return new ItemStatsCustomFunc(effects,
-    (itemId, itemDef) -> itemId.putInResItemHash(value, resistanceType.MAGICAL))
+    (itemId, itemDef) -> itemId.addItemBaseRes(resType, value))
 
 // ----------------------------------------------------------------------------
 

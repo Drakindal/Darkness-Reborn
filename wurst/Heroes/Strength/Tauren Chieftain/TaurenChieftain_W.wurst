@@ -5,7 +5,7 @@ import ClosureForGroups
 import DummyCaster
 import OrderIds
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import PointTransitProjectile
 
 public function blessedHammer()
@@ -30,4 +30,4 @@ public function blessedHammer()
                         ..owner(GetOwningPlayer(caster))
                         ..castTarget(ABILITY_DUMMY_6, 1, OrderIds.cripple, u)
                         ..origin(caster.getPos())
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.PHYSICALRANGED)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.PhysicalRanged)

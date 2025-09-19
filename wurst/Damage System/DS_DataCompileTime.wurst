@@ -1,0 +1,128 @@
+package DS_DataCompileTime
+
+import DamageTypes
+import LinkedList
+import HashMap
+import EntityStats
+import DS_DataRunTime
+
+// ----------------------------------------------------------------------------
+
+class StatsBase
+    int  id
+    // true => item. false => unit
+    bool isUnit
+    real value
+
+    construct (int id, bool isUnit, real value)
+        this.id     = id
+        this.isUnit = isUnit
+        this.value  = value
+
+class PenStats extends StatsBase
+    penType penType
+    
+    construct(int id, bool isUnit, real value, penType penType)
+        super(id, isUnit, value)
+        this.penType = penType
+
+class ResStats extends StatsBase
+    resType resType
+    
+    construct(int id, bool isUnit, real value, resType resType)
+        super(id, isUnit, value)
+        this.resType = resType
+
+// ----------------------------------------------------------------------------
+
+// Used in compile-time
+let penList = compiletime(new LinkedList<PenStats>())
+let resList = compiletime(new LinkedList<ResStats>())
+
+// ----------------------------------------------------------------------------
+// Set up run-time data using compile-time data
+// ----------------------------------------------------------------------------
+
+function addPenToMap(HashMap<int, EntityStats> map, PenStats stats)
+    if (not map.has(stats.id))
+        map.put(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
+    else
+        map.get(stats.id).setPen(stats.penType, stats.value)
+
+function addResToMap(HashMap<int, EntityStats> map, ResStats stats)
+    if (not map.has(stats.id))
+        map.put(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
+    else
+        map.get(stats.id).setRes(stats.resType, stats.value)
+
+init
+    let unitMap = private_getUnitBaseStatsMap()
+    let itemMap = private_getItemBaseStatsMap()
+
+    for stats in penList
+        println("ID = {0} Pen value = {1}".format(stats.id.toString(), stats.value.toString()))
+        if (stats.isUnit)
+            addPenToMap(unitMap, stats)
+        else
+            addPenToMap(itemMap, stats)
+        destroy stats
+
+    penList.clear()
+    destroy penList
+
+    for stats in resList
+        println("ID = {0} Res value = {1}".format(stats.id.toString(), stats.value.toString()))
+        if (stats.isUnit)
+            addResToMap(unitMap, stats)
+        else
+            addResToMap(itemMap, stats)
+        destroy stats
+
+    resList.clear()
+    destroy resList
+
+// ----------------------------------------------------------------------------
+// Set up compile-time data
+// ----------------------------------------------------------------------------
+
+public function int.addItemBasePen(penType penType, real value)
+    penList.add(new PenStats(this, false, value, penType))
+
+public function int.addItemBaseRes(resType resType, real value)
+    resList.add(new ResStats(this, false, value, resType))
+
+public function int.addUnitBasePen(penType penType, real value)
+    penList.add(new PenStats(this, true, value, penType))
+
+public function int.addUnitBaseRes(resType resType, real value)
+    resList.add(new ResStats(this, true, value, resType))
+
+// ----------------------------------------------------------------------------
+// Get compile-time stats data.
+// ----------------------------------------------------------------------------
+
+function getResInList(int id, bool isUnit, resType resType) returns real
+    for stats in resList
+        if (stats.id == id and stats.isUnit == isUnit and stats.resType == resType)
+            return stats.value
+    return 0
+
+function getPenInList(int id, bool isUnit, penType penType) returns real
+    for stats in penList
+        if (stats.id == id and stats.isUnit == isUnit and stats.penType == penType)
+            return stats.value
+    return 0
+
+public function int.getCompileTimeItemPen(penType penType) returns real
+    return getPenInList(this, false, penType)
+
+public function int.getCompileTimeItemRes(resType resType) returns real
+    return getResInList(this, false, resType)
+
+public function int.getCompileTimeUnitPen(penType penType) returns real
+    return getPenInList(this, true, penType)
+
+public function int.getCompileTimeUnitRes(resType resType) returns real
+    return getResInList(this, true, resType)
+
+// ----------------------------------------------------------------------------

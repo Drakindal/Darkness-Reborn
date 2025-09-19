@@ -1,0 +1,54 @@
+package DamageTypes
+
+// ----------------------------------------------------------------------------
+
+public enum damageType
+    Pure
+    PhysicalMelee
+    PhysicalRanged
+    Magical
+
+public enum penType
+    Magical
+    Physical
+
+public enum resType
+    Universal
+    Physical
+    Magical
+
+// ----------------------------------------------------------------------------
+
+public function damageType.toString() returns string
+    switch this
+        case damageType.Magical
+            return "magic damage"
+        case damageType.PhysicalMelee
+            return "physical melee damage"
+        case damageType.PhysicalRanged
+            return "physical range damage"
+        case damageType.Pure
+            return "pure damage"
+
+public function penType.toString() returns string
+    switch this
+        case penType.Magical
+            return "magic pen (armor and resistance)"
+        case penType.Physical
+            return "phys pen (armor and resistance)"
+
+public function resType.toString() returns string
+    switch this
+        case resType.Universal
+            return "universal res"
+        case resType.Magical
+            return "magic res"
+        case resType.Physical
+            return "phys res"
+
+// ----------------------------------------------------------------------------
+
+public function unit.isRanged() returns boolean
+    return this.getFieldWeapon(UNIT_WEAPON_RF_ATTACK_RANGE, 0) > 230
+
+// ----------------------------------------------------------------------------

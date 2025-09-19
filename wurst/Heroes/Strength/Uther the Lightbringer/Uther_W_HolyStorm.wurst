@@ -4,7 +4,7 @@ import ClosureTimers
 import ClosureEvents
 import ClosureForGroups
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import Uther_R_Redemption
 
 public function holyStorm()
@@ -19,7 +19,7 @@ public function holyStorm()
             doPeriodicallyTimed(0.03, 3. * lvl) (CallbackCounted cb) ->
                 forUnitsInRange(caster.getPos(), 300) (unit u) ->
                     if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dam, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dam, u, null, -1, damageType.Magical)
                 if cb.isLast()
                     sfx.destr()
         else
@@ -28,7 +28,7 @@ public function holyStorm()
             doPeriodicallyTimed(0.03, 1.5 * lvl) (CallbackCounted cb) ->
                 forUnitsInRange(caster.getPos(), 300) (unit u) ->
                     if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dam, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dam, u, null, -1, damageType.Magical)
 
                 if cb.isLast()
                     sfx.destr()

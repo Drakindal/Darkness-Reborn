@@ -4,7 +4,7 @@ import ClosureEvents
 import MyUnitIds
 import ClosureTimers
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 import MyAbilityIds
 import PauseAllocation
 
@@ -30,7 +30,7 @@ function chronoSphereActive(unit caster)
     doPeriodicallyTimed(0.05, 5) (CallbackCounted cb) ->
         forUnitsInRange(sfx.getPos(), 700) (unit u) ->
             if caster.isEnemyOf(u)
-                caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                 u.pauseIndef()
             if cb.isLast()
                 sfx.destr()

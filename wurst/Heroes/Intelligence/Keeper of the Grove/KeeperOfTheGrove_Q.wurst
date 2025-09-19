@@ -4,7 +4,7 @@ import ClosureEvents
 import ClosureForGroups
 import Abilities
 import ClosureTimers
-import codeDamageTypings
+import DamageTarget
 import DummyCaster
 import OrderIds
 import MyAbilityIds
@@ -25,4 +25,4 @@ public function entanglingRoots()
                 ..delay(0)
                 flashEffect(Abilities.roots1, u, "overhead")
                 doPeriodicallyTimed(1.00, 5.00) (CallbackCounted cb) ->
-                    caster.damageTargetCode(output, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(output, u, null, -1, damageType.Magical)

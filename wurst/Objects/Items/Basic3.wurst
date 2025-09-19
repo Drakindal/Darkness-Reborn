@@ -111,7 +111,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(1200)
     ..addStats(addDamage(15))
-    ..addStats(addCleave(0.1, 200))
+    ..addStats(addCleave(0.10, 200))
     ..addHotKey()
     ..register()
 

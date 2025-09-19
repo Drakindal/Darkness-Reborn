@@ -20,7 +20,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(700))
     ..addStats(addAttackSpeed(3))
-    ..addStats(addCrit(7, 46))
+    ..addStats(addCrit(0.46, 7))
     ..addStats(addAbilityFreezePassive(40, 15000, 1, 6))
     ..addComponents( 
     ITEM_ICE_AND_FIRE_SWORD,
@@ -53,8 +53,8 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAdept 002.blp")
     ..setClassification("Artifact")
     ..addStats(addDamage(1700))
-    ..addStats(addCrit(11, 25))
-    ..addStats(addArmorPen(8))
+    ..addStats(addCrit(0.25, 11))
+    ..addStats(addArmorPen(penType.Physical, 0.08))
     ..addComponents(
     ITEM_DESTROY_SWORD,
     ITEM_BLADE_OF_HELL,
@@ -72,7 +72,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(4500))
     ..addStats(addStr(600))
-    ..addStats(addBash(35, 10000, 0.75, 4))
+    ..addStats(addBash(0.35, 10000, 0.75, 4))
     ..addComponents(
     ITEM_CORROSIVE_HAMMER,
     ITEM_PLATINUM_HAMMER,
@@ -88,8 +88,8 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAdept 002.blp") 
     ..setClassification("Artifact")
     ..addStats(addDamage(7000))
-    ..addStats(addCrit(5, 70))
-    ..addStats(addArmorPen(10))
+    ..addStats(addCrit(0.80, 5))
+    ..addStats(addArmorPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_GOLD_AXE,
     ITEM_RECIPE_GOLD_AXE_II,

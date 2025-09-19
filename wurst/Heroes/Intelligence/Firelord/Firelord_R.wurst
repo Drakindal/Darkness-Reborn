@@ -7,7 +7,7 @@ import Global_Variables
 import DummyCaster
 import MyAbilityIds
 import OrderIds
-import codeDamageTypings
+import DamageTarget
 import BouncingProjectiles
 import Firelord_Blaze
 
@@ -31,4 +31,4 @@ public function fireballCast()
             ..origin(sfx.getPos())
             ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, target)
             flashEffect(Abilities.fireLordDeathExplode, target.getPos())
-            caster.damageTargetCode(damage, target, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.MAGICAL)
+            caster.damageTargetCode(damage, target, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.Magical)

@@ -4,7 +4,7 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import Jacksmith_Q
-import codeDamageTypings
+import DamageTarget
 import StatsType
 
 init
@@ -98,8 +98,8 @@ init
     ..addStats(addDamage(155))
     ..addStats(addAllStats(20))
     ..addStats(addAttackSpeed(0.45))
-    ..addStats(addCrit(2.5, 15))
-    ..addStats(addArmorPen(2))
+    ..addStats(addCrit(0.15, 2.5))
+    ..addStats(addArmorPen(penType.Physical, 0.02))
     ..addComponents(
     ITEM_KAIN_SWORD_L4,
     ITEM_MAUL_OF_STRENGTH)
@@ -112,8 +112,8 @@ init
     ..addStats(addDamage(255))
     ..addStats(addAllStats(40))
     ..addStats(addAttackSpeed(0.75))
-    ..addStats(addCrit(4.5, 15))
-    ..addStats(addArmorPen(4))
+    ..addStats(addCrit(0.15, 4.5))
+    ..addStats(addArmorPen(penType.Physical, 0.04))
     ..addComponents(
     ITEM_SLASH_SWORD_L1,
     ITEM_FIRE_SWORD)
@@ -126,8 +126,8 @@ init
     ..addStats(addDamage(455))
     ..addStats(addAllStats(60))
     ..addStats(addAttackSpeed(0.85))
-    ..addStats(addCrit(7.5, 15))
-    ..addStats(addArmorPen(6))
+    ..addStats(addCrit(0.15, 7.5))
+    ..addStats(addArmorPen(penType.Physical, 0.06))
     ..addComponents(
     ITEM_SLASH_SWORD_L2,
     ITEM_SHAMANIC_TOTEM)
@@ -140,8 +140,8 @@ init
     ..addStats(addDamage(555))
     ..addStats(addAllStats(80))
     ..addStats(addAttackSpeed(0.95))
-    ..addStats(addCrit(9.5, 15))
-    ..addStats(addArmorPen(8))
+    ..addStats(addCrit(0.15, 9.5))
+    ..addStats(addArmorPen(penType.Physical, 0.08))
     ..addComponents(
     ITEM_SLASH_SWORD_L3,
     ITEM_FORGE_SWORD_L3,
@@ -155,8 +155,8 @@ init
     ..addStats(addDamage(755))
     ..addStats(addAllStats(100))
     ..addStats(addAttackSpeed(1.15))
-    ..addStats(addCrit(12.5, 15))
-    ..addStats(addArmorPen(10))
+    ..addStats(addCrit(0.15, 12.5))
+    ..addStats(addArmorPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_SLASH_SWORD_L4,
     ITEM_BLADE_OF_HELL)
@@ -169,7 +169,7 @@ init
     ..addStats(addDamage(180))
     ..addStats(addAgi(30))
     ..addStats(addAttackSpeed(0.45))
-    ..addStats(addAbilityDealDamageStats(1, 0.07, statsType.Agi, damageType.PHYSICALMELEE))
+    ..addStats(addAbilityDealDamageStats(1, 0.07, statsType.Agi, damageType.PhysicalMelee))
     ..addComponents(
     ITEM_KAIN_SWORD_L4,
     ITEM_KILLMAIM)
@@ -182,7 +182,7 @@ init
     ..addStats(addDamage(260))
     ..addStats(addAgi(70))
     ..addStats(addAttackSpeed(1))
-    ..addStats(addAbilityDealDamageStats(2, 0.09, statsType.Agi, damageType.PHYSICALMELEE))
+    ..addStats(addAbilityDealDamageStats(2, 0.09, statsType.Agi, damageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L1,
     ITEM_LIONS_RING)
@@ -195,7 +195,7 @@ init
     ..addStats(addDamage(280))
     ..addStats(addAgi(110))
     ..addStats(addAttackSpeed(1.2))
-    ..addStats(addAbilityDealDamageStats(3, 0.11, statsType.Agi, damageType.PHYSICALMELEE))
+    ..addStats(addAbilityDealDamageStats(3, 0.11, statsType.Agi, damageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L2,
     ITEM_AMULET_OF_THE_WILD)
@@ -208,7 +208,7 @@ init
     ..addStats(addDamage(300))
     ..addStats(addAgi(200))
     ..addStats(addAttackSpeed(1.4))
-    ..addStats(addAbilityDealDamageStats(4, 0.13, statsType.Agi, damageType.PHYSICALMELEE))
+    ..addStats(addAbilityDealDamageStats(4, 0.13, statsType.Agi, damageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L3,
     ITEM_AINZ_SWORD,
@@ -222,7 +222,7 @@ init
     ..addStats(addDamage(400))
     ..addStats(addAgi(350))
     ..addStats(addAttackSpeed(1.8))
-    ..addStats(addAbilityDealDamageStats(5, 0.15, statsType.Agi, damageType.PHYSICALMELEE))
+    ..addStats(addAbilityDealDamageStats(5, 0.15, statsType.Agi, damageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L4,
     ITEM_FORGE_SWORD_L4,

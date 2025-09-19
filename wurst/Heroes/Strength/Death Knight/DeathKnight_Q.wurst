@@ -4,7 +4,7 @@ import MyUnitIds
 import ClosureEvents
 import StandardTextTags
 import ClosureTimers
-import codeDamageTypings
+import DamageTarget
 public int souls = 0
 texttag soulsText
 
@@ -23,7 +23,7 @@ public function unit.soulCollector()
         let lvl = GetUnitAbilityLevel(caster, 'A00L')
         let dmg = ((caster.getStr(true) * 2.) + souls) * lvl
         doAfter(0.2) -> 
-            caster.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALRANGED)
+            caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalRanged)
             caster.addHP(dmg)
             doAfter(0.2) -> 
                 caster.issueImmediateOrder("stop")

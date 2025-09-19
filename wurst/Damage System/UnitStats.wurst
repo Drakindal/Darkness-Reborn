@@ -1,0 +1,128 @@
+package UnitStats
+
+import HashMap
+import Global_Variables
+import ClosureEvents
+import LinkedList
+import EntityStats
+import public DamageTypes
+import UnitInventory
+import DS_DataRunTime
+
+// ----------------------------------------------------------------------------
+
+let unitStatsMap = new HashMap<unit, UnitStats>
+
+// Stats due to unit type and its items
+public class UnitStats
+    constant unit u
+    EntityStats clippedValues
+    
+    ondestroy
+        destroy clippedValues
+
+    construct(unit u)
+        this.u = u
+        this.clippedValues = new EntityStats()
+
+        updateStats()
+
+// ----------------------------------------------------------------------------
+
+    function getPen(penType penType) returns real
+        return clippedValues.getPen(penType)
+
+    function getRes(resType resType) returns real
+        return clippedValues.getRes(resType)
+
+    function setBasePen(penType penType, real value)
+        u.getTypeId().private_unitSetBasePen(penType, value)
+        updateStats()
+
+    function setBaseRes(resType resType, real value)
+        u.getTypeId().private_unitSetBaseRes(resType, value)
+        updateStats()
+
+    function addBasePen(penType penType, real value)
+        u.getTypeId().private_unitAddBasePen(penType, value)
+        updateStats()
+
+    function addBaseRes(resType resType, real value)
+        u.getTypeId().private_unitAddBaseRes(resType, value)
+        updateStats()
+    
+// ----------------------------------------------------------------------------
+
+    private function setBaseStats()
+        println("CurrPen = {0}, CurrRes = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
+
+        clippedValues.copyFrom(u.getTypeId().private_getUnitBaseStats())
+
+        println("BasePen = {0}, BaseRes = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
+
+    private function calcItemStats(unit u)
+        let inv = getUnitInventory(u)
+        for uItem in inv
+
+            println("item = {0}, Pen = {1}, Res = {2}".format(uItem.getName(), uItem.getTypeId().getItemBasePen(penType.Physical).toString(2), uItem.getTypeId().getItemBaseRes(resType.Magical).toString(2)))
+
+            clippedValues.addStats(uItem.getTypeId().private_getItemBaseStats())
+
+            println("AddedTotalPen = {0}, AddedTotalRes = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
+        destroy inv
+
+    function updateStats()
+        setBaseStats()
+        calcItemStats(u)
+        clippedValues.clip()
+
+// ----------------------------------------------------------------------------
+
+    function calcDamage(damageType damageType, real damage, real unreducedDamage) returns real
+        return clippedValues.calcDamage(damageType, damage, unreducedDamage)
+        
+// ----------------------------------------------------------------------------
+
+public function unit.getStats() returns UnitStats
+    if unitStatsMap.has(this)
+        return unitStatsMap.get(this)
+    else
+        println("Unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}".format(this.getName(), this.getTypeId().toString()))
+        let us = new UnitStats(this)
+        unitStatsMap.put(this, us)
+        return us
+
+public function unit.registerStats()
+    // If there are 2 EventListeners their call order is undefined.
+    // If another listener uses unitStats it should add unit to map manually.
+    if not unitStatsMap.has(this)
+        unitStatsMap.put(this, new UnitStats(this))
+
+// ----------------------------------------------------------------------------
+
+init
+    EventListener.add(EVENT_PLAYER_UNIT_DEATH) ->
+        let u = GetDyingUnit()
+        if unitStatsMap.has(u)
+            let us = unitStatsMap.getAndRemove(u)
+            destroy us
+        else
+            println("Dying unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}".format(u.getName(), u.getTypeId().toString()))
+
+    EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
+        GetSummonedUnit().registerStats()
+    
+    EventListener.add(EVENT_PLAYER_UNIT_TRAIN_FINISH) ->
+        GetTrainedUnit().registerStats()
+    
+    EventListener.add(EVENT_PLAYER_UNIT_SELL) ->
+        GetSoldUnit().registerStats()
+    
+    EventListener.add(EVENT_PLAYER_CHAT_FILTER) ->
+        if EventData.getChatMessage().substring(0, 6).toLowerCase() == "-stats"
+            let p = GetTriggerPlayer()
+            let u = playerHero.get(p)
+            printTimedToPlayer("Physical Penetration: "+ (unitStatsMap.get(u).getPen(penType.Physical) * 100).toString() + "%" +
+            "\nMagic Resistance: "+ (unitStatsMap.get(u).getRes(resType.Magical) * 100).toString() +"%", 10, p)
+            
+// ----------------------------------------------------------------------------

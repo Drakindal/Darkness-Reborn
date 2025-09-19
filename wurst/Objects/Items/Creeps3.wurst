@@ -40,7 +40,7 @@ init
     ..addStats(addDamage(220))
     ..addStats(addAttackSpeed(1.2))
     ..addStats(addAllStats(12))
-    ..addStats(addCrit(4, 12))
+    ..addStats(addCrit(0.12, 4))
     ..setStockMaximum(99)
     ..register()
 
@@ -71,7 +71,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addRevive(10, 60))
     ..addStats(addArmor(100))
-    ..addStats(addMagicResist(30))
+    ..addStats(addResist(resType.Magical, 0.30))
     ..setStockMaximum(99)
     ..register()
 
@@ -96,7 +96,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWeaver 03.blp")
     ..setClassification("Artifact")
     ..addStats(addStr(350))
-    ..addStats(addArmorPen(1))
+    ..addStats(addArmorPen(penType.Physical, 0.01))
     ..setStockMaximum(99)
     ..register()
 
@@ -117,7 +117,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInjusticePlate.blp")
     ..setClassification("Artifact")
     ..addStats(addArmor(240))
-    ..addStats(addMagicResist(70))
+    ..addStats(addResist(resType.Magical, 0.70))
     ..addStats(addHp(2500))
     ..addStats(addMovementSpeed(200))
     ..setStockMaximum(99)

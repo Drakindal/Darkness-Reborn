@@ -1,6 +1,6 @@
 package ShadowOfVengeance_R
 
-import codeDamageTypings
+import DamageTarget
 import DamageEvent
 
 public function gravitone()
@@ -14,4 +14,4 @@ public function gravitone()
                 if GetRandomInt(1, 100) < lvl*2
                     let targ = DamageEvent.getTarget()
                     let missingHp = src.getMissingHP()
-                    src.damageTargetCode(missingHp + 175 * lvl, targ, null, -1, damageType.MAGICAL)
+                    src.damageTargetCode(missingHp + 175 * lvl, targ, null, -1, damageType.Magical)

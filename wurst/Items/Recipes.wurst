@@ -2,6 +2,7 @@ package Recipes
 
 import LinkedList
 import MyItemIds
+import UnitInventory
 
 // ----------------------------------------------------------------------------
 
@@ -54,13 +55,6 @@ public class Recipe
         this.completedItem = completedItem
 
 // ----------------------------------------------------------------------------
-
-public function getUnitInventory(unit u) returns LinkedList<item>
-    let unitInventory = new LinkedList<item>
-    for int i = 0 to 5
-        if(u.itemInSlot(i) != null)
-            unitInventory.add(u.itemInSlot(i))
-    return unitInventory
 
 function removeRecipeComponents(LinkedList<item> unitInventory, Recipe recipe)
     for int i = 0 to recipe.items.size() - 1 // All the items in the recipe loop through

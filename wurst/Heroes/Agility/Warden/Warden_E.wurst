@@ -3,7 +3,7 @@ package Warden_E
 import ClosureTimers
 import ClosureForGroups
 import ClosureEvents
-import codeDamageTypings
+import DamageTarget
 import PauseAllocation
 
 function shadowRazeEnd(unit u)
@@ -28,6 +28,6 @@ public function shadowRaze()
                 caster.setPos(caster.getPos().polarOffset(angle,100))
                 forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
                     if caster.isEnemyOf(u)
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.PHYSICALMELEE)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.PhysicalMelee)
                 if cb.isLast()
                     shadowRazeEnd(caster)

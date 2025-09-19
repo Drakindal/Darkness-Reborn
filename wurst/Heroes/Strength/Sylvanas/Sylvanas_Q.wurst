@@ -4,7 +4,7 @@ import MyAbilityIds
 import ClosureTimers
 import Abilities
 import ClosureEvents
-import codeDamageTypings
+import DamageTarget
 import ClosureForGroups
 import TerrainUtils
 
@@ -34,7 +34,7 @@ function goldenArrowShoot(unit caster, vec2 target)
 
             forUnitsInRange(pos, 300, true) (unit u) ->
                 if u.isEnemyOf(caster)
-                    caster.damageTargetCode(amount, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(amount, u, null, -1, damageType.Magical)
                     if sfx.getPos().isTerrainWalkable()
                         u.setPos(sfx.getPos())
 

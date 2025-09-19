@@ -3,7 +3,7 @@ package NagaSeaWitch_T
 import ClosureEvents
 import Abilities
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 import PointTransitProjectile
 import TerrainUtils
 import MyAbilityIds
@@ -21,7 +21,7 @@ public function tornado()
             if inTransit
                 forUnitsInRange(target, 300, true) (unit u) ->
                     if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                         if sfx.getPos().isTerrainWalkable()
                             u.setPos(sfx.getPos())
             else
@@ -29,6 +29,6 @@ public function tornado()
                 flashEffect("Effects\\Vashj\\WaterBlast.mdl", sfx.getPos(), 8)
                 forUnitsInRange(sfx.getPos(), 300, true) (unit u) ->
                     if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                        caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                         if sfx.getPos().isTerrainWalkable()
                             u.setPos(sfx.getPos())

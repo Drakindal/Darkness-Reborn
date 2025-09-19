@@ -8,7 +8,7 @@ import DummyCaster
 import OrderIds
 import ClosureEvents
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 
 constant real array POISON_SPIT_AOE = [350, 350, 350, 350, 350, 350, 350, 350, 350]
 real array POISON_SPIT_DURATION = [5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -29,7 +29,7 @@ public function loasQact()
                     ..origin(vec2(caster.getX(), caster.getY()))
                     ..delay(1)
                     ..castTarget(ABILITY_36, 1, OrderIds.slow, u)
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                     doPeriodicallyCounted(1, 4) (CallbackCounted cb) ->
                         if u.isAlive()
-                            caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                            caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)

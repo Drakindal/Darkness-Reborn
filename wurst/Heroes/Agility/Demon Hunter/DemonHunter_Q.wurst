@@ -3,7 +3,7 @@ package DemonHunter_Q
 import ClosureForGroups
 import Abilities
 import ClosureTimers
-import codeDamageTypings
+import DamageTarget
 import ClosureEvents
 
 public function chainFlash()
@@ -16,4 +16,4 @@ public function chainFlash()
                 if caster.isEnemyOf(u)
                     u.setPos(targetPos)
                     flashEffect(Abilities.warStompCaster, targetPos)
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)

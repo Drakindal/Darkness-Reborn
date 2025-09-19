@@ -16,7 +16,7 @@ import ClosureEvents
 import Object_Units
 import LinkedList
 import FountainQuest
-import codeDamageTypings
+import DamageTarget
 import Debug
 import Quest
 import Icons
@@ -109,14 +109,12 @@ function onBuyHero(unit u)
             soldUnit.setPos(gg_rct_Base.getCenter())
             p.setState(PLAYER_STATE_RESOURCE_FOOD_CAP, 0)
             GetBuyingUnit().remove()
-            unitStatMap.put(soldUnit.getTypeId(), new UnitStats())
         else
             soldUnit.remove()
             printTimedToPlayer("Your hero was killed by the newly recruited one as it left.", 10, p)
             playHero.kill()
 
 function createSetup()
-    let p = players[10]
     createMulti()
 
     SetPlayerState(players[11], PLAYER_STATE_GIVES_BOUNTY, 1)
@@ -132,38 +130,38 @@ function createSetup()
     var posX = GetRectCenterX(gg_rct_HeroPicker) - 384.
     var posY = GetRectCenterY(gg_rct_HeroPicker) - 128
 
-    let defenderTavern = CreateUnit(p, BUILDING_TAVERN_DEFENDER, posX, posY, bj_UNIT_FACING)
+    let defenderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_DEFENDER, posX, posY, bj_UNIT_FACING)
     taverns.add(defenderTavern)
     onBuyHero(defenderTavern)
 
-    let supportTavern = CreateUnit(p, BUILDING_TAVERN_SUPPORT, posX, posY + 164, bj_UNIT_FACING)
+    let supportTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_SUPPORT, posX, posY + 164, bj_UNIT_FACING)
     taverns.add(supportTavern)
     onBuyHero(supportTavern)
 
-    let ascensionTavern = CreateUnit(p, BUILDING_TAVERN_ASCENSION, posX, posY + 328, bj_UNIT_FACING)
+    let ascensionTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_ASCENSION, posX, posY + 328, bj_UNIT_FACING)
     taverns.add(ascensionTavern)
     onBuyHero(ascensionTavern)
 
     posX = GetRectCenterX(gg_rct_HeroPicker)
-    let physicalTavern = CreateUnit(p, BUILDING_TAVERN_PHYSICAL_DPS, posX, posY, bj_UNIT_FACING)
+    let physicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_PHYSICAL_DPS, posX, posY, bj_UNIT_FACING)
     taverns.add(physicalTavern)
     onBuyHero(physicalTavern)
 
-    let magicalTavern = CreateUnit(p, BUILDING_TAVERN_MAGICAL_DPS, posX, posY + 328, bj_UNIT_FACING)
+    let magicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_MAGICAL_DPS, posX, posY + 328, bj_UNIT_FACING)
     taverns.add(magicalTavern)
     onBuyHero(magicalTavern)
 
     posX = GetRectCenterX(gg_rct_HeroPicker) + 384.
 
-    let builderTavern = CreateUnit(p, BUILDING_TAVERN_BUILDER, posX, posY, bj_UNIT_FACING)
+    let builderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_BUILDER, posX, posY, bj_UNIT_FACING)
     taverns.add(builderTavern)
     onBuyHero(builderTavern)
 
-    let gatherTavern = CreateUnit(p, BUILDING_TAVERN_GATHERER, posX, posY + 328, bj_UNIT_FACING)
+    let gatherTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_GATHERER, posX, posY + 328, bj_UNIT_FACING)
     taverns.add(gatherTavern)
     onBuyHero(gatherTavern)
 
-    let crafterTavern = CreateUnit(p, BUILDING_TAVERN_CRAFTER, posX, posY + 164, bj_UNIT_FACING)
+    let crafterTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_CRAFTER, posX, posY + 164, bj_UNIT_FACING)
     taverns.add(crafterTavern)
     onBuyHero(crafterTavern)
 
@@ -173,13 +171,13 @@ function createSetup()
     var dividend = (posMax - posMin) / 4
     posY = posMin + 100
 
-    CreateUnit(p, BUILDING_SHOP_BASIC_ITEMS4, posX, posY, 270.000) // Basic Items 4
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS4, posX, posY, 270.000) // Basic Items 4
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_BASIC_ITEMS3, posX, posY, 270.000) // Basic Items 3
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS3, posX, posY, 270.000) // Basic Items 3
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_BASIC_ITEMS2, posX, posY, 270.000) // Basic Items 2
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS2, posX, posY, 270.000) // Basic Items 2
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_BASIC_ITEMS1, posX, posY, 270.000) // Basic Items 1
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS1, posX, posY, 270.000) // Basic Items 1
 
     posX = GetRectCenterX(gg_rct_ShopRight) - 150
     posMax = GetRectMaxY(gg_rct_ShopRight)
@@ -187,13 +185,13 @@ function createSetup()
     dividend = (posMax - posMin) / 4
     posY = posMin + 100
 
-    let endGamebosses = CreateUnit(p, BUILDING_CREEPS_TP4, posX, posY, 270.000) // End-game bosses
+    let endGamebosses = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP4, posX, posY, 270.000) // End-game bosses
     posY = posY + dividend
-    let eliteGrounds = CreateUnit(p, BUILDING_CREEPS_TP3, posX, posY, 270.000) // Elite hunting grounds
+    let eliteGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP3, posX, posY, 270.000) // Elite hunting grounds
     posY = posY + dividend
-    let intermediateGrounds = CreateUnit(p, BUILDING_CREEPS_TP2, posX, posY, 270.000) // Intermediate hunting grounds
+    let intermediateGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP2, posX, posY, 270.000) // Intermediate hunting grounds
     posY = posY + dividend
-    let easyGrounds = CreateUnit(p, BUILDING_CREEPS_TP1, posX, posY, 270.000) // Easy hunting grounds
+    let easyGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP1, posX, posY, 270.000) // Easy hunting grounds
 
     posX = GetRectCenterX(gg_rct_ShopLeft) - 150
     posMax = GetRectMaxY(gg_rct_ShopLeft)
@@ -201,13 +199,13 @@ function createSetup()
     dividend = (posMax - posMin) / 4
     posY = posMin + 100
 
-    CreateUnit(p, BUILDING_SHOP_RECIPES4, posX, posY, 270.000) // Recipe shop 4
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES4, posX, posY, 270.000) // Recipe shop 4
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_RECIPES3, posX, posY, 270.000) // Recipe Shop 3
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES3, posX, posY, 270.000) // Recipe Shop 3
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_RECIPES2, posX, posY, 270.000) // Recipe Shop 2
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES2, posX, posY, 270.000) // Recipe Shop 2
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_RECIPES1, posX, posY, 270.000) // Recipe Shop 1
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES1, posX, posY, 270.000) // Recipe Shop 1
 
     posX = GetRectCenterX(gg_rct_ShopRight) + 150
     posMax = GetRectMaxY(gg_rct_ShopRight)
@@ -215,22 +213,22 @@ function createSetup()
     dividend = (posMax - posMin) / 4
     posY = posMin + 100
 
-    CreateUnit(p, BUILDING_SHOP_LATE_GAME_ITEMS4, posX, posY, 270.000) // End Game Items
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS4, posX, posY, 270.000) // End Game Items
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_GEMS, posX, posY, 270.000) // Decent Items
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_GEMS, posX, posY, 270.000) // Decent Items
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_LATE_GAME_ITEMS2, posX, posY, 270.000) // Late Game Items
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS2, posX, posY, 270.000) // Late Game Items
     posY = posY + dividend
-    CreateUnit(p, BUILDING_SHOP_LATE_GAME_ITEMS1, posX, posY, 270.000) // Late Game Items
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS1, posX, posY, 270.000) // Late Game Items
  
     posX = GetRectCenterX(gg_rct_Base)
     posY = GetRectCenterY(gg_rct_Base) + 200
 
-    CreateUnit(players[10], BUILDING_FOUNTAIN, posX, posY, 270.000).questItemPickup() // Fountain of Healing (at base)
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_FOUNTAIN, posX, posY, 270.000).questItemPickup() // Fountain of Healing (at base)
 
-    dropSite = CreateUnit(players[10], DROPSITE, posX, posY - 800, 270.)//Dropsite
+    dropSite = CreateUnit(PLAYER_ALLY_BASE, DROPSITE, posX, posY - 800, 270.)//Dropsite
     updateDropSite() 
-    elementalSoul = createUnit(players[10], ELEMENTAL_SOUL, gg_rct_AllSpawnMove2.getCenter(), facing.asAngleDegrees()) // Elemental Soul    
+    elementalSoul = createUnit(PLAYER_ALLY_BASE, ELEMENTAL_SOUL, gg_rct_AllSpawnMove2.getCenter(), facing.asAngleDegrees()) // Elemental Soul    
         
     elementalSoul.onDefeat()
 

@@ -3,7 +3,7 @@ package DamageAbilities
 import AbilityObjEditing
 import ItemStatsDef
 import CommonDescriptions
-import codeDamageTypings
+import DamageTarget
 import Abilities
 import ClosureForGroups
 import ActiveAbilityDef
@@ -21,7 +21,7 @@ public function addAbilityDealMagicDamage(real damage, int manaCost, real cd) re
     let effects = wordAbilityMagicDamage.format(damage.toString(), cd.toString())
 
     return new TargetAbility(effects, manaCost, cd, (unit caster, unit target) -> begin
-        caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+        caster.damageTargetCode(damage, target, null, -1, damageType.Magical)
     end)
     .register()
     
@@ -32,7 +32,7 @@ public function addAbilityDealMagicDamageInt(real intFactor, int manaCost, real 
 
     return new TargetAbility(effects, manaCost, cd, (unit caster, unit target) -> begin
         let damage = caster.getInt(true) * intFactor
-        caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+        caster.damageTargetCode(damage, target, null, -1, damageType.Magical)
     end)
     .register()
 
@@ -43,7 +43,7 @@ public function addAbilityDealMagicDamageInt2(real damage, real intFactor, int m
 
     return new TargetAbility(effects, manaCost, cd, (unit caster, unit target) -> begin
         let damageSum = damage + caster.getInt(true) * intFactor
-        caster.damageTargetCode(damageSum, target, null, -1, damageType.MAGICAL)
+        caster.damageTargetCode(damageSum, target, null, -1, damageType.Magical)
     end)
     .register()
 
@@ -85,7 +85,7 @@ public function addAbilityHolyLight(real healIntFactor, real healAmount, real da
 
         if (target.isEnemyOf(caster))
             let damage = heal * damageFactor
-            caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+            caster.damageTargetCode(damage, target, null, -1, damageType.Magical)
             
             flashEffect(Abilities.holyBoltSpecialArt, target.getPos())
         else
@@ -102,7 +102,7 @@ public function addAbilityDamageStunActive(real damage, real intFactor, real stu
 
     return new StunAbility(effects, manaCost, cd, stunDuration, (unit caster, unit target) -> begin
         let damageSum = caster.getInt(true) * intFactor + damage
-        caster.damageTargetCode(damageSum, target, null, -1, damageType.MAGICAL)
+        caster.damageTargetCode(damageSum, target, null, -1, damageType.Magical)
     end)
     .register()
 
@@ -113,7 +113,7 @@ public function addSpikes(real factor) returns ItemStats
 
     return new ItemStatsCustomFunc(-1, wordPassive + effects, (int itemId, ItemDefinition itemDef) -> begin
         abilitiesListReflections.add(new ItemWurstAbility(itemId, (unit src, unit target) -> begin
-            target.damageTargetCode(DamageEvent.getAmount() * factor, src, null, -1, damageType.PHYSICALRANGED)
+            target.damageTargetCode(DamageEvent.getAmount() * factor, src, null, -1, damageType.PhysicalRanged)
         end))
     end)
 
@@ -193,7 +193,7 @@ public function addAbilityChainLighting(real chance, real damage, real damageRed
                         damageDealt *= (1 - damageReductionPerTarget)
                         i++
                     
-                    src.damageTargetCode(damageDealt, u, null, -1, damageType.MAGICAL)
+                    src.damageTargetCode(damageDealt, u, null, -1, damageType.Magical)
                     flashEffect(Abilities.forkedLightningTarget, u.getPos())
                 end)
         end))

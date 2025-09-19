@@ -2,8 +2,9 @@ package Assassin_T_PASSIVE
 
 import MyAbilityIds
 import ClosureEvents
-import codeDamageTypings
+import DamageTarget
 import QuestList
+import UnitStats
 
 bool quest1 = true
 bool quest2 = true
@@ -52,7 +53,7 @@ function unit.assa_quest()
             quest2 = false
             startExclusiveKillingLowestLevelQuest(100, this.getOwner(), 21, "Assassin Test") (player questOwner) ->
                 this.setName("Assassin")
-                unitStatMap.get(this.getTypeId()).addBasePen(penetrationType.PHYSICAL, 0.05)
+                this.getStats().addBasePen(penType.Physical, 0.05)
                 printTimedToPlayer("Second quest complete! You gain 5% armor penetration", 10, this.getOwner())
 
     if GetUnitAbilityLevel(this, ASSASSIN_ABILITY_5) == 3
@@ -76,5 +77,5 @@ function unit.assa_quest()
             quest4 = false
             startExclusiveKillingLowestLevelQuest(1, this.getOwner(), 90, "Master Assassin Qualification Test") (player questOwner) ->
                 this.setName("Master Assassin")
-                unitStatMap.get(this.getTypeId()).addBasePen(penetrationType.PHYSICAL, 0.1)
+                this.getStats().addBasePen(penType.Physical, 0.10)
                 printTimedToPlayer("Fourth quest complete! You gain 10% armor penetration", 10, this.getOwner())

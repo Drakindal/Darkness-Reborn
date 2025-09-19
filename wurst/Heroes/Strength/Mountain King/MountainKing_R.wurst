@@ -1,7 +1,7 @@
 package MountainKing_R
 
 import MyBuffIds
-import codeDamageTypings
+import DamageTarget
 import DamageEvent
 
 public function overPower()
@@ -20,4 +20,4 @@ public function overPower()
                         targ.removeAbility(BUFF_5)
                     else if targ.hasAbility('BPSE')
                         targ.removeAbility('BPSE')
-                    src.damageTargetCode(dmg, targ, null, -1, damageType.PHYSICALMELEE)
+                    src.damageTargetCode(dmg, targ, null, -1, damageType.PhysicalMelee)

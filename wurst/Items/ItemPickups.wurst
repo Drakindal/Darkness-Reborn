@@ -1,9 +1,9 @@
 package ItemPickups
 import ClosureEvents
 import MyItemIds
-import codeDamageTypings
 import HashSet
 import ArmorWeaponTypes
+import UnitStats
 
 public let itemPickedup = new HashSet<item>
 
@@ -21,10 +21,13 @@ init
         else if u.hasItemById(ITEM_CHAOS) and defenseType == ARMOR_TYPE_HERO and defenseType != ARMOR_TYPE_HOLY
             u.setField(UNIT_IF_DEFENSE_TYPE, ARMOR_TYPE_HOLY)
 
-        UnitStats.enumerateAllResistances(u)
-        UnitStats.enumerateAllPens(u)
+        println("Picked up item = {0}".format(EventData.getManipulatedItem().getName()))
+        println("Pen = {0}, Res = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
+        u.getStats().updateStats()
+        println("NPen = {0}, NRes = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
         
     EventListener.add(EVENT_PLAYER_UNIT_DROP_ITEM) -> 
         let u = EventData.getTriggerUnit()
-        UnitStats.enumerateAllResistances(u)
-        UnitStats.enumerateAllPens(u)
+
+        println("Dropped item = {0}".format(EventData.getManipulatedItem().getName()))
+        u.getStats().updateStats()

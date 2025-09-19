@@ -38,7 +38,7 @@ init
     new MyItemWithCraftInfoDefinition(ITEM_GOD_SWORD, blacksmithJackedList, -1)    
     ..setClassification("Artifact")
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif17.blp")
-    ..addStats(addCrit(12, 20))
+    ..addStats(addCrit(0.20, 12))
     ..addComponents(
     ITEM_KNIFE_OF_HUNTER,
     ITEM_STEEL_SWORD,
@@ -74,7 +74,7 @@ init
     ..setClassification("Artifact")
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif00x.blp")
     ..addStats(addEvasion(0.5))
-    ..addStats(addCrit(10, 50))
+    ..addStats(addCrit(0.50, 10))
     ..addComponents(
     ITEM_CAPE_OF_CURSED,
     ITEM_FUSION_HIDE_DRAPE,
@@ -232,8 +232,8 @@ init
     ..addStats(addDamage(2500))
     ..addStats(addAllStats(333))
     ..addStats(addAttackSpeed(2.2))
-    ..addStats(addArmorPen(15))
-    ..addStats(addCrit(20, 20))
+    ..addStats(addArmorPen(penType.Physical, 0.15))
+    ..addStats(addCrit(0.20, 20))
     ..addComponents(
     ITEM_SLASH_SWORD_L5,
     ITEM_GOD_SWORD,
@@ -249,7 +249,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..addStats(addAllStats(1000))
     ..addStats(addDamage(10000))
-    ..addStats(addArmorPen(5))
+    ..addStats(addArmorPen(penType.Physical, 0.05))
     ..addComponents(
     ITEM_MERCY,
     ITEM_GOLDEN_HAMMER,

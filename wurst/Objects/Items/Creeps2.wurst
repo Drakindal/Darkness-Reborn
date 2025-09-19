@@ -3,7 +3,7 @@ package Creeps2
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
-import codeDamageTypings
+import DamageTarget
 
 init
 
@@ -142,7 +142,7 @@ init
     new MyItemDefinition(ITEM_SCEPTER_OF_MASTERY)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNScepterOfMastery.blp")
     ..setActivelyUsed(true)
-    ..addStats(addAbilityDealAoeDamage(2000, 500, damageType.MAGICAL, 800, 20))
+    ..addStats(addAbilityDealAoeDamage(2000, 500, damageType.Magical, 800, 20))
     ..addStats(addInt(80))
     ..addStats(addMpReg(2))
     ..setStockMaximum(99)
@@ -159,7 +159,7 @@ init
     new MyItemDefinition(ITEM_SHAMANIC_TOTEM)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp")
     ..addStats(addDamage(240))
-    ..addStats(addArmorPen(1))
+    ..addStats(addArmorPen(penType.Physical, 0.01))
     ..setStockMaximum(99)
     ..register()
 
@@ -199,7 +199,7 @@ init
     new MyItemDefinition(ITEM_DRUID_OF_CLAW_MASTER)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNDOCMasterTraining.blp")
     ..addStats(addDamage(355))
-    ..addStats(addArmorPen(2))
+    ..addStats(addArmorPen(penType.Physical, 0.02))
     ..setStockMaximum(99)
     ..register()
 

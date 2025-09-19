@@ -6,7 +6,7 @@ import DummyCaster
 import OrderIds
 import ClosureEvents
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 
 // Aura of Bwonsamdi
 public function kingOfloasTinit()
@@ -25,4 +25,4 @@ public function kingOfloasTinit()
                         ..castTarget(ABILITY_43, lvl, OrderIds.slow, u)
                         ..delay(1)
                         if u.isAlive()
-                            caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                            caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)

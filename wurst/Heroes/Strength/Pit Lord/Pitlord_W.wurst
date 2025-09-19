@@ -6,7 +6,7 @@ import DummyCaster
 import Abilities
 import MyAbilityIds
 import OrderIds
-import codeDamageTypings
+import DamageTarget
 
 public function strikeSlam()
     EventListener.onTargetCast('A0RS') (unit caster, unit target) ->
@@ -15,7 +15,7 @@ public function strikeSlam()
         caster.setAnimation("slam")
         doAfter(0.3) -> 
             flashEffect(Abilities.warStompCaster, target.getPos(), 0.8)
-            caster.damageTargetCode(dmg, target, null, -1, damageType.PHYSICALMELEE)
+            caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
             new DummyCaster()
             ..owner(GetOwningPlayer(caster))
             ..origin(caster.getPos())

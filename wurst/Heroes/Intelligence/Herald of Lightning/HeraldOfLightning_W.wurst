@@ -3,7 +3,7 @@ package HeraldOfLightning_W
 import ClosureEvents
 import ClosureTimers
 import ClosureForGroups
-import codeDamageTypings
+import DamageTarget
 import MyAbilityIds
 import LinkedList
 
@@ -16,7 +16,7 @@ public function lightningNova()
             let pos = caster.getPos()
             forUnitsInRange(pos, 600 - (100.* cb.getCount()), true) (unit u) ->
                 if (caster.isEnemyOf(u) and temp.has(u) == false)
-                    caster.damageTargetCode(dmg, u, null, 'HEAB', damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, null, 'HEAB', damageType.Magical)
                     temp.add(u)
             if cb.isLast()
                 temp.clear()

@@ -4,7 +4,7 @@ import ClosureTimers
 import ClosureEvents
 import ClosureForGroups
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import DummyCaster
 import OrderIds
 import Uther_R_Redemption
@@ -21,7 +21,7 @@ public function judgement()
                 amount = amount * 2
             forUnitsInRange(target, 400) (unit u) ->
                 if u.isEnemyOf(caster)
-                    caster.damageTargetCode(amount.toReal(), u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(amount.toReal(), u, null, -1, damageType.Magical)
                     new DummyCaster()
                     ..origin(target)
                     ..owner(caster.getOwner())

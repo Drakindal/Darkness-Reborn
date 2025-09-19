@@ -4,7 +4,7 @@ import ClosureEvents
 import MyUnitIds
 import OrderIds
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import LinkedList
 import DamageEvent
 let arrowToggle = new LinkedList<unit>
@@ -38,4 +38,4 @@ public function frostArrowToggle() //For some reason orderID is not getting upda
                         let dmg = src.getMaxMana()*(0.04*lvl)
                         if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(NAGAWITCH_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
                             src.issueImmediateOrderById(OrderIds.coldarrows + 1)
-                        src.damageTargetCode(dmg, targ, null, -1, damageType.MAGICAL)
+                        src.damageTargetCode(dmg, targ, null, -1, damageType.Magical)

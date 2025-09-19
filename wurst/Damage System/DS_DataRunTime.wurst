@@ -1,0 +1,89 @@
+package DS_DataRunTime
+
+import EntityStats
+import HashMap
+import DamageTypes
+
+// ----------------------------------------------------------------------------
+
+// Used in run-time
+let unitTypeMap = new HashMap<int, EntityStats>
+let itemTypeMap = new HashMap<int, EntityStats>
+
+// ----------------------------------------------------------------------------
+
+// Do not use these functions to directly modify map data
+
+public function private_getUnitBaseStatsMap() returns HashMap<int, EntityStats>
+    return unitTypeMap
+
+public function private_getItemBaseStatsMap() returns HashMap<int, EntityStats>
+    return unitTypeMap
+
+// ----------------------------------------------------------------------------
+// Get run-time stats data
+// ----------------------------------------------------------------------------
+
+function getResInMap(HashMap<int, EntityStats> map, int id, resType resType) returns real
+    if map.has(id)
+        return map.get(id).getRes(resType)
+    else
+        return 0
+
+function getPenInMap(HashMap<int, EntityStats> map, int id, penType penType) returns real
+    if map.has(id)
+        return map.get(id).getPen(penType)
+    else
+        return 0
+
+public function int.getItemBaseRes(resType resType) returns real
+    return getResInMap(itemTypeMap, this, resType)
+
+public function int.getItemBasePen(penType penType) returns real
+    return getPenInMap(itemTypeMap, this, penType)
+
+public function int.getUnitBaseRes(resType resType) returns real
+    return getResInMap(unitTypeMap, this, resType)
+
+public function int.getUnitBasePen(penType penType) returns real
+    return getPenInMap(unitTypeMap, this, penType)
+
+// ----------------------------------------------------------------------------
+// Get EntityStats in run-time
+// ----------------------------------------------------------------------------
+
+public function int.private_getUnitBaseStats() returns EntityStats
+    return unitTypeMap.get(this)
+
+public function int.private_getItemBaseStats() returns EntityStats
+    return itemTypeMap.get(this)
+
+// ----------------------------------------------------------------------------
+
+public function int.private_unitSetBasePen(penType penType, real value)
+    if (not unitTypeMap.has(this))
+        unitTypeMap.put(this, new EntityStats()..setPen(penType, value))
+    else
+        unitTypeMap.get(this).setPen(penType, value)
+
+public function int.private_unitSetBaseRes(resType resType, real value)
+    if (not unitTypeMap.has(this))
+        unitTypeMap.put(this, new EntityStats()..setRes(resType, value))
+    else
+        unitTypeMap.get(this).setRes(resType, value)
+
+// ----------------------------------------------------------------------------
+
+public function int.private_unitAddBasePen(penType penType, real value)
+    if (not unitTypeMap.has(this))
+        unitTypeMap.put(this, new EntityStats()..addPen(penType, value))
+    else
+        unitTypeMap.get(this).addPen(penType, value)
+
+public function int.private_unitAddBaseRes(resType resType, real value)
+    if (not unitTypeMap.has(this))
+        unitTypeMap.put(this, new EntityStats()..addRes(resType, value))
+    else
+        unitTypeMap.get(this).addRes(resType, value)
+
+// ----------------------------------------------------------------------------

@@ -5,7 +5,7 @@ import ClosureEvents
 import DummyCaster
 import MyAbilityIds
 import OrderIds
-import codeDamageTypings
+import DamageTarget
 import BouncingProjectiles
             
 public function chainTest()
@@ -27,4 +27,4 @@ public function chainTest()
             ..origin(detectionUnit.getPos())
             ..castTarget(ABILITY_DUMMY_4, 1, OrderIds.thunderbolt, target)
             flashEffect(Abilities.frostArmorDamage, target.getPos())
-            caster.damageTargetCode(damage, target, null, -1, damageType.MAGICAL)
+            caster.damageTargetCode(damage, target, null, -1, damageType.Magical)

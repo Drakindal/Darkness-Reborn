@@ -7,7 +7,7 @@ import Abilities
 import Artillery
 import ClosureForGroups
 import DummyCaster
-import codeDamageTypings
+import DamageTarget
 import OrderIds
 import SoundUtils
 
@@ -39,6 +39,6 @@ public function clusterRockets()
                             ..origin(vec2(caster.getX(), caster.getY()))
                             ..delay(1)
                             ..castTarget(ABILITY_DUMMY_16, 1, OrderIds.thunderbolt, u)
-                            caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                            caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
                 if(cb.isLast())
                     caster.issueImmediateOrderById(OrderIds.stop)

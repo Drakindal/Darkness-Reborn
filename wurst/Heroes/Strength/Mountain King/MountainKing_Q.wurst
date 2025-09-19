@@ -6,7 +6,7 @@ import ClosureForGroups
 import Abilities
 import OrderIds
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 import Projectile
 
 public function stormbolt()
@@ -26,5 +26,5 @@ public function stormbolt()
             flashEffect(Abilities.fireLordDeathExplode, target.getPos())
             forUnitsInRange(target.getPos(), 300) (unit u) ->
                 if u != target and u.isEnemyOf(caster) and u.isAlive()
-                    caster.damageTargetCode(semi, u, null, -1, damageType.PHYSICALRANGED)
-            caster.damageTargetCode(final, target, null, -1, damageType.PHYSICALMELEE)
+                    caster.damageTargetCode(semi, u, null, -1, damageType.PhysicalRanged)
+            caster.damageTargetCode(final, target, null, -1, damageType.PhysicalMelee)

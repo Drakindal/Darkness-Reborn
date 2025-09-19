@@ -7,7 +7,7 @@ import MyAbilityIds
 import DummyCaster
 import OrderIds
 import Global_Variables
-import codeDamageTypings
+import DamageTarget
 import Firelord_Blaze
 
 public function pillarOfFlame()
@@ -19,13 +19,13 @@ public function pillarOfFlame()
             if caster.isEnemyOf(u)
                 blaze(caster, u)
                 if u.hasAbility(BUFF_12)
-                    caster.damageTargetCode(dmg * 4, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.MAGICAL)
+                    caster.damageTargetCode(dmg * 4, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.Magical)
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())
                     ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
                 else
-                    caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', damageType.Magical)
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())

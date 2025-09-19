@@ -4,7 +4,7 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import RecipeItems
-import codeDamageTypings
+import DamageTarget
 
 init
 
@@ -18,7 +18,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAxeStrike.blp")
     ..setClassification("Artifact")
     ..addStats(addDamage(700))
-    ..addStats(addCrit(2, 70))
+    ..addStats(addCrit(0.70, 2))
     ..addComponents(
     ITEM_BLADE_OF_HELL,
     ITEM_STEEL_AXE)
@@ -85,7 +85,7 @@ init
     ..setActivelyUsed(true)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Helm.blp")
     ..setClassification("Artifact")
-    ..addStats(addAbilityDealAoeDamage(10000, 600, damageType.MAGICAL, 2500, 30))
+    ..addStats(addAbilityDealAoeDamage(10000, 600, damageType.Magical, 2500, 30))
     ..addStats(addArmor(100))
     ..addStats(addHp(5000))
     ..addStats(addHpReg(50))

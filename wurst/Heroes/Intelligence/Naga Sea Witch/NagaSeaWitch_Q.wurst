@@ -7,7 +7,7 @@ import DummyCaster
 import OrderIds
 import ClosureEvents
 import MyAbilityIds
-import codeDamageTypings
+import DamageTarget
 
 public function bubbleBomb()
     let WATER_BUBBLE_ARTILLERY = compiletime(ArtilleryDetection.createArtilleryDummy(0, 120, 160, 1, "Units\\NagaWitch\\Water_egg.mdx", 500, 0.3))
@@ -26,4 +26,4 @@ public function bubbleBomb()
                     ..origin(caster.getPos())
                     ..delay(1)
                     ..castTarget(NAGA_WITCH_ABILITY_Q_DUMMY, 1, OrderIds.firebolt, u)
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.MAGICAL)
+                    caster.damageTargetCode(dmg, u, null, -1, damageType.Magical)
