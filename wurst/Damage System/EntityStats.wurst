@@ -43,7 +43,9 @@ public class EntityStats
     private ResPenPair physDamage  = new ResPenPair()
     private ResPenPair magicDamage = new ResPenPair()
 
-    private real universalRes = 0
+    private real universalRes    = 0
+    private real preDamageBlock  = 0
+    private real postDamageBlock = 0
 
     ondestroy
         destroy physDamage
@@ -52,13 +54,17 @@ public class EntityStats
     function clear()
         physDamage.clear()
         magicDamage.clear()
-        universalRes = 0
+        universalRes    = 0
+        preDamageBlock  = 0
+        postDamageBlock = 0
 
     function copyFrom(EntityStats other)
         if (other != null)
             this.physDamage.copyFrom(other.physDamage)
             this.magicDamage.copyFrom(other.magicDamage)
-            this.universalRes = other.universalRes
+            this.universalRes    = other.universalRes
+            this.preDamageBlock  = other.preDamageBlock
+            this.postDamageBlock = other.postDamageBlock
         else
             clear()
 
@@ -66,7 +72,9 @@ public class EntityStats
         if other != null
             this.physDamage.addStats(other.physDamage)
             this.magicDamage.addStats(other.magicDamage)
-            this.universalRes += other.universalRes
+            this.universalRes    += other.universalRes
+            this.preDamageBlock  += other.preDamageBlock
+            this.postDamageBlock += other.postDamageBlock
     
     function clip()
         physDamage.clip()
@@ -91,6 +99,13 @@ public class EntityStats
             case resType.Universal
                 return universalRes
 
+    function getDamageBlock(blockType blockType) returns real
+        switch blockType
+            case blockType.PreResistances
+                return preDamageBlock
+            case blockType.PostResistances
+                return postDamageBlock
+
 // ----------------------------------------------------------------------------
 
     function setPen(penType penType, real value)
@@ -109,6 +124,13 @@ public class EntityStats
             case resType.Universal
                 universalRes = value
 
+    function setDamageBlock(blockType blockType, real value)
+        switch blockType
+            case blockType.PreResistances
+                preDamageBlock = value
+            case blockType.PostResistances
+                postDamageBlock = value
+
 // ----------------------------------------------------------------------------
 
     function addPen(penType penType, real value)
@@ -117,16 +139,29 @@ public class EntityStats
     function addRes(resType resType, real value)
         setRes(resType, value + getRes(resType))
 
+    function addDamageBlock(blockType blockType, real value)
+        setDamageBlock(blockType, value + getDamageBlock(blockType))
+    
 // ----------------------------------------------------------------------------
 
     function calcDamage(customDamageType damageType, real unreducedDamage) returns real
+        var damage = unreducedDamage - preDamageBlock
+        if (damage < 0)
+            return 0
+
         switch damageType
             case damageType.Pure
-                return unreducedDamage * (1 - universalRes)
+                damage = damage * (1 - universalRes)
             case damageType.PhysicalMelee | damageType.PhysicalRanged
-                return physDamage.calcDamage(unreducedDamage) * (1 - universalRes)
+                damage = physDamage.calcDamage(damage) * (1 - universalRes)
             case damageType.Magical
-                return magicDamage.calcDamage(unreducedDamage) * (1 - universalRes)
+                damage = magicDamage.calcDamage(damage) * (1 - universalRes)
+
+        damage -= postDamageBlock
+        if (damage < 0)
+            return 0
+
+        return damage
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

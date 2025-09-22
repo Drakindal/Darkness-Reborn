@@ -67,7 +67,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(1050)
     ..addStats(addHpReg(10))
-    ..addStats(addDamageBlock(20, 200))
+    ..addStats(addDamageBlockChance(20, 200))
     ..addHotKey()
     ..register()
 
@@ -78,7 +78,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(1600)
     ..addStats(addHpReg(15))
-    ..addStats(addDamageBlock(30, 300))
+    ..addStats(addDamageBlockChance(30, 300))
     ..addHotKey()
     ..register()
 
@@ -89,7 +89,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(2200)
     ..addStats(addHpReg(25))
-    ..addStats(addDamageBlock(40, 500))
+    ..addStats(addDamageBlockChance(40, 500))
     ..addHotKey()
     ..register()
 

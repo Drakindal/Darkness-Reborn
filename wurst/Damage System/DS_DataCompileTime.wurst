@@ -2,9 +2,9 @@ package DS_DataCompileTime
 
 import DamageTypes
 import LinkedList
-import HashMap
 import EntityStats
-import DS_DataRunTime
+import HashMap
+import initlater DS_DataPrivate
 
 // ----------------------------------------------------------------------------
 
@@ -33,11 +33,23 @@ class ResStats extends StatsBase
         super(id, isUnit, value)
         this.resType = resType
 
+class BlockStats extends StatsBase
+    blockType blockType
+    
+    construct(int id, bool isUnit, real value, blockType blockType)
+        super(id, isUnit, value)
+        this.blockType = blockType
+
 // ----------------------------------------------------------------------------
 
 // Used in compile-time
-let penList = compiletime(new LinkedList<PenStats>())
-let resList = compiletime(new LinkedList<ResStats>())
+let penList   = compiletime(new LinkedList<PenStats>())
+let resList   = compiletime(new LinkedList<ResStats>())
+let blockList = compiletime(new LinkedList<BlockStats>())
+
+// Used in run-time
+let unitTypeMap = new HashMap<int, EntityStats>
+let itemTypeMap = new HashMap<int, EntityStats>
 
 // ----------------------------------------------------------------------------
 // Set up run-time data using compile-time data
@@ -46,9 +58,9 @@ let resList = compiletime(new LinkedList<ResStats>())
 init
     for stats in penList
         if (stats.isUnit)
-            stats.id.private_unitSetBasePen(stats.penType, stats.value)
+            stats.id.private_modifyUnitBaseStats(es -> es.setPen(stats.penType, stats.value))
         else
-            stats.id.private_itemSetBasePen(stats.penType, stats.value)
+            stats.id.private_modifyItemBaseStats(es -> es.setPen(stats.penType, stats.value))
         destroy stats
 
     penList.clear()
@@ -56,13 +68,23 @@ init
 
     for stats in resList
         if (stats.isUnit)
-            stats.id.private_unitSetBaseRes(stats.resType, stats.value)
+            stats.id.private_modifyUnitBaseStats(es -> es.setRes(stats.resType, stats.value))
         else
-            stats.id.private_itemSetBaseRes(stats.resType, stats.value)
+            stats.id.private_modifyItemBaseStats(es -> es.setRes(stats.resType, stats.value))
         destroy stats
 
     resList.clear()
     destroy resList
+    
+    for stats in blockList
+        if (stats.isUnit)
+            stats.id.private_modifyUnitBaseStats(es -> es.setDamageBlock(stats.blockType, stats.value))
+        else
+            stats.id.private_modifyItemBaseStats(es -> es.setDamageBlock(stats.blockType, stats.value))
+        destroy stats
+
+    blockList.clear()
+    destroy blockList
 
 // ----------------------------------------------------------------------------
 // Set up compile-time data
@@ -74,11 +96,19 @@ public function int.addItemBasePen(penType penType, real value)
 public function int.addItemBaseRes(resType resType, real value)
     resList.add(new ResStats(this, false, value, resType))
 
+public function int.addItemBaseDamageBlock(blockType blockType, real value)
+    blockList.add(new BlockStats(this, false, value, blockType))
+
+// ----------------------------------------------------------------------------
+
 public function int.addUnitBasePen(penType penType, real value)
     penList.add(new PenStats(this, true, value, penType))
 
 public function int.addUnitBaseRes(resType resType, real value)
     resList.add(new ResStats(this, true, value, resType))
+
+public function int.addUnitBaseDamageBlock(blockType blockType, real value)
+    blockList.add(new BlockStats(this, true, value, blockType))
 
 // ----------------------------------------------------------------------------
 // Get compile-time stats data.
@@ -107,5 +137,18 @@ public function int.getCompileTimeUnitPen(penType penType) returns real
 
 public function int.getCompileTimeUnitRes(resType resType) returns real
     return getResInList(this, true, resType)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+//                               PRIVATE FUNCTIONS
+//                   Do not use them outside Damage System code.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+public function private_getUnitBaseStatsMap() returns HashMap<int, EntityStats>
+    return unitTypeMap
+
+public function private_getItemBaseStatsMap() returns HashMap<int, EntityStats>
+    return itemTypeMap
 
 // ----------------------------------------------------------------------------

@@ -17,6 +17,10 @@ public enum resType
     Physical
     Magical
 
+public enum blockType
+    PreResistances
+    PostResistances
+
 // ----------------------------------------------------------------------------
 
 public function customDamageType.toString() returns string
@@ -45,6 +49,13 @@ public function resType.toString() returns string
             return "Magic Res"
         case resType.Physical
             return "Phys Res"
+
+public function blockType.toString() returns string
+    switch this
+        case blockType.PreResistances
+            return "Damage Reduction (Before Resistances)"
+        case blockType.PostResistances
+            return "Damage Reduction (After Resistances)"
 
 // ----------------------------------------------------------------------------
 

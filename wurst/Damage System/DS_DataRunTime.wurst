@@ -1,93 +1,48 @@
 package DS_DataRunTime
 
 import EntityStats
-import HashMap
+import DS_DataCompileTime
 import DamageTypes
+import HashMap
 
 // ----------------------------------------------------------------------------
 
-// Used in run-time
-let unitTypeMap = new HashMap<int, EntityStats>
-let itemTypeMap = new HashMap<int, EntityStats>
+let itemTypeMap = private_getItemBaseStatsMap()
+let unitTypeMap = private_getItemBaseStatsMap()
+
+public interface RealDataHandler
+    function run(EntityStats stats) returns real
 
 // ----------------------------------------------------------------------------
-// Get run-time stats data
+// Public stats getters
 // ----------------------------------------------------------------------------
 
-function getResInMap(HashMap<int, EntityStats> map, int id, resType resType) returns real
-    if map.has(id)
-        return map.get(id).getRes(resType)
-    else
+function HashMap<int, EntityStats>.getRealData(int id, RealDataHandler handler) returns real
+    let stats = this.get(id)
+    if (stats == null)
         return 0
+    return handler.run(stats)
 
-function getPenInMap(HashMap<int, EntityStats> map, int id, penType penType) returns real
-    if map.has(id)
-        return map.get(id).getPen(penType)
-    else
-        return 0
+// ----------------------------------------------------------------------------
 
 public function int.getItemBaseRes(resType resType) returns real
-    return getResInMap(itemTypeMap, this, resType)
+    return itemTypeMap.getRealData(this, es -> es.getRes(resType))
 
 public function int.getItemBasePen(penType penType) returns real
-    return getPenInMap(itemTypeMap, this, penType)
+    return itemTypeMap.getRealData(this, es -> es.getPen(penType))
+
+public function int.getItemBaseBlock(blockType blockType) returns real
+    return itemTypeMap.getRealData(this, es -> es.getDamageBlock(blockType))
+
+// ----------------------------------------------------------------------------
 
 public function int.getUnitBaseRes(resType resType) returns real
-    return getResInMap(unitTypeMap, this, resType)
+    return unitTypeMap.getRealData(this, es -> es.getRes(resType))
 
 public function int.getUnitBasePen(penType penType) returns real
-    return getPenInMap(unitTypeMap, this, penType)
+    return unitTypeMap.getRealData(this, es -> es.getPen(penType))
 
-// ----------------------------------------------------------------------------
-// Get EntityStats in run-time
-// ----------------------------------------------------------------------------
-
-public function int.private_getUnitBaseStats() returns EntityStats
-    return unitTypeMap.get(this)
-
-public function int.private_getItemBaseStats() returns EntityStats
-    return itemTypeMap.get(this)
-
-// ----------------------------------------------------------------------------
-
-public function int.private_itemSetBasePen(penType penType, real value)
-    if (not itemTypeMap.has(this))
-        itemTypeMap.put(this, new EntityStats()..setPen(penType, value))
-    else
-        itemTypeMap.put(this, itemTypeMap.get(this)..setPen(penType, value))
-
-public function int.private_itemSetBaseRes(resType resType, real value)
-    if (not itemTypeMap.has(this))
-        itemTypeMap.put(this, new EntityStats()..setRes(resType, value))
-    else
-        itemTypeMap.put(this, itemTypeMap.get(this)..setRes(resType, value))
-
-// ----------------------------------------------------------------------------
-
-public function int.private_unitSetBasePen(penType penType, real value)
-    if (not unitTypeMap.has(this))
-        unitTypeMap.put(this, new EntityStats()..setPen(penType, value))
-    else
-        unitTypeMap.put(this, unitTypeMap.get(this)..setPen(penType, value))
-
-public function int.private_unitSetBaseRes(resType resType, real value)
-    if (not unitTypeMap.has(this))
-        unitTypeMap.put(this, new EntityStats()..setRes(resType, value))
-    else
-        unitTypeMap.put(this, unitTypeMap.get(this)..setRes(resType, value))
-
-// ----------------------------------------------------------------------------
-
-public function int.private_unitAddBasePen(penType penType, real value)
-    if (not unitTypeMap.has(this))
-        unitTypeMap.put(this, new EntityStats()..addPen(penType, value))
-    else
-        unitTypeMap.put(this, unitTypeMap.get(this)..addPen(penType, value))
-
-public function int.private_unitAddBaseRes(resType resType, real value)
-    if (not unitTypeMap.has(this))
-        unitTypeMap.put(this, new EntityStats()..addRes(resType, value))
-    else
-        unitTypeMap.put(this, unitTypeMap.get(this)..addRes(resType, value))
+public function int.getUnitBaseBlock(blockType blockType) returns real
+    return unitTypeMap.getRealData(this, es -> es.getDamageBlock(blockType))
 
 // ----------------------------------------------------------------------------
