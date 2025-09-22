@@ -3,13 +3,18 @@ import FramehandleNames
 import ClosureEvents
 import DamageTypes
 import UnitStats
+import HashMap
 
 let armorValue = getFrame(FramehandleDefaultNames.infoPanelIconValue, 2)
 let armorName = getFrame(FramehandleDefaultNames.infoPanelIconLabel, 2)
+let playerSelections = new HashMap<player, unit>()
 
 public function updateResistance(player p, unit u)
     let stats = u.getStats()
-    
+
+    if (playerSelections.get(p) != u)
+        return
+
     if(u.isInvulnerable())
         armorName.setText("Invulnerable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     else if(stats != null)
@@ -23,7 +28,8 @@ public function updateResistance(player p, unit u)
 
 init
     armorName.setScale(0.8)
-    EventListener.add(EVENT_PLAYER_UNIT_SELECTED) -> 
+    EventListener.add(EVENT_PLAYER_UNIT_SELECTED) ->
+        playerSelections.put(EventData.getTriggerPlayer(), EventData.getTriggerUnit())
         if (localPlayer == EventData.getTriggerPlayer())
             let u = EventData.getTriggerUnit()
             updateResistance(EventData.getTriggerPlayer(), u)
