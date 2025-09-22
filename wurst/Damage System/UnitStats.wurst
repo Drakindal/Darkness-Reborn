@@ -9,6 +9,8 @@ import public DamageTypes
 import UnitInventory
 import DS_DataRunTime
 import Format
+import DS_DataPrivate
+import DS_DataCompileTime
 
 // ----------------------------------------------------------------------------
 
@@ -38,6 +40,9 @@ public class UnitStats
     function getRes(resType resType) returns real
         return clippedValues.getRes(resType)
 
+    function getDamageBlock(blockType blockType) returns real
+        return clippedValues.getDamageBlock(blockType)
+
     function setBasePen(penType penType, real value)
         u.getTypeId().private_unitSetBasePen(penType, value)
         updateStats(false)
@@ -57,14 +62,14 @@ public class UnitStats
 // ----------------------------------------------------------------------------
 
     private function setBaseStats()
-        clippedValues.copyFrom(u.getTypeId().private_getUnitBaseStats())
+        clippedValues.copyFrom(private_getUnitBaseStatsMap().get(u.getTypeId()))
 
     private function calcItemStats(unit u, bool dropped)
         let inv = getUnitInventory(u)
         if(dropped)
             inv.remove(EventData.getManipulatedItem())
         for uItem in inv
-            clippedValues.addStats(uItem.getTypeId().private_getItemBaseStats())
+            clippedValues.addStats(private_getItemBaseStatsMap().get(uItem.getTypeId()))
         destroy inv
 
     function updateStats(bool dropped)
@@ -119,12 +124,12 @@ init
             let p = GetTriggerPlayer()
             let u = playerHero.get(p)
             let us = unitStatsMap.get(u)
-            printTimedToPlayer(
+            printTimedToPlayer((
                 "Physical Penetration: {0}%\n" +
                 "Magical  Penetration: {1}%\n" +
                 "Physical Resistance:  {2}%\n" +
                 "Magical  Resistance:  {3}%\n" +
-                "Universal Resistance: {4}%\n".format(
+                "Universal Resistance: {4}%\n").format(
                     us.getPen(penType.Physical).percentToString(),
                     us.getPen(penType.Magical).percentToString(),
                     us.getRes(resType.Physical).percentToString(),

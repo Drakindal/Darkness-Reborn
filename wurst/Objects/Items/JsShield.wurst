@@ -14,7 +14,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(8))
-    ..addStats(addDamageBlock(0.2, 100))
+    ..addStats(addDamageBlock(blockType.PostResistances, 50))
     ..register()
 
 //I08N
@@ -22,7 +22,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(20))
-    ..addStats(addDamageBlock(0.25, 200))
+    ..addStats(addDamageBlock(blockType.PostResistances, 100))
     ..register()
 
 //I08O
@@ -30,7 +30,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(45))
-    ..addStats(addDamageBlock(0.3, 300))
+    ..addStats(addDamageBlock(blockType.PostResistances, 300))
     ..register()
 
 //I069
@@ -38,7 +38,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(80))
-    ..addStats(addDamageBlock(0.4, 500))
+    ..addStats(addDamageBlock(blockType.PostResistances, 600))
     ..register()
     
 //I08P
@@ -46,7 +46,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(15))
-    ..addStats(addDamageBlock(0.25, 200))
+    ..addStats(addDamageBlock(blockType.PostResistances, 100))
     ..addComponents(
     ITEM_FORGE_SHIELD_L1,
     ITEM_ENCHANTED_SHIELD)
@@ -57,7 +57,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(40))
-    ..addStats(addDamageBlock(0.3, 300))
+    ..addStats(addDamageBlock(blockType.PostResistances, 250))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L1,
     ITEM_ARCANITE_SHIELD)
@@ -68,7 +68,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(60))
-    ..addStats(addDamageBlock(0.4, 600))
+    ..addStats(addDamageBlock(blockType.PostResistances, 600))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L2,
     ITEM_FORGE_SHIELD_L2,
@@ -80,7 +80,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(100))
-    ..addStats(addDamageBlock(0.5, 1200))
+    ..addStats(addDamageBlock(blockType.PostResistances, 1200))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L3,
     ITEM_SHIELD_OF_HONOR)
@@ -91,7 +91,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(130))
-    ..addStats(addDamageBlock(0.6, 1800))
+    ..addStats(addDamageBlock(blockType.PostResistances, 2500))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L4,
     ITEM_STEEL_SHIELD)
@@ -102,7 +102,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
     ..setClassification("Purchasable")
     ..addStats(addArmor(160))
-    ..addStats(addDamageBlock(0.7, 2500))
+    ..addStats(addDamageBlock(blockType.PostResistances, 6000))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L5,
     ITEM_SACRED_SHIELD,
@@ -114,7 +114,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkersShoulder.blp")    
     ..setClassification("Campaign")
     ..addStats(addArmor(200))
-    ..addStats(addDamageBlock(0.8, 3500))
+    ..addStats(addDamageBlock(blockType.PostResistances, 12000))
     ..addComponents(
     ITEM_PLATINUM_SHIELD_L6,
     ITEM_IRON_SHIELD,

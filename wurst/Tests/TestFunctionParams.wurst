@@ -1,0 +1,39 @@
+package TestFunctionParams
+
+import HashMap
+
+class MyClass2
+    int value2
+
+    construct(int value)
+        this.value2 = value
+
+class MyClass
+    int value
+    MyClass2 c2
+
+    construct(int v1, int v2)
+        this.value = v1
+        this.c2 = new MyClass2(v2)
+
+    function toString() returns string
+        return "value = {0}, c2.value2 = {1}".format(value.toString(), c2.value2.toString())
+
+function addInstanceToMap(HashMap<int, MyClass> map, MyClass instance)
+    map.put(123, instance)
+
+@Test
+function test()
+    let map = new HashMap<int, MyClass>
+
+    addInstanceToMap(map, new MyClass(10, 20))
+
+    println(map.get(123).toString())
+    
+@Test
+function test2()
+    let map = new HashMap<int, real>
+    map.put(123, 3.14)
+
+    println(map.get(123).toString()) // 3.14
+    println(map.get(1).toString())   // 0.0

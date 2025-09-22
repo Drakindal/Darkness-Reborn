@@ -1,0 +1,56 @@
+package DS_DataPrivate
+
+import EntityStats
+import DS_DataCompileTime
+import DamageTypes
+import HashMap
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+//                               PRIVATE FUNCTIONS
+//                   Do not use them outside Damage System code.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+public interface EntityStatsHandler
+    function run(EntityStats stats)
+        
+// ----------------------------------------------------------------------------
+// Modify hash tables
+// ----------------------------------------------------------------------------
+
+function HashMap<int, EntityStats>.modifyHashMap(int id, EntityStatsHandler handler)
+    var stats = this.get(id)
+    if (stats == null)
+        stats = new EntityStats()
+        handler.run(stats)
+        this.put(id, stats)
+    else
+        handler.run(stats)
+
+public function int.private_modifyItemBaseStats(EntityStatsHandler handler)
+    private_getItemBaseStatsMap().modifyHashMap(this, handler)
+    
+public function int.private_modifyUnitBaseStats(EntityStatsHandler handler)
+    private_getUnitBaseStatsMap().modifyHashMap(this, handler)
+
+// ----------------------------------------------------------------------------
+
+public function int.private_unitSetBasePen(penType penType, real value)
+    this.private_modifyUnitBaseStats(stats -> stats.setPen(penType, value))
+
+public function int.private_unitSetBaseRes(resType resType, real value)
+    this.private_modifyUnitBaseStats(stats -> stats.setRes(resType, value))
+
+public function int.private_unitSetBaseDamageBlock(blockType blockType, real value)
+    this.private_modifyUnitBaseStats(stats -> stats.setDamageBlock(blockType, value))
+
+// ----------------------------------------------------------------------------
+
+public function int.private_unitAddBasePen(penType penType, real value)
+    this.private_modifyUnitBaseStats(stats -> stats.addPen(penType, value))
+
+public function int.private_unitAddBaseRes(resType resType, real value)
+    this.private_modifyUnitBaseStats(stats -> stats.addRes(resType, value))
+
+// ----------------------------------------------------------------------------

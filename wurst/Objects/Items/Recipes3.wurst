@@ -172,7 +172,7 @@ init
     ..addStats(addArmor(50))
     ..addStats(addAllStats(30))
     ..addStats(addHp(2000))
-    ..addStats(addDamageBlock(0.5, 600))
+    ..addStats(addDamageBlock(blockType.PostResistances, 600))
     ..addComponents(
     ITEM_SCROLL_OF_FUSION,
     ITEM_ENCHANTED_SHIELD,
@@ -189,7 +189,7 @@ init
     ..setClassification("Permanent")
     ..addStats(addArmor(150))
     ..addStats(addAllStats(50))
-    ..addStats(addDamageBlock(0.6, 3000))
+    ..addStats(addDamageBlock(blockType.PostResistances, 3000))
     ..addComponents(
     ITEM_STEEL_SHIELD,
     ITEM_ENCHANTED_SHIELD,
@@ -209,7 +209,7 @@ init
     ..addStats(addAgi(50))
     ..addStats(addInt(50))
     ..addStats(addHpReg(50))
-    ..addStats(addDamageBlock(0.6, 2000))
+    ..addStats(addDamageBlock(blockType.PostResistances, 2000))
     ..addComponents(
     ITEM_STEEL_SHIELD,
     ITEM_HELM_OF_VALOR)

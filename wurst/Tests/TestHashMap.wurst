@@ -1,0 +1,63 @@
+package TestHashMap
+
+import HashMap
+
+class MyClass2
+    int value2
+
+    construct(int value)
+        this.value2 = value
+
+class MyClass
+    int value
+    MyClass2 c2
+
+    construct(int v1, int v2)
+        this.value = v1
+        this.c2 = new MyClass2(v2)
+
+    function toString() returns string
+        return "value = {0}, c2.value2 = {1}".format(value.toString(), c2.value2.toString())
+
+@Test
+function test()
+    let map = new HashMap<int, MyClass>
+
+    let i1 = new MyClass(1, 6)
+    let i2 = new MyClass(2, 7)
+
+    map.put(100, i1)
+    map.put(101, i2)
+
+    println("A1. " + map.get(100).toString())
+    println("A2. " + i1.toString())
+
+    i1.value = 10
+
+    println("A3. " + map.get(100).toString())
+    println("A4. " + i1.toString())
+
+    println("B1. " + map.get(101).toString())
+    println("B2. " + i2.toString())
+
+    map.get(101).value = 20
+    
+    println("B3. " + map.get(101).toString())
+    println("B4. " + i2.toString())
+
+    
+    println("C1. " + map.get(100).toString())
+    println("C2. " + i1.toString())
+
+    i1.c2.value2 = 16
+
+    println("C3. " + map.get(100).toString())
+    println("C4. " + i1.toString())
+
+    println("D1. " + map.get(101).toString())
+    println("D2. " + i2.toString())
+
+    map.get(101).c2.value2 = 17
+    
+    println("D3. " + map.get(101).toString())
+    println("D4. " + i2.toString())
