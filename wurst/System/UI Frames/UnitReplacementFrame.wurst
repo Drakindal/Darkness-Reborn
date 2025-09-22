@@ -4,20 +4,26 @@ import ClosureEvents
 import DamageTypes
 import UnitStats
 
-init
-    let armorValue = getFrame(FramehandleDefaultNames.infoPanelIconValue, 2)
-    let armorName = getFrame(FramehandleDefaultNames.infoPanelIconLabel, 2)
+let armorValue = getFrame(FramehandleDefaultNames.infoPanelIconValue, 2)
+let armorName = getFrame(FramehandleDefaultNames.infoPanelIconLabel, 2)
+
+public function updateResistance(player p, unit u)
+    let stats = u.getStats()
     
+    if(u.isInvulnerable())
+        armorName.setText("Invulnerable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    else if(stats != null)
+        armorName.setText(p, "Resistances\nPhysical: |cffad2222{0}%|r\nMagical: |cff1c2bc9{1}%|r\nUniversal: |cff81830d{2}%|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n".format(
+            (stats.getRes(resType.Physical) * 100).toInt().toString(), 
+            (stats.getRes(resType.Magical) * 100).toInt().toString(),
+            (stats.getRes(resType.Universal) * 100).toInt().toString()))
+    else
+        armorName.setText(p, "Resistances\nPhysical: |cffad22220|r\nMagical: |cff1c2bc90|r\nUniversal: |cff81830d0|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
+
+init
+    armorName.setScale(0.8)
     EventListener.add(EVENT_PLAYER_UNIT_SELECTED) -> 
         if (localPlayer == EventData.getTriggerPlayer())
-            let trigUnit = EventData.getTriggerUnit()
-            let stats = trigUnit.getStats()
-            armorName.setScale(0.8)
-            
-            if(stats != null)
-                armorName.setText("Resistances\nPhysical: |cffad2222{0}%|r\nMagical: |cff1c2bc9{1}%|r\nUniversal: |cff81830d{2}%|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n".format(
-                    (stats.getRes(resType.Physical).toInt() * 100).toString(), 
-                    (stats.getRes(resType.Magical).toInt() * 100).toString(),
-                    (stats.getRes(resType.Universal).toInt() * 100).toString()))
-            else
-                armorName.setText("Resistances\nPhysical: |cffad22220|r\nMagical: |cff1c2bc90|r\nUniversal: |cff81830d0|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            let u = EventData.getTriggerUnit()
+            updateResistance(EventData.getTriggerPlayer(), u)

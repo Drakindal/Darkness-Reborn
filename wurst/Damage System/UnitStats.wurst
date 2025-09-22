@@ -75,7 +75,6 @@ public class UnitStats
 
     function calcDamage(customDamageType damageType, real unreducedDamage) returns real
         let testReal = clippedValues.calcDamage(damageType, unreducedDamage)
-        print("Clipped value: " + testReal.toString())
         return testReal
         
 // ----------------------------------------------------------------------------

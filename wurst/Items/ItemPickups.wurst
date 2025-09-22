@@ -4,6 +4,7 @@ import MyItemIds
 import HashSet
 import ArmorWeaponTypes
 import UnitStats
+import UnitReplacementFrame
 
 public let itemPickedup = new HashSet<item>
 
@@ -24,6 +25,7 @@ init
         //println("Picked up item = {0}".format(EventData.getManipulatedItem().getName()))
         //println("Pen = {0}, Res = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
         u.getStats().updateStats(false)
+        updateResistance(u.getOwner(), u)
         //println("NPen = {0}, NRes = {1}".format(u.getStats().getPen(penType.Physical).toString(2), u.getStats().getRes(resType.Magical).toString(2)))
         
     EventListener.add(EVENT_PLAYER_UNIT_DROP_ITEM) -> 
@@ -31,3 +33,4 @@ init
 
         //println("Dropped item = {0}".format(EventData.getManipulatedItem().getName()))
         u.getStats().updateStats(true)
+        updateResistance(u.getOwner(), u)
