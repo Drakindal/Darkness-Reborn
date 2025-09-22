@@ -97,7 +97,7 @@ public function addEvasion(real chance) returns ItemStats
 // ----------------------------------------------------------------------------
 
 public function addResist(resType resType, real value) returns ItemStats
-    let effects = wordResist.format(realToString(value, 0), resType.toString())
+    let effects = wordResist.format(realToString(100 * value, 0), resType.toString())
     
     return new ItemStatsCustomFunc(effects,
     (itemId, itemDef) -> itemId.addItemBaseRes(resType, value))

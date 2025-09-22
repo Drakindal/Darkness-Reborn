@@ -11,16 +11,6 @@ let unitTypeMap = new HashMap<int, EntityStats>
 let itemTypeMap = new HashMap<int, EntityStats>
 
 // ----------------------------------------------------------------------------
-
-// Do not use these functions to directly modify map data
-
-public function private_putUnitBaseStatsMap(int id, EntityStats stats)
-    unitTypeMap.put(id, stats)
-
-public function private_putItemBaseStatsMap(int id, EntityStats stats)
-    itemTypeMap.put(id, stats)
-
-// ----------------------------------------------------------------------------
 // Get run-time stats data
 // ----------------------------------------------------------------------------
 
@@ -60,17 +50,31 @@ public function int.private_getItemBaseStats() returns EntityStats
 
 // ----------------------------------------------------------------------------
 
+public function int.private_itemSetBasePen(penType penType, real value)
+    if (not itemTypeMap.has(this))
+        itemTypeMap.put(this, new EntityStats()..setPen(penType, value))
+    else
+        itemTypeMap.put(this, itemTypeMap.get(this)..setPen(penType, value))
+
+public function int.private_itemSetBaseRes(resType resType, real value)
+    if (not itemTypeMap.has(this))
+        itemTypeMap.put(this, new EntityStats()..setRes(resType, value))
+    else
+        itemTypeMap.put(this, itemTypeMap.get(this)..setRes(resType, value))
+
+// ----------------------------------------------------------------------------
+
 public function int.private_unitSetBasePen(penType penType, real value)
     if (not unitTypeMap.has(this))
         unitTypeMap.put(this, new EntityStats()..setPen(penType, value))
     else
-        unitTypeMap.get(this).setPen(penType, value)
+        unitTypeMap.put(this, unitTypeMap.get(this)..setPen(penType, value))
 
 public function int.private_unitSetBaseRes(resType resType, real value)
     if (not unitTypeMap.has(this))
         unitTypeMap.put(this, new EntityStats()..setRes(resType, value))
     else
-        unitTypeMap.get(this).setRes(resType, value)
+        unitTypeMap.put(this, unitTypeMap.get(this)..setRes(resType, value))
 
 // ----------------------------------------------------------------------------
 
@@ -78,12 +82,12 @@ public function int.private_unitAddBasePen(penType penType, real value)
     if (not unitTypeMap.has(this))
         unitTypeMap.put(this, new EntityStats()..addPen(penType, value))
     else
-        unitTypeMap.get(this).addPen(penType, value)
+        unitTypeMap.put(this, unitTypeMap.get(this)..addPen(penType, value))
 
 public function int.private_unitAddBaseRes(resType resType, real value)
     if (not unitTypeMap.has(this))
         unitTypeMap.put(this, new EntityStats()..addRes(resType, value))
     else
-        unitTypeMap.get(this).addRes(resType, value)
+        unitTypeMap.put(this, unitTypeMap.get(this)..addRes(resType, value))
 
 // ----------------------------------------------------------------------------

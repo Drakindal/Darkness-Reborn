@@ -46,9 +46,9 @@ let resList = compiletime(new LinkedList<ResStats>())
 init
     for stats in penList
         if (stats.isUnit)
-            private_putUnitBaseStatsMap(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
+            stats.id.private_unitSetBasePen(stats.penType, stats.value)
         else
-            private_putItemBaseStatsMap(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
+            stats.id.private_itemSetBasePen(stats.penType, stats.value)
         destroy stats
 
     penList.clear()
@@ -56,9 +56,9 @@ init
 
     for stats in resList
         if (stats.isUnit)
-            private_putUnitBaseStatsMap(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
+            stats.id.private_unitSetBaseRes(stats.resType, stats.value)
         else
-            private_putItemBaseStatsMap(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
+            stats.id.private_itemSetBaseRes(stats.resType, stats.value)
         destroy stats
 
     resList.clear()

@@ -33,9 +33,9 @@ public function customDamageType.toString() returns string
 public function penType.toString() returns string
     switch this
         case penType.Magical
-            return "magic pen (armor and resistance)"
+            return "magic pen"
         case penType.Physical
-            return "phys pen (armor and resistance)"
+            return "phys pen"
 
 public function resType.toString() returns string
     switch this
