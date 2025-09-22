@@ -23,7 +23,7 @@ public function lastKiller()
                             let lvl = ((GetUnitAbilityLevel(src, 'A0GJ'))*5)+37
                             let dmg = src.getAgi(true)*lvl.toReal()
                             flashEffect(Abilities.meatwagonMissile, target.getPos()) 
-                            src.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
+                            src.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
                             src.removeAbility('B00W')
                             doAfter(3) -> 
                                 once = true

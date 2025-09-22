@@ -12,6 +12,6 @@ public function thunderClap()
             let dmg = ((caster.getStr(true)*0.5+150)*lvl)
             doPeriodically(0.03) (CallbackPeriodic cb) ->
                 if caster.isEnemyOf(u) and u.hasAbility('BHtc')
-                    caster.damageTargetCode(dmg, u, null, -1, damageType.PhysicalRanged)
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalRanged)
                     destroy cb
                     

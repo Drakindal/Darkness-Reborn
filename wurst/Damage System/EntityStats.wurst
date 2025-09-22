@@ -4,12 +4,7 @@ import DamageTypes
 // ----------------------------------------------------------------------------
 
 public function clipNumber(real value) returns real
-    if (value > 1)
-        return 1
-    else if (value < 0)
-        return 0
-    else
-        return value
+    return value.clamp(0, 1)
 
 // ----------------------------------------------------------------------------
 
@@ -17,12 +12,11 @@ public class ResPenPair
     real res = 0
     real pen = 0
 
-    function calcDamage(real damage, real unreducedDamage) returns real
-        let reducedByArmor = unreducedDamage - damage
-        let reducedByRes   = damage * res
-
-        let plain          = damage - reducedByRes
-        let penetrated     = pen * (reducedByArmor + reducedByRes)
+    function calcDamage(real unreducedDamage) returns real
+        let reducedByRes   = unreducedDamage * res
+        let plain          = unreducedDamage - reducedByRes
+        let penetrated     = pen * reducedByRes
+        print("Calculated damage" + (plain + penetrated).toString())
         return plain + penetrated
 
     function clear()
@@ -125,14 +119,14 @@ public class EntityStats
 
 // ----------------------------------------------------------------------------
 
-    function calcDamage(damageType damageType, real damage, real unreducedDamage) returns real
+    function calcDamage(customDamageType damageType, real unreducedDamage) returns real
         switch damageType
             case damageType.Pure
-                return unreducedDamage * universalRes
+                return unreducedDamage * (1 - universalRes)
             case damageType.PhysicalMelee | damageType.PhysicalRanged
-                return physDamage.calcDamage(damage, unreducedDamage) * universalRes
+                return physDamage.calcDamage(unreducedDamage) * (1 - universalRes)
             case damageType.Magical
-                return magicDamage.calcDamage(damage, unreducedDamage) * universalRes
+                return magicDamage.calcDamage(unreducedDamage) * (1 - universalRes)
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

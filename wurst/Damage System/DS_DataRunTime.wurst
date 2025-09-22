@@ -14,11 +14,11 @@ let itemTypeMap = new HashMap<int, EntityStats>
 
 // Do not use these functions to directly modify map data
 
-public function private_getUnitBaseStatsMap() returns HashMap<int, EntityStats>
-    return unitTypeMap
+public function private_putUnitBaseStatsMap(int id, EntityStats stats)
+    unitTypeMap.put(id, stats)
 
-public function private_getItemBaseStatsMap() returns HashMap<int, EntityStats>
-    return unitTypeMap
+public function private_putItemBaseStatsMap(int id, EntityStats stats)
+    itemTypeMap.put(id, stats)
 
 // ----------------------------------------------------------------------------
 // Get run-time stats data

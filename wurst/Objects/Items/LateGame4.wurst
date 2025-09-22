@@ -31,7 +31,7 @@ init
     ..setStockReplenishInterval(45)
     ..addStats(addStr(1200))
     ..addStats(addArmor(300))
-    ..addStats(addAbilityReturnDamageStats(8, 0.5, statsType.Str, damageType.PhysicalRanged))
+    ..addStats(addAbilityReturnDamageStats(8, 0.5, statsType.Str, customDamageType.PhysicalRanged))
     ..addHotKey()
     ..register()
 
@@ -74,7 +74,7 @@ init
     ..addStats(addInt(1350))
     ..setStockMaximum(2)
     ..setStockReplenishInterval(45)
-    ..addStats(addAbilityDealDamageStats(15, 0.15, statsType.Int, damageType.Magical))
+    ..addStats(addAbilityDealDamageStats(15, 0.15, statsType.Int, customDamageType.Magical))
     ..addHotKey()
     ..register()
 

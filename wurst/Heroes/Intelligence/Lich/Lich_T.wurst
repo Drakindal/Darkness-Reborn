@@ -15,4 +15,4 @@ public function deathandnDecay()
             forUnitsInRange(target, 250, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     flashEffect(Abilities.deathandDecayTarget, u.getPos())
-                    caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, damageType.Magical)
+                    caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, customDamageType.Magical)

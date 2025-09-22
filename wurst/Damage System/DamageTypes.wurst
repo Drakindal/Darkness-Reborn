@@ -2,7 +2,7 @@ package DamageTypes
 
 // ----------------------------------------------------------------------------
 
-public enum damageType
+public enum customDamageType
     Pure
     PhysicalMelee
     PhysicalRanged
@@ -19,15 +19,15 @@ public enum resType
 
 // ----------------------------------------------------------------------------
 
-public function damageType.toString() returns string
+public function customDamageType.toString() returns string
     switch this
-        case damageType.Magical
+        case customDamageType.Magical
             return "magic damage"
-        case damageType.PhysicalMelee
+        case customDamageType.PhysicalMelee
             return "physical melee damage"
-        case damageType.PhysicalRanged
+        case customDamageType.PhysicalRanged
             return "physical range damage"
-        case damageType.Pure
+        case customDamageType.Pure
             return "pure damage"
 
 public function penType.toString() returns string

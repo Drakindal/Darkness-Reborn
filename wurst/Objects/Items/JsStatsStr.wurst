@@ -139,7 +139,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (2).blp")    
     ..setClassification("Campaign")
     ..addStats(addStr(500))
-    ..addStats(addAbilityReturnDamageStats(3, 0.35, statsType.Str, damageType.PhysicalRanged))
+    ..addStats(addAbilityReturnDamageStats(3, 0.35, statsType.Str, customDamageType.PhysicalRanged))
     ..addComponents(
     ITEM_ASTRAEUS_BELT,
     ITEM_HELM_HERMES)

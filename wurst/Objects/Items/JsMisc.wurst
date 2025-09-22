@@ -15,7 +15,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNA111.blp")
     ..setActivelyUsed(true)
     ..setClassification("Artifact")
-    ..addStats(addAbilityDealAoeDamage(20000, 900, damageType.Magical, 6000, 20))
+    ..addStats(addAbilityDealAoeDamage(20000, 900, customDamageType.Magical, 6000, 20))
     ..addStats(addAbilityGetHpOnDamage(2000, 0.5))
     ..addStats(addAbilityGetMpOnDamage(1.5, 0.3))
     ..addStats(addArmor(400))

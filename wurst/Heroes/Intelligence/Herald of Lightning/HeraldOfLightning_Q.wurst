@@ -39,7 +39,7 @@ public function orbofLightning()
             tempu.issueTargetOrderById(Orders.chainlightning, damagedunit)
             doAfter(0.1) ->
                 tempu.remove()
-            caster.damageTargetCode(dmg, damagedunit, null, 'HEAB', damageType.Magical)
+            caster.damageTargetCode(dmg, damagedunit, null, 'HEAB', customDamageType.Magical)
             temp.clear()
             if cb.isLast()
                 sfxtemp.forEach() (unit t) ->

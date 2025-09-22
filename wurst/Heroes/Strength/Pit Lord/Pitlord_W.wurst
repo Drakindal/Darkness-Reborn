@@ -15,7 +15,7 @@ public function strikeSlam()
         caster.setAnimation("slam")
         doAfter(0.3) -> 
             flashEffect(Abilities.warStompCaster, target.getPos(), 0.8)
-            caster.damageTargetCode(dmg, target, null, -1, damageType.PhysicalMelee)
+            caster.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
             new DummyCaster()
             ..owner(GetOwningPlayer(caster))
             ..origin(caster.getPos())

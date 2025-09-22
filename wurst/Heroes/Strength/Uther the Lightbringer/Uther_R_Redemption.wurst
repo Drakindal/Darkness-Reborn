@@ -27,7 +27,7 @@ public function redemptionHoly()
                         let amount = str * 0.5 + 75 * lvl
                         let heal = str * lvl * 0.2
                         flashEffect(Abilities.holyBoltSpecialArt, targ.getPos())
-                        src.damageTargetCode(amount, targ, null, -1, damageType.PhysicalMelee)
+                        src.damageTargetCode(amount, targ, null, -1, customDamageType.PhysicalMelee)
                         src.addHP(heal)
                         addHolyPower((lvl*0.25).ceil())
 

@@ -169,7 +169,7 @@ init
     ..addStats(addDamage(180))
     ..addStats(addAgi(30))
     ..addStats(addAttackSpeed(0.45))
-    ..addStats(addAbilityDealDamageStats(1, 0.07, statsType.Agi, damageType.PhysicalMelee))
+    ..addStats(addAbilityDealDamageStats(1, 0.07, statsType.Agi, customDamageType.PhysicalMelee))
     ..addComponents(
     ITEM_KAIN_SWORD_L4,
     ITEM_KILLMAIM)
@@ -182,7 +182,7 @@ init
     ..addStats(addDamage(260))
     ..addStats(addAgi(70))
     ..addStats(addAttackSpeed(1))
-    ..addStats(addAbilityDealDamageStats(2, 0.09, statsType.Agi, damageType.PhysicalMelee))
+    ..addStats(addAbilityDealDamageStats(2, 0.09, statsType.Agi, customDamageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L1,
     ITEM_LIONS_RING)
@@ -195,7 +195,7 @@ init
     ..addStats(addDamage(280))
     ..addStats(addAgi(110))
     ..addStats(addAttackSpeed(1.2))
-    ..addStats(addAbilityDealDamageStats(3, 0.11, statsType.Agi, damageType.PhysicalMelee))
+    ..addStats(addAbilityDealDamageStats(3, 0.11, statsType.Agi, customDamageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L2,
     ITEM_AMULET_OF_THE_WILD)
@@ -208,7 +208,7 @@ init
     ..addStats(addDamage(300))
     ..addStats(addAgi(200))
     ..addStats(addAttackSpeed(1.4))
-    ..addStats(addAbilityDealDamageStats(4, 0.13, statsType.Agi, damageType.PhysicalMelee))
+    ..addStats(addAbilityDealDamageStats(4, 0.13, statsType.Agi, customDamageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L3,
     ITEM_AINZ_SWORD,
@@ -222,7 +222,7 @@ init
     ..addStats(addDamage(400))
     ..addStats(addAgi(350))
     ..addStats(addAttackSpeed(1.8))
-    ..addStats(addAbilityDealDamageStats(5, 0.15, statsType.Agi, damageType.PhysicalMelee))
+    ..addStats(addAbilityDealDamageStats(5, 0.15, statsType.Agi, customDamageType.PhysicalMelee))
     ..addComponents(
     ITEM_NOBLE_SWORD_L4,
     ITEM_FORGE_SWORD_L4,

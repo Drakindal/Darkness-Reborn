@@ -12,7 +12,7 @@ public function holyWrath()
         forUnitsInRange(target, 600, true) (unit u) ->
             flashEffect(Abilities.holyBoltSpecialArt, u.getPos())
             if caster.isEnemyOf(u)
-                caster.damageTargetCode(output, u, null, -1, damageType.Magical)
+                caster.damageTargetCode(output, u, null, -1, customDamageType.Magical)
             else if caster.isAllyOf(u)
                 u.addHP(output)
             else

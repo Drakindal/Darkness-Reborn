@@ -142,7 +142,7 @@ init
     new MyItemDefinition(ITEM_SCEPTER_OF_MASTERY)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNScepterOfMastery.blp")
     ..setActivelyUsed(true)
-    ..addStats(addAbilityDealAoeDamage(2000, 500, damageType.Magical, 800, 20))
+    ..addStats(addAbilityDealAoeDamage(2000, 500, customDamageType.Magical, 800, 20))
     ..addStats(addInt(80))
     ..addStats(addMpReg(2))
     ..setStockMaximum(99)

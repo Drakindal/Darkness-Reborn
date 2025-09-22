@@ -27,19 +27,19 @@ init
         
 
         ui_Btn[100] = BlzCreateFrameByType("BACKDROP", "BackdropButton01", helpBtni, "", 0)
-        ui_Btn[100].setAllPoints(helpBtni)
-        ui_Btn[100].setTexture(Icons.bTNSelectHeroOn, 0, true)
+        ..setAllPoints(helpBtni)
+        ..setTexture(Icons.bTNSelectHeroOn, 0, true)
         ui_Btn[200] = BlzCreateFrame("QuestButtonBaseTemplate",helpBtni,0,0)
-        ui_Btn[200].setAbsPoint(FRAMEPOINT_BOTTOMLEFT, 0.0, 0.21)
-        ui_Btn[200].setSize(0.35, 0.4)
-        ui_Btn[200].setVisible(false)
+        ..setAbsPoint(FRAMEPOINT_BOTTOMLEFT, 0.0, 0.21)
+        ..setSize(0.35, 0.4)
+        ..setVisible(false)
         ui_Btn[300] = BlzCreateFrameByType("TEXT","name",ui_Btn[200],"",0)
-        ui_Btn[300].setAbsPoint(FRAMEPOINT_CENTER, 0.11,0.47)
-        ui_Btn[300].setSize(0.2, 0.1)
-        ui_Btn[300].setText("|c00ff0000[F3]|r |c00ff8800Quests|r")
-        ui_Btn[300].setVisible(true)
-        ui_Btn[300].setScale(0.6)
-        ui_Btn[300].setTextAlignment(TEXT_JUSTIFY_CENTER, TEXT_JUSTIFY_CENTER)
+        ..setAbsPoint(FRAMEPOINT_CENTER, 0.11,0.47)
+        ..setSize(0.2, 0.1)
+        ..setText("|c00ff0000[F3]|r |c00ff8800Quests|r")
+        ..setVisible(true)
+        ..setScale(0.6)
+        ..setTextAlignment(TEXT_JUSTIFY_CENTER, TEXT_JUSTIFY_CENTER)
 
         tooltipText = BlzCreateFrameByType("TEXT", "tooltip", helpBtni, "", 0)
         tooltipText.setAbsPoint(FRAMEPOINT_BOTTOMLEFT, 0, 0.19)
@@ -54,9 +54,9 @@ init
         tooltipText.setVisible(false)
 
         tooltipBackdrop = BlzCreateFrame("TooltipBackdropTemplate", tooltipText, 0, 0)
-        tooltipBackdrop.setSize(width + 0.02, height + 0.02)
-        tooltipBackdrop.setAbsPoint(FRAMEPOINT_BOTTOMLEFT, 0, 0.19)
-        tooltipBackdrop.setVisible(false)
+        ..setSize(width + 0.02, height + 0.02)
+        ..setAbsPoint(FRAMEPOINT_BOTTOMLEFT, 0, 0.19)
+        ..setVisible(false)
 
         // Prefil 15 quest frames
         for int i = 0 to 14
@@ -120,12 +120,13 @@ function updateQuestPanel(player localPlayer)
     // Show placeholder if no quests
     if count == 0
         let btnIndex = 400
-        ui_Btn[btnIndex].setSize(0.3, 0.05)
-        ui_Btn[btnIndex].setScale(0.6)
-        ui_Btn[btnIndex].setTextAlignment(TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
-        ui_Btn[btnIndex].setAbsPoint(FRAMEPOINT_TOPLEFT, 0.02, 0.45)
-        ui_Btn[btnIndex].setText("|cffffcc00No quests available|r")
-        ui_Btn[btnIndex].setVisible(localPlayer,true)
+        ui_Btn[btnIndex]
+        ..setSize(0.3, 0.05)
+        ..setScale(0.6)
+        ..setTextAlignment(TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
+        ..setAbsPoint(FRAMEPOINT_TOPLEFT, 0.02, 0.45)
+        ..setText("|cffffcc00No quests available|r")
+        ..setVisible(localPlayer,true)
         return
 
     // Display dynamic quest entries
@@ -133,10 +134,11 @@ function updateQuestPanel(player localPlayer)
         let questText = quests.get(idx).getQuestText()
         let btnIndex = 400 + idx
         if(btnIndex == 400)
-            ui_Btn[btnIndex].setSize(0.3, 0.03)
-            ui_Btn[btnIndex].setScale(0.6)
-            ui_Btn[btnIndex].setTextAlignment(TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
-            ui_Btn[btnIndex].setAbsPoint(FRAMEPOINT_TOPLEFT, 0.02, 0.45 - (idx * 0.03))
+            ui_Btn[btnIndex]
+            ..setSize(0.3, 0.03)
+            ..setScale(0.6)
+            ..setTextAlignment(TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
+            ..setAbsPoint(FRAMEPOINT_TOPLEFT, 0.02, 0.45 - (idx * 0.03))
         if(quests.get(idx).getQuestStatus())
             ui_Btn[btnIndex].setText("Quest completed!")
         else

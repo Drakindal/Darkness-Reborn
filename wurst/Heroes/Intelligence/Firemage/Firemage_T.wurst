@@ -16,7 +16,7 @@ function explosion(unit caster, vec2 target)
     flashEffect("NewMassiveEX.mdl", target, 3)
     forUnitsInRange(target, 800, true) (unit u) ->
         if caster.isEnemyOf(u)
-            caster.damageTargetCode(dmg, u, null, 'phoe', damageType.Magical)
+            caster.damageTargetCode(dmg, u, null, 'phoe', customDamageType.Magical)
 
 function spawnPhoenix(unit caster, vec2 target)
     let lvl = GetUnitAbilityLevel(caster, 'A0MN')
@@ -41,7 +41,7 @@ function spawnPhoenix(unit caster, vec2 target)
         forUnitsInRange(target, 900, true) (unit u) ->
             if caster.isEnemyOf(u) and u.isAlive()
                 if u.getHPRatio() < 0.05
-                    caster.damageTargetCode(u.getMaxHP(), u, null, -1, damageType.Pure)
+                    caster.damageTargetCode(u.getMaxHP(), u, null, -1, customDamageType.Pure)
                     flashEffect(Abilities.fireLordDeathExplode, u.getPos())
         if cb.isLast()
             explosion(caster, target)

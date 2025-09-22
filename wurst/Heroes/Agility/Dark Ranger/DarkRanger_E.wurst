@@ -16,7 +16,7 @@ public function darkDrain()
         let pos = caster.getPos3Real()
         pos.add(0, 0, 0)
         manaDrained = createManaBurnTextTag(caster, dmg.toInt())
-        caster.damageTargetCode(dmg, target, null, -1, damageType.Magical)
+        caster.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
         caster.setMana(caster.getMana() + caster.getAgi(true) * lvl)
         doAfter(3) -> 
             manaDrained.destr()

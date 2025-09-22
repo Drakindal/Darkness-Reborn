@@ -145,7 +145,7 @@ init
     ..setClassification("Permanent")
     ..addStats(addStr(100))
     ..addStats(addHp(3000))
-    ..addStats(addAbilityReturnDamageStats(0.5, 1, statsType.Str, damageType.PhysicalRanged))
+    ..addStats(addAbilityReturnDamageStats(0.5, 1, statsType.Str, customDamageType.PhysicalRanged))
     ..addComponents(
     ITEM_HELM_OF_VALOR,
     ITEM_SPLIT_ARMOR)

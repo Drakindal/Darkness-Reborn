@@ -1,0 +1,25 @@
+package DamageCustomEvent
+import DamageEvent
+import DamageTypes
+import ClosureEvents
+
+public class DamageCustomEvent extends DamageEvent
+    // Extended next damage instances
+    protected static customDamageType nextCustomDamageType = customDamageType.Pure
+
+    /** Returns the damagetype of the damage instance being currently fired */
+    static function getCustomDamageType() returns customDamageType
+        return nextCustomDamageType
+
+    /** Sets the DamageType for the next damage instance */
+    static function setNextCustomDamageType(customDamageType damageType)
+        nextCustomDamageType = damageType
+
+
+    // Reset next custom damage type and call damage event reduce function
+    static protected function onUnreducedDamage()
+        DamageEvent.onUnreducedDamage()
+        nextCustomDamageType = customDamageType.Pure
+
+init
+    EventListener.add(EVENT_PLAYER_UNIT_DAMAGING, () -> DamageCustomEvent.onUnreducedDamage())

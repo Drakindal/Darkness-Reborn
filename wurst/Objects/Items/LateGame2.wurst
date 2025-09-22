@@ -85,7 +85,7 @@ init
     ..setActivelyUsed(true)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Helm.blp")
     ..setClassification("Artifact")
-    ..addStats(addAbilityDealAoeDamage(10000, 600, damageType.Magical, 2500, 30))
+    ..addStats(addAbilityDealAoeDamage(10000, 600, customDamageType.Magical, 2500, 30))
     ..addStats(addArmor(100))
     ..addStats(addHp(5000))
     ..addStats(addHpReg(50))

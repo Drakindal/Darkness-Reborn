@@ -43,39 +43,22 @@ let resList = compiletime(new LinkedList<ResStats>())
 // Set up run-time data using compile-time data
 // ----------------------------------------------------------------------------
 
-function addPenToMap(HashMap<int, EntityStats> map, PenStats stats)
-    if (not map.has(stats.id))
-        map.put(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
-    else
-        map.get(stats.id).setPen(stats.penType, stats.value)
-
-function addResToMap(HashMap<int, EntityStats> map, ResStats stats)
-    if (not map.has(stats.id))
-        map.put(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
-    else
-        map.get(stats.id).setRes(stats.resType, stats.value)
-
 init
-    let unitMap = private_getUnitBaseStatsMap()
-    let itemMap = private_getItemBaseStatsMap()
-
     for stats in penList
-        println("ID = {0} Pen value = {1}".format(stats.id.toString(), stats.value.toString()))
         if (stats.isUnit)
-            addPenToMap(unitMap, stats)
+            private_putUnitBaseStatsMap(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
         else
-            addPenToMap(itemMap, stats)
+            private_putItemBaseStatsMap(stats.id, new EntityStats()..setPen(stats.penType, stats.value))
         destroy stats
 
     penList.clear()
     destroy penList
 
     for stats in resList
-        println("ID = {0} Res value = {1}".format(stats.id.toString(), stats.value.toString()))
         if (stats.isUnit)
-            addResToMap(unitMap, stats)
+            private_putUnitBaseStatsMap(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
         else
-            addResToMap(itemMap, stats)
+            private_putItemBaseStatsMap(stats.id, new EntityStats()..setRes(stats.resType, stats.value))
         destroy stats
 
     resList.clear()
