@@ -19,7 +19,8 @@ let wavesList = new LinkedList<Waves>
 let bossWaveList = new LinkedList<BossWaves>
 let bigBossWaveList = new LinkedList<BossWaves>
 
-init
+@compiletime
+function initCreepStats()
 	CREEP_LEFT_MUD_GOLEM.addUnitBaseRes(resType.Magical, 0.80)
 	CREEP_LEFT_ROCK_GOLEM.addUnitBaseRes(resType.Magical, 0.80)
 	CREEP_LEFT_GRANITE_GOLEM.addUnitBaseRes(resType.Magical, 0.80)
