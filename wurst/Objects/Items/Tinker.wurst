@@ -54,7 +54,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(1700))
     ..addStats(addCrit(0.25, 11))
-    ..addStats(addArmorPen(penType.Physical, 0.08))
+    ..addStats(addPen(penType.Physical, 0.08))
     ..addComponents(
     ITEM_DESTROY_SWORD,
     ITEM_BLADE_OF_HELL,
@@ -89,7 +89,7 @@ init
     ..setClassification("Artifact")
     ..addStats(addDamage(7000))
     ..addStats(addCrit(0.80, 5))
-    ..addStats(addArmorPen(penType.Physical, 0.10))
+    ..addStats(addPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_GOLD_AXE,
     ITEM_RECIPE_GOLD_AXE_II,

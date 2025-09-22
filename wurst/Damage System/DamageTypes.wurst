@@ -22,29 +22,29 @@ public enum resType
 public function customDamageType.toString() returns string
     switch this
         case customDamageType.Magical
-            return "magic damage"
+            return "Magic Damage"
         case customDamageType.PhysicalMelee
-            return "physical melee damage"
+            return "Physical Melee Damage"
         case customDamageType.PhysicalRanged
-            return "physical range damage"
+            return "Physical Range Damage"
         case customDamageType.Pure
-            return "pure damage"
+            return "Pure Damage"
 
 public function penType.toString() returns string
     switch this
         case penType.Magical
-            return "magic pen"
+            return "Magic Pen"
         case penType.Physical
-            return "phys pen"
+            return "Phys Pen"
 
 public function resType.toString() returns string
     switch this
         case resType.Universal
-            return "universal res"
+            return "Universal Res"
         case resType.Magical
-            return "magic res"
+            return "Magic Res"
         case resType.Physical
-            return "phys res"
+            return "Phys Res"
 
 // ----------------------------------------------------------------------------
 

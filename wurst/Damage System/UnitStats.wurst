@@ -8,6 +8,7 @@ import EntityStats
 import public DamageTypes
 import UnitInventory
 import DS_DataRunTime
+import Format
 
 // ----------------------------------------------------------------------------
 
@@ -83,7 +84,6 @@ public function unit.getStats() returns UnitStats
     if unitStatsMap.has(this)
         return unitStatsMap.get(this)
     else
-        //println("Unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}".format(this.getName(), this.getTypeId().toString()))
         let us = new UnitStats(this)
         unitStatsMap.put(this, us)
         return us
@@ -118,7 +118,19 @@ init
         if EventData.getChatMessage().substring(0, 6).toLowerCase() == "-stats"
             let p = GetTriggerPlayer()
             let u = playerHero.get(p)
-            printTimedToPlayer("Physical Penetration: "+ (unitStatsMap.get(u).getPen(penType.Physical) * 100).toString() + "%" +
-            "\nMagic Resistance: "+ (unitStatsMap.get(u).getRes(resType.Magical) * 100).toString() +"%", 10, p)
+            let us = unitStatsMap.get(u)
+            printTimedToPlayer(
+                "Physical Penetration: {0}%\n" +
+                "Magical  Penetration: {1}%\n" +
+                "Physical Resistance:  {2}%\n" +
+                "Magical  Resistance:  {3}%\n" +
+                "Universal Resistance: {4}%\n".format(
+                    us.getPen(penType.Physical).percentToString(),
+                    us.getPen(penType.Magical).percentToString(),
+                    us.getRes(resType.Physical).percentToString(),
+                    us.getRes(resType.Magical).percentToString(),
+                    us.getRes(resType.Universal).percentToString()
+                ), 10, p
+            )
             
 // ----------------------------------------------------------------------------

@@ -16,4 +16,7 @@ public function realToString(real value, int precision) returns string
     else
         return value.toString(precision)
 
+public function real.percentToString() returns string
+    return (100 * this).toString(2)
+
 // ----------------------------------------------------------------------------

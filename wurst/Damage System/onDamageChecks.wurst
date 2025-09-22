@@ -1,0 +1,68 @@
+package onDamageChecks
+
+import MyUnitIds
+import DamageCustomEvent
+import MyAbilityIds
+import MyBuffIds
+import DragonTurtle
+import Turtle
+import ThornsAuraWave
+import AbilitiesList
+import Pitlord_R
+import Pitlord_E
+
+// ----------------------------------------------------------------------------
+
+public function anyAttackChecks(unit src, unit targ)
+    // Warden T ability.
+    if src.hasAbility('B003')
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 2)
+        src.removeAbility('B003')
+
+// ----------------------------------------------------------------------------
+// MAGIC DAMAGE CHECKS
+// ----------------------------------------------------------------------------
+
+public function magicDamageChecks(unit src, unit targ)
+    // Uther Damage reduction
+    if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
+
+// ----------------------------------------------------------------------------
+// PHYSICAL DAMAGE CHECKS
+// ----------------------------------------------------------------------------
+
+public function physicalDamageChecks(unit src, unit targ)
+    // Uther Damage reduction
+    if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
+    // Wolfman attack
+    if src.hasAbility(WOLF_BUFF_1)
+        src.addHP(DamageCustomEvent.getAmount() * 0.25)
+
+// ----------------------------------------------------------------------------
+// Reflection checks
+// ----------------------------------------------------------------------------
+
+public function universalReflectionChecks(unit src, unit targ)
+
+public function meleeReflectionChecks(unit src, unit targ)
+    let dam = DamageCustomEvent.getAmount()
+    let targuID = targ.getTypeId()
+
+    for abilityInfo in abilitiesListReflections
+        if (targ.hasItemById(abilityInfo.itemId))
+            abilityInfo.runHandler(src, targ)
+
+    if(targuID == WAVE_MOB_18)
+        turtle(targ, src, dam)
+    if(targuID == WAVE_BOSS_95)
+        dragonTurtle(targ, src, dam)
+    if(targ.getAbilityLevel('A0RI') > 0)
+        pitLordThorn(targ, src)
+    if(targ.getAbilityLevel('a0RL') > 0)
+        pitLordDemonSkin(targ, src, dam)
+    if(targ.hasAbility('BEah'))
+        thornsAuraWave(targ, src, dam)
+        
+// ----------------------------------------------------------------------------

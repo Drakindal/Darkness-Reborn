@@ -32,14 +32,6 @@ public function addArmorOnHit(int value) returns ItemStats
 
 // ----------------------------------------------------------------------------
 
-public function addArmorPen(penType penType, real value) returns ItemStats
-    let effects = wordArmorPen.format(realToString(100*value, 0), penType.toString())
-    
-    return new ItemStatsCustomFunc(effects, 
-    (itemId, itemDef) -> itemId.addItemBasePen(penType, value))
-
-// ----------------------------------------------------------------------------
-
 public function addFrost(real durationNormal, real durationHero) returns ItemStats
     let abilityId = ABIL_ID_GEN.next()
 

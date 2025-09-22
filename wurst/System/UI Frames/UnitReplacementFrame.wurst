@@ -4,6 +4,7 @@ import ClosureEvents
 import DamageTypes
 import UnitStats
 import HashMap
+import Format
 
 let armorValue = getFrame(FramehandleDefaultNames.infoPanelIconValue, 2)
 let armorName = getFrame(FramehandleDefaultNames.infoPanelIconLabel, 2)
@@ -18,10 +19,17 @@ public function updateResistance(player p, unit u)
     if(u.isInvulnerable())
         armorName.setText("Invulnerable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     else if(stats != null)
-        armorName.setText(p, "Resistances\nPhysical: |cffad2222{0}%|r\nMagical: |cff1c2bc9{1}%|r\nUniversal: |cff81830d{2}%|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n".format(
-            (stats.getRes(resType.Physical) * 100).toInt().toString(), 
-            (stats.getRes(resType.Magical) * 100).toInt().toString(),
-            (stats.getRes(resType.Universal) * 100).toInt().toString()))
+        armorName.setText(p, 
+            "Resistances\n" +
+            "Physical: |cffad2222{0}%|r\n" +
+            "Magical: |cff1c2bc9{1}%|r\n" +
+            "Universal: |cff81830d{2}%|r\n" +
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n".format(
+                stats.getRes(resType.Physical).percentToString(), 
+                stats.getRes(resType.Magical).percentToString(),
+                stats.getRes(resType.Universal).percentToString()
+            )
+        )
     else
         armorName.setText(p, "Resistances\nPhysical: |cffad22220|r\nMagical: |cff1c2bc90|r\nUniversal: |cff81830d0|r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 

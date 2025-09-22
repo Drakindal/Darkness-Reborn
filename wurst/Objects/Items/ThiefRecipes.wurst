@@ -232,7 +232,7 @@ init
     ..addStats(addDamage(2500))
     ..addStats(addAllStats(333))
     ..addStats(addAttackSpeed(2.2))
-    ..addStats(addArmorPen(penType.Physical, 0.15))
+    ..addStats(addPen(penType.Physical, 0.15))
     ..addStats(addCrit(0.20, 20))
     ..addComponents(
     ITEM_SLASH_SWORD_L5,
@@ -249,7 +249,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..addStats(addAllStats(1000))
     ..addStats(addDamage(10000))
-    ..addStats(addArmorPen(penType.Physical, 0.05))
+    ..addStats(addPen(penType.Physical, 0.05))
     ..addComponents(
     ITEM_MERCY,
     ITEM_GOLDEN_HAMMER,

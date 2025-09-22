@@ -159,7 +159,7 @@ init
     new MyItemDefinition(ITEM_SHAMANIC_TOTEM)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp")
     ..addStats(addDamage(240))
-    ..addStats(addArmorPen(penType.Physical, 0.01))
+    ..addStats(addPen(penType.Physical, 0.01))
     ..setStockMaximum(99)
     ..register()
 
@@ -199,7 +199,7 @@ init
     new MyItemDefinition(ITEM_DRUID_OF_CLAW_MASTER)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNDOCMasterTraining.blp")
     ..addStats(addDamage(355))
-    ..addStats(addArmorPen(penType.Physical, 0.02))
+    ..addStats(addPen(penType.Physical, 0.02))
     ..setStockMaximum(99)
     ..register()
 

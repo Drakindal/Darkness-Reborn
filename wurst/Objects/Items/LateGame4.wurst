@@ -45,7 +45,7 @@ init
     ..setStockReplenishInterval(45)
     ..addStats(addDamage(1500))
     ..addStats(addAgi(690))
-    ..addStats(addArmorPen(penType.Physical, 0.05))
+    ..addStats(addPen(penType.Physical, 0.05))
     ..addStats(addCrit(0.04, 60))
     ..addHotKey()
     ..register()

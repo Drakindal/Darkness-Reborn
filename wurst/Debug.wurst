@@ -13,8 +13,8 @@ public function initDebug()
         return
 
     for i = 0 to 9
-        players[i].addGold(100000000)
-        players[i].addLumber(100000000)
+        players[i].addGold(900000)
+        players[i].addLumber(900000)
         players[i].setState(PLAYER_STATE_RESOURCE_FOOD_CAP, 50)
 
     // Above the fountain position

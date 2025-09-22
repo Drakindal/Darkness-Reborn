@@ -1,0 +1,28 @@
+package onDamageDifficulty
+
+import MyUnitIds
+// import DamageDetection
+import DamageCustomEvent
+import Global_Variables
+
+// ----------------------------------------------------------------------------
+
+let difficultyEnemyDamageIncrease = [0.5, 0.75, 1., 1.5, 2.]
+let difficultyEnemyResistanceIncrease = [1.5, 1.3, 1., 0.6, 0.5]
+
+// ----------------------------------------------------------------------------
+
+public function increaseEnemyDamageForDifficulty(unit src)
+    // Change damage dealt by enemies to players due to game difficulty
+
+    if(src.isEnemyOf(PLAYER_ALLY_BASE))
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * difficultyEnemyDamageIncrease[gameMode])
+
+
+public function increaseEnemyResistanceForDifficulty(unit target)
+    // Change damage received by enemies due to game difficulty
+
+    if(target.isEnemyOf(PLAYER_ALLY_BASE))
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * difficultyEnemyResistanceIncrease[gameMode])
+
+// ----------------------------------------------------------------------------

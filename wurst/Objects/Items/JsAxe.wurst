@@ -194,7 +194,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(8000))
-    ..addStats(addArmorPen(penType.Physical, 0.04))
+    ..addStats(addPen(penType.Physical, 0.04))
     ..register()
 
 //I0FM
@@ -202,7 +202,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(10000))
-    ..addStats(addArmorPen(penType.Physical, 0.08))
+    ..addStats(addPen(penType.Physical, 0.08))
     ..register()
 
 //I0FL
@@ -210,7 +210,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(12000))
-    ..addStats(addArmorPen(penType.Physical, 0.12))
+    ..addStats(addPen(penType.Physical, 0.12))
     ..register()
 
 //I0FN
@@ -218,7 +218,7 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")
     ..setClassification("Campaign")
     ..addStats(addDamage(16000))
-    ..addStats(addArmorPen(penType.Physical, 0.16))
+    ..addStats(addPen(penType.Physical, 0.16))
     ..register()
 
 //I0FO
@@ -226,5 +226,5 @@ init
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
     ..setClassification("Campaign")
     ..addStats(addDamage(22000))
-    ..addStats(addArmorPen(penType.Physical, 0.20))
+    ..addStats(addPen(penType.Physical, 0.20))
     ..register()

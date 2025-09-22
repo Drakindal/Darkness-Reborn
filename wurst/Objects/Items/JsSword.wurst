@@ -99,7 +99,7 @@ init
     ..addStats(addAllStats(20))
     ..addStats(addAttackSpeed(0.45))
     ..addStats(addCrit(0.15, 2.5))
-    ..addStats(addArmorPen(penType.Physical, 0.02))
+    ..addStats(addPen(penType.Physical, 0.02))
     ..addComponents(
     ITEM_KAIN_SWORD_L4,
     ITEM_MAUL_OF_STRENGTH)
@@ -113,7 +113,7 @@ init
     ..addStats(addAllStats(40))
     ..addStats(addAttackSpeed(0.75))
     ..addStats(addCrit(0.15, 4.5))
-    ..addStats(addArmorPen(penType.Physical, 0.04))
+    ..addStats(addPen(penType.Physical, 0.04))
     ..addComponents(
     ITEM_SLASH_SWORD_L1,
     ITEM_FIRE_SWORD)
@@ -127,7 +127,7 @@ init
     ..addStats(addAllStats(60))
     ..addStats(addAttackSpeed(0.85))
     ..addStats(addCrit(0.15, 7.5))
-    ..addStats(addArmorPen(penType.Physical, 0.06))
+    ..addStats(addPen(penType.Physical, 0.06))
     ..addComponents(
     ITEM_SLASH_SWORD_L2,
     ITEM_SHAMANIC_TOTEM)
@@ -141,7 +141,7 @@ init
     ..addStats(addAllStats(80))
     ..addStats(addAttackSpeed(0.95))
     ..addStats(addCrit(0.15, 9.5))
-    ..addStats(addArmorPen(penType.Physical, 0.08))
+    ..addStats(addPen(penType.Physical, 0.08))
     ..addComponents(
     ITEM_SLASH_SWORD_L3,
     ITEM_FORGE_SWORD_L3,
@@ -156,7 +156,7 @@ init
     ..addStats(addAllStats(100))
     ..addStats(addAttackSpeed(1.15))
     ..addStats(addCrit(0.15, 12.5))
-    ..addStats(addArmorPen(penType.Physical, 0.10))
+    ..addStats(addPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_SLASH_SWORD_L4,
     ITEM_BLADE_OF_HELL)

@@ -7,6 +7,8 @@ import Format
 import ItemStatsDef
 import ObjectIds
 import ActiveAbilityDef
+import DamageTypes
+import DS_DataCompileTime
 
 // ----------------------------------------------------------------------------
 
@@ -73,5 +75,13 @@ public function addBash(real chance, real damage, real stunDuration, real cd) re
     ..setDummyAbility()
 
     return addAbilityStunTargetPassive(100*chance, cd, effects, abilityId)
+
+// ----------------------------------------------------------------------------
+
+public function addPen(penType penType, real value) returns ItemStats
+    let effects = wordArmorPen.format(realToString(100*value, 0), penType.toString())
+    
+    return new ItemStatsCustomFunc(effects, 
+    (itemId, itemDef) -> itemId.addItemBasePen(penType, value))
 
 // ----------------------------------------------------------------------------
