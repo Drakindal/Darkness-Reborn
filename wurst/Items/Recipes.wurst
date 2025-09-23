@@ -3,6 +3,7 @@ package Recipes
 import LinkedList
 import MyItemIds
 import UnitInventory
+import RandomGen
 
 // ----------------------------------------------------------------------------
 
@@ -146,7 +147,7 @@ public class ChanceRecipeList extends RecipeListBase
         let recipeIdx = getRecipePosition(unitInventory)
         if (recipeIdx != -1)
             let foundRecipe = recipeList.get(recipeIdx)
-            if (GetRandomInt(1, 1000) <= (foundRecipe.chance * 1000).toInt())
+            if (checkChance(foundRecipe.chance))
                 removeRecipeComponents(unitInventory, foundRecipe.recipe)
                 u.addItemById(foundRecipe.recipe.completedItem)
                 resultItemId = foundRecipe.recipe.completedItem

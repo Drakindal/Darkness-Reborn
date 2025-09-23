@@ -1,5 +1,9 @@
 package EntityStats
 import DamageTypes
+import RandomGen
+import LinkedList
+import MyColors
+import StandardTextTags
 
 // ----------------------------------------------------------------------------
 
@@ -8,7 +12,7 @@ public function clipNumber(real value) returns real
 
 // ----------------------------------------------------------------------------
 
-public class ResPenPair
+class ResPenPair
     real res = 0
     real pen = 0
 
@@ -16,7 +20,6 @@ public class ResPenPair
         let reducedByRes   = unreducedDamage * res
         let plain          = unreducedDamage - reducedByRes
         let penetrated     = pen * reducedByRes
-        print("Calculated damage" + (plain + penetrated).toString())
         return plain + penetrated
 
     function clear()
@@ -36,6 +39,53 @@ public class ResPenPair
         pen = clipNumber(pen)
 
 // ----------------------------------------------------------------------------
+
+function handleBlock(real damage, real block) returns real
+    if (block > damage)
+        return 0
+    else
+        return damage - block
+
+class ChanceBlockStats
+    real chance = 0
+    real value  = 0
+
+    construct(real chance, real value)
+        this.chance = chance
+        this.value  = value
+
+    construct(ChanceBlockStats other)
+        copyFrom(other)
+
+    function calcDamage(real initialDamage, unit u) returns real
+        if (checkChance(chance))
+            standardTextTag(u.getPos(), "Blocked {0}".format(value.toString(0)).setColor(colDamageBlock))
+            return handleBlock(initialDamage, value)
+        else
+            return initialDamage
+
+    function clear()
+        chance = 0
+        value = 0
+
+    function copyFrom(ChanceBlockStats other)
+        this.chance = other.chance
+        this.value = other.value
+
+function LinkedList<ChanceBlockStats>.clearList()
+    for entry in this
+        destroy entry
+    this.clear()
+
+function copyList(LinkedList<ChanceBlockStats> dst, LinkedList<ChanceBlockStats> src)
+    dst.clear()
+    addList(dst, src)
+
+function addList(LinkedList<ChanceBlockStats> dst, LinkedList<ChanceBlockStats> src)
+    for entry in src
+        dst.add(new ChanceBlockStats(entry))
+    
+// ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
 // Run-time stats of unit/item
@@ -43,42 +93,58 @@ public class EntityStats
     private ResPenPair physDamage  = new ResPenPair()
     private ResPenPair magicDamage = new ResPenPair()
 
-    private real universalRes    = 0
-    private real preDamageBlock  = 0
-    private real postDamageBlock = 0
+    private real universalRes      = 0
+
+    private real preDamageBlock    = 0
+    private real postDamageBlock   = 0
+    private LinkedList<ChanceBlockStats> preChanceBlock  = new LinkedList<ChanceBlockStats>
+    private LinkedList<ChanceBlockStats> postChanceBlock = new LinkedList<ChanceBlockStats>
 
     ondestroy
         destroy physDamage
         destroy magicDamage
+
+        preChanceBlock.clearList()
+        destroy preChanceBlock
+
+        postChanceBlock.clearList()
+        destroy postChanceBlock
     
     function clear()
-        physDamage.clear()
-        magicDamage.clear()
+        physDamage      .clear()
+        magicDamage     .clear()
         universalRes    = 0
         preDamageBlock  = 0
         postDamageBlock = 0
+        preChanceBlock  .clearList()
+        postChanceBlock .clearList()
 
     function copyFrom(EntityStats other)
         if (other != null)
-            this.physDamage.copyFrom(other.physDamage)
-            this.magicDamage.copyFrom(other.magicDamage)
+            this.physDamage      .copyFrom(other.physDamage)
+            this.magicDamage     .copyFrom(other.magicDamage)
             this.universalRes    = other.universalRes
             this.preDamageBlock  = other.preDamageBlock
             this.postDamageBlock = other.postDamageBlock
+
+            copyList(this.preChanceBlock , other.preChanceBlock)
+            copyList(this.postChanceBlock, other.postChanceBlock)
         else
             clear()
 
     function addStats(EntityStats other)
         if other != null
-            this.physDamage.addStats(other.physDamage)
-            this.magicDamage.addStats(other.magicDamage)
+            this.physDamage      .addStats(other.physDamage)
+            this.magicDamage     .addStats(other.magicDamage)
             this.universalRes    += other.universalRes
             this.preDamageBlock  += other.preDamageBlock
             this.postDamageBlock += other.postDamageBlock
+            addList(this.preChanceBlock, other.preChanceBlock)
+            addList(this.postChanceBlock, other.postChanceBlock)
     
     function clip()
-        physDamage.clip()
-        magicDamage.clip()
+        physDamage   .clip()
+        magicDamage  .clip()
         universalRes = clipNumber(universalRes)
 
 // ----------------------------------------------------------------------------
@@ -141,13 +207,21 @@ public class EntityStats
 
     function addDamageBlock(blockType blockType, real value)
         setDamageBlock(blockType, value + getDamageBlock(blockType))
+
+    function addChanceBlock(blockType blockType, real chance, real value)
+        switch blockType
+            case blockType.PreResistances
+                preChanceBlock.add( new ChanceBlockStats(chance, value))
+            case blockType.PostResistances
+                postChanceBlock.add(new ChanceBlockStats(chance, value))
     
 // ----------------------------------------------------------------------------
 
-    function calcDamage(customDamageType damageType, real unreducedDamage) returns real
-        var damage = unreducedDamage - preDamageBlock
-        if (damage < 0)
-            return 0
+    function calcDamage(customDamageType damageType, real initialDamage, unit target) returns real
+        var damage = handleBlock(initialDamage, preDamageBlock)
+
+        for block in preChanceBlock
+            damage = block.calcDamage(damage, target)
 
         switch damageType
             case damageType.Pure
@@ -157,10 +231,11 @@ public class EntityStats
             case damageType.Magical
                 damage = magicDamage.calcDamage(damage) * (1 - universalRes)
 
-        damage -= postDamageBlock
-        if (damage < 0)
-            return 0
+        damage = handleBlock(damage, postDamageBlock)
 
+        for block in postChanceBlock
+            damage = block.calcDamage(damage, target)
+                
         return damage
 
 // ----------------------------------------------------------------------------

@@ -1,0 +1,10 @@
+package RandomGen
+
+// ----------------------------------------------------------------------------
+
+// Do action with "chance".
+// If action should be handled returns true.
+public function checkChance(real chance) returns bool
+    return GetRandomInt(1, 1000) <= (chance * 1000).toInt()
+        
+// ----------------------------------------------------------------------------

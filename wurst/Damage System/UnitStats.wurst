@@ -1,13 +1,12 @@
 package UnitStats
 
+import public DamageTypes
 import HashMap
 import Global_Variables
 import ClosureEvents
 import LinkedList
 import EntityStats
-import public DamageTypes
 import UnitInventory
-import DS_DataRunTime
 import Format
 import DS_DataPrivate
 import DS_DataCompileTime
@@ -79,8 +78,9 @@ public class UnitStats
 
 // ----------------------------------------------------------------------------
 
+    // Calc damage the unit will receive
     function calcDamage(customDamageType damageType, real unreducedDamage) returns real
-        let testReal = clippedValues.calcDamage(damageType, unreducedDamage)
+        let testReal = clippedValues.calcDamage(damageType, unreducedDamage, u)
         return testReal
         
 // ----------------------------------------------------------------------------

@@ -2,6 +2,7 @@ package AbilitiesList
 
 import ClosureEvents
 import LinkedList
+import RandomGen
 
 // ----------------------------------------------------------------------------
 
@@ -41,9 +42,9 @@ public class ItemTargetWurstChanceAbility extends ItemWurstAbility
     construct(int itemId, real chance, TargetAbilityFunc handler)
         super(itemId, handler)
         this.chance = chance
-        
+    
     override function runHandler(unit src, unit target)
-        if (GetRandomInt(1, 1000) <= (chance * 1000).toInt())
+        if (checkChance(chance))
             handler.run(src, target)
 
 // ----------------------------------------------------------------------------

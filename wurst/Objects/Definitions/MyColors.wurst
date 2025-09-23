@@ -33,6 +33,7 @@ public let colTinkerRecipe     = "|cff868059"
 
 public let colMinusArmor      = "|cff903cf6"
 public let colLifeSteal       = "|cffdf5a5a"
+public let colDamageBlock     = "|cff66d3e9"
 
 public class Color
     int R

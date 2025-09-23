@@ -69,19 +69,11 @@ public function addArmor(int value) returns ItemStats
 
 // ----------------------------------------------------------------------------
 
-public function addDamageBlockChance(real chance, real ignoreValue) returns ItemStats
-    let abilityId = ABIL_ID_GEN.next()
+public function addDamageBlockChance(blockType blockType, real chance, real ignoreValue) returns ItemStats
     let effects = wordDamageBlockChance.format((100*chance).toString(1), ignoreValue.toString(0))
 
-    new AbilityDefinitionHardenedSkin(abilityId)
-    ..setLevels(1)
-    ..setChancetoReduceDamage(1, chance)
-    ..setMinimumDamage(1, 0)
-    ..setIgnoredDamage(1, ignoreValue)
-    ..setIncludeMeleeDamage(1, true)
-    ..setIncludeRangedDamage(1, true)
-
-    return new ItemStats(abilityId, effects)
+    return new ItemStatsCustomFunc(effects,
+    (itemId, itemDef) -> itemId.addItemBaseChanceBlock(blockType, chance, ignoreValue))
 
 public function addDamageBlock(blockType blockType, real value) returns ItemStats
     let effects = wordDamageBlock.format(realToString(value, 0), blockType.toString())

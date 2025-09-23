@@ -40,12 +40,22 @@ class BlockStats extends StatsBase
         super(id, isUnit, value)
         this.blockType = blockType
 
+class ChanceBlockStats extends StatsBase
+    blockType blockType
+    real      chance
+    
+    construct(int id, bool isUnit, real value, real chance, blockType blockType)
+        super(id, isUnit, value)
+        this.blockType = blockType
+        this.chance    = chance
+    
 // ----------------------------------------------------------------------------
 
 // Used in compile-time
-let penList   = compiletime(new LinkedList<PenStats>())
-let resList   = compiletime(new LinkedList<ResStats>())
-let blockList = compiletime(new LinkedList<BlockStats>())
+let penList         = compiletime(new LinkedList<PenStats>())
+let resList         = compiletime(new LinkedList<ResStats>())
+let blockList       = compiletime(new LinkedList<BlockStats>())
+let chanceBlockList = compiletime(new LinkedList<ChanceBlockStats>())
 
 // Used in run-time
 let unitTypeMap = new HashMap<int, EntityStats>
@@ -85,6 +95,16 @@ init
 
     blockList.clear()
     destroy blockList
+    
+    for stats in chanceBlockList
+        if (stats.isUnit)
+            stats.id.private_modifyUnitBaseStats(es -> es.addChanceBlock(stats.blockType, stats.chance, stats.value))
+        else
+            stats.id.private_modifyItemBaseStats(es -> es.addChanceBlock(stats.blockType, stats.chance, stats.value))
+        destroy stats
+
+    chanceBlockList.clear()
+    destroy chanceBlockList
 
 // ----------------------------------------------------------------------------
 // Set up compile-time data
@@ -99,6 +119,9 @@ public function int.addItemBaseRes(resType resType, real value)
 public function int.addItemBaseDamageBlock(blockType blockType, real value)
     blockList.add(new BlockStats(this, false, value, blockType))
 
+public function int.addItemBaseChanceBlock(blockType blockType, real chance, real value)
+    chanceBlockList.add(new ChanceBlockStats(this, false, value, chance, blockType))
+
 // ----------------------------------------------------------------------------
 
 public function int.addUnitBasePen(penType penType, real value)
@@ -109,6 +132,9 @@ public function int.addUnitBaseRes(resType resType, real value)
 
 public function int.addUnitBaseDamageBlock(blockType blockType, real value)
     blockList.add(new BlockStats(this, true, value, blockType))
+
+public function int.addUnitBaseChanceBlock(blockType blockType, real chance, real value)
+    chanceBlockList.add(new ChanceBlockStats(this, true, value, chance, blockType))
 
 // ----------------------------------------------------------------------------
 // Get compile-time stats data.

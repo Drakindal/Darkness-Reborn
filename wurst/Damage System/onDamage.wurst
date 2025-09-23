@@ -12,8 +12,6 @@ import onDamageDifficulty
 
 @configurable constant DETECT_NATIVE_ABILITIES = true
 
-texttag justaposeCrit
-
 // ----------------------------------------------------------------------------
 
 function modifyAmountArmorType(unit src, unit targ)

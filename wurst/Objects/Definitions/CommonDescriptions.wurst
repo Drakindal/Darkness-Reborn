@@ -87,10 +87,10 @@ public let wordHp                 = "HP"
 public let wordHpReg              = "HP/s"
 public let wordHpRegAura          = "+{0} in {1} Range"
 public let wordRestoreHp          = "Restores {0} HP when Used"
-   
+
 public let wordArmor              = "Armor"
-public let wordDamageBlockChance  = "|c006d6d6dBlock:|r {0}% Chance to Block {1} Damage"
-public let wordDamageBlock        = "|c006d6d6d+{0} {1}|r"
+public let wordDamageBlockChance  = "Block: {0}% Chance to Block {1} Damage".setColor(colDamageBlock)
+public let wordDamageBlock        = "{0} {1}".setColor(colDamageBlock)
 public let wordEvasion            = "Evasion"
 public let wordResist             = "{0}% {1}"
 public let wordSpikes             = "Return {0}% of the Damage Dealt to You Back to the Attacker"

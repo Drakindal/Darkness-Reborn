@@ -8,6 +8,7 @@ import CommonDescriptions
 import Global_Variables
 import StatsType
 import ActiveAbilityDef
+import RandomGen
 
 // ----------------------------------------------------------------------------
 
@@ -72,7 +73,7 @@ public function addAbilityGetStatsOnKill(int amount, real chance, statsType stat
     return new ItemStatsCustomFunc(-1, wordPassive + effects, (itemId, itemDef) -> begin
         abilitiesListCustomEvent.add(new ItemPlayerUnitDeathEventAbility(() -> begin
             let p = playerHero.get(GetKillingUnit().getOwner())
-            if p.hasItemById(itemId) and GetRandomInt(1, 1000) <= (chance * 1000).toInt()
+            if p.hasItemById(itemId) and checkChance(chance)
                 switch statsType
                     case statsType.Str
                         p.addStr(amount)
