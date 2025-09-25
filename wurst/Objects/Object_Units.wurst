@@ -16073,7 +16073,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_8, UnitIds.paladin)// JackSmith (H001)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(22)
     ..setStartingAgility(13)
@@ -16155,7 +16155,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_9, UnitIds.beastmaster)// Beastmaster (N02A)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(22)
@@ -16238,7 +16238,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_10, UnitIds.blademaster)// Satyr (O006)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -16322,7 +16322,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_11, UnitIds.warden)// Warden (E003)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -16405,7 +16405,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_12, UnitIds.blademaster)// Blademaster (O00Q)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -16488,7 +16488,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_13, UnitIds.taurenchieftain)// Tauren Chieftain (O002)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(25)
@@ -16655,7 +16655,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_15, UnitIds.mountainking)// Mountain King (H03Q)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(24)
@@ -16739,7 +16739,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_16, UnitIds.darkranger)// Dark Ranger (N04D)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -16822,7 +16822,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_17, UnitIds.dreadlord)// Dreadlord (U002)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(20)
@@ -16905,7 +16905,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_18, UnitIds.pitlord)// Pit Lord (N007)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Strength")
     ..setStartingStrength(26)
@@ -16988,7 +16988,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_19, UnitIds.sylvanuswindrunner)// Ranger (H005)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -17071,7 +17071,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_20, UnitIds.demonhunter)// Demon Hunter(boss wave) (E011)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(19)
@@ -17154,7 +17154,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_21, UnitIds.shadowhunter)// Shadow Hunter (O003)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Intelligence")
     ..setStartingStrength(15)
@@ -17237,7 +17237,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_22, UnitIds.blademaster)// Assasin (O00O)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -17320,7 +17320,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_23, UnitIds.priestessofthemoon)// Priestess of the Moon (E00M)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Agility")
     ..setStartingStrength(18)
@@ -17403,7 +17403,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_24, UnitIds.seawitch)// Naga Sea Witch (H03U)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Intelligence")
     ..setStartingStrength(15)
@@ -17489,7 +17489,7 @@ function int.heroPickedBlocker()
     ..setLevel(5)
 
     new HeroDefinition(WAVE_HERO_25, UnitIds.jaina)// Time Wizard (H03S)
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
 
     ..setPrimaryAttribute("Intelligence")
     ..setStartingStrength(15)

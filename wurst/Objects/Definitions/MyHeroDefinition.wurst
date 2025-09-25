@@ -1,0 +1,110 @@
+package MyHeroDefinition
+
+import UnitObjEditing
+import MyAbilityIds
+import AbilityIds
+import ObjectIds
+
+// ----------------------------------------------------------------------------
+
+public class MyHeroDefinition extends HeroDefinition
+    construct(int newId, int baseId)
+        super(newId, baseId)
+        initBase()
+
+    private function initBase()
+        hideHeroDeathMsg(true)
+        setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+
+        setScalingValue(1.00)
+        setSelectionScale(1.50)
+
+        setTargetedAs(commaList("ground"))
+        setAttacksEnabled(1)
+        setMinimumAttackRange(0)
+        setCanDropItemsOnDeath(true)
+
+        setAttack1DamageBase(0)
+        setAttack1DamageNumberofDice(2)
+        setAcquisitionRange(600.00)
+        setAttack1DamageSpillDistance(0.00)
+        setAttack1DamageSpillRadius(0.00)
+        setAttack1MaximumNumberofTargets(1)
+        setAttack1AreaofEffectFullDamage(0)
+        setAttack1AreaofEffectMediumDamage(0)
+        setAttack1AreaofEffectSmallDamage(0)
+        setAttack1AttackType(AttackType.Normal)
+
+        setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+        setAttack1AreaofEffectTargets(commaList(""))
+
+        setSpeedBase(280)
+        setMovementHeight(0.00)
+        setMovementHeightMinimum(0.00)
+        setSpeedMaximum(0)
+        setSpeedMinimum(0)
+        setTurnRate(0.50)
+        setMovementType(MovementType.Foot)
+        setCollisionSize(32.00)
+
+        setCanFlee(true)
+        setSleeps(false)
+
+        setSightRadiusDay(1800)
+        setSightRadiusNight(800)
+
+        setLumberCost(0)
+        setGoldCost(0)
+        setFoodCost(5)
+        setStockReplenishInterval(0)
+        setStockStartDelay(1)
+
+        setRequierementsForTier(1, "")
+        setRequierementsForTier(2, "")
+        setRequierementsForTier(3, "")
+        setRequierementsForTier(4, "")
+        setRequierementsForTier(5, "")
+        setRequierementsForTier(6, "")
+        setRequierementsForTier(7, "")
+        setRequierementsForTier(8, "")
+        setRequierementsForTier(9, "")
+
+        setDefenseBase(0)
+        setDefenseUpgradeBonus(0)
+        setArmorType(ArmorType.Large)
+        setHitPointsRegenerationType("always")
+
+        setGoldBountyAwardedBase(0)
+        setGoldBountyAwardedNumberofDice(0)
+        setGoldBountyAwardedSidesperDie(0)
+
+        setHitPointsMaximumBase(100)
+        setHitPointsRegenerationRate(0.25)
+
+        setManaMaximum(0)
+        setManaInitialAmount(100)
+        setManaRegeneration(0.01)
+
+    function setStatsBase(int str, int agi, int intel)
+        setStartingStrength(str)
+        setStartingAgility(agi)
+        setStartingIntelligence(intel)
+
+    function setStatsPerLvl(real str, real agi, real intel)
+        setStrengthPerLevel(str)
+        setAgilityPerLevel(agi)
+        setIntelligencePerLevel(intel)
+
+    function setRangedAttack(int range)
+        setAttack1Range(range)
+        setAttack1ProjectileHomingEnabled(true)
+        setAttack1WeaponType(WeaponType.Missile)
+
+    function setMeleeAttack()
+        setAttack1Range(100)
+        setAttack1ProjectileArc(0.00)
+        setAttack1ProjectileArt("None")
+        setAttack1ProjectileHomingEnabled(false)
+        setAttack1WeaponType(WeaponType.Normal)
+
+// ----------------------------------------------------------------------------
