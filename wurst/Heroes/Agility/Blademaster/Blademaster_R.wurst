@@ -12,7 +12,7 @@ function rampageCond() returns boolean
 
 function rampage2(unit caster, unit target)
     let lvl = GetUnitAbilityLevel(caster, 'A07Q')
-    let dmg = caster.getAgi(true)*lvl*0.5
+    let dmg = caster.getAgi(true)*lvl*0.5 + 500*lvl
     doPeriodicallyCounted(0.3, 11) (CallbackCounted cb) ->
         forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
             if caster.isEnemyOf(u)
