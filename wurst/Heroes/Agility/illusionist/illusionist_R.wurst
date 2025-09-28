@@ -3,12 +3,13 @@ package illusionist_R
 import MyUnitIds
 import Global_Variables
 import ClosureEvents
+import MyAbilityIds
 
 public function shadowDancer()
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) -> 
         let u = GetDyingUnit()
         if u.isIllusion() and u.getTypeId() == HERO_ILLUSIONIST
             let hero = playerHero.get(u.getOwner())
-            let lvl = hero.getAbilityLevel('A0TP')
+            let lvl = hero.getAbilityLevel(ILLUSIONIST_ABILITY_4)
             if GetRandomInt(1, 100) < lvl*7
                 hero.addAgi(2)

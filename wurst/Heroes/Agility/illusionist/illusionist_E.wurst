@@ -5,7 +5,11 @@ import DummyCaster
 import ClosureTimers
 import DamageEvent
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import OrderIds
+import RandomGen
+import illusionist_Abilities
 
 int limit = 0
 
@@ -15,16 +19,16 @@ public function juxtapose()
         if (DamageEvent.getType() == ATTACK)
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let lvl = src.getAbilityLevel('A0S8')
-                if GetRandomInt(1, 100) <= lvl
+                let lvl = src.getAbilityLevel(ILLUSIONIST_ABILITY_3)
+                if checkChance(lvl)
                     if playerHero.has(src.getOwner())
                         if(limit < lvl * 0.25)
                             limit++
                             new DummyCaster()
                             ..owner(GetOwningPlayer(src))
                             ..origin(src.getPos())
-                            ..castTarget(ABILITY_1, 1, OrderIds.wandOfIllusion, src)
-                            let bonusAttack = src.getBaseDamage(0) * 3
+                            ..castTarget(ILLUSIONIST_ABILITY_3_ILLUSION, lvl, OrderIds.wandOfIllusion, src)
+                            let bonusAttack = (src.getBaseDamage(0) * (illusionist_abi3_DamageMult[lvl-1] - 1)).toInt()
                             src.setBaseDamage(bonusAttack + src.getBaseDamage(0), 0)
                             doAfter(6) -> 
                                 src.setBaseDamage(src.getBaseDamage(0) - bonusAttack, 0)
