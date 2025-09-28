@@ -2,7 +2,6 @@ package MyBuffIds
 
 import ObjectIdGenerator
 
-public constant SATYR_BUFF_Q_ARMOR_REDUCTION = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_2 = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_3 = compiletime(BUFF_ID_GEN.next())
@@ -29,6 +28,9 @@ public constant BUFF_23 = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_24 = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_25 = compiletime(BUFF_ID_GEN.next())
 public constant BUFF_26 = compiletime(BUFF_ID_GEN.next())
+
+public constant SATYR_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+public constant SATYR_BUFF_2 = compiletime(BUFF_ID_GEN.next())
 
 public constant VIVPIRE_BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant VIVPIRE_BUFF_2 = compiletime(BUFF_ID_GEN.next())

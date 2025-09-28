@@ -1,0 +1,216 @@
+package MyHeroAbilityDefinition
+
+import AbilityObjEditing
+import HeroNames
+import MyColors
+import BuffObjEditing
+import ObjectIds
+import CommonDescriptions
+
+// ----------------------------------------------------------------------------
+
+public enum AbilityPosition
+    Q
+    W
+    E
+    R
+    T
+
+public interface FormatLearnTooltipFunct
+    function run(string format) returns string
+        
+public interface FormatLevelsInfoFunct
+    function run(int lvl) returns string
+
+public interface FormatNormalTooltipFunct
+    function run(string format, int lvl) returns string
+
+// Hotkey of current ability definition.
+string currHotkey = ""
+int    maxLevels  = 0
+
+// ----------------------------------------------------------------------------
+
+let level  = "Level %d".setColor(colAbilityLevel)
+let level2 = "Level {0}".setColor(colAbilityLevel)
+
+public function AbilityDefinition.registerBase(int heroId, string abilityName)
+    this..setHeroAbility(true)
+    
+    let heroName = heroNames.get(heroId)
+
+    let tooltipNormal = "{0} [{1}]".format(abilityName, level2)
+
+    let name = "{0} - {1} - {2}".format(heroName, currHotkey, abilityName)
+    let tooltipLearn = "Learn {0} [{1}]".format(abilityName, level)
+
+    // Showed only in map editor.
+    this..setName(name)
+    // The first row showed in the learn tooltip
+    ..setTooltipLearn(tooltipLearn)
+    // The first row showed in the normal tooltip
+    ..presetTooltipNormal(lvl -> tooltipNormal.format(lvl.toString()))
+
+public function AbilityDefinition.register(int heroId, string abilityName, string tooltipExtended)
+    this.registerBase(heroId, abilityName)
+
+    // The main text in the learn tooltip
+    this..setTooltipLearnExtended(tooltipExtended)
+    // The main text in the normal tooltip
+    ..presetTooltipNormalExtended(lvl -> tooltipExtended)
+
+public function AbilityDefinition.register(int heroId, string abilityName, string formatStr, FormatLearnTooltipFunct formatLearnTooltip, FormatNormalTooltipFunct formatNormalTooltip)
+    this.registerBase(heroId, abilityName)
+
+    let tooltipLearnExtended = formatLearnTooltip.run(formatStr).format(abilityName, level)
+
+    // The main text in the learn tooltip
+    this..setTooltipLearnExtended(tooltipLearnExtended)
+    // The main text in the normal tooltip
+    ..presetTooltipNormalExtended(lvl -> formatNormalTooltip.run(formatStr, lvl))
+
+public function AbilityDefinition.register(int heroId, string abilityName, string tooltipHeader, FormatLevelsInfoFunct formalLevelsInfo)
+    this.registerBase(heroId, abilityName)
+
+    var levelsInfo = ""
+    for lvl = 1 to maxLevels
+        levelsInfo += "{0} {1}\n".format(wordLevel.format(lvl.toString()), formalLevelsInfo.run(lvl))
+
+    let tooltipLearnExtended = tooltipHeader + "\n" + levelsInfo
+
+    // The main text in the learn tooltip
+    this..setTooltipLearnExtended(tooltipLearnExtended)
+    // The main text in the normal tooltip
+    ..presetTooltipNormalExtended(lvl -> tooltipHeader + "\n\n" + formalLevelsInfo.run(lvl))
+
+// ----------------------------------------------------------------------------
+
+public function AbilityDefinition.setMaxLevels(int levels)
+    this.setLevels(levels)
+    maxLevels = levels
+
+public function AbilityDefinition.setUltimateAbility()
+    this..setRequiredLevel(8)
+    ..setLevelSkipRequirement(8)
+    ..setPosition(AbilityPosition.T)
+    ..setMaxLevels(4)
+
+public function AbilityDefinition.setGeneralAbility(AbilityPosition pos)
+    this..setPosition(pos)
+    ..setRequiredLevel(1)
+    ..setLevelSkipRequirement(1)
+    ..setMaxLevels(9)
+
+public function AbilityDefinition.setIcon(string icon)
+    this..setIconNormal(icon)
+    ..setIconResearch(icon)
+    ..setIconTurnOff(icon)
+
+public function AbilityDefinition.presetDuration(RealLevelClosure lc)
+    this..presetDurationHero(lc)
+    ..presetDurationNormal(lc)
+
+public function AbilityDefinition.setDuration(int lvl, real value)
+    this..setDurationHero(lvl, value)
+    ..setDurationNormal(lvl, value)
+
+public function AbilityDefinition.setAutoCastingTooltip()
+    this..presetTooltipTurnOff(lvl -> "|cffc3dbffRight-click to activate auto-casting.|r")
+    // ..presetTooltipTurnOffExtended(lvl -> "|cffc3dbffRight-click to activate auto-casting.|r")
+
+public enum AbilityTargets
+    All
+    EnemiesAll
+    EnemiesNonStructures
+    AlliesAll
+    AlliesNotSelf
+    AlliesOnlyStructures
+    Self
+    Player
+    None
+
+public function getTargets(AbilityTargets targets) returns string
+    switch targets
+        case All
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.structure, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.self, TargetsAllowed.organic, TargetsAllowed.mechanical)
+        case EnemiesAll
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.structure)
+        case EnemiesNonStructures
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral)
+        case AlliesAll
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.self)
+        case AlliesNotSelf
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend)
+        case AlliesOnlyStructures
+            return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.structure, TargetsAllowed.mechanical)
+        case Self
+            return commaList(TargetsAllowed.self)
+        case None
+            return commaList(TargetsAllowed.none)
+        case Player
+            return commaList(TargetsAllowed.playerunits, TargetsAllowed.self)
+
+// ----------------------------------------------------------------------------
+
+public function BuffDefinition.register(string name, string description)
+    this..setName(name)
+    ..setTooltipNormal(name)
+    ..setTooltipNormalExtended(description)
+
+// ----------------------------------------------------------------------------
+
+function AbilityDefinition.setPosition(AbilityPosition pos)
+    switch pos
+        case AbilityPosition.Q
+            currHotkey = "Q"
+            this..setButtonPositionNormalX(0)
+            ..setButtonPositionNormalY(2)
+            ..setButtonPositionTurnOffX(0)
+            ..setButtonPositionTurnOffY(2)
+            ..setButtonPositionResearchX(0)
+            ..setButtonPositionResearchY(0)
+
+        case AbilityPosition.W
+            currHotkey = "W"
+            this..setButtonPositionNormalX(1)
+            ..setButtonPositionNormalY(2)
+            ..setButtonPositionTurnOffX(1)
+            ..setButtonPositionTurnOffY(2)
+            ..setButtonPositionResearchX(1)
+            ..setButtonPositionResearchY(0)
+            
+        case AbilityPosition.E
+            currHotkey = "E"
+            this..setButtonPositionNormalX(2)
+            ..setButtonPositionNormalY(2)
+            ..setButtonPositionTurnOffX(2)
+            ..setButtonPositionTurnOffY(2)
+            ..setButtonPositionResearchX(2)
+            ..setButtonPositionResearchY(0)
+            
+        case AbilityPosition.R
+            currHotkey = "R"
+            this..setButtonPositionNormalX(3)
+            ..setButtonPositionNormalY(2)
+            ..setButtonPositionTurnOffX(3)
+            ..setButtonPositionTurnOffY(2)
+            ..setButtonPositionResearchX(3)
+            ..setButtonPositionResearchY(0)
+            
+        case AbilityPosition.T
+            currHotkey = "T"
+            this..setButtonPositionNormalX(2)
+            ..setButtonPositionNormalY(1)
+            ..setButtonPositionTurnOffX(2)
+            ..setButtonPositionTurnOffY(1)
+            ..setButtonPositionResearchX(3)
+            ..setButtonPositionResearchY(1)
+
+    this..setHotkey(currHotkey)
+
+function AbilityDefinition.setHotkey(string value)
+    this..setHotkeyNormal(value)
+    ..setHotkeyTurnOff(value)
+    ..setHotkeyLearn(value)
+
+// ----------------------------------------------------------------------------

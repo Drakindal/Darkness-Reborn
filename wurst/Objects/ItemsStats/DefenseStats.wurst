@@ -9,6 +9,7 @@ import ItemStatsDef
 import DS_DataCompileTime
 import public DamageTypes
 import Format
+import MyColors
 
 // ----------------------------------------------------------------------------
 
@@ -85,7 +86,7 @@ public function addDamageBlock(blockType blockType, real value) returns ItemStat
 
 public function addEvasion(real chance) returns ItemStats
     let abilityId = ABIL_ID_GEN.next()
-    let effects = (chance * 100).toString(0) + "% " + wordEvasion
+    let effects = ((chance * 100).toString(0) + "% evasion").setColor(colEvasion)
 
     new AbilityDefinitionEvasion(abilityId)
     ..setChancetoEvade(1, chance)

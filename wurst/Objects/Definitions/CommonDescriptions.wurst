@@ -43,6 +43,8 @@ public let wordElementalSoul          = "Elemental Soul"
 public let wordDropSite               = "Drop Site"
 public let wordFountain               = "The Fountain"
 
+public let wordLevel                  = "Level {0}:".setColor(colAbilityLevel)
+
 // ----------------------------------------------------------------------------
 
 public let monsterDrop            = "Monster Drop"
@@ -61,6 +63,7 @@ public let wordActive             = "|c00d7b632Active:|r "
 public let wordAura               = "|c0054d682{0}Aura:|r "
 public let wordRange              = " in {0} Range"
 public let wordPassive            = "|c0052e1e1Passive:|r "
+public let wordEvasion            = "Evasion: ".setColor(colEvasion)
    
 // ----------------------------------------------------------------------------
 
@@ -91,7 +94,6 @@ public let wordRestoreHp          = "Restores {0} HP when Used"
 public let wordArmor              = "Armor"
 public let wordDamageBlockChance  = "Block: {0}% Chance to Block {1} Damage".setColor(colDamageBlock)
 public let wordDamageBlock        = "{0} {1}".setColor(colDamageBlock)
-public let wordEvasion            = "Evasion"
 public let wordResist             = "{0}% {1}"
 public let wordSpikes             = "Return {0}% of the Damage Dealt to You Back to the Attacker"
 public let wordSpellShield        = "Blocks One Negative Spell (cd {0} sec)"
@@ -162,15 +164,15 @@ public let wordTomeGive                = "Give Yourself {0} on Use"
 
 // ----------------------------------------------------------------------------
 
-public let defender  = "|c00081EE4Defender|r"
-public let farmer    = "|c00FFFF33Farmer|r"
-public let crafter   = "|c00239B0BCrafter|r"
-public let caster    = "|c0028DBE1Caster|r"
-public let summoner  = "|c00E1A328Summoner|r"
-public let stacker   = "|c008428E1Stacker|r"
-public let support   = "|c00E12891Support|r"
-public let ascendant = "|c00FC293EAscend|r"
-public let builder   = "|c00065cdeBuilder|r"
-public let gatherer  = "|c00a806deGatherer|r"
+public let roleDefender  = "|c00081EE4Defender|r"
+public let roleFarmer    = "|c00FFFF33Farmer|r"
+public let roleCrafter   = "|c00239B0BCrafter|r"
+public let roleCaster    = "|c0028DBE1Caster|r"
+public let roleSummoner  = "|c00E1A328Summoner|r"
+public let roleStacker   = "|c008428E1Stacker|r"
+public let roleSupport   = "|c00E12891Support|r"
+public let roleAscendant = "|c00FC293EAscend|r"
+public let roleBuilder   = "|c00065cdeBuilder|r"
+public let roleGatherer  = "|c00a806deGatherer|r"
     
 // ----------------------------------------------------------------------------

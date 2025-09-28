@@ -8,7 +8,6 @@ public let colBasic           = "|cff00C800"
 public let colRecipe          = "|cff2979fa"
 public let colLateGame1       = "|cffC80000"
 public let colLateGame2       = "|cff4896E1"
-public let colHotKey          = "|cffFFFC01"
 
 public let colTinkerTomes     = "|cff6BF1F6"
 public let colTinkerLumber    = "|cff5FA412"
@@ -29,11 +28,56 @@ public let colJacksmithUlt     = "|cff423a3a"
 public let colJacksmithCraft   = "|cffab2424"
 public let colTinkerRecipe     = "|cff868059"
 
+public let colAbilityHotKey    = "|cffFFFC01"
+public let colAbilityLevel     = "|cffffcc00"
+public let colHeroName         = "|cffF7EC46"
+
 // ----------------------------------------------------------------------------
 
 public let colMinusArmor      = "|cff903cf6"
 public let colLifeSteal       = "|cffdf5a5a"
 public let colDamageBlock     = "|cff66d3e9"
+public let colEvasion         = "|cff3ca5f66"
+
+// ----------------------------------------------------------------------------
+
+public let colAbilitiesAssassin           = "|cff8080ff"
+public let colAbilitiesBlademaster        = "|cff7edc47"
+public let colAbilitiesDarkRanger         = "|cff420c4d"
+public let colAbilitiesDemonHunter        = "|cffc427d9"
+public let colAbilitiesIllusionist        = "|cff73687c"
+public let colAbilitiesPriestessOfTheMoon = "|cffe5f0ef"
+public let colAbilitiesSatyr              = "|cffce6cd0"
+public let colAbilitiesShadowOfVengeneace = "|cff2b2d3c"
+public let colAbilitiesThief              = "|cfffdff80"
+public let colAbilitiesTracker            = "|cff964a40"
+public let colAbilitiesWarden             = "|cff0b7125"
+
+public let colAbilitiesArchmage           = "|cff1c71e8"
+public let colAbilitiesFirelord           = "|cffc62828"
+public let colAbilitiesGuardianOfLight    = "|cfffffd80"
+public let colAbilitiesHeraldOfLightning  = "|cff3ef9ff"
+public let colAbilitiesKeeperOfTheGrove   = "|cff80ff86"
+public let colAbilitiesKingOfLoas         = "|cff1cc0cb"
+public let colAbilitiesShadowHunter       = "|cff197f80"
+public let colAbilitiesNagaWitch          = "|cff237cd5"
+public let colAbilitiesTimeWizard         = "|cff1a438b"
+public let colAbilitiesTinker             = "|cff446447"
+
+public let colAbilitiesArthas             = "|cff4ab18c"
+public let colAbilitiesBeastmaster        = "|cff8b5e16"
+public let colAbilitiesDeathKnight        = "|cff3c4931"
+public let colAbilitiesJacksmith          = "|cff962d2d"
+public let colAbilitiesMountainKing       = "|cff378a7c"
+public let colAbilitiesPandarenMonk       = "|cff8d9a99"
+public let colAbilitiesPitLord            = "|cff13ea00"
+public let colAbilitiesSylvanas           = "|cff72c94f"
+public let colAbilitiesTaurenChieftain    = "|cff522d0f"
+public let colAbilitiesUther              = "|cffdee126"
+public let colAbilitiesVivpire            = "|cffe01616"
+public let colAbilitiesWolfman            = "|cffd5d5e6"
+
+// ----------------------------------------------------------------------------
 
 public class Color
     int R

@@ -4,6 +4,64 @@ import UnitObjEditing
 import MyAbilityIds
 import AbilityIds
 import ObjectIds
+import HeroNames
+import MyColors
+
+// ----------------------------------------------------------------------------
+
+public enum PhysDamage
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public enum MagicDamage
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public enum Defense
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public enum Utility
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public enum Healing
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public enum Difficulty
+    v0
+    v1
+    v2
+    v3
+    v4
+    v5
+
+public function rolesList(vararg string values) returns string
+    string result = ""
+    for v in values
+        result += v + "/"
+    return result.substring(0, result.length() - 2)
 
 // ----------------------------------------------------------------------------
 
@@ -85,6 +143,37 @@ public class MyHeroDefinition extends HeroDefinition
         setManaInitialAmount(100)
         setManaRegeneration(0.01)
 
+        setName(heroNames.get(newId))
+
+    function setTooltipExtended(
+            string roles,
+            PhysDamage physDamage, MagicDamage magicDamage,
+            Defense defense, Utility utility,
+            Healing healing, Difficulty difficulty
+        )
+        setTooltipExtended(newId, roles, physDamage, magicDamage, defense,
+        utility, healing, difficulty)
+
+    function setTooltipExtended(
+            int nameId, string roles,
+            PhysDamage physDamage, MagicDamage magicDamage,
+            Defense defense, Utility utility,
+            Healing healing, Difficulty difficulty
+        )
+        let heroName = heroNames.get(nameId)
+
+        let coloredHeroName = heroName.setColor(colHeroName)
+        setTooltipBasic(coloredHeroName)
+        super.setTooltipExtended(heroName.setColor(colHeroName)
+        + "Roles: {0}\n\n".format(roles)
+        + "|cffEE0404Physical Damage|r: {0}/5\n".format((physDamage  castTo int).toString())
+        + "|cff76ECF9Magical  Damage|r: {0}/5\n".format((magicDamage castTo int).toString())
+        + "|cffB0B0B0Defense|r:         {0}/5\n".format((defense     castTo int).toString())
+        + "|cff663300Utility|r:         {0}/5\n".format((utility     castTo int).toString())
+        + "|cff66FF66Healing|r:         {0}/5\n".format((healing     castTo int).toString())
+        + "|cfff8d539Difficulty|r:      {0}/5\n".format((difficulty  castTo int).toString())
+        )
+        
     function setStatsBase(int str, int agi, int intel)
         setStartingStrength(str)
         setStartingAgility(agi)
