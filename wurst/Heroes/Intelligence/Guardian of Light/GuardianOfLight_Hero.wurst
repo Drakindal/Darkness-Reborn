@@ -42,13 +42,11 @@ import MyHeroDefinition
     ..setTurnRate(0.40)
     ..setRequirements(commaList(HERO_GUARDIAN_OF_LIGHT_PICKED))
     
-    ..setName("Guadian of Light")
-    ..setTooltipBasic("|c00F7EC46Guardian of Light|r")
-    ..setTooltipExtended("|c00F7EC46Guardian of Light|r\n"
-    + "Roles: " + support + "\n\n"
-    + "|c00EE0404Physical Damage|r: 1/5\n"
-    + "|c0076ECF9Magical Damage|r: 2/5\n"
-    + "|c00B0B0B0Defense|r: 2/5\n"
-    + "|c00663300Utility|r: 5/5\n"
-    + "|c0066FF66Healing|r: 5/5\n"
-    + "Difficulty: 2/5\n")
+    ..setTooltipExtended(
+    rolesList(roleSupport, roleCaster),
+    PhysDamage.v1,
+    MagicDamage.v2,
+    Defense.v2,
+    Utility.v5,
+    Healing.v5,
+    Difficulty.v5)
