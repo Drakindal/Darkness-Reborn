@@ -4,16 +4,16 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_DARK_RANGER, UnitIds.darkranger)// Dark Ranger (N004)
-    ..setHeroAbilities(commaList(DARK_RANGER_ABILITY_1, DARK_RANGER_ABILITY_2, DARK_RANGER_ABILITY_3, DARK_RANGER_ABILITY_4,DARK_RANGER_ABILITY_55))
+    new MyHeroDefinition(HERO_DARK_RANGER, UnitIds.darkranger)
+    ..setHeroAbilities(commaList(DARK_RANGER_ABILITY_1, DARK_RANGER_ABILITY_2, DARK_RANGER_ABILITY_3, DARK_RANGER_ABILITY_4, DARK_RANGER_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 21, 15)
@@ -43,3 +43,5 @@ import MyHeroDefinition
     Utility.v1,
     Healing.v3,
     Difficulty.v1)
+    
+// ----------------------------------------------------------------------------

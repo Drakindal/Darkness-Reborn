@@ -104,7 +104,9 @@ constant real array[9] damageAura = [0.4, 0.6, 0.8, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS5.blp")
     ..setUltimateAbility()
     ..register(HERO_ASSASSIN, "Assassin's Way".setColor(colAbilitiesAssassin), 
-    "50% to gain base damage when killing the target\n\n" +
+    "Once every 3 seconds deals {0} x Agility damage to enemy.\n\n" +
+
+    wordPassive + "50% to gain base damage when killing the target\n\n" +
 
     "3 damage for units below lvl 10\n" +
     "4 damage for units below lvl 20\n" +
@@ -121,6 +123,8 @@ constant real array[9] damageAura = [0.4, 0.6, 0.8, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5
     "Forth quest: kill lvl 90 or higher boss - gain 10% armor penetration\n\n" +
 
     wordNote + "You can type -quests to see Quest Track\n" +
-    "The quests will be available when you reach the level of ability.")
+    "The quests will be available when you reach the level of ability.",
+    (string format) -> format.format("(35 + 5 x (Skill Level))"),
+    (string format, int lvl) -> format.format((35 + 5*lvl).toString()))
 
 // ----------------------------------------------------------------------------

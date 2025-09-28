@@ -4,6 +4,8 @@ import Abilities
 import ClosureTimers
 import DamageTarget
 import DamageEvent
+import MyAbilityIds
+import StandardTextTags
 
 bool once = true
 
@@ -16,14 +18,19 @@ public function lastKiller()
             if DamageEvent.getType() == ATTACK
                 let damtyp = DamageEvent.getDamageType()
                 if damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC
-                    if src.hasAbility('B00W')
+                    if src.hasAbility(ASSASSIN_ABILITY_5)
                         if once
                             let target = DamageEvent.getTarget()
                             once = false
-                            let lvl = ((GetUnitAbilityLevel(src, 'A0GJ'))*5)+37
+
+                            let lvl = ((GetUnitAbilityLevel(src, ASSASSIN_ABILITY_5))*5) + 35
                             let dmg = src.getAgi(true)*lvl.toReal()
+
                             flashEffect(Abilities.meatwagonMissile, target.getPos()) 
                             src.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
-                            src.removeAbility('B00W')
+
+                            createCriticalStrikeTextTag(src, R2I(dmg*4))
+                            ..setColor(colorA(255, 158, 41, 224))
+
                             doAfter(3) -> 
                                 once = true

@@ -5,13 +5,15 @@ import ObjectIds
 import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
+import MyAbilityIds
 import CommonDescriptions
 import MyHeroDefinition
 
-@compiletime function defineHero()
+// ----------------------------------------------------------------------------
 
-    new MyHeroDefinition(HERO_ILLUSIONIST, UnitIds.illidan)// Illusionist (E005)
-    ..setHeroAbilities(commaList('A0TQ', 'A0TN', 'A0S8', 'A0TO', 'A0TP'))
+@compiletime function defineHero()
+    new MyHeroDefinition(HERO_ILLUSIONIST, UnitIds.illidan)
+    ..setHeroAbilities(commaList(ILLUSIONIST_ABILITY_1, ILLUSIONIST_ABILITY_2, ILLUSIONIST_ABILITY_3, ILLUSIONIST_ABILITY_4, ILLUSIONIST_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(21, 22, 16)
@@ -45,3 +47,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v0,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

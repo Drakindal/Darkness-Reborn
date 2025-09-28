@@ -1,8 +1,6 @@
 package DarkRanger_R
 
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import ClosureEvents
 
 public function burstMana()

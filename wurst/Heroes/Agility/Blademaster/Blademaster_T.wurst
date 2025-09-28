@@ -7,13 +7,14 @@ import Abilities
 import StandardTextTags
 import DamageTarget
 import PauseAllocation
+import MyAbilityIds
 
 texttag slashText
 
 public function hasteSlash()
-    EventListener.onPointCast('A00Y') (unit caster, vec2 target) ->
-        let lvl = caster.getAbilityLevel('A00Y')
-        let dmg = caster.getAgi(true)*lvl*0.75 + caster.get*lvl
+    EventListener.onPointCast(BLADEMASTER_ABILITY_5) (unit caster, vec2 target) ->
+        let lvl = caster.getAbilityLevel(BLADEMASTER_ABILITY_5)
+        let dmg = caster.getAgi(true)*lvl*0.75 + 5000*lvl
         caster.pauseIndef()
         caster.setPathing(false)
         doPeriodicallyTimed(0.3, 3) (CallbackCounted cb) ->

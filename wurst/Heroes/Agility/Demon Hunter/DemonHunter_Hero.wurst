@@ -5,12 +5,15 @@ import ObjectIds
 import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
+import MyAbilityIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_DEMON_HUNTER, UnitIds.demonhunter)// Demon Hunter (E002)
-    ..setHeroAbilities(commaList('A0RW', 'A0TK', 'A008', 'A0E6', 'A115'))
+    new MyHeroDefinition(HERO_DEMON_HUNTER, UnitIds.demonhunter)
+    ..setHeroAbilities(commaList(DEMON_HUNTER_ABILITY_1, DEMON_HUNTER_ABILITY_2, DEMON_HUNTER_ABILITY_3, DEMON_HUNTER_ABILITY_4, DEMON_HUNTER_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(19, 21, 16)
@@ -37,3 +40,5 @@ import MyHeroDefinition
     Utility.v1,
     Healing.v0,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

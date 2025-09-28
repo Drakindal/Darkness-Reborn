@@ -148,4 +148,6 @@ constant real array[9] abi2_DamageTaken = [
     ..setUltimateAbility()
     ..register(HERO_BLADEMASTER, "Haste Slash".setColor(colAbilitiesBlademaster), 
     "Blademaster begins to spin rapidly at a target location, dealing damage and ending with a huge finishing burst of damage.",
-    (int lvl) -> "Deals {0} x Agi + {1} damage per second and 4 more times at the end of the cast.".format((0.75*lvl).toString(2), (2000*lvl).toString()))
+    (int lvl) -> "Deals {0} x Agi + {1} damage per second and 4 more times at the end of the cast.".format((0.75*lvl).toString(2), (5000*lvl).toString()))
+    
+// ----------------------------------------------------------------------------

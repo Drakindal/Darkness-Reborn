@@ -6,6 +6,7 @@ import StandardTextTags
 import MyUnitIds
 import ArmorLimiter
 import DamageEvent
+import MyAbilityIds
 
 int attackCount = 0
 int attackLeft = 0
@@ -22,7 +23,7 @@ public function demonPower()
             if (DamageEvent.getType() == ATTACK)
                 let damtyp = DamageEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                    let lvl = GetUnitAbilityLevel(src, 'A0E6')
+                    let lvl = GetUnitAbilityLevel(src, DEMON_HUNTER_ABILITY_4)
                     if lvl >= 1
                         if attackCount < 25
                             attackCount = attackCount + 1

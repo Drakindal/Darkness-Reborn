@@ -4,16 +4,16 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_PRIESTESS_OF_THE_MOON, UnitIds.priestessofthemoon)// Priestess of the Moon (E001)
-    ..setHeroAbilities(commaList('A08A', 'A087', 'A089', 'A08C', PRIESTESS_ABILITY_5))
+    new MyHeroDefinition(HERO_PRIESTESS_OF_THE_MOON, UnitIds.priestessofthemoon)
+    ..setHeroAbilities(commaList(PRIESTESS_ABILITY_1, PRIESTESS_ABILITY_2, PRIESTESS_ABILITY_3, PRIESTESS_ABILITY_4, PRIESTESS_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 19, 15)
@@ -46,9 +46,10 @@ import MyHeroDefinition
     Healing.v3,
     Difficulty.v2)
     
+// ----------------------------------------------------------------------------
 
     new MyHeroDefinition(HERO_PRIESTESS_OF_THE_MOON_FORM, UnitIds.priestessofthemoon)// Priestess of the Moon (E001)
-    ..setHeroAbilities(commaList('A08A', 'A087', 'A089', 'A08C', PRIESTESS_ABILITY_5))
+    ..setHeroAbilities(commaList(PRIESTESS_ABILITY_1, PRIESTESS_ABILITY_2, PRIESTESS_ABILITY_3, PRIESTESS_ABILITY_4, PRIESTESS_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 19, 15)
@@ -79,3 +80,5 @@ import MyHeroDefinition
     Utility.v4,
     Healing.v3,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

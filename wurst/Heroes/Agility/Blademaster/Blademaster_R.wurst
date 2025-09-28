@@ -6,12 +6,13 @@ import ClosureForGroups
 import DamageTarget
 import PauseAllocation
 import ClosureEvents
+import MyAbilityIds
 
 function rampageCond() returns boolean
-    return GetSpellAbilityId() == 'A07Q'
+    return GetSpellAbilityId() == BLADEMASTER_ABILITY_4
 
 function rampage2(unit caster, unit target)
-    let lvl = GetUnitAbilityLevel(caster, 'A07Q')
+    let lvl = GetUnitAbilityLevel(caster, BLADEMASTER_ABILITY_4)
     let dmg = caster.getAgi(true)*lvl*0.5 + 500*lvl
     doPeriodicallyCounted(0.3, 11) (CallbackCounted cb) ->
         forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
@@ -31,7 +32,7 @@ function rampage2(unit caster, unit target)
             caster.setPathing(true)
 
 public function rampage()
-    EventListener.onTargetCast('A07Q') (unit caster, unit target) ->
+    EventListener.onTargetCast(BLADEMASTER_ABILITY_4) (unit caster, unit target) ->
         doAfter(0.5) -> 
             caster.pauseIndef()
             caster.setInvulnerable(true)

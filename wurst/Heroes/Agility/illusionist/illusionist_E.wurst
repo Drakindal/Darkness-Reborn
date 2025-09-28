@@ -5,8 +5,6 @@ import DummyCaster
 import ClosureTimers
 import DamageEvent
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import OrderIds
 import RandomGen
 import illusionist_Abilities

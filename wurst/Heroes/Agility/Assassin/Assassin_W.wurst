@@ -5,10 +5,11 @@ import Abilities
 import ClosureEvents
 import PauseAllocation
 import DamageTarget
+import MyAbilityIds
 
 public function quickSlash()
-    EventListener.onTargetCast('A0DC') (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel('A0DC')
+    EventListener.onTargetCast(ASSASSIN_ABILITY_2) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(ASSASSIN_ABILITY_2)
         let dmg = caster.getAgi(true)*lvl.toReal()
         doAfter(0.35) -> 
             caster.pauseIndef()

@@ -4,12 +4,13 @@ import ClosureTimers
 import ClosureForGroups
 import ClosureEvents
 import DamageTarget
+import MyAbilityIds
 
 
 public function shadowWalk()
-    EventListener.onCast('A0DA') (unit caster) ->
+    EventListener.onCast(ASSASSIN_ABILITY_1) (unit caster) ->
         let angle = caster.getFacingAngle()
-        let lvl = GetUnitAbilityLevel(caster, 'A0DA')
+        let lvl = GetUnitAbilityLevel(caster, ASSASSIN_ABILITY_1)
         let dmg = ((lvl*0.22) * caster.getAgi(true))
         caster
         ..setVertexColor(color(100, 100, 100))

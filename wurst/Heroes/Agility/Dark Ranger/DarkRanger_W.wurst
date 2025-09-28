@@ -3,8 +3,6 @@ package DarkRanger_W
 import MyUnitIds
 import OrderIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import ClosureEvents
 import DamageTarget
 import LinkedList

@@ -9,10 +9,11 @@ import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
-@compiletime function defineHero()
+// ----------------------------------------------------------------------------
 
-    new MyHeroDefinition(HERO_ASSASSIN, UnitIds.blademaster)// Assasin (O00P)
-    ..setHeroAbilities(commaList('A0DA', 'A0DC', ASSASSIN_ABILITY_3, 'A0GC', ASSASSIN_ABILITY_5))
+@compiletime function defineHero()
+    new MyHeroDefinition(HERO_ASSASSIN, UnitIds.blademaster)
+    ..setHeroAbilities(commaList(ASSASSIN_ABILITY_1, ASSASSIN_ABILITY_2, ASSASSIN_ABILITY_3, ASSASSIN_ABILITY_4, ASSASSIN_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(14, 20, 16)
@@ -41,3 +42,5 @@ import MyHeroDefinition
     Utility.v4,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

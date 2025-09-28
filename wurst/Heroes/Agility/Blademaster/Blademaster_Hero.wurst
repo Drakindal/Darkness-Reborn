@@ -7,11 +7,13 @@ import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
+import MyAbilityIds
+
+// ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
-
-    new MyHeroDefinition(HERO_BLADEMASTER, UnitIds.blademaster)// Blademaster (O000)
-    ..setHeroAbilities(commaList('A07M', 'A07N', 'A07Q', 'A07O', 'A00Y'))
+    new MyHeroDefinition(HERO_BLADEMASTER, UnitIds.blademaster)
+    ..setHeroAbilities(commaList(BLADEMASTER_ABILITY_1, BLADEMASTER_ABILITY_2,BLADEMASTER_ABILITY_3, BLADEMASTER_ABILITY_4, BLADEMASTER_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 22, 16)
@@ -36,3 +38,5 @@ import MyHeroDefinition
     Utility.v1,
     Healing.v0,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

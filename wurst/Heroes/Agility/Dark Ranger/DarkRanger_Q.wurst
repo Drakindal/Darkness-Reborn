@@ -2,8 +2,6 @@ package DarkRanger_Q
 
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import ClosureEvents
 import OrderIds
 import Abilities
