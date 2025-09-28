@@ -1,6 +1,8 @@
 package Assassin_T_PASSIVE
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import ClosureEvents
 import DamageTarget
 import QuestList

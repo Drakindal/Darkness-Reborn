@@ -1,96 +1,126 @@
 package Assassin_Abilities
 
 import MyAbilityIds
-import AbilityObjEditing
-import ObjectIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import CommonDescriptions
+import MyColors
+import BuffObjEditing
+import BuffIds
+import ChannelAbilityPreset
+import Orders
+    
+// ----------------------------------------------------------------------------
 
 @compiletime function assassinAbils()
+    new BuffDefinition(ASSASSIN_BUFF_1, BuffIds.roar)
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNASS1.blp")
+    ..register("Shadow Walk".setColor(colAbilitiesAssassin),
+    "Assassin moves ahead with lightning speed simultaneously causing damage to enemies.")
+
+// ----------------------------------------------------------------------------
+
+    // WIP. Armor reduction rework.
+    new AbilityDefinitionBerserk(ASSASSIN_ABILITY_1)
+    ..presetCooldown(lvl -> 11.0 - lvl)
+    ..presetManaCost(lvl -> 10 + 20 * lvl)
+    ..presetBuffs(lvl -> ASSASSIN_BUFF_1.toRawCode())
+    ..presetMovementSpeedIncrease(lvl -> 0.2)
+    ..presetAttackSpeedIncrease(lvl -> 0.0)
+    ..presetDamageTakenIncrease(lvl -> 0.0)
+    ..presetDuration(lvl -> 1.0)
+    ..setAnimationNames("spell,slam")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS1.blp")
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..register(HERO_ASSASSIN, "Shadow Walk".setColor(colAbilitiesAssassin), 
+    "Assassin moves ahead with lightning speed (+20% movement speed) simultaneously causing damage to enemies by 0.22 x (Level Skill) x Agility.",
+    (int lvl) -> "Assassin deals {0} x Agility damage.".format((0.22*lvl).toString(2)))
+    
+    new ChannelAbilityPreset(ASSASSIN_ABILITY_2, 9, true)
+    ..presetCooldown(lvl -> 16.0 - lvl)
+    ..presetManaCost(lvl -> 80 + 20 * lvl)
+    ..presetCastRange(lvl -> 200.0)
+    ..presetFollowThroughTime(lvl -> 0.1)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..presetArtDuration(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+    ..setArtCaster("Blue Quick.mdx")
+    ..setArtEffect("")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS2.blp")
+    ..setArtTarget("Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl")
+    ..setTargetAttachmentPoint("overhead")
+    ..setGeneralAbility(AbilityPosition.W)
+    ..register(HERO_ASSASSIN, "Quick Slash".setColor(colAbilitiesAssassin), 
+    "Immediately implement many owls guillotine with lightning speed up enemies, damage by {0} x Agility your enemies be marked subject to damage 3 times.",
+    (string format) -> format.format("(Level Skill)"),
+    (string format, int lvl) -> format.format(lvl.toString()))
+    
+// ----------------------------------------------------------------------------
+
+constant real array[9] damageAura = [0.4, 0.6, 0.8, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
+
+@compiletime function assassinAbilsE()
+    new BuffDefinition(ASSASSIN_BUFF_3, BuffIds.roar)
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\PASASS4.blp")
+    ..register("Enchanted Weapon".setColor(colAbilitiesAssassin),
+    "The Assassin's mastery of the blade allows him to deal more damage.")
+
+    new AbilityDefinitionMoonPriestessTrueshotAura(ASSASSIN_ABILITY_3)
+    ..presetDamageBonus(lvl -> damageAura[lvl - 1])
+    ..presetAreaofEffect(lvl -> 1)
+    ..presetBuffs(lvl -> ASSASSIN_BUFF_3.toRawCode())
+    ..presetMeleeBonus(lvl -> true)
+    ..presetRangedBonus(lvl -> false)
+    ..presetFlatBonus(lvl -> false)
+    ..presetTargetsAllowed(lvl -> commaList("Self","Vulnerable"))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
+    ..setGeneralAbility(AbilityPosition.E)
+    ..register(HERO_ASSASSIN, "Enhanced Weapon".setColor(colAbilitiesAssassin), 
+    "The Assassin's mastery of the blade allows him to deal more damage.",
+    (int lvl) -> "Assassin deals {0}% more damage.".format((100 * damageAura[lvl - 1]).toString(0)))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionBladeMasterCriticalStrike(ASSASSIN_ABILITY_4)
+    ..presetBuffs(lvl -> "")
+    ..presetChancetoCriticalStrike(lvl -> 4.0 * lvl)
+    ..presetDamageMultiplier(lvl -> 6.0 + lvl)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASASS3.blp")
+    ..setGeneralAbility(AbilityPosition.R)
+    ..register(HERO_ASSASSIN, "Katar Mastery".setColor(colAbilitiesAssassin), 
+    "The Assassin has a chance to critically strike his enemies.",
+    (int lvl) -> "{0}% chance to deal x{1} damage.".format((4*lvl).toString(), (6+lvl).toString()))
+    
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionBashcreep(ASSASSIN_ABILITY_5)
-    ..setName("Assassin's Way")
-    ..setHotkeyLearn("T")
-    ..setHotkeyNormal("T")
-    ..setButtonPositionNormalX(1)
-    ..setButtonPositionNormalY(1)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(1)
-    ..setLevels(4)
-    ..setRequiredLevel(8)
-    ..setLevelSkipRequirement(8)
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNASS5.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNASS5.blp")
     ..presetDurationHero(lvl -> 0)
     ..presetDurationNormal(lvl -> 0)
     ..presetDamageBonus(lvl -> 0)
     ..presetChancetoBash(lvl -> 0)
-    ..setTooltipLearn("Learn Assassin's Way [ |c00FFFC01T|r ] - [|c00FFFC01Level %d|r] ")
-    ..presetTooltipNormal(lvl -> "Assassin's Way [ |c00FFFC01T|r ] -[|c00FFFC01Level " + lvl.toString() + "|r ]")
-    ..presetTooltipNormalExtended(lvl -> "50% to gain base damage when killing the target\n\n3 damage for units below lvl 10\n4 damage for units below lvl 20\n5 damage for units below lvl 24\n\nBosses: 10 damage for bosses below lvl 25\n20 damage for bosses below lvl 45\n50 damage for bosses below level 70\n\n|cff8080ffUniqe abiity:|r for each level of ability, you will gain quest.\nFirst quest: kill 200 units - gain 500 damage\nSecond quest: kill 100 units above lvl 20 - gain 5% armor penetration\nThird quest: kill 20 bosses - gain improved damage aura\nForth quest: kill lvl 90 or higher boss - gain 10% armor penetration\n\n you can type -quests to see Quest Track\n\n|cffff0000Note:|r the quests will be available when you reach the level of ability.")
-    ..setTooltipLearnExtended("50% to gain base damage when killing the target\n\n3 damage for units below lvl 10\n4 damage for units below lvl 20\n5 damage for units below lvl 24\n\nBosses:\n 10 damage for bosses below lvl 25\n20 damage for bosses below lvl 45\n50 damage for bosses below level 70\n\n|cff8080ffUniqe abiity:|r for each level of ability, you will gain quest.\n|c00FFFC01First quest:|r kill 200 units - gain 500 damage\n|c00FFFC01Second quest:|r kill 100 units above lvl 20 - gain 5% armor penetration\n|c00FFFC01Third quest:|r kill 20 bosses - Evolve skill Enchanted Weapon\n|c00FFFC01Forth quest:|r kill lvl 90 or higher boss - gain 10% armor penetration\n\n you can type -quests to see Quest Track\n\n|cffff0000Note:|r the quests will be available when you reach the level of ability.")
-    
-    new AbilityDefinitionMoonPriestessTrueshotAura(ASSASSIN_ABILITY_3)
-    ..setName("Enhanced Weapon")
-    ..setHotkeyLearn("E")
-    ..setHotkeyNormal("E")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(2)
-    ..setButtonPositionResearchY(0)
-    ..setLevels(9)
-    ..setRequiredLevel(1)
-    ..setLevelSkipRequirement(1)
-    ..setHeroAbility(true)
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
-    ..setDamageBonus(1, 0.4)
-    ..setDamageBonus(2, 0.6)
-    ..setDamageBonus(3, 0.8)
-    ..setDamageBonus(4, 1)
-    ..setDamageBonus(5, 1.2)
-    ..setDamageBonus(6, 1.4)
-    ..setDamageBonus(7, 1.6)
-    ..setDamageBonus(8, 1.8)
-    ..setDamageBonus(9, 2)
-    ..presetAreaofEffect(lvl -> 1)
-    ..presetBuffs(lvl -> "B00Z")
-    ..presetMeleeBonus(lvl -> true)
-    ..presetRangedBonus(lvl -> false)
-    ..presetFlatBonus(lvl -> false)
-    ..presetTargetsAllowed(lvl -> commaList("Self","Vulnerable"))
-    ..setTooltipLearn("Learn |cff8080ffEnhanced Weapon|r [ |c00FFFC01T|r ] - [|c00FFFC01Level %d|r] ")
-    ..presetTooltipNormal(lvl -> "|cff8080ffEnhanced Weapon|r [ |c00FFFC01T|r ] -[|c00FFFC01Level " + lvl.toString() + "|r ]")
-    ..presetTooltipNormalExtended(lvl -> "The Assassin's mastery of the blade allows him to deal " + (20 + 20 * lvl).toString() + "% more damage.")
-    ..setTooltipLearnExtended("The Assassin's mastery of the blade allows him to deal more damage.")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS5.blp")
+    ..setUltimateAbility()
+    ..register(HERO_ASSASSIN, "Assassin's Way".setColor(colAbilitiesAssassin), 
+    "50% to gain base damage when killing the target\n\n" +
 
-    new AbilityDefinitionMoonPriestessTrueshotAura(ASSASSIN_ABILITY_3_QUEST)
-    ..setName("Enchanted Weapon")
-    ..setHotkeyLearn("E")
-    ..setHotkeyNormal("E")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(2)
-    ..setButtonPositionResearchY(0)
-    ..setLevels(9)
-    ..setRequiredLevel(1)
-    ..setLevelSkipRequirement(1)
-    ..setHeroAbility(true)
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
-    ..setDamageBonus(1, 1.4)
-    ..setDamageBonus(2, 1.6)
-    ..setDamageBonus(3, 1.8)
-    ..setDamageBonus(4, 2)
-    ..setDamageBonus(5, 2.2)
-    ..setDamageBonus(6, 2.4)
-    ..setDamageBonus(7, 2.6)
-    ..setDamageBonus(8, 2.8)
-    ..setDamageBonus(9, 3)
-    ..presetAreaofEffect(lvl -> 1)
-    ..presetBuffs(lvl -> "B00Z")
-    ..presetMeleeBonus(lvl -> true)
-    ..presetRangedBonus(lvl -> false)
-    ..presetFlatBonus(lvl -> false)
-    ..presetTargetsAllowed(lvl -> commaList("Self","Vulnerable"))
-    ..setTooltipLearn("Learn |cff8080ffEnchanted Weapon|r [ |c00FFFC01T|r ] - [|c00FFFC01Level %d|r] ")
-    ..presetTooltipNormal(lvl -> "|cff8080ffEnchanted Weapon|r [ |c00FFFC01T|r ] -[|c00FFFC01Level " + lvl.toString() + "|r ]")
-    ..presetTooltipNormalExtended(lvl -> "The Assassin's mastery of the blade allows him to deal " + (120 + 20 * lvl).toString() + "% more damage.")
-    ..setTooltipLearnExtended("The Assassin's mastery of the blade allows him to deal more damage.")
+    "3 damage for units below lvl 10\n" +
+    "4 damage for units below lvl 20\n" +
+    "5 damage for units below lvl 24\n\n" +
+
+    "Bosses: 10 damage for bosses below lvl 25\n" +
+    "20 damage for bosses below lvl 45\n" +
+    "50 damage for bosses below level 70\n\n" +
+    
+    "{0} for each level of ability, you will gain quest.\n".format("Unique ability:".setColor(colAbilitiesAssassin)) +
+    "First quest: kill 200 units - gain 500 damage\n" +
+    "Second quest: kill 100 units above lvl 20 - gain 5% armor penetration\n" +
+    "Third quest: kill 20 bosses - gain improved damage aura\n" +
+    "Forth quest: kill lvl 90 or higher boss - gain 10% armor penetration\n\n" +
+
+    wordNote + "You can type -quests to see Quest Track\n" +
+    "The quests will be available when you reach the level of ability.")
+
+// ----------------------------------------------------------------------------
