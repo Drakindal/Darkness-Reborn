@@ -1,6 +1,8 @@
 package DarkRanger_E
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import ClosureEvents
 import DamageTarget
 import ClosureTimers
@@ -9,9 +11,9 @@ import StandardTextTags
 texttag manaDrained
 
 public function darkDrain()
-    EventListener.onTargetCast(DARKRANGER_ABILITY_3) (unit caster, unit target) ->
+    EventListener.onTargetCast(DARK_RANGER_ABILITY_3) (unit caster, unit target) ->
         manaDrained = CreateTextTag()
-        let lvl = GetUnitAbilityLevel(caster, DARKRANGER_ABILITY_3)
+        let lvl = GetUnitAbilityLevel(caster, DARK_RANGER_ABILITY_3)
         let dmg = (caster.getAgi(true)*(lvl*2.))
         let pos = caster.getPos3Real()
         pos.add(0, 0, 0)

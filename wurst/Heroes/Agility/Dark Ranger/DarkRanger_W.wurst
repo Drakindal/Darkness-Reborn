@@ -3,6 +3,8 @@ package DarkRanger_W
 import MyUnitIds
 import OrderIds
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import ClosureEvents
 import DamageTarget
 import LinkedList
@@ -32,10 +34,10 @@ public function darkArrow()
                 let damtyp = DamageEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     if src.getDarkArrowToggle()            
-                        let lvl = GetUnitAbilityLevel(src, DARKRANGER_ABILITY_2)
+                        let lvl = GetUnitAbilityLevel(src, DARK_RANGER_ABILITY_2)
                         let target = DamageEvent.getTarget()
                         let dmg = (src.getAgi(true)*lvl*0.5)
-                        if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(DARKRANGER_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
+                        if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(DARK_RANGER_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
                             src.issueImmediateOrderById(OrderIds.flamingarrows + 1)
                         src.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
                         // WIP. Move all damage calculations to DamageSystem
