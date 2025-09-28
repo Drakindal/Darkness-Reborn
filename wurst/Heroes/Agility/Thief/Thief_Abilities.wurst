@@ -1,0 +1,182 @@
+package Thief_Abilities
+
+import UnitIds
+import ObjectIds
+import MyUnitIds
+import AbilityObjEditing
+import MyUpgradesIds
+import CommonDescriptions
+import Icons
+import Soundsets
+import MyHeroDefinition
+import MyAbilityIds
+import Orders
+import MyHeroAbilityDefinition
+import MyColors
+import ChannelAbilityPreset
+import MyBuffIds
+import BuffIds
+import BuffObjEditing
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineHero()
+
+    new ChannelAbilityPreset(THIEF_ABILITY_1, 9, true)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetCooldown(lvl -> 240.0 - 20*lvl)
+    ..setManaCost(1, 220)
+    ..setManaCost(2, 240)
+    ..setManaCost(3, 260)
+    ..setManaCost(4, 280)
+    ..setManaCost(5, 310)
+    ..setManaCost(6, 340)
+    ..setManaCost(7, 370)
+    ..setManaCost(8, 400)
+    ..setManaCost(9, 440)
+    ..presetCastingTime(lvl -> 0.3)
+    ..presetFollowThroughTime(lvl -> 0.3)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+    ..presetCastRange(lvl -> 100.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setAnimationNames("attack")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTheifSkil1.blp")
+    ..setArtCaster("Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl")
+    ..setArtEffect("")
+    ..register(HERO_THIEF, "Stealth".setColor(colAbilitiesThief), 
+    "Within moments Thief blinds an enemy and steals a treasure. Target must have less than 80% of maximum HP for successful stealth.",
+    (int lvl) -> "{0}% chance of success (cd {1} seconds).".format(
+        (10*lvl).toString(),
+        (240 - 20*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+public constant real array[9] thief_abi2_Duration = [
+    8.0,
+    9.0,
+    10.0,
+    10.0,
+    12.0,
+    12.0,
+    14.0,
+    14.0,
+    16.0
+]
+
+@compiletime function defineAbilities2()
+    new AbilityDefinitionTaunt(THIEF_ABILITY_2_TAUNT)
+    ..setOrderStringActivate(OrderIds.taunt.toString())
+    ..setAreaofEffect(1, 900)
+    ..setMaxUnits(1, 10)
+    
+    new UnitDefinition(THIEF_W_DUMMY_UNIT, UnitIds.footman)
+    ..setName("Thief Clone")
+    ..setModelFile("Units\\Thief\\FelOrcAssassin.mdx")
+    ..setLevel(1)
+    ..setCanFlee(false)
+    ..setAttack1DamageBase(1)
+    ..setAttack1DamageNumberofDice(1)
+    ..setDefenseBase(9999999)
+    ..setManaMaximum(5000)
+    ..setHitPointsMaximumBase(900000)
+    ..setManaInitialAmount(5000)
+    ..setAttack1Range(100)
+    ..setAttacksEnabled(1)
+    ..setAttack1TargetsAllowed("alive")
+    ..setAnimationCastPoint(100)
+    ..setAnimationCastBackswing(100)
+    ..setNormalAbilities(commaList(THIEF_ABILITY_2_TAUNT))
+
+    new AbilityDefinitionBladeMasterWindWalk(THIEF_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetCooldown(lvl -> 29.0 - lvl)
+    ..presetDuration(lvl -> thief_abi2_Duration[lvl-1])
+    ..setManaCost(1, 100)
+    ..setManaCost(2, 120)
+    ..setManaCost(3, 150)
+    ..setManaCost(4, 180)
+    ..setManaCost(5, 210)
+    ..setManaCost(6, 240)
+    ..setManaCost(7, 270)
+    ..setManaCost(8, 310)
+    ..setManaCost(9, 360)
+    ..presetTransitionTime(lvl -> 0.2)
+    ..presetMovementSpeedIncrease(lvl -> 0.1*lvl)
+    ..presetBackstabDamage1(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTheifSkill2.blp")
+    ..register(HERO_THIEF, "Fake Thief".setColor(colAbilitiesThief), 
+    "Particular Thief skills help them to escape enemies in a perfect way. Thief becomes invisible and creates a Fake Thief that confuses nearby enemies.",
+    (int lvl) -> "Deals {0} x Agility damage in {1} range when activated. Fake Thief lasts for {2} seconds (cd {3} seconds).".format(
+        (3.0 * lvl).toString(),
+        (300 + 50*lvl).toString(),
+        thief_abi2_Duration[lvl-1].toString(0),
+        (29.0 - lvl).toString(0)
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionBerserk(THIEF_ABILITY_3)
+    ..presetBuffs(lvl -> "")
+    ..presetCooldown(lvl -> 240.0 - 20*lvl)
+    ..presetManaCost(lvl -> 360 - 15*lvl)
+    ..presetMovementSpeedIncrease(lvl -> 0.0)
+    ..presetAttackSpeedIncrease(lvl -> 0.0)
+    ..presetDamageTakenIncrease(lvl -> 0.0)
+    ..presetDuration(lvl -> 0.01)
+    ..setAnimationNames("spell,slam")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTheifSkill3.blp")
+    ..setGeneralAbility(AbilityPosition.E)
+    ..register(HERO_THIEF, "Sell Item".setColor(colAbilitiesThief), 
+    "Thief sells item in the first slot (left most, number 7).",
+    (int lvl) -> "Cooldown {0} seconds.".format((240.0 - 20*lvl).toString()))
+    
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(THIEF_BUFF_4, BuffIds.stunned)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMGexchange.tga")
+    ..setArtTarget("Abilities\\Spells\\Orc\\Purge\\PurgeBuffTarget.mdl")
+    ..register("Gold Bonus".setColor(colAbilitiesThief),
+    "Thief has a chance to get additional gold bounty from creeps.")
+    
+    new AbilityDefinitionAuraWarDrumsKodobeast(THIEF_ABILITY_4)
+    ..presetAreaofEffect(lvl -> 1.0)
+    ..presetBuffs(lvl -> THIEF_BUFF_4.toRawCode())
+    ..presetMeleeBonus(lvl -> false)
+    ..presetRangedBonus(lvl -> false)
+    ..presetAttackDamageIncrease(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASTheifSkill4.blp")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..setGeneralAbility(AbilityPosition.R)
+    ..register(HERO_THIEF, "Gold Bonus".setColor(colAbilitiesThief), 
+    "Thief has a chance to get additional gold bounty from creeps.{0}",
+    (int lvl) -> "{1}% chance to get {2} x Agility gold amount.".format(
+        (3*lvl).toString(),
+        (0.3*lvl).toString())
+    )
+
+// ----------------------------------------------------------------------------
+
+let ability5Chance = [1, 2, 3, 4]
+let ability5Damage = [10, 20, 30, 60]
+
+@compiletime function defineHero5()
+    new AbilityDefinitionBladeMasterCriticalStrike(THIEF_ABILITY_5)
+    ..presetChancetoCriticalStrike(lvl -> 0.0)
+    ..presetDamageMultiplier(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASTheifSkill5.blp")
+    ..setUltimateAbility()
+    ..register(HERO_THIEF, "One Chance".setColor(colAbilitiesThief),
+    "The power from two Katana treasures that Thief steals, helping the chance reset the entire skill and Item, simultaneously causing damage to enemies.",
+    (int lvl) -> "{1}% chance to reset abilities and damage by {2} x Agility.".format(
+        ability5Chance[lvl - 1].toString(),
+        ability5Damage[lvl - 1].toString())
+    )
+    
+// ----------------------------------------------------------------------------

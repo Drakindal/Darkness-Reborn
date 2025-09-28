@@ -4,14 +4,25 @@ import ClosureEvents
 import MyUnitIds
 import ClosureForGroups
 import DamageTarget
+import MyAbilityIds
+import Thief_Abilities
+import ClosureTimers
+import Orders
 
 public boolean isWindwalk
 
 public function windwalk()
-    EventListener.onCast('A0XE') (unit caster) ->
-        createUnit(DUMMY_UNIT_6, caster.getPos())..setTimedLife(10).setOwner(caster.getOwner(), true)
-        let lvl = caster.getAbilityLevel('A0XE')
+    EventListener.onCast(THIEF_ABILITY_2) (unit caster) ->
+        let lvl = caster.getAbilityLevel(THIEF_ABILITY_2)
+
+        let dummy = createUnit(THIEF_W_DUMMY_UNIT, caster.getPos())
+        dummy..setTimedLife(thief_abi2_Duration[lvl-1]).setOwner(caster.getOwner(), true)
+        doPeriodicallyTimed(1.5, thief_abi2_Duration[lvl-1]) (CallbackCounted cb) ->
+            if (dummy.isAlive())
+                dummy.issueImmediateOrderById(OrderIds.taunt)
+        
         let agi = caster.getAgi(true)
-        forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
+        let range = 300.0 + 50*lvl
+        forUnitsInRange(caster.getPos(), range, true) (unit u) ->
             if(u.isEnemyOf(caster))
-                caster.damageTargetCode((agi * lvl).toReal(), u, null, -1, customDamageType.PhysicalMelee)
+                caster.damageTargetCode((3.0 * lvl * agi), u, null, -1, customDamageType.PhysicalMelee)

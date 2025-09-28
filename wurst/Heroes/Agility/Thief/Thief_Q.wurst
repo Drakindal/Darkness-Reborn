@@ -8,6 +8,7 @@ import Object_Shops
 import MyBuildingsIds
 import ItemLocation
 import HashList
+import MyAbilityIds
 
 enum dropList
     LOWER
@@ -163,9 +164,9 @@ public function steal()
     dropListHash.put(CREEP_ELITE_FLESH_GOLEM, dropList.CALL)
     dropListHash.put(CREEP_ELITE_DOOM_GUARD, dropList.CALL)
 
-    EventListener.onTargetCast('A0X5') (unit caster, unit target) ->
+    EventListener.onTargetCast(THIEF_ABILITY_1) (unit caster, unit target) ->
         if(target.getHPRatio() <= 0.80)
-            if(GetRandomInt(0, 100) < caster.getAbilityLevel('A0X5') * 10)
+            if(GetRandomInt(0, 100) < caster.getAbilityLevel(THIEF_ABILITY_1) * 10)
                 let unitDrop = dropListHash.get(target.getTypeId())
                 switch unitDrop
                     case LOWER

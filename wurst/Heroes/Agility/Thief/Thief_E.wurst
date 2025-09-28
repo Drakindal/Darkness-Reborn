@@ -1,11 +1,12 @@
 package Thief_E
 
 import ClosureEvents
+import MyAbilityIds
 
 texttag goldText
 
 public function sell()
-    EventListener.onCast('A0XF') (unit caster) ->
+    EventListener.onCast(THIEF_ABILITY_3) (unit caster) ->
         let p = caster.getOwner()
         let ite = caster.itemInSlot(0)
         if ite != null
@@ -36,6 +37,6 @@ public function sell()
             ..setText("You sold " + ite.getName() + " and got " + t.toString() + " gold." , 5)
             ite.remove()
         else
-            caster.resetAbilityCooldown('A0XF')
+            caster.resetAbilityCooldown(THIEF_ABILITY_3)
             printTimedToPlayer("You should place item in 1 slot (top left) to sell it", 5, p)
             skip
