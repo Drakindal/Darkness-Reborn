@@ -127,7 +127,8 @@ constant real array[9] abi4_Damage = [
     new BuffDefinition(PRIESTESS_BUFF_1, BuffIds.trueshotAura)
     ..setIcon(Icons.bTNHeroMoonPriestess)
     ..setTooltipNormalExtended("This unit will receive healing from physical attacks")
-    ..register("Priestess of the Moon trueshot aura", "An aura that gives friendly units around Priestess of the Moon bonus damage to their ranged attacks.")
+    ..register("Priestess of the Moon trueshot aura".setColor(colAbilitiesPriestessOfTheMoon), 
+    "An aura that gives friendly units around Priestess of the Moon bonus damage to their ranged attacks.")
 
     new AbilityDefinitionMoonPriestessTrueshotAura(PRIESTESS_ABILITY_4)
     ..setGeneralAbility(AbilityPosition.R)

@@ -19,7 +19,6 @@ import MyColors
     ..setHeroAbility(false)
     ..setItemAbility(false)
     ..setLevels(1)
-    ..setBuffs(1,"")
     ..setBuffs(1, "")
     ..setDurationHero(1, 0.01)
     ..setDurationNormal(1, 0.01)

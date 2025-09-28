@@ -60,7 +60,8 @@ constant real array[9] abi2_LifeSteal = [
 
 @compiletime function satyrAbilities2()
     new BuffDefinition(SATYR_BUFF_2, BuffIds.vampiricPotion)
-    ..register("Heath Rain".setColor(colAbilitiesSatyr), "Darkness Curse")
+    ..register("Heath Rain".setColor(colAbilitiesSatyr),
+    "Heath Rain.")
 
     new AbilityDefinitionItemPotionVampirism(SATYR_ABILITY_2)
     ..setGeneralAbility(AbilityPosition.W)
@@ -84,14 +85,15 @@ constant real array[9] abi2_LifeSteal = [
     
 // ----------------------------------------------------------------------------
 
-    new BuffDefinition(SATYR_BUFF_2, BuffIds.roar)
+    new BuffDefinition(SATYR_BUFF_3, BuffIds.roar)
     ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (1).blp")
-    ..register("Darkness Curse".setColor(colAbilitiesSatyr), "Darkness Curse")
+    ..register("Darkness Curse".setColor(colAbilitiesSatyr),
+    "Darkness Curse.")
 
     new AbilityDefinitionAuraWarDrumsKodobeast(SATYR_ABILITY_3)
     ..setGeneralAbility(AbilityPosition.E)
     ..presetAreaofEffect(lvl -> 900.0 + 100*lvl)
-    ..presetBuffs(lvl -> SATYR_BUFF_2.toRawCode())
+    ..presetBuffs(lvl -> SATYR_BUFF_3.toRawCode())
     ..presetMeleeBonus(lvl -> true)
     ..presetRangedBonus(lvl -> true)
     ..presetAttackDamageIncrease(lvl -> -0.07*lvl)

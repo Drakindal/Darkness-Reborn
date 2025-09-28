@@ -42,7 +42,7 @@ import MyColors
     ..presetDuration(lvl -> 6.0 + 0.5*lvl)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV (5).blp")
     ..register(HERO_SHADOW_OF_VENGEANCE, "Fury Peak".setColor(colAbilitiesShadowOfVengeance),
-    "Shadow of Vengeance goes into chaos rage increasing her attack speed, stunning enemy and dealing extra damage based on current missing health every attack.",
+    "Shadow of Vengeance goes into chaos rage increasing her attack speed, stunning enemy and dealing extra damage based on current missing health every attack.  Cancels [T] ability!",
     (int lvl) -> "+{0}% attack speed. Duration {1} seconds (cd {2} seconds).".format(
         (15*lvl).toString(),
         (6.0 + 0.5*lvl).toString(1),
@@ -180,7 +180,7 @@ public constant real array[4] shadow_of_vengeance_abi5_DamageMult = [
     ..setArtCaster("")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (2).blp")
     ..register(HERO_SHADOW_OF_VENGEANCE, "Black Hole".setColor(colAbilitiesShadowOfVengeance),
-    "Shadow Vengeance's hits will deal additional damage equal to an enemy's lost health.",
+    "Shadow Vengeance's hits will deal additional damage equal to an enemy's lost health. Cancels [Q] ability!",
     (int lvl) -> "Deals {0} x (enemy's lost health) damage. Duration {1} seconds (cd {2} seconds).".format(
         (100*shadow_of_vengeance_abi5_DamageMult[lvl-1]).toString(0),
         abi5_Duration[lvl-1].toString(0),

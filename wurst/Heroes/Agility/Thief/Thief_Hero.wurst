@@ -9,12 +9,13 @@ import CommonDescriptions
 import Icons
 import Soundsets
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_THIEF, UnitIds.blademaster)
-    ..setHeroAbilities(commaList('A0X5', 'A0XE', 'A0XF', 'A0XD', 'A0XG'))
+    ..setHeroAbilities(commaList(THIEF_ABILITY_1, THIEF_ABILITY_2, THIEF_ABILITY_3, THIEF_ABILITY_4, THIEF_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(10, 18, 15)

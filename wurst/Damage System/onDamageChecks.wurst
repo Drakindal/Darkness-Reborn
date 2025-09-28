@@ -15,9 +15,9 @@ import Pitlord_E
 
 public function anyAttackChecks(unit src, unit targ)
     // Warden T ability.
-    if src.hasAbility('B003')
+    if src.hasAbility(WARDEN_BUFF_5)
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 2)
-        src.removeAbility('B003')
+        src.removeAbility(WARDEN_BUFF_5)
 
 // ----------------------------------------------------------------------------
 // MAGIC DAMAGE CHECKS

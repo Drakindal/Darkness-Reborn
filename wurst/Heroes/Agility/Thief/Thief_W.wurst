@@ -16,7 +16,9 @@ public function windwalk()
         let lvl = caster.getAbilityLevel(THIEF_ABILITY_2)
 
         let dummy = createUnit(THIEF_W_DUMMY_UNIT, caster.getPos())
-        dummy..setTimedLife(thief_abi2_Duration[lvl-1]).setOwner(caster.getOwner(), true)
+        ..setTimedLife(thief_abi2_Duration[lvl-1])
+        ..setOwner(caster.getOwner(), true)
+
         doPeriodicallyTimed(1.5, thief_abi2_Duration[lvl-1]) (CallbackCounted cb) ->
             if (dummy.isAlive())
                 dummy.issueImmediateOrderById(OrderIds.taunt)

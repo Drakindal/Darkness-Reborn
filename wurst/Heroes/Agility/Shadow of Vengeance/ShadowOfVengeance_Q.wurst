@@ -10,8 +10,8 @@ import MyBuffIds
 
 public function furyPeak()
     EventListener.onCast(SHADOW_OF_VENGEANCE_ABILITY_1) (unit caster) ->
-        if caster.hasAbility(SHADOW_OF_VENGEANCE_BUFF_1)
-            caster.removeAbility(SHADOW_OF_VENGEANCE_BUFF_1)
+        if caster.hasAbility(SHADOW_OF_VENGEANCE_BUFF_5)
+            caster.removeAbility(SHADOW_OF_VENGEANCE_BUFF_5)
     DamageEvent.addListener(2) ->
         let src = DamageEvent.getSource()
         if src.isIllusion()

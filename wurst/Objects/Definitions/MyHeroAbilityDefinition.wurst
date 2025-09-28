@@ -88,7 +88,7 @@ public function AbilityDefinition.register(int heroId, string abilityName, strin
         var tooltipNormal = ""
         if (tooltipHeader != "")
             tooltipNormal += tooltipHeader + "\n"
-        tooltipNormal += formalLevelsInfo.run(lvl)
+        tooltipNormal += "{0} {1}\n".format(wordLevel.format(lvl.toString()), formalLevelsInfo.run(lvl))
         return tooltipNormal
     end)
 

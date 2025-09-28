@@ -2,9 +2,10 @@ package Warden_T
 
 import ClosureEvents
 import ClosureTimers
+import MyAbilityIds
 
 public function deadlyStrike()
-    EventListener.onCast('A00T') (unit caster) ->
-        caster.addAbility('ACes')
+    EventListener.onCast(WARDEN_ABILITY_5) (unit caster) ->
+        caster.addAbility(WARDEN_ABILITY_5_DUMMY)
         doAfter(10) ->
-            caster.removeAbility('ACes')
+            caster.removeAbility(WARDEN_ABILITY_5_DUMMY)

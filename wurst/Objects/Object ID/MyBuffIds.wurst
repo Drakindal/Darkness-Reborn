@@ -31,8 +31,19 @@ public constant BUFF_26 = compiletime(BUFF_ID_GEN.next())
 
 public constant SATYR_BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant SATYR_BUFF_2 = compiletime(BUFF_ID_GEN.next())
+public constant SATYR_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+public constant SATYR_BUFF_5 = compiletime(BUFF_ID_GEN.next())
 
 public constant PRIESTESS_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+
+public constant SHADOW_OF_VENGEANCE_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_OF_VENGEANCE_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_OF_VENGEANCE_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_OF_VENGEANCE_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+
+public constant THIEF_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+
+public constant WARDEN_BUFF_5 = compiletime(BUFF_ID_GEN.next())
 
 public constant VIVPIRE_BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant VIVPIRE_BUFF_2 = compiletime(BUFF_ID_GEN.next())

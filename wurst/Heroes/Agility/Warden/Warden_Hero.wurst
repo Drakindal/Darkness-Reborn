@@ -7,13 +7,13 @@ import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_WARDEN, UnitIds.warden)
-    ..setHeroAbilities(commaList('A002', 'A116', 'A0D8', 'A014', 'A00T'))
-    
+    ..setHeroAbilities(commaList(WARDEN_ABILITY_1, WARDEN_ABILITY_2, WARDEN_ABILITY_3, WARDEN_ABILITY_4, WARDEN_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 20, 16)
