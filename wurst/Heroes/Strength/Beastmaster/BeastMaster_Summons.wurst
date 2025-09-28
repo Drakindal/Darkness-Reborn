@@ -17,7 +17,7 @@ public function quilBeast()
         let uid = u.getTypeId()
         if uid == MISHABEAR or uid == QUILBEAST or uid == HAWK
             let beastmaster = playerHero.get(u.getOwner())
-            let lvl = beastmaster.getAbilityLevel(ABILITY_7)
+            let lvl = beastmaster.getAbilityLevel(BEASTMASTER_ABILITY_5)
             beastmaster.addStr((lvl/3).ceil())
             spirits = spirits + 1
             if spirits % 5 == 0
@@ -32,7 +32,7 @@ public function quilBeast()
             let str = summoner.getStr(true)
             
             if summon.getTypeId() == MISHABEAR
-                let lvl = summoner.getAbilityLevel(ABILITY_4)
+                let lvl = summoner.getAbilityLevel(BEASTMASTER_ABILITY_1)
                 summon.setMaxHP(((0.25*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
                 summon.setBaseDamage((0.15 * str + lvl * 10).toInt(), 0)
@@ -43,7 +43,7 @@ public function quilBeast()
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 4)
             
             if summon.getTypeId() == QUILBEAST
-                let lvl = summoner.getAbilityLevel(ABILITY_5)
+                let lvl = summoner.getAbilityLevel(BEASTMASTER_ABILITY_2)
                 summon.setMaxHP(((0.01*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.15 * summoner.getArmor() + lvl * 4)
                 summon.setBaseDamage((0.4 * str).toInt() + lvl * 15, 0)
@@ -53,7 +53,7 @@ public function quilBeast()
                 if lvl == 9
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 4)            
             if summon.getTypeId() == HAWK
-                let lvl = summoner.getAbilityLevel(ABILITY_6)
+                let lvl = summoner.getAbilityLevel(BEASTMASTER_ABILITY_3)
                 summon.setMaxHP(((0.05*summoner.getMaxHP()) + lvl * 125).toInt(), true)
                 summon.setArmor(0.1 * summoner.getArmor() + lvl * 2)
                 summon.setBaseDamage((0.75 * str).toInt() + lvl * 20, 0)

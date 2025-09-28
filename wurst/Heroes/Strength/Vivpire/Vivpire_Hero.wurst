@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_VIVPIRE, UnitIds.dreadlord)// Dreadlord (U00X)
+    new MyHeroDefinition(HERO_VIVPIRE, UnitIds.dreadlord)
     ..setHeroAbilities(commaList(VIVPIRE_ABILITY_1, VIVPIRE_ABILITY_2, VIVPIRE_ABILITY_3, VIVPIRE_ABILITY_4, VIVPIRE_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
@@ -38,3 +38,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v3,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

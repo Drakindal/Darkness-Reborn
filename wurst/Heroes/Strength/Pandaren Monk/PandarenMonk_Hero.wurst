@@ -10,6 +10,8 @@ import Icons
 import Units
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_PANDAREN_MONK, UnitIds.pandarenbrewmaster)// Pandaren Monk (O00Z)
     ..setHeroAbilities(commaList('A0ZH', 'A0Z3', 'A0Z5', 'A0Z9', 'A0ZM'))
@@ -43,3 +45,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v0,
     Difficulty.v3)
+    
+// ----------------------------------------------------------------------------

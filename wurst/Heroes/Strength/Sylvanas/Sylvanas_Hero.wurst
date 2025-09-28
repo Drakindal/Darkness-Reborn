@@ -4,16 +4,16 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_SYLVANAS, UnitIds.sylvanuswindrunner)// Ranger (H03V)
-    ..setHeroAbilities(commaList(SYLVANAS_ABILITY_2, 'A0F0', 'A0CH', 'A0AP', 'A0F1'))
+    new MyHeroDefinition(HERO_SYLVANAS, UnitIds.sylvanuswindrunner)
+    ..setHeroAbilities(commaList(SYLVANAS_ABILITY_1, 'A0F0', 'A0CH', 'A0AP', 'A0F1'))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(19, 18, 15)
@@ -43,3 +43,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

@@ -10,8 +10,8 @@ import DamageTarget
 import Projectile
 
 public function stormbolt()
-    EventListener.onTargetCast(ABILITY_9) (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel(ABILITY_9)
+    EventListener.onTargetCast(MOUNTAIN_KING_ABILITY_1) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(MOUNTAIN_KING_ABILITY_1)
         let sfx = addEffect(Abilities.stormBoltMissile, caster.getPos())
         let semi = ((caster.getStr(true)*(0.75*lvl))+(lvl*200))*0.5
         let final = ((caster.getStr(true)*(0.75*lvl))+(lvl*200))

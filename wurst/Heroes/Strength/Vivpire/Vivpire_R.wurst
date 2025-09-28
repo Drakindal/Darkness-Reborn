@@ -40,7 +40,7 @@ function unit.preyTarget(vec2 pos, player p)
     new DummyCaster()
         ..owner(p)
         ..origin(pos)
-        ..castTarget(VIVPIRE_DUMMYABIL_3, 1, OrderIds.curse, this)
+        ..castTarget(VIVPIRE_DUMMY_ABILITY_3, 1, OrderIds.curse, this)
     doAfter(10) -> 
         this.removePrey()
 

@@ -8,7 +8,7 @@ import ClosureTimers
 
 function staticChargeDamage()
     let src = DamageEvent.getSource()
-    let lvl = src.getAbilityLevel(HERALD_ABILITY_R)
+    let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
     let targ = DamageEvent.getTarget()
     let intellect = src.getInt(true)
     let dmg = intellect * (lvl * 2.00)
@@ -18,15 +18,15 @@ function staticChargeDamage()
         temp.destr()
 
 function mindRipperHTIM(unit src)
-    let lvl = src.getAbilityLevel(HERALD_ABILITY_R)
+    let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
     DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
     src.addInt((0.01+0.25*(lvl-1)).ceil())
 
 function mindRipperHEAB(unit src)
-    let lvl = src.getAbilityLevel(HERALD_ABILITY_R)
+    let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
     if lvl > 0
         if src.hasAbility(HERALD_BUFF_E)
-            if GetRandomInt(1, 100) < 5*lvl + src.getAbilityLevel(HERALD_ABILITY_E)
+            if GetRandomInt(1, 100) < 5*lvl + src.getAbilityLevel(HERALD_ABILITY_3)
                 DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
                 src.addInt((0.01+0.25*(lvl-1)).ceil())
         else
@@ -39,7 +39,7 @@ public function mindRipper()
         switch DamageEvent.getType()
             case ATTACK
                 let src = DamageEvent.getSource()
-                let lvl = src.getAbilityLevel(HERALD_ABILITY_R)
+                let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
                 if GetRandomInt(1, 100) < lvl * 5 and lvl > 0
                     staticChargeDamage()
             case CODE

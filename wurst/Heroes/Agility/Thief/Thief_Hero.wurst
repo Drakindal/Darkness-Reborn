@@ -10,8 +10,10 @@ import Icons
 import Soundsets
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_THIEF, UnitIds.blademaster)// Thief (O00V)
+    new MyHeroDefinition(HERO_THIEF, UnitIds.blademaster)
     ..setHeroAbilities(commaList('A0X5', 'A0XE', 'A0XF', 'A0XD', 'A0XG'))
     
     ..setPrimaryAttribute("Agility")
@@ -45,3 +47,5 @@ import MyHeroDefinition
     Utility.v5,
     Healing.v0,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

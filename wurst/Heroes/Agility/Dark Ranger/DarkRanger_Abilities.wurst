@@ -9,6 +9,8 @@ import Icons
 import OrderIds
 import MyColors
 
+// ----------------------------------------------------------------------------
+
 @compiletime function darkRangerAbils()
     new AbilityDefinitionFaerieFire(DARK_RANGER_DUMMYABIL_1)
     ..setMissileArt(Abilities.arrowMissile1)
@@ -23,6 +25,7 @@ import MyColors
     ..setDurationNormal(1, 0.01)
 
     new AbilityDefinitionFaerieFire(DARK_RANGER_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
     ..presetDuration(lvl -> 0.01)
     ..presetBuffs(lvl -> "")
     ..presetCastRange(lvl -> 700)
@@ -34,13 +37,15 @@ import MyColors
     ..setMissileSpeed(9999)
     ..setIcon(Icons.bTNTrueShot)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setGeneralAbility(AbilityPosition.Q)
     ..register(HERO_DARK_RANGER, "Image Arrows".setColor(colAbilitiesDarkRanger), 
     "Creates 6 Illusions. Each Illusion shots an arrow that deals {0} x Agility.",
     (string format) -> format.format("0.6 x (Skill Level)"),
     (string format, int lvl) -> format.format((0.6*lvl).toString()))
 
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionMoonPriestessSearingArrows(DARK_RANGER_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
     ..presetDuration(lvl -> 0.0)
     ..presetBuffs(lvl -> "")
     ..presetDamageBonus(lvl -> 0)
@@ -57,13 +62,15 @@ import MyColors
     ..setIcon("ReplaceableTextures\\CommandButtons\\ATCDemonArrow.blp")
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
     ..setAutoCastingTooltip()
-    ..setGeneralAbility(AbilityPosition.W)
     ..register(HERO_DARK_RANGER, "Dark Arrow".setColor(colAbilitiesDarkRanger), 
     "Dark Ranger shoots an Arrow enhanced with Darkness. It deals {0} x Agility bonus damage and heals for {1} x Agility.",
     (string format) -> format.format("2 x (Skill Level)", "(Skill Level)"),
     (string format, int lvl) -> format.format((2*lvl).toString(), (lvl).toString()))
 
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionChainLightningcreep(DARK_RANGER_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
     ..presetCastingTime(lvl -> 0.3)
     ..presetCooldown(lvl -> 19.0 - lvl)
     ..presetManaCost(lvl -> 70 + 30*lvl)
@@ -78,13 +85,15 @@ import MyColors
     ..presetNumberofTargetsHit(lvl -> 1)
     ..presetCastRange(lvl -> 700)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructures))
-    ..setGeneralAbility(AbilityPosition.E)
     ..register(HERO_DARK_RANGER, "Dark Drain".setColor(colAbilitiesDarkRanger), 
     "The Dark Ranger attacks the enemy with dark energy, dealing {0} x Agility damage and restoring her own MP equal to {1} x Agility.",
     (string format) -> format.format("2 x (Skill Level)", "(Skill Level)"),
     (string format, int lvl) -> format.format((2*lvl).toString(), (lvl).toString()))
 
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionBerserk(DARK_RANGER_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
     ..presetCooldown(lvl -> 23.0 - lvl)
     ..presetManaCost(lvl -> 0)
     ..presetAreaofEffect(lvl -> 0.0)
@@ -100,13 +109,15 @@ import MyColors
     ..setAnimationNames("spell")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDrain.blp")
     ..setMissileSpeed(3000)
-    ..setGeneralAbility(AbilityPosition.R)
     ..register(HERO_DARK_RANGER, "Burst Energy".setColor(colAbilitiesDarkRanger), 
     "Instantly converts HP into MP. Sacrifices {0}% of current HP to get {1}% of remaining HP as MP.",
     (string format) -> format.format("4% x (Skill Level - 1)", "1% x (Skill Level)"),
     (string format, int lvl) -> format.format((4*lvl).toString(), (1*lvl).toString()))
     
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionAttributeModifierSkill(DARK_RANGER_ABILITY_5)
+    ..setUltimateAbility()
     ..presetBuffs(lvl -> "")
     ..setName("Silver Bow")
     ..setLightningEffects(Abilities.manaFlareBase)
@@ -116,8 +127,9 @@ import MyColors
     ..presetAgilityBonus(lvl -> 100 + 200*(lvl-1))
     ..presetIntelligenceBonus(lvl -> 50*lvl)
     ..presetStrengthBonus(lvl -> 0)
-    ..setUltimateAbility()
     ..register(HERO_DARK_RANGER, "Silver Bow".setColor(colAbilitiesDarkRanger), 
     "Increase Agility of hero Dark Ranger by {0} and intelligence by {1}",
     (string format) -> format.format("100 + 200 x (Skill Level - 1)", "50 x (Skill Level)"),
     (string format, int lvl) -> format.format((100 + 200*(lvl-1)).toString(), (50*lvl).toString()))
+    
+// ----------------------------------------------------------------------------

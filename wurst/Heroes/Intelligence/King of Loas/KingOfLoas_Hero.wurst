@@ -4,13 +4,13 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import Icons
 import MyHeroDefinition
+
+// ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_KING_OF_LOAS, UnitIds.paladin)
@@ -45,3 +45,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v3,
     Difficulty.v1)
+    
+// ----------------------------------------------------------------------------

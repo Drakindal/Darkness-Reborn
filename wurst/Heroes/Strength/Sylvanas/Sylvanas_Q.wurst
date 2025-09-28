@@ -15,7 +15,7 @@ function goldenArrowShoot(unit caster, vec2 target)
     let angle = caster.getPos().angleTo(target)
     let sfx = addEffect("HighElvenArrow.mdl", caster.getPos())
     var distance = caster.getPos().distanceTo(sfx.getPos())
-    let lvl = GetUnitAbilityLevel(caster, ABILITY_2)
+    let lvl = GetUnitAbilityLevel(caster, SYLVANAS_ABILITY_1)
     var pos = sfx.getPos()
     sfx.setScale(3)
     sfx.setYaw(angle.radians())
@@ -39,8 +39,8 @@ function goldenArrowShoot(unit caster, vec2 target)
                         u.setPos(sfx.getPos())
 
 public function goldenArrow()
-    EventListener.onTargetCast(ABILITY_2) (unit caster, unit target) ->
+    EventListener.onTargetCast(SYLVANAS_ABILITY_1) (unit caster, unit target) ->
         goldenArrowShoot(caster, target.getPos())
         
-    EventListener.onPointCast(ABILITY_2) (unit caster, vec2 target) ->
+    EventListener.onPointCast(SYLVANAS_ABILITY_1) (unit caster, vec2 target) ->
         goldenArrowShoot(caster, target)

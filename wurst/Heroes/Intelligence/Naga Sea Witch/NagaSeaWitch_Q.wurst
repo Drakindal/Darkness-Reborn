@@ -10,7 +10,7 @@ import MyAbilityIds
 import DamageTarget
 
 public function bubbleBomb()
-    let WATER_BUBBLE_ARTILLERY = compiletime(ArtilleryDetection.createArtilleryDummy(0, 120, 160, 1, "Units\\NagaWitch\\Water_egg.mdx", 500, 0.3))
+    let WATER_BUBBLE_ARTILLERY = compiletime(ArtilleryDetection.createArtilleryDummy(0, 120, 160, 1, "Units\\NAGA_WITCH\\Water_egg.mdx", 500, 0.3))
     let WATER_BUBBLE_SOUND = new SoundDefinition(Sounds.waterWaterFallLoop1, false, true)
     EventListener.onPointCast(NAGA_WITCH_ABILITY_1) (unit caster, vec2 target) ->
         ArtilleryDetection.fireArtillery(caster, WATER_BUBBLE_ARTILLERY, caster.getPos(), target) (unit detectionUnit, unit caster, int data) ->

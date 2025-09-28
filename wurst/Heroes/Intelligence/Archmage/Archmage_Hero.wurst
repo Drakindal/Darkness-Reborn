@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_ARCHMAGE, UnitIds.archmage)// Archmage (H002)
+    new MyHeroDefinition(HERO_ARCHMAGE, UnitIds.archmage)
     ..setHeroAbilities(commaList('A0CZ', 'A0CX', ARCHMAGE_ABILITY_3, 'A0D3', ARCHMAGE_ABILITY_5))
     
     
@@ -38,3 +38,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v0,
     Difficulty.v3)
+    
+// ----------------------------------------------------------------------------

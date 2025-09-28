@@ -76,12 +76,21 @@ public function AbilityDefinition.register(int heroId, string abilityName, strin
     for lvl = 1 to maxLevels
         levelsInfo += "{0} {1}\n".format(wordLevel.format(lvl.toString()), formalLevelsInfo.run(lvl))
 
-    let tooltipLearnExtended = tooltipHeader + "\n" + levelsInfo
+    var tooltipLearnExtended = ""
+    if (tooltipHeader != "")
+        tooltipLearnExtended += tooltipHeader + "\n"
+    tooltipLearnExtended += levelsInfo
 
     // The main text in the learn tooltip
     this..setTooltipLearnExtended(tooltipLearnExtended)
     // The main text in the normal tooltip
-    ..presetTooltipNormalExtended(lvl -> tooltipHeader + "\n\n" + formalLevelsInfo.run(lvl))
+    ..presetTooltipNormalExtended((int lvl) -> begin
+        var tooltipNormal = ""
+        if (tooltipHeader != "")
+            tooltipNormal += tooltipHeader + "\n"
+        tooltipNormal += formalLevelsInfo.run(lvl)
+        return tooltipNormal
+    end)
 
 // ----------------------------------------------------------------------------
 
@@ -98,7 +107,7 @@ public function AbilityDefinition.setUltimateAbility()
 public function AbilityDefinition.setGeneralAbility(AbilityPosition pos)
     this..setPosition(pos)
     ..setRequiredLevel(1)
-    ..setLevelSkipRequirement(1)
+    ..setLevelSkipRequirement(2)
     ..setMaxLevels(9)
 
 public function AbilityDefinition.setIcon(string icon)

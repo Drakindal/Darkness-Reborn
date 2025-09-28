@@ -13,7 +13,7 @@ public function pulverize()
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let caster = DamageEvent.getSource()
-                let lvl = caster.getAbilityLevel(TAUREN_E)
+                let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_3)
                 if lvl > 0
                     if GetRandomInt(1, 100) < 10+2*lvl
                         let target = DamageEvent.getTarget()

@@ -22,9 +22,6 @@ import TheKingOfLoas_R
 import TheKingOfLoas_T
 import TheKingOfLoas_W
 import KingOfLoas_BloodOfHakkar
-import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import MountainKing_W
 import MountainKing_Q
 import MountainKing_R

@@ -34,8 +34,8 @@ public function frostArrowToggle() //For some reason orderID is not getting upda
                     // Vashj (Frost Arrows ) X - Autocast
                     if src.getFrostArrowToggled() 
                         let targ = DamageEvent.getTarget()
-                        let lvl = GetUnitAbilityLevel(src, NAGAWITCH_ABILITY_2)
+                        let lvl = GetUnitAbilityLevel(src, NAGA_WITCH_ABILITY_2)
                         let dmg = src.getMaxMana()*(0.04*lvl)
-                        if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(NAGAWITCH_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
+                        if(src.getMana() < BlzGetAbilityIntegerLevelField(src.getAbility(NAGA_WITCH_ABILITY_2), ABILITY_ILF_MANA_COST, lvl))
                             src.issueImmediateOrderById(OrderIds.coldarrows + 1)
                         src.damageTargetCode(dmg, targ, null, -1, customDamageType.Magical)

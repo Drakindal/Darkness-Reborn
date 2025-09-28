@@ -8,8 +8,10 @@ import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_WARDEN, UnitIds.warden)// Warden (E013)
+    new MyHeroDefinition(HERO_WARDEN, UnitIds.warden)
     ..setHeroAbilities(commaList('A002', 'A116', 'A0D8', 'A014', 'A00T'))
     
     
@@ -40,3 +42,5 @@ import MyHeroDefinition
     Utility.v1,
     Healing.v0,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

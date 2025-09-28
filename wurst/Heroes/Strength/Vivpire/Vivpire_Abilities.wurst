@@ -8,7 +8,7 @@ import BuffIds
 import BuffObjEditing
 
 @compiletime function vivpireAbils()
-    new AbilityDefinitionCripplecreep(VIVPIRE_DUMMYABIL_1)
+    new AbilityDefinitionCripplecreep(VIVPIRE_DUMMY_ABILITY_1)
     ..setLevels(1)
     ..setAttackSpeedReduction(1, 0.75)
     ..setMovementSpeedReduction(1, 0.75)
@@ -19,7 +19,7 @@ import BuffObjEditing
     ..setBuffs(1, commaList(VIVPIRE_BUFF_3))
     ..setCastRange(1, 99999)
 
-    new AbilityDefinitionCursecreep(VIVPIRE_DUMMYABIL_2)
+    new AbilityDefinitionCursecreep(VIVPIRE_DUMMY_ABILITY_2)
     ..setLevels(1)
     ..setChancetoMiss(1, 0.75)
     ..setManaCost(1, 0)
@@ -27,7 +27,7 @@ import BuffObjEditing
     ..setDurationNormal(1, 10)
     ..setCastRange(1, 99999)
 
-    new AbilityDefinitionCurse(VIVPIRE_DUMMYABIL_3)
+    new AbilityDefinitionCurse(VIVPIRE_DUMMY_ABILITY_3)
     ..setLevels(1)
     ..setChancetoMiss(1, 0)
     ..setDummyAbility()

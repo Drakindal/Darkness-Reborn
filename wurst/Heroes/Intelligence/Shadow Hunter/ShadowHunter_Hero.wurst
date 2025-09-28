@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_SHADOW_HUNTER, UnitIds.shadowhunter)// Shadow Hunter (O00U)
+    new MyHeroDefinition(HERO_SHADOW_HUNTER, UnitIds.shadowhunter)
     ..setHeroAbilities(commaList(SHADOW_HUNTER_ABILITY_1, 'A019', 'A0M9', 'A0M3', 'A0MI'))
     
     ..setPrimaryAttribute("Intelligence")
@@ -40,3 +40,5 @@ import MyHeroDefinition
     Utility.v4,
     Healing.v2,
     Difficulty.v3)
+    
+// ----------------------------------------------------------------------------

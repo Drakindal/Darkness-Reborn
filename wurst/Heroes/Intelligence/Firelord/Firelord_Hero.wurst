@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_FIRELORD, UnitIds.firelord)// Firelord (N005)
+    new MyHeroDefinition(HERO_FIRELORD, UnitIds.firelord)
     ..setHeroAbilities(commaList('A01P', 'A01T', 'A01U', 'A01S'))
     ..setNormalAbilities(commaList('A01O', ABILITY_HERO_TP, AbilityIds.inventory))
     
@@ -42,3 +42,5 @@ import MyHeroDefinition
     Utility.v0,
     Healing.v0,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

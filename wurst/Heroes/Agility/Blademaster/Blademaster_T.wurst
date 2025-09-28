@@ -11,27 +11,32 @@ import MyAbilityIds
 
 texttag slashText
 
+function handler(unit caster, vec2 target)
+    let lvl = caster.getAbilityLevel(BLADEMASTER_ABILITY_5)
+    let dmg = caster.getAgi(true)*lvl*0.75 + 3000*lvl
+    caster.pauseIndef()
+    caster.setPathing(false)
+    doPeriodicallyTimed(0.3, 3.0) (CallbackCounted cb) ->
+        flashEffect(Abilities.warStompCaster, target)
+        caster.setPos(target)
+        caster.issueImmediateOrder("thunderclap")
+        caster.setAnimation("slam")
+        forUnitsInRange(caster.getPos(), 350, true) (unit u) ->
+            if caster.isEnemyOf(u)
+                caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
+        if cb.isLast()
+            flashEffect(Abilities.warStompCaster, target, 3)
+            caster.unPauseUnitIndef()
+            caster.setPathing(true)
+            forUnitsInRange(caster.getPos(), 600, true) (unit u) ->
+                if caster.isEnemyOf(u)
+                    slashText = createCriticalStrikeTextTag(caster, R2I(dmg*4))
+                    slashText.setColor(colorA(252, 25, 25, 225))
+                    slashText.setScaledText("SLAM", 1.5)
+                    caster.damageTargetCode(dmg * 4, u, null, -1, customDamageType.PhysicalMelee)
+
 public function hasteSlash()
     EventListener.onPointCast(BLADEMASTER_ABILITY_5) (unit caster, vec2 target) ->
-        let lvl = caster.getAbilityLevel(BLADEMASTER_ABILITY_5)
-        let dmg = caster.getAgi(true)*lvl*0.75 + 5000*lvl
-        caster.pauseIndef()
-        caster.setPathing(false)
-        doPeriodicallyTimed(0.3, 3) (CallbackCounted cb) ->
-            flashEffect(Abilities.warStompCaster, target)
-            caster.setPos(target)
-            caster.issueImmediateOrder("thunderclap")
-            caster.setAnimation("slam")
-            forUnitsInRange(caster.getPos(), 350, true) (unit u) ->
-                if caster.isEnemyOf(u)
-                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
-            if cb.isLast()
-                flashEffect(Abilities.warStompCaster, target, 3)
-                caster.unPauseUnitIndef()
-                caster.setPathing(true)
-                forUnitsInRange(caster.getPos(), 600, true) (unit u) ->
-                    if caster.isEnemyOf(u)
-                        slashText = createCriticalStrikeTextTag(caster, R2I(dmg*4))
-                        slashText.setColor(colorA(252, 25, 25, 225))
-                        slashText.setScaledText("SLAM", 1.5)
-                        caster.damageTargetCode(dmg * 4, u, null, -1, customDamageType.PhysicalMelee)
+        handler(caster, target)
+    EventListener.onTargetCast(BLADEMASTER_ABILITY_5) (unit caster, unit target) ->
+        handler(caster, target.getPos())

@@ -48,7 +48,7 @@ import MyHeroDefinition
     
 // ----------------------------------------------------------------------------
 
-    new MyHeroDefinition(HERO_PRIESTESS_OF_THE_MOON_FORM, UnitIds.priestessofthemoon)// Priestess of the Moon (E001)
+    new MyHeroDefinition(HERO_PRIESTESS_OF_THE_MOON_FORM, UnitIds.priestessofthemoon)
     ..setHeroAbilities(commaList(PRIESTESS_ABILITY_1, PRIESTESS_ABILITY_2, PRIESTESS_ABILITY_3, PRIESTESS_ABILITY_4, PRIESTESS_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")

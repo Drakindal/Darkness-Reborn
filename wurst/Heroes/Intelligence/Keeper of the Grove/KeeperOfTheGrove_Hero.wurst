@@ -8,8 +8,10 @@ import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_KEEPER_OF_THE_GROVE, UnitIds.keeperofthegrove)// Keeper of the Grove (E000)
+    new MyHeroDefinition(HERO_KEEPER_OF_THE_GROVE, UnitIds.keeperofthegrove)
     ..setHeroAbilities(commaList('A0TS', 'A0TU', 'A0U1', 'A0TZ', 'A0U2'))
     
     ..setPrimaryAttribute("Intelligence")
@@ -42,3 +44,5 @@ import MyHeroDefinition
     Utility.v4,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_PITLORD, UnitIds.pitlord)// Pit Lord (N04F)
+    new MyHeroDefinition(HERO_PITLORD, UnitIds.pitlord)
     ..setHeroAbilities(commaList(PITLORD_ABILITY_1, 'A0RS', 'A0RL', 'A0RI', 'A0R8'))
     
     ..setPrimaryAttribute("Strength")
@@ -41,3 +41,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v0,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

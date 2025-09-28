@@ -5,7 +5,7 @@ import OrderIds
 import ChannelAbilityPreset
 
 @compiletime function archmageAbilities()
-    new ChannelAbilityPreset(ARCHMAGE_ABILITY_E, 9, true)
+    new ChannelAbilityPreset(ARCHMAGE_ABILITY_3, 9, true)
     ..presetAreaofEffect(lvl -> 500)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25 * lvl)
@@ -32,7 +32,7 @@ import ChannelAbilityPreset
     ..presetTooltipNormal(lvl -> "Ultima [|cffffcc00E|r] - [|cffffcc00Level {0}|r]".format(lvl.toString()))
     ..presetTooltipNormalExtended(lvl -> "Create a black hole in target area, each second damage enemies in 500 range by {0}x int and applying Ultima reducing damage for 15 seconds.\r\n\r\n|c00FFFC01Every buff not from this spell will double the damage|r".format((0.15*lvl).toString()))
     
-    new ChannelAbilityPreset(ARCHMAGE_ABILITY_T, 4, true)
+    new ChannelAbilityPreset(ARCHMAGE_ABILITY_5, 4, true)
     ..presetCastRange(lvl -> 800)
     ..presetBuffs(lvl -> "")
     ..presetManaCost(lvl -> 200 + lvl * 100)

@@ -8,8 +8,10 @@ import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_LICH, UnitIds.lich)// Lich (U001)
+    new MyHeroDefinition(HERO_LICH, UnitIds.lich)
     ..setHeroAbilities(commaList('A01Q', 'A0SG', 'A01H', 'A0SI', 'A0SF'))
     
     ..setPrimaryAttribute("Intelligence")
@@ -43,3 +45,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

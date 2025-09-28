@@ -9,8 +9,10 @@ import CommonDescriptions
 import Icons
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_JACKSMITH, UnitIds.paladin)// JackSmith (H03O)
+    new MyHeroDefinition(HERO_JACKSMITH, UnitIds.paladin)
     ..setHeroAbilities(commaList('A0H3', 'A0DH', 'A0DE', 'A0DG', 'A0JR'))
     
     ..setModelFile("Units\\Jacksmith\\IndustrialWorker.mdx")
@@ -41,3 +43,5 @@ import MyHeroDefinition
     Utility.v5,
     Healing.v0,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

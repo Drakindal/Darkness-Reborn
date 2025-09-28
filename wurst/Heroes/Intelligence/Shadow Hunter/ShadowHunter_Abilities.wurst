@@ -6,7 +6,7 @@ import ObjectIds
 import MyUnitIds
 
 @compiletime function shadowHunter()
-    new AbilityDefinitionShadowHunterSerpentWard(SHADOWHUNTER_ABILITY_1)
+    new AbilityDefinitionShadowHunterSerpentWard(SHADOW_HUNTER_ABILITY_1)
     ..setLevels(9)
     ..setButtonPositionNormalX(1)
     ..setButtonPositionNormalY(2)
@@ -25,7 +25,7 @@ import MyUnitIds
     ..setDurationNormal(9, 30)
     ..presetManaCost(lvl -> 70+10*lvl)
 
-    new AbilityDefinitionCarrionSwarmcreep(SHADOWHUNTER_ABILITY_2)
+    new AbilityDefinitionCarrionSwarmcreep(SHADOW_HUNTER_ABILITY_2)
     ..setLevels(9)
     ..setButtonPositionNormalX(0)
     ..setButtonPositionNormalY(2)

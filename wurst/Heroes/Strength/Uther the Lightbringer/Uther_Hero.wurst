@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_UTHER, UnitIds.uther)// Uther (H00B)
+    new MyHeroDefinition(HERO_UTHER, UnitIds.uther)
     ..setModelFile("Units\\Uther\\Uther HOTS\\Uther.mdx")
     ..setHeroAbilities(commaList(UTHER_ABILITY_1, UTHER_ABILITY_2, UTHER_ABILITY_3, UTHER_ABILITY_4, UTHER_ABILITY_5))
     
@@ -43,3 +43,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v2,
     Difficulty.v1)
+    
+// ----------------------------------------------------------------------------

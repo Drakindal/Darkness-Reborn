@@ -7,8 +7,8 @@ import DamageTarget
 import ClosureTimers
 
 public function thunderRage()
-    EventListener.onTargetCast(HERALD_ABILITY_T) (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel(HERALD_ABILITY_T)
+    EventListener.onTargetCast(HERALD_ABILITY_5) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(HERALD_ABILITY_5)
         let dmg = caster.getInt(true) * (lvl * 5.00) + caster.getMaxMana()
         forUnitsInRange(target.getPos(), 500) (unit u) ->
             if u.isEnemyOf(caster.getOwner())

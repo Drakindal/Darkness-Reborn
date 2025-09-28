@@ -8,8 +8,10 @@ import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_TIME_WIZARD, UnitIds.jaina)// Time Wizard (H009)
+    new MyHeroDefinition(HERO_TIME_WIZARD, UnitIds.jaina)
     ..setHeroAbilities(commaList('A0K6', 'A0NC', 'A0K5', 'A0ND', 'A0N4'))
     
     ..setPrimaryAttribute("Intelligence")
@@ -36,3 +38,5 @@ import MyHeroDefinition
     Utility.v5,
     Healing.v4,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

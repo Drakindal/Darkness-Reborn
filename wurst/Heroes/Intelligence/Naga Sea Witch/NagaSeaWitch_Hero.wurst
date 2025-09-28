@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_NAGA_SEA_WITCH, UnitIds.seawitch)// Naga Sea Witch (H000)
+    new MyHeroDefinition(HERO_NAGA_SEA_WITCH, UnitIds.seawitch)
     ..setHeroAbilities(commaList(NAGA_WITCH_ABILITY_1, NAGA_WITCH_ABILITY_2, NAGA_WITCH_ABILITY_3, NAGA_WITCH_ABILITY_4, NAGA_WITCH_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
@@ -39,3 +39,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

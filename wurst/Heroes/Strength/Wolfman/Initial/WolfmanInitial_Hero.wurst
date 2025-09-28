@@ -4,18 +4,17 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import Icons
 import Units
 import MyHeroDefinition
-import HeroNames
+
+// ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_WOLFMAN_INITIAL, UnitIds.blademaster)// Wolfman (O007)
+    new MyHeroDefinition(HERO_WOLFMAN_INITIAL, UnitIds.blademaster)
     ..setHeroAbilities(commaList(MAN_ABILITY_1,MAN_ABILITY_2,MAN_ABILITY_3))
     
     ..setPrimaryAttribute("Strength")
@@ -47,3 +46,5 @@ import HeroNames
     Utility.v2,
     Healing.v3,
     Difficulty.v2)
+    
+// ----------------------------------------------------------------------------

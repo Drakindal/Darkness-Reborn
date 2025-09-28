@@ -10,6 +10,8 @@ import Icons
 import Units
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_TRACKER, UnitIds.sylvanuswindrunner)// Tracker (H047)
     ..setHeroAbilities(commaList('A0WF', 'A0WE', 'A0WG', 'A0WH', 'A0WI'))
@@ -46,3 +48,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v2,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

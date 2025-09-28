@@ -10,8 +10,10 @@ import Icons
 import Units
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_GUARDIAN_OF_LIGHT, UnitIds.keeperofthegrove)// Guadian of Light (E017)
+    new MyHeroDefinition(HERO_GUARDIAN_OF_LIGHT, UnitIds.keeperofthegrove)
     ..setHeroAbilities(commaList('A00D', 'A00F', 'A00E', 'A00K', 'A0CY'))
     
     
@@ -50,3 +52,5 @@ import MyHeroDefinition
     Utility.v5,
     Healing.v5,
     Difficulty.v5)
+    
+// ----------------------------------------------------------------------------

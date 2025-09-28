@@ -5,8 +5,8 @@ import DeathKnight_Q
 import MyAbilityIds
 
 public function soulsKing()
-    EventListener.onCast(ABILITY_8) (unit caster) ->
+    EventListener.onCast(DEATH_KNIGHT_ABILITY_5) (unit caster) ->
         let boost = souls * 10
         caster.addStr(boost)       
-        doAfter(caster.getAbility(ABILITY_8).getField(ABILITY_RLF_DURATION_HERO, caster.getAbilityLevel(ABILITY_8)-1)) -> 
+        doAfter(caster.getAbility(DEATH_KNIGHT_ABILITY_5).getField(ABILITY_RLF_DURATION_HERO, caster.getAbilityLevel(DEATH_KNIGHT_ABILITY_5)-1)) -> 
             caster.setStr(caster.getStr(false)-boost)

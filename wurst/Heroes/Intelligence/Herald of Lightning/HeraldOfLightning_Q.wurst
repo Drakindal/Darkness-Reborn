@@ -10,7 +10,7 @@ import MyUnitIds
 import OrderIds
 
 public function orbofLightning()
-    EventListener.onCast(HERALD_ABILITY_Q) (unit caster) ->
+    EventListener.onCast(HERALD_ABILITY_1) (unit caster) ->
         let temp = new LinkedList<unit>
         let sfxtemp = new LinkedList<unit>
         for int i = 0 to 2
@@ -27,7 +27,7 @@ public function orbofLightning()
                 let newpos = pos.polarOffset(angle, 75).withZ(150)
                 sfx..setPosFly(newpos)
         doPeriodicallyTimed(0.5, 10) (CallbackCounted cb) ->
-            let lvl = caster.getAbilityLevel(HERALD_ABILITY_Q)
+            let lvl = caster.getAbilityLevel(HERALD_ABILITY_1)
             let dmg = 0.8 * caster.getInt(true) * lvl
             forUnitsInRange(caster.getPos(), 500) (unit u) ->
                 if u.isEnemyOf(caster) and u.isAlive()

@@ -9,8 +9,8 @@ import MyAbilityIds
 import DamageTarget
 
 public function ultima()
-    EventListener.onPointCast(ARCHMAGE_ABILITY_E) (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, ARCHMAGE_ABILITY_E)
+    EventListener.onPointCast(ARCHMAGE_ABILITY_3) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, ARCHMAGE_ABILITY_3)
         let dmg = (caster.getInt(true) * 0.15) * lvl
         
         doPeriodicallyCounted(1, 5) (CallbackCounted cb) ->

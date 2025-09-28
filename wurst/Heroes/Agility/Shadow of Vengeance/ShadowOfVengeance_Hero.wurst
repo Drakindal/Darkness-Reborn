@@ -10,8 +10,10 @@ import Icons
 import Units
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_SHADOW_OF_VENGEANCE, UnitIds.warden)// Shadow Vengeance (E00Z)
+    new MyHeroDefinition(HERO_SHADOW_OF_VENGEANCE, UnitIds.warden)
     ..setHeroAbilities(commaList('A0C3', 'A0B6', 'A0B4', 'A0CG', 'A0CE'))
     
     
@@ -48,3 +50,5 @@ import MyHeroDefinition
     Utility.v4,
     Healing.v0,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_TINKER, UnitIds.tinker)// Tinker (N04B)
+    new MyHeroDefinition(HERO_TINKER, UnitIds.tinker)
     ..setHeroAbilities(commaList(TINKER_ABILITY_1, TINKER_ABILITY_2, TINKER_ABILITY_3, 'A0QK', 'A11D'))
     
     ..setPrimaryAttribute("Intelligence")
@@ -45,3 +45,5 @@ import MyHeroDefinition
     Utility.v5,
     Healing.v5,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

@@ -4,8 +4,6 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
@@ -14,8 +12,10 @@ import Units
 import Soundsets
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_DEATH_KNIGHT, UnitIds.paladin)// Death Knight (U000)
+    new MyHeroDefinition(HERO_DEATH_KNIGHT, UnitIds.paladin)
     ..setHeroAbilities(commaList('A00L', 'A00N', 'A088', 'A0AE', DEATH_KNIGHT_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
@@ -49,3 +49,5 @@ import MyHeroDefinition
     Utility.v2,
     Healing.v4,
     Difficulty.v4)
+    
+// ----------------------------------------------------------------------------

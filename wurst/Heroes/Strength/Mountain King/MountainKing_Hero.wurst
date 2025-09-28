@@ -4,15 +4,15 @@ import UnitIds
 import ObjectIds
 import MyUnitIds
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
 
+// ----------------------------------------------------------------------------
+
 @compiletime function defineHero()
-    new MyHeroDefinition(HERO_MOUNTAIN_KING, UnitIds.mountainking)// Mountain King (H003)
+    new MyHeroDefinition(HERO_MOUNTAIN_KING, UnitIds.mountainking)
     ..setHeroAbilities(commaList(MOUNTAIN_KING_ABILITY_1, 'A0DV', 'A0DW', 'A0DX', 'A0DZ'))
     
     ..setPrimaryAttribute("Strength")
@@ -42,3 +42,5 @@ import MyHeroDefinition
     Utility.v3,
     Healing.v0,
     Difficulty.v1)
+    
+// ----------------------------------------------------------------------------

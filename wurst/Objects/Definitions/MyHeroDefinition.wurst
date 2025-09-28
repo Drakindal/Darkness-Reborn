@@ -61,7 +61,7 @@ public function rolesList(vararg string values) returns string
     string result = ""
     for v in values
         result += v + "/"
-    return result.substring(0, result.length() - 2)
+    return result.substring(0, result.length() - 1)
 
 // ----------------------------------------------------------------------------
 
@@ -164,14 +164,14 @@ public class MyHeroDefinition extends HeroDefinition
 
         let coloredHeroName = heroName.setColor(colHeroName)
         setTooltipBasic(coloredHeroName)
-        super.setTooltipExtended(heroName.setColor(colHeroName)
-        + "Roles: {0}\n\n".format(roles)
-        + "|cffEE0404Physical Damage|r: {0}/5\n".format((physDamage  castTo int).toString())
-        + "|cff76ECF9Magical  Damage|r: {0}/5\n".format((magicDamage castTo int).toString())
-        + "|cffB0B0B0Defense|r:         {0}/5\n".format((defense     castTo int).toString())
-        + "|cff663300Utility|r:         {0}/5\n".format((utility     castTo int).toString())
-        + "|cff66FF66Healing|r:         {0}/5\n".format((healing     castTo int).toString())
-        + "|cfff8d539Difficulty|r:      {0}/5\n".format((difficulty  castTo int).toString())
+        super.setTooltipExtended(
+          "Roles: {0}\n\n".format(roles)
+        + "|cffEE0404Physical Damage|r: {0}/5\n".format((physDamage castTo int).toString())
+        + "|cff76ECF9Magical Damage|r: {0}/5\n".format((magicDamage castTo int).toString())
+        + "|cffB0B0B0Defense|r: {0}/5\n".format((defense castTo int).toString())
+        + "|cff663300Utility|r: {0}/5\n".format((utility castTo int).toString())
+        + "|cff66FF66Healing|r: {0}/5\n".format((healing castTo int).toString())
+        + "|cfff8d539Difficulty|r: {0}/5\n".format((difficulty castTo int).toString())
         )
         
     function setStatsBase(int str, int agi, int intel)

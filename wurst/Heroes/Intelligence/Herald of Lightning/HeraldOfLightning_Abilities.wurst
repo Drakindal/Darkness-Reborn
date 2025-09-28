@@ -16,7 +16,7 @@ import BuffObjEditing
     ..setCastingTime(1, 0)
     ..setTargetsAllowed(1, commaList(TargetsAllowed.enemies))
 
-    new AbilityDefinitionBerserk(HERALD_ABILITY_Q)
+    new AbilityDefinitionBerserk(HERALD_ABILITY_1)
     ..setLevels(9)
     ..setName("Orbs of Lightning")
     ..setHotkeyLearn("Q")
@@ -38,7 +38,7 @@ import BuffObjEditing
     ..setTooltipLearn("Learn Orbs of Lightning [ |c00FFFC01Q|r ]  - [|cffffcc00Level %d|r]")
     ..setTooltipLearnExtended("The Herald calls to him a few orbs of lightning which occasionally deal damage to an enemy in range, dealing 0.8 * LVL amount of damage for 10 seconds every 0.5 seconds.\n\nDuration: 10 seconds.\nCooldown:20 second.")
 
-    new AbilityDefinitionTaurenChieftainWarStomp(HERALD_ABILITY_W)
+    new AbilityDefinitionTaurenChieftainWarStomp(HERALD_ABILITY_2)
     ..setLevels(9)
     ..setName("Lightning Nova")
     ..setHotkeyLearn("W")
@@ -61,7 +61,7 @@ import BuffObjEditing
     ..setTooltipLearn("Learn Lightning Nova [ |c00FFFC01W|r ]  - [|cffffcc00Level %d|r]")
     ..setTooltipLearnExtended("Herald unleashes a Lightning Nova that deals 3 * LVL * INT damage to everyone in an 500 AoE around him, immobilizing them for 1 seconds.\n\nCooldown:25 second.")
 
-    new AbilityDefinitionFrenzy(HERALD_ABILITY_E)
+    new AbilityDefinitionFrenzy(HERALD_ABILITY_3)
     ..setLevels(9)
     ..setName("Lightning Empowerment")
     ..setHotkeyLearn("E")
@@ -87,7 +87,7 @@ import BuffObjEditing
     ..setTooltipLearnExtended("The Herald coats himself in lightning, increasing his attackspeed by 30% and increasing the chance for Static Charge on attack to occur by 1% each level.\n\nDuration: 15 seconds.\nCooldown:25 second.")
     
 
-    new AbilityDefinitionCriticalStrikecreep(HERALD_ABILITY_R)
+    new AbilityDefinitionCriticalStrikecreep(HERALD_ABILITY_4)
     ..setLevels(9)
     ..setName("Static Charge")
     ..setHotkeyLearn("R")
@@ -110,7 +110,7 @@ import BuffObjEditing
     +"Herald's abilities have 5% * LVL chance to deal 20% * LVL increased damage.\n"
     +"Whenever Herald's abilities crit, he gains 1/1/1/1/2/2/2/2/3 INT.")
 
-    new AbilityDefinitionThunderBoltCreep(HERALD_ABILITY_T)
+    new AbilityDefinitionThunderBoltCreep(HERALD_ABILITY_5)
     ..setLevels(4)
     ..setLevelSkipRequirement(8)
     ..setHotkeyLearn("T")
