@@ -1,10 +1,19 @@
 package ShadowOfVengeance_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import BuffIds
+import BuffObjEditing
+import MyColors
 
-@compiletime function dummyAbilities()
-    new AbilityDefinitionMountainKingThunderBolt(DARK_VENGEANCE_ABILITY_Q_DUMMY)
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new AbilityDefinitionMountainKingThunderBolt(SHADOW_OF_VENGEANCE_ABILITY_1_DUMMY)
     ..setLevels(1)
     ..setDurationHero(1, 0.6)
     ..setDurationNormal(1, 0.6)
@@ -16,3 +25,166 @@ import AbilityObjEditing
     ..setArtSpecial(".mdl")
     ..setArtEffect(".mdl")
     ..setArtCaster(".mdl")
+    
+    new BuffDefinition(SHADOW_OF_VENGEANCE_BUFF_1, BuffIds.entanglingRoots)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV (5).blp")
+    ..setArtTarget("Gravitone.mdx")
+    ..setEffect("Abilities\\Spells\\Undead\\Impale\\ImpaleHitTarget.mdl")
+    ..register("Fury Peak Chains".setColor(colAbilitiesShadowOfVengeance),
+    "The enemy is stunned by Shadow of Vengeance.")
+    
+    new AbilityDefinitionBerserk(SHADOW_OF_VENGEANCE_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetBuffs(lvl -> SHADOW_OF_VENGEANCE_BUFF_1.toRawCode())
+    ..presetCooldown(lvl -> 26.0 - lvl)
+    ..presetMovementSpeedIncrease(lvl -> 0.2 + 0.1*lvl)
+    ..presetAttackSpeedIncrease(lvl -> 0.15*lvl)
+    ..presetDuration(lvl -> 6.0 + 0.5*lvl)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV (5).blp")
+    ..register(HERO_SHADOW_OF_VENGEANCE, "Fury Peak".setColor(colAbilitiesShadowOfVengeance),
+    "Shadow of Vengeance goes into chaos rage increasing her attack speed, stunning enemy and dealing extra damage based on current missing health every attack.",
+    (int lvl) -> "+{0}% attack speed. Duration {1} seconds (cd {2} seconds).".format(
+        (15*lvl).toString(),
+        (6.0 + 0.5*lvl).toString(1),
+        (26 - lvl).toString()
+    ))
+        
+// ----------------------------------------------------------------------------
+
+constant real array[9] abi2_Range = [
+      500,
+     1000,
+     2000,
+     4000,
+     5000,
+    10000,
+    16000,
+    22000,
+    32000
+]
+
+@compiletime function defineAbilities2()
+    new AbilityDefinitionWardenBlink(SHADOW_OF_VENGEANCE_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 50 + 50*lvl)
+    ..presetMaximumRange(lvl -> abi2_Range[lvl-1])
+    ..setAreaEffect("Grin Curse.mdx")
+    ..setArtSpecial("Grin Curse.mdx")
+    ..setGeneralAbility(AbilityPosition.W)
+    ..register(HERO_SHADOW_OF_VENGEANCE, "Shadow Blink".setColor(colAbilitiesShadowOfVengeance), 
+    "Shadow of Vengeance immediately moves through the shadows to another location.",
+    (int lvl) -> "Blink: {0} range, cd {1} seconds.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+
+// ----------------------------------------------------------------------------
+
+constant real array[9] abi3_Damage = [
+      100.0,
+      300.0,
+      900.0,
+     1400.0,
+     2600.0,
+     3800.0,
+     5400.0,
+     7600.0,
+    11200.0
+]
+
+@compiletime function defineAbilities3()
+    new BuffDefinition(SHADOW_OF_VENGEANCE_BUFF_3, BuffIds.entanglingRoots)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (3).blp")
+    ..setArtTarget("HellBond.mdx")
+    ..register("Hell Bound".setColor(colAbilitiesShadowOfVengeance),
+    "Hell Bound.")
+    
+    new AbilityDefinitionKeeperoftheGroveEntanglingRoots(SHADOW_OF_VENGEANCE_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetBuffs(lvl -> SHADOW_OF_VENGEANCE_BUFF_3.toRawCode())
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 90)
+    ..setManaCost(2, 110)
+    ..setManaCost(3, 130)
+    ..setManaCost(4, 170)
+    ..setManaCost(5, 210)
+    ..setManaCost(6, 250)
+    ..setManaCost(7, 290)
+    ..setManaCost(8, 340)
+    ..setManaCost(9, 380)
+    ..presetDamageperSecond(lvl -> abi3_Damage[lvl-1])
+    ..presetDuration(lvl -> 1.5 + 0.5*lvl)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (3).blp")
+    ..register(HERO_SHADOW_OF_VENGEANCE, "Hell Bound".setColor(colAbilitiesShadowOfVengeance), 
+    "Shadow Vengeance commands the darkness to entangle an enemy for a few seconds, dealing damage to them.",
+    (int lvl) -> "Deals {0} damage per second.".format(abi3_Damage[lvl-1].toString(0)))
+
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(SHADOW_OF_VENGEANCE_BUFF_4, BuffIds.entanglingRoots)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASV  (1).blp")
+    ..register("Gravitone".setColor(colAbilitiesShadowOfVengeance),
+    "Gravitone.")
+
+    new AbilityDefinitionBladeMasterCriticalStrike(SHADOW_OF_VENGEANCE_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetBuffs(lvl -> SHADOW_OF_VENGEANCE_BUFF_4.toRawCode())
+    ..presetChancetoCriticalStrike(lvl -> 0.0)
+    ..presetDamageMultiplier(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASV  (1).blp")
+    ..register(HERO_SHADOW_OF_VENGEANCE, "Gravitone".setColor(colAbilitiesShadowOfVengeance), 
+    "The power of the darkness helps Shadow Vengeance get vengeance on his enemies.",
+    (int lvl) -> "{0}% chance to deal damage based on Shadow Vengeance's missing health +{1}.".format(
+        (lvl*2+9).toString(),
+        (175*lvl).toString())
+    )
+
+// ----------------------------------------------------------------------------
+
+constant real array[4] abi5_Duration = [
+    20.0,
+    35.0,
+    45.0,
+    30.0
+]
+
+constant real array[4] abi5_Cd = [
+    180.0,
+    150.0,
+    110.0,
+    60.0
+]
+
+public constant real array[4] shadow_of_vengeance_abi5_DamageMult = [
+    0.8,
+    1.0,
+    1.5,
+    2.2
+]
+
+@compiletime function defineAbilities5()
+    new BuffDefinition(SHADOW_OF_VENGEANCE_BUFF_5, BuffIds.entanglingRoots)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (2).blp")
+    ..setArtTarget("Gravitone.mdx")
+    ..register("Black Hole".setColor(colAbilitiesShadowOfVengeance),
+    "Black Hole.")
+    
+    new AbilityDefinitionRoar(SHADOW_OF_VENGEANCE_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetAreaofEffect(lvl -> 500.0)
+    ..presetBuffs(lvl -> SHADOW_OF_VENGEANCE_BUFF_5.toRawCode())
+    ..presetCooldown(lvl -> abi5_Cd[lvl-1])
+    ..presetDuration(lvl -> abi5_Duration[lvl-1])
+    ..presetManaCost(lvl -> 130 + 30*lvl)
+    ..presetDamageIncrease(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setAnimationNames("")
+    ..setArtCaster("")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (2).blp")
+    ..register(HERO_SHADOW_OF_VENGEANCE, "Black Hole".setColor(colAbilitiesShadowOfVengeance),
+    "Shadow Vengeance's hits will deal additional damage equal to an enemy's lost health.",
+    (int lvl) -> "Deals {0} x (enemy's lost health) damage. Duration {1} seconds (cd {2} seconds).".format(
+        (100*shadow_of_vengeance_abi5_DamageMult[lvl-1]).toString(0),
+        abi5_Duration[lvl-1].toString(0),
+        abi5_Cd[lvl-1].toString(0)
+    ))
+    
+// ----------------------------------------------------------------------------

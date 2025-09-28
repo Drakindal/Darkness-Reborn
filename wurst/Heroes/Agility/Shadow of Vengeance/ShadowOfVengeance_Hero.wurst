@@ -9,13 +9,13 @@ import CommonDescriptions
 import Icons
 import Units
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_SHADOW_OF_VENGEANCE, UnitIds.warden)
-    ..setHeroAbilities(commaList('A0C3', 'A0B6', 'A0B4', 'A0CG', 'A0CE'))
-    
+    ..setHeroAbilities(commaList(SHADOW_OF_VENGEANCE_ABILITY_1, SHADOW_OF_VENGEANCE_ABILITY_2, SHADOW_OF_VENGEANCE_ABILITY_3, SHADOW_OF_VENGEANCE_ABILITY_4, SHADOW_OF_VENGEANCE_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 20, 16)
