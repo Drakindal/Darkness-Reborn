@@ -2,13 +2,14 @@ package Satyr_T
 
 import DummyCaster
 import OrderIds
-import MyAbilityIds
 import ClosureEvents
+import MyBuffIds
+import MyAbilityIds
 
 public function biteofDeath()
-    EventListener.onCast('A01K') (unit caster) ->
-        let lvl = GetTriggerUnit().getAbilityLevel('A01K')
+    EventListener.onCast(SATYR_ABILITY_5) (unit caster) ->
+        let lvl = GetTriggerUnit().getAbilityLevel(SATYR_ABILITY_5)
         new DummyCaster()
         ..owner(GetOwningPlayer(GetTriggerUnit()))
         ..origin(GetTriggerUnit().getPos())
-        ..castTarget(SATYR_ABILITY_Q_ARMOR_REDUCTION, lvl, OrderIds.faeriefire, GetSpellTargetUnit())
+        ..castTarget(SATYR_BUFF_5, lvl, OrderIds.faeriefire, GetSpellTargetUnit())

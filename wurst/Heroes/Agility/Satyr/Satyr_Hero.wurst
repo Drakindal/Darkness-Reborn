@@ -9,12 +9,13 @@ import CommonDescriptions
 import Icons
 import Units
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_SATYR, UnitIds.satyr)
-    ..setHeroAbilities(commaList('A0RF', 'A0RV', 'A0RG', 'A0RE', 'A01K'))
+    ..setHeroAbilities(commaList(SATYR_ABILITY_1, SATYR_ABILITY_2, SATYR_ABILITY_3, SATYR_ABILITY_4, SATYR_ABILITY_5))
     
     ..setPrimaryAttribute("Agility")
     ..setStatsBase(18, 22, 16)

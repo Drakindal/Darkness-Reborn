@@ -1,9 +1,159 @@
 package Satyr_Abilities
 
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
 import BuffIds
 import BuffObjEditing
-import MyBuffIds
+import MyColors
+import Orders
+    
+// ----------------------------------------------------------------------------
 
 @compiletime function satyrAbilities()
+    new BuffDefinition(SATYR_BUFF_1, BuffIds.faerieFire)
+    ..register("This unit is under " + "Dark Fire".setColor(colAbilitiesSatyr),
+    "Satyr is mad, target armor poof")
+    
+    // WIP. Add armor and resistances reduction.
+    new AbilityDefinitionFaerieFire(SATYR_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetBuffs(lvl -> SATYR_BUFF_1.toRawCode())
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 20 + 20*lvl)
+    ..presetDefenseReduction(lvl -> 4 + 8*lvl)
+    ..presetDuration(lvl -> 20.0)
+    ..presetCastRange(lvl -> 700.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp")
+    ..register(HERO_SATYR, "Dark Fire".setColor(colAbilitiesSatyr), 
+    "Satyr sets curse of darkness onto the enemy, reducing the amount of Damage Reduction and Resistances.")
+    
+// ----------------------------------------------------------------------------
 
-@compiletime function satyrBuffs()
+constant real array[9] abi2_Damage = [
+      20.0,
+      40.0,
+      80.0,
+     160.0,
+     320.0,
+     640.0,
+    1280.0,
+    2560.0,
+    5120.0
+]
+
+constant real array[9] abi2_LifeSteal = [
+    0.5000,
+    0.5375,
+    0.5750,
+    0.6125,
+    0.6500,
+    0.6875,
+    0.7250,
+    0.7625,
+    0.8000
+]
+
+@compiletime function satyrAbilities2()
+    new BuffDefinition(SATYR_BUFF_2, BuffIds.vampiricPotion)
+    ..register("Heath Rain".setColor(colAbilitiesSatyr), "Darkness Curse")
+
+    new AbilityDefinitionItemPotionVampirism(SATYR_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetBuffs(lvl -> SATYR_BUFF_2.toRawCode())
+    ..presetCooldown(lvl -> 20.0 - 0.5*lvl)
+    ..presetManaCost(lvl -> 15 + 20*lvl)
+    ..presetDamageBonus(lvl -> abi2_Damage[lvl-1])
+    ..presetLifeStealAmount(lvl -> abi2_LifeSteal[lvl-1])
+    ..presetDuration(lvl -> 6.0 + lvl)
+    ..setItemAbility(false)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_deathwing_bloodcorruption_death.blp")
+    ..register(HERO_SATYR, "Heath Rain".setColor(colAbilitiesSatyr), 
+    "Satyr extremely increases his power. The souls of those who die are gathered into the arms of the Satyr increasing his damage and healing him.",
+    (int lvl) -> "+{0} damage, +{1}% life steal. Duration {2} seconds (cd {3} seconds).".format(
+        abi2_Damage[lvl-1].toString(0),
+        (100*abi2_LifeSteal[lvl-1]).toString(1),
+        (6.0 + lvl).toString(0),
+        (20.0 - 0.5*lvl).toString(1)
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(SATYR_BUFF_2, BuffIds.roar)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (1).blp")
+    ..register("Darkness Curse".setColor(colAbilitiesSatyr), "Darkness Curse")
+
+    new AbilityDefinitionAuraWarDrumsKodobeast(SATYR_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetAreaofEffect(lvl -> 900.0 + 100*lvl)
+    ..presetBuffs(lvl -> SATYR_BUFF_2.toRawCode())
+    ..presetMeleeBonus(lvl -> true)
+    ..presetRangedBonus(lvl -> true)
+    ..presetAttackDamageIncrease(lvl -> -0.07*lvl)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (1).blp")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_SATYR, "Darkness Curse".setColor(colAbilitiesSatyr), 
+    "",
+    (int lvl) -> "Curse of darkness reduces damage by {0}% of all enemies in {1} range.".format(
+        (7*lvl).toString(),
+        (900 + 100*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    // WIP. Add resistances reduction.
+    new AbilityDefinitionPaladinDevotionAura(SATYR_ABILITY_4)
+    ..presetBuffs(lvl -> "B015")
+    // ..setArmorBonus(1, -0.05)
+    // ..setArmorBonus(2, -0.1)
+    // ..setArmorBonus(3, -0.15)
+    // ..setArmorBonus(4, -0.2)
+    // ..setArmorBonus(5, -0.25)
+    // ..setArmorBonus(6, -0.3)
+    // ..setArmorBonus(7, -0.35)
+    // ..setArmorBonus(8, -0.4)
+    // ..setArmorBonus(9, -0.45)
+    ..presetDuration(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (2).blp")
+    ..setGeneralAbility(AbilityPosition.R)
+    ..register(HERO_SATYR, "Reduction Aura".setColor(colAbilitiesSatyr), 
+    "The corrosion of darkness, cause all enemies around the 900 range, reduce a stable amount of armor")
+    
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(SATYR_BUFF_5, BuffIds.faerieFire)
+    ..register("This unit is under " + "Bite of Death".setColor(colAbilitiesSatyr),
+    "Satyr is mad, target armor poof")
+
+    // WIP. Add resistances reduction.
+    new AbilityDefinitionFarseerChainLightning(SATYR_ABILITY_5)
+    ..presetBuffs(lvl -> SATYR_BUFF_5.toRawCode())
+    ..presetAreaofEffect(lvl -> 1.0)
+    ..presetCooldown(lvl -> 200.0 - 20*lvl)
+    ..presetManaCost(lvl -> 150*lvl)
+    ..presetDamageperTarget(lvl -> 0.0)
+    ..presetNumberofTargetsHit(lvl -> 1)
+    ..presetDamageReductionperTarget(lvl -> 0.0)
+    ..setOrderStringUseTurnOn(OrderIds.hex.toRawCode())
+    ..setLightningEffects("")
+    ..setMissileArt("")
+    ..setAnimationNames("spell")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDevourMagic.blp")
+    ..setArtTarget("")
+    // ..setLvlDataString("aub1", 1, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 1800 HP and reducing his armor by 120 for 20 seconds.")
+    // ..setLvlDataString("aub1", 2, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 3600 HP and reducing his armor by 180 for 20 seconds.")
+    // ..setLvlDataString("aub1", 3, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 5400 HP and reducing his armor by 240 for 20 seconds.")
+    // ..setLvlDataString("aub1", 4, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 7200 HP and reducing his armor by 300 for 20 seconds.")
+    ..setUltimateAbility()
+    ..register(HERO_SATYR, "Bite of Death".setColor(colAbilitiesSatyr), 
+    "Satyr enhances his fangs with dark magic and then bites the enemy, draining his HP and reducing his armor for 20 seconds.")
+    
+// ----------------------------------------------------------------------------
