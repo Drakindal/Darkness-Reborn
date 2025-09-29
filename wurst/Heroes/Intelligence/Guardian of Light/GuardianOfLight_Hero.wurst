@@ -9,13 +9,13 @@ import CommonDescriptions
 import Icons
 import Units
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_GUARDIAN_OF_LIGHT, UnitIds.keeperofthegrove)
-    ..setHeroAbilities(commaList('A00D', 'A00F', 'A00E', 'A00K', 'A0CY'))
-    
+    ..setHeroAbilities(commaList(GUARDIAN_OF_LIGHT_ABILITY_1, GUARDIAN_OF_LIGHT_ABILITY_2, GUARDIAN_OF_LIGHT_ABILITY_3, GUARDIAN_OF_LIGHT_ABILITY_4, GUARDIAN_OF_LIGHT_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(16, 15, 18)

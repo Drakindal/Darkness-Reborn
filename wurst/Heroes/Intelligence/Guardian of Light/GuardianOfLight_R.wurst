@@ -4,16 +4,39 @@ import ClosureEvents
 import ClosureForGroups
 import Abilities
 import DamageTarget
+import MyAbilityIds
+import MyUnitIds
+import GuardianOfLight_Abilities
 
 public function holyWrath()
-    EventListener.onPointCast('A00K') (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A00K')
-        let output = (lvl*caster.getInt(true)).toReal()
-        forUnitsInRange(target, 600, true) (unit u) ->
-            flashEffect(Abilities.holyBoltSpecialArt, u.getPos())
-            if caster.isEnemyOf(u)
-                caster.damageTargetCode(output, u, null, -1, customDamageType.Magical)
-            else if caster.isAllyOf(u)
-                u.addHP(output)
-            else
-                printTimedToPlayer("... no applicable targets found", 3, GetOwningPlayer(caster))
+    EventListener.onPointCast(GUARDIAN_OF_LIGHT_ABILITY_4) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, GUARDIAN_OF_LIGHT_ABILITY_4)
+        let range = 500.0 + 50*lvl
+        let dmg = 300*lvl + 1.5*lvl*caster.getInt(true)
+        let stats = guardianOfLight_abi4_Stats[lvl-1]
+
+        flashEffect(Abilities.massTeleportCaster, caster.getPos())
+
+        forUnitsInRange(target, range, true) (unit u) ->
+            if (u.getTypeId() == HERO_GUARDIAN_OF_LIGHT)
+                if (u.isAllyOf(caster.getOwner()))
+                    flashEffect(Abilities.holyBoltMissile, u.getPos())
+                    // Heal
+                    u.addHP(dmg)
+                    // Add stats
+                    if (IsHeroUnitId(u.getTypeId()))
+                        string msg
+                        let rnd = GetRandomInt(1, 1000)
+                        if (rnd <= 333)
+                            u.addStr(stats)
+                            msg = "Strength"
+                        else if (rnd <= 666)
+                            u.addAgi(stats)
+                            msg = "Agility"
+                        else
+                            u.addInt(stats)
+                            msg = "Intelligence"
+                        printTimedToPlayer("Guardian of Light blessing: +{0} {1}!".format(stats.toString(), msg), 5, u.getOwner())
+                else // enemy
+                    flashEffect(Abilities.orbCorruptionMissile, u.getPos())
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

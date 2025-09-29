@@ -3,12 +3,17 @@ package GuardianOfLight_T
 import ClosureEvents
 import ClosureForGroups
 import Abilities
+import MyAbilityIds
 
 public function godsBlessing()
-    EventListener.onCast('A0CY') (unit caster) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0CY')
-        let heal = ((lvl*2)*caster.getInt(true)+1000*lvl).toReal()
+    EventListener.onCast(GUARDIAN_OF_LIGHT_ABILITY_5) (unit caster) ->
+        let lvl = GetUnitAbilityLevel(caster, GUARDIAN_OF_LIGHT_ABILITY_5)
+        let hpAdd = 500*lvl
+
         forUnitsInRange(caster.getPos(), 99999) (unit u) ->
             if caster.isAllyOf(u)
                 flashEffect(Abilities.resurrecttarget, u.getPos())
-                u.addHP(heal)
+                flashEffect(Abilities.divineShieldTarget, u.getPos())
+
+                u..addHP(u.getMaxHP())
+                ..setMaxHP(u.getMaxHP().toInt() + hpAdd)

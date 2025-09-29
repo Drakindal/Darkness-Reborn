@@ -1,0 +1,30 @@
+package GuardianOfLight_Q
+
+import ClosureEvents
+import DamageTarget
+import MyAbilityIds
+import GuardianOfLight_Abilities
+import ClosureTimers
+import Abilities
+
+public function lightRemoval()
+    EventListener.onTargetCast(GUARDIAN_OF_LIGHT_ABILITY_1) (unit caster, unit target) ->
+        let lvl = GetUnitAbilityLevel(caster, GUARDIAN_OF_LIGHT_ABILITY_1)
+        let dmg = 800 * lvl + caster.getInt(true) * 3. * lvl
+        if (target.isAllyOf(caster))
+            target..addHP(dmg)
+            ..setMaxHP(target.getMaxHP().toInt() + guardianOfLight_abi1_Hp[lvl-1])
+            ..setMaxMana(target.getMaxMana().toInt() + guardianOfLight_abi1_Hp[lvl-1])
+
+            flashEffect(Abilities.resurrectcaster, caster.getPos())
+            flashEffect(Abilities.holyBoltSpecialArt, caster.getPos())
+            
+        else
+            caster..setVertexColor(color(50, 50, 50))
+            flashEffect("Abilities\\Spells\\Undead\\UnholyFrenzyAOE\\UnholyFrenzyAOETarget.mdl", caster.getPos())
+            flashEffect(Abilities.animateDeadTarget, caster.getPos())
+
+            caster.damageTargetCode(dmg*0.5, target, null, -1, customDamageType.Magical)
+
+            doAfter(3.0) ->
+                caster..setVertexColor(color(255, 255, 255))
