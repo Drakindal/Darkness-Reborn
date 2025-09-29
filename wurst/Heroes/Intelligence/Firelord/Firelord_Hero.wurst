@@ -13,8 +13,8 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_FIRELORD, UnitIds.firelord)
-    ..setHeroAbilities(commaList('A01P', 'A01T', 'A01U', 'A01S'))
-    ..setNormalAbilities(commaList('A01O', ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setHeroAbilities(commaList(FIRELORD_ABILITY_1, FIRELORD_ABILITY_2, FIRELORD_ABILITY_3, FIRELORD_ABILITY_4))
+    ..setNormalAbilities(commaList(FIRELORD_ABILITY_BLAZE, ABILITY_HERO_TP, AbilityIds.inventory))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(15, 20, 18)

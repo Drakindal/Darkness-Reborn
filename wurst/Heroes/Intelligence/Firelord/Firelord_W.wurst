@@ -11,22 +11,23 @@ import DamageTarget
 import Firelord_Blaze
 
 public function pillarOfFlame()
-    EventListener.onPointCast('A01T') (unit caster, vec2 target) ->
-        let lvl = caster.getAbilityLevel('A01T')
-        let dmg = 200*lvl+caster.getInt(true)*(0.8*lvl)
+    EventListener.onPointCast(FIRELORD_ABILITY_2) (unit caster, vec2 target) ->
+        let lvl = caster.getAbilityLevel(FIRELORD_ABILITY_2)
+        let dmg = 300*lvl+caster.getInt(true)*(0.8*lvl)
+        let range = 400.0 + 20*lvl
         flashEffect("Effects\\Firelord\\Flame Burst.mdl", target)
-        forUnitsInRange(target, 400, true) (unit u) ->
+        forUnitsInRange(target, range, true) (unit u) ->
             if caster.isEnemyOf(u)
                 blaze(caster, u)
-                if u.hasAbility(BUFF_12)
+                if u.hasAbility(FIRELORD_BUFF_BLAZE)
                     caster.damageTargetCode(dmg * 4, u, DAMAGE_ELEMENT_FIRE, 'blaz', customDamageType.Magical)
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())
-                    ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
+                    ..castTarget(FIRELORD_ABILITY_BLAZE_DUMMY, 1, OrderIds.cripple, u)
                 else
                     caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', customDamageType.Magical)
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())
-                    ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
+                    ..castTarget(FIRELORD_ABILITY_BLAZE_DUMMY, 1, OrderIds.cripple, u)

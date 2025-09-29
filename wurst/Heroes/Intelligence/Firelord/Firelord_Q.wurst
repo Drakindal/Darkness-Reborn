@@ -14,25 +14,26 @@ import PointProjectile
 import Firelord_Blaze
 
 public function sear()
-    EventListener.onPointCast('A01P') (unit caster, vec2 target) ->
+    EventListener.onPointCast(FIRELORD_ABILITY_1) (unit caster, vec2 target) ->
         let sfx = addEffect(Abilities.ballsOfFireMissile, caster.getPos())..setZ(caster.getLocalZ() + 20)..setScale(1.5)
-        let lvl = caster.getAbilityLevel('A01P')
-        let dmg = lvl*300.00+lvl*caster.getInt(true)
+        let lvl = caster.getAbilityLevel(FIRELORD_ABILITY_1)
+        let dmg = lvl*400.00+lvl*caster.getInt(true)
         let pointProjectile = new PointProjectile(target, sfx)
         let velocity = 3.
+        let range = 300.0 + 30 * lvl
         pointProjectile.moveForward(velocity) (effect detectionUnit, vec2 target) ->
-            forUnitsInRange(sfx.getPos(), 200, true) (unit u) ->
+            forUnitsInRange(sfx.getPos(), range, true) (unit u) ->
                 if caster.isEnemyOf(u) and u.isAlive()
                     caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', customDamageType.Magical)
                     blaze(caster, u)
-                    if u.hasAbility(BUFF_12)
+                    if u.hasAbility(FIRELORD_BUFF_BLAZE)
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())
-                        ..castTarget(ABILITY_DUMMY_14, 1, OrderIds.thunderbolt, u)
-                        ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
+                        ..castTarget(FIRELORD_ABILITY_1_DUMMY, 1, OrderIds.thunderbolt, u)
+                        ..castTarget(FIRELORD_ABILITY_BLAZE_DUMMY, 1, OrderIds.cripple, u)
                     else
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())
-                        ..castTarget(ABILITY_DUMMY_13, 1, OrderIds.cripple, u)
+                        ..castTarget(FIRELORD_ABILITY_BLAZE_DUMMY, 1, OrderIds.cripple, u)
