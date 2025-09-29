@@ -2,6 +2,9 @@ package Firemage_E
 
 import DamageTarget
 import DamageEvent
+import Firemage_Abilities
+import MyBuffIds
+import MyAbilityIds
 
 public function fireShield()
     DamageEvent.addListener(2) ->
@@ -9,7 +12,8 @@ public function fireShield()
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let targ = DamageEvent.getTarget()
-                if targ.getAbilityLevel('B900') > 0
-                    let dmg = targ.getInt(true)*0.25
+                if targ.getAbilityLevel(FIREMAGE_BUFF_3) > 0
+                    let lvl = targ.getAbilityLevel(FIREMAGE_ABILITY_3)
+                    let dmg = targ.getInt(true)*firemage_abi3_IntScale[lvl-1]
                     let src = DamageEvent.getSource()
                     targ.damageTargetCode(dmg, src, null, 'phoe', customDamageType.Magical)

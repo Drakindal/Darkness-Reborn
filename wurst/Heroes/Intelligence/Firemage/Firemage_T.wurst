@@ -6,25 +6,31 @@ import ClosureForGroups
 import ClosureTimers
 import DamageTarget
 import Abilities
+import MyAbilityIds
 
 real array dist = []
 unit array phoenix = []
 
 function explosion(unit caster, vec2 target)
-    let lvl = caster.getAbilityLevel('A0MN')
+    let lvl = caster.getAbilityLevel(FIREMAGE_ABILITY_5)
     let dmg = caster.getInt(true)*(lvl*5.00) 
     flashEffect("NewMassiveEX.mdl", target, 3)
-    forUnitsInRange(target, 800, true) (unit u) ->
+    forUnitsInRange(target, 1500, true) (unit u) ->
         if caster.isEnemyOf(u)
             caster.damageTargetCode(dmg, u, null, 'phoe', customDamageType.Magical)
 
 function spawnPhoenix(unit caster, vec2 target)
-    let lvl = GetUnitAbilityLevel(caster, 'A0MN')
+    let lvl = GetUnitAbilityLevel(caster, FIREMAGE_ABILITY_5)
     var decrease = 1000.00
     for i = 1 to 4
         let pos = target.polarOffset(((90.00*i)).asAngleDegrees(), (lvl*125.00+175.00))
         phoenix[i] = createUnitZ(GetOwningPlayer(caster), DUMMY_UNIT_3, target.withZ(500), target.getAngle())
-        phoenix[i]..addAbility('A11C')..setAbilityLevel('A11C', lvl)..setPos(pos)..setTimedLife(8)
+        phoenix[i]
+        ..addAbility(FIREMAGE_ABILITY_5_DUMMY)
+        ..setAbilityLevel(FIREMAGE_ABILITY_5_DUMMY, lvl)
+        ..setPos(pos)
+        ..setTimedLife(8)
+        
     doPeriodicallyTimed(0.03, 8) (CallbackCounted cb) ->
         for i = 1 to 4
             decrease = decrease - 0.5
@@ -47,8 +53,8 @@ function spawnPhoenix(unit caster, vec2 target)
             explosion(caster, target)
 
 public function meltingPhoenix()
-    EventListener.onTargetCast('A0MN') (unit caster, unit target) ->
+    EventListener.onTargetCast(FIREMAGE_ABILITY_5) (unit caster, unit target) ->
         spawnPhoenix(caster, target.getPos())
 
-    EventListener.onPointCast('A0MN') (unit caster, vec2 target) ->
+    EventListener.onPointCast(FIREMAGE_ABILITY_5) (unit caster, vec2 target) ->
         spawnPhoenix(caster, target)

@@ -3,20 +3,22 @@ package Firemage_EternalFlame
 import DamageTarget
 import Global_Variables
 import DamageEvent
+import MyAbilityIds
+import MyUnitIds
 
 function eternalFlameDamage(unit src, unit target)
     let fireMage = playerHero.get(src.getOwner())
-    let amount = (fireMage.getAbilityLevel('A004')*0.1 + fireMage.getAbilityLevel('A901')*0.4 + 0.1) * fireMage.getInt(true) 
+    let amount = (fireMage.getAbilityLevel(FIREMAGE_ABILITY_2)*0.1 + fireMage.getAbilityLevel(FIREMAGE_ABILITY_PASSIVE)*0.4 + 0.1) * fireMage.getInt(true) 
     src.damageTargetCode(amount, target, null, -1, customDamageType.Magical)
 
 public function eternalFlame()
     DamageEvent.addListener(2) -> 
-        let src = DamageEvent.getSource()
+        let src  = DamageEvent.getSource()
         let targ = DamageEvent.getTarget()
         switch DamageEvent.getType()
             case SPELL
                 //Firemage
-                if src.getAbilityLevel('A11C') > 0 or src.getAbilityLevel('A0N0') > 0
+                if src.getTypeId() == HERO_FIRE_MAGE
                     eternalFlameDamage(src, targ)
             case CODE
                 if DamageEvent.getId() == 'phoe'

@@ -13,8 +13,8 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_FIRE_MAGE, UnitIds.bloodmage)
-    ..setHeroAbilities(commaList('A0N0', 'A004', 'A0E7', 'A0C1', 'A0MN'))
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, 'A901'))
+    ..setHeroAbilities(commaList(FIREMAGE_ABILITY_1, FIREMAGE_ABILITY_2, FIREMAGE_ABILITY_3, FIREMAGE_ABILITY_4, FIREMAGE_ABILITY_5))
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, FIREMAGE_ABILITY_PASSIVE))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(18, 14, 19)
