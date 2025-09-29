@@ -8,8 +8,8 @@ import MyAbilityIds
 import DamageTarget
 
 public function eclipse()
-    EventListener.onPointCast('A0CZ') (unit caster, vec2 target) ->
-        let lvl = caster.getAbilityLevel('A0CZ')
+    EventListener.onPointCast(ARCHMAGE_ABILITY_1) (unit caster, vec2 target) ->
+        let lvl = caster.getAbilityLevel(ARCHMAGE_ABILITY_1)
         let dmg = (caster.getInt(true) * 1.25) * lvl
         flashEffect("Effects\\Archmage\\ShadowSlam(Normal Size).mdl", target)
         forUnitsInRange(target, 500) (unit u) ->
@@ -22,4 +22,4 @@ public function eclipse()
                 new DummyCaster()
                 ..owner(GetOwningPlayer(caster))
                 ..origin(caster.getPos())
-                ..castTarget(ABILITY_DUMMY_9, 1, OrderIds.curse, u)
+                ..castTarget(ARCHMAGE_ABILITY_1_DUMMY, 1, OrderIds.curse, u)

@@ -26,5 +26,5 @@ public function ultima()
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))
                     ..origin(caster.getPos())
-                    ..castTarget(ABILITY_DUMMY_11, 1, OrderIds.cripple, u)
+                    ..castTarget(ARCHMAGE_ABILITY_3_DUMMY, 1, OrderIds.cripple, u)
                 

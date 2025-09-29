@@ -1,38 +1,193 @@
 package Archmage_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import OrderIds
 import ChannelAbilityPreset
+import MyColors
+import BuffObjEditing
+import MyBuffIds
+import BuffIds
+import Abilities
+
+// ----------------------------------------------------------------------------
+
+let wordAbilityDoubleDamage = "Any magical buff not from this spell will double the damage. Also, not Archmage's buffs and buffs from items are accounted for.".setColor(colAbilitiesArchmage)
 
 @compiletime function archmageAbilities()
+    new BuffDefinition(ARCHMAGE_BUFF_1, BuffIds.curse)
+    ..setArtTarget(1, Abilities.curseTarget)
+    ..setIconNormal(1, Icons.bTNCurse)
+    ..register("Eclipse".setColor(colAbilitiesArchmage),
+    "This unit has been hit by Eclipse")
+    
+    new AbilityDefinitionCurse(ARCHMAGE_ABILITY_1_DUMMY)
+    ..setLevels(1)
+    ..setCooldown(1, 0)
+    ..setManaCost(1, 0)
+    ..setChancetoMiss(1, 85)
+    ..setDurationHero(1, 15)
+    ..setDurationNormal(1, 15)
+    ..setCastingTime(1, 0)
+    ..setCastRange(1, 99999)
+    ..setRequirements("")
+    ..setArtTarget(".mdl")
+    ..setArtSpecial(".mdl")
+    ..setArtEffect(".mdl")
+    ..setArtCaster(".mdl")
+    ..setMissileArt(".mdl")
+    ..setBuffs(1, ARCHMAGE_BUFF_1.toRawCode())
+
+    new ChannelAbilityPreset(ARCHMAGE_ABILITY_1, 9, true)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 50 + 25*lvl)
+    ..presetFollowThroughTime(lvl -> 0.1)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.TARGETIMAGE, true)
+    ..presetArtDuration(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.blizzard.toRawCode())
+    ..presetCastRange(lvl -> 900.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEclipse.blp")
+    ..setArtCaster("")
+    ..setCasterAttachmentPoint("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_ARCHMAGE, "Eclipse".setColor(colAbilitiesArchmage), 
+    "Power from the eclipse falls upon your enemies in range causing 1.25 x (Skill Level) x Intelligence damage and applying the Eclipse buff (88% miss)\n\n" +
+    wordAbilityDoubleDamage,
+    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((1.25*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    
+// ----------------------------------------------------------------------------
+    
+    new BuffDefinition(ARCHMAGE_BUFF_2, BuffIds.faerieFire)
+    ..setArtTarget(1, Abilities.faerieFireTarget)
+    ..setIconNormal(1, Icons.bTNFaerieFire)
+    ..register("Falling Light".setColor(colAbilitiesArchmage),
+    "This unit has been hit by Falling Light")
+    
+    new AbilityDefinitionFaerieFire(ARCHMAGE_ABILITY_2_DUMMY)
+    ..setLevels(1)
+    ..setDurationHero(1, 15)
+    ..setDurationNormal(1, 15)
+    ..setDefenseReduction(1, 10)
+    ..setCooldown(1, 0)
+    ..setManaCost(1, 0)
+    ..setCastingTime(1, 0)
+    ..setCastRange(1, 99999)
+    ..setRequirements("")
+    ..setArtTarget(".mdl")
+    ..setArtSpecial(".mdl")
+    ..setArtEffect(".mdl")
+    ..setArtCaster(".mdl")
+    ..setMissileArt(".mdl")
+    ..setBuffs(1, ARCHMAGE_BUFF_2.toRawCode())
+
+    // WIP Armor reduction.
+    new ChannelAbilityPreset(ARCHMAGE_ABILITY_2, 9, true)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 50 + 25*lvl)
+    ..presetFollowThroughTime(lvl -> 0.01)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.TARGETIMAGE, true)
+    ..presetBaseOrderID(lvl -> OrderIds.clusterrockets.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.clusterrockets.toRawCode())
+    ..presetCastRange(lvl -> 800.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNF1.blp")
+    ..setArtCaster("")
+    ..setCasterAttachmentPoint("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_ARCHMAGE, "Falling Light".setColor(colAbilitiesArchmage), 
+    "Create a circle of light, damaging enemies in range every 1 second for 2 seconds dealing 0.45 x (Skill Level) x Intelligence damage. Each hit applies Falling Light reducing armor of enemies by 10 for 15 seconds.\n\n" +
+    wordAbilityDoubleDamage,
+    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((0.45*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(ARCHMAGE_BUFF_3, BuffIds.cripple)
+    ..setArtTarget(1, Abilities.crippleTarget)
+    ..setIconNormal(1, Icons.bTNCripple)
+    ..register("Ultima".setColor(colAbilitiesArchmage),
+    "This unit has been hit by Ultima")
+
+    new AbilityDefinitionCripple(ARCHMAGE_ABILITY_3_DUMMY)
+    ..setLevels(1)
+    ..setDurationHero(1, 15)
+    ..setDurationNormal(1, 15)
+    ..setAttackSpeedReduction(1, 0)
+    ..setDamageReduction(1, 0.5)
+    ..setCooldown(1, 0)
+    ..setManaCost(1, 0)
+    ..setCastingTime(1, 0)
+    ..setCastRange(1, 99999)
+    ..setRequirements("")
+    ..setArtTarget(".mdl")
+    ..setArtSpecial(".mdl")
+    ..setArtEffect(".mdl")
+    ..setArtCaster(".mdl")
+    ..setMissileArt(".mdl")
+    ..setBuffs(1, ARCHMAGE_BUFF_3.toRawCode())
+
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_3, 9, true)
-    ..presetAreaofEffect(lvl -> 500)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetAreaofEffect(lvl -> 500.0 + 30 * lvl)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25 * lvl)
     ..presetOption(Option.TARGETIMAGE, true)
     ..presetTargetTypes(Targettype.POINT)
     ..presetArtDuration(lvl -> 1)
     ..presetFollowThroughTime(lvl -> 4)
-    ..presetBaseOrderID(lvl -> OrderIds.deathanddecay.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.clusterrockets.toRawCode())
+    ..presetBaseOrderID(lvl -> OrderIds.flamestrike.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.flamestrike.toRawCode())
     ..presetCastRange(lvl -> 800)
     ..presetCastingTime(lvl -> 0)
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNUltima.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNUltima.blp")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(2)
-    ..setButtonPositionResearchY(0)
-    ..setHotkeyNormal("E")
-    ..setHotkeyTurnOff("E")
-    ..setHotkeyLearn("E")
-    ..setName("Archmage - 3 - Ultima")
-    ..setTooltipLearn("Learn Ultima [|cffffcc00E|r] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Create a black hole in target area, each second damage enemies in 500 range by 0.15 * int * lvl and applying Ultima reducing damage for 15 seconds.\r\n\r\n|c00FFFC01Every buff not from this spell will double the damage|r")
-    ..presetTooltipNormal(lvl -> "Ultima [|cffffcc00E|r] - [|cffffcc00Level {0}|r]".format(lvl.toString()))
-    ..presetTooltipNormalExtended(lvl -> "Create a black hole in target area, each second damage enemies in 500 range by {0}x int and applying Ultima reducing damage for 15 seconds.\r\n\r\n|c00FFFC01Every buff not from this spell will double the damage|r".format((0.15*lvl).toString()))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUltima.blp")
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_ARCHMAGE, "Ultima".setColor(colAbilitiesArchmage), 
+    "Create a black hole in target area, each second damage enemies in 500 range by 0.15 (Skill Level) x Intelligence and applying Ultima reducing damage for 15 seconds.\n\n" +
+    wordAbilityDoubleDamage,
+    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((0.15*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
     
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(ARCHMAGE_ABILITY_4, 9, true)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 50 + 25*lvl)
+    ..presetFollowThroughTime(lvl -> 4.0)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.TARGETIMAGE, true)
+    ..presetArtDuration(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.rainoffire.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.rainoffire.toRawCode())
+    ..presetCastRange(lvl -> 800.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNL1.blp")
+    ..setArtCaster("")
+    ..setCasterAttachmentPoint("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_ARCHMAGE, "Lightning Shock".setColor(colAbilitiesArchmage), 
+    "Electrify target area damaging every enemy for 0.01 x (Skill Level) x Intelligence every 0.05 seconds.\n\n" +
+    wordAbilityDoubleDamage,
+    (int lvl) -> "Deals {0} x Intelligence damage every 0.05 seconds in {1} range. Mana cost {2}.".format((0.01*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    
+// ----------------------------------------------------------------------------
+
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_5, 4, true)
+    ..setUltimateAbility()
     ..presetCastRange(lvl -> 800)
     ..presetBuffs(lvl -> "")
     ..presetManaCost(lvl -> 200 + lvl * 100)
@@ -44,21 +199,12 @@ import ChannelAbilityPreset
     ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
     ..presetDurationHero(lvl -> 140.0 - 20.0 * lvl)
     ..setRequirements("")
-    ..setRequiredLevel(8)
-    ..setLevelSkipRequirement(8)
     ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNL2.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNL2.blp")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(1)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(1)
-    ..setHotkeyNormal("T")
-    ..setHotkeyTurnOff("T")
-    ..setHotkeyLearn("T")
-    ..setName("Archmage - 5 - Light Removal")
-    ..setTooltipLearn("Learn Light Removal [|cffffcc00T|r] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Pull out the light from targeted enemy, dealing 3 * lvl * int damage\r\n\r\n|c00FFFC01Every buff not from this spell will double the damage|r")
-    ..presetTooltipNormal(lvl -> "Light Removal [|cffffcc00T|r] - [|cffffcc00Level {0}|r]".format(lvl.toString()))
-    ..presetTooltipNormalExtended(lvl -> "Pull out the light from targeted enemy, dealing {0}x int damage\r\n\r\n|c00FFFC01Every buff not from this spell will double the damage|r".format((lvl*3).toString()))
-    ..presetTargetsAllowed(lvl -> commaList(TargetsAllowed.air, TargetsAllowed.enemies, TargetsAllowed.ground, TargetsAllowed.neutral, TargetsAllowed.structure))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNL2.blp")
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_ARCHMAGE, "Light Removal".setColor(colAbilitiesArchmage), 
+    "Pull out the light from targeted enemy dealing 3 x (Skill Level) x Intelligence damage.\n\n" +
+    wordAbilityDoubleDamage,
+    (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {1}.".format((3*lvl).toString(), (200 + lvl * 100).toString()))
+    
+// ----------------------------------------------------------------------------

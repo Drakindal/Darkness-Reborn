@@ -9,8 +9,8 @@ import MyAbilityIds
 import DamageTarget
 
 public function fallingLight()
-    EventListener.onPointCast('A0CX') (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0CX')
+    EventListener.onPointCast(ARCHMAGE_ABILITY_2) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, ARCHMAGE_ABILITY_2)
         let dmg = (caster.getInt(true) * 0.45)*lvl
         flashEffect("Effects\\Archmage\\Falling Light.mdl", target)
         forUnitsInRange(target, 500, true) (unit u) ->
@@ -24,4 +24,4 @@ public function fallingLight()
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))
                     ..origin(caster.getPos())
-                    ..castTarget(ABILITY_DUMMY_10, 1, OrderIds.faeriefire, u)
+                    ..castTarget(ARCHMAGE_ABILITY_2_DUMMY, 1, OrderIds.faeriefire, u)
