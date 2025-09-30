@@ -5,8 +5,8 @@ import ClosureEvents
 import ClosureTimers
 import ClosureForGroups
 import MyAbilityIds
-import DamageTarget
 import MyUnitIds
+import DamageTarget
 import OrderIds
 
 public function orbofLightning()
@@ -32,14 +32,14 @@ public function orbofLightning()
             forUnitsInRange(caster.getPos(), 500) (unit u) ->
                 if u.isEnemyOf(caster) and u.isAlive()
                     temp.add(u)
-            let damagedunit = temp.getRandomElement()
-            let damageorb = sfxtemp.getRandomElement()
-            let tempu = createUnit(PLAYER_ALLY_BASE, HERO_HERALD_OF_LIGHTNING_DUMMY, damageorb.getPos3Fly(), damageorb.getPos().angleTo(damagedunit.getPos()))
-            tempu.addAbility(HERALD_ABILITY_DUMMY)
-            tempu.issueTargetOrderById(Orders.chainlightning, damagedunit)
+            let damaged_unit = temp.getRandomElement()
+            let damage_orb = sfxtemp.getRandomElement()
+            let temp_unit = createUnit(PLAYER_ALLY_BASE, HERO_HERALD_OF_LIGHTNING_DUMMY, damage_orb.getPos3Fly(), damage_orb.getPos().angleTo(damaged_unit.getPos()))
+            temp_unit.addAbility(HERALD_ABILITY_DUMMY)
+            temp_unit.issueTargetOrderById(Orders.chainlightning, damaged_unit)
             doAfter(0.1) ->
-                tempu.remove()
-            caster.damageTargetCode(dmg, damagedunit, null, 'HEAB', customDamageType.Magical)
+                temp_unit.remove()
+            caster.damageTargetCode(dmg, damaged_unit, null, 'HEAB', customDamageType.Magical)
             temp.clear()
             if cb.isLast()
                 sfxtemp.forEach() (unit t) ->

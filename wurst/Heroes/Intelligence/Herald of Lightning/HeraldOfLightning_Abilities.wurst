@@ -1,153 +1,133 @@
 package HeraldOfLightning_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import AbilityObjEditing
 import MyBuffIds
 import ObjectIds
 import BuffIds
 import BuffObjEditing
+import MyColors
+import CommonDescriptions
 
-@compiletime function heraldOfLightningAbils()
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
     new AbilityDefinitionChainLightningcreep(HERALD_ABILITY_DUMMY)
     ..setLevels(1)
     ..setDummyAbility()
     ..setNumberofTargetsHit(1, 1)
     ..setDamageperTarget(1, 0)
     ..setCastingTime(1, 0)
-    ..setTargetsAllowed(1, commaList(TargetsAllowed.enemies))
+    ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesAll))
 
     new AbilityDefinitionBerserk(HERALD_ABILITY_1)
-    ..setLevels(9)
-    ..setName("Orbs of Lightning")
-    ..setHotkeyLearn("Q")
-    ..setHotkeyNormal("Q")
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNZuesQ.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNZuesQ.blp")
-    ..setButtonPositionNormalX(0)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(0)
-    ..setButtonPositionResearchY(0)
-    ..presetDurationHero(lvl -> 0)
-    ..presetDurationNormal(lvl -> 0)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesQ.blp")
+    ..presetDuration(lvl -> 0)
     ..presetCooldown(lvl -> 20)
     ..presetBuffs(lvl -> "")
     ..presetDamageTakenIncrease(lvl-> 0)
     ..presetAttackSpeedIncrease(lvl-> 0)
-    ..presetTooltipNormal(lvl -> "Orbs of Lightning [ |c00FFFC01Q|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "The Herald calls to him a few orbs of lightning which occasionally deal damage to an enemy in range, dealing " + (0.8*lvl).toString() + " amount of damage for 10 seconds every 0.5 seconds.\n\nDuration: 10 seconds.\nCooldown:20 second.")
-    ..setTooltipLearn("Learn Orbs of Lightning [ |c00FFFC01Q|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("The Herald calls to him a few orbs of lightning which occasionally deal damage to an enemy in range, dealing 0.8 * LVL amount of damage for 10 seconds every 0.5 seconds.\n\nDuration: 10 seconds.\nCooldown:20 second.")
+    ..register(HERO_HERALD_OF_LIGHTNING, "Orbs of Lightning".setColor(colAbilitiesHeraldOfLightning), 
+    "The Herald of Lightning calls a few orbs of lightning which deal damage to an random enemy every 0.5 seconds within 10 seconds.",
+    (int lvl) -> "Deals {0} x Intelligence damage.".format(
+        (0.8*lvl).toString(1)
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(HERALD_BUFF_W, BuffIds.stunned)
+    ..setArtTarget("")
+    ..register("Lightning Nova".setColor(colAbilitiesHeraldOfLightning),
+    "Hit by the Nova from the Herald of Lightning, momentarily stunned.")
 
     new AbilityDefinitionTaurenChieftainWarStomp(HERALD_ABILITY_2)
-    ..setLevels(9)
-    ..setName("Lightning Nova")
-    ..setHotkeyLearn("W")
-    ..setHotkeyNormal("W")
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNZuesW.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNZuesW.blp")
-    ..setButtonPositionNormalX(1)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(1)
-    ..setButtonPositionResearchY(0)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesW.blp")
     ..setArtCaster("Units\\Far seer(Zues)\\LightningNova.mdx")
-    ..presetDurationHero(lvl -> 1)
-    ..presetDurationNormal(lvl -> 1)
+    ..presetDuration(lvl -> 1 + 0.15*(lvl-1))
     ..presetCooldown(lvl -> 25)
-    ..presetAreaofEffect(lvl -> 500)
+    ..presetAreaofEffect(lvl -> 500.0 + 20*lvl)
     ..presetBuffs(lvl -> commaList(HERALD_BUFF_W))
     ..presetManaCost(lvl -> (80*lvl))
-    ..presetTooltipNormal(lvl -> "Lightning Nova [ |c00FFFC01W|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Herald unleashes a Lightning Nova that deals " + (3 * lvl).toString() +" * INT damage to everyone in an 500 AoE around him, immobilizing them for 1 seconds.\n\nCooldown:25 second.")
-    ..setTooltipLearn("Learn Lightning Nova [ |c00FFFC01W|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Herald unleashes a Lightning Nova that deals 3 * LVL * INT damage to everyone in an 500 AoE around him, immobilizing them for 1 seconds.\n\nCooldown:25 second.")
+    ..register(HERO_HERALD_OF_LIGHTNING, "Lightning Nova".setColor(colAbilitiesHeraldOfLightning), 
+    "Herald unleashes a Lightning Nova that damages and immobilizes every enemy around him.",
+    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Immobilization lasts for {2} seconds.".format(
+        (3*lvl).toString(),
+        (500 + 20*lvl).toString(),
+        (1 + 0.15*(lvl-1)).toString(2)
+    ))
 
-    new AbilityDefinitionFrenzy(HERALD_ABILITY_3)
-    ..setLevels(9)
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(HERALD_BUFF_E, BuffIds.berserk)
     ..setName("Lightning Empowerment")
-    ..setHotkeyLearn("E")
-    ..setHotkeyNormal("E")
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNZuesE.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNZuesE.blp")
+    ..setTooltipNormal("")
+    ..setTooltipNormalExtended("Herald is empowered by the gods, granting his lightning more ferocity.")
+    ..setArtTarget("")
+    
+    new AbilityDefinitionFrenzy(HERALD_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesE.blp")
     ..setIconTurnOff("ReplaceableTextures\\CommandButtonsDisabled\\DISBTNZuesE.blp")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(2)
-    ..setButtonPositionResearchY(0)
-    ..setButtonPositionTurnOffX(2)
-    ..setButtonPositionTurnOffY(2)
     ..presetDurationHero(lvl -> 15)
     ..presetDurationNormal(lvl -> 15)
     ..presetCooldown(lvl -> 25)
     ..presetBuffs(lvl -> commaList(HERALD_BUFF_E))
     ..presetMovementSpeedIncrease(lvl-> 0.)
     ..presetAttackSpeedIncrease(lvl-> 0.3*lvl)
-    ..presetTooltipNormal(lvl -> "Lightning Empowerment [ |c00FFFC01E|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "The Herald coats himself in lightning, increasing his attackspeed by "+(30*lvl).toString()+"% and increasing the chance for Static Charge to occur by "+(1*lvl).toString()+"%.\n\nDuration: 15 seconds.\nCooldown:25 second.")
-    ..setTooltipLearn("Learn Lightning Empowerment [ |c00FFFC01E|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("The Herald coats himself in lightning, increasing his attackspeed by 30% and increasing the chance for Static Charge on attack to occur by 1% each level.\n\nDuration: 15 seconds.\nCooldown:25 second.")
+    ..register(HERO_HERALD_OF_LIGHTNING, "Lightning Empowerment".setColor(colAbilitiesHeraldOfLightning), 
+    "The Herald coats himself in lightning, increasing his Attack Speed and the chance for Static Charge to occur on attack. Duration 15 seconds.\nCooldown 25 second.",
+    (int lvl) -> "+{0}% Attack Speed, +{1}% Static Charge chance.".format(
+        (30*lvl).toString(),
+        (lvl).toString()
+    ))
     
+// ----------------------------------------------------------------------------
 
     new AbilityDefinitionCriticalStrikecreep(HERALD_ABILITY_4)
-    ..setLevels(9)
-    ..setName("Static Charge")
-    ..setHotkeyLearn("R")
-    ..setHotkeyNormal("R")
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNZuesR.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNZuesR.blp")
-    ..setButtonPositionNormalX(3)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(0)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesR.blp")
     ..presetDamageMultiplier(lvl -> 0.)
     ..presetChancetoEvade(lvl -> 0.)
     ..presetChancetoCriticalStrike(lvl -> 0.)
-    ..presetTooltipNormal(lvl -> "Static Charge [ |c00FFFC01R|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Herald's autoattacks have a 15% chance to deal " + (2*lvl).toString() + " * INT magic damage.\n" + 
-    "Herald's abilities have " + (5*lvl).toString() + "% chance to deal " + (20*lvl).toString() + "% increased damage."+
-    "Whenever Herald's abilities crit, he gains " + (0.01+0.24*(lvl-1)).ceil().toString() +" INT.")
-    ..setTooltipLearn("Learn Static Charge [ |c00FFFC01R|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Herald's autoattacks have a 15% chance to deal 2xLVL times his INT as magic damage.\n"
-    +"Herald's abilities have 5% * LVL chance to deal 20% * LVL increased damage.\n"
-    +"Whenever Herald's abilities crit, he gains 1/1/1/1/2/2/2/2/3 INT.")
+    ..register(HERO_HERALD_OF_LIGHTNING, "Static Charge".setColor(colAbilitiesHeraldOfLightning),
+    wordPassive + "Herald's abilities and attacks have a chance to deal critical damage.\n" +
+    "1. Auto-attacks have a 5% x LVL chance to deal 2 x LVL x Int magic damage.\n" +
+    "2. Abilities Q and W have 5% x LVL chance to deal 20% x LVL increased damage.\n" +
+    "3. Ultimate ability always deals increased damage.\n" +
+    "4. Whenever Static Charge occurs the Herald permanently gets Intelligence.",
+    (int lvl) -> "{0}% chance to occur. Auto-attack +{1} x Int damage. Spells deal +{2}% damage. +{3} Int on occur.".format(
+        (5*lvl).toString(),
+        (2*lvl).toString(),
+        (20*lvl).toString(),
+        (0.01+0.25*(lvl-1)).ceil().toString()
+    ))
+
+// ----------------------------------------------------------------------------
 
     new AbilityDefinitionThunderBoltCreep(HERALD_ABILITY_5)
-    ..setLevels(4)
-    ..setLevelSkipRequirement(8)
-    ..setHotkeyLearn("T")
-    ..setHotkeyNormal("T")
-    ..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNZuesT.blp")
-    ..setIconResearch("ReplaceableTextures\\CommandButtons\\BTNZuesT.blp")
-    ..setName("Disintegrating Lightning Strike")
+    ..setUltimateAbility()
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesT.blp")
     ..setMissileSpeed(0)
     ..setMissileHomingEnabled(false)
     ..setMissileArt("")
-    ..setRequiredLevel(8)
-    ..setButtonPositionNormalX(3)
-    ..setButtonPositionNormalY(1)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(1)
     ..presetBuffs(lvl -> "")
     ..presetDamage(lvl -> 0)
     ..presetCastRange(lvl -> 600)
+    ..presetAreaofEffect(lvl -> 500.0 + 100*(lvl-1))
     ..presetCooldown(lvl -> 140-20.*lvl)
     ..presetDurationHero(lvl -> 0.010)
     ..presetDurationNormal(lvl -> 0.010)
-    ..presetManaCost(lvl -> 200*lvl)
-    ..presetTargetsAllowed(lvl -> commaList("Air","Ground","Enemy","Neutral","Organic"))
-    ..presetTooltipNormal(lvl -> "Disintegrating Lightning Strike [ |c00FFFC01T|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Herald calls down massive bolts of lightning onto all enemies in a 500 range from target unit, striking them for " + (5*lvl).toString() + " * INT + 100% max Mana damage. Always critically strikes if Lightning Empowerment is active.")
-    ..setTooltipLearn("Learn Disintegrating Lightning Strike [ |c00FFFC01T|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Herald calls down a massive bolts of lightning onto all enemies in a 500 range from target unit, striking them for 5 * LVL INT + 100% max Mana damage. Always critically strikes if Lightning Empowerment is active.")
+    ..presetManaCost(lvl -> 450*lvl)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..register(HERO_HERALD_OF_LIGHTNING, "Disintegrating Lightning Strike".setColor(colAbilitiesHeraldOfLightning),
+    "Herald calls down a massive bolts of lightning onto all enemies in range. Always triggers Static Charge.",
+    (int lvl) -> "Deals [{0} x Int + 100% max Mana] damage in {1} range.".format(
+        (5*lvl).toString(),
+        (500 + 100*(lvl-1)).toString()
+    ))
 
-@compiletime function heraldOfLightningBuffs()
-    new BuffDefinition(HERALD_BUFF_E, BuffIds.berserk)
-    ..setName("Lightning Empowerment")
-    ..setTooltipNormal("")
-    ..setTooltipNormalExtended("Herald is empowered by the gods, granting his lightning more ferocity.")
-    ..setArtTarget("")
-
-    new BuffDefinition(HERALD_BUFF_W, BuffIds.stunned)
-    ..setName("Lightning Nova")
-    ..setTooltipNormal("")
-    ..setTooltipNormalExtended("Hit by the Nova from the Herald of Lightning, momentarily stunned.")
-    ..setArtTarget("")
+// ----------------------------------------------------------------------------

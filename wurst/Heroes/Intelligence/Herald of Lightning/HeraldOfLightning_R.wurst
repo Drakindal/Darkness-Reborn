@@ -3,10 +3,10 @@ package HeraldOfLightning_R
 import DamageTarget
 import DamageEvent
 import MyAbilityIds
-import MyBuffIds
+import RandomGen
 import ClosureTimers
 
-function staticChargeDamage()
+function heraldAutoAttack()
     let src = DamageEvent.getSource()
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
     let targ = DamageEvent.getTarget()
@@ -16,40 +16,41 @@ function staticChargeDamage()
     let temp = addEffect("Abilities\\Spells\\Orc\\Purge\\PurgeBuffTarget.mdl", targ.getPos())
     doAfter(0.4) -> 
         temp.destr()
+    giveInt(src)
 
-function mindRipperHTIM(unit src)
+function heraldUlt(unit src)
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
     DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
-    src.addInt((0.01+0.25*(lvl-1)).ceil())
+    giveInt(src)
 
-function mindRipperHEAB(unit src)
+function heraldQ_W(unit src)
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
-    if lvl > 0
-        if src.hasAbility(HERALD_BUFF_E)
-            if GetRandomInt(1, 100) < 5*lvl + src.getAbilityLevel(HERALD_ABILITY_3)
-                DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
-                src.addInt((0.01+0.25*(lvl-1)).ceil())
-        else
-            if GetRandomInt(1, 100) < 5*lvl
-                DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
-                src.addInt((0.01+0.25*(lvl-1)).ceil())
+    DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
+    giveInt(src)
+
+function giveInt(unit src)
+    let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
+    src.addInt((0.01+0.25*(lvl-1)).ceil())
 
 public function mindRipper()
     DamageEvent.addListener(0) ->
-        switch DamageEvent.getType()
-            case ATTACK
-                let src = DamageEvent.getSource()
-                let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
-                if GetRandomInt(1, 100) < lvl * 5 and lvl > 0
-                    staticChargeDamage()
-            case CODE
-                let id = DamageEvent.getId()
-                switch id
-                    case 'HTIM'
-                        let src = DamageEvent.getSource()
-                        mindRipperHTIM(src)
-                    case 'HEAB'
-                        let src = DamageEvent.getSource()
-                        mindRipperHEAB(src)
-                    default
-            default
+        let src = DamageEvent.getSource()
+        let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
+        let addChance = src.getAbilityLevel(HERALD_ABILITY_3)
+        if (lvl > 0)
+            switch DamageEvent.getType()
+                case ATTACK
+                    if (checkChance(lvl * 5 + addChance))
+                        heraldAutoAttack()
+                case CODE
+                    let id = DamageEvent.getId()
+                    switch id
+                        // Damage from ultimate.
+                        case 'HTIM'
+                            heraldUlt(src)
+                        // Damage from Q and W.
+                        case 'HEAB'
+                            if checkChance(lvl * 5 + addChance)
+                                heraldQ_W(src)
+                        default
+                default
