@@ -5,14 +5,23 @@ import ClosureForGroups
 import ClosureTimers
 import Abilities
 import DamageTarget
+import MyAbilityIds
+import Lich_Abilities
 
 public function deathandnDecay()
-    EventListener.onPointCast('A0SF') (unit caster, vec2 target) ->
-        let dmg = [0.08, 0.10, 0.12, 0.14]
-        let lvl = caster.getAbilityLevel('A0SF')
-        let damage = dmg[lvl-1]
-        doPeriodicallyTimed(1, 5) (CallbackCounted cb) ->
-            forUnitsInRange(target, 250, true) (unit u) ->
-                if caster.isEnemyOf(u)
-                    flashEffect(Abilities.deathandDecayTarget, u.getPos())
-                    caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, customDamageType.Magical)
+    EventListener.onPointCast(LICH_ABILITY_5) (unit caster, vec2 target) ->
+        let lvl = caster.getAbilityLevel(LICH_ABILITY_5)
+        let damage = lich_abi5_Damage[lvl-1]
+        let range = 450.0 + 70*lvl
+        
+        forUnitsInRange(target, range, true) (unit u) ->
+            if caster.isEnemyOf(u)
+                flashEffect(Abilities.animateDeadTarget, u.getPos())
+                u.setMaxHP((lich_abi5_Hp[lvl-1] * u.getMaxHP()).ceil())
+        
+        doAfter(1) ->
+            doPeriodicallyTimed(0.8, 0.8*(3+lvl)) (CallbackCounted cb) ->
+                forUnitsInRange(target, range, true) (unit u) ->
+                    if caster.isEnemyOf(u)
+                        flashEffect(Abilities.deathandDecayTarget, u.getPos())
+                        caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, customDamageType.Magical)

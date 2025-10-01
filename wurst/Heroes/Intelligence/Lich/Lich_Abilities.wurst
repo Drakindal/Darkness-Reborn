@@ -1,0 +1,160 @@
+package Lich_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import Icons
+import BuffIds
+import BuffObjEditing
+import MyColors
+import ChannelAbilityPreset
+import Orders
+import CommonDescriptions
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new AbilityDefinitionLichFrostNova(LICH_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetAreaofEffect(lvl -> 500.0)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 150)
+    ..setManaCost(2, 250)
+    ..setManaCost(3, 350)
+    ..setManaCost(4, 600)
+    ..setManaCost(5, 750)
+    ..setManaCost(6, 900)
+    ..setManaCost(7, 1200)
+    ..setManaCost(8, 1500)
+    ..setManaCost(9, 2000)
+    ..presetAreaofEffectDamage(lvl -> 0.0)
+    ..presetDuration(lvl -> 15.0)
+    ..register(HERO_LICH, "Frost Nova".setColor(colAbilitiesLich), 
+    "Blasts enemy units with a wave of chilling frost in 500 range slowing movement speed and attack rate. Slows enemies for 50% for 15 seconds.",
+    (int lvl) -> "Deals {0} x Int damage.".format(
+        (2*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    // WIP. Previously ability gave armor bonus.
+    new AbilityDefinitionLichFrostArmor(LICH_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 100)
+    ..setManaCost(2, 120)
+    ..setManaCost(3, 150)
+    ..setManaCost(4, 180)
+    ..setManaCost(5, 210)
+    ..setManaCost(6, 240)
+    ..setManaCost(7, 280)
+    ..setManaCost(8, 320)
+    ..setManaCost(9, 360)
+    ..presetArmorDuration(lvl -> 0.0)
+    ..presetArmorBonus(lvl -> 0.0)
+    ..presetDuration(lvl -> 30.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+    ..register(HERO_LICH, "Frost Armor".setColor(colAbilitiesLich), 
+    "Creates an armor from steady ice shards that protects a target.",
+    (int lvl) -> "Heal {0} x Int HP.".format(
+        (2*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(LICH_ABILITY_3, 9, true)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetFollowThroughTime(lvl -> 1.0)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetBaseOrderID(lvl -> OrderIds.corporealform.toRawCode())
+    ..presetCastRange(lvl -> 900.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setAnimationNames("spell")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNBreathOfFrost.blp")
+    ..setArtCaster("")
+    ..setCasterAttachmentPoint("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_LICH, "Chain Frost".setColor(colAbilitiesLich), 
+    "Pierce your enemies with bouncing ice shards and freeze them for 5 seconds.",
+    (int lvl) -> "Deals {0} x Int damage in {1} range (maximum {2} targets).".format(
+        (1.5*lvl).toString(),
+        (400+40*(lvl-1)).toString(),
+        (lvl+3).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+public constant int array[9] lich_abi4_Int = [
+    1,
+    2,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5
+]
+
+@compiletime function defineAbilities4()
+    new AbilityDefinitionDemonHunterEvasion(LICH_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetChancetoEvade(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS F (2).blp")    
+    ..setLevelSkipRequirement(6)
+    ..register(HERO_LICH, "Frost Rise".setColor(colAbilitiesLich), 
+    wordPassive + "The Lich drains the souls of his enemies, gaining Intelligence for each enemy he kills.",
+    (int lvl) -> "+{0} Intelligence on kill.".format(
+        lich_abi4_Int[lvl-1].toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+public constant real array[4] lich_abi5_Damage = [
+    0.12,
+    0.16,
+    0.23,
+    0.28
+]
+
+public constant real array[4] lich_abi5_Hp = [
+    0.06,
+    0.08,
+    0.10,
+    0.12
+]
+
+@compiletime function defineAbilities5()
+    new ChannelAbilityPreset(LICH_ABILITY_5, 9, true)
+    ..setUltimateAbility()
+    ..presetAreaofEffect(lvl -> 450.0 + 70*lvl)
+    ..presetCooldown(lvl -> 200.0 - 20 * lvl)
+    ..presetManaCost(lvl -> 300*lvl)
+    ..presetFollowThroughTime(lvl -> 1.0)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.TARGETIMAGE, true)
+    ..presetArtDuration(lvl -> 0.0)
+    ..presetBaseOrderID(lvl -> OrderIds.deathanddecay.toRawCode())
+    ..presetCastRange(lvl -> 900.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDeathAndDecay.blp")
+    ..setArtCaster("")
+    ..setCasterAttachmentPoint("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_LICH, "Death And Decay".setColor(colAbilitiesLich), 
+    "The scary beauty of darkness leaches enemies life energy in area.",
+    (int lvl) -> "Permanently steals {0}% of target max HP. Deals {1}% of target max HP as magic damage every 0.8 seconds {2} times in {3} range.".format(
+        (100*lich_abi5_Hp[lvl-1]).toString(),
+        (100*lich_abi5_Damage[lvl-1]).toString(),
+        (3+lvl).toString(),
+        (450 + 70*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------

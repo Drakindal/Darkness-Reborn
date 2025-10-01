@@ -1,8 +1,9 @@
 package Lich_W
 
 import ClosureEvents
+import MyAbilityIds
 
 public function frostArmor()
-    EventListener.onTargetCast('A0SG') (unit caster, unit target) ->
-        let heal = (caster.getAbilityLevel('A0SG') * 2.00) * caster.getInt(true)
+    EventListener.onTargetCast(LICH_ABILITY_2) (unit caster, unit target) ->
+        let heal = (caster.getAbilityLevel(LICH_ABILITY_2) * 2.00) * caster.getInt(true)
         target.addHP(heal)

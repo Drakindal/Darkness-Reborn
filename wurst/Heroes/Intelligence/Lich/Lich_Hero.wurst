@@ -12,7 +12,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_LICH, UnitIds.lich)
-    ..setHeroAbilities(commaList('A01Q', 'A0SG', 'A01H', 'A0SI', 'A0SF'))
+    ..setHeroAbilities(commaList(LICH_ABILITY_1, LICH_ABILITY_2, LICH_ABILITY_3, LICH_ABILITY_4, LICH_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(15, 14, 20)
