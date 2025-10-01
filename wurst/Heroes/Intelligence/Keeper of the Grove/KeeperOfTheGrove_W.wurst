@@ -5,20 +5,36 @@ import ClosureEvents
 import Abilities
 import ClosureTimers
 import DamageTarget
+import MyAbilityIds
 
 public function naturalOrb()
-    EventListener.onPointCast('A0TU') (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0TU')
-        let output = (caster.getInt(true) * 0.1 + 10) * lvl
+    EventListener.onPointCast(KEEPER_OF_THE_GROVE_ABILITY_2) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, KEEPER_OF_THE_GROVE_ABILITY_2)
+        let dmg = (caster.getInt(true) * 0.15 + 10) * lvl
         let pos = caster.getPos()
         let sfx = addEffect(Abilities.manaFlareMissile, pos)
         let angle = sfx.getPos().angleTo(target)
+        let startScale = 2
+        let stopScale  = 4
+        let startRange = 350
+        let stopRange  = 350.0 + 20*(lvl-1)
+        let period     = 0.05
+        let duration   = 3.2
+        let N          = duration / period
         sfx..setHeight(50.).setScale(2.)
         sfx.setYaw(caster.getPos().angleTo(target))
-        doPeriodicallyTimed(0.05, 3.2) (CallbackCounted cb) ->
+        doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
+            
             sfx.setPos(sfx.getPos().polarOffset(angle, 13))
-            forUnitsInRange(sfx.getPos(), 350, true) (unit u) ->
+
+            let range = startRange + (stopRange - startRange) * cb.getCount() / N
+            let scale = startScale + (stopScale - startScale) * cb.getCount() / N
+
+            sfx..setScale(scale)
+
+            forUnitsInRange(sfx.getPos(), range, true) (unit u) ->
                 if caster.isEnemyOf(u) and u.isAlive()
-                    caster.damageTargetCode(output, u, null, -1, customDamageType.Magical)
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+            
             if(cb.isLast())
                 sfx.destr()

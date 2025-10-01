@@ -7,12 +7,13 @@ import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_KEEPER_OF_THE_GROVE, UnitIds.keeperofthegrove)
-    ..setHeroAbilities(commaList('A0TS', 'A0TU', 'A0U1', 'A0TZ', 'A0U2'))
+    ..setHeroAbilities(commaList(KEEPER_OF_THE_GROVE_ABILITY_1, KEEPER_OF_THE_GROVE_ABILITY_2, KEEPER_OF_THE_GROVE_ABILITY_3, KEEPER_OF_THE_GROVE_ABILITY_4, KEEPER_OF_THE_GROVE_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(16, 15, 18)

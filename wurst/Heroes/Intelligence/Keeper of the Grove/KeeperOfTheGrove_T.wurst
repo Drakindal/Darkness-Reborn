@@ -4,11 +4,13 @@ import Abilities
 import ClosureEvents
 import MyUnitIds
 import Global_Variables
+import MyAbilityIds
 
+// WIP. Refactor summons definition.
 public function spiritGuardian()
-    EventListener.onPointCast('A0U2') (unit caster, vec2 target) ->
-        let spirit = createUnit(caster.getOwner(), 'e003', target)..setTimedLife(60)
-        spirit.setAbilityLevel('A11E', caster.getAbilityLevel('A0U2'))
+    EventListener.onPointCast(KEEPER_OF_THE_GROVE_ABILITY_5) (unit caster, vec2 target) ->
+        let spirit = createUnit(caster.getOwner(), 'e003', target)..setTimedLife(30)
+        spirit.setAbilityLevel('A11E', caster.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_5))
         AddSpecialEffect(Abilities.animateDeadTarget, target.x, target.y).destr()
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         let summoner = GetSummoningUnit()
@@ -17,9 +19,8 @@ public function spiritGuardian()
             
             let heroInt = playerHero.get(summon.getOwner()).getInt(true)
 
-
             if summon.getTypeId() == 'e003'
-                let lvl = summoner.getAbilityLevel('A0U2')
+                let lvl = summoner.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_5)
                 summon.setMaxHP((0.05*heroInt + lvl * 125).toInt(), true)
                 summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
                 summon.setBaseDamage((0.15 * heroInt).toInt(), 0)

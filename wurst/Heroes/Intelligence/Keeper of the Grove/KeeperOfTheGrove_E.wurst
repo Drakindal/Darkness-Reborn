@@ -7,28 +7,30 @@ import Abilities
 import DamageTarget
 import Projectile
 import Units
+import MyAbilityIds
 
 public function hawkeyeSplit()
-    EventListener.onPointCast('A0U1') (unit caster, vec2 target) ->
-        let lvl = caster.getAbilityLevel('A0U1')
+    EventListener.onPointCast(KEEPER_OF_THE_GROVE_ABILITY_3) (unit caster, vec2 target) ->
+        let lvl = caster.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_3)
         let owl = AddSpecialEffect(Units.owlSCOUT, target.x, target.y)
         caster.setUserData(GetRandomInt(0, 359))
         owl.setYaw(caster.getUserData().toReal())
         owl.setHeight(150)
+        let range = 450.0 + 30*(lvl-1)
         doPeriodicallyTimed(0.25, 5) (CallbackCounted cb) ->
             if(caster.getUserData() + 18 > 360)
                 caster.setUserData(caster.getUserData() + 18 - 360)
             else
                 caster.setUserData(caster.getUserData() + 18)
             owl.setYaw(caster.getUserData().toReal())
-            forUnitsInRange(target, 500, true) (unit u) ->
+            forUnitsInRange(target, range, true) (unit u) ->
                 if caster.isEnemyOf(u) and u.isAlive()
                     let pos = owl.getPos()
                     let sfx = AddSpecialEffect(Abilities.arrowMissile1, pos.x, pos.y)
                     sfx.setHeight(150)
                     let proj = new Projectile(u, sfx, 4)
                     proj.moveForward(false) (effect detectionUnit, unit target) ->
-                        let output = (caster.getInt(true) * 0.25 + 5.) * lvl
+                        let output = (caster.getInt(true) * 0.6 + 60) * lvl
                         caster.damageTargetCode(output, u, null, -1, customDamageType.Magical)
                         
             if(cb.isLast())

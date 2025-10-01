@@ -5,6 +5,8 @@ import MyAbilityIds
 import DamageEvent
 import OrderIds
 import DummyCaster
+import Global_Variables
+import MyUnitIds
 
 public function thornRoot()
     DamageEvent.addListener(2) ->
@@ -13,15 +15,17 @@ public function thornRoot()
         if (DamageEvent.getType() == ATTACK)
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                if(src.isEnemyOf(targ))
-                    let lvl = GetUnitAbilityLevel(targ, 'A0TZ')
-                    if lvl > 0
-                        let chance = lvl * 2
-                        if(GetRandomInt(0, 100) < chance)
-                            let output = targ.getInt(true) * lvl.toReal()
-                            new DummyCaster()
-                            ..owner(targ.getOwner())
-                            ..origin(targ.getPos())
-                            ..castTarget(ABILITY_DUMMY_17, 1, OrderIds.entanglingroots, src)
-                            ..delay(0)
-                            targ.damageTargetCode(output, src, null, -1, customDamageType.Magical)
+                if (src.isEnemyOf(PLAYER_ALLY_BASE))
+                    let hero = playerHero.get(targ.getOwner())
+                    if (hero.getTypeId() == HERO_KEEPER_OF_THE_GROVE)
+                        let lvl = hero.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_4)
+                        if lvl > 0
+                            let chance = lvl * 2
+                            if(GetRandomInt(0, 100) < chance)
+                                let output = targ.getInt(true) * lvl + 40.0*lvl
+                                new DummyCaster()
+                                ..owner(targ.getOwner())
+                                ..origin(targ.getPos())
+                                ..castTarget(KEEPER_OF_THE_GROVE_ABILITY_1_2_DUMMY, 1, OrderIds.entanglingroots, src)
+                                ..delay(0)
+                                targ.damageTargetCode(output, src, null, -1, customDamageType.Magical)
