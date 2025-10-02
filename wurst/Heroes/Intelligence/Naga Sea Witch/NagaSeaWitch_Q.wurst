@@ -16,14 +16,15 @@ public function bubbleBomb()
         ArtilleryDetection.fireArtillery(caster, WATER_BUBBLE_ARTILLERY, caster.getPos(), target) (unit detectionUnit, unit caster, int data) ->
             let targetPos = detectionUnit.getPos3Zero()
             let lvl = caster.getAbilityLevel(NAGA_WITCH_ABILITY_1)
-            let dmg = (0.1*lvl) * caster.getMaxMana() + 200 * lvl
+            let dmg = (0.3*lvl) * caster.getMaxMana() + 200 * lvl
             WATER_BUBBLE_SOUND.playOnPoint(targetPos)
             flashEffect("Effects\\Vashj\\WaterBlast.mdl", targetPos, 4)
-            forUnitsInRange(targetPos.toVec2(), 400, true) (unit u) ->
+            let range = 400. + 40*(lvl-1)
+            forUnitsInRange(targetPos.toVec2(), range, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())
                     ..delay(1)
-                    ..castTarget(NAGA_WITCH_ABILITY_Q_DUMMY, 1, OrderIds.firebolt, u)
+                    ..castTarget(NAGA_WITCH_ABILITY_1_DUMMY, 1, OrderIds.firebolt, u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
