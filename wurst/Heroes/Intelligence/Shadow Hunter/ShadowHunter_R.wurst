@@ -5,6 +5,7 @@ import MyAbilityIds
 import OrderIds
 import DamageEvent
 import DamageTarget
+import MyBuffIds
 
 public function craggyHex()
     DamageEvent.addListener(2) ->
@@ -12,13 +13,13 @@ public function craggyHex()
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let targ = DamageEvent.getTarget()
-                if targ.hasAbility('B00N')
-                    let lvl = targ.getAbilityLevel('A0M3')
-                    let dmg = targ.getMaxHP()*(lvl*0.03)
+                if targ.hasAbility(SHADOW_HUNTER_BUFF_4)
+                    let lvl = targ.getAbilityLevel(SHADOW_HUNTER_ABILITY_4)
+                    let dmg = targ.getMaxHP()*(lvl*0.05) + 0.5*lvl*targ.getInt(true)
                     if GetRandomInt(1, 100) < lvl*2
                         let src = DamageEvent.getSource()
                         new DummyCaster()
                         ..owner(targ.getOwner())
                         ..origin(targ.getPos())
-                        ..castTarget(ABILITY_DUMMY_12, lvl, OrderIds.hex, src)
+                        ..castTarget(SHADOW_HUNTER_ABILITY_4_DUMMY, lvl, OrderIds.hex, src)
                         targ.damageTargetCode(dmg, src, null, -1, customDamageType.Magical)

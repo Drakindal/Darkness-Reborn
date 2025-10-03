@@ -2,10 +2,24 @@ package ShadowHunter_E
 
 import ClosureEvents
 import DamageTarget
+import ClosureForGroups
+import MyBuffIds
+import DummyCaster
+import MyAbilityIds
+import Orders
 
 public function shadowHex()
-    EventListener.onTargetCast('A0M9') (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel('A0M9')
+    EventListener.onTargetCast(SHADOW_HUNTER_ABILITY_3) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(SHADOW_HUNTER_ABILITY_3)
         let intellect = caster.getInt(true)
         let dmg = lvl*intellect.toReal()
         caster.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
+        let range = (700+40*lvl)/2
+
+        forUnitsInRange(target.getPos(), range, true) (unit u) ->
+            if caster.isEnemyOf(u) and not u.hasAbility(SHADOW_HUNTER_BUFF_3)
+                new DummyCaster()
+                ..owner(caster.getOwner())
+                ..origin(caster.getPos())
+                ..castTarget(SHADOW_HUNTER_ABILITY_3, lvl, OrderIds.hex, u)
+                caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

@@ -1,45 +1,247 @@
 package ShadowHunter_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import AbilityObjEditing
 import ObjectIds
-import MyUnitIds
+import MyColors
+import UnitIds
+import CommonDescriptions
+import BuffIds
+import MyBuffIds
+import BuffObjEditing
 
-@compiletime function shadowHunter()
-    new AbilityDefinitionShadowHunterSerpentWard(SHADOW_HUNTER_ABILITY_1)
-    ..setLevels(9)
-    ..setButtonPositionNormalX(1)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(1)
-    ..setButtonPositionResearchY(0)
-    ..setHotkeyNormal("W")
-    ..setHotkeyLearn("W")
-    ..setName("Serpent Ward")
-    ..setTooltipLearn("Learn Serpent Ward [ |c00FFFC01W|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Summon Serpent Ward at the specified place, Serpent Ward automatically attack enemies, for 30 seconds. Scales off Intelligence. Cooldown: 30 seconds decreases by 2 every level.")
+// ----------------------------------------------------------------------------
+
+public constant real array[9] shadowHunter_abi1_Damage = [
+     100,
+     150,
+     220,
+     340,
+     460,
+     620,
+     860,
+    1120,
+    1600
+]
+
+@compiletime function defineAbilities()
+    new BuffDefinition(SHADOW_HUNTER_BUFF_1, BuffIds.lightningShield)
+    ..setArtSpecial("Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl")
+    ..setArtTarget("Abilities\\Weapons\\ShadowHunterMissile\\ShadowHunterMissile.mdl")
+    ..register("Spinning Blade".setColor(colAbilitiesShadowHunter),
+    "A Spinning Blade is attached to this unit.")
+
+    new AbilityDefinitionLightningShield(SHADOW_HUNTER_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetAreaofEffect(lvl -> 180.0+20*lvl)
+    ..presetBuffs(lvl -> commaList(SHADOW_HUNTER_BUFF_1, BuffIds.lightningShieldCaster))
+    ..presetCooldown(lvl -> 15.0 - lvl)
+    ..presetDuration(lvl -> 6.0+0.5*(lvl-1))
+    ..setManaCost(1,  80)
+    ..setManaCost(2, 130)
+    ..setManaCost(3, 160)
+    ..setManaCost(4, 200)
+    ..setManaCost(5, 240)
+    ..setManaCost(6, 280)
+    ..setManaCost(7, 320)
+    ..setManaCost(8, 370)
+    ..setManaCost(9, 410)
+    ..presetDamageperSecond(lvl -> shadowHunter_abi1_Damage[lvl-1])
+    ..presetCastRange(lvl -> 900.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
+    ..register(HERO_SHADOW_HUNTER, "Spinning Blade".setColor(colAbilitiesShadowHunter), 
+    "Creates a rotation blade on the allied unit dealing damage to all nearby enemies. Increases damage taken by the target from all sources by 40%.\n" +
+    wordPassive + "Increases the Shadow Hunter's damage against Shadow Hexed units by +100% per level.\n",
+    (int lvl) -> "Deals {0} + {1} x Int damage per second in {2} range. Lasts for {3} seconds. Cd {4} seconds.".format(
+        shadowHunter_abi1_Damage[lvl-1].toString(),
+        (1.5*lvl).toString(),
+        (180+30*lvl).toString(),
+        (6.0+0.5*(lvl-1)).toString(1),
+        (15 - lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new UnitDefinition(SHADOW_HUNTER_SERPENT_WARD, UnitIds.serpentward1)
+    ..setAttack1AttackType(AttackType.Normal)
+    ..setAttack1CooldownTime(1.5)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(3)
+    ..setAttack1MaximumNumberofTargets(1)
+    ..setAttack1ProjectileSpeed(1300)
+    ..setAttack1Range(750)
+    ..setAttack1RangeMotionBuffer(250)
+    ..setAttack1TargetsAllowed(getTargets(AbilityTargets.EnemiesAll))
+    ..setAttacksEnabled(1)
+    ..setTargetedAs("Ward")
+    ..setHitPointsMaximumBase(300)
+    ..setHitPointsRegenerationRate(10)
+    ..setAttack1DamageBase(30)
+    ..setName("Shadow Hunter Serpent Ward")
+    
+    // WIP armor.
+    new AbilityDefinitionShadowHunterSerpentWard(SHADOW_HUNTER_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
     ..presetSummonedUnitCount(lvl -> (2 + 0.3*lvl).toInt())
-    ..presetSummonedUnitType(lvl -> commaList(SERPENT_WARD_0))
-    ..presetCastRange(lvl -> 600)
-    ..presetCooldown(lvl -> 30. - lvl*2)
-    ..setDurationHero(9, 30)
-    ..setDurationNormal(9, 30)
-    ..presetManaCost(lvl -> 70+10*lvl)
+    ..presetSummonedUnitType(lvl -> SHADOW_HUNTER_SERPENT_WARD.toRawCode())
+    ..presetCastRange(lvl -> 700)
+    ..presetCooldown(lvl -> 25.0 - lvl*2)
+    ..presetDuration(lvl -> 30.0 + lvl)
+    ..setManaCost(1,  80)
+    ..setManaCost(2,  90)
+    ..setManaCost(3, 110)
+    ..setManaCost(4, 125)
+    ..setManaCost(5, 145)
+    ..setManaCost(6, 180)
+    ..setManaCost(7, 210)
+    ..setManaCost(8, 250)
+    ..setManaCost(9, 290)
+    ..register(HERO_SHADOW_HUNTER, "Serpent Ward".setColor(colAbilitiesShadowHunter), 
+    "Shadow Hunter summons Serpent Wards at the specified place that attack nearby enemies.",
+    (int lvl) -> "Deals {0} + {1} x Int damage with attacks. +{2}% Attack Speed. Ward's HP = {3} + {4}% of Shadow Hunter max HP.".format(
+        (50*lvl).toString(),
+        (0.3*lvl).toString(),
+        (5*(lvl-1)).toString(),
+        (50*lvl).toString(),
+        (10*lvl).toString()
+    ))
 
-    new AbilityDefinitionCarrionSwarmcreep(SHADOW_HUNTER_ABILITY_2)
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(SHADOW_HUNTER_BUFF_3, BuffIds.hex)
+    ..register("Shadow Hex".setColor(colAbilitiesShadowHunter),
+    "This unit is under Shadow Hex. It has been transformed into a critter.")
+
+    new AbilityDefinitionShadowHunterHex(SHADOW_HUNTER_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetBuffs(lvl -> SHADOW_HUNTER_BUFF_3.toRawCode())
+    ..presetCooldown(lvl -> 12.0 - 0.5*(lvl-1))
+    ..setManaCost(2, 80)
+    ..setManaCost(3, 90)
+    ..setManaCost(4, 100)
+    ..setManaCost(5, 120)
+    ..setManaCost(6, 140)
+    ..setManaCost(7, 170)
+    ..setManaCost(8, 200)
+    ..setManaCost(9, 240)
+    ..presetDuration(lvl -> 2.5 + 0.5*lvl)
+    ..register(HERO_SHADOW_HUNTER, "Hex".setColor(colAbilitiesShadowHunter), 
+    "The Shadow Hunter transforms an enemy into a critter, making them unable to attack or cast spells. Increases damage taken by the target from all sources by 20%.",
+    (int lvl) -> "Deals {0} x Int damage in {1} range and hexes enemies for {2} seconds. Cd {3} seconds".format(
+        (lvl).toString(),
+        (700+40*lvl).toString(),
+        (3.5 + 0.5*lvl).toString(1),
+        (12.0 - 0.5*(lvl-1)).toString(1)
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionShadowHunterHex(SHADOW_HUNTER_ABILITY_4_DUMMY)
     ..setLevels(9)
+    ..setDuration(1, 0.1)
+    ..setDuration(2, 0.2)
+    ..setDuration(3, 0.3)
+    ..setDuration(4, 0.4)
+    ..setDuration(5, 0.5)
+    ..setDuration(6, 0.6)
+    ..setDuration(7, 0.7)
+    ..setDuration(8, 0.8)
+    ..setDuration(9, 0.9)
+    ..presetManaCost(lvl -> 0)
+    ..presetCastRange(lvl -> 99999)
+    ..presetCastingTime(lvl -> 0)
+    ..presetCooldown(lvl -> 0)
+    ..setRequirements("")
+    ..setCheckDependencies(false)
+
+    new BuffDefinition(SHADOW_HUNTER_BUFF_4, BuffIds.roar)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASS1.blp")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint0(1, "weapon")
+    ..setTargetAttachmentPoint1(1, "weapon")
+    ..register("Craggy Hex".setColor(colAbilitiesShadowHunter),
+    "This unit is Craggy Hex. It has been transformed into a critter.")
+
+    new AbilityDefinitionTaurenChieftainEnduranceAura(SHADOW_HUNTER_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetBuffs(lvl -> SHADOW_HUNTER_BUFF_4.toRawCode())
+    ..presetMovementSpeedIncrease(lvl -> 0.0)
+    ..presetAttackSpeedIncrease(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASS1.blp")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_SHADOW_HUNTER, "Craggy Hex".setColor(colAbilitiesShadowHunter), 
+    "Enemy that attempts to attack Shadow Hunter has a chance to be hexed.",
+    (int lvl) -> "{0}% chance to hex and deal damage equal to {1} x Int + {2}% of max Shadow Hunter HP.".format(
+        (2*lvl).toString(),
+        (0.5*lvl).toString(1),
+        (5*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+public constant real array[4] shadowHunter_abi5_Heal = [
+    0.06,
+    0.10,
+    0.15,
+    0.20
+]
+
+public constant real array[4] shadowHunter_abi5_Mana = [
+    0.05,
+    0.08,
+    0.10,
+    0.12
+]
+
+@compiletime function defineAbilities5()
+    new BuffDefinition(SHADOW_HUNTER_BUFF_5, BuffIds.healingWardAura)
+    ..register("Shadow Hunter Magic Ward Aura".setColor(colAbilitiesShadowHunter),
+    "This unit is under Shadow Hunter Magic Ward Aura. Its mana and hp are restored per second.")
+
+    new UnitDefinition(SHADOW_HUNTER_HEALING_WARD, UnitIds.healingward)
+    ..setTargetedAs("Ward")
+    ..setHitPointsMaximumBase(300)
+    ..setHitPointsRegenerationRate(10)
+    ..setName("Shadow Hunter Magic Ward")
+
+    new AbilityDefinitionAuraRegenerationHealingWard(SHADOW_HUNTER_ABILITY_5_DUMMY)
+    ..presetBuffs(lvl -> SHADOW_HUNTER_BUFF_5.toRawCode())
+    ..setMaxLevels(4)
     ..setButtonPositionNormalX(0)
     ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(0)
-    ..setButtonPositionResearchY(0)
-    ..setHotkeyNormal("Q")
-    ..setHotkeyLearn("Q")
-    ..setName("Spinning Blade")
-    ..setTooltipLearn("Learn Spinning Blade [ |c00FFFC01Q|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Throws a spinning blade dealing int * 3 * lvl damage to all enemies hit.")
-    ..presetCastRange(lvl -> 600)
-    ..presetCooldown(lvl -> 20. - lvl*1)
-    ..presetAreaofEffect(lvl -> 0)
-    ..presetDamage(lvl -> 0)
-    ..setArtEffect("")
-    ..setArtSpecial("")
-    ..presetManaCost(lvl -> 40+30*lvl)
+    ..presetAreaofEffect(lvl -> 700.0 + 50*lvl)
+    ..presetAmountofHitPointsRegenerated(lvl -> 0)
+    ..register(HERO_SHADOW_HUNTER, "Shadow Hunter Magic Ward Aura".setColor(colAbilitiesShadowHunter), 
+    "",
+    (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range".format(
+        (100*shadowHunter_abi5_Heal[lvl-1]).toString(),
+        (100*shadowHunter_abi5_Mana[lvl-1]).toString(),
+        (700 + 50*lvl).toString()
+    ))
+
+    new AbilityDefinitionHealingWard(SHADOW_HUNTER_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetCooldown(lvl -> 100.0 - 20*lvl)
+    ..presetManaCost(lvl -> 200*lvl)
+    ..presetDuration(lvl -> 20.0 + 10*(lvl-1))
+    ..presetCastRange(lvl -> 500.0)
+    ..presetAreaofEffect(lvl -> 700.0 + 50*lvl)
+    ..presetWardUnitType(lvl -> SHADOW_HUNTER_HEALING_WARD.toRawCode())
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNHealingWard.blp")
+    ..register(HERO_SHADOW_HUNTER, "Healing Ward".setColor(colAbilitiesShadowHunter), 
+    "Sets up a magic ward in target location that recovers percent of allies max hp per second.",
+    (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range. Duration {3} seconds. Cd {4} seconds".format(
+        (100*shadowHunter_abi5_Heal[lvl-1]).toString(),
+        (100*shadowHunter_abi5_Mana[lvl-1]).toString(),
+        (700 + 50*lvl).toString(),
+        (20 + 10*(lvl-1)).toString(),
+        (100 - 15*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+package ShadowHunter_Q
+
+import MyAbilityIds
+import DamageTarget
+import ClosureEvents
+import ClosureForGroups
+import ShadowHunter_Abilities
+import ClosureTimers
+
+public function spinningBlade()
+    EventListener.onTargetCast(SHADOW_HUNTER_ABILITY_1) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(SHADOW_HUNTER_ABILITY_1)
+        let dps = 1.5*lvl*caster.getInt(true) + shadowHunter_abi1_Damage[lvl-1]
+        let range = (180+30*lvl)/2
+        let duration = 6.0+0.5*(lvl-1)
+        let period = 0.1
+        let dmg = dps * period
+
+        doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
+            forUnitsInRange(target.getPos(), range, true) (unit u) ->
+                if caster.isEnemyOf(u)
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

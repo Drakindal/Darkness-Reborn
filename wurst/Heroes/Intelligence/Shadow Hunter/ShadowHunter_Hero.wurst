@@ -13,7 +13,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_SHADOW_HUNTER, UnitIds.shadowhunter)
-    ..setHeroAbilities(commaList(SHADOW_HUNTER_ABILITY_1, 'A019', 'A0M9', 'A0M3', 'A0MI'))
+    ..setHeroAbilities(commaList(SHADOW_HUNTER_ABILITY_1, SHADOW_HUNTER_ABILITY_2, SHADOW_HUNTER_ABILITY_3, SHADOW_HUNTER_ABILITY_4, SHADOW_HUNTER_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(15, 20, 17)

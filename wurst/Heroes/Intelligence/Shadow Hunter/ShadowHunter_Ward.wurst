@@ -9,14 +9,17 @@ public function shWardSummon()
         let summoner = GetSummoningUnit()
         if(summoner.getTypeId() == HERO_SHADOW_HUNTER)
             let summon = GetSummonedUnit()
-            let ite = summoner.getInt(true)
+            let intelligence = summoner.getInt(true)
             let hp = summoner.getMaxHP()
             let armor = summoner.getArmor()
-            if summon.getTypeId() == SERPENT_WARD_0
+            if summon.getTypeId() == SHADOW_HUNTER_SERPENT_WARD
                 let lvl = summoner.getAbilityLevel(SHADOW_HUNTER_ABILITY_1)
-                summon.setBaseDamage((((0.2 * ite)*lvl) + lvl * 40).toInt(), 0)
-                summon.setMaxHP((0.1*hp + lvl * 20).toInt(), true)
-                summon.setArmor(0.25*armor)
+                summon..setBaseDamage((((0.3 * intelligence)*lvl) + lvl * 50).toInt(), 0)
+                ..setAttackCooldown(summon.getAttackCooldown(0)*(1-0.05*(lvl-1)), 0)
+                ..setMaxHP((0.1*hp + lvl * 50).toInt(), true)
+                ..setArmor(0.25*armor)
                 if summoner.getAbilityLevel(SHADOW_HUNTER_ABILITY_1) == 9
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 5)
                 summon.setName("Serpent Ward Lvl" + lvl.toString())
+            if summon.getTypeId() == SHADOW_HUNTER_HEALING_WARD
+                
