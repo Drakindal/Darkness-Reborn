@@ -7,12 +7,13 @@ import AbilityObjEditing
 import MyUpgradesIds
 import CommonDescriptions
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_TIME_WIZARD, UnitIds.jaina)
-    ..setHeroAbilities(commaList('A0K6', 'A0NC', 'A0K5', 'A0ND', 'A0N4'))
+    ..setHeroAbilities(commaList(TIME_WIZARD_ABILITY_1, TIME_WIZARD_ABILITY_2, TIME_WIZARD_ABILITY_3, TIME_WIZARD_ABILITY_4, TIME_WIZARD_ABILITY_5))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(15, 17, 19)

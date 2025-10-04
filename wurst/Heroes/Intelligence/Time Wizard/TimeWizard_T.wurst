@@ -5,21 +5,25 @@ import ClosureForGroups
 import ClosureTimers
 import DamageTarget
 import PauseAllocation
+import MyAbilityIds
+import RandomGen
 
 public function radarTime()
-    EventListener.onPointCast('A0N4') (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0N4')
-        let dmg = caster.getInt(true) * lvl
+    EventListener.onPointCast(TIME_WIZARD_ABILITY_5) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, TIME_WIZARD_ABILITY_5)
+        let dmg = caster.getInt(true) * lvl * 1.5
         doPeriodicallyTimed(0.05, 4) (CallbackCounted cb) ->
-            forUnitsInRange(target, 200, true) (unit u) ->
+            forUnitsInRange(target, 300, true) (unit u) ->
                 u.pauseIndef()
                 if caster.isEnemyOf(u)
-                    caster.damageTargetCode(dmg.toReal(), u, null, -1, customDamageType.Magical)
-                if caster.isAllyOf(u) and u != caster and u.getMaxHP() != u.getHP()
-                    u.addHP(u.getMaxHP()*0.01)
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+                if caster.isAllyOf(u)
+                    u.addHP(u.getMaxHP()*0.05)
 
             if cb.isLast()
-                forUnitsInRange(target, 200, true) (unit u) ->
+                forUnitsInRange(target, 300, true) (unit u) ->
                     u.unPauseUnitIndef()
                     if caster.isAllyOf(u) and u != caster
                         u.resetCooldown()
+                if checkChance(15.0)
+                    caster.resetCooldown()

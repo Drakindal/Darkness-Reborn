@@ -1,0 +1,197 @@
+package TimeWizard_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import ChannelAbilityPreset
+import Orders
+import MyColors
+
+// ----------------------------------------------------------------------------
+
+let colCanLearn = "|c00FEBA0E"
+
+constant real array[4] abi1_Cd = [
+    60,
+    40,
+    20,
+    10
+]
+
+@compiletime function defineAbilities()
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_1, 4, true)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..setMaxLevels(4)
+    ..setLevelSkipRequirement(10)
+    ..setRequiredLevel(10)
+    ..presetCooldown(lvl -> abi1_Cd[lvl-1])
+    ..setManaCost(1, 500)
+    ..setManaCost(2, 750)
+    ..setManaCost(3, 1000)
+    ..setManaCost(4, 1500)
+    ..presetFollowThroughTime(lvl -> 0.2)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 0.2)
+    ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
+    ..presetCastRange(lvl -> 99999.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime1.blp")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_TIME_WIZARD, "Time Travel".setColor(colAbilitiesTimeWizard), 
+    "The magic of Time Wizard allows her to travel in the space and the time, creating a tunnel to the specified location. You and your allies can freely move back and forth through tunnel portals.\n" +
+    "The ability can be learned at levels: 10 - 20 - 30 - 40.".setColor(colCanLearn),
+    (int lvl) -> "Duration 15 seconds. Cooldown {1} seconds.".format(
+        (70 - 10*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+public constant int array[4] timeWizard_abi2_Stats = [
+    14,
+    24,
+    36,
+    48
+]
+
+@compiletime function defineAbilities2()
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_2, 4, true)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..setLevelSkipRequirement(12)
+    ..setRequiredLevel(12)
+    ..setMaxLevels(4)
+    ..presetCooldown(lvl -> 120.0 - 15*lvl)
+    ..setManaCost(1, 300)
+    ..setManaCost(2, 500)
+    ..setManaCost(3, 700)
+    ..setManaCost(4, 1000)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 0.0)
+    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+    ..presetCastRange(lvl -> 99999.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime2.blp")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..register(HERO_TIME_WIZARD, "Punish Time".setColor(colAbilitiesTimeWizard),
+    "Breakthrough skill of time Time Wizard allows her to permanently increase a selected teammate stats. But if Time Wizard dies, the teammate will be punished for number of Punish Time casts x 10000 magic damage.\n" +
+    "The ability can be learned at levels: 12 - 24 - 36 - 48.".setColor(colCanLearn),
+    (int lvl) -> "Adds {0} stats on use. Cooldown {1} seconds.".format(
+        timeWizard_abi2_Stats[lvl-1].toString(),
+        (120 - 15*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_3, 9, true)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetCooldown(lvl -> 200.0 - 20*lvl)
+    ..setManaCost(1, 1000)
+    ..setManaCost(2, 1400)
+    ..setManaCost(3, 2000)
+    ..setManaCost(4, 3000)
+    ..presetFollowThroughTime(lvl -> 0.5)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 0.5)
+    ..presetBaseOrderID(lvl -> OrderIds.roar.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.roar.toRawCode())
+    ..presetCastRange(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime3.blp")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..setLevelSkipRequirement(16)
+    ..setRequiredLevel(16)
+    ..setMaxLevels(4)
+    ..register(HERO_TIME_WIZARD, "Stop Time".setColor(colAbilitiesTimeWizard), 
+    "Stops the time for all your enemies for 10 seconds.\n" +
+    "The ability can be learned at levels: 16 - 32 - 44 - 56.".setColor(colCanLearn),
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (200.0 - 20*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_4_DUMMY, 4, true)
+    ..setLevels(1)
+    ..setPosition(AbilityPosition.Z)
+    ..setFollowThroughTime(1, 0.0)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..setArtDuration(1, 0.0)
+    ..setBaseOrderID(1, OrderIds.avatar.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.avatar.toRawCode())
+    ..setCastRange(1, 0.0)
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTN_ArcaneProtection.blp")
+    ..register(HERO_TIME_WIZARD, "Activate Hourglass Time".setColor(colAbilitiesTimeWizard),
+    "Click to activate Hourglass Time ability to deal x to all enemies and heal all allies on the map.")
+
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_4, 4, true)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..setLevelSkipRequirement(18)
+    ..setRequiredLevel(18)
+    ..setMaxLevels(4)
+    ..presetCooldown(lvl -> 220.0 - 20*lvl)
+    ..presetManaCost(lvl -> 1000*lvl)
+    ..presetFollowThroughTime(lvl -> 0.5)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 0.5)
+    ..presetBaseOrderID(lvl -> OrderIds.berserk.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.berserk.toRawCode())
+    ..presetCastRange(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime4.blp")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_TIME_WIZARD, "Hourglass of Time".setColor(colAbilitiesTimeWizard), 
+    "Activates the Hourglass of Time to accumulate time and release it in massive damage burst to all enemies on the map. Also heals your allies for the amount of damage.\n" +
+    "The ability can be learned at levels: 18 - 36 - 54 - 72.".setColor(colCanLearn),
+    (int lvl) -> "Deals [{0} x Time Accumulated x Intelligence] damage.".format(
+        (lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+    new ChannelAbilityPreset(TIME_WIZARD_ABILITY_5, 9, true)
+    ..setUltimateAbility()
+    ..setLevelSkipRequirement(20)
+    ..setRequiredLevel(20)
+    ..setMaxLevels(4)
+    ..presetAreaofEffect(lvl -> 600.0)
+    ..presetCooldown(lvl -> 200.0 - 20*lvl)
+    ..presetManaCost(lvl -> 500 + 1000*lvl)
+    ..presetFollowThroughTime(lvl -> 0.5)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.TARGETIMAGE, true)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetArtDuration(lvl -> 0.5)
+    ..presetBaseOrderID(lvl -> OrderIds.deathanddecay.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.deathanddecay.toRawCode())
+    ..presetCastRange(lvl -> 99999.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime5.blp")
+    ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_TIME_WIZARD, "Radar Time".setColor(colAbilitiesTimeWizard), 
+    "Time Wizard unleashes power accumulated over the life to summon time rift that deals magical damage to all enemies in 600 AoE and heals allies for 5% of max HP per second.\n" +
+    "At the end of cast resets cooldown of all allies in AoE.\n" +
+    "Has a 15% chance to reset Time Wizard cooldown." +
+    "The ability can be learned at levels: 20 - 40 - 60 - 80.".setColor(colCanLearn),
+    (int lvl) -> "Deals {0} x Int damage every 0.05 seconds during 4 seconds. Cooldown {1} seconds.".format(
+        (1.5*lvl).toString(1),
+        (200.0 - 20*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------

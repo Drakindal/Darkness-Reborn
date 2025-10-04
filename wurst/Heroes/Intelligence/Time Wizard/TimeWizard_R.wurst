@@ -6,15 +6,17 @@ import StandardTextTags
 import ClosureForGroups
 import DamageTarget
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 
 texttag hourglass
 integer count
 bool boom = false
 
 public function hourglass()
-    EventListener.onCast('A0ND') (unit caster) ->
+    EventListener.onCast(TIME_WIZARD_ABILITY_4) (unit caster) ->
         count = 0
-        caster..removeAbility(ABILITY_HERO_TP)..addAbility('A0NG')
+        caster..removeAbility(ABILITY_HERO_TP)..addAbility(TIME_WIZARD_ABILITY_4_DUMMY)
         doPeriodically(1) (CallbackPeriodic cb) ->
             if boom
                 boom = false
@@ -23,20 +25,17 @@ public function hourglass()
             hourglass = createShadowStrikeTextTag(caster, count, false)
             hourglass.setColor(colorA(79, 211, 252, 255))
             hourglass.setText(count.toString())
-            caster.startAbilityCooldown('A0ND')
+            caster.startAbilityCooldown(TIME_WIZARD_ABILITY_4)
 
-    EventListener.onCast('A0NG') (unit caster) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0ND')
+    EventListener.onCast(TIME_WIZARD_ABILITY_4_DUMMY) (unit caster) ->
+        let lvl = GetUnitAbilityLevel(caster, TIME_WIZARD_ABILITY_4)
         let dmg = (count * caster.getInt(true) * lvl).toReal()
         boom = true
         hourglass.destr()
-        caster..removeAbility('A0NG')..addAbility(ABILITY_HERO_TP)
+        caster..removeAbility(TIME_WIZARD_ABILITY_4_DUMMY)..addAbility(ABILITY_HERO_TP)
         forUnitsInRange(caster.getPos(), 99999, true) (unit u) ->
             if caster.isEnemyOf(u)
                 caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
             else
                 if u.getOwner() != Player(10)
-                    if(u.getHP() + dmg < u.getMaxHP())
-                        u.setHP(dmg)
-                    else
-                        u.setHP(u.getMaxHP())
+                    u.addHP(dmg)

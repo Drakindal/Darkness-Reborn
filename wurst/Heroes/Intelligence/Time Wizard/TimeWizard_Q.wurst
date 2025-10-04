@@ -4,10 +4,11 @@ import ClosureEvents
 import ClosureTimers
 import ClosureForGroups
 import LinkedList
+import MyAbilityIds
 
 public function timeTravel()
     let teleportedUnits = new LinkedList<unit>
-    EventListener.onPointCast('A0K6') (unit caster, vec2 target) ->
+    EventListener.onPointCast(TIME_WIZARD_ABILITY_1) (unit caster, vec2 target) ->
         let casterPos = caster.getPos()
         let sfx = addEffect("Effects\\Void Teleport Silver To.mdl", casterPos)
         let sfx2 = addEffect("Effects\\Void Teleport Silver To.mdl", target)
