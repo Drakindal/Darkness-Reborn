@@ -1,34 +1,168 @@
 package Arthas_Abilities
 
 import MyAbilityIds
-import AbilityObjEditing
-import ObjectIds
+import MyHeroAbilityDefinition
 import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import BuffIds
+import BuffObjEditing
+import MyColors
 
-@compiletime function arthasAbils()
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new AbilityDefinitionFarseerChainLightning(ARTHAS_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetAreaofEffect(lvl -> 0.0)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 90)
+    ..setManaCost(2, 100)
+    ..setManaCost(3, 110)
+    ..setManaCost(5, 130)
+    ..setManaCost(6, 150)
+    ..setManaCost(7, 170)
+    ..setManaCost(8, 190)
+    ..setManaCost(9, 220)
+    ..presetDamageperTarget(lvl -> 0.0)
+    ..presetNumberofTargetsHit(lvl -> 1)
+    ..presetDamageReductionperTarget(lvl -> 0.0)
+    ..setLightningEffects("")
+    ..setMissileArt("")
+    ..presetCastRange(lvl -> 250.0)
+    ..setAnimationNames("spell,slam")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNArcaniteMelee.blp")
+    ..setArtTarget("")
+    ..register(HERO_ARTHAS, "Dragon Claw".setColor(colAbilitiesArthas), 
+    "Arthas slams his sword into his target so hard that the shockwave damages enemies within 350 range and stuns them for 5 seconds.",
+    (int lvl) -> "Deals {0} + {1} x Str damage.".format(
+        (50*lvl).toString(),
+        (2*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionBerserk(ARTHAS_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetBuffs(lvl -> BuffIds.berserk.toString())
+    ..presetCooldown(lvl -> 19.0 - lvl)
+    ..setManaCost(1, 65)
+    ..setManaCost(2, 75)
+    ..setManaCost(3, 85)
+    ..setManaCost(4, 95)
+    ..setManaCost(5, 110)
+    ..setManaCost(6, 125)
+    ..setManaCost(7, 150)
+    ..setManaCost(8, 175)
+    ..setManaCost(9, 200)
+    ..presetMovementSpeedIncrease(lvl -> 0.1*lvl)
+    ..presetAttackSpeedIncrease(lvl -> 0.3*lvl)
+    ..presetDamageTakenIncrease(lvl -> 0.15)
+    ..presetDuration(lvl -> 12.0 + lvl)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkForTrolls.blp")
+    ..register(HERO_ARTHAS, "Berserk".setColor(colAbilitiesArthas), 
+    "Arthas Madness overcomes him and he goes into berserk state increasing his attack and movement speed, but also increases damage taken by 15%.",
+    (int lvl) -> "+{0}% Attack Speed, +{1}% Movement Speed, +15% Damage Taken for {2} seconds.".format(
+        (30*lvl).toString(),
+        (10*lvl).toString(),
+        (12+lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionPitLordCleavingAttack(ARTHAS_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetAreaofEffect(lvl -> 250.0 + 30*(lvl-1))
+    ..presetDistributedDamageFactor(lvl -> 0.1*lvl)
+    ..register(HERO_ARTHAS, "Cleaving Attack".setColor(colAbilitiesArthas), 
+    "Arthas strikes with such force that he damages multiple enemies with his attack.",
+    (int lvl) -> "Cleave {0}% damage in {1} range.".format(
+        (0.1*lvl).toString(),
+        (250+30*(lvl-1)).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+constant real array[9] abi3_AttackSpeed = [
+    0.05,
+    0.08,
+    0.12,
+    0.17,
+    0.22,
+    0.27,
+    0.32,
+    0.38,
+    0.52
+]
+
+constant real array[9] abi3_MovementSpeed = [
+    0.15,
+    0.22,
+    0.29,
+    0.37,
+    0.48,
+    0.60,
+    0.72,
+    0.84,
+    0.95
+]
+
+constant real array[9] abi3_Range = [
+    350,
+    400,
+    450,
+    500,
+    600,
+    800,
+    900,
+    1100,
+    1500
+]
+
+@compiletime function defineAbilities3()
+    new BuffDefinition(ARTHAS_BUFF_3, BuffIds.roar)
+    ..setArtTarget(1, "")
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNKingArthas.blp")
+    ..register("Death King Aura".setColor(colAbilitiesFirelord),
+    "This unit is under Death King frosty Aura, their attack and move speed dramatically decreased!")
+
+    new AbilityDefinitionTaurenChieftainEnduranceAura(ARTHAS_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetAreaofEffect(lvl -> abi3_Range[lvl-1])
+    ..presetBuffs(lvl -> ARTHAS_BUFF_3.toRawCode())
+    ..presetAttackSpeedIncrease(lvl -> -abi3_AttackSpeed[lvl-1])
+    ..presetMovementSpeedIncrease(lvl -> -abi3_MovementSpeed[lvl-1])
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDevourAura.blp")
+    ..setArtTarget("Abilities\\Spells\\Human\\Brilliance\\Brilliance.mdl")
+    ..register(HERO_ARTHAS, "Death King Aura".setColor(colAbilitiesArthas), 
+    "Arthas creates chilling aura around him that makes his enemies to fall into fear and despair.",
+    (int lvl) -> "Decreases enemies Attack Speed by {0}% and Movement Speed by {1}% in {2} range.".format(
+        (100*abi3_AttackSpeed[lvl-1]).toString(),
+        (100*abi3_MovementSpeed[lvl-1]).toString(),
+        abi3_Range[lvl-1].toString(0)
+    ))
+
+// ----------------------------------------------------------------------------
+
     new AbilityDefinitionIllidanMetamorphosis(ARTHAS_ABILITY_5)
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(1)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(1)
-    ..setHotkeyLearn("T")
-    ..setHotkeyNormal("T")
-    ..setLevels(4)
-    ..setLevelSkipRequirement(8)
+    ..setUltimateAbility()
     ..presetAlternateFormHitPointBonus(lvl -> 0)
     ..presetAlternateFormUnit(lvl -> commaList(HERO_ARTHAS_FORM))
-    ..presetDurationHero(lvl -> 60.)
-    ..presetCooldown(lvl -> 130. - 10)
+    ..presetDurationHero(lvl -> 40.0+5*lvl)
+    ..presetCooldown(lvl -> 130.0 - 10*lvl)
     ..setRequiredLevel(8)
     ..presetNormalFormUnit(lvl -> commaList(HERO_ARTHAS))
     ..presetIcon("ReplaceableTextures\\CommandButtons\\BTNKingArthas.blp")
-    ..presetBuffs(lvl -> commaList('B013'))
+    ..presetBuffs(lvl -> "")
     ..presetManaCost(lvl -> 50 + 100 * lvl)
-    ..presetTooltipNormal(lvl -> "DeathKing [ |c00FFFC01T|r ] - [|cffffcc00Level " + lvl.toString() + "|r]")
-    ..presetTooltipNormalExtended(lvl -> "Arthas gets possessed by the true Death King, temporarily exceeding all his limits. Massively increases his Attackspeed for 60 seconds. Cooldown " + (130. - 10 * lvl).toString() + " seconds.")
-    ..setTooltipLearn("Learn Death King [ |c00FFFC01T|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Arthas gets possessed by the true Death King, temporarily exceeding all his limits. Massively increases his Attackspeed, Damage and Armor for 60 seconds.\n"
-    +"|c00FFFC01Level 1 :|r  Increases Attackspeed for 60 seconds. Also changes his Damage Type to Blood.\n"
-    +"|c00FFFC01Level 2 :|r  Increases Attackspeed for 60 seconds. Also changes his Damage Type to Blood.\n"
-    +"|c00FFFC01Level 3 :|r  Increases Attackspeed for 60 seconds. Also changes his Damage Type to Blood.\n"
-    +"|c00FFFC01Level 4 :|r  Increases Attackspeed for 60 seconds. Also changes his Damage Type to Blood.")
+    ..register(HERO_ARTHAS, "Death King".setColor(colAbilitiesArthas), 
+    "Arthas gets possessed by the true power of Death King exceeding all mortal limits. Dramatically increases his deadly power.\n" + 
+    "Changes damage type to Blood.".setColor("|cffff0000B"),
+    (int lvl) -> "Duration {0} seconds. Cooldown {1} seconds.".format(
+        (40 + 5*lvl).toString(),
+        (130 - 10*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------

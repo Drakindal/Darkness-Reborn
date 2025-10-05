@@ -48,10 +48,11 @@ import MyHeroDefinition
 // ----------------------------------------------------------------------------
 
     new MyHeroDefinition(HERO_ARTHAS_FORM, UnitIds.arthaswithfrostmourne)
-    ..setHeroAbilities(commaList('A00A', 'A00B', 'A00H', ARTHAS_ABILITY_5, 'A00S'))
+    ..setHeroAbilities(commaList(ARTHAS_ABILITY_1, ARTHAS_ABILITY_2, ARTHAS_ABILITY_3, ARTHAS_ABILITY_4, ARTHAS_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
-    ..setStatsBase(22, 13, 17)
+    ..setStatsBase(52, 35, 24)
+    ..setStatsPerLvl(4.80, 2.20, 2.30)
     
     ..setModelFile("Units\\Arthas Frostmourne\\KingArthas.mdl")
     ..setScalingValue(1.10)
@@ -60,12 +61,12 @@ import MyHeroDefinition
     ..setMeleeAttack()
     ..setAttack1CooldownTime(0.5)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1AnimationBackswingPoint(0.567)
-    ..setAttack1AnimationDamagePoint(0.433)
-    ..setAttack1AttackType(AttackType.Magic)
+    ..setAttack1AnimationBackswingPoint(0.467)
+    ..setAttack1AnimationDamagePoint(0.333)
+    ..setBloodAttackType()
     
     ..setDefenseBase(2)
-    ..setManaInitialAmount(200)
+    ..setManaInitialAmount(300)
     
     ..setTurnRate(0.60)
     ..setRequirements("")
