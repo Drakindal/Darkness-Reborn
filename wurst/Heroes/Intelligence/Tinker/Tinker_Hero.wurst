@@ -11,9 +11,13 @@ import MyHeroDefinition
 
 // ----------------------------------------------------------------------------
 
+public unit tinkerHero = null
+
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_TINKER, UnitIds.tinker)
-    ..setHeroAbilities(commaList(TINKER_ABILITY_1, TINKER_ABILITY_2, TINKER_ABILITY_3, 'A0QK', 'A11D'))
+    ..setHeroAbilities(commaList(TINKER_ABILITY_1, TINKER_ABILITY_2, TINKER_ABILITY_3, TINKER_ABILITY_4, TINKER_ABILITY_5))
+    
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, TINKER_ABILITY_4_AURA))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(20, 15, 20)
@@ -46,4 +50,42 @@ import MyHeroDefinition
     Healing.v5,
     Difficulty.v4)
     
+// ----------------------------------------------------------------------------
+
+    new MyHeroDefinition(HERO_TINKER_ROBOT, UnitIds.robogoblintinker)
+    ..setHeroAbilities(commaList(TINKER_ABILITY_1, TINKER_ABILITY_2, TINKER_ABILITY_3, TINKER_ABILITY_4, TINKER_ABILITY_5))
+    
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, TINKER_ABILITY_4_AURA))
+    
+    ..setPrimaryAttribute("Intelligence")
+    ..setStatsBase(40, 25, 10)
+    ..setStatsPerLvl(4.00, 1.80, 1.80)
+    
+    ..setSelectionScale(2.00)
+
+    ..setMeleeAttack()
+    ..setAttack1Range(128)
+    ..setAttack1CooldownTime(1.95)
+    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1AnimationBackswingPoint(0.450)
+    ..setAttack1AnimationDamagePoint(0.250)
+    ..setBloodAttackType()
+    
+    ..setDefenseBase(1)
+    ..setHitPointsMaximumBase(400)
+    ..setHitPointsRegenerationRate(3)
+    ..setManaInitialAmount(50)
+    ..setManaRegeneration(0.007)
+    
+    ..setTurnRate(0.20)
+    
+    ..setTooltipExtended(
+    rolesList(roleBuilder, roleFarmer),
+    PhysDamage.v1,
+    MagicDamage.v1,
+    Defense.v1,
+    Utility.v5,
+    Healing.v5,
+    Difficulty.v4)
+
 // ----------------------------------------------------------------------------

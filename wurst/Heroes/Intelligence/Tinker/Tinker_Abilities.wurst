@@ -1,67 +1,62 @@
 package Tinker_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import AbilityObjEditing
 import ObjectIds
-import MyUnitIds
 import Icons
+import MyColors
+import ChannelAbilityPreset
+import Orders
+import CommonDescriptions
+import MyBuffIds
+import BuffObjEditing
+import BuffIds
+import UnitIds
+
+// ----------------------------------------------------------------------------
 
 @compiletime function tinkerAbils()
     new AbilityDefinitionTinkererClusterRocketsLevel1(TINKER_ABILITY_1)
-    ..setLevels(9)
-    ..setIconNormal(Icons.bTNClusterRockets)
-    ..setIconResearch(Icons.bTNClusterRockets)
-    ..setHotkeyLearn("Q")
-    ..setHotkeyNormal("Q")
-    ..setButtonPositionNormalX(0)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(0)
-    ..setButtonPositionResearchY(0)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..setIcon(Icons.bTNClusterRockets)
     ..presetDamageAmount(lvl -> 0)
-    ..presetManaCost(lvl -> 100 + lvl * 10 + (lvl -1) * 10)
-    ..presetCooldown(lvl -> 15.-1*lvl)
+    ..presetManaCost(lvl -> 100 + lvl * 10 + (lvl-1) * 10)
+    ..presetCooldown(lvl -> 15.0-lvl)
     ..presetMissileCount(lvl -> 0)
     ..presetDurationHero(lvl -> 1.010 + 0.3 * lvl)
     ..presetDurationNormal(lvl -> 1.010 + 0.3 * lvl)
-    ..setName("Tinker - Q - Cluster Rockets")
-    ..setTooltipLearn("Learn Cluster Rockets [ |c00FFFC01Q|r ]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Tinker shoots out rockets in an area of 250 range, each rocket will deal 0.25x int + 20 * lvl damage, each level increases rockets by 2 and starts out at 8. Stuns for a short time")
-    ..presetTooltipNormal(lvl -> "Cluster Rockets [ |c00FFFC01Q|r ]  - [|cffffcc00Level "+ lvl.toString() + "|r]")
-    ..presetTooltipNormalExtended(lvl -> "Tinker will shoot out " + (lvl * 2 + 8).toString() + " rockets dealing 0.25 * int + " + (lvl * 20).toString() + " damage each")
+    ..register(HERO_TINKER, "Cluster Rockets".setColor(colAbilitiesTinker), 
+    "Tinker shoots out rockets in an area of 250 range that deals damage and stuns for a short time.",
+    (int lvl) -> "Deals {0} + {1} x Int damage. Number of rockets {2}.".format(
+        (20*lvl).toString(),
+        (0.4*lvl).toString(),
+        (lvl * 2 + 8).toString()
+    ))
 
+// ----------------------------------------------------------------------------
 
     new AbilityDefinitionArchMageSummonWaterElemental(TINKER_ABILITY_2)
-    ..setLevels(9)
-    ..setIconNormal(Icons.bTNClockWerkGoblin)
-    ..setIconResearch(Icons.bTNClockWerkGoblin)
-    ..setHotkeyLearn("W")
-    ..setHotkeyNormal("W")
-    ..setButtonPositionNormalX(1)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(1)
-    ..setButtonPositionResearchY(0)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..setIcon(Icons.bTNClockWerkGoblin)
     ..presetSummonedUnitCount(lvl -> 1)
     ..presetSummonedUnitType(lvl -> CLOCKWERK_0.toRawCode())
     ..presetCooldown(lvl -> 190.-10*lvl)
     ..presetDurationHero(lvl -> 90)
     ..presetDurationNormal(lvl -> 90)  
     ..presetManaCost(lvl -> 200 + 20 * lvl)
-    ..setName("Summon - W - Mini-Goblin")
-    ..presetTooltipNormal(lvl -> "Summon Goblin Mini [ |c00FFFC01W|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 seconds. Cooldown " + (190 * lvl - 10).toString() +" seconds.")
-    ..setTooltipLearn("Learn Summon Goblin Mini [ |c00FFFC01W|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 seconds. Cooldown start at 180 and decreases 10 each level")
+    ..register(HERO_TINKER, "Summon Goblin Mini".setColor(colAbilitiesTinker), 
+    "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 seconds.",
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (190-10*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
 
     new AbilityDefinitionTinkererSummonFactoryLevel3(TINKER_ABILITY_3)
-    ..setLevels(9)
-    ..setIconNormal(Icons.bTNPocketFactory)
-    ..setIconResearch(Icons.bTNPocketFactory)
-    ..setHotkeyLearn("E")
-    ..setHotkeyNormal("E")
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(2)
-    ..setButtonPositionResearchX(2)
-    ..setButtonPositionResearchY(0)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..setIcon(Icons.bTNPocketFactory)
     ..setFactoryUnitID(1, FACTORYROBO.toRawCode())
     ..setSpawnUnitID(1, POCKETFACTORYROBO_0.toRawCode())
     ..setSpawnUnitID(2, POCKETFACTORYROBO_1.toRawCode())
@@ -79,29 +74,107 @@ import Icons
     ..presetSpawnInterval(lvl -> 4)
     ..presetLeashRange(lvl -> 1800)
     ..presetSpawnUnitDuration(lvl -> 22.5 + 2.5 * lvl)
-    ..setName("Tinker - E - Pocket Factory (Tinker)")
-    ..presetTooltipNormal(lvl -> "Summon Pocket Factory [ |c00FFFC01E|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Create a factory producing Clockwerk Goblins, production is every 4 seconds. Summons last " + (22.5 + lvl * 2.5).toString() + " Duration 40 seconds")
-    ..setTooltipLearn("Learn Pocket Factory [ |c00FFFC01E|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Create a factory producing Clockwerk Goblins, production is every 4 seconds. Duration 40 seconds")
+    ..register(HERO_TINKER, "Pocket Factory".setColor(colAbilitiesTinker), 
+    "Creates a factory producing Clockwerk Goblins, production is every 4 seconds. Duration 40 seconds",
+    (int lvl) -> "Summon lifetime is {0} seconds.".format(
+        (22.5 + lvl * 2.5).toString()
+    ))
 
-    new AbilityDefinitionBloodMageFlameStrike(TINKER_ABILITY_5)
-    ..setLevels(4)
-    ..setLevelSkipRequirement(8)
-    ..setRequiredLevel(8)
-    ..setHotkeyLearn("T")
-    ..setHotkeyNormal("T")
-    ..presetDurationNormal(lvl -> 0.01)
-    ..presetMaximumDamage(lvl -> 0)
-    ..presetFullDamageDealt(lvl -> 0)
-    ..presetHalfDamageDealt(lvl -> 0)
-    ..presetAreaofEffect(lvl -> lvl * 750.)
-    ..presetDurationHero(lvl -> 0.01)
-    ..setButtonPositionNormalX(3)
-    ..setButtonPositionNormalY(1)
-    ..setButtonPositionResearchX(3)
-    ..setButtonPositionResearchY(1)
-    ..presetTooltipNormal(lvl -> "Launch Nuke [ |c00FFFC01T|r ] - [|cffffcc00Level "+ lvl.toString() +"|r]")
-    ..presetTooltipNormalExtended(lvl -> "Transforms the Tinker into a Robo-Goblin, a powerful armored form that has the following traits:|n|n- " + (lvl * 25).toString() + " bonus Strength and " + (lvl*10).toString() + " bonus armor.|n|nThe Tinker becomes mechanical, rendering him immune to most forms of stun, most offensive spells, and several beneficial spells.|n|nDamage type changes to |cffff0000B|r|cffdf0000l|r|cffbf0000o|r|cffa00000o|r|cff800000d|r.")
-    ..setTooltipLearn("Learn Launch Nuke [ |c00FFFC01T|r ] - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Transforms the Tinker into a Robo-Goblin, a powerful armored form that has the following traits:|n|n- Bonus Strength and armor.|n- Use of the Demolish ability, which grants bonus damage against buildings.|n- The Tinker becomes mechanical, rendering him immune to most forms of stun, most offensive spells, and several beneficial spells.")
+// ----------------------------------------------------------------------------
+
+public constant real array[9] tinker_abi4_hp = [
+     10,
+     20,
+     35,
+     50,
+     65,
+     90,
+    120,
+    160,
+    200
+]
+
+public constant real array[9] tinker_abi4_aura_hp = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    12
+]
+
+public constant real array[9] tinker_abi4_aura_range = [
+    200,
+    250,
+    300,
+    350,
+    400,
+    450,
+    500,
+    550,
+    600
+]
+
+@compiletime function defineAbilities4()
+    new BuffDefinition(TINKER_BUFF_AURA, BuffIds.unsummon)
+    ..setArtTarget(1, "")
+    ..setIconNormal(1, Icons.pASBTNEngineeringUpgrade)
+    ..register("Tinker Repair Aura".setColor(colAbilitiesFirelord),
+    "Tinker slowly repairs this unit!")
+
+    new AbilityDefinitionTaurenChieftainEnduranceAura(TINKER_ABILITY_4_AURA)
+    ..presetBuffs(lvl -> TINKER_BUFF_AURA.toRawCode())
+    ..presetAreaofEffect(lvl -> tinker_abi4_aura_range[lvl-1])
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructures))
+
+    new ChannelAbilityPreset(TINKER_ABILITY_4, 9, true)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetCooldown(lvl -> 1)
+    ..presetManaCost(lvl -> 10*lvl)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+    ..presetCastRange(lvl -> 99999.0)
+    ..presetTargetsAllowed(lvl -> commaList(getTargets(AbilityTargets.AlliesOnlyStructures), TargetsAllowed.self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
+    ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
+    ..register(HERO_TINKER, "Repair".setColor(colAbilitiesTinker), 
+    wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
+    wordPassive + "Slowly repairs all mechanical units near Tinker.",
+    (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
+        tinker_abi4_hp[lvl-1].toString(),
+        (10*lvl).toString(),
+        tinker_abi4_aura_hp[lvl-1].toString(),
+        tinker_abi4_aura_range[lvl-1].toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+constant int array[4] abi5_Str = [
+    25,
+    55,
+    90,
+    120
+]
+
+@compiletime function defineAbilities5()
+    // WIP add defense bonus.
+    new AbilityDefinitionTinkererRoboGoblinLevel0(TINKER_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetStrengthBonus(lvl -> abi5_Str[lvl-1])
+    ..presetDefenseBonus(lvl -> 0)
+    ..presetManaCost(lvl -> 25*lvl)
+    ..presetAlternateFormUnit(lvl -> HERO_TINKER_ROBOT.toRawCode())
+    ..presetNormalFormUnit(lvl -> HERO_TINKER.toRawCode())
+    ..register(HERO_TINKER, "Robo-Goblin".setColor(colAbilitiesTinker), 
+    "Transforms the Tinker into a Robo-Goblin, a powerful armored tank increasing HP, Str, Agi but reducing Int and MP. Robo-Goblin is immune to most forms of stun and has better offensive potential.\n" +
+    "Damage type changes to Blood.".setColor("|cffff0000B"),
+    (int lvl) -> "Robo-Goblin has additional +{0} Str.".format(
+        abi5_Str[lvl-1].toString()
+    ))
+    ..presetTooltipTurnOff(lvl -> "Revert to Tinker Form")
+    ..presetTooltipTurnOffExtended(lvl -> "Returns to normal Tinker form, losing the benefits of Robo-Goblin but once again becoming organic.")
+    
+// ----------------------------------------------------------------------------

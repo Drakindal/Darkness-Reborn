@@ -31,7 +31,7 @@ public function clusterRockets()
                 let currentTarget = vec2(target.x + 125 * Cos(angle * cb.getCount() + randx) + randx2, target.y + 125 * Sin(angle * cb.getCount() + randy) + randy2)
                 ArtilleryDetection.fireArtillery(caster, ROCKET_ARTILLERY, pos, currentTarget) (unit detectionUnit, unit caster, int data) -> 
                     let targetPos = detectionUnit.getPos()
-                    let dmg = 0.25 * caster.getInt(true) + 20 * lvl
+                    let dmg = 0.4 * caster.getInt(true) + 20 * lvl
                     forUnitsInRange(targetPos, 100, true) (unit u) ->
                         if caster.isEnemyOf(u)
                             new DummyCaster()

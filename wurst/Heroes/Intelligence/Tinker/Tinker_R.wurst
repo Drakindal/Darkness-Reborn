@@ -2,18 +2,41 @@ package Tinker_R
 
 import ClosureEvents
 import ClosureTimers
+import MyAbilityIds
+import Orders
+import ClosureForGroups
+import Tinker_Hero
+import Tinker_Abilities
+import Abilities
+import MyBuffIds
+import MyUnitIds
 
 public function repair()
-    EventListener.onTargetCast('A0QK') (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel('A0QK')
-        if caster.getMana() < 10.00 * lvl
-            caster.issueImmediateOrder("stop")
+    EventListener.onTargetCast(TINKER_ABILITY_4) (unit caster, unit target) ->
+        if (target.getTypeId() == HERO_TINKER)
+            printTimedToPlayer("Tinker cannot repair himself, because he is organic creature, but he can repair Robo-Goblin.", 6, caster.getOwner())
         else
-            target.addHP(10.00*lvl)
-            caster.addMana(-10.00*lvl)
-            doPeriodically(1) (CallbackPeriodic cb) ->
-                if not caster.getMana() < 10.00 * lvl and caster.getCurrentOrder() == 852600
-                    target.addHP(10.00*lvl)
-                    caster.addMana(-10.00*lvl)
+            let lvl = caster.getAbilityLevel(TINKER_ABILITY_4)
+            let period = 0.1
+            let manaCost = 10.0*lvl * period
+            let hp = tinker_abi4_hp[lvl-1] * period
+
+            doPeriodically(period) (CallbackPeriodic cb) ->
+                if not caster.getMana() < manaCost and caster.getCurrentOrder() == OrderIds.channel
+                    target.addHP(hp)
+                    caster.addMana(-manaCost)
                 else
                     destroy cb
+
+public function addTinkerAura()
+    doPeriodically(1) (CallbackPeriodic cb) ->
+        if (tinkerHero != null)
+            let lvl = tinkerHero.getAbilityLevel(TINKER_ABILITY_4)
+            if (lvl > 0)
+                forUnitsInRange(tinkerHero.getPos(), tinker_abi4_aura_range[lvl-1]) (unit u) ->
+                    if (u.hasAbility(TINKER_BUFF_AURA))
+                        u.addHP(tinker_abi4_aura_hp[lvl-1])
+                        flashEffect(Abilities.replenishHealthCasterOverhead, u.getPos())
+                    else if (u.getTypeId() == HERO_TINKER_ROBOT)
+                        u.addHP(tinker_abi4_aura_hp[lvl-1])
+                        flashEffect(Abilities.replenishHealthCaster, u.getPos())

@@ -15,8 +15,8 @@ init
 function tinkerAreaEnterLeave()
     CreateTrigger()..registerRectEnterEventSource(gg_rct_EnterTinkerArea)..addAction() -> 
         let enteringUnit = GetEnteringUnit()
-        let unitId = playerHero.get(enteringUnit.getOwner()).getTypeId()
-        if unitId == HERO_TINKER
+        let heroId = playerHero.get(enteringUnit.getOwner()).getTypeId()
+        if heroId == HERO_TINKER or heroId == HERO_TINKER_ROBOT
             enteringUnit.setPos(gg_rct_LeaveTinkerArea.getCenterX(), gg_rct_LeaveTinkerArea.getCenterY()-200)
         else
             printTimedToPlayer("Only Builders can enter here", 5, enteringUnit.getOwner())
@@ -24,7 +24,7 @@ function tinkerAreaEnterLeave()
     CreateTrigger()..registerRectEnterEventSource(gg_rct_LeaveTinkerArea)..addAction() ->
         let enteringUnit = GetEnteringUnit()
         let unitId = playerHero.get(enteringUnit.getOwner()).getTypeId()
-        if unitId == HERO_TINKER
+        if unitId == HERO_TINKER or unitId == HERO_TINKER_ROBOT
             enteringUnit.setPos(gg_rct_EnterTinkerArea.getCenterX(), gg_rct_EnterTinkerArea.getCenterY()+200)
         else
             printTimedToPlayer("Only Builders can enter here", 5, enteringUnit.getOwner())
@@ -34,7 +34,8 @@ function banTinkerArea()
     CreateTrigger()..registerRectEnterEventSource(gg_rct_TinkerArea)..addAction() ->
         let enteringUnit = GetEnteringUnit()
         let owner = enteringUnit.getOwner()
-        if playerHero.get(owner).getTypeId() == HERO_TINKER or owner.getId() == PLAYER_NEUTRAL_AGGRESSIVE
+        let heroId = playerHero.get(owner).getTypeId()
+        if heroId == HERO_TINKER or heroId == HERO_TINKER_ROBOT or owner.getId() == PLAYER_NEUTRAL_AGGRESSIVE
             DoNothing()
         else
             printTimedToPlayer("Only Builders can enter here", 5, enteringUnit.getOwner())
@@ -55,7 +56,7 @@ function tidecallerRespawn(unit u)
                     tidecaller[i] = createUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), TINKERTIDECALLER, gg_rct_TidecallersSpawn.randomPoint(), facingUp.asAngleDegrees())
                     tidecallerRespawn(tidecaller[i])
                     
-function tinkerTidecallers() 
+function tinkerTidecallers()
     let facingUp = 90.00
     for i = 1 to 15
         tidecaller[i] = createUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), TINKERTIDECALLER, gg_rct_TidecallersSpawn.randomPoint(), facingUp.asAngleDegrees())
