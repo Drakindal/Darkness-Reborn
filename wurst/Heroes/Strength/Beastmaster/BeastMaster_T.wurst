@@ -6,9 +6,8 @@ import ClosureTimers
 import MyUnitIds
 import BeastMaster_Summons
 import ArmorLimiter
+import ArmorWeaponTypes
 
-real array counter
-integer lastOne = 0
 boolean notTeleporting = true
 
 public function spirits()
@@ -18,27 +17,28 @@ public function spirits()
                 notTeleporting = false
                 doAfter(2.2) -> 
                     notTeleporting = true
+
     EventListener.onCast(BEASTMASTER_ABILITY_5) (unit caster) ->
         let lvl = GetUnitAbilityLevel(caster, BEASTMASTER_ABILITY_5)
         let tempBoost = ((lvl*2+5)*spirits)
         let attackType = BlzGetUnitWeaponIntegerField(caster, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0)
+
         caster.addStr(tempBoost)
         caster.addAgi(tempBoost)
         caster.addInt(tempBoost)
+        
         if(caster.getAgi(false) > 22500)
             caster.limitArmorImmediate()
-        counter[lastOne] = 0
-        let current = lastOne
-        lastOne++
-        if(attackType != 4)
-            BlzSetUnitWeaponIntegerField(caster, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 4)
-        doPeriodically(0.05) (CallbackPeriodic cb) ->
-            if(counter[current] >= 10. + caster.getAbilityLevel(BEASTMASTER_ABILITY_5) * 5)
-                caster.setStr(caster.getStr(false)-tempBoost)
-                caster.setAgi(caster.getAgi(false)-tempBoost)
-                caster.setInt(caster.getInt(false)-tempBoost)
-                caster.resetArmor()
-                BlzSetUnitWeaponIntegerField(caster, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, attackType)
-                destroy cb
-            else if notTeleporting
-                counter[current] = counter[current] + 0.05
+        
+        if(attackType != WEAPON_TYPE_BLOOD)
+            BlzSetUnitWeaponIntegerField(caster, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, WEAPON_TYPE_BLOOD)
+
+        doAfter(10.0 + 5*lvl) ->
+            doPeriodically(0.5) (CallbackPeriodic cb) ->
+                if notTeleporting
+                    caster.setStr(caster.getStr(false)-tempBoost)
+                    caster.setAgi(caster.getAgi(false)-tempBoost)
+                    caster.setInt(caster.getInt(false)-tempBoost)
+                    caster.resetArmor()
+                    BlzSetUnitWeaponIntegerField(caster, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, attackType)
+                    destroy cb

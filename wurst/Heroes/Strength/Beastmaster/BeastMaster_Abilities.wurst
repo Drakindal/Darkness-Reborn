@@ -1,0 +1,262 @@
+package BeastMaster_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import Icons
+import MyColors
+import BuffIds
+import CommonDescriptions
+
+// ----------------------------------------------------------------------------
+
+public constant real array[9] beastmaster_abi1_ArmorPen = [
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.8,
+    1.0,
+    1.1,
+    1.3
+]
+
+constant int array[9] abi1_SummonsAmount = [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+]
+
+@compiletime function defineAbilities1()
+    // WIP armor.
+    new AbilityDefinitionFarseerSpiritWolf(BEASTMASTER_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetDuration(lvl -> 0)
+    ..presetCooldown(lvl -> 35)
+    ..presetManaCost(lvl -> 75 + lvl*25)
+    ..presetNumberofSummonedUnits(lvl -> abi1_SummonsAmount[lvl-1])
+    ..presetSummonedUnit(lvl -> commaList(MISHABEAR))
+    ..register(HERO_BEASTMASTER, "Summon Misha the Bear".setColor(colAbilitiesBeastmaster), 
+    "Summons Misha the Bear.\n" +
+    "Health: {0} + 0.45 x Beastmaster max HP.\n" +
+    "Armor: ....\n" +
+    "Damage: {1} + 0.15 x Str.\n" +
+    "Duration: Infinite.\n" +
+    "Cooldown: 35 seconds.\n" +
+    "Armor Penetration: {2}% of Beastmaster Armor Penetration.",
+    (string format) -> format.format(
+        "125 x Skill Level",
+        "10 x Skill Level",
+        "Complex "
+    ),
+    (string format, int lvl) -> format.format(
+        (250*lvl).toString(),
+        (10*lvl).toString(),
+        (100*beastmaster_abi1_ArmorPen[lvl-1]).toString(0)
+    ))
+
+// ----------------------------------------------------------------------------
+
+public constant real array[9] beastmaster_abi2_ArmorPen = [
+    0.1,
+    0.2,
+    0.4,
+    0.7,
+    0.9,
+    1.1,
+    1.3,
+    1.5,
+    1.7
+]
+
+constant int array[9] abi2_SummonsAmount = [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3
+]
+
+@compiletime function defineAbilities2()
+    new AbilityDefinitionBeastMasterSummonQuilbeast(BEASTMASTER_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetDuration(lvl -> 70)
+    ..presetCooldown(lvl -> 35)
+    ..presetManaCost(lvl -> 75 + lvl*25)
+    ..presetSummonedUnitCount(lvl -> abi2_SummonsAmount[lvl-1])
+    ..presetSummonedUnitType(lvl -> commaList(QUILBEAST))
+    ..register(HERO_BEASTMASTER, "Summon Quilbeasts".setColor(colAbilitiesBeastmaster), 
+    "Summons Quilbeasts\n"+
+    "Ability: Bloodrage (25% attackspeed)\n" + 
+    "Health: {0} + 0.03 x max HP.\n" + 
+    "Armor: ....\n" +
+    "Damage: {1} + 0.4 x Str.\n" + 
+    "Duration: 70 seconds.\n" +
+    "Cooldown: 35 seconds.\n" +
+    "Armor Penetration: {2}% of Beastmaster Armor Penetration.",
+    (string format) -> format.format(
+        "150 x Skill Level",
+        "25 x Skill Level",
+        "Complex "
+    ),
+    (string format, int lvl) -> format.format(
+        (150*lvl).toString(),
+        (25*lvl).toString(),
+        (100*beastmaster_abi2_ArmorPen[lvl-1]).toString(0)
+    ))
+
+// ----------------------------------------------------------------------------
+
+public constant real array[9] beastmaster_abi3_ArmorPen = [
+    0.3,
+    0.4,
+    0.6,
+    0.8,
+    1.1,
+    1.4,
+    1.7,
+    2.3,
+    2.6
+]
+
+constant int array[9] abi3_SummonsAmount = [
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    3
+]
+
+@compiletime function defineAbilities3()
+    new AbilityDefinitionBeastMasterSummonHawk(BEASTMASTER_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetDuration(lvl -> 70)
+    ..presetCooldown(lvl -> 35)
+    ..presetManaCost(lvl -> 75 + lvl*25)
+    ..presetSummonedUnitCount(lvl -> abi3_SummonsAmount[lvl-1])
+    ..presetSummonedUnitType(lvl -> commaList(HAWK))
+    ..register(HERO_BEASTMASTER, "Summon Falcons".setColor(colAbilitiesBeastmaster), 
+    "Summons Falcons\n"+
+    "Health: {0} + 0.05 x max HP.\n" + 
+    "Armor: ....\n" +
+    "Damage: {1} + 0.75 x Str.\n" + 
+    "Duration: 70 seconds.\n" +
+    "Cooldown: 35 seconds.\n" +
+    "Armor Penetration: {2}% of Beastmaster Armor Penetration.",
+    (string format) -> format.format(
+        "125 x Skill Level",
+        "20 x Skill Level",
+        "Complex "
+    ),
+    (string format, int lvl) -> format.format(
+        (70*lvl).toString(),
+        (20*lvl).toString(),
+        (100*beastmaster_abi2_ArmorPen[lvl-1]).toString(0)
+    ))
+
+// ----------------------------------------------------------------------------
+
+constant real array[9] abi4_Damage = [
+     1.0,
+     3.0,
+     5.0,
+    10.0,
+    15.0,
+    20.0,
+    30.0,
+    40.0,
+    50.0
+]
+
+@compiletime function defineAbilities4()
+    // WIP armor increase.
+    new AbilityDefinitionRoar(BEASTMASTER_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..setRequiredLevel(10)
+    ..presetAreaofEffect(lvl -> 800.0)
+    ..presetBuffs(lvl -> BuffIds.roar.toString())
+    ..presetCooldown(lvl -> 150.0 - 10*lvl)
+    ..setManaCost(1, 350)
+    ..setManaCost(2, 450)
+    ..setManaCost(3, 550)
+    ..setManaCost(4, 650)
+    ..setManaCost(5, 850)
+    ..setManaCost(6, 1050)
+    ..setManaCost(7, 1250)
+    ..setManaCost(8, 1450)
+    ..setManaCost(9, 1500)
+    ..presetDamageIncrease(lvl -> abi4_Damage[lvl-1])
+    ..presetDefenseIncrease(lvl -> 0)
+    ..presetLifeRegenerationRate(lvl -> 100)
+    ..presetManaRegen(lvl -> 100)
+    ..presetDuration(lvl -> 70.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Player))
+    ..presetAreaofEffect(lvl -> 800.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNBattleRoar.blp")
+    ..register(HERO_BEASTMASTER, "Roar of Beastmaster".setColor(colAbilitiesBeastmaster), 
+    "Beastmaster loudly roars making him and his beasts to become in range drastically increasing damage, hp and mana regeneration. Duration 70 seconds.",
+    (int lvl) -> "+{0}% damage. +100 Hp/s, +100 Mana Regeneration. Cooldown {1} seconds".format(
+        (100*abi4_Damage[lvl-1]).toString(),
+        (150-10*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+public constant int array[5] beastmaster_abi5_Str = [
+    0,
+    1,
+    1,
+    2,
+    2
+]
+
+@compiletime function defineAbilities5()
+    new AbilityDefinitionBattleRoar(BEASTMASTER_ABILITY_5)
+    ..setUltimateAbility()
+    ..setEffectSound("")
+    ..presetEffects(lvl -> "")
+    ..setArtCaster("")
+    ..setArtEffect("")
+    ..setArtSpecial("")
+    ..setArtTarget("")
+    ..presetBuffs(lvl -> BUFF_3.toRawCode())
+    ..presetCooldown(lvl -> 200.0 - 20*lvl)
+    ..setIcon(Icons.bTNBeastMaster)
+    ..presetDefenseIncrease(lvl -> 0)
+    ..presetLifeRegenerationRate(lvl -> 0)
+    ..presetDuration(lvl -> 10.0 + 5*lvl)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+
+    ..setTooltipLearnExtended("Whenever a pet disappears or dies, they will be converted into spirits for Beastmaster. Each cast, gain permanent bonus 1 strength (non-cumulative) for first three levels, then 2 strength.|n|c00FFFC01Level 1:|r For <A017,HeroDur1> seconds convert every Spirit into 5+2*lvl All Stats. 180 second cooldown.|n|c00FFFC01Level 2:|r For <A017,HeroDur2> seconds convert every Spirit into 20 All Stats. 160 second cooldown|n|c00FFFC01Level 3:|r For <A017,HeroDur3> seconds convert every Spirit into 25 All Stats. 140 second cooldown|n|c00FFFC01Level 4:|r For <A017,HeroDur4> seconds convert every Spirit into 30 All Stats. 120 second cooldown.")
+    
+    ..setTooltipNormalExtended(4, "Whenever a pet disappears or dies, they will be converted into spirits for Beastmaster. Each cast, gain permanent bonus 2 strength (non-cumulative). Convert each spirit into +13 stats for <A017,HeroDur4> seconds, cooldown 120 seconds.")
+
+    ..register(HERO_BEASTMASTER, "Spirits of the Wild".setColor(colAbilitiesBeastmaster), 
+    wordPassive + "Every time your beast dies or disappears Beastmaster gets 1 spirit even if you haven't learnt this ability.\n" +
+    wordPassive + "After Beastmaster learns this ability he will permanently get Str when he collects a spirit.\n" +
+    wordActive + "Increases all stats depending of collected spirits amount.",
+    (int lvl) -> "+{0} x Spirits Amount to All Stats. +{1} Str for a spirit. Duration {1} seconds. Cooldown {2} seconds.".format(
+        ((lvl*2+5)).toString(),
+        beastmaster_abi5_Str[lvl].toString(),
+        (200 - 20*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------

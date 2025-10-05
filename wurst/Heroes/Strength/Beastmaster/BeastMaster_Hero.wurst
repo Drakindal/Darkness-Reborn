@@ -13,7 +13,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_BEASTMASTER, UnitIds.beastmaster)
-    ..setHeroAbilities(commaList(BEASTMASTER_ABILITY_1, BEASTMASTER_ABILITY_2, BEASTMASTER_ABILITY_3, 'A0KJ', BEASTMASTER_ABILITY_5))
+    ..setHeroAbilities(commaList(BEASTMASTER_ABILITY_1, BEASTMASTER_ABILITY_2, BEASTMASTER_ABILITY_3, BEASTMASTER_ABILITY_4, BEASTMASTER_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(22, 14, 15)
