@@ -1,12 +1,21 @@
 package DeathKnight_T
+
 import ClosureEvents
 import ClosureTimers
-import DeathKnight_Q
 import MyAbilityIds
+import DeathKnight_CollectSouls
+import DeathKnight_Abilities
+import Abilities
 
 public function soulsKing()
     EventListener.onCast(DEATH_KNIGHT_ABILITY_5) (unit caster) ->
-        let boost = souls * 10
-        caster.addStr(boost)       
-        doAfter(caster.getAbility(DEATH_KNIGHT_ABILITY_5).getField(ABILITY_RLF_DURATION_HERO, caster.getAbilityLevel(DEATH_KNIGHT_ABILITY_5)-1)) -> 
+        let lvl   = caster.getAbilityLevel(DEATH_KNIGHT_ABILITY_5)
+        let boost = (souls * deathKnight_abi5_Factor[lvl-1]).toInt()
+        let duration = deathKnight_abi5_Duration[lvl-1]
+
+        caster.addStr(boost)
+        flashEffect(Abilities.animateDeadTarget, caster.getPos())
+
+        doAfter(duration) -> 
             caster.setStr(caster.getStr(false)-boost)
+            flashEffect(Abilities.dispelMagicTarget, caster.getPos())

@@ -1,13 +1,19 @@
 package DeathKnight_E
+
 import DamageEvent
+import MyAbilityIds
+import DeathKnight_Abilities
 
 public function curseOfDarkness()
     DamageEvent.addListener(1) ->
         if (DamageEvent.getType() == ATTACK)
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
+                let source = DamageEvent.getSource()
                 let targ = DamageEvent.getTarget()
-                let lvl = targ.getAbilityLevel('A088')
+                let lvl = targ.getAbilityLevel(DEATH_KNIGHT_ABILITY_3)
                 if lvl > 0
                     if GetRandomInt(1, 100) < lvl*3
-                        targ.addHP(I2R(25*lvl))
+                        let dmg = deathKnight_abi3_Hp[lvl-1]
+                        targ.addHP(dmg)
+                        source.addHP(-dmg)

@@ -1,0 +1,58 @@
+package DeathKnight_R
+
+import MyBuffIds
+import DeathKnight_Hero
+import UnitStats
+import DamageCustomEvent
+import MyAbilityIds
+import Abilities
+import DeathKnight_CollectSouls
+import ClosureEvents
+
+// true => Unholy Link is active
+bool unholyLink = false
+
+public function deathKnight_R_UnholyLink()
+    EventListener.onCast(DEATH_KNIGHT_ABILITY_4) (unit caster) ->
+        unholyLink = true
+
+// Do not call this function in heroLoader.
+public function checkDeathKnightR(unit _src, unit targ)
+    if (targ.hasAbility(DEATH_KNIGHT_BUFF_4) and deathKnightHero != null)
+        if (not unholyLink)
+            // The Death Knight is weak, Unholy Link should be removed.
+            targ.removeAbility(DEATH_KNIGHT_BUFF_4)
+            flashEffect(Abilities.animateDeadTarget, targ.getPos())
+        else
+            let lvl = deathKnightHero.getAbilityLevel(DEATH_KNIGHT_ABILITY_4)
+            // Reduce damage by 2%...10%.
+            DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1 - 0.01*(lvl + 1)))
+            
+            // dmg is the amount of hp subtracted from an ally.
+            let dmg = DamageCustomEvent.getAmount()
+            // The amount of damage that Death Knight can absorb.
+            let absorbed = dmg * (0.25 + 0.05 * lvl)
+            // calcDamage is an essentially non-linear function and do not have an inverse function.
+            // Consequently, we cannot check if absorbed damage would kill the Death Knight or not (or reduce his hp below 20%).
+            // Hence, if the Death Knight hp have been reduced lower than 20% we would destroy Unholy Link saving the Death Knight from death.
+            let dkReceives = deathKnightHero.getStats().calcDamage(DamageCustomEvent.getCustomDamageType(), absorbed)
+            let allyReceives = dmg - absorbed
+            var dkHpAfterDmg = deathKnightHero.getHP() - dkReceives
+            let minDkHp      = deathKnightHero.getMaxHP() * 0.2
+
+            if (dkHpAfterDmg < minDkHp)
+                unholyLink = false
+                // The Death Knight becomes weak, the Unholy Link is breaking.
+                dkHpAfterDmg = minDkHp
+                
+                // Reduce the Death Knight souls by 5 to save Death Knight from death.
+                if (souls <= 5)
+                    souls = 0
+                else
+                    souls -= 5
+                printTimedToPlayer("Unholy Link is broken. The Death Knight lost 5 souls!", 10, deathKnightHero.getOwner())
+                printSouls()
+                flashEffect(Abilities.animateDeadTarget, deathKnightHero.getPos())
+            
+            deathKnightHero.setHP(dkHpAfterDmg)
+            DamageCustomEvent.setAmount(allyReceives)
