@@ -2,11 +2,12 @@ package Jacksmith_Q
 
 import Recipes
 import ClosureEvents
+import MyAbilityIds
 
 public let jackSmithRecipe = compiletime(new RecipeList())
 
 public function forge()
-    EventListener.onCast('A0H3') (unit caster) ->
+    EventListener.onCast(JACKSMITH_ABILITY_1) (unit caster) ->
         let js = caster
 
         caster.checkRecipe(jackSmithRecipe)

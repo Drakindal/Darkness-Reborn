@@ -3,238 +3,128 @@ package Jacksmith_T
 import ClosureEvents
 import DialogBox
 import MyItemIds
+import MyAbilityIds
 
+class JsCraftItemDialog
+    unit js
+    string currItemName
+    DialogBox forgeBox
+    DialogBox itemTypeBox
 
-public function forgeMaster()
-    EventListener.onCast('A0JR') (unit caster) ->
-        let js = caster
-        let lvl = GetUnitAbilityLevel(js, 'A0JR')
+    ondestroy
+        destroy forgeBox
+        destroy itemTypeBox
+    
+    construct(unit js)
+        this.js = js
+        forgeBox = new DialogBox("Select desired item")
+
+        initDialog()
         
-        let forgeBox = new DialogBox("Select desired item")
-        forgeBox.addButton("Armor") ->
+        forgeBox.addButton("Cancel") ->
             forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Armor Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_ARMOR_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_ARMOR_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_ARMOR_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl == 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_ARMOR_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Axe") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Axe Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_AXE_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_AXE_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_AXE_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl == 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_AXE_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Blade") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Blade Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_BLADE_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_BLADE_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_BLADE_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_BLADE_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Boots") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Boots Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_BOOTS_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_BOOTS_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_BOOTS_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_BOOTS_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Gloves") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Gloves Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_GLOVES_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_GLOVES_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_GLOVES_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_GLOVES_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Helm") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Helm Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_HELM_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_HELM_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_HELM_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_HELM_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Shield") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Shield Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_SHIELD_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_SHIELD_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_SHIELD_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_SHIELD_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Staff") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Staff Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_STAFF_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_STAFF_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_STAFF_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_STAFF_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
-        forgeBox.addButton("Sword") -> 
-            forgeBox.display(GetOwningPlayer(js), false)
-            destroy forgeBox
-            let armorBox = new DialogBox("Select Sword Level")
-            if lvl >= 1
-                armorBox.addButton("Level 1") ->
-                    js.addItemById(ITEM_FORGE_SWORD_L1)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 2
-                armorBox.addButton("Level 2") ->
-                    js.addItemById(ITEM_FORGE_SWORD_L2)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 3
-                armorBox.addButton("Level 3") ->
-                    js.addItemById(ITEM_FORGE_SWORD_L3)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            if lvl >= 4
-                armorBox.addButton("Level 4") ->
-                    js.addItemById(ITEM_FORGE_SWORD_L4)
-                    armorBox.display(GetOwningPlayer(js), false)
-                    destroy armorBox
-            armorBox.display(caster.getOwner(), true)
+            js.resetAbilityCooldown(JACKSMITH_ABILITY_5)
+            destroy this
 
         forgeBox.display(GetOwningPlayer(js), true)
+
+    function addItemType(vararg int itemIds)
+        let abilityLvl = js.getAbilityLevel(JACKSMITH_ABILITY_5)
+        forgeBox.addButton(currItemName) ->
+            forgeBox.display(GetOwningPlayer(js), false)
+
+            itemTypeBox = new DialogBox("Select " + currItemName + " Level")
+
+            var lvl = 1
+            for itemId in itemIds
+                if (lvl >= abilityLvl)
+                    let name = "Level " + lvl.toString()
+                    itemTypeBox.addButton(name) ->
+                        js.addItemById(itemId)
+                        itemTypeBox.display(GetOwningPlayer(js), false)
+                        destroy this
+                lvl += 1
+            
+            forgeBox.addButton("Cancel") ->
+                itemTypeBox.display(GetOwningPlayer(js), false)
+                destroy itemTypeBox
+                itemTypeBox = null
+
+            itemTypeBox.display(js.getOwner(), true)
+
+    function initDialog()
+        currItemName = "Armor"
+        addItemType(
+            ITEM_FORGE_ARMOR_L1,
+            ITEM_FORGE_ARMOR_L2,
+            ITEM_FORGE_ARMOR_L3,
+            ITEM_FORGE_ARMOR_L4
+        )
+        
+        currItemName = "Axe"
+        addItemType(
+            ITEM_FORGE_AXE_L1,
+            ITEM_FORGE_AXE_L2,
+            ITEM_FORGE_AXE_L3,
+            ITEM_FORGE_AXE_L4
+        )
+        
+        currItemName = "Blade"
+        addItemType(
+            ITEM_FORGE_BLADE_L1,
+            ITEM_FORGE_BLADE_L2,
+            ITEM_FORGE_BLADE_L3,
+            ITEM_FORGE_BLADE_L4
+        )
+        
+        currItemName = "Boots"
+        addItemType(
+            ITEM_FORGE_BOOTS_L1,
+            ITEM_FORGE_BOOTS_L2,
+            ITEM_FORGE_BOOTS_L3,
+            ITEM_FORGE_BOOTS_L4
+        )
+
+        currItemName = "Gloves"
+        addItemType(
+            ITEM_FORGE_GLOVES_L1,
+            ITEM_FORGE_GLOVES_L2,
+            ITEM_FORGE_GLOVES_L3,
+            ITEM_FORGE_GLOVES_L4
+        )
+
+        currItemName = "Helm"
+        addItemType(
+            ITEM_FORGE_HELM_L1,
+            ITEM_FORGE_HELM_L2,
+            ITEM_FORGE_HELM_L3,
+            ITEM_FORGE_HELM_L4
+        )
+        
+        currItemName = "Shield"
+        addItemType(
+            ITEM_FORGE_SHIELD_L1,
+            ITEM_FORGE_SHIELD_L2,
+            ITEM_FORGE_SHIELD_L3,
+            ITEM_FORGE_SHIELD_L4
+        )
+        
+        currItemName = "Staff"
+        addItemType(
+            ITEM_FORGE_STAFF_L1,
+            ITEM_FORGE_STAFF_L2,
+            ITEM_FORGE_STAFF_L3,
+            ITEM_FORGE_STAFF_L4
+        )
+        
+        currItemName = "Sword"
+        addItemType(
+            ITEM_FORGE_SWORD_L1,
+            ITEM_FORGE_SWORD_L2,
+            ITEM_FORGE_SWORD_L3,
+            ITEM_FORGE_SWORD_L4
+        )
+
+public function forgeMaster()
+    EventListener.onCast(JACKSMITH_ABILITY_5) (unit caster) ->
+        new JsCraftItemDialog(caster)

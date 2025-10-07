@@ -11,7 +11,7 @@ import MyUnitIds
 public let blacksmithJackedList = compiletime(new RecipeList())
 
 public function metalStrength()
-    EventListener.onTargetCast('A0DG') (unit caster, unit target) ->
+    EventListener.onTargetCast(JACKSMITH_ABILITY_4) (unit caster, unit target) ->
         new DummyCaster()
         ..owner(GetOwningPlayer(caster))
         ..origin(caster.getPos())

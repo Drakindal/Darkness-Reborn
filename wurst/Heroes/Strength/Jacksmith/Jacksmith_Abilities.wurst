@@ -1,0 +1,132 @@
+package Jacksmith_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import Orders
+import ChannelAbilityPreset
+import MyColors
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new AbilityDefinitionMountainKingThunderClap(JACKSMITH_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetAreaofEffect(lvl -> 0.0)
+    ..presetBuffs(lvl -> "")
+    ..presetManaCost(lvl -> 100 + 50*lvl)
+    ..presetCooldown(lvl -> 135.0 - 15*lvl)
+    ..setManaCost(1, 220)
+    ..setManaCost(2, 200)
+    ..setManaCost(3, 180)
+    ..setManaCost(4, 160)
+    ..setManaCost(5, 140)
+    ..setManaCost(6, 120)
+    ..setManaCost(7, 100)
+    ..setManaCost(8, 80)
+    ..setManaCost(9, 60)
+    ..presetAOEDamage(lvl -> 0.0)
+    ..presetMovementSpeedReduction(lvl -> 0.0)
+    ..presetAttackSpeedReduction(lvl -> 0.0)
+    ..presetDuration(lvl -> 0.01)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_HOLYllllslam.blp")
+    ..register(HERO_JACKSMITH, "Forge".setColor(colAbilitiesJacksmith), 
+    "The Jacksmith's distinct skills allow him to forge a better item from the components.\n" +
+    "Check discord server for a list of all available recipes.",
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (135 - 15*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+    new ChannelAbilityPreset(JACKSMITH_ABILITY_2, 9, true)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetBuffs(lvl -> "")
+    ..presetManaCost(lvl -> 100*lvl)
+    ..presetCooldown(lvl -> 75.0 - 5*lvl)
+    ..presetFollowThroughTime(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.windwalk.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.windwalk.toRawCode())
+    ..presetCastRange(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNF11.blp")
+    ..setArtCaster("Chain Slam.mdx")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_JACKSMITH, "Radiant Forge".setColor(colAbilitiesJacksmith), 
+    "The Jacksmith forges a random item with a small chance to create a legendary one.",
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (75 - 5*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+    new ChannelAbilityPreset(JACKSMITH_ABILITY_3, 9, true)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetCooldown(lvl -> 225.0 - 25*lvl)
+    ..setCooldown(9, 5)
+    ..presetManaCost(lvl -> 250*lvl)
+    ..presetFollowThroughTime(lvl -> 1.0)
+    ..presetBaseOrderID(lvl -> OrderIds.starfall.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.starfall.toRawCode())
+    ..presetCastRange(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_paladin_judgementofthewise.blp")
+    ..setArtCaster("Falling Light.mdx")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_JACKSMITH, "Forge Smart".setColor(colAbilitiesJacksmith), 
+    "The Jacksmith uses Bullion to upgrade some legendary items. However, there is a chance to fail and destroy the Bullion, but not the item.",
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (225 - 25*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(JACKSMITH_ABILITY_4, 9, true)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetCooldown(lvl -> 275.0 - 25*lvl)
+    ..presetManaCost(lvl -> 250*lvl)
+    ..presetFollowThroughTime(lvl -> 1.0)
+    ..presetTargetTypes(Targettype.UNIT)
+    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+    ..presetCastRange(lvl -> 100.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructures))
+    ..setAnimationNames("spell,attack")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_paladin_judgementofthepure.blp")
+    ..setArtCaster("")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..setTargetAttachmentPoint("")
+    ..register(HERO_JACKSMITH, "Metal Strength".setColor(colAbilitiesJacksmith), 
+    "The Jacksmith abilities are inherited through the generations allowing the Jacksmith to forge perfect items in the Tinker's Blacksmith. However, only the Thief can find components for this exciting recipes.",
+    (int lvl) -> "Cooldown {0} seconds.".format(
+        (275 - 25*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionRoar(JACKSMITH_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetAreaofEffect(lvl -> 0.0)
+    ..presetBuffs(lvl -> "")
+    ..presetCooldown(lvl -> 210.0 - 30*lvl)
+    ..presetManaCost(lvl -> 300 + 100*lvl)
+    ..presetDuration(lvl -> 0.01)
+    ..presetDamageIncrease(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNItemForging.blp")
+    ..setArtCaster("Abilities\\Spells\\Undead\\Darksummoning\\DarkSummonTarget.mdl")
+    ..register(HERO_JACKSMITH, "Forge Mastery".setColor(colAbilitiesJacksmith), 
+    "The Jacksmith has skills to professionally forge items that commonly used by human knights and mages that are not strong enough for heroes. However, the Jacksmith knows secret recipes to upgrade these items further into legendary ammunition.",
+    (int lvl) -> "The Jacksmith can create a special item with level up to {0}. Cooldown {1}".format(
+        lvl.toString(),
+        (210 - 30*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------

@@ -3,6 +3,7 @@ package Jacksmith_E
 import ClosureEvents
 import Recipes
 import ItemsNames
+import MyAbilityIds
 
 public let jacksmithBulionsList = compiletime(new ChanceRecipeList())
 
@@ -13,7 +14,7 @@ public let jacksmithBulionChanceL4 = 0.6
 public let jacksmithBulionChanceL5 = 0.5
 
 public function forgeSmart()
-    EventListener.onCast('A0DE') (unit caster) ->
+    EventListener.onCast(JACKSMITH_ABILITY_3) (unit caster) ->
         let js = caster
         let color = GetPlayerColor(GetOwningPlayer(GetTriggerUnit())).toColor().toColorString()
         let gold = COLOR_GOLD.toColorString()

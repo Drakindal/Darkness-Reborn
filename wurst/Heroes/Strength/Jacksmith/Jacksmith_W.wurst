@@ -1,11 +1,12 @@
 package Jacksmith_W
+
 import ClosureEvents
 import MyItemIds
-
+import MyAbilityIds
 
 public function radiantRing()
-    EventListener.onCast('A0DH') (unit caster) ->
-        let lvl = caster.getAbilityLevel('A0DH')
+    EventListener.onCast(JACKSMITH_ABILITY_2) (unit caster) ->
+        let lvl = caster.getAbilityLevel(JACKSMITH_ABILITY_2)
         let color = caster.getOwner().getColor().toColor().toColorString()
         
         if lvl <= 3
