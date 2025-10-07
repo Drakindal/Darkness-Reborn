@@ -1,0 +1,201 @@
+package MountainKing_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import MyColors
+import BuffObjEditing
+import BuffIds
+import Icons
+import CommonDescriptions
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new BuffDefinition(MOUNTAIN_KING_BUFF_1, BuffIds.stunned)
+    ..setIcon(Icons.bTNStun)
+    ..register("Smashed with Hammer".setColor(colAbilitiesMountainKing),
+    "Smashed with Aggronor the Mighty's Hammer and stunned for a while.")
+
+    new AbilityDefinitionTaurenChieftainWarStomp(MOUNTAIN_KING_ABILITY_1_DUMMY)
+    ..setLevels(1)
+    ..setDuration(1, 4)
+    ..presetAreaofEffect(lvl -> 600)
+    ..setManaCost(1, 0)
+    ..setCastRange(1, 9999)
+    ..setCastingTime(1, 0)
+    ..setCooldown(1, 0)
+    ..setRequiredLevel(0)
+    ..setRequirements("")
+    ..setBuffs(1, MOUNTAIN_KING_BUFF_1.toRawCode())
+
+    new AbilityDefinitionMountainKingThunderBolt(MOUNTAIN_KING_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..setMissileArt("")
+    ..setArtTarget("")
+    ..presetDamage(lvl -> 0)
+    ..presetCastRange(lvl -> 1000)
+    ..presetAreaofEffect(lvl -> 600)
+    ..presetBuffs(lvl -> MOUNTAIN_KING_BUFF_1.toRawCode())
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetDuration(lvl -> 6)
+    ..setManaCost(1, 75)
+    ..setManaCost(2, 100)
+    ..setManaCost(3, 125)
+    ..setManaCost(4, 150)
+    ..setManaCost(5, 175)
+    ..setManaCost(6, 225)
+    ..setManaCost(7, 250)
+    ..setManaCost(8, 275)
+    ..setManaCost(9, 300)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructures))
+    ..register(HERO_MOUNTAIN_KING, "Storm Bolt".setColor(colAbilitiesMountainKing), 
+    "Aggronor the Mighty throws smashes an enemy's head with thunder hammer. Aggronor the Mighty strikes so hard that also hits all nearby enemies in 600 AoE dealing 50% of damage to them. Stuns enemies for 4 seconds.",
+    (int lvl) -> "Deals {0} + {1} x Str damage.".format(
+        (200*lvl).toString(),
+        (0.75*lvl).toString(2)
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionMountainKingThunderClap(MOUNTAIN_KING_ABILITY_2)
+    ..setArtEffect("")
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetBuffs(lvl -> MOUNTAIN_KING_BUFF_1.toRawCode())
+    ..presetAreaofEffect(lvl -> 600.0)
+    ..presetCooldown(lvl -> 19.0 - lvl)
+    ..presetManaCost(lvl -> 80 + 30*lvl)
+    ..presetMovementSpeedReduction(lvl -> 0.1 + 0.5*(lvl-1))
+    ..presetAttackSpeedReduction(lvl -> 0.2 + 0.5*(lvl-1))
+    ..presetAOEDamage(lvl -> 0.0)
+    ..presetDuration(lvl -> 8.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructures))
+    ..register(HERO_MOUNTAIN_KING, "Thunder Clap".setColor(colAbilitiesMountainKing), 
+    "Aggronor the Mighty slams his hammer down 3 times to create a massive earthquake that deals damage to enemies and slows down their movement speed and attack speed.",
+    (int lvl) -> "Deals {0} + {1} x Str damage in 600 AoE. Attack speed is reduced by {2}%, movement speed by {3}%.".format(
+        (50*lvl).toString(),
+        (0.5*lvl).toString(1),
+        (20 + 5*(lvl-1)).toString(),
+        (10 + 5*(lvl-1)).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+public constant real array[9] abi3_Damage = [
+    50,
+    100,
+    150,
+    225,
+    300,
+    375,
+    550,
+    850,
+    1200
+]
+
+@compiletime function defineAbilities3()
+    new AbilityDefinitionMountainKingBash(MOUNTAIN_KING_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetBuffs(lvl -> MOUNTAIN_KING_BUFF_1.toRawCode())
+    ..presetChancetoBash(lvl -> 10.0 + 3*(lvl-1))
+    ..presetDamageBonus(lvl -> abi3_Damage[lvl-1])
+    ..presetDuration(lvl -> 0.6+0.1*(lvl-1))
+    ..register(HERO_MOUNTAIN_KING, "Bash".setColor(colAbilitiesMountainKing), 
+    "Increases the weight of the Aggronor's hammer, giving him a % chance to deal bonus damage and stun an enemy.",
+    (int lvl) -> "{0}% chance to bash dealing {1} damage and stunning for {2} seconds.".format(
+        (10 + 3*(lvl-1)).toString(),
+        (abi3_Damage[lvl-1]).toString(0),
+        (0.6+0.1*(lvl-1)).toString(1)
+    ))
+
+// ----------------------------------------------------------------------------
+    
+public constant int array[9] mountainKing_abi4_Str = [
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    3,
+    3,
+    4
+]
+
+@compiletime function defineAbilities4()
+    new AbilityDefinitionAttributeModifierSkill(MOUNTAIN_KING_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..setStrengthBonus(1, 8)
+    ..setStrengthBonus(2, 16)
+    ..setStrengthBonus(3, 24)
+    ..setStrengthBonus(4, 32)
+    ..setStrengthBonus(5, 40)
+    ..setStrengthBonus(6, 50)
+    ..setStrengthBonus(7, 75)
+    ..setStrengthBonus(8, 100)
+    ..setStrengthBonus(9, 200)
+    ..presetAgilityBonus(lvl -> 0)
+    ..presetIntelligenceBonus(lvl -> 0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMountainFighterNew.blp")
+    ..setLevelSkipRequirement(2)
+    ..register(HERO_MOUNTAIN_KING, "Overpower".setColor(colAbilitiesMountainKing), 
+    "Aggronor the Mighty grows stronger for each time he bashes his enemies.\n" +
+    wordNote + "Bashes from Silver Hammer, Platinum Hammer I and II are accounted for separately. However, stuns from other items and abilities are ignored.",
+    (int lvl) -> "Deals {0} x Str damage. Permanently gains {1} Str.".format(
+        (2*lvl).toString(),
+        (mountainKing_abi4_Str[lvl-1]).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+constant real array[4] abi5_Hp = [
+     2000,
+     4000,
+     8000,
+    16000
+]
+
+constant real array[4] abi5_Damage = [
+     300,
+     600,
+    1200,
+    2400
+]
+
+constant real array[4] abi5_Cd = [
+    80,
+    60,
+    40,
+    20
+]
+
+constant real array[4] abi5_Duration = [
+    30, //30/80 = 0.375
+    35, // 35/60 = 0.583
+    28, // 28/40 = 0.7
+    18  // 18/20 = 0.9
+]
+
+@compiletime function defineAbilities5()
+    // WIP armor bonus.
+    new AbilityDefinitionMountainKingAvatar(MOUNTAIN_KING_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetCooldown(lvl -> abi5_Cd[lvl-1])
+    ..presetDuration(lvl -> abi5_Duration[lvl-1])
+    ..presetManaCost(lvl -> 200 + 150*lvl)
+    ..presetDefenseBonus(lvl -> 0.0)
+    ..presetDamageBonus(lvl -> abi5_Damage[lvl-1])
+    ..presetHitPointBonus(lvl -> abi5_Hp[lvl-1])
+    ..register(HERO_MOUNTAIN_KING, "Avatar".setColor(colAbilitiesMountainKing), 
+    "Aggronor the Mighty enters the avatar increasing his HP and damage, also, he gets a spell immunity.",
+    (int lvl) -> "+{0} damage, +{1} HP. Duration {2} seconds. Cd {3} seconds.".format(
+        abi5_Damage[lvl-1].toString(0),
+        abi5_Hp[lvl-1].toString(0),
+        abi5_Duration[lvl-1].toString(0),
+        abi5_Cd[lvl-1].toString(0)
+    ))
+    
+// ----------------------------------------------------------------------------

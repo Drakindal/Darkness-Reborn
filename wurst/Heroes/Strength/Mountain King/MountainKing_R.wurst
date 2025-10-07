@@ -3,6 +3,8 @@ package MountainKing_R
 import MyBuffIds
 import DamageTarget
 import DamageEvent
+import MyAbilityIds
+import MountainKing_Abilities
 
 public function overPower()
     DamageEvent.addListener(2) ->
@@ -11,13 +13,13 @@ public function overPower()
         if (DamageEvent.getType() == ATTACK and src.isIllusion() == false)
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let lvl = src.getAbilityLevel('A0DX')
-                if targ.hasAbility(BUFF_5) or targ.hasAbility('BPSE') and lvl >= 1 and GetRandomInt(1, 100) < 35
+                let lvl = src.getAbilityLevel(MOUNTAIN_KING_ABILITY_4)
+                if lvl >= 1 and (targ.hasAbility(MOUNTAIN_KING_BUFF_1) or targ.hasAbility(BUFF_ITEM_BASH)) and GetRandomInt(1, 100) < 35
                     let str = src.getStr(true)
                     let dmg = (str*(2.*lvl))
-                    src.addStr(lvl*1)
-                    if targ.hasAbility(BUFF_5)
-                        targ.removeAbility(BUFF_5)
-                    else if targ.hasAbility('BPSE')
-                        targ.removeAbility('BPSE')
+                    src.addStr(mountainKing_abi4_Str[lvl-1])
+                    if targ.hasAbility(MOUNTAIN_KING_BUFF_1)
+                        targ.removeAbility(MOUNTAIN_KING_BUFF_1)
+                    else if targ.hasAbility(BUFF_ITEM_BASH)
+                        targ.removeAbility(BUFF_ITEM_BASH)
                     src.damageTargetCode(dmg, targ, null, -1, customDamageType.PhysicalMelee)

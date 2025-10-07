@@ -4,14 +4,15 @@ import ClosureForGroups
 import ClosureEvents
 import ClosureTimers
 import DamageTarget
+import MyAbilityIds
+import Abilities
 
 public function thunderClap()
-    EventListener.onCast('A0DV') (unit caster) ->
-        forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
-            let lvl = caster.getAbilityLevel('A0DV')
-            let dmg = ((caster.getStr(true)*0.5+150)*lvl)
-            doPeriodically(0.03) (CallbackPeriodic cb) ->
-                if caster.isEnemyOf(u) and u.hasAbility('BHtc')
+    EventListener.onCast(MOUNTAIN_KING_ABILITY_2) (unit caster) ->
+        let lvl = caster.getAbilityLevel(MOUNTAIN_KING_ABILITY_2)
+        let dmg = ((caster.getStr(true)*0.5+50)*lvl)
+        doPeriodicallyCounted(0.5, 3) (CallbackCounted cb) ->
+            flashEffect(Abilities.thunderclapCaster, caster.getPos())
+            forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
+                if caster.isEnemyOf(u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalRanged)
-                    destroy cb
-                    
