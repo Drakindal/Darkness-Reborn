@@ -1,21 +1,151 @@
 package Pitlord_Abilities
 
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
 import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import MyColors
+import BuffObjEditing
+import BuffIds
+import Icons
 
-@compiletime function pitlordAbils()
-    new AbilityDefinitionRainofFire(PITLORD_ABILITY_1)
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new BuffDefinition(PIT_LORD_BUFF_1, BuffIds.flameStrike)
+    ..setArtTarget(1, "")
+    ..setArtSpecial(1, "")
+    ..setIconNormal(1, Icons.bTNLiquidFire)
+    ..register("Meteor's fire".setColor(colAbilitiesPitLord),
+    "Recently hit by Pit Lord Q")
+
+    new AbilityDefinitionCripple(PITLORD_ABILITY_1_DUMMY)
     ..setLevels(9)
-    ..setHotkeyLearn("Q")
-    ..setHotkeyNormal("Q")
-    ..setName("Pitlord - Q - Meteor")
-    ..setTooltipLearn("Learn Meteor [|cffffcc00Q|r]  - [|cffffcc00Level %d|r]")
-    ..setTooltipLearnExtended("Causes a meteor to rain down from the sky, dealing damage and applying a burn to enemies for lvl seconds. Dealing 3 * str *  lvl on impact and burning for 1 * str damage.")
+    ..presetDuration(lvl -> 1.0 * lvl)
+    ..setAttackSpeedReduction(1, 0)
+    ..setDamageReduction(1, 0)
+    ..setCooldown(1, 0)
+    ..setManaCost(1, 0)
+    ..setCastingTime(1, 0)
+    ..setCastRange(1, 99999)
+    ..setRequirements("")
+    ..setArtTarget("")
+    ..setArtSpecial("")
+    ..setArtEffect("")
+    ..setArtCaster("")
+    ..setMissileArt("")
+    ..setBuffs(1, PIT_LORD_BUFF_1.toRawCode())
+
+    new AbilityDefinitionRainofFire(PITLORD_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
     ..presetAreaofEffect(lvl -> 175. + 25 * lvl)
     ..presetDamage(lvl -> 0)
     ..presetNumberofShards(lvl -> 0)
     ..presetNumberofWaves(lvl -> 0)
     ..presetCooldown(lvl -> 21. - lvl)
     ..presetManaCost(lvl -> 75 + 10 * lvl + 10 * lvl + 10 * (lvl-2))
-    ..presetTooltipNormal(lvl -> "Meteor [|cffffcc00Q|r] - [|cffffcc00Level " + lvl.toString() + "|r]")
-    ..presetTooltipNormalExtended(lvl -> "Causes a meteor to rain down from the sky, dealing damage and applying a burn to enemies for " + lvl.toString() + " seconds. Dealing " + (lvl * 3).toString() + " * str on impact and burning for 1 * str damage.")
+    ..register(HERO_PITLORD, "Meteor".setColor(colAbilitiesPitLord), 
+    "Causes a meteor to fall down from the sky, dealing damage and burning enemies.",
+    (int lvl) -> "Deals {0} + {1} x Str damage in {4} AoE initially, and then {2} x Str dps within {3} seconds.".format(
+        (30*lvl).toString(),
+        (1.5*lvl).toString(),
+        (0.5*lvl).toString(1),
+        (lvl).toString(),
+        (2*(175+25*lvl)).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionMountainKingThunderBolt(PITLORD_ABILITY_2_DUMMY)
+    ..setLevels(9)
+    ..presetDuration(lvl -> 3.0 + 0.5*(lvl-1))
+    ..presetManaCost(lvl -> 0)
+    ..presetDamage(lvl -> 0)
+    ..presetCastRange(lvl -> 9999)
+    ..presetCastingTime(lvl -> 0)
+    ..presetCooldown(lvl -> 0)
+    ..setRequiredLevel(0)
+    ..setArtTarget("")
+    ..setArtSpecial("")
+    ..setArtEffect("")
+    ..setArtCaster("")
+    ..setMissileArt("")
+    ..setMissileSpeed(9999)
+
+    new AbilityDefinitionMountainKingThunderBolt(PITLORD_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..presetManaCost(lvl -> 100 + 25*lvl)
+    ..presetDuration(lvl -> 2.5 + 0.5*lvl)
+    ..presetDamage(lvl -> 0.0)
+    ..setMissileSpeed(0)
+    ..presetCastRange(lvl -> 50.0)
+    ..setAnimationNames("spell,slam")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAAAA (1).blp")
+    ..setMissileArt("")
+    ..register(HERO_PITLORD, "Strike Slam".setColor(colAbilitiesPitLord), 
+    "Pitlord slams their blade down on an enemy with a mighty force dealing devastating damage and stunning for a few seconds.",
+    (int lvl) -> "Deals {0} x Str damage and stuns for {1} seconds.".format(
+        (4.5*lvl).toString(),
+        (3.0 + 0.5*(lvl-1)).toString(1)
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    // WIP armor.
+    new AbilityDefinitionCryptLordSpikedCarapace(PITLORD_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetReturnedDamageFactor(lvl -> 0.0)
+    ..presetDefenseBonus(lvl -> 0.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (7).blp")    
+    ..register(HERO_PITLORD, "Monster Skin".setColor(colAbilitiesPitLord), 
+    "Pit Lord's skin is thick, durable and dangerously spiky. It deals damage to everyone who wants to harm Pit Lord.",
+    (int lvl) -> "Returns {0}% damage back to the attacker and deals {1}% of max HP additional damage.".format(
+        (30 + 10*lvl).toString(),
+        (3*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+    new AbilityDefinitionKeeperoftheGroveThornsAura(PITLORD_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetAreaofEffect(lvl -> 1.0)
+    ..presetBuffs(lvl -> "")
+    ..presetDamageDealttoAttackers(lvl -> 0.0)
+    ..presetDamageisPercentReceived(lvl -> false)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASThornSnare.BLP")
+    ..register(HERO_PITLORD, "Thorns Dire Aura".setColor(colAbilitiesPitLord), 
+    "Every time the Pitlord is attacked they returns a fixed amount of damage to the attacker. On the 9th level also deals 1.5 x Str damage.",
+    (int lvl) -> "Deals {0} damage to the attacker.".format(
+        (60*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+public constant int array[4] pitLord_abi5_Str = [
+    1,
+    1,
+    1,
+    2    
+]
+
+@compiletime function defineAbilities5()
+    new AbilityDefinitionPaladinDevotionAura(PITLORD_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetAreaofEffect(lvl -> 1.0)
+    ..presetBuffs(lvl -> "")
+    ..presetArmorBonus(lvl -> 0.0)
+    ..presetDuration(lvl -> 0.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS AAA (3).blp")
+    ..register(HERO_PITLORD, "Demonic Aura".setColor(colAbilitiesPitLord), 
+    "Pit Lord catches and devours souls of defeated enemies. Ability permanently increases HP and Str with each kill. Cannot get more than 750 x Skill Level Str. Then Str limit is exceed Pit Lord gets twice more HP.",
+    (int lvl) -> "+{0} HP, +{1} Str. Cannot get more than {2} Str.".format(
+        (8*lvl).toString(),
+        pitLord_abi5_Str[lvl-1].toString()
+    ))
+    
+// ----------------------------------------------------------------------------

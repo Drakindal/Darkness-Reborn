@@ -1,7 +1,11 @@
 package Pitlord_R
 
 import DamageTarget
+import MyAbilityIds
 
 public function pitLordThorn(unit holder, unit attacker)
-    let dam = 60. * holder.getAbilityLevel('A0RI')
-    holder.damageTargetCode(dam, attacker, null, -1, customDamageType.PhysicalRanged)
+    let lvl = holder.getAbilityLevel(PITLORD_ABILITY_4)
+    var dmg = 60. * lvl
+    if (lvl == 9)
+        dmg += 1.5* holder.getStr(true)
+    holder.damageTargetCode(dmg, attacker, null, -1, customDamageType.PhysicalRanged)

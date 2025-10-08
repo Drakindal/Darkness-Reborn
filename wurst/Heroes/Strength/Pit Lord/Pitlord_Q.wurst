@@ -9,23 +9,31 @@ import OrderIds
 import ClosureEvents
 import MyAbilityIds
 import DamageTarget
+import MyBuffIds
 
 public function rainofFire()
     let METEOR_SOUND = new SoundDefinition(Sounds.catapultMissile4, false, true)
     EventListener.onPointCast(PITLORD_ABILITY_1) (unit caster, vec2 target) ->
         doAfter(1) -> 
             let lvl = caster.getAbilityLevel(PITLORD_ABILITY_1)
-            let dmg = lvl * 3 * caster.getStr(true).toReal()
+            let dmg = 30*lvl + lvl * 1.5 * caster.getStr(true).toReal()
+            let burn = 0.5 * lvl * caster.getStr(true)
+            let range = 175. + 25 * lvl
+            
             METEOR_SOUND.playOnPoint(target.toVec3())
             flashEffect(Abilities.fireLordDeathExplode, target, 2)
-            forUnitsInRange(target, 175. + 25 * lvl, true) (unit u) ->
+
+            forUnitsInRange(target, range, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))
                     ..origin(vec2(caster.getX(), caster.getY()))
                     ..delay(1)
-                    ..castTarget(ABILITY_DUMMY_21, lvl, OrderIds.cripple, u)
+                    ..castTarget(PITLORD_ABILITY_1_DUMMY, lvl, OrderIds.cripple, u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
-                    doPeriodicallyCounted(1, lvl) (CallbackCounted cb) ->
-                        if u.isAlive()
-                            caster.damageTargetCode(caster.getStr(true).toReal(), u, null, -1, customDamageType.Magical)
+            
+            // Units could go out from the initial area, so we need to check in biggest range.
+            doPeriodicallyCounted(1, lvl) (CallbackCounted cb) ->
+                forUnitsInRange(target, range*4, true) (unit u) ->
+                    if u.isAlive() and u.hasAbility(PIT_LORD_BUFF_1)
+                        caster.damageTargetCode(burn, u, null, -1, customDamageType.Magical)

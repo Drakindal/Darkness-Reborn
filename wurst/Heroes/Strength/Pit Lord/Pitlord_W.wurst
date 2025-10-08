@@ -9,9 +9,9 @@ import OrderIds
 import DamageTarget
 
 public function strikeSlam()
-    EventListener.onTargetCast('A0RS') (unit caster, unit target) ->
-        let lvl = caster.getAbilityLevel('A0RS')
-        let dmg = caster.getStr(true)*lvl*3.
+    EventListener.onTargetCast(PITLORD_ABILITY_2) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(PITLORD_ABILITY_2)
+        let dmg = caster.getStr(true)*lvl*4.5
         caster.setAnimation("slam")
         doAfter(0.3) -> 
             flashEffect(Abilities.warStompCaster, target.getPos(), 0.8)
@@ -19,4 +19,4 @@ public function strikeSlam()
             new DummyCaster()
             ..owner(GetOwningPlayer(caster))
             ..origin(caster.getPos())
-            ..castTarget(ABILITY_DUMMY_4, 1, OrderIds.thunderbolt, target)
+            ..castTarget(PITLORD_ABILITY_2_DUMMY, lvl, OrderIds.thunderbolt, target)

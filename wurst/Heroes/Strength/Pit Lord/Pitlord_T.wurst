@@ -1,19 +1,22 @@
 package Pitlord_T
 
 import ClosureEvents
+import MyAbilityIds
+import Pitlord_Abilities
 
 int strGain = 0
 
 public function noblesseAura()
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) -> 
         let killer = GetKillingUnit()
-        let lvl = killer.getAbilityLevel('A0R8')
+        let lvl = killer.getAbilityLevel(PITLORD_ABILITY_5)
         if(lvl > 0)
             let limit = 750 * lvl
+            var hp = lvl*8
             if (strGain < limit)
-                strGain++
-                killer.addStr(1)
-                if(lvl == 4 and strGain < limit)
-                    strGain++
-                    killer.addStr(1)
-            killer.setMaxHP(R2I(killer.getMaxHP()+lvl*7), true)
+                let str = pitLord_abi5_Str[lvl-1]
+                strGain += str
+                killer.addStr(str)
+            else
+                hp *= 2
+            killer.setMaxHP((killer.getMaxHP() + hp).toInt())
