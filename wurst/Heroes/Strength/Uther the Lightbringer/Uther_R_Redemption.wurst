@@ -3,13 +3,21 @@ package Uther_R_Redemption
 import DamageTarget
 import ClosureEvents
 import MyAbilityIds
-import HashSet
 import MyBuffIds
 import Abilities
 import DamageEvent
+import RandomGen
+import Uther_Abilities
+import ClosureTimers
+import Uther_Hero
+import HashMap
+
+// ----------------------------------------------------------------------------
 
 public var holyPower = 0
-let holyAllies = new HashSet<int>
+let holyAllies = new HashMap<int, int>
+
+// ----------------------------------------------------------------------------
 
 public function redemptionHoly()
     DamageEvent.addListener(2) ->
@@ -21,15 +29,17 @@ public function redemptionHoly()
                 let damtyp = DamageEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     let lvl = src.getAbilityLevel(UTHER_ABILITY_4)
-                    if (lvl > 0 and GetRandomInt(0, 100) < 5 * lvl)
+                    if (lvl > 0 and checkChanceI(5 * lvl))
                         let targ = DamageEvent.getTarget()
                         let str = src.getStr(true)
-                        let amount = str * 0.5 + 75 * lvl
-                        let heal = str * lvl * 0.2
+                        let amount = (str * 0.5 + 75) * lvl
+                        let heal = 50*lvl + lvl * 1.2 * str
                         flashEffect(Abilities.holyBoltSpecialArt, targ.getPos())
                         src.damageTargetCode(amount, targ, null, -1, customDamageType.PhysicalMelee)
                         src.addHP(heal)
                         addHolyPower((lvl*0.25).ceil())
+
+// ----------------------------------------------------------------------------
 
 public function addHolyPower(int addHoly)
     holyPower = holyPower + addHoly
@@ -46,26 +56,46 @@ public function setHolyPower(int setHoly)
     updateHolyPower()
 
 function updateHolyPower()
-    for int i = 0 to 8
-        let tooltip = "Uther has a " + (5+5*(i+1)).toString() + " % on hit to deal 0.5 * str + " + (75 * (i+1)).toString() + " damage and heal for " + ((i+1) * 0.2).toString() + " * str. Gets " + (i+1).toString() + " holy power. Use buff on up to 3 allies to make their skill casts give you 1 holy power. Stores to a max of 150. Current amount: " + holyPower.toString()
-        setAbilityExtendedTooltip(UTHER_ABILITY_4, tooltip, i)
+    for int lvl = 1 to 9
+        setAbilityExtendedTooltip(UTHER_ABILITY_4, uther_abi4_formatDescr(lvl, holyPower), lvl-1)
+
+// ----------------------------------------------------------------------------
+
+function printNumberOfBlessed()
+    printTimedToPlayer("Current number of blessed allies: {0} / 3.".format(
+        holyAllies.size().toString()
+    ), 5, utherHero.getOwner())
+
+function redemptionAddAlly(unit target)
+    let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
+
+    if (not target.hasAbility(UTHER_ABILITY_4))
+        holyAllies.put(target.getTypeId(), lvl)
+        printNumberOfBlessed()
+        doAfter(14.0 + 2 * (lvl-1)) ->
+            redemptionRemoveAlly(target)
+    else
+        printTimedToPlayer("Ally is already blessed!", 5, utherHero.getOwner())
+
+function redemptionRemoveAlly(unit target)
+    if holyAllies.has(target.getTypeId())
+        holyAllies.remove(target.getTypeId())
+        printNumberOfBlessed()
 
 public function redemptionAlly()
     EventListener.onTargetCast(UTHER_ABILITY_4) (unit caster, unit target) ->
-        if holyAllies.size() > 2
-            printTimedToPlayer("You got too many allies blessed", 5, caster.getOwner())
-            target.removeAbility(UTHER_BUFF_1)
+        if holyAllies.size() >= 3
+            printTimedToPlayer("You have a maximum number of blessed allies!", 5, caster.getOwner())
+            target.removeAbility(UTHER_BUFF_4)
         else
-            holyAllies.add(target.getTypeId())
+            redemptionAddAlly(target)
 
-    EventListener.add(EVENT_PLAYER_UNIT_DEATH) -> 
-        let uid = GetDyingUnit().getTypeId()
-        if holyAllies.has(uid)
-            holyAllies.remove(uid)
+    EventListener.add(EVENT_PLAYER_UNIT_DEATH) ->
+        redemptionRemoveAlly(GetDyingUnit())
 
     EventListener.add(EVENT_PLAYER_UNIT_SPELL_CAST) -> 
         let uid = GetTriggerUnit().getTypeId()
-        if GetTriggerUnit().hasAbility(UTHER_BUFF_1) == false and holyAllies.has(uid)
-            holyAllies.remove(uid)
         if holyAllies.has(uid)
-            addHolyPower(1)
+            addHolyPower((holyAllies.get(uid)*0.2).ceil())
+            
+// ----------------------------------------------------------------------------

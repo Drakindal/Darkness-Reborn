@@ -11,6 +11,8 @@ import MyHeroDefinition
 
 // ----------------------------------------------------------------------------
 
+public unit utherHero = null
+
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_UTHER, UnitIds.uther)
     ..setModelFile("Units\\Uther\\Uther HOTS\\Uther.mdx")

@@ -11,24 +11,30 @@ public function holyStorm()
     EventListener.onCast(UTHER_ABILITY_2) (unit caster) ->
         let lvl = caster.getAbilityLevel(UTHER_ABILITY_2)
         let sfx = caster.addEffect("Units\\Uther\\BladeStorm\\HolyTornado.mdx", "origin")
-        var dam = caster.getStr(true) * lvl * 2 * 0.03
-        if(holyPower >= 10)
+        let dmg = caster.getStr(true) * lvl * 0.8
+        let period = 0.03
+        var dps = dmg * period
+        var duration = 2 + 1.5 * lvl
+
+        if (holyPower >= 30)
+            removeHolyPower(30)
+            dps *= 4
+            duration *= 3
+        else if (holyPower >= 20)
+            removeHolyPower(20)
+            dps *= 3
+            duration *= 2.5
+        else if (holyPower >= 10)
             removeHolyPower(10)
-            sfx.playAnimation(ANIM_TYPE_STAND, 3. * lvl)
-            dam = dam * 2
-            doPeriodicallyTimed(0.03, 3. * lvl) (CallbackCounted cb) ->
-                forUnitsInRange(caster.getPos(), 300) (unit u) ->
-                    if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dam, u, null, -1, customDamageType.Magical)
-                if cb.isLast()
-                    sfx.destr()
-        else
-            sfx.playAnimation(ANIM_TYPE_STAND, 1.5 * lvl)
+            dps *= 2
+            duration *= 2
 
-            doPeriodicallyTimed(0.03, 1.5 * lvl) (CallbackCounted cb) ->
-                forUnitsInRange(caster.getPos(), 300) (unit u) ->
-                    if u.isEnemyOf(caster)
-                        caster.damageTargetCode(dam, u, null, -1, customDamageType.Magical)
+        sfx.playAnimation(ANIM_TYPE_STAND, duration)
 
-                if cb.isLast()
-                    sfx.destr()
+        doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
+            forUnitsInRange(caster.getPos(), 300) (unit u) ->
+                if u.isEnemyOf(caster)
+                    caster.damageTargetCode(dps, u, null, -1, customDamageType.Magical)
+
+            if cb.isLast()
+                sfx.destr()

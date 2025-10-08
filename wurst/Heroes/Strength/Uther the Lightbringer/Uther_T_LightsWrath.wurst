@@ -9,10 +9,11 @@ import MyAbilityIds
 public function lightsWrath()
     EventListener.onTargetCast(UTHER_ABILITY_5) (unit caster, unit target) ->
         let lvl = caster.getAbilityLevel(UTHER_ABILITY_5)
-        let amount = caster.getStr(true) * holyPower * lvl * 0.25
+        let dmg = caster.getStr(true) * holyPower * lvl * 0.25
         setHolyPower(0)
         flashEffect("Units\\Uther\\Sacred Storm\\Sacred Storm.mdx", target.getPos())
-        caster.damageTargetCode(amount, target, null, -1, customDamageType.Magical)
+        caster.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
         forUnitsInRange(caster.getPos(), 600) (unit u) ->
             if u.isAllyOf(caster)
-                u.addHP(amount / 2)
+                u.addHP(dmg / 2)
+        caster.addHP( caster.getMaxHP() * (0.20 + 0.10*(lvl-1)) )
