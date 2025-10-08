@@ -2,11 +2,12 @@ package Sylvanas_R
 
 import ClosureEvents
 import MyUpgradesIds
+import MyAbilityIds
 
 public function longRange()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) ->
         let abi = GetLearnedSkill()
-        if abi == 'A0AP'
+        if abi == SYLVANAS_ABILITY_4
             let u = GetTriggerUnit()
             let lvl = u.getAbilityLevel(abi)
             let p = u.getOwner()

@@ -5,10 +5,11 @@ import ClosureTimers
 import Abilities
 import ClosureEvents
 import DamageTarget
+import MyAbilityIds
 
 public function poisonArrow()
-    EventListener.onPointCast('A0CH') (unit caster, vec2 target) ->
-        let lvl = GetUnitAbilityLevel(caster, 'A0CH')
+    EventListener.onPointCast(SYLVANAS_ABILITY_3) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, SYLVANAS_ABILITY_3)
         let amount = caster.getStr(true) * lvl * 2.
         doAfter(0.5) -> 
             forUnitsInRange(target, 400, true) (unit u) ->

@@ -13,7 +13,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_SYLVANAS, UnitIds.sylvanuswindrunner)
-    ..setHeroAbilities(commaList(SYLVANAS_ABILITY_1, 'A0F0', 'A0CH', 'A0AP', 'A0F1'))
+    ..setHeroAbilities(commaList(SYLVANAS_ABILITY_1, SYLVANAS_ABILITY_2, SYLVANAS_ABILITY_3, SYLVANAS_ABILITY_4, SYLVANAS_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(19, 18, 15)

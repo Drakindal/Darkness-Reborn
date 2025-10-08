@@ -1,0 +1,160 @@
+package Sylvanas_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import MyBuffIds
+import BuffIds
+import BuffObjEditing
+import Orders
+import MyColors
+import ChannelAbilityPreset
+import UpgradeObjEditing
+import MyUpgradesIds
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineAbilities()
+    new AbilityDefinitionDreadlordCarrionSwarm(SYLVANAS_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..setMissileArt("")
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNI (11).blp")
+    ..setMissileSpeed(600)
+    ..presetDamage(lvl -> 0)
+    ..presetDistance(lvl -> 1000)
+    ..presetAreaofEffect(lvl -> 300)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 130)
+    ..setManaCost(2, 170)
+    ..setManaCost(3, 210)
+    ..setManaCost(4, 260)
+    ..setManaCost(5, 300)
+    ..setManaCost(6, 340)
+    ..setManaCost(7, 380)
+    ..setManaCost(8, 420)
+    ..setManaCost(9, 450)
+    ..presetCastingTime(lvl -> 0.5)
+    ..register(HERO_SYLVANAS, "Gold Arrow".setColor(colAbilitiesSylvanas), 
+    "Sylvanas shoots out a magic golden arrow that flies in a line, dealing damage based on her Strength.",
+    (int lvl) -> "Deals {0} x Str damage.".format(
+        (5.5*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+    
+    new BuffDefinition(SYLVANAS_BUFF_2, BuffIds.doom)
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\ATCPhantomArrow.blp")
+    ..register("Phantom Arrow".setColor(colAbilitiesSylvanas),
+    "Hit by Phantom Arrow.")
+
+    new AbilityDefinitionPoisonArrows(SYLVANAS_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetAreaofEffect(lvl -> 6.0)
+    ..presetBuffs(lvl -> SYLVANAS_BUFF_2.toRawCode())
+    ..presetManaCost(lvl -> 5*lvl)
+    ..presetExtraDamage(lvl -> 0.0)
+    ..presetDamageperSecond(lvl -> 0.0)
+    ..presetDuration(lvl -> 0.1)
+    ..presetCastRange(lvl -> 1100.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\ATCPhantomArrow.blp")
+    ..setMissileArt("Abilities\\Weapons\\PoisonArrow\\PoisonArrowMissile.mdl")
+    ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\BTNPhantomArrow.blp")
+    ..register(HERO_SYLVANAS, "Phantom Arrow".setColor(colAbilitiesSylvanas), 
+    "Sylvanas uses elvish magic to shoot phantom arrows from her bow. These arrows pierces enemies through destroying enemy's organs from the inside.",
+    (int lvl) -> "Deals {0} + {1}% x max HP damage.".format(
+        (50*lvl).toString(),
+        (5*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new ChannelAbilityPreset(SYLVANAS_ABILITY_3, 9, true)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetCooldown(lvl -> 21.0 - lvl)
+    ..setManaCost(1, 150)
+    ..setManaCost(2, 200)
+    ..setManaCost(3, 250)
+    ..setManaCost(4, 300)
+    ..setManaCost(5, 350)
+    ..setManaCost(6, 400)
+    ..setManaCost(7, 470)
+    ..setManaCost(8, 540)
+    ..setManaCost(9, 620)
+    ..presetFollowThroughTime(lvl -> 0.1)
+    ..presetTargetTypes(Targettype.POINT)
+    ..presetOption(Option.UNIQUECAST, true)
+    ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
+    ..setOrderStringUseTurnOn(OrderIds.impale.toRawCode())
+    ..presetCastRange(lvl -> 1100.0)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNA.blp")
+    ..setArtCaster("Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl")
+    ..setArtEffect("")
+    ..setArtTarget("")
+    ..register(HERO_SYLVANAS, "Dark Arrow".setColor(colAbilitiesSylvanas), 
+    "Sylvanas coats an arrow with Dark Magic and targets an enemy. All enemies in a 400 range proximity of the target will take damage based on Sylvanas's Strength.",
+    (int lvl) -> "Deals {0} x Str damage in 800 AoE.".format(
+        (2*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new UpgradeDefinition(HERO_SYLVANAS_LONG_RANGE, 9)
+    ..addEffectAttackSpeedBonus(0.3, 0.3)
+    ..addEffectAttackRangeBonus(75, 75)
+    ..setClass(UpgradeClass.Ranged)
+
+    new BuffDefinition(SYLVANAS_BUFF_4, BuffIds.speedBonus)
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNImprovedBows.blp")
+    ..setArtTarget("Abilities\\Spells\\Items\\AIsp\\SpeedTarget.mdl")
+    ..register("Marksmanship".setColor(colAbilitiesSylvanas),
+    "This unit got more skilled with the bow.|Nincrease both range and attack speed each level.")
+
+    new AbilityDefinitionMountainKingBash(SYLVANAS_ABILITY_4)
+    ..setGeneralAbility(AbilityPosition.R)
+    ..presetChancetoBash(lvl -> 0.0)
+    ..presetDamageBonus(lvl -> 0.0)
+    ..presetDuration(lvl -> 0.0)
+    ..presetBuffs(lvl -> SYLVANAS_BUFF_4.toRawCode())
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNImprovedBows.blp")
+    ..register(HERO_SYLVANAS, "Long Bow".setColor(colAbilitiesSylvanas), 
+    "Sylvanas becomes more skilled with her magic bow.",
+    (int lvl) -> "+{0}% Attack Speed. +{1} Range.".format(
+        (30*lvl).toString(),
+        (75*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------
+
+    new BuffDefinition(SYLVANAS_BUFF_5, BuffIds.entanglingRoots)
+    ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNvenomarrow3.blp")
+    ..setArtTarget(1, "Gravitone.mdx")
+    ..register("Venom Arrow".setColor(colAbilitiesSylvanas),
+    "Hit by Venom Arrow.")
+    
+    new AbilityDefinitionKeeperoftheGroveEntanglingRoots(SYLVANAS_ABILITY_5)
+    ..setUltimateAbility()
+    ..presetBuffs(lvl -> SYLVANAS_BUFF_5.toRawCode())
+    ..presetCooldown(lvl -> 160.0 - 20*lvl)
+    ..setManaCost(1, 220)
+    ..setManaCost(2, 250)
+    ..setManaCost(3, 290)
+    ..setManaCost(4, 320)
+    ..presetDamageperSecond(lvl -> 0.0)
+    ..presetDuration(lvl -> 7.0 + lvl)
+    ..setMissileSpeed(700)
+    ..presetCastRange(lvl -> 1500.0)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNvenomarrow3.blp")
+    ..setMissileArc(0.1)
+    ..setMissileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
+    ..register(HERO_SYLVANAS, "Venom Arrow".setColor(colAbilitiesSylvanas),
+    "Sylvanas shoots an arrow that contains the energy of Quel'Thalas Forest entangling the enemy and dealing massive damage.",
+    (int lvl) -> "Deals {0} x Str physical damage and {1} x max Hp magical damage. Duration {2} seconds. Cd {3} seconds.".format(
+        (lvl*8).toString(),
+        (lvl*3).toString(),
+        (7 + lvl).toString(),
+        (160-20*lvl).toString()
+    ))
+    
+// ----------------------------------------------------------------------------

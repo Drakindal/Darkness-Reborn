@@ -1,0 +1,24 @@
+package Sylvanas_T
+
+import Abilities
+import DamageTarget
+import ClosureEvents
+import MyAbilityIds
+import ClosureTimers
+
+bool run = true
+
+public function goldenArrow()
+    EventListener.onTargetCast(SYLVANAS_ABILITY_5) (unit caster, unit target) ->
+        let lvl = caster.getAbilityLevel(SYLVANAS_ABILITY_5)
+        let dmg1 = (lvl*3) * caster.getMaxHP()
+        let dmg2 = (lvl*8) * caster.getStr(true)
+        let period = 0.1
+        let duration = 7.0 + lvl
+        let dps1 = dmg1 * period
+        let dps2 = dmg2 * period
+
+        doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
+            caster.damageTargetCode(dps1, target, null, -1, customDamageType.Magical)
+            caster.damageTargetCode(dps2, target, null, -1, customDamageType.PhysicalMelee)
+            flashEffect(Abilities.holyBoltSpecialArt, target.getPos())

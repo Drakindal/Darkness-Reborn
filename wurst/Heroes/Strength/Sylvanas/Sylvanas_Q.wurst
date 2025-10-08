@@ -3,44 +3,39 @@ package Sylvanas_Q
 import MyAbilityIds
 import ClosureTimers
 import Abilities
-import ClosureEvents
 import DamageTarget
 import ClosureForGroups
 import TerrainUtils
+import ActiveAbilityDef
 
 bool run = true
 
-function goldenArrowShoot(unit caster, vec2 target)
-    let casterPos = caster.getPos()
-    let angle = caster.getPos().angleTo(target)
-    let sfx = addEffect("HighElvenArrow.mdl", caster.getPos())
-    var distance = caster.getPos().distanceTo(sfx.getPos())
-    let lvl = GetUnitAbilityLevel(caster, SYLVANAS_ABILITY_1)
-    var pos = sfx.getPos()
-    sfx.setScale(3)
-    sfx.setYaw(angle.radians())
-    let amount = caster.getStr(true) * lvl * 0.15
-    doPeriodicallyTimed(0.03, 1.2) cb -> 
-        if cb.isLast()
-            sfx.destr()
-            run = true
-        else
-            sfx.setPos(sfx.getPos().polarOffset(angle,30))
-            pos = sfx.getPos()
-            distance = casterPos.distanceTo(sfx.getPos())
-            if distance > 1000 and run == true
-                run = false
-                flashEffect(Abilities.fireLordDeathExplode, sfx.getPos3())
-
-            forUnitsInRange(pos, 300, true) (unit u) ->
-                if u.isEnemyOf(caster)
-                    caster.damageTargetCode(amount, u, null, -1, customDamageType.Magical)
-                    if sfx.getPos().isTerrainWalkable()
-                        u.setPos(sfx.getPos())
-
 public function goldenArrow()
-    EventListener.onTargetCast(SYLVANAS_ABILITY_1) (unit caster, unit target) ->
-        goldenArrowShoot(caster, target.getPos())
-        
-    EventListener.onPointCast(SYLVANAS_ABILITY_1) (unit caster, vec2 target) ->
-        goldenArrowShoot(caster, target)
+    registerOnPointCast(SYLVANAS_ABILITY_1) (unit caster, vec2 target) ->
+        let casterPos = caster.getPos()
+        let angle = caster.getPos().angleTo(target)
+        let sfx = addEffect("HighElvenArrow.mdl", caster.getPos())
+        var distance = caster.getPos().distanceTo(sfx.getPos())
+        let lvl = GetUnitAbilityLevel(caster, SYLVANAS_ABILITY_1)
+        var pos = sfx.getPos()
+        sfx.setScale(3)
+        sfx.setYaw(angle.radians())
+        let dmg = caster.getStr(true) * lvl * 5.5
+
+        doPeriodicallyTimed(0.03, 1.2) cb -> 
+            if cb.isLast()
+                sfx.destr()
+                run = true
+            else
+                sfx.setPos(sfx.getPos().polarOffset(angle,30))
+                pos = sfx.getPos()
+                distance = casterPos.distanceTo(sfx.getPos())
+                if distance > 1000 and run == true
+                    run = false
+                    flashEffect(Abilities.fireLordDeathExplode, sfx.getPos3())
+
+                forUnitsInRange(pos, 300, true) (unit u) ->
+                    if u.isEnemyOf(caster)
+                        caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+                        if sfx.getPos().isTerrainWalkable()
+                            u.setPos(sfx.getPos())
