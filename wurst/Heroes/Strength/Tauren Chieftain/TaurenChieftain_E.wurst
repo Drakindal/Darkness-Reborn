@@ -6,29 +6,38 @@ import TerrainUtils
 import DamageTarget
 import MyAbilityIds
 import DamageEvent
+import TaurenChieftain_Abilities
+import ClosureForGroups
+import RandomGen
 
 public function pulverize()
     DamageEvent.addListener(1) ->
         if (DamageEvent.getType() == ATTACK)
             let damtyp = DamageEvent.getDamageType()
-            if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let caster = DamageEvent.getSource()
-                let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_3)
-                if lvl > 0
-                    if GetRandomInt(1, 100) < 10+2*lvl
-                        let target = DamageEvent.getTarget()
-                        let dmg = ((0.5*caster.getStr(true)) * lvl)
-                        var distance = 0.0
-                        let targetPos = target.getPos()
-                        let casterPos = caster.getPos()
-                        let angle = casterPos.angleTo(targetPos)
-                        let sfx = addEffect(Objects.impaleTargetDust, targetPos)
-                        let pathable = addEffect(".mdl", targetPos)
-                        caster.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
-                        doPeriodicallyTimed(0.03, 0.5) (CallbackCounted cb) ->
-                            if pathable.getPos().isTerrainWalkable()
-                                distance = distance + 15
-                                pathable.setPos(targetPos.polarOffset(angle, distance))
-                                if pathable.getPos().isTerrainWalkable()
-                                    target.setPos(targetPos.polarOffset(angle, distance))
-                                    sfx.setPos(targetPos.polarOffset(angle, distance))
+            let caster = DamageEvent.getSource()
+            let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_3)
+            if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC) and lvl > 0 and checkChanceI(tauren_abi3_Chance[lvl-1])
+                let target = DamageEvent.getTarget()
+                let dmg = ((1.5*caster.getStr(true)) * lvl) + 0.4 * caster.getMaxHP() * lvl
+                var distance = 0.0
+                let targetPos = target.getPos()
+                let casterPos = caster.getPos()
+                let angle = casterPos.angleTo(targetPos)
+                let sfx = addEffect(Objects.impaleTargetDust, targetPos)
+                let pathable = addEffect(".mdl", targetPos)
+                caster.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
+
+                if (checkChanceI(60))
+                    caster.addStr(3)
+
+                forUnitsInRange(target.getPos(), 150, true) (unit u) ->
+                    if caster.isEnemyOf(u)
+                        caster.damageTargetCode(0.5*dmg, target, null, -1, customDamageType.PhysicalMelee)
+
+                doPeriodicallyTimed(0.03, 0.5) (CallbackCounted cb) ->
+                    if pathable.getPos().isTerrainWalkable()
+                        distance = distance + 15
+                        pathable.setPos(targetPos.polarOffset(angle, distance))
+                        if pathable.getPos().isTerrainWalkable()
+                            target.setPos(targetPos.polarOffset(angle, distance))
+                            sfx.setPos(targetPos.polarOffset(angle, distance))

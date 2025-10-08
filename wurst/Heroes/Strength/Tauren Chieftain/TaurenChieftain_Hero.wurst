@@ -14,11 +14,11 @@ import MyHeroDefinition
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_TAUREN_CHIEFTAIN, UnitIds.taurenchieftain)
     
-    ..setHeroAbilities(commaList('A0Z0', 'A0CI', TAUREN_CHIEFTAIN_ABILITY_3, 'A01E', 'A01A'))
+    ..setHeroAbilities(commaList(TAUREN_CHIEFTAIN_ABILITY_1, TAUREN_CHIEFTAIN_ABILITY_2, TAUREN_CHIEFTAIN_ABILITY_3, TAUREN_CHIEFTAIN_ABILITY_4, TAUREN_CHIEFTAIN_ABILITY_5))
 
     ..setPrimaryAttribute("Strength")
-    ..setStatsBase(25, 10, 15)
-    ..setStatsPerLvl(3.70, 1.50, 1.30)
+    ..setStatsBase(35, 8, 15)
+    ..setStatsPerLvl(5.70, 1.20, 1.70)
 
     ..setScalingValue(1.10)
     ..setSelectionScale(2.00)

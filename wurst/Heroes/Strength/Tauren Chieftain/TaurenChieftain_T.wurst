@@ -5,16 +5,20 @@ import ClosureForGroups
 import ClosureTimers
 import Abilities
 import DamageTarget
+import MyAbilityIds
 
 public function warStomp()
-    EventListener.onCast('A01A') (unit caster) ->
+    EventListener.onCast(TAUREN_CHIEFTAIN_ABILITY_5) (unit caster) ->
         let str = caster.getStr(true)
-        let lvl = caster.getAbilityLevel('A01A')
-        let dmg = ((5.*lvl*str)+(1500.*lvl))
+        let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_5)
+        let dmg = ((5.5*lvl*str)+(1500.*lvl)) + 2.5 * caster.getMaxHP() * lvl
         addEffect("WindWeak(Thicker).mdl", caster.getPos())
         flashEffect(Abilities.warStompCaster, caster.getPos(), 2)
-        caster.addStr(9)
-        doAfter(0.25) -> 
+
+        caster.addStr(40)
+        caster.setMaxHP((caster.getMaxHP() + 500).toInt())
+
+        doAfter(0.25) ->
             forUnitsAll() (unit u) ->
                 if caster.isEnemyOf(u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Pure)
