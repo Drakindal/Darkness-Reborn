@@ -9,10 +9,14 @@ import OrderIds
 import DummyCaster
 import HashSet
 import ClosureTimers
+import Vivpire_Abilities
+
+// ----------------------------------------------------------------------------
 
 var blood = 0
-let strGain = [1,1,2,2,2,3,3,3,4]
 let preySet = new HashSet<unit>
+
+// ----------------------------------------------------------------------------
 
 public function bloodGain()
     EventListener.add(EVENT_PLAYER_CHAT_FILTER) -> 
@@ -26,46 +30,48 @@ public function bloodGain()
         if(kDie.getTypeId() == HERO_VIVPIRE)
             let uDie = EventData.getDyingUnit()
             if(preySet.has(uDie))
+                let lvl = kDie.getAbilityLevel(VIVPIRE_ABILITY_4)
                 printTimedToPlayer("|cffcf0505Delicious Prey|r", 5, GetKillingUnit().getOwner())
                 blood++
-                kDie.addStr(strGain[kDie.getAbilityLevel(VIVPIRE_ABILITY_4)-1])
+                kDie.addStr(vivpire_abi4_Str[lvl-1])
                 uDie.removePrey()
     
     EventListener.onTargetCast(VIVPIRE_ABILITY_4) (unit caster, unit target) ->
-        activateBloodGain(caster, target)
+        let pos = caster.getPos()
+        let lvl = caster.getAbilityLevel(VIVPIRE_ABILITY_4)
 
+        preySet.add(target)
+        
+        let tempGroup = CreateGroup()
+        tempGroup.enumUnitsInRange(pos, 400)
+        tempGroup.remove(target)
+        for int i = 1 to 2*lvl
+            let u = tempGroup.getRandom()
+            u.preyTarget(pos, caster)
+            tempGroup.remove(u)
+        tempGroup.clear()
+        tempGroup.destr()
 
-function unit.preyTarget(vec2 pos, player p)
+// ----------------------------------------------------------------------------
+
+function unit.preyTarget(vec2 pos, unit vivpire)
+    let lvl = vivpire.getAbilityLevel(VIVPIRE_ABILITY_4)
+    let duration = 10.0 + 2*(lvl-1)
+    
     preySet.add(this)
     new DummyCaster()
-        ..owner(p)
+        ..owner(vivpire.getOwner())
         ..origin(pos)
-        ..castTarget(VIVPIRE_DUMMY_ABILITY_3, 1, OrderIds.curse, this)
-    doAfter(10) -> 
+        ..castTarget(VIVPIRE_DUMMY_ABILITY_4, 1, OrderIds.curse, this)
+    doAfter(duration) ->
         this.removePrey()
-
-function activateBloodGain(unit caster, unit target)
-    let p = caster.getOwner()
-    let pos = caster.getPos()
-    let lvl = caster.getAbilityLevel(VIVPIRE_ABILITY_4)
-
-    preySet.add(target)
-        
-    let tempGroup = CreateGroup()
-    tempGroup.enumUnitsInRange(pos, 400)
-    tempGroup.remove(target)
-    for int i = 1 to 2*lvl
-        let u = tempGroup.getRandom()
-        u.preyTarget(pos, p)
-        tempGroup.remove(u)
-    tempGroup.clear()
-    tempGroup.destr()
 
 function unit.removePrey()
     preySet.remove(this)
 
+// ----------------------------------------------------------------------------
+
 public function getBlood() returns int
     return blood
 
-init
-    bloodGain()
+// ----------------------------------------------------------------------------

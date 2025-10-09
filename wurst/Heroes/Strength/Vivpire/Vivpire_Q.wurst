@@ -10,17 +10,18 @@ import ClosureForGroups
 
 public function vampiricBite()
     EventListener.onTargetCast(VIVPIRE_ABILITY_1) (unit caster, unit target) ->
-        let amount = caster.getStr(true) * caster.getAbilityLevel(VIVPIRE_ABILITY_1) * 3.
+        let lvl = caster.getAbilityLevel(VIVPIRE_ABILITY_1)
+        let amount = caster.getStr(true) * lvl * 3. + 50*lvl
         forUnitsInRange(caster.getPos(), 600) (unit u) ->
-            if(u.hasAbility(VIVPIRE_BUFF_2))
+            if(u.hasAbility(VIVPIRE_BUFF_4))
                 new DummyCaster()
                 ..owner(GetOwningPlayer(caster))
                 ..origin(caster.getPos())
-                ..castTarget(VIVPIRE_DUMMY_ABILITY_1, 1, OrderIds.cripple, target)
+                ..castTarget(VIVPIRE_ABILITY_1_DUMMY_1, 1, OrderIds.cripple, target)
                 ..delay(1)
                 new DummyCaster()
                 ..owner(GetOwningPlayer(caster))
                 ..origin(caster.getPos())
-                ..castTarget(VIVPIRE_DUMMY_ABILITY_1, 1, OrderIds.curse, target)
+                ..castTarget(VIVPIRE_ABILITY_1_DUMMY_2, 1, OrderIds.curse, target)
                 ..delay(1)
         caster.damageTargetCode(amount, target, null, -1, customDamageType.PhysicalMelee)

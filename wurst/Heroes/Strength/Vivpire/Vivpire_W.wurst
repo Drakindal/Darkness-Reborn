@@ -3,8 +3,8 @@ package Vivpire_W
 import MyAbilityIds
 import DamageTarget
 import DamageEvent
+import Vivpire_Abilities
 
-let limit = [2, 4, 6, 8, 10, 12, 14, 16, 18]
 var currentDmg = 0.
 
 public function bloodHunter()
@@ -18,8 +18,8 @@ public function bloodHunter()
                 if lvl > 0
                     let targ = DamageEvent.getTarget()
                     currentDmg = currentDmg + 0.1
-                    if(currentDmg > limit[lvl-1])
-                        currentDmg = limit[lvl-1].toReal()
+                    if (currentDmg > vivpire_abi2_Limit[lvl-1])
+                        currentDmg = vivpire_abi2_Limit[lvl-1].toReal()
                     let amount = currentDmg * src.getStr(true)
                     src.damageTargetCode(amount, targ, null, -1, customDamageType.PhysicalMelee)
                     attacked.start(5, function clearAttacked)
