@@ -18,7 +18,7 @@ public function juxtapose()
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let lvl = src.getAbilityLevel(ILLUSIONIST_ABILITY_3)
-                if checkChance(lvl)
+                if checkChanceI(lvl)
                     if playerHero.has(src.getOwner())
                         if(limit < lvl * 0.25)
                             limit++

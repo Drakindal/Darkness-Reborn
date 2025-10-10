@@ -40,7 +40,7 @@ public enum ItemLocation
 
 // ----------------------------------------------------------------------------
 
-public let itemsLocations = compiletime(new HashMap<int, ItemLocation>)
+public let itemsLocations = new HashMap<int, ItemLocation>
 
 // ----------------------------------------------------------------------------
 

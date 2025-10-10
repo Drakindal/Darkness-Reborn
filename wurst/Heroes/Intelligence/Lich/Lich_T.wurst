@@ -12,12 +12,12 @@ public function deathandnDecay()
     EventListener.onPointCast(LICH_ABILITY_5) (unit caster, vec2 target) ->
         let lvl = caster.getAbilityLevel(LICH_ABILITY_5)
         let damage = lich_abi5_Damage[lvl-1]
-        let range = 450.0 + 70*lvl
+        let range = (450.0 + 70*lvl)/2
         
         forUnitsInRange(target, range, true) (unit u) ->
             if caster.isEnemyOf(u)
                 flashEffect(Abilities.animateDeadTarget, u.getPos())
-                u.setMaxHP((lich_abi5_Hp[lvl-1] * u.getMaxHP()).ceil())
+                u.setMaxHP(((1-lich_abi5_Hp[lvl-1]) * u.getMaxHP()).ceil())
         
         doAfter(1) ->
             doPeriodicallyTimed(0.8, 0.8*(3+lvl)) (CallbackCounted cb) ->

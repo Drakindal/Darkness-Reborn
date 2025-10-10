@@ -14,6 +14,7 @@ import DamageEvent
 import ObjectIds
 import BuffIds
 import ObjectIdGenerator
+import MyHeroAbilityDefinition
 
 // ----------------------------------------------------------------------------
 
@@ -226,7 +227,7 @@ public function addAbilityFreezePassive(real chance, real damage, real stunDurat
     ..setDurationHero(1, stunDuration)
     ..setDurationHero(1, stunDuration)
     // Structures cannot be bashed, but can be freezed.
-    ..setTargetsAllowed(1, commaList(TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.ground, TargetsAllowed.air, TargetsAllowed.organic, TargetsAllowed.structure))
+    ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesAll))
     ..setArtCaster("")
     ..setArtSpecial("")
     //..setArtTarget("")

@@ -20,13 +20,13 @@ public function embodimentOfGral()
         else
             if DamageEvent.getType() == ATTACK
                 let lvl = src.getAbilityLevel(ABILITY_47)
-                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(BUFF_15) and lvl > 0
+                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_15) and lvl > 0
                     let targ = DamageEvent.getTarget()
                     new DummyCaster()
                     ..owner(src.getOwner())
                     ..origin(src.getPos())
                     ..castTarget(ABILITY_48, 1, OrderIds.bloodlust, src)
-                    if not targ.hasAbility(BUFF_22)
+                    if not targ.hasAbility(KING_OF_LOAS_BUFF_22)
                         let shark = createUnit(src.getOwner(), DUMMY_UNIT_5, src.getPos(), src.getPos().angleTo(targ.getPos()))
                         new DummyCaster()
                         ..owner(targ.getOwner())

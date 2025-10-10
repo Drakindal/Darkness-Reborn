@@ -12,6 +12,7 @@ import DamageTarget
 public function bubbleBomb()
     let WATER_BUBBLE_ARTILLERY = compiletime(ArtilleryDetection.createArtilleryDummy(0, 120, 160, 1, "Units\\NAGA_WITCH\\Water_egg.mdx", 500, 0.3))
     let WATER_BUBBLE_SOUND = new SoundDefinition(Sounds.waterWaterFallLoop1, false, true)
+    
     EventListener.onPointCast(NAGA_WITCH_ABILITY_1) (unit caster, vec2 target) ->
         ArtilleryDetection.fireArtillery(caster, WATER_BUBBLE_ARTILLERY, caster.getPos(), target) (unit detectionUnit, unit caster, int data) ->
             let targetPos = detectionUnit.getPos3Zero()
@@ -19,7 +20,7 @@ public function bubbleBomb()
             let dmg = (0.3*lvl) * caster.getMaxMana() + 200 * lvl
             WATER_BUBBLE_SOUND.playOnPoint(targetPos)
             flashEffect("Effects\\Vashj\\WaterBlast.mdl", targetPos, 4)
-            let range = 400. + 40*(lvl-1)
+            let range = (400. + 40*(lvl-1))/2
             forUnitsInRange(targetPos.toVec2(), range, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     new DummyCaster()

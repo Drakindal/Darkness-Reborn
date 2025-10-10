@@ -1,4 +1,4 @@
-package WolfmanFinal_Howl
+package WolfmanFinal_W_Howl
 
 import ClosureEvents
 import MyAbilityIds
@@ -10,6 +10,6 @@ public function wolfhowl()
         new DummyCaster()
         ..origin(caster.getPos())
         ..owner(caster.getOwner())
-        ..castImmediate(WOLF_INITIATE_DUMMY_1, 
-        caster.getAbilityLevel(WOLF_INITIATE_ABILITY_2), 
+        ..castImmediate(WOLF_FINAL_ABILITY_2_DUMMY, 
+        1, 
         OrderIds.stomp)

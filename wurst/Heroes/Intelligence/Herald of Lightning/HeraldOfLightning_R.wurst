@@ -40,7 +40,7 @@ public function mindRipper()
         if (lvl > 0)
             switch DamageEvent.getType()
                 case ATTACK
-                    if (checkChance(lvl * 5 + addChance))
+                    if (checkChanceI(lvl * 5 + addChance))
                         heraldAutoAttack()
                 case CODE
                     let id = DamageEvent.getId()
@@ -50,7 +50,7 @@ public function mindRipper()
                             heraldUlt(src)
                         // Damage from Q and W.
                         case 'HEAB'
-                            if checkChance(lvl * 5 + addChance)
+                            if checkChanceI(lvl * 5 + addChance)
                                 heraldQ_W(src)
                         default
                 default

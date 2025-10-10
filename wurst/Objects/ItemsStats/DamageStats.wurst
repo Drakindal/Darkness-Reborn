@@ -9,6 +9,8 @@ import ObjectIds
 import ActiveAbilityDef
 import DamageTypes
 import DS_DataCompileTime
+import MyBuffIds
+import MyHeroAbilityDefinition
 
 // ----------------------------------------------------------------------------
 
@@ -64,10 +66,11 @@ public function addBash(real chance, real damage, real stunDuration, real cd) re
 
     new AbilityDefinitionMountainKingThunderBolt(abilityId)
     ..setDamage(1, damage)
+    ..setBuffs(1, BUFF_ITEM_BASH.toRawCode())
     ..setDurationHero(1, stunDuration)
     ..setDurationHero(1, stunDuration)
     // Structures cannot be bashed, but can be freezed.
-    ..setTargetsAllowed(1, commaList(TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.ground, TargetsAllowed.air, TargetsAllowed.organic))
+    ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..setArtCaster("")
     ..setArtSpecial("")
     //..setArtTarget("")

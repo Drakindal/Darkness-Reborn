@@ -3,12 +3,6 @@ package Lich_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import AbilityObjEditing
-import MyBuffIds
-import ObjectIds
-import Icons
-import BuffIds
-import BuffObjEditing
 import MyColors
 import ChannelAbilityPreset
 import Orders
@@ -33,7 +27,7 @@ import CommonDescriptions
     ..presetAreaofEffectDamage(lvl -> 0.0)
     ..presetDuration(lvl -> 15.0)
     ..register(HERO_LICH, "Frost Nova".setColor(colAbilitiesLich), 
-    "Blasts enemy units with a wave of chilling frost in 500 range slowing movement speed and attack rate. Slows enemies for 50% for 15 seconds.",
+    "Blasts enemy units with a wave of chilling frost in 1000 range slowing movement speed and attack rate. Slows enemies for 50% for 15 seconds.",
     (int lvl) -> "Deals {0} x Int damage.".format(
         (2*lvl).toString()
     ))

@@ -20,5 +20,5 @@ public function goldenArrow()
 
         doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
             caster.damageTargetCode(dps1, target, null, -1, customDamageType.Magical)
-            caster.damageTargetCode(dps2, target, null, -1, customDamageType.PhysicalMelee)
+            caster.damageTargetCode(dps2, target, null, -1, customDamageType.PhysicalRanged)
             flashEffect(Abilities.holyBoltSpecialArt, target.getPos())

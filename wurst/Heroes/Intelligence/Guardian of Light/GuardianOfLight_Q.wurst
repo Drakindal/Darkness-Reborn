@@ -11,15 +11,20 @@ public function lightRemoval()
     EventListener.onTargetCast(GUARDIAN_OF_LIGHT_ABILITY_1) (unit caster, unit target) ->
         let lvl = GetUnitAbilityLevel(caster, GUARDIAN_OF_LIGHT_ABILITY_1)
         let dmg = 800 * lvl + caster.getInt(true) * 3. * lvl
+
         if (target.isAllyOf(caster))
+            // Ally
             target..addHP(dmg)
             ..setMaxHP(target.getMaxHP().toInt() + guardianOfLight_abi1_Hp[lvl-1])
             ..setMaxMana(target.getMaxMana().toInt() + guardianOfLight_abi1_Hp[lvl-1])
+            
+            printTimedToPlayer("Guardian of Light blessing: +{0} to max HP and MP!".format(guardianOfLight_abi1_Hp[lvl-1].toString()), 5, target.getOwner())
 
             flashEffect(Abilities.resurrectcaster, caster.getPos())
-            flashEffect(Abilities.holyBoltSpecialArt, caster.getPos())
+            flashEffect(Abilities.holyBoltSpecialArt, target.getPos())
             
         else
+            // Enemy
             caster..setVertexColor(color(50, 50, 50))
             flashEffect("Abilities\\Spells\\Undead\\UnholyFrenzyAOE\\UnholyFrenzyAOETarget.mdl", caster.getPos())
             flashEffect(Abilities.animateDeadTarget, caster.getPos())

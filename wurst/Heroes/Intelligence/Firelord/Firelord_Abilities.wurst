@@ -14,10 +14,10 @@ import MyBuffIds
 
 @compiletime function defineAbilities()
     new BuffDefinition(FIRELORD_BUFF_BLAZE, BuffIds.unsummon)
-    ..setTooltipNormal(1, "Blaze")
-    ..setTooltipNormalExtended(1, "This unit is under the effect of Blaze, hot hot hot! Liar Liar pants on Fire!")
-    ..setArtTarget(1, ".mdl")
     ..setIconNormal(1, Icons.bTNInnerFire)
+    ..setArtTarget("")
+    ..register("Blaze".setColor(colAbilitiesFirelord),
+    "This unit is under the effect of Blaze, hot hot hot! Liar Liar pants on Fire!")
 
     new AbilityDefinitionCripple(FIRELORD_ABILITY_BLAZE_DUMMY)
     ..setLevels(1)
@@ -81,7 +81,7 @@ import MyBuffIds
     ..presetTargetTypes(Targettype.POINT)
     ..presetOption(Option.UNIQUECAST, true)
     ..presetArtDuration(lvl -> 1.0)
-    ..presetBaseOrderID(lvl -> OrderIds.shockwave.toRawCode())    
+    ..presetBaseOrderID(lvl -> OrderIds.shockwave.toRawCode())
     ..presetCastRange(lvl -> 900.0)
     ..setAnimationNames("attack")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSear.blp")
@@ -94,14 +94,15 @@ import MyBuffIds
     (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
         (400*lvl).toString(),
         (lvl).toString(),
-        (300 + 20*lvl).toString()
+        ((300 + 20*lvl)*2).toString()
     ))
     
 // ----------------------------------------------------------------------------
 
     new ChannelAbilityPreset(FIRELORD_ABILITY_2, 9, true)
     ..setGeneralAbility(AbilityPosition.W)
-    ..presetAreaofEffect(lvl -> 400.0 + 20*lvl)
+    ..presetAreaofEffect(lvl -> (400.0 + 20*lvl)*2)
+    ..presetCastRange(lvl -> 900.0)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..setManaCost(1, 100)
     ..setManaCost(2, 120)
@@ -118,7 +119,6 @@ import MyBuffIds
     ..presetOption(Option.UNIQUECAST, true)
     ..presetArtDuration(lvl -> 1.0)
     ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
-    ..presetCastRange(lvl -> 900.0)
     ..setAnimationNames("channel")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPOF.blp")
     ..setArtCaster("")
@@ -130,7 +130,7 @@ import MyBuffIds
     (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
         (300*lvl).toString(),
         (0.8*lvl).toString(),
-        (400 + 20*lvl).toString()
+        ((400 + 20*lvl)*2).toString()
     ))
     
 // ----------------------------------------------------------------------------

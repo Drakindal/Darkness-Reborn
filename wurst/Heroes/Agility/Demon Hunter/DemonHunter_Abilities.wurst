@@ -21,7 +21,7 @@ import CommonDescriptions
     ..presetDamageReductionperTarget(lvl -> 0.0)
     ..presetCastRange(lvl -> 650.0)
     ..register(HERO_DEMON_HUNTER, "Chain Flash".setColor(colAbilitiesDemonHunter), 
-    "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing {0} x Agility + {1} damage to all enemies within 500 range.",
+    "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing {0} x Agility + {1} damage to all enemies within 600 range.",
     (string format) -> format.format("2 x (Skill Level)", "300 x (Skill Level)"),
     (string format, int lvl) -> format.format((2*lvl).toString(), (300*lvl).toString()))
     

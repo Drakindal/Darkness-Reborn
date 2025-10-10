@@ -1,24 +1,18 @@
 package Firemage_W
 
-import ClosureEvents
 import MyUnitIds
 import ClosureTimers
 import MyAbilityIds
 import Firemage_Abilities
-
-function spawnPhoenix(unit caster, vec2 target)
-    let lvl = GetUnitAbilityLevel(caster, FIREMAGE_ABILITY_2)
-    let phoenix = createUnit(GetOwningPlayer(caster), DUMMY_UNIT_3, target)
-    ..addAbility(FIREMAGE_ABILITY_2_DUMMY)
-    ..setAbilityLevel(FIREMAGE_ABILITY_2_DUMMY, lvl)
-    ..setTimedLife(firemage_abi2_Duration[lvl-1])
-
-    doAfter(firemage_abi2_Duration[lvl-1]) -> 
-        phoenix.remove()
+import ActiveAbilityDef
 
 public function phoenix()
-    EventListener.onTargetCast(FIREMAGE_ABILITY_2) (unit caster, unit target) ->
-        spawnPhoenix(caster, target.getPos())
+    registerOnPointCast(FIREMAGE_ABILITY_2) (unit caster, vec2 target) ->
+        let lvl = GetUnitAbilityLevel(caster, FIREMAGE_ABILITY_2)
+        let phoenix = createUnit(GetOwningPlayer(caster), DUMMY_UNIT_3, target)
+        ..addAbility(FIREMAGE_ABILITY_2_DUMMY)
+        ..setAbilityLevel(FIREMAGE_ABILITY_2_DUMMY, lvl)
+        ..setTimedLife(firemage_abi2_Duration[lvl-1])
 
-    EventListener.onPointCast(FIREMAGE_ABILITY_2) (unit caster, vec2 target) ->
-        spawnPhoenix(caster, target)
+        doAfter(firemage_abi2_Duration[lvl-1]) -> 
+            phoenix.remove()

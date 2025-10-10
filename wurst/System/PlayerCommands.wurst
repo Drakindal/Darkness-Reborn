@@ -5,6 +5,8 @@ import Global_Variables
 import MyUnitIds
 import onStart
 import DebugVar
+import heroLoader
+import ClosureTimers
 camerafield cam
 
 init
@@ -28,18 +30,22 @@ function repickHero()
             skip
         else if EventData.getChatMessage().substring(0, 7).toLowerCase() == "-repick"
             let trigP = EventData.getTriggerPlayer()
-            let playHero = playerHero.get(trigP)
+            let hero  = playerHero.get(trigP)
 
             // After picking hero food limit is set to 0, increase it in order to repick
             // Naga, thief and js also take food limit in Debug mode.
             if DEBUG
                 trigP.setState(PLAYER_STATE_RESOURCE_FOOD_CAP, 200)
 
-            if(playHero.getTypeId() == HERO_PICKER)
+            if(hero.getTypeId() == HERO_PICKER)
                 skip
             else
+                hero
+                ..repickHero()
+                ..setPlayersResearch(true)
+                ..remove()
+                
                 createWisp(trigP)
-                playHero..setPlayersResearch(true).remove()
                 gg_cam_CameraHeroPick.apply(true, trigP, 0.3)
 
 function startVoteKick()

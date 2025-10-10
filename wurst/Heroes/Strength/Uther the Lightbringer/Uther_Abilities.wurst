@@ -34,7 +34,14 @@ import CommonDescriptions
     ..presetDetectionRadius(lvl -> 400.)
     ..presetIcon(Icons.bTNHammer)
     ..register(HERO_UTHER, "Judgement".setColor(colAbilitiesUther), 
-    "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 800 AoE receive damage and get stunned. If Uther has more than 6 Holy Power, he will consume it doubling the damage.",
+    "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 800 AoE receive damage and get stunned.\n" +
+    "Uther will consume gathered Holy Power to boost the ability:\n" +
+    " 1 Holy Power = x1.3 damage.\n" +
+    " 2 Holy Power = x1.4 damage.\n" +
+    " 3 Holy Power = x1.5 damage.\n" +
+    " 6 Holy Power = x2.3 damage.\n" +
+    "12 Holy Power = x3.4 damage.\n" +
+    "24 Holy Power = x4.5 damage.",
     (int lvl) -> "Deals {0} + {1} x Str damage.".format(
         (150*lvl).toString(),
         (2.4*lvl).toString()
@@ -51,10 +58,11 @@ import CommonDescriptions
     ..presetAreaofEffect(lvl -> 400.)
     ..presetIcon(Icons.bTNInnerFire)
     ..register(HERO_UTHER, "Holy Storm".setColor(colAbilitiesUther), 
-    "The holy light shrouds around Uther dealing damage to nearby enemies in 300 range each second. Uther can consume gathered Holy Power to boost the ability:\n" +
+    "The holy light shrouds around Uther dealing damage to nearby enemies in 300 range each second.\n" +
+    "Uther will consume gathered Holy Power to boost the ability:\n" +
     "10 Holy Power = x2.0 damage, x2.0 duration.\n" +
-    "20 Holy Power = x3.0 damage, x2.5 duration.\n" +
-    "30 Holy Power = x4.0 damage, x3.0 duration.",
+    "20 Holy Power = x2.5 damage, x2.5 duration.\n" +
+    "30 Holy Power = x3.5 damage, x3.0 duration.",
     (int lvl) -> "Deals {0} x Str magical damage per second. Duration {1} seconds. Cd {2} seconds.".format(
         (0.8*lvl).toString(1),
         (2 + 1.5 * lvl).toString(1),
@@ -77,29 +85,34 @@ import CommonDescriptions
 
 // ----------------------------------------------------------------------------
 
-let uther_abi4_descr = "Uther has a {0}% chance on hit to deal {1} + {2} x Str damage and heal himself for {3} + {4} x Str. He also gets {5} Holy Power. Uther can store maximum 150 Holy Power simultaneously.\n" +
-"Uther can use this buff on up to 3 allies to make their skill casts gives him {6} Holy Power. Duration {7} seconds.\n" +
+let uther_abi4_descr = "Uther has a {0}% chance on hit to deal {1} + {2} x Str damage and heal himself for {3} + {4} x Str. He also gets {6} Holy Power. Uther can store maximum 150 Holy Power simultaneously.\n" +
+"Uther can use this buff on up to 3 allies. Every time a Blessed ally casts a spell they get healed by {5} x Uther's Str and Uther receives {7} Holy Power. Duration {8} seconds.\n" +
 wordNote + "Ability has an entire map cast range.\n" +
-"Uther gathered {8} / 150 Holy Power."
+"Uther gathered {9} / 150 Holy Power."
 
 public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
     return uther_abi4_descr.format(
-        (5*lvl).toString(),
+        (5*lvl).toString(),                 // 0
 
-        (75*lvl).toString(),
-        (0.5*lvl).toString(1),
+        (75*lvl).toString(),                // 1
+        (0.5*lvl).toString(1),              // 2
 
-        (50*lvl).toString(),
-        (1.2*lvl).toString(1),
+        (50*lvl).toString(),                // 3
+        (1.2*lvl).toString(1),              // 4
+        (0.2*lvl).toString(1),              // 5
 
-        (0.25*lvl).ceil().toString(),
-        (0.20*lvl).ceil().toString(),
-        (14 + 2 * (lvl-1)).toString(),
+        (0.25*lvl).ceil().toString(),       // 6
+        (0.20*lvl).ceil().toString(),       // 7
+        (14 + 2 * (lvl-1)).toString(),      // 8
 
-        holyPower.toString()
+        holyPower.toString()                // 9
     )
 
 @compiletime function utherAbils4()
+    new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
+    ..register("Uther's Blessing".setColor(colAbilitiesUther),
+    "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
+    
     new AbilityDefinitionPaladinHolyLight(UTHER_ABILITY_4)
     ..setGeneralAbility(AbilityPosition.R)
     ..presetAmountHealedDamaged(lvl -> 0)
@@ -141,14 +154,8 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
     ..register(HERO_UTHER, "Light's Wrath".setColor(colAbilitiesUther), 
     "Sends the wrath of the Light onto an enemy, expending all Holy Power to sear their flesh.  Restores half of the damage amount HP to all allies in 1200 AoE and heals Uther even if he is outside the range.",
     (int lvl) -> "Deals {0} x Holy Power x Str magical damage. Also, restores {1}% of Uther max HP.".format(
-        (0.25*lvl).toString(1),
+        (0.25*lvl).toString(2),
         (20 + 10*(lvl-1)).toString()
     ))
 
 // ----------------------------------------------------------------------------
-
-@compiletime function utherBuffs()
-    new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
-    ..setName("Blessed")
-    ..setTooltipNormal("Uther's Blessing")
-    ..setTooltipNormalExtended("This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")

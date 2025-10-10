@@ -35,15 +35,6 @@ public constant int array[9] guardianOfLight_abi1_Hp = [
 ]
 
 @compiletime function defineAbilities()
-
-    new ChannelAbilityPreset(ARCHMAGE_ABILITY_5, 4, true)
-    ..presetManaCost(lvl -> 200 + lvl * 100)
-    ..presetDurationHero(lvl -> 140.0 - 20.0 * lvl)
-    ..setRequirements("")
-    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNL2.blp")
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-
     new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_1, 9, true)
     ..presetBuffs(lvl -> "")
     ..presetCastRange(lvl -> 1600.0)
@@ -239,5 +230,48 @@ constant int array[4] abi5_Mana = [
     ..register(HERO_GUARDIAN_OF_LIGHT, "Gods Blessing".setColor(colAbilitiesGuardianOfLight), 
     "The Guardian of Light calls for the blessing of the god Aelion to fully restore the health of all allied units and increase their max HP.",
     (int lvl) -> "Fully restores heal of all allied units and increases their max HP by {0}".format((500*lvl).toString()))
+
+// ----------------------------------------------------------------------------
+
+constant int array[20] abi6_Stats = [
+    10,
+    20,
+    30,
+    45,
+    50,
+    65,
+    90,
+    110,
+    140,
+    170,
+    200,
+    230,
+    260,
+    290,
+    340,
+    400,
+    450,
+    500,
+    550,
+    600
+]
+
+@compiletime function defineAbilities6()
+    new AbilityDefinitionAttributeModifierSkill(GUARDIAN_OF_LIGHT_ABILITY_6)
+    ..setGeneralAbility(AbilityPosition.F)
+    ..setLevels(20)
+    ..setLevelSkipRequirement(0)
+    ..presetHideButton(lvl -> true)
+    ..presetStrengthBonus(lvl -> abi6_Stats[lvl-1])
+    ..presetAgilityBonus(lvl -> (0.5*abi6_Stats[lvl-1]).ceil())
+    ..presetIntelligenceBonus(lvl -> (1.5*abi6_Stats[lvl-1]).ceil())
+    ..setArtTarget("")
+    ..register(HERO_GUARDIAN_OF_LIGHT, "Light Empower".setColor(colAbilitiesGuardianOfLight), 
+    "The Guardian of Light passively gets stats.",
+    (int lvl) -> "+{0} Str, +{1} Agi, +{2} Int.".format(
+        abi6_Stats[lvl-1].toString(),
+        (0.5*abi6_Stats[lvl-1]).ceil().toString(),
+        (1.5*abi6_Stats[lvl-1]).ceil().toString()
+    ))
     
 // ----------------------------------------------------------------------------

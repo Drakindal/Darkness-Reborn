@@ -1,0 +1,78 @@
+package WolfmanInitial_Abilities
+
+import MyAbilityIds
+import MyHeroAbilityDefinition
+import MyUnitIds
+import AbilityObjEditing
+import MyBuffIds
+import ObjectIds
+import Icons
+import MyColors
+import UnitIds
+
+// ----------------------------------------------------------------------------
+
+@compiletime function wolfmanAbils()
+    new AbilityDefinitionCripple(MAN_ABILITY_1)
+    ..setGeneralAbility(AbilityPosition.Q)
+    ..presetCooldown(lvl -> 5)
+    ..presetManaCost(lvl -> 0)
+    ..presetCastRange(lvl -> 180)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+    ..presetDuration(lvl -> 0.01)
+    ..presetBuffs(lvl -> commaList(""))
+    ..setRequirements("")
+    ..setIcon(Icons.bTNSeaGiantPulverize)
+    ..register(HERO_WOLFMAN_INITIAL, "Punch".setColor(colAbilitiesWolfman), 
+    "Punch the enemy dealing damage. Cd 5 seconds. Mana cost 0. Cannot damage structures and mechanical units.",
+    (int lvl) -> "Deals {0} x Str damage.".format(
+        (2*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new AbilityDefinitionTaurenChieftainWarStomp(MAN_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetDurationHero(lvl -> 2)
+    ..presetDurationNormal(lvl -> 2)
+    ..presetBuffs(lvl -> commaList(MAN_BUFF))
+    ..presetCooldown(lvl -> 12.-lvl)
+    ..presetManaCost(lvl -> 0)
+    ..presetDamage(lvl -> 0)
+    ..register(HERO_WOLFMAN_INITIAL, "Scream".setColor(colAbilitiesWolfman), 
+    "Screams so hard that the nearby enemies are stunned for 2 seconds",
+    (int lvl) -> "Cd {0} seconds.".format(
+        (12-lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new UnitDefinition(WOLFMAN_INITIAL_SUMMON, UnitIds.direwolf)
+    ..setNormalAbilities("")
+    ..setAttack1CooldownTime(1)
+    ..setName("\"Dog\"")
+    
+    new AbilityDefinitionFarseerSpiritWolf(MAN_ABILITY_3)
+    ..setGeneralAbility(AbilityPosition.E)
+    ..presetSummonedUnit(lvl -> commaList(WOLFMAN_INITIAL_SUMMON))
+    ..presetNumberofSummonedUnits(lvl -> 1)
+    ..setIcon(Icons.bTNDireWolf)
+    ..presetDuration(lvl -> 0)
+    ..presetCooldown(lvl -> 35)
+    ..register(HERO_WOLFMAN_INITIAL, "Man's Best Friend".setColor(colAbilitiesWolfman), 
+    "Summons \"Dog\".\n" +
+    "Health: 0.1 x max HP + {0}.\n" + 
+    //"Armor: 0.2 * armor + 2 * lvl\n" + 
+    "Damage: 0.1 x Str + {1}.\n" + 
+    "Duration: Infinite.\n" +
+    "Cooldown: 35s.",
+    (string format) -> format.format(
+        "125 x Lvl",
+        "20 x Lvl"
+    ),
+    (string format, int lvl) -> format.format(
+        (125*lvl).toString(),
+        (20*lvl).toString()
+    ))
+
+// ----------------------------------------------------------------------------

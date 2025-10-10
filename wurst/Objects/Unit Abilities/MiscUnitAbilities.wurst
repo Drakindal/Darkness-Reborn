@@ -2,17 +2,29 @@ package MiscUnitAbilities
 
 import AbilityObjEditing
 import MyAbilityIds
+import MyHeroAbilityDefinition
+import Icons
+import MyColors
 
 @compiletime function defineAbilities()
 	new AbilityDefinitionItemTownPortal(ABILITY_HERO_TP)
+	..setLevels(1)
+	..setPosition(AbilityPosition.Z)
+	..setItemAbility(false)
 	..presetAreaofEffect(lvl -> 0)
 	..presetCastingTime(lvl -> 2)
 	..presetMaximumNumberofUnits(lvl -> 0)
 	..presetCooldown(lvl -> 10)
-	..setItemAbility(false)
-	..setIconNormal("ReplaceableTextures\\CommandButtons\\BTNGreaterRejuvScroll.blp")
-	..setButtonPositionNormalX(1)
-	..setButtonPositionNormalY(1)
-	..setHotkeyNormal("Z")
-	..presetTooltipNormal(lvl -> "Teleport [Z]")
-	..presetTooltipNormalExtended(lvl -> "Teleports the caster to targeted friendly building. The caster is invulnerable while channelling.|n Cooldown: 10 sec")
+	..setIcon("ReplaceableTextures\\CommandButtons\\BTNGreaterRejuvScroll.blp")
+	..register(-1, "Teleport".setColor(colTeleport),
+	"Teleports the caster to targeted friendly building. The caster is invulnerable while channelling. Cooldown: 10 sec")
+	
+	new AbilityDefinitionWardenBlink(ABILITY_HERO_BLINK_MAP)
+	..setLevels(1)
+	..setPosition(AbilityPosition.Z)
+	..setCastingTime(1, 0.5)
+	..setCooldown(1, 6.0)
+	..setMaximumRange(1, 32000)
+	..setIcon(Icons.bTNBlink)
+	..presetTooltipNormal(lvl -> "Blink".setColor(colTeleport))
+	..presetTooltipNormalExtended(lvl -> "Entire map blink. Use it wisely to support your allies. Cooldown: 6 sec")

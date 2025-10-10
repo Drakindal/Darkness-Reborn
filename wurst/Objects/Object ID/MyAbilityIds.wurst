@@ -2,67 +2,27 @@ package MyAbilityIds
 
 import ObjectIdGenerator
 
+// ----------------------------------------------------------------------------
+
 public constant HORSE_INVENTORY_1 = compiletime(ABIL_ID_GEN.next())
 public constant HORSE_INVENTORY_2 = compiletime(ABIL_ID_GEN.next())
 
 public constant FOUNTAIN_HEALING = compiletime(ABIL_ID_GEN.next())
 public constant FOUNTAIN_MANAREGEN = compiletime(ABIL_ID_GEN.next())
+public constant SHOP_SHARE = compiletime(ABIL_ID_GEN.next())
+public constant SHOP_CRYSTAL = compiletime(ABIL_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
 
 public constant ABILITY_HERO_TP = compiletime(ABIL_ID_GEN.next())
+public constant ABILITY_HERO_BLINK_MAP = compiletime(ABIL_ID_GEN.next())
 
-public constant ABILITY_DUMMY_0 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_2 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_3 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_4 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_5 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_6 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_7 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_8 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_9 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_10 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_11 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_12 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_13 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_14 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_15 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_16 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_17 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_18 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_19 = compiletime(ABIL_ID_GEN.next())
-public constant NAGA_WITCH_ABILITY_Q_DUMMY = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_DUMMY_21 = compiletime(ABIL_ID_GEN.next())
+// ----------------------------------------------------------------------------
 
-public constant STEELSHIELD_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
-public constant STEELSHIELD_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
-public constant STEELSHIELD_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
-public constant STEELSHIELD_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
+public constant ABILITY_DUMMY_STUN_5_SEC = compiletime(ABIL_ID_GEN.next())
 
-public constant SATYR_ABILITY_Q_ARMOR_REDUCTION = compiletime(ABIL_ID_GEN.next())
+// ----------------------------------------------------------------------------
 
-public constant ABILITY_10 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_11 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_12 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_13 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_15 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_16 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_17 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_18 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_19 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_20 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_21 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_22 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_23 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_24 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_25 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_26 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_27 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_28 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_29 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_30 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_31 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_32 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_33 = compiletime(ABIL_ID_GEN.next())
-public constant ABILITY_34 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_35 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_36 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_37 = compiletime(ABIL_ID_GEN.next())
@@ -84,6 +44,8 @@ public constant ABILITY_52 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_53 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_54 = compiletime(ABIL_ID_GEN.next())
 public constant ABILITY_55 = compiletime(ABIL_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
 
 public constant ASSASSIN_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant ASSASSIN_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
@@ -160,24 +122,33 @@ public constant WARDEN_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant WARDEN_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 public constant WARDEN_ABILITY_5_DUMMY = compiletime(ABIL_ID_GEN.next())
 
+// ----------------------------------------------------------------------------
+
 public constant ARCHMAGE_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant ARCHMAGE_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant ARCHMAGE_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant ARCHMAGE_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant ARCHMAGE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
+public constant ARCHMAGE_ABILITY_3_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant ARCHMAGE_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant ARCHMAGE_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant FIRELORD_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant FIRELORD_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant FIRELORD_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant FIRELORD_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant FIRELORD_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant FIRELORD_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 public constant FIRELORD_ABILITY_BLAZE = compiletime(ABIL_ID_GEN.next())
+public constant FIRELORD_ABILITY_BLAZE_DUMMY = compiletime(ABIL_ID_GEN.next())
 
 public constant FIREMAGE_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant FIREMAGE_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant FIREMAGE_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant FIREMAGE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant FIREMAGE_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant FIREMAGE_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+public constant FIREMAGE_ABILITY_5_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant FIREMAGE_ABILITY_PASSIVE = compiletime(ABIL_ID_GEN.next())
 
 public constant GUARDIAN_OF_LIGHT_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
@@ -185,6 +156,7 @@ public constant GUARDIAN_OF_LIGHT_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant GUARDIAN_OF_LIGHT_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant GUARDIAN_OF_LIGHT_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant GUARDIAN_OF_LIGHT_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+public constant GUARDIAN_OF_LIGHT_ABILITY_6 = compiletime(ABIL_ID_GEN.next())
 
 public constant HERALD_ABILITY_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant HERALD_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
@@ -194,6 +166,7 @@ public constant HERALD_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant HERALD_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant KEEPER_OF_THE_GROVE_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant KEEPER_OF_THE_GROVE_ABILITY_1_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant KEEPER_OF_THE_GROVE_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant KEEPER_OF_THE_GROVE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant KEEPER_OF_THE_GROVE_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
@@ -212,6 +185,7 @@ public constant LICH_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant LICH_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant NAGA_WITCH_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant NAGA_WITCH_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant NAGA_WITCH_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant NAGA_WITCH_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant NAGA_WITCH_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
@@ -221,19 +195,26 @@ public constant SHADOW_HUNTER_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant SHADOW_HUNTER_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant SHADOW_HUNTER_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant SHADOW_HUNTER_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
+public constant SHADOW_HUNTER_ABILITY_4_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant SHADOW_HUNTER_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+public constant SHADOW_HUNTER_ABILITY_5_DUMMY = compiletime(ABIL_ID_GEN.next())
 
 public constant TIME_WIZARD_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant TIME_WIZARD_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant TIME_WIZARD_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant TIME_WIZARD_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
+public constant TIME_WIZARD_ABILITY_4_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant TIME_WIZARD_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant TINKER_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant TINKER_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
+public constant TINKER_ABILITY_4_AURA = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
 
 public constant ARTHAS_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant ARTHAS_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
@@ -257,9 +238,11 @@ public constant JACKSMITH_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant JACKSMITH_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant JACKSMITH_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant JACKSMITH_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
+public constant JACKSMITH_ABILITY_4_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant JACKSMITH_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant MOUNTAIN_KING_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant MOUNTAIN_KING_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant MOUNTAIN_KING_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant MOUNTAIN_KING_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant MOUNTAIN_KING_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
@@ -272,7 +255,9 @@ public constant PANDAREN_MONK_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant PANDAREN_MONK_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant PITLORD_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant PITLORD_ABILITY_1_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant PITLORD_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant PITLORD_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant PITLORD_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant PITLORD_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant PITLORD_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
@@ -285,13 +270,13 @@ public constant SYLVANAS_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant TAUREN_CHIEFTAIN_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant TAUREN_CHIEFTAIN_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant TAUREN_CHIEFTAIN_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant TAUREN_CHIEFTAIN_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant TAUREN_CHIEFTAIN_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant TAUREN_CHIEFTAIN_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
-public constant UTHER_DUMMY_1 = compiletime(ABIL_ID_GEN.next())
-
 public constant UTHER_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant UTHER_DUMMY_1 = compiletime(ABIL_ID_GEN.next())
 public constant UTHER_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant UTHER_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant UTHER_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
@@ -303,32 +288,32 @@ public constant VIVPIRE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant VIVPIRE_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant VIVPIRE_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
-public constant VIVPIRE_DUMMY_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
-public constant VIVPIRE_DUMMY_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
-public constant VIVPIRE_DUMMY_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
+public constant VIVPIRE_ABILITY_1_DUMMY_1 = compiletime(ABIL_ID_GEN.next())
+public constant VIVPIRE_ABILITY_1_DUMMY_2 = compiletime(ABIL_ID_GEN.next())
+public constant VIVPIRE_DUMMY_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 
 public constant MAN_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant MAN_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant MAN_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 
-public constant WOLF_INITIATE_DUMMY_1 = compiletime(ABIL_ID_GEN.next())
-public constant WOLF_INITIATE_DUMMY_2 = compiletime(ABIL_ID_GEN.next())
-
 public constant WOLF_INITIATE_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
+public constant WOLF_INITIATE_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_INITIATE_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_INITIATE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_INITIATE_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 
 public constant WOLF_FINAL_DUMMY_1 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_FINAL_DUMMY_2 = compiletime(ABIL_ID_GEN.next())
-
-public constant MAN_WOLF_FINAL_ABIL = compiletime(ABIL_ID_GEN.next())
+public constant WOLFMAN_FINAL_SUMMON_ABILITY = compiletime(ABIL_ID_GEN.next())
 
 public constant WOLF_FINAL_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_FINAL_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant WOLF_FINAL_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_FINAL_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_FINAL_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant WOLF_FINAL_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
 
 public constant TINKER_OBELISK_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_OBELISK_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
@@ -354,8 +339,7 @@ public constant TINKER_UNIT_MARINE_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_UNIT_SIEGE_ENGINE_ABILITY1 = compiletime(ABIL_ID_GEN.next())
 public constant TINKER_UNIT_SIEGE_ENGINE_ABILITY2 = compiletime(ABIL_ID_GEN.next())
 
-public constant SHOP_SHARE = compiletime(ABIL_ID_GEN.next())
-public constant SHOP_CRYSTAL = compiletime(ABIL_ID_GEN.next())
+// ----------------------------------------------------------------------------
 
 public constant CREEP_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant CREEP_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
@@ -467,6 +451,8 @@ public constant CREEP_ABILITY_108 = compiletime(ABIL_ID_GEN.next())
 public constant CREEP_ABILITY_109 = compiletime(ABIL_ID_GEN.next())
 public constant CREEP_ABILITY_110 = compiletime(ABIL_ID_GEN.next())
 
+// ----------------------------------------------------------------------------
+
 public constant REDUCE_ARMOR_80_BOSS = compiletime(ABIL_ID_GEN.next())
 public constant REDUCE_ARMOR_15 = compiletime(ABIL_ID_GEN.next())
 public constant REDUCE_ARMOR_5 = compiletime(ABIL_ID_GEN.next())
@@ -477,4 +463,4 @@ public constant REDUCE_ARMOR_75 = compiletime(ABIL_ID_GEN.next())
 
 public constant WAVE_MOB_9_ABI1 = compiletime(ABIL_ID_GEN.next())
 
-init
+// ----------------------------------------------------------------------------

@@ -14,11 +14,11 @@ import CommonDescriptions
 // ----------------------------------------------------------------------------
 
 @compiletime function vivpireAbils()
-    new BuffDefinition(VIVPIRE_BUFF_1a, BuffIds.animateDead)
+    new BuffDefinition(VIVPIRE_BUFF_1A, BuffIds.animateDead)
     ..register("This unit has been afflicted by Blood Hunter.".setColor(colAbilitiesVivpire),
     "This unit recieves additional damage by Vivpire.")
 
-    new BuffDefinition(VIVPIRE_BUFF_1b, BuffIds.curse)
+    new BuffDefinition(VIVPIRE_BUFF_1B, BuffIds.curse)
     ..register("Vampiric Bite".setColor(colAbilitiesVivpire),
     "This unit has been bitten by Vivpire.")
     
@@ -30,7 +30,7 @@ import CommonDescriptions
     ..setDurationHero(1, 10)
     ..setDurationNormal(1, 10)
     ..setManaCost(1, 0)
-    ..setBuffs(1, commaList(VIVPIRE_BUFF_1b))
+    ..setBuffs(1, commaList(VIVPIRE_BUFF_1B))
     ..setCastRange(1, 99999)
 
     new AbilityDefinitionCursecreep(VIVPIRE_ABILITY_1_DUMMY_2)
@@ -160,7 +160,7 @@ public constant int array[9] vivpire_abi4_Str = [
     ..presetSummonedUnitDamage(lvl -> 0)
     ..presetCastRange(lvl -> 280)
     ..presetCooldown(lvl -> 45.5 - lvl * 2.5)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructures))
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
     ..setArtSpecial("")
     ..presetUnitPauseDuration(lvl -> 0)

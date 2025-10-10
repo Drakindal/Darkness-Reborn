@@ -28,7 +28,7 @@ import MyHeroDefinition
     ..setAttack1ProjectileArt("Abilities\\Weapons\\MoonPriestessMissile\\MoonPriestessMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType()
     
     ..setHitPointsRegenerationType("night")
     ..setHitPointsRegenerationRate(0.50)
@@ -64,7 +64,7 @@ import MyHeroDefinition
     ..setAttack1ProjectileArt("Abilities\\Weapons\\MoonPriestessMissile\\MoonPriestessMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType()
 
     ..setHitPointsRegenerationType("night")
     ..setHitPointsRegenerationRate(0.50)

@@ -19,6 +19,7 @@ let holyAllies = new HashMap<int, int>
 
 // ----------------------------------------------------------------------------
 
+// Uther ability handler.
 public function redemptionHoly()
     DamageEvent.addListener(2) ->
         let src = DamageEvent.getSource()
@@ -56,8 +57,10 @@ public function setHolyPower(int setHoly)
     updateHolyPower()
 
 function updateHolyPower()
-    for int lvl = 1 to 9
+    var lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
+    while lvl <= 9
         setAbilityExtendedTooltip(UTHER_ABILITY_4, uther_abi4_formatDescr(lvl, holyPower), lvl-1)
+        lvl += 1
 
 // ----------------------------------------------------------------------------
 
@@ -66,10 +69,12 @@ function printNumberOfBlessed()
         holyAllies.size().toString()
     ), 5, utherHero.getOwner())
 
-function redemptionAddAlly(unit target)
-    let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
+// ----------------------------------------------------------------------------
 
-    if (not target.hasAbility(UTHER_ABILITY_4))
+function redemptionAddAlly(unit target)
+    let lvl = utherHero.getAbilityLevel(UTHER_BUFF_4)
+
+    if (not target.hasAbility(UTHER_BUFF_4))
         holyAllies.put(target.getTypeId(), lvl)
         printNumberOfBlessed()
         doAfter(14.0 + 2 * (lvl-1)) ->
@@ -82,6 +87,8 @@ function redemptionRemoveAlly(unit target)
         holyAllies.remove(target.getTypeId())
         printNumberOfBlessed()
 
+// ----------------------------------------------------------------------------
+
 public function redemptionAlly()
     EventListener.onTargetCast(UTHER_ABILITY_4) (unit caster, unit target) ->
         if holyAllies.size() >= 3
@@ -93,9 +100,16 @@ public function redemptionAlly()
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) ->
         redemptionRemoveAlly(GetDyingUnit())
 
+    // Ally handler.
     EventListener.add(EVENT_PLAYER_UNIT_SPELL_CAST) -> 
-        let uid = GetTriggerUnit().getTypeId()
+        let u = GetTriggerUnit()
+        let uid = u.getTypeId()
         if holyAllies.has(uid)
             addHolyPower((holyAllies.get(uid)*0.2).ceil())
             
+            let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
+            let heal = lvl * 0.1 * utherHero.getStr(true)
+            flashEffect(Abilities.holyBoltSpecialArt, u.getPos())
+            u.addHP(heal)
+
 // ----------------------------------------------------------------------------

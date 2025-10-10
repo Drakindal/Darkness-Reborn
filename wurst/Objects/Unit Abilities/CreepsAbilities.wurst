@@ -265,7 +265,7 @@ import MyUnitIds
     ..setDurationNormal(1, 10)
     ..setCooldown(1, 12)
     ..setCastRange(1, 800)
-    ..setBuffs(1, commaList(BUFF_23))
+    ..setBuffs(1, commaList(CREEP_BUFF_23))
 
     new AbilityDefinitionBashcreep(CREEP_ABILITY_37) //A07U
     ..setLevels(1)
@@ -733,7 +733,7 @@ import MyUnitIds
     ..setDurationNormal(1, 1)
     ..setChancetoBash(1, 10)
     ..setDamageMultiplier(1, 2)
-    ..setBuffs(1, commaList(BUFF_26))
+    ..setBuffs(1, commaList(CREEP_BUFF_26))
 
     new AbilityDefinitionCarrionSwarmcreep(CREEP_ABILITY_103) //A0CT #DummyAbility
     ..setDamage(1, 0)

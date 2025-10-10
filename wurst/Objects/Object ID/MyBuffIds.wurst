@@ -2,32 +2,14 @@ package MyBuffIds
 
 import ObjectIdGenerator
 
-public constant BUFF_1 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_2 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_3 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_4 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_5 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_6 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_7 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_8 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_9 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_10 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_11 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_12 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_13 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_14 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_15 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_16 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_17 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_18 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_19 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_20 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_21 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_22 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_23 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_24 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_25 = compiletime(BUFF_ID_GEN.next())
-public constant BUFF_26 = compiletime(BUFF_ID_GEN.next())
+// ----------------------------------------------------------------------------
+
+public constant BUFF_ITEM_BASH = compiletime(BUFF_ID_GEN.next())
+
+public constant CREEP_BUFF_23 = compiletime(BUFF_ID_GEN.next())
+public constant CREEP_BUFF_26 = compiletime(BUFF_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
 
 public constant SATYR_BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant SATYR_BUFF_2 = compiletime(BUFF_ID_GEN.next())
@@ -45,18 +27,72 @@ public constant THIEF_BUFF_4 = compiletime(BUFF_ID_GEN.next())
 
 public constant WARDEN_BUFF_5 = compiletime(BUFF_ID_GEN.next())
 
-public constant VIVPIRE_BUFF_1 = compiletime(BUFF_ID_GEN.next())
-public constant VIVPIRE_BUFF_2 = compiletime(BUFF_ID_GEN.next())
-public constant VIVPIRE_BUFF_3 = compiletime(BUFF_ID_GEN.next())
-public constant VIVPIRE_BUFF_4 = compiletime(BUFF_ID_GEN.next())
-public constant VIVPIRE_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+// ----------------------------------------------------------------------------
 
-public constant MAN_BUFF = compiletime(BUFF_ID_GEN.next())
+public constant ARCHMAGE_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+public constant ARCHMAGE_BUFF_2 = compiletime(BUFF_ID_GEN.next())
+public constant ARCHMAGE_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+
+public constant FIRELORD_BUFF_BLAZE = compiletime(BUFF_ID_GEN.next())
+
+public constant FIREMAGE_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+
+public constant HERALD_BUFF_E = compiletime(BUFF_ID_GEN.next())
+public constant HERALD_BUFF_W = compiletime(BUFF_ID_GEN.next())
+
+public constant KEEPER_OF_THE_GROVE_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+
+public constant KING_OF_LOAS_BUFF_14 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_15 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_16 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_17 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_18 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_20 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_21 = compiletime(BUFF_ID_GEN.next())
+public constant KING_OF_LOAS_BUFF_22 = compiletime(BUFF_ID_GEN.next())
+
+public constant NAGA_WITCH_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+
+public constant SHADOW_HUNTER_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_HUNTER_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_HUNTER_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+public constant SHADOW_HUNTER_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+
+public constant TINKER_BUFF_AURA = compiletime(BUFF_ID_GEN.next())
+
+// ----------------------------------------------------------------------------
+
+public constant ARTHAS_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+
+public constant BEAST_MASTER_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+
+public constant DEATH_KNIGHT_BUFF_3 = compiletime(BUFF_ID_GEN.next())
+public constant DEATH_KNIGHT_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+public constant DEATH_KNIGHT_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+
+public constant JACKSMITH_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+
+public constant MOUNTAIN_KING_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+
+public constant PIT_LORD_BUFF_1 = compiletime(BUFF_ID_GEN.next())
+
+public constant SYLVANAS_BUFF_2 = compiletime(BUFF_ID_GEN.next())
+public constant SYLVANAS_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+public constant SYLVANAS_BUFF_5 = compiletime(BUFF_ID_GEN.next())
+
+public constant TAUREN_BUFF_2 = compiletime(BUFF_ID_GEN.next())
+
+public constant UTHER_BUFF_4 = compiletime(BUFF_ID_GEN.next())
+
+public constant VIVPIRE_BUFF_1A = compiletime(BUFF_ID_GEN.next())
+public constant VIVPIRE_BUFF_4  = compiletime(BUFF_ID_GEN.next())
+public constant VIVPIRE_BUFF_1B = compiletime(BUFF_ID_GEN.next())
+public constant VIVPIRE_BUFF_3  = compiletime(BUFF_ID_GEN.next())
+public constant VIVPIRE_BUFF_5  = compiletime(BUFF_ID_GEN.next())
+
+public constant MAN_BUFF    = compiletime(BUFF_ID_GEN.next())
 public constant WOLF_BUFF_1 = compiletime(BUFF_ID_GEN.next())
 public constant WOLF_BUFF_2 = compiletime(BUFF_ID_GEN.next())
 public constant WOLF_BUFF_3 = compiletime(BUFF_ID_GEN.next())
 
-public constant UTHER_BUFF_1 = compiletime(BUFF_ID_GEN.next())
-
-public constant HERALD_BUFF_E = compiletime(BUFF_ID_GEN.next())
-public constant HERALD_BUFF_W = compiletime(BUFF_ID_GEN.next())
+// ----------------------------------------------------------------------------

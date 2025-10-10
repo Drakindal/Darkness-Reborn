@@ -45,7 +45,7 @@ function ascension()
                         ..setInt(loas_int)
                         ..setHP(loas_hp)
                         ..setMana(loas_mp)
-                        ..heroCheck()
+                        ..registerHero()
                         playerHero..put(u.getOwner(),u1)
                         for i = 0 to 5
                             u1.addItemToSlot(GetItemTypeId(loasItems[i]), i)

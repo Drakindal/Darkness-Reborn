@@ -7,6 +7,8 @@ import Orders
 import ChannelAbilityPreset
 import MyColors
 import BuffIds
+import MyBuffIds
+import BuffObjEditing
 
 // ----------------------------------------------------------------------------
 
@@ -47,6 +49,32 @@ import BuffIds
 
 // ----------------------------------------------------------------------------
     
+    new BuffDefinition(TAUREN_BUFF_2, BuffIds.controlMagic)
+    ..setArtTarget(1, "")
+    ..setArtSpecial(1, "")
+    ..setIconNormal(1, Icons.bTNControlMagic)
+    ..register("Hit by Blessed Hammer".setColor(colAbilitiesTaurenChieftain),
+    "Hit by Tauren's Blessed Hammer")
+
+    new AbilityDefinitionCripple(TAUREN_CHIEFTAIN_ABILITY_2_DUMMY)
+    ..setLevels(1)
+    ..setDuration(1, 2)
+    ..setManaCost(1, 0)
+    ..setAttackSpeedReduction(1, 0)
+    ..setMovementSpeedReduction(1, 0)
+    ..setDamageReduction(1, 0)
+    ..setCastRange(1, 9999)
+    ..setCastingTime(1, 0)
+    ..setCooldown(1, 0)
+    ..setRequiredLevel(0)
+    ..setRequirements("")
+    ..setArtTarget("")
+    ..setArtSpecial("")
+    ..setArtEffect("")
+    ..setArtCaster("")
+    ..setMissileArt("")
+    ..setBuffs(1, TAUREN_BUFF_2.toRawCode())
+
     new AbilityDefinitionDreadlordCarrionSwarm(TAUREN_CHIEFTAIN_ABILITY_2)
     ..setGeneralAbility(AbilityPosition.W)
     ..presetAreaofEffect(lvl -> 1.0)
@@ -95,9 +123,9 @@ public constant int array[9] tauren_abi3_Chance = [
     ..setGeneralAbility(AbilityPosition.E)
     ..setIcon("ReplaceableTextures\\CommandButtons\\PASAxeslam2.blp")
     ..presetChancetoStomp(lvl -> 0.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructures))
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..register(HERO_TAUREN_CHIEFTAIN, "Pulverize Strength".setColor(colAbilitiesTaurenChieftain), 
-    "Tauren the Chieftain's hits are so strong that he has a chance to pulverize bones of a target and push them far away. Also deals half of the damage to nearby enemies. Has a 60% chance to permanently get 3 Str on Pulverize.",
+    "Tauren the Chieftain's hits are so strong that he has a chance to pulverize bones of a target and push them far away. Also deals half of the damage to nearby enemies. Permanently gets 3 Str on Pulverize.",
     (int lvl) -> "{0}% chance to pulverize for {1} x max Hp + {2} x Str damage. Totally, {3}% chance to get 3 Str.".format(
         tauren_abi3_Chance[lvl-1].toString(),
         (0.4*lvl).toString(1),

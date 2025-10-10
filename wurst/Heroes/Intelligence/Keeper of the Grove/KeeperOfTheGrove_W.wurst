@@ -27,7 +27,7 @@ public function naturalOrb()
             
             sfx.setPos(sfx.getPos().polarOffset(angle, 13))
 
-            let range = startRange + (stopRange - startRange) * cb.getCount() / N
+            let range = (startRange + (stopRange - startRange) * cb.getCount() / N)/2
             let scale = startScale + (stopScale - startScale) * cb.getCount() / N
 
             sfx..setScale(scale)

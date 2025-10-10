@@ -46,7 +46,7 @@ public function initDebug()
     ..setMaxHP(1000000)
     ..setMaxMana(100000)
     ..addItemToSlot(ITEM_BLINK_MAP, 0)
-    ..heroCheck()
+    ..registerHero()
     
     // jacksmith
     CreateUnit(players[0], HERO_JACKSMITH, posX, posY - 400, 270.000)
@@ -55,7 +55,7 @@ public function initDebug()
     ..setMaxHP(1000000)
     ..setMaxMana(100000)
     ..addItemToSlot(ITEM_BLINK_MAP, 0)
-    ..heroCheck()
+    ..registerHero()
 
     // The mid point position
     posX = GetRectCenterX(gg_rct_AllSpawnMove1)

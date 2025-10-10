@@ -6,8 +6,8 @@ package RandomGen
 // If action should be handled returns true.
 public function checkChance(real chance) returns bool
     return GetRandomInt(1, 1000) <= (chance * 1000).toInt()
-        
-public function checkChance(int chance) returns bool
-    return GetRandomInt(1, 1000) <= chance * 10
+
+public function checkChanceI(int chance) returns bool
+    return GetRandomInt(1, 1000) <= (chance * 10)
 
 // ----------------------------------------------------------------------------

@@ -8,12 +8,13 @@ import MyUpgradesIds
 import CommonDescriptions
 import Icons
 import MyHeroDefinition
+import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_JACKSMITH, UnitIds.paladin)
-    ..setHeroAbilities(commaList('A0H3', 'A0DH', 'A0DE', 'A0DG', 'A0JR'))
+    ..setHeroAbilities(commaList(JACKSMITH_ABILITY_1, JACKSMITH_ABILITY_2, JACKSMITH_ABILITY_3, JACKSMITH_ABILITY_4, JACKSMITH_ABILITY_5))
     
     ..setModelFile("Units\\Jacksmith\\IndustrialWorker.mdx")
     ..setIconGameInterface(Icons.bTNPeasant)

@@ -10,6 +10,7 @@ import Icons
 import MyColors
 import BuffIds
 import CommonDescriptions
+import BuffObjEditing
 
 // ----------------------------------------------------------------------------
 
@@ -229,6 +230,12 @@ public constant int array[5] beastmaster_abi5_Str = [
 ]
 
 @compiletime function defineAbilities5()
+    new BuffDefinition(BEAST_MASTER_BUFF_5, BuffIds.battleRoar)
+    ..setArtTarget(1, "")
+    ..setIcon(Icons.bTNBeastMaster)
+    ..register("Spirits of the Wild".setColor(colAbilitiesBeastmaster),
+    "This unit has claimed his spirits, and has increased combat capabilities.")
+
     new AbilityDefinitionBattleRoar(BEASTMASTER_ABILITY_5)
     ..setUltimateAbility()
     ..setEffectSound("")
@@ -237,18 +244,13 @@ public constant int array[5] beastmaster_abi5_Str = [
     ..setArtEffect("")
     ..setArtSpecial("")
     ..setArtTarget("")
-    ..presetBuffs(lvl -> BUFF_3.toRawCode())
+    ..presetBuffs(lvl -> BEAST_MASTER_BUFF_5.toRawCode())
     ..presetCooldown(lvl -> 200.0 - 20*lvl)
     ..setIcon(Icons.bTNBeastMaster)
     ..presetDefenseIncrease(lvl -> 0)
     ..presetLifeRegenerationRate(lvl -> 0)
     ..presetDuration(lvl -> 10.0 + 5*lvl)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
-
-    ..setTooltipLearnExtended("Whenever a pet disappears or dies, they will be converted into spirits for Beastmaster. Each cast, gain permanent bonus 1 strength (non-cumulative) for first three levels, then 2 strength.|n|c00FFFC01Level 1:|r For <A017,HeroDur1> seconds convert every Spirit into 5+2*lvl All Stats. 180 second cooldown.|n|c00FFFC01Level 2:|r For <A017,HeroDur2> seconds convert every Spirit into 20 All Stats. 160 second cooldown|n|c00FFFC01Level 3:|r For <A017,HeroDur3> seconds convert every Spirit into 25 All Stats. 140 second cooldown|n|c00FFFC01Level 4:|r For <A017,HeroDur4> seconds convert every Spirit into 30 All Stats. 120 second cooldown.")
-    
-    ..setTooltipNormalExtended(4, "Whenever a pet disappears or dies, they will be converted into spirits for Beastmaster. Each cast, gain permanent bonus 2 strength (non-cumulative). Convert each spirit into +13 stats for <A017,HeroDur4> seconds, cooldown 120 seconds.")
-
     ..register(HERO_BEASTMASTER, "Spirits of the Wild".setColor(colAbilitiesBeastmaster), 
     wordPassive + "Every time your beast dies or disappears Beastmaster gets 1 spirit even if you haven't learnt this ability.\n" +
     wordPassive + "After Beastmaster learns this ability he will permanently get Str when he collects a spirit.\n" +

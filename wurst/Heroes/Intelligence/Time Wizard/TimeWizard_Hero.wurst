@@ -11,6 +11,8 @@ import MyAbilityIds
 
 // ----------------------------------------------------------------------------
 
+public unit timeWizardHero = null
+
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_TIME_WIZARD, UnitIds.jaina)
     ..setHeroAbilities(commaList(TIME_WIZARD_ABILITY_1, TIME_WIZARD_ABILITY_2, TIME_WIZARD_ABILITY_3, TIME_WIZARD_ABILITY_4, TIME_WIZARD_ABILITY_5))

@@ -6,6 +6,10 @@ import MyUnitIds
 import Orders
 import ChannelAbilityPreset
 import MyColors
+import BuffObjEditing
+import BuffIds
+import MyBuffIds
+import Abilities
 
 // ----------------------------------------------------------------------------
 
@@ -85,6 +89,31 @@ import MyColors
     ))
     
 // ----------------------------------------------------------------------------
+
+    new BuffDefinition(JACKSMITH_BUFF_4, BuffIds.unsummon)
+    ..setArtTarget(1, Abilities.unsummonTarget)
+    ..setArtSpecial(1, Abilities.unsummonTarget)
+    ..setIconNormal(1, Icons.bTNUnsummonBuilding)
+    ..register("Metal Strength".setColor(colAbilitiesJacksmith),
+    "This unit or building has been temporarily improved by Metal Strength.")
+
+    new AbilityDefinitionInnerFire(JACKSMITH_ABILITY_4_DUMMY)
+    ..setLevels(1)
+    ..setDuration(1, 30)
+    ..setDamageIncrease(1, 0)
+    ..setDefenseIncrease(1, 0)
+    ..setCooldown(1, 0)
+    ..setManaCost(1, 0)
+    ..setCastingTime(1, 0)
+    ..setCastRange(1, 99999)
+    ..setTargetsAllowed(1, getTargets(AbilityTargets.AlliesOnlyStructures))
+    ..setRequirements("")
+    ..setArtTarget("")
+    ..setArtSpecial("")
+    ..setArtEffect("")
+    ..setArtCaster("")
+    ..setMissileArt("")
+    ..setBuffs(1, JACKSMITH_BUFF_4.toRawCode())
 
     new ChannelAbilityPreset(JACKSMITH_ABILITY_4, 9, true)
     ..setGeneralAbility(AbilityPosition.R)

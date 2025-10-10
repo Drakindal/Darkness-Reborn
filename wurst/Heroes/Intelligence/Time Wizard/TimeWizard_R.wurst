@@ -6,8 +6,6 @@ import StandardTextTags
 import ClosureForGroups
 import DamageTarget
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 
 texttag hourglass
 integer count

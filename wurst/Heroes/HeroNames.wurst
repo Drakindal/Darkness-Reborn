@@ -5,17 +5,18 @@ import MyUnitIds
 
 // ----------------------------------------------------------------------------
 
-public let heroNames = compiletime(new HashMap<int, string>)
+public let heroNames = new HashMap<int, string>
 
 // ----------------------------------------------------------------------------
 
 @compiletime function initialize()
-    heroNames.put(HERO_ASSASSIN, "Assasin")
+    heroNames.put(HERO_ASSASSIN, "Assassin")
     heroNames.put(HERO_BLADEMASTER, "Blademaster")
     heroNames.put(HERO_DARK_RANGER, "Dark Ranger")
     heroNames.put(HERO_DEMON_HUNTER, "Demon Hunter")
     heroNames.put(HERO_ILLUSIONIST, "Illusionist")
     heroNames.put(HERO_PRIESTESS_OF_THE_MOON, "Priestess of the Moon")
+    heroNames.put(HERO_PRIESTESS_OF_THE_MOON_FORM, "Priestess of the Shadows")
     heroNames.put(HERO_SATYR, "Satyr")
     heroNames.put(HERO_SHADOW_OF_VENGEANCE, "Shadow of Vengeance")
     heroNames.put(HERO_THIEF, "Thief")
@@ -25,17 +26,19 @@ public let heroNames = compiletime(new HashMap<int, string>)
     heroNames.put(HERO_ARCHMAGE, "Archmage")
     heroNames.put(HERO_FIRELORD, "Firelord")
     heroNames.put(HERO_FIRE_MAGE, "Firemage")
-    heroNames.put(HERO_GUARDIAN_OF_LIGHT, "Guadian of Light")
+    heroNames.put(HERO_GUARDIAN_OF_LIGHT, "Guardian of Light")
     heroNames.put(HERO_HERALD_OF_LIGHTNING, "Herald of Lightning")
     heroNames.put(HERO_KEEPER_OF_THE_GROVE, "Keeper of the Grove")
     heroNames.put(HERO_KING_OF_LOAS, "King of Loas")
     heroNames.put(HERO_LICH, "Lich")
-    heroNames.put(HERO_NAGA_SEA_WITCH, "Naga Sea Witch")
+    heroNames.put(HERO_NAGA_SEA_WITCH, "Naga the Sea Witch")
     heroNames.put(HERO_SHADOW_HUNTER, "Shadow Hunter")
     heroNames.put(HERO_TIME_WIZARD, "Time Wizard")
     heroNames.put(HERO_TINKER, "Tinker")
+    heroNames.put(HERO_TINKER_ROBOT, "Big Boss")
 
     heroNames.put(HERO_ARTHAS, "Arthas")
+    heroNames.put(HERO_ARTHAS_FORM, "Death King")
     heroNames.put(HERO_BEASTMASTER, "Beastmaster")
     heroNames.put(HERO_DEATH_KNIGHT, "Death Knight")
     heroNames.put(HERO_JACKSMITH, "Jacksmith")

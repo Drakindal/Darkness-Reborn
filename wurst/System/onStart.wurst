@@ -103,7 +103,7 @@ function onBuyHero(unit u)
         let playHero = playerHero.get(p)
         if playHero.getTypeId() == HERO_PICKER
             playerHero.put(p, soldUnit)
-            soldUnit..heroCheck()
+            soldUnit..registerHero()
             .setPlayersResearch(false)
             gg_cam_CameraHeroPicked.apply(true, p, 0.5)
             soldUnit.setPos(gg_rct_Base.getCenter())

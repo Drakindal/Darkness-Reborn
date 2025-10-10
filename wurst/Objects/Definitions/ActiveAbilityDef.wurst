@@ -12,6 +12,7 @@ import ItemObjEditing
 import DummyCaster
 import Orders
 import ClosureTimers
+import ClosureEvents
 
 // ----------------------------------------------------------------------------
 
@@ -215,4 +216,15 @@ public function addAbilityStunTargetPassive(real chance, real cd, string effects
         end))
     end)
     
+// ----------------------------------------------------------------------------
+
+public interface OnPointCastHandler
+    function run(unit caster, vec2 target)
+
+public function registerOnPointCast(int abi_id, OnPointCastHandler handler)
+    EventListener.onPointCast(abi_id) (unit caster, vec2 target) ->
+        handler.run(caster, target)
+    EventListener.onTargetCast(abi_id) (unit caster, unit target) ->
+        handler.run(caster, target.getPos())
+
 // ----------------------------------------------------------------------------

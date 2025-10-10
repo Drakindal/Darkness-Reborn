@@ -13,7 +13,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_MOUNTAIN_KING, UnitIds.mountainking)
-    ..setHeroAbilities(commaList(MOUNTAIN_KING_ABILITY_1, 'A0DV', 'A0DW', 'A0DX', 'A0DZ'))
+    ..setHeroAbilities(commaList(MOUNTAIN_KING_ABILITY_1, MOUNTAIN_KING_ABILITY_2, MOUNTAIN_KING_ABILITY_3, MOUNTAIN_KING_ABILITY_4, MOUNTAIN_KING_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(24, 11, 15)

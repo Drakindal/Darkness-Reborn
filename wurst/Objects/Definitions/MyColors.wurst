@@ -38,6 +38,7 @@ public let colMinusArmor      = "|cff903cf6"
 public let colLifeSteal       = "|cffdf5a5a"
 public let colDamageBlock     = "|cff66d3e9"
 public let colEvasion         = "|cff3ca5f66"
+public let colTeleport        = "|cff74c3fe6"
 
 // ----------------------------------------------------------------------------
 
@@ -55,12 +56,14 @@ public let colAbilitiesWarden             = "|cff0b7125"
 
 public let colAbilitiesArchmage           = "|cff1c71e8"
 public let colAbilitiesFirelord           = "|cffc62828"
+public let colAbilitiesFiremage           = "|cfff08534"
 public let colAbilitiesGuardianOfLight    = "|cfffffd80"
 public let colAbilitiesHeraldOfLightning  = "|cff3ef9ff"
 public let colAbilitiesKeeperOfTheGrove   = "|cff80ff86"
 public let colAbilitiesKingOfLoas         = "|cff1cc0cb"
-public let colAbilitiesShadowHunter       = "|cff197f80"
+public let colAbilitiesLich               = "|cff6abee8"
 public let colAbilitiesNagaWitch          = "|cff237cd5"
+public let colAbilitiesShadowHunter       = "|cff197f80"
 public let colAbilitiesTimeWizard         = "|cff2961c0"
 public let colAbilitiesTinker             = "|cff48b646"
 

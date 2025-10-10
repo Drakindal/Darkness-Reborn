@@ -6,7 +6,6 @@ import Buildings
 import ObjectIds
 import MyBuildingsIds
 import MyUnitIds
-import MyItemIds
 import MyAbilityIds
 import Object_Shops
 import CommonDescriptions

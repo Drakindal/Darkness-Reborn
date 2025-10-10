@@ -13,7 +13,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_PITLORD, UnitIds.pitlord)
-    ..setHeroAbilities(commaList(PITLORD_ABILITY_1, 'A0RS', 'A0RL', 'A0RI', 'A0R8'))
+    ..setHeroAbilities(commaList(PITLORD_ABILITY_1, PITLORD_ABILITY_2, PITLORD_ABILITY_3, PITLORD_ABILITY_4, PITLORD_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(26, 16, 14)

@@ -15,7 +15,7 @@ public function metalStrength()
         new DummyCaster()
         ..owner(GetOwningPlayer(caster))
         ..origin(caster.getPos())
-        ..castTarget(ABILITY_DUMMY_8, 1, OrderIds.innerfire, target)
+        ..castTarget(JACKSMITH_ABILITY_4_DUMMY, 1, OrderIds.innerfire, target)
         let bs = target
         if bs.getTypeId() == BUILDING_TINKER_BLACKSMITH
             let itemInBs = new LinkedList<item>()

@@ -15,6 +15,8 @@ public enum AbilityPosition
     E
     R
     T
+    F // Used as hidden passive.
+    Z // Teleport/blink ability.
 
 public interface FormatLearnTooltipFunct
     function run(string format) returns string
@@ -37,11 +39,14 @@ let level2 = "Level {0}".setColor(colAbilityLevel)
 public function AbilityDefinition.registerBase(int heroId, string abilityName)
     this..setHeroAbility(true)
     
-    let heroName = heroNames.get(heroId)
+    var name = ""
+    if (heroId != -1)
+        let heroName = heroNames.get(heroId)
+        name += heroName + " - "
 
     let tooltipNormal = "{0} [{1}]".format(abilityName, level2)
 
-    let name = "{0} - {1} - {2}".format(heroName, currHotkey, abilityName)
+    name += "{0} - {1}".format(currHotkey, abilityName)
     let tooltipLearn = "Learn {0} [{1}]".format(abilityName, level)
 
     // Showed only in map editor.
@@ -50,6 +55,7 @@ public function AbilityDefinition.registerBase(int heroId, string abilityName)
     ..setTooltipLearn(tooltipLearn)
     // The first row showed in the normal tooltip
     ..presetTooltipNormal(lvl -> tooltipNormal.format(lvl.toString()))
+    ..presetTooltipTurnOff(lvl -> "Deactivate " + tooltipNormal.format(lvl.toString()))
 
 public function AbilityDefinition.register(int heroId, string abilityName, string tooltipExtended)
     this.registerBase(heroId, abilityName)
@@ -130,9 +136,10 @@ public function AbilityDefinition.setAutoCastingTooltip()
 public enum AbilityTargets
     All
     EnemiesAll
-    EnemiesNonStructures
+    EnemiesNonStructuresMechUnits
     AlliesAll
     AlliesNotSelf
+    AlliesOnlyStructuresMechUnits
     AlliesOnlyStructures
     Self
     Player
@@ -144,14 +151,16 @@ public function getTargets(AbilityTargets targets) returns string
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.structure, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.self, TargetsAllowed.organic, TargetsAllowed.mechanical)
         case EnemiesAll
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.structure)
-        case EnemiesNonStructures
+        case EnemiesNonStructuresMechUnits
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral)
         case AlliesAll
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.self)
         case AlliesNotSelf
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend)
-        case AlliesOnlyStructures
+        case AlliesOnlyStructuresMechUnits
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.structure, TargetsAllowed.mechanical)
+        case AlliesOnlyStructures
+            return commaList(TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.structure)
         case Self
             return commaList(TargetsAllowed.self)
         case None
@@ -168,7 +177,7 @@ public function BuffDefinition.register(string name, string description)
 
 // ----------------------------------------------------------------------------
 
-function AbilityDefinition.setPosition(AbilityPosition pos)
+public function AbilityDefinition.setPosition(AbilityPosition pos)
     switch pos
         case AbilityPosition.Q
             currHotkey = "Q"
@@ -214,6 +223,20 @@ function AbilityDefinition.setPosition(AbilityPosition pos)
             ..setButtonPositionTurnOffY(1)
             ..setButtonPositionResearchX(3)
             ..setButtonPositionResearchY(1)
+            
+        case AbilityPosition.F
+            currHotkey = "F"
+            this..setButtonPositionNormalX(-1)
+            ..setButtonPositionNormalY(-1)
+            ..setButtonPositionTurnOffX(-1)
+            ..setButtonPositionTurnOffY(-1)
+            ..setButtonPositionResearchX(2)
+            ..setButtonPositionResearchY(1)
+
+        case AbilityPosition.Z
+            currHotkey = "Z"
+            this..setButtonPositionNormalX(1)
+            ..setButtonPositionNormalY(1)
 
     this..setHotkey(currHotkey)
 

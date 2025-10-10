@@ -5,9 +5,12 @@ import HashMap
 
 // ----------------------------------------------------------------------------
 
-let recipeItemHashTable = compiletime(new HashMap<int, int>())
+let recipeItemHashTable = new HashMap<int, int>()
 
 // ----------------------------------------------------------------------------
+
+init
+    destroy recipeItemHashTable
 
 @compiletime
 function initHasTable()

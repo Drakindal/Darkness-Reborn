@@ -27,8 +27,7 @@ public function pulverize()
                 let pathable = addEffect(".mdl", targetPos)
                 caster.damageTargetCode(dmg, target, null, -1, customDamageType.PhysicalMelee)
 
-                if (checkChanceI(60))
-                    caster.addStr(3)
+                caster.addStr(3)
 
                 forUnitsInRange(target.getPos(), 150, true) (unit u) ->
                     if caster.isEnemyOf(u)

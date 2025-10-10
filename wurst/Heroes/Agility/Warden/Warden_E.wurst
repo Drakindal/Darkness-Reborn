@@ -2,10 +2,10 @@ package Warden_E
 
 import ClosureTimers
 import ClosureForGroups
-import ClosureEvents
 import DamageTarget
 import PauseAllocation
 import MyAbilityIds
+import ActiveAbilityDef
 
 function shadowRazeEnd(unit u)
     u.unPauseUnitIndef()
@@ -13,7 +13,7 @@ function shadowRazeEnd(unit u)
     u.setVertexColor(color(255, 255, 255))
 
 public function shadowRaze()
-    EventListener.onPointCast(WARDEN_ABILITY_3) (unit caster, vec2 target) ->
+    registerOnPointCast(WARDEN_ABILITY_3) (unit caster, vec2 target) ->
         let angle = caster.getPos().angleTo(target)
         let lvl = GetUnitAbilityLevel(caster, WARDEN_ABILITY_3)
         let dmg = caster.getAgi(true) * 2. * lvl

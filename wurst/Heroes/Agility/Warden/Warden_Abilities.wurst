@@ -6,7 +6,6 @@ import MyUnitIds
 import AbilityObjEditing
 import MyBuffIds
 import ObjectIds
-import Icons
 import BuffIds
 import BuffObjEditing
 import MyColors
@@ -137,7 +136,7 @@ constant real array[4] abi5_Damage = [
     
     new AbilityDefinitionBattleRoar(WARDEN_ABILITY_5)
     ..presetAreaofEffect(lvl -> 500.0)
-    ..presetBuffs(lvl -> "B003")
+    ..presetBuffs(lvl -> WARDEN_BUFF_5.toRawCode())
     ..presetCooldown(lvl -> 140.0 - 20*lvl)
     ..setManaCost(1, 150)
     ..setManaCost(2, 180)

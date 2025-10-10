@@ -8,6 +8,7 @@ import MyAbilityIds
 public function frostNova()
     EventListener.onTargetCast(LICH_ABILITY_1) (unit caster, unit target) ->
         let dmg = caster.getInt(true) * (caster.getAbilityLevel(LICH_ABILITY_1) * 2.00)
-        forUnitsInRange(target.getPos(), 500, true) (unit u) ->
+        let range = 1000/2
+        forUnitsInRange(target.getPos(), range, true) (unit u) ->
             if(u.isEnemyOf(caster.getOwner()))
                 caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

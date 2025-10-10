@@ -54,7 +54,7 @@ function anyAttack(unit src, unit targ)
     else
         handlePhysicalRangedAttackChecks(src, targ)
 
-    anyAttackChecks(src, targ)
+    autoAttackChecks(src, targ)
 
 // Process any coded damage
 function anyCodeAttack(unit src, unit targ)
@@ -99,6 +99,7 @@ function handlePhysicalRangedAttackChecks(unit src, unit targ)
     physicalDamageChecks(src, targ)
 
 function handleMagicalAttackChecks(unit src, unit targ)
+    universalReflectionChecks(src, targ)
     magicDamageChecks(src, targ)
 
 // ----------------------------------------------------------------------------

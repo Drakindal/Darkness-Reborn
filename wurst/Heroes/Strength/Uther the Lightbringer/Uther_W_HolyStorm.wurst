@@ -18,11 +18,11 @@ public function holyStorm()
 
         if (holyPower >= 30)
             removeHolyPower(30)
-            dps *= 4
+            dps *= 3.5
             duration *= 3
         else if (holyPower >= 20)
             removeHolyPower(20)
-            dps *= 3
+            dps *= 2.5
             duration *= 2.5
         else if (holyPower >= 10)
             removeHolyPower(10)

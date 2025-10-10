@@ -19,7 +19,7 @@ public function finsofGral()
         else
             if DamageEvent.getType() == ATTACK
                 let lvl = src.getAbilityLevel(ABILITY_39)
-                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(BUFF_15) and lvl > 0
+                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_15) and lvl > 0
                     let attacked = DamageEvent.getTarget()
                     let pos = src.getPos()
                     let owner = GetOwningPlayer(src)

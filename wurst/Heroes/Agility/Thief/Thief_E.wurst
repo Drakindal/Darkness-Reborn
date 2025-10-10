@@ -12,20 +12,32 @@ public function sell()
         if ite != null
             let itemType = ite.getItemtype()
             var t = 0
+            var itemTypeStr = ""
             if(itemType == ITEM_TYPE_MISCELLANEOUS)
                 t = GetRandomInt(1000,5000)
+                itemTypeStr = "Miscellaneous"
             else if itemType == ITEM_TYPE_PERMANENT
                 t = GetRandomInt(1000,15000)
+                itemTypeStr = "Permanent"
             else if itemType == ITEM_TYPE_CHARGED
                 t = GetRandomInt(100,3000)
+                itemTypeStr = "Charged"
             else if itemType == ITEM_TYPE_POWERUP
                 t = GetRandomInt(200,2000)
+                itemTypeStr = "PowerUp"
             else if itemType == ITEM_TYPE_ARTIFACT
                 t = GetRandomInt(10000,25000)
+                itemTypeStr = "Artifact"
             else if itemType == ITEM_TYPE_PURCHASABLE
                 t = GetRandomInt(500,5000)
+                itemTypeStr = "Purchasable"
             else if itemType == ITEM_TYPE_CAMPAIGN
                 t = GetRandomInt(50000,200000)
+                itemTypeStr = "Campaign"
+            else
+                t = GetRandomInt(500,5000)
+                itemTypeStr = "Other"
+
             p.addGold(t)
             goldText = CreateTextTag()
             goldText..setPos(caster.getPos3Real())
@@ -34,7 +46,7 @@ public function sell()
             ..setLifespan(5)
             ..setPermanent(false)
             ..setVisibility(true)
-            ..setText("You sold " + ite.getName() + " and got " + t.toString() + " gold." , 5)
+            ..setText("You sold " + ite.getName() + "of type " + itemTypeStr + " and got " + t.toString() + " gold." , 5)
             ite.remove()
         else
             caster.resetAbilityCooldown(THIEF_ABILITY_3)

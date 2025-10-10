@@ -11,7 +11,7 @@ import GuardianOfLight_Abilities
 public function holyWrath()
     EventListener.onPointCast(GUARDIAN_OF_LIGHT_ABILITY_4) (unit caster, vec2 target) ->
         let lvl = GetUnitAbilityLevel(caster, GUARDIAN_OF_LIGHT_ABILITY_4)
-        let range = 500.0 + 50*lvl
+        let range = (500.0 + 50*lvl)/2
         let dmg = 300*lvl + 1.5*lvl*caster.getInt(true)
         let stats = guardianOfLight_abi4_Stats[lvl-1]
 

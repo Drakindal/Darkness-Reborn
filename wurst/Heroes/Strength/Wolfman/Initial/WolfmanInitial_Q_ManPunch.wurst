@@ -1,4 +1,4 @@
-package WolfmanInitial_ManPunch
+package WolfmanInitial_Q_ManPunch
 
 import ClosureEvents
 import DamageTarget

@@ -10,14 +10,16 @@ import ThornsAuraWave
 import AbilitiesList
 import Pitlord_R
 import Pitlord_E
+import DeathKnight_R
 
 // ----------------------------------------------------------------------------
 
-public function anyAttackChecks(unit src, unit targ)
+public function autoAttackChecks(unit src, unit targ)
     // Warden T ability.
     if src.hasAbility(WARDEN_BUFF_5)
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 2)
         src.removeAbility(WARDEN_BUFF_5)
+    shadowHunterChecks(src, targ)
 
 // ----------------------------------------------------------------------------
 // MAGIC DAMAGE CHECKS
@@ -27,6 +29,7 @@ public function magicDamageChecks(unit src, unit targ)
     // Uther Damage reduction
     if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
+    shadowHunterChecks(src, targ)
 
 // ----------------------------------------------------------------------------
 // PHYSICAL DAMAGE CHECKS
@@ -39,12 +42,14 @@ public function physicalDamageChecks(unit src, unit targ)
     // Wolfman attack
     if src.hasAbility(WOLF_BUFF_1)
         src.addHP(DamageCustomEvent.getAmount() * 0.25)
+    shadowHunterChecks(src, targ)
 
 // ----------------------------------------------------------------------------
 // Reflection checks
 // ----------------------------------------------------------------------------
 
 public function universalReflectionChecks(unit src, unit targ)
+    checkDeathKnightR(src, targ)
 
 public function meleeReflectionChecks(unit src, unit targ)
     let dam = DamageCustomEvent.getAmount()
@@ -58,11 +63,17 @@ public function meleeReflectionChecks(unit src, unit targ)
         turtle(targ, src, dam)
     if(targuID == WAVE_BOSS_95)
         dragonTurtle(targ, src, dam)
-    if(targ.getAbilityLevel('A0RI') > 0)
+    if(targ.getAbilityLevel(PITLORD_ABILITY_4) > 0)
         pitLordThorn(targ, src)
-    if(targ.getAbilityLevel('a0RL') > 0)
+    if(targ.getAbilityLevel(PITLORD_ABILITY_3) > 0)
         pitLordDemonSkin(targ, src, dam)
     if(targ.hasAbility('BEah'))
         thornsAuraWave(targ, src, dam)
         
+function shadowHunterChecks(unit _src, unit targ)
+    if targ.hasAbility(SHADOW_HUNTER_BUFF_3)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 1.2)
+    if targ.hasAbility(SHADOW_HUNTER_BUFF_1)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 1.4)
+
 // ----------------------------------------------------------------------------

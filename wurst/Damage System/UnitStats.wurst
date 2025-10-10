@@ -108,6 +108,7 @@ init
             let us = unitStatsMap.getAndRemove(u)
             destroy us
         else
+            // This can happen for dummy units.
             println("Dying unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}".format(u.getName(), u.getTypeId().toString()))
 
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->

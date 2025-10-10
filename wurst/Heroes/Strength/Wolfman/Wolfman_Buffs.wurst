@@ -1,0 +1,28 @@
+package Wolfman_Buffs
+
+import MyHeroAbilityDefinition
+import MyBuffIds
+import BuffIds
+import BuffObjEditing
+import MyColors
+
+// ----------------------------------------------------------------------------
+
+@compiletime function wolfmanBuffs()
+    new BuffDefinition(MAN_BUFF, BuffIds.stunned)
+    ..register("Scream".setColor(colAbilitiesWolfman),
+    "This unit is stunned by a loud scream.")
+
+    new BuffDefinition(WOLF_BUFF_1, BuffIds.berserk)
+    ..register("Bloodlust".setColor(colAbilitiesWolfman),
+    "This wolf is in a state of Bloodlust")
+
+    new BuffDefinition(WOLF_BUFF_2, BuffIds.stunned)
+    ..register("Howl".setColor(colAbilitiesWolfman),
+    "This unit is stunned by a loud howl.")
+
+    new BuffDefinition(WOLF_BUFF_3, BuffIds.devour)
+    ..register("Chilling Howl".setColor(colAbilitiesWolfman),
+    "The armor of this unit is reduced.")
+
+// ----------------------------------------------------------------------------

@@ -14,7 +14,7 @@ public function imageArrow()
         let angle = caster.getPos().angleTo(target.getPos())
         for int i = 1 to 3
             let polarProj = caster.getPos().polarOffset(angle.op_plus(225.0.asAngleRadians()), -200.*i)
-            let archer = createUnit(caster.getOwner(), DUMMY_UNIT_1, polarProj, angle)
+            let archer = createUnit(caster.getOwner(), DARK_RANGER_DUMMY_UNIT_1, polarProj, angle)
             let sfx = addEffect(Abilities.moonPriestessMissile, archer.getPos())
             archer..setTimedLife(1.0)
             ..issueImmediateOrderById(OrderIds.thunderbolt)
@@ -28,7 +28,7 @@ public function imageArrow()
 
         for int i = 1 to 3
             let polarProj = caster.getPos().polarOffset(angle.op_minus(225.0.asAngleRadians()), -200.*i)
-            let archer = createUnit(caster.getOwner(), DUMMY_UNIT_1, polarProj, angle)
+            let archer = createUnit(caster.getOwner(), DARK_RANGER_DUMMY_UNIT_1, polarProj, angle)
             let sfx = addEffect(Abilities.moonPriestessMissile, archer.getPos())
             archer..setTimedLife(1.0)
             ..issueImmediateOrderById(OrderIds.thunderbolt)

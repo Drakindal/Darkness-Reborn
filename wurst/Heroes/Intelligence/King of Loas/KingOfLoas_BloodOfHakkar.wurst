@@ -10,21 +10,21 @@ public function hakkarBlood()
         let src = DamageEvent.getSource()
         switch DamageEvent.getType()
             case ATTACK
-                if src.hasAbility(BUFF_20)
+                if src.hasAbility(KING_OF_LOAS_BUFF_20)
                     let lvl = src.getAbilityLevel(ABILITY_41)
                     src.addHP(DamageEvent.getAmount()*healLoaMultiplier[lvl-1])
-                else if src.hasAbility(BUFF_21)
+                else if src.hasAbility(KING_OF_LOAS_BUFF_21)
                     src.addHP(DamageEvent.getAmount()*0.8)
             case SPELL
                 // Improved Hakkar Buff
-                if src.hasAbility(BUFF_21)
+                if src.hasAbility(KING_OF_LOAS_BUFF_21)
                     src.addHP(DamageEvent.getAmount()*0.8)
                 
             case CODE               
                 // Ordinary Hakkar Buff or Improved Hakkar Buff
-                if src.hasAbility(BUFF_20)
+                if src.hasAbility(KING_OF_LOAS_BUFF_20)
                     let lvl = src.getAbilityLevel(ABILITY_41)
                     src.addHP(DamageEvent.getAmount()*healLoaMultiplier[lvl-1])
-                else if src.hasAbility(BUFF_21)
+                else if src.hasAbility(KING_OF_LOAS_BUFF_21)
                     src.addHP(DamageEvent.getAmount()*0.8)
             default

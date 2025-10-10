@@ -41,7 +41,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_1, 9, true)
     ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetAreaofEffect(lvl -> 500.0*2)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25*lvl)
     ..presetFollowThroughTime(lvl -> 0.1)
@@ -61,7 +61,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..register(HERO_ARCHMAGE, "Eclipse".setColor(colAbilitiesArchmage), 
     "Power from the eclipse falls upon your enemies in range causing 1.25 x (Skill Level) x Intelligence damage and applying the Eclipse buff (88% miss)\n\n" +
     wordAbilityDoubleDamage,
-    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((1.25*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {2}.".format((1.25*lvl).toString(2), (50 + 25*lvl).toString()))
     
 // ----------------------------------------------------------------------------
     
@@ -91,7 +91,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     // WIP Armor reduction.
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_2, 9, true)
     ..setGeneralAbility(AbilityPosition.W)
-    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetAreaofEffect(lvl -> 500.0*2)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25*lvl)
     ..presetFollowThroughTime(lvl -> 0.01)
@@ -110,7 +110,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..register(HERO_ARCHMAGE, "Falling Light".setColor(colAbilitiesArchmage), 
     "Create a circle of light, damaging enemies in range every 1 second for 2 seconds dealing 0.45 x (Skill Level) x Intelligence damage. Each hit applies Falling Light reducing armor of enemies by 10 for 15 seconds.\n\n" +
     wordAbilityDoubleDamage,
-    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((0.45*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {2}.".format((0.45*lvl).toString(2), (50 + 25*lvl).toString()))
     
 // ----------------------------------------------------------------------------
 
@@ -140,7 +140,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_3, 9, true)
     ..setGeneralAbility(AbilityPosition.E)
-    ..presetAreaofEffect(lvl -> 500.0 + 30 * lvl)
+    ..presetAreaofEffect(lvl -> 500.0*2)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25 * lvl)
     ..presetOption(Option.TARGETIMAGE, true)
@@ -156,13 +156,13 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..register(HERO_ARCHMAGE, "Ultima".setColor(colAbilitiesArchmage), 
     "Create a black hole in target area, each second damage enemies in 500 range by 0.15 (Skill Level) x Intelligence and applying Ultima reducing damage for 15 seconds.\n\n" +
     wordAbilityDoubleDamage,
-    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Mana cost {2}.".format((0.15*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {2}.".format((0.15*lvl).toString(2), (50 + 25*lvl).toString()))
     
 // ----------------------------------------------------------------------------
 
     new ChannelAbilityPreset(ARCHMAGE_ABILITY_4, 9, true)
     ..setGeneralAbility(AbilityPosition.R)
-    ..presetAreaofEffect(lvl -> 500.0 + 30*lvl)
+    ..presetAreaofEffect(lvl -> 500.0*2)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..presetManaCost(lvl -> 50 + 25*lvl)
     ..presetFollowThroughTime(lvl -> 4.0)
@@ -182,7 +182,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..register(HERO_ARCHMAGE, "Lightning Shock".setColor(colAbilitiesArchmage), 
     "Electrify target area damaging every enemy for 0.01 x (Skill Level) x Intelligence every 0.05 seconds.\n\n" +
     wordAbilityDoubleDamage,
-    (int lvl) -> "Deals {0} x Intelligence damage every 0.05 seconds in {1} range. Mana cost {2}.".format((0.01*lvl).toString(2), (500 + 30*lvl).toString(), (50 + 25*lvl).toString()))
+    (int lvl) -> "Deals {0} x Intelligence damage every 0.05 seconds. Mana cost {2}.".format((0.01*lvl).toString(2), (50 + 25*lvl).toString()))
     
 // ----------------------------------------------------------------------------
 

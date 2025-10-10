@@ -31,7 +31,7 @@ import CommonDescriptions
     ..presetDamageTakenIncrease(lvl-> 0)
     ..presetAttackSpeedIncrease(lvl-> 0)
     ..register(HERO_HERALD_OF_LIGHTNING, "Orbs of Lightning".setColor(colAbilitiesHeraldOfLightning), 
-    "The Herald of Lightning calls a few orbs of lightning which deal damage to an random enemy every 0.5 seconds within 10 seconds.",
+    "The Herald of Lightning calls a few orbs of lightning which deal damage to an random enemy every 0.5 seconds within 10 seconds in 500 range.",
     (int lvl) -> "Deals {0} x Intelligence damage.".format(
         (0.8*lvl).toString(1)
     ))
@@ -49,12 +49,12 @@ import CommonDescriptions
     ..setArtCaster("Units\\Far seer(Zues)\\LightningNova.mdx")
     ..presetDuration(lvl -> 1 + 0.15*(lvl-1))
     ..presetCooldown(lvl -> 25)
-    ..presetAreaofEffect(lvl -> 500.0 + 20*lvl)
+    ..presetAreaofEffect(lvl -> 600)
     ..presetBuffs(lvl -> commaList(HERALD_BUFF_W))
     ..presetManaCost(lvl -> (80*lvl))
     ..register(HERO_HERALD_OF_LIGHTNING, "Lightning Nova".setColor(colAbilitiesHeraldOfLightning), 
-    "Herald unleashes a Lightning Nova that damages and immobilizes every enemy around him.",
-    (int lvl) -> "Deals {0} x Intelligence damage in {1} range. Immobilization lasts for {2} seconds.".format(
+    "Herald unleashes a Lightning Nova that damages and immobilizes every enemy around him. Hits 5 times in range that linearly decreases from 500 to 0.",
+    (int lvl) -> "Deals {0} x Intelligence damage every 0.2 seconds within 1 seconds. Immobilization lasts for {2} seconds.".format(
         (3*lvl).toString(),
         (500 + 20*lvl).toString(),
         (1 + 0.15*(lvl-1)).toString(2)
