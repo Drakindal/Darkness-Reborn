@@ -8,11 +8,9 @@ import Icons
 import MyAbilityIds
 import Abilities
 import AbilityObjEditing
-import Soundsets
 import UpgradeObjEditing
 import MyUpgradesIds
 import LinkedList
-import CommonDescriptions
 
 public let heroPickedUpgrades = compiletime(new LinkedList<int>)
 

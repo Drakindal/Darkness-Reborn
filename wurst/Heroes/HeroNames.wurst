@@ -5,7 +5,7 @@ import MyUnitIds
 
 // ----------------------------------------------------------------------------
 
-public let heroNames = new HashMap<int, string>
+public let heroNames = compiletime(new HashMap<int, string>)
 
 // ----------------------------------------------------------------------------
 

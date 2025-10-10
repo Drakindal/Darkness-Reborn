@@ -104,12 +104,13 @@ public function unit.registerStats()
 init
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) ->
         let u = GetDyingUnit()
+        let killer = GetKillingUnit()
         if unitStatsMap.has(u)
             let us = unitStatsMap.getAndRemove(u)
             destroy us
         else
             // This can happen for dummy units.
-            println("Dying unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}".format(u.getName(), u.getTypeId().toString()))
+            printTimed("Dying unit is not in 'unitStatsMap'. Unit = {0}, ID = {1}, killer = {2}".format(u.getName(), u.getTypeId().toString(), killer.getTypeId().toString()), 5)
 
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         GetSummonedUnit().registerStats()

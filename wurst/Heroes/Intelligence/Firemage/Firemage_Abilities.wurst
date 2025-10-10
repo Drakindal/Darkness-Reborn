@@ -58,7 +58,7 @@ constant real array[9] abi1_Duration = [
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
     ..register(HERO_FIRE_MAGE, "Flame Strike".setColor(colAbilitiesFiremage), 
     "After a brief delay Firemage creates a pillar of magical flame that burns enemies.",
-    (int lvl) -> "Deals {0} damage/s in {1} range for {2} seconds.".format(
+    (int lvl) -> "Deals {0} damage/s in {1} range for {2} sec.".format(
         abi1_Damage[lvl-1].toString(0),
         (450 + 50*lvl).toString(),
         abi1_Duration[lvl-1].toString(0)
@@ -125,7 +125,7 @@ public constant real array[9] firemage_abi2_Duration = [
     ..setMissileArt("")
     ..register(HERO_FIRE_MAGE, "Phoenix".setColor(colAbilitiesFiremage), 
     "Summons 1 Phoenix at target location that shoots rays of fire, dealing damage to all nearby enemies.",
-    (int lvl) -> "Deals {0} damage every 0.05 seconds.".format(
+    (int lvl) -> "Deals {0} damage every 0.05 sec.".format(
         abi2_Damage[lvl-1].toString(0)
     ))
     
@@ -190,7 +190,7 @@ public constant real array[9] firemage_abi3_IntScale = [
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
     ..register(HERO_FIRE_MAGE, "Darkness Fire".setColor(colAbilitiesFiremage), 
     wordPassive + "Firemage shoots out rays of fire to an enemy within 600 Range.",
-    (int lvl) -> "Deals {0} damage every {1} seconds.".format(
+    (int lvl) -> "Deals {0} damage every {1} sec.".format(
         (70*lvl).toString(),
         (1.1 - 0.1*lvl).toString(1)
     ))
@@ -236,8 +236,7 @@ public constant real array[9] firemage_abi3_IntScale = [
 // ----------------------------------------------------------------------------
 
     new AbilityDefinitionAttributeModifierSkill(FIREMAGE_ABILITY_PASSIVE)
-    ..setButtonPositionNormalX(3)
-    ..setButtonPositionNormalY(2)
+    ..setPosition(AbilityPosition.M)
     ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNImmolation.blp")
     ..register(HERO_FIRE_MAGE, "Eternal Flame".setColor(colAbilitiesFiremage), (
     "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +

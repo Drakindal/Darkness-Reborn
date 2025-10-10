@@ -35,7 +35,7 @@ import MyColors
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNArcaniteMelee.blp")
     ..setArtTarget("")
     ..register(HERO_ARTHAS, "Dragon Claw".setColor(colAbilitiesArthas), 
-    "Arthas slams his sword into his target so hard that the shockwave damages enemies within 350 range and stuns them for 5 seconds.",
+    "Arthas slams his sword into his target so hard that the shockwave damages enemies within 350 range and stuns them for 5 sec.",
     (int lvl) -> "Deals {0} + {1} x Str damage.".format(
         (50*lvl).toString(),
         (2*lvl).toString()
@@ -63,7 +63,7 @@ import MyColors
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkForTrolls.blp")
     ..register(HERO_ARTHAS, "Berserk".setColor(colAbilitiesArthas), 
     "Arthas Madness overcomes him and he goes into berserk state increasing his attack and movement speed, but also increases damage taken by 15%.",
-    (int lvl) -> "+{0}% Attack Speed, +{1}% Movement Speed, +15% Damage Taken for {2} seconds.".format(
+    (int lvl) -> "+{0}% Attack Speed, +{1}% Movement Speed, +15% Damage Taken for {2} sec.".format(
         (30*lvl).toString(),
         (10*lvl).toString(),
         (12+lvl).toString()
@@ -159,8 +159,8 @@ constant real array[9] abi3_Range = [
     ..presetManaCost(lvl -> 50 + 100 * lvl)
     ..register(HERO_ARTHAS, "Death King".setColor(colAbilitiesArthas), 
     "Arthas gets possessed by the true power of Death King exceeding all mortal limits. Dramatically increases his deadly power.\n" + 
-    "Changes damage type to Blood.".setColor("|cffff0000B"),
-    (int lvl) -> "Duration {0} seconds. Cooldown {1} seconds.".format(
+    "Changes damage type to Blood.".setColor("|cffff0000"),
+    (int lvl) -> "Duration {0} sec. Cd {1} sec.".format(
         (40 + 5*lvl).toString(),
         (130 - 10*lvl).toString()
     ))

@@ -43,7 +43,7 @@ import MyColors
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV (5).blp")
     ..register(HERO_SHADOW_OF_VENGEANCE, "Fury Peak".setColor(colAbilitiesShadowOfVengeance),
     "Shadow of Vengeance goes into chaos rage increasing her attack speed, stunning enemy and dealing extra damage based on current missing health every attack.  Cancels [T] ability!",
-    (int lvl) -> "+{0}% attack speed. Duration {1} seconds (cd {2} seconds).".format(
+    (int lvl) -> "+{0}% attack speed. Duration {1} sec (cd {2} sec).".format(
         (15*lvl).toString(),
         (6.0 + 0.5*lvl).toString(1),
         (26 - lvl).toString()
@@ -74,7 +74,7 @@ constant real array[9] abi2_Range = [
     ..setGeneralAbility(AbilityPosition.W)
     ..register(HERO_SHADOW_OF_VENGEANCE, "Shadow Blink".setColor(colAbilitiesShadowOfVengeance), 
     "Shadow of Vengeance immediately moves through the shadows to another location.",
-    (int lvl) -> "Blink: {0} range, cd {1} seconds.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+    (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
 
 // ----------------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ constant real array[9] abi3_Damage = [
     ..presetDuration(lvl -> 1.5 + 0.5*lvl)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (3).blp")
     ..register(HERO_SHADOW_OF_VENGEANCE, "Hell Bound".setColor(colAbilitiesShadowOfVengeance), 
-    "Shadow Vengeance commands the darkness to entangle an enemy for a few seconds, dealing damage to them.",
+    "Shadow Vengeance commands the darkness to entangle an enemy for a few sec, dealing damage to them.",
     (int lvl) -> "Deals {0} damage per second.".format(abi3_Damage[lvl-1].toString(0)))
 
 // ----------------------------------------------------------------------------
@@ -181,7 +181,7 @@ public constant real array[4] shadow_of_vengeance_abi5_DamageMult = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNV  (2).blp")
     ..register(HERO_SHADOW_OF_VENGEANCE, "Black Hole".setColor(colAbilitiesShadowOfVengeance),
     "Shadow Vengeance's hits will deal additional damage equal to an enemy's lost health. Cancels [Q] ability!",
-    (int lvl) -> "Deals {0} x (enemy's lost health) damage. Duration {1} seconds (cd {2} seconds).".format(
+    (int lvl) -> "Deals {0} x (enemy's lost health) damage. Duration {1} sec (cd {2} sec).".format(
         (100*shadow_of_vengeance_abi5_DamageMult[lvl-1]).toString(0),
         abi5_Duration[lvl-1].toString(0),
         abi5_Cd[lvl-1].toString(0)

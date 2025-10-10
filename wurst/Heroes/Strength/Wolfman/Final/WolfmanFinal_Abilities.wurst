@@ -24,12 +24,12 @@ import MyColors
     ..setRequirements("")
     ..setIcon(Icons.bTNCannibalize)
     ..register(HERO_WOLFMAN_FINAL, "Tearing Claws".setColor(colAbilitiesWolfman), 
-    "Bites the enemy dealing 37 x Str + 2250 damage. Cd 5 seconds.\n" +
+    "Bites the enemy dealing 37 x Str + 2250 damage. Cd 5 sec.\n" +
     "Wolfman becomes so powerful that he can even tear of the metal parts of structures and mechanical units.")
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionWarStompcreep(WOLF_FINAL_ABILITY_2_DUMMY)
+    new AbilityDefinitionWarStompcreep(WOLF_FINAL_ABILITY_2_DUMMY_1)
     ..setLevels(1)
     ..setDamage(1, 0)
     ..setCooldown(1, 0)
@@ -45,21 +45,32 @@ import MyColors
     ..setArtEffect("")
     ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
 
-    new AbilityDefinitionCripplecreep(WOLF_FINAL_ABILITY_2)
-    ..setPosition(AbilityPosition.W)
-    ..setLevels(1)
-    ..setDuration(1, 14)
+    new AbilityDefinitionCripplecreep(WOLF_FINAL_ABILITY_2_DUMMY_2)
+    ..setLevels(9)
     ..setMovementSpeedReduction(1, 0.90)
     ..setAttackSpeedReduction(1, 0.45)
     ..setDamageReduction(1, 0.25)
-    ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..setBuffs(1, commaList(WOLF_BUFF_3))
+    ..setCooldown(1, 0)
+    ..setCastRange(1, 93083)
+    ..setManaCost(1, 0)
+    ..setAreaofEffect(1, 400)
+    ..setDuration(1, 2)
+    ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+
+    new AbilityDefinitionBerserk(WOLF_FINAL_ABILITY_2)
+    ..setPosition(AbilityPosition.W)
+    ..setLevels(1)
+    ..setDuration(1, 14)
+    ..presetDamageTakenIncrease(lvl -> 0.0)
+    ..presetAttackSpeedIncrease(lvl -> 0.0)
+    ..presetMovementSpeedIncrease(lvl -> 0.0)
     ..setIcon(Icons.bTNBattleRoar)
     ..setCooldown(1, 6.)
     ..setManaCost(1, 0)
     ..register(HERO_WOLFMAN_FINAL, "Howl".setColor(colAbilitiesWolfman),
-    "Howls to the sky. Stuns enemies for 3.5 seconds. Reduces movement and attack speed and damage of enemies in 800 AoE for 14 seconds.\n" +
-    "-25% damage, -45% attack speed, -90% move speed. Cd 6 seconds")
+    "Howls to the sky. Stuns enemies for 3.5 sec. Reduces movement and attack speed and damage of enemies in 800 AoE for 14 sec.\n" +
+    "-25% damage, -45% attack speed, -90% move speed. Cd 6 sec.")
 
 // ----------------------------------------------------------------------------
 
@@ -75,7 +86,7 @@ import MyColors
     ..setIcon(Icons.bTNBerserk)
     ..presetBuffs(lvl -> commaList(WOLF_BUFF_1))
     ..register(HERO_WOLFMAN_FINAL, "Bloodlust".setColor(colAbilitiesWolfman), 
-    "Blood hunger increases Wolfman's attack speed by 300% and movement speed by 250% for 7 seconds. Cd 10 seconds.")
+    "Blood hunger increases Wolfman's attack speed by 300% and movement speed by 250% for 7 sec. Cd 10 sec.")
     
 // ----------------------------------------------------------------------------
 

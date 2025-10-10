@@ -12,6 +12,7 @@ public function spiritGuardian()
         let spirit = createUnit(caster.getOwner(), 'e003', target)..setTimedLife(30)
         spirit.setAbilityLevel('A11E', caster.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_5))
         AddSpecialEffect(Abilities.animateDeadTarget, target.x, target.y).destr()
+    
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         let summoner = GetSummoningUnit()
         if(summoner.getTypeId() == HERO_KEEPER_OF_THE_GROVE or summoner.getTypeId() == 'e003')

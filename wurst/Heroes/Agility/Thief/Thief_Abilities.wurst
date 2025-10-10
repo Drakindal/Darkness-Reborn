@@ -42,7 +42,7 @@ import BuffObjEditing
     ..setArtEffect("")
     ..register(HERO_THIEF, "Stealth".setColor(colAbilitiesThief), 
     "Within moments Thief blinds an enemy and steals a treasure. Target must have less than 80% of maximum HP for successful stealth.",
-    (int lvl) -> "{0}% chance of success (cd {1} seconds).".format(
+    (int lvl) -> "{0}% chance of success (cd {1} sec).".format(
         (10*lvl).toString(),
         (240 - 20*lvl).toString()
     ))
@@ -96,7 +96,7 @@ public constant real array[9] thief_abi2_Duration = [
     new AbilityDefinitionBladeMasterWindWalk(THIEF_ABILITY_2)
     ..setGeneralAbility(AbilityPosition.W)
     ..presetCooldown(lvl -> 29.0 - lvl)
-    ..presetDuration(lvl -> thief_abi2_Duration[lvl-1])
+    ..presetDuration(lvl -> 60.0)
     ..setManaCost(1, 100)
     ..setManaCost(2, 120)
     ..setManaCost(3, 150)
@@ -111,8 +111,8 @@ public constant real array[9] thief_abi2_Duration = [
     ..presetBackstabDamage1(lvl -> 0.0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTheifSkill2.blp")
     ..register(HERO_THIEF, "Fake Thief".setColor(colAbilitiesThief), 
-    "Particular Thief skills help them to escape enemies in a perfect way. Thief becomes invisible and creates a Fake Thief that confuses nearby enemies.",
-    (int lvl) -> "Deals {0} x Agility damage in {1} range when activated. Fake Thief lasts for {2} seconds (cd {3} seconds).".format(
+    "Particular Thief skills help them to escape enemies in a perfect way. Thief deals damage to all enemies in range and becomes invisible. A Fake Thief is created to confuse nearby enemies.",
+    (int lvl) -> "Deals {0} x Agi damage in {1} range. Fake Thief lasts for {2} sec. Cd {3} sec.".format(
         (3.0 * lvl).toString(),
         (300 + 50*lvl).toString(),
         thief_abi2_Duration[lvl-1].toString(0),
@@ -142,7 +142,7 @@ public constant real array[9] thief_abi2_Duration = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTheifSkill3.blp")
     ..register(HERO_THIEF, "Sell Item".setColor(colAbilitiesThief), 
     "Thief sells item in the first slot (left most, number 7).",
-    (int lvl) -> "Cooldown {0} seconds.".format((240.0 - 20*lvl).toString()))
+    (int lvl) -> "Cd {0} sec.".format((240.0 - 20*lvl).toString()))
     
 // ----------------------------------------------------------------------------
 

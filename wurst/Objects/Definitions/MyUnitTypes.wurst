@@ -1,0 +1,16 @@
+package MyUnitTypes
+
+// ----------------------------------------------------------------------------
+
+public enum MyUnitType
+    StructureMechUnit
+
+// ----------------------------------------------------------------------------
+
+// Check if unit 
+public function unit.checkType(MyUnitType myType) returns bool
+    switch myType
+        case MyUnitType.StructureMechUnit
+            return (this.isType(UNIT_TYPE_STRUCTURE) or this.isType(UNIT_TYPE_MECHANICAL))
+
+// ----------------------------------------------------------------------------

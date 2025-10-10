@@ -213,8 +213,8 @@ constant real array[9] abi4_Damage = [
     ..presetAreaofEffect(lvl -> 800.0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNBattleRoar.blp")
     ..register(HERO_BEASTMASTER, "Roar of Beastmaster".setColor(colAbilitiesBeastmaster), 
-    "Beastmaster loudly roars making him and his beasts to become in range drastically increasing damage, hp and mana regeneration. Duration 70 seconds.",
-    (int lvl) -> "+{0}% damage. +100 Hp/s, +100 Mana Regeneration. Cooldown {1} seconds".format(
+    "Beastmaster loudly roars making him and his beasts to become in range drastically increasing damage, hp and mana regeneration. Duration 70 sec.",
+    (int lvl) -> "+{0}% damage. +100 Hp/s, +100 Mana Regeneration. Cd {1} sec".format(
         (100*abi4_Damage[lvl-1]).toString(),
         (150-10*lvl).toString()
     ))
@@ -255,7 +255,7 @@ public constant int array[5] beastmaster_abi5_Str = [
     wordPassive + "Every time your beast dies or disappears Beastmaster gets 1 spirit even if you haven't learnt this ability.\n" +
     wordPassive + "After Beastmaster learns this ability he will permanently get Str when he collects a spirit.\n" +
     wordActive + "Increases all stats depending of collected spirits amount.",
-    (int lvl) -> "+{0} x Spirits Amount to All Stats. +{1} Str for a spirit. Duration {1} seconds. Cooldown {2} seconds.".format(
+    (int lvl) -> "+{0} x Spirits Amount to All Stats. +{1} Str for a spirit. Duration {1} sec. Cd {2} sec.".format(
         ((lvl*2+5)).toString(),
         beastmaster_abi5_Str[lvl].toString(),
         (200 - 20*lvl).toString()

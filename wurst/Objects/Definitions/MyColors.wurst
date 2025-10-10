@@ -37,8 +37,8 @@ public let colHeroName         = "|cffF7EC46"
 public let colMinusArmor      = "|cff903cf6"
 public let colLifeSteal       = "|cffdf5a5a"
 public let colDamageBlock     = "|cff66d3e9"
-public let colEvasion         = "|cff3ca5f66"
-public let colTeleport        = "|cff74c3fe6"
+public let colEvasion         = "|cff3ca5f6"
+public let colTeleport        = "|cff74c3fe"
 
 // ----------------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ public let colAbilitiesSylvanas           = "|cff72c94f"
 public let colAbilitiesTaurenChieftain    = "|cff813e08"
 public let colAbilitiesUther              = "|cffdee126"
 public let colAbilitiesVivpire            = "|cffe01616"
-public let colAbilitiesWolfman            = "|cffd5d5e6"
+public let colAbilitiesWolfman            = "|cffa8a8a9"
 
 // ----------------------------------------------------------------------------
 

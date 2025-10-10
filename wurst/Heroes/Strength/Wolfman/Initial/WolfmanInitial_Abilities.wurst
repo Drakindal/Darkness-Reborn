@@ -24,7 +24,7 @@ import UnitIds
     ..setRequirements("")
     ..setIcon(Icons.bTNSeaGiantPulverize)
     ..register(HERO_WOLFMAN_INITIAL, "Punch".setColor(colAbilitiesWolfman), 
-    "Punch the enemy dealing damage. Cd 5 seconds. Mana cost 0. Cannot damage structures and mechanical units.",
+    "Punch the enemy dealing damage. Cd 5 sec. Mana cost 0. Cannot damage structures and mechanical units.",
     (int lvl) -> "Deals {0} x Str damage.".format(
         (2*lvl).toString()
     ))
@@ -40,8 +40,8 @@ import UnitIds
     ..presetManaCost(lvl -> 0)
     ..presetDamage(lvl -> 0)
     ..register(HERO_WOLFMAN_INITIAL, "Scream".setColor(colAbilitiesWolfman), 
-    "Screams so hard that the nearby enemies are stunned for 2 seconds",
-    (int lvl) -> "Cd {0} seconds.".format(
+    "Screams so hard that the nearby enemies are stunned for 2 sec",
+    (int lvl) -> "Cd {0} sec.".format(
         (12-lvl).toString()
     ))
 

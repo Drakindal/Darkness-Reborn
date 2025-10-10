@@ -48,7 +48,7 @@ import Icons
     ..presetManaCost(lvl -> 75 + 10 * lvl + 10 * lvl + 10 * (lvl-2))
     ..register(HERO_PITLORD, "Meteor".setColor(colAbilitiesPitLord), 
     "Causes a meteor to fall down from the sky, dealing damage and burning enemies.",
-    (int lvl) -> "Deals {0} + {1} x Str damage in {4} AoE initially, and then {2} x Str dps within {3} seconds.".format(
+    (int lvl) -> "Deals {0} + {1} x Str damage in {4} AoE initially, and then {2} x Str dps within {3} sec.".format(
         (30*lvl).toString(),
         (1.5*lvl).toString(),
         (0.5*lvl).toString(1),
@@ -87,7 +87,7 @@ import Icons
     ..setMissileArt("")
     ..register(HERO_PITLORD, "Strike Slam".setColor(colAbilitiesPitLord), 
     "Pitlord slams their blade down on an enemy with a mighty force dealing devastating damage and stunning for a few seconds.",
-    (int lvl) -> "Deals {0} x Str damage and stuns for {1} seconds.".format(
+    (int lvl) -> "Deals {0} x Str damage and stuns for {1} sec.".format(
         (4.5*lvl).toString(),
         (3.0 + 0.5*(lvl-1)).toString(1)
     ))
@@ -145,7 +145,8 @@ public constant int array[4] pitLord_abi5_Str = [
     "Pit Lord catches and devours souls of defeated enemies. Ability permanently increases HP and Str with each kill. Cannot get more than 750 x Skill Level Str. Then Str limit is exceed Pit Lord gets twice more HP.",
     (int lvl) -> "+{0} HP, +{1} Str. Cannot get more than {2} Str.".format(
         (8*lvl).toString(),
-        pitLord_abi5_Str[lvl-1].toString()
+        pitLord_abi5_Str[lvl-1].toString(),
+        (750 * lvl).toString()
     ))
     
 // ----------------------------------------------------------------------------

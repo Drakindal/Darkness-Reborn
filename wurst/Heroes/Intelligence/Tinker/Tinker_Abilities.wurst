@@ -41,10 +41,10 @@ import BuffIds
     ..presetDurationHero(lvl -> 1.010 + 0.3 * lvl)
     ..presetDurationNormal(lvl -> 1.010 + 0.3 * lvl)
     ..register(HERO_TINKER, "Cluster Rockets".setColor(colAbilitiesTinker), 
-    "Tinker shoots out rockets in an area of 250 range that deals damage and stuns for 1.2 seconds.",
+    "Tinker shoots out rockets in an area of 250 range that deals damage and stuns for 1.2 sec.",
     (int lvl) -> "Deals {0} + {1} x Int damage. Number of rockets {2}.".format(
         (20*lvl).toString(),
-        (0.4*lvl).toString(),
+        (0.4*lvl).toString(1),
         (lvl * 2 + 8).toString()
     ))
 
@@ -60,8 +60,8 @@ import BuffIds
     ..presetDurationNormal(lvl -> 90)  
     ..presetManaCost(lvl -> 200 + 20 * lvl)
     ..register(HERO_TINKER, "Summon Goblin Mini".setColor(colAbilitiesTinker), 
-    "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 seconds.",
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 sec.",
+    (int lvl) -> "Cd {0} sec.".format(
         (190-10*lvl).toString()
     ))
 
@@ -88,9 +88,9 @@ import BuffIds
     ..presetLeashRange(lvl -> 1800)
     ..presetSpawnUnitDuration(lvl -> 22.5 + 2.5 * lvl)
     ..register(HERO_TINKER, "Pocket Factory".setColor(colAbilitiesTinker), 
-    "Creates a factory producing Clockwerk Goblins, production is every 4 seconds. Duration 40 seconds",
-    (int lvl) -> "Summon lifetime is {0} seconds.".format(
-        (22.5 + lvl * 2.5).toString()
+    "Creates a factory producing Clockwerk Goblins, production is every 4 sec. Duration 40 sec",
+    (int lvl) -> "Summon lifetime is {0} sec.".format(
+        (22.5 + lvl * 2.5).toString(1)
     ))
 
 // ----------------------------------------------------------------------------
@@ -139,6 +139,7 @@ public constant real array[9] tinker_abi4_aura_range = [
     "Tinker slowly repairs this unit!")
 
     new AbilityDefinitionTaurenChieftainEnduranceAura(TINKER_ABILITY_4_AURA)
+    ..setPosition(AbilityPosition.Hidden)
     ..presetBuffs(lvl -> TINKER_BUFF_AURA.toRawCode())
     ..presetAreaofEffect(lvl -> tinker_abi4_aura_range[lvl-1])
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits))
@@ -157,10 +158,10 @@ public constant real array[9] tinker_abi4_aura_range = [
     wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
     wordPassive + "Slowly repairs all mechanical units near Tinker.",
     (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
-        tinker_abi4_hp[lvl-1].toString(),
+        tinker_abi4_hp[lvl-1].toString(0),
         (10*lvl).toString(),
-        tinker_abi4_aura_hp[lvl-1].toString(),
-        tinker_abi4_aura_range[lvl-1].toString()
+        tinker_abi4_aura_hp[lvl-1].toString(0),
+        tinker_abi4_aura_range[lvl-1].toString(0)
     ))
 
 // ----------------------------------------------------------------------------

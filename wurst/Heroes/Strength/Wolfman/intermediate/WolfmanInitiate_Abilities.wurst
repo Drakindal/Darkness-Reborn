@@ -24,14 +24,14 @@ import UnitIds
     ..setRequirements("")
     ..setIcon(Icons.bTNCannibalize)
     ..register(HERO_WOLFMAN_INITIATE, "Bite".setColor(colAbilitiesWolfman), 
-    "Bites the enemy. Cd 5 seconds. Mana cost 0. Cannot damage structures and mechanical units.",
+    "Bites the enemy. Cd 5 sec. Mana cost 0. Cannot damage structures and mechanical units.",
     (int lvl) -> "Deals {0} x Str damage".format(
         (3*lvl).toString()
     ))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionWarStompcreep(WOLF_INITIATE_ABILITY_2_DUMMY)
+    new AbilityDefinitionWarStompcreep(WOLF_INITIATE_ABILITY_2_DUMMY_1)
     ..setLevels(9)
     ..presetDamage(lvl -> 0)
     ..presetCooldown(lvl -> 0)
@@ -47,22 +47,32 @@ import UnitIds
     ..setArtEffect("")
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
 
-    // WIP. armor reduction.
-    new AbilityDefinitionCripplecreep(WOLF_INITIATE_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetDuration(lvl -> 10)
+    new AbilityDefinitionCripplecreep(WOLF_INITIATE_ABILITY_2_DUMMY_2)
+    ..setLevels(9)
     ..presetMovementSpeedReduction(lvl -> 0.08*lvl)
     ..presetAttackSpeedReduction(lvl -> 0.03*lvl)
     ..presetDamageReduction(lvl -> 0.02*lvl)
-    ..presetAreaofEffect(lvl -> 800.)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..presetBuffs(lvl -> commaList(WOLF_BUFF_3))
+    ..presetCooldown(lvl -> 0)
+    ..presetCastRange(lvl -> 93083)
+    ..presetManaCost(lvl -> 0)
+    ..presetAreaofEffect(lvl -> 400)
+    ..presetDuration(lvl -> 2)
+    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+
+    // WIP. armor reduction.
+    new AbilityDefinitionBerserk(WOLF_INITIATE_ABILITY_2)
+    ..setGeneralAbility(AbilityPosition.W)
+    ..presetDuration(lvl -> 10)
+    ..presetDamageTakenIncrease(lvl -> 0.0)
+    ..presetAttackSpeedIncrease(lvl -> 0.0)
+    ..presetMovementSpeedIncrease(lvl -> 0.0)
     ..setIcon(Icons.bTNBattleRoar)
     ..presetCooldown(lvl -> 12.-lvl)
     ..presetManaCost(lvl -> 0)
     ..register(HERO_WOLFMAN_INITIATE, "Howl".setColor(colAbilitiesWolfman), 
-    "Howls to the sky. Stuns enemies for 2 seconds. Reduces movement and attack speed and damage of enemies in 800 AoE for 10 seconds.",
-    (int lvl) -> "-{0}% damage, -{1}% attack speed, -{2}% move speed. Cd {3} seconds".format(
+    "Howls to the sky. Stuns enemies for 2 sec. Reduces movement and attack speed and damage of enemies in 800 AoE for 10 sec.",
+    (int lvl) -> "-{0}% damage, -{1}% attack speed, -{2}% move speed. Cd {3} sec".format(
         (2*lvl).toString(),
         (3*lvl).toString(),
         (8*lvl).toString(),
@@ -82,8 +92,8 @@ import UnitIds
     ..setIcon(Icons.bTNBerserk)
     ..presetBuffs(lvl -> commaList(WOLF_BUFF_1))
     ..register(HERO_WOLFMAN_INITIATE, "Bloodlust".setColor(colAbilitiesWolfman), 
-    "Blood hunger makes Wolfman attacks and moves faster for 5 seconds.",
-    (int lvl) -> "+{0}% Attack Speed, +{1}% Movement speed. Cd {2} seconds".format(
+    "Blood hunger makes Wolfman attacks and moves faster for 5 sec.",
+    (int lvl) -> "+{0}% Attack Speed, +{1}% Movement speed. Cd {2} sec.".format(
         (20*lvl).toString(),
         (15*lvl).toString(),
         (18-lvl).toString()

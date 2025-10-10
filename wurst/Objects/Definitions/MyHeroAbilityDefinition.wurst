@@ -15,8 +15,15 @@ public enum AbilityPosition
     E
     R
     T
-    F // Used as hidden passive.
+    LearnableHidden1 // Used as hidden passive.
+    Hidden // Used as hidden passive.
     Z // Teleport/blink ability.
+
+    M // Instead of WC3 move.
+    S // Instead of WC3 stop action.
+    H // Instead of WC3 hold position.
+    A // Instead of WC3 attack.
+    P // Instead of WC3 patrol.
 
 public interface FormatLearnTooltipFunct
     function run(string format) returns string
@@ -224,7 +231,7 @@ public function AbilityDefinition.setPosition(AbilityPosition pos)
             ..setButtonPositionResearchX(3)
             ..setButtonPositionResearchY(1)
             
-        case AbilityPosition.F
+        case AbilityPosition.LearnableHidden1
             currHotkey = "F"
             this..setButtonPositionNormalX(-1)
             ..setButtonPositionNormalY(-1)
@@ -233,9 +240,42 @@ public function AbilityDefinition.setPosition(AbilityPosition pos)
             ..setButtonPositionResearchX(2)
             ..setButtonPositionResearchY(1)
 
+        case AbilityPosition.Hidden
+            this..setButtonPositionNormalX(-1)
+            ..setButtonPositionNormalY(-1)
+            ..setButtonPositionTurnOffX(-1)
+            ..setButtonPositionTurnOffY(-1)
+            ..setButtonPositionResearchX(-1)
+            ..setButtonPositionResearchY(-1)
+
         case AbilityPosition.Z
             currHotkey = "Z"
             this..setButtonPositionNormalX(1)
+            ..setButtonPositionNormalY(1)
+            
+        case AbilityPosition.M
+            currHotkey = "M"
+            this..setButtonPositionNormalX(0)
+            ..setButtonPositionNormalY(0)
+            
+        case AbilityPosition.S
+            currHotkey = "S"
+            this..setButtonPositionNormalX(1)
+            ..setButtonPositionNormalY(0)
+            
+        case AbilityPosition.H
+            currHotkey = "H"
+            this..setButtonPositionNormalX(2)
+            ..setButtonPositionNormalY(0)
+            
+        case AbilityPosition.A
+            currHotkey = "A"
+            this..setButtonPositionNormalX(3)
+            ..setButtonPositionNormalY(0)
+            
+        case AbilityPosition.P
+            currHotkey = "P"
+            this..setButtonPositionNormalX(0)
             ..setButtonPositionNormalY(1)
 
     this..setHotkey(currHotkey)

@@ -36,6 +36,7 @@ public constant int array[9] guardianOfLight_abi1_Hp = [
 
 @compiletime function defineAbilities()
     new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_1, 9, true)
+    ..setIcon(Icons.bTNHolyBolt)
     ..presetBuffs(lvl -> "")
     ..presetCastRange(lvl -> 1600.0)
     ..presetDuration(lvl -> 3.0)
@@ -79,7 +80,7 @@ public constant int array[9] guardianOfLight_abi1_Hp = [
     ..setIconTurnOff("ReplaceableTextures\\CommandButtonsDisabled\\DISBTNAnkhOfRebirth.BLP")
     ..register(HERO_GUARDIAN_OF_LIGHT, "Divine Shield".setColor(colAbilitiesGuardianOfLight), 
     "The Guardian temporarily casts a Divine Shield on himself, protecting him from all damage.",
-    (int lvl) -> "Duration {0} seconds.".format(
+    (int lvl) -> "Duration {0} sec.".format(
         (3+lvl).toString()
     ))
     
@@ -139,7 +140,7 @@ constant int array[9] abi3_Mana = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpiritMagic.blp")
     ..register(HERO_GUARDIAN_OF_LIGHT, "Inner Fire".setColor(colAbilitiesGuardianOfLight),
     "The Guardian supports the chosen ally temporally increasing their damage dealt and HP regeneration.",
-    (int lvl) -> "+{0}% damage, +{1}% HP/s. Duration {2} seconds. Cd {3} seconds. Mana cost {4}.".format(
+    (int lvl) -> "+{0}% damage, +{1} HP/s. Duration {2} sec. Cd {3} sec. Mana cost {4}.".format(
         (100*abi3_Damage[lvl-1]).toString(),
         abi3_HpReg[lvl-1].toString(),
         (6 + lvl).toString(),
@@ -191,13 +192,14 @@ constant int array[9] abi4_Mana = [
     ..setArtTarget("")
     ..setTargetAttachmentPoint("")
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Wrath".setColor(colAbilitiesGuardianOfLight), 
+    ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Wrath".setColor(colAbilitiesGuardianOfLight),
     "A burst of light is sent at the target location dealing damage to enemies and healing allies. Also permanently increases random stats of all allies heroes in the area.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range. +{3} to random stats. Cd {4} sec. Mana cost {5}.".format(
+    (int lvl) -> "Deals {0} + {1} x Int damage. +{2} to random stats. Cd {3} sec. Mana cost {4}.".format(
         (300*lvl).toString(),
         (1.5*lvl).toString(),
-        (500 + 50*lvl).toString(),
+
         guardianOfLight_abi4_Stats[lvl-1].toString(),
+
         (26 - lvl).toString(),
         abi4_Mana[lvl-1].toString()
     ))
@@ -258,7 +260,7 @@ constant int array[20] abi6_Stats = [
 
 @compiletime function defineAbilities6()
     new AbilityDefinitionAttributeModifierSkill(GUARDIAN_OF_LIGHT_ABILITY_6)
-    ..setGeneralAbility(AbilityPosition.F)
+    ..setGeneralAbility(AbilityPosition.LearnableHidden1)
     ..setLevels(20)
     ..setLevelSkipRequirement(0)
     ..presetHideButton(lvl -> true)

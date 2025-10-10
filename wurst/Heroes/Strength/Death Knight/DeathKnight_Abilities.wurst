@@ -67,7 +67,7 @@ public constant int array[9] abi1_Targets = [
     ..setArtTarget("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl")
     ..register(HERO_DEATH_KNIGHT, "Unholy Execution".setColor(colAbilitiesDeathKnight), 
     "The Death Knight executes an enemy, devouring his Soul and using it to heal himself.",
-    (int lvl) -> "Deals {0} x [2 x Str + Souls] damage to {1} enemies. Cd {2} seconds.".format(
+    (int lvl) -> "Deals {0} x [2 x Str + Souls] damage to {1} enemies. Cd {2} sec.".format(
         (lvl).toString(),
         abi1_Targets[lvl-1].toString(),
         abi1_Cd[lvl-1].toString()
@@ -97,7 +97,7 @@ public constant int array[9] abi1_Targets = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDeathCoil.blp")
     ..register(HERO_DEATH_KNIGHT, "Taste of Death".setColor(colAbilitiesDeathKnight), 
     "The Death Knight unleashes a flurry of souls around him, dealing damage based on how many Souls he has collected.",
-    (int lvl) -> "Deals {0} + {1} x Souls damage. Cd {2} seconds.".format(
+    (int lvl) -> "Deals {0} + {1} x Souls damage. Cd {2} sec.".format(
         (25*lvl).toString(),
         (10*lvl).toString(),
         (21 - lvl).toString()
@@ -186,8 +186,16 @@ public constant int array[9] deathKnight_abi4_Targets = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSkullSpirits.blp")
     ..register(HERO_DEATH_KNIGHT, "Unholy Link".setColor(colAbilitiesDeathKnight), 
     "The Death Knight unseals and shares his power with his allies. Unholy Link reduces incoming damage and allows the Death Knight to harvest souls of enemies killed by his allies. Also, Unholy Link will transfer part of the damage that an ally would receive to the Death Knight. Thus, reducing the damage received by an ally. However, if the Death Knight becomes weak (has less than 20% hp) Unholy Link will be broken. The Death Knight will spend 5 souls to recover his unholy power.\n" +
-    wordNote + "Ability has the entire map cast range and area of effect.",
-    (int lvl) -> "Damage reduction {0}%. Damage share with the Death Knight {1}%. Number of targets {0}. Duration {1} seconds. Cd {2} seconds.".format(
+    wordNote + "Ability has the entire map cast range and area of effect.\n" + 
+    "Damage reduction {0}%. Damage share with the Death Knight {1}%. Number of targets {0}. Duration {1} sec. Cd {2} sec.",
+    (string format) ->  format.format(
+        "(Lvl + 1)",
+        "(25 + 5 x Lvl)",
+        "increases with level",
+        "(10 + 5 x (Lvl - 1))",
+        "(40 - 4 x (Lvl - 1))"
+    ),
+    (string format, int lvl) -> format.format(
         (lvl + 1).toString(),
         (25 + 5 * lvl).toString(),
         deathKnight_abi4_Targets[lvl-1].toString(),
@@ -245,13 +253,9 @@ constant real array[4] abi5_Cd = [
     ..setManaCost(3, 300)
     ..setManaCost(4, 350)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
-
-    ..setTooltipLearnExtended("|n|c00FFFC01Level 1 :|r Gains Strength equal to 10x Souls for 15 seconds. Cooldown 180 seconds.|n|c00FFFC01Level 2 :|r Gains Strength equal to 10x Souls for 20 seconds. Cooldown 150 seconds.|n|c00FFFC01Level 3 :|r Gains Strength equal to 10x Souls for 25 seconds. Cooldown 120 seconds.|n|c00FFFC01Level 4 :|r Gains Strength equal to 10x Souls for 30 seconds. Cooldown 90 seconds.")
-    
-    ..setTooltipNormalExtended(4, "Death Knight infuses himself with all the souls he has harvested, gaining great Strength equal to 10x Souls for 30 seconds.")
     ..register(HERO_DEATH_KNIGHT, "Dark Soul".setColor(colAbilitiesDeathKnight), 
     "Death Knight infuses himself with all the souls he has harvested, gaining great power for a short time.",
-    (int lvl) -> "+{0} x Souls Str for {1} seconds. Cd {2} seconds.".format(
+    (int lvl) -> "+{0} x Souls Str for {1} sec. Cd {2} sec.".format(
         deathKnight_abi5_Factor[lvl-1].toString(),
         deathKnight_abi5_Duration[lvl-1].toString(0),
         abi5_Cd[lvl-1].toString(0)

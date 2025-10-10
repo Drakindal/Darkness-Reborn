@@ -53,7 +53,7 @@ import CommonDescriptions
     ..setManaCost(9, 300)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..register(HERO_MOUNTAIN_KING, "Storm Bolt".setColor(colAbilitiesMountainKing), 
-    "Aggronor the Mighty throws smashes an enemy's head with thunder hammer. Aggronor the Mighty strikes so hard that also hits all nearby enemies in 600 AoE dealing 50% of damage to them. Stuns enemies for 4 seconds.",
+    "Aggronor the Mighty throws smashes an enemy's head with thunder hammer. Aggronor the Mighty strikes so hard that also hits all nearby enemies in 600 AoE dealing 50% of damage to them. Stuns enemies for 4 sec.",
     (int lvl) -> "Deals {0} + {1} x Str damage.".format(
         (200*lvl).toString(),
         (0.75*lvl).toString(2)
@@ -74,8 +74,8 @@ import CommonDescriptions
     ..presetDuration(lvl -> 8.0)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
     ..register(HERO_MOUNTAIN_KING, "Thunder Clap".setColor(colAbilitiesMountainKing), 
-    "Aggronor the Mighty slams his hammer down 3 times to create a massive earthquake that deals damage to enemies and slows down their movement speed and attack speed.",
-    (int lvl) -> "Deals {0} + {1} x Str damage in 600 AoE. Attack speed is reduced by {2}%, movement speed by {3}%.".format(
+    "Aggronor the Mighty slams his hammer down 3 times to create a massive earthquake in 600 AoE that deals damage to enemies and slows down their movement speed and attack speed.",
+    (int lvl) -> "Deals {0} + {1} x Str damage. Reduces attack speed by {2}%, movement speed by {3}%.".format(
         (50*lvl).toString(),
         (0.5*lvl).toString(1),
         (20 + 5*(lvl-1)).toString(),
@@ -105,7 +105,7 @@ public constant real array[9] abi3_Damage = [
     ..presetDuration(lvl -> 0.6+0.1*(lvl-1))
     ..register(HERO_MOUNTAIN_KING, "Bash".setColor(colAbilitiesMountainKing), 
     "Increases the weight of the Aggronor's hammer, giving him a % chance to deal bonus damage and stun an enemy.",
-    (int lvl) -> "{0}% chance to bash dealing {1} damage and stunning for {2} seconds.".format(
+    (int lvl) -> "{0}% chance to bash dealing {1} damage and stunning for {2} sec.".format(
         (10 + 3*(lvl-1)).toString(),
         (abi3_Damage[lvl-1]).toString(0),
         (0.6+0.1*(lvl-1)).toString(1)
@@ -191,7 +191,7 @@ constant real array[4] abi5_Duration = [
     ..presetHitPointBonus(lvl -> abi5_Hp[lvl-1])
     ..register(HERO_MOUNTAIN_KING, "Avatar".setColor(colAbilitiesMountainKing), 
     "Aggronor the Mighty enters the avatar increasing his HP and damage, also, he gets a spell immunity.",
-    (int lvl) -> "+{0} damage, +{1} HP. Duration {2} seconds. Cd {3} seconds.".format(
+    (int lvl) -> "+{0} damage, +{1} HP. Duration {2} sec. Cd {3} sec.".format(
         abi5_Damage[lvl-1].toString(0),
         abi5_Hp[lvl-1].toString(0),
         abi5_Duration[lvl-1].toString(0),

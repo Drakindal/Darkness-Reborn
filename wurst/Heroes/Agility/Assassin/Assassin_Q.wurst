@@ -10,7 +10,7 @@ import MyAbilityIds
 public function shadowWalk()
     EventListener.onCast(ASSASSIN_ABILITY_1) (unit caster) ->
         let lvl = GetUnitAbilityLevel(caster, ASSASSIN_ABILITY_1)
-        let dmg = ((lvl*0.22) * caster.getAgi(true)) + 100*lvl
+        let dmg = ((lvl*0.22) * caster.getAgi(true)) + 10*lvl
         caster
         ..setVertexColor(color(100, 100, 100))
         ..setAnimation("ready")

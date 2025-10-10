@@ -79,10 +79,10 @@ public constant int array[9] vivpire_abi2_Limit = [
     new AbilityDefinitionBladeMasterCriticalStrike(VIVPIRE_ABILITY_2)
     ..setGeneralAbility(AbilityPosition.W)
     ..setIcon("Units\\Vivpire\\Red Orb\\PASRed orb.blp")
-    ..presetTooltipNormalExtended(lvl -> "As you continue fighting hordes of enemies, your claws start hungering for more and more blood. Increasing damage done by 0.1xstr every attack. Damage increase Limit is lvl " + (lvl *2).toString() + " str physical damage. Lasts for 5 seconds from last attack.")
+    ..presetTooltipNormalExtended(lvl -> "As you continue fighting hordes of enemies, your claws start hungering for more and more blood. Increasing damage done by 0.1xstr every attack. Damage increase Limit is lvl " + (lvl *2).toString() + " str physical damage. Lasts for 5 sec from last attack.")
     ..presetChancetoCriticalStrike(lvl -> 0)
     ..register(HERO_VIVPIRE, "Blood Hunter".setColor(colAbilitiesVivpire), 
-    "As Vivpire continues fighting hordes of enemies, their claws starts hungering for more and more blood. Increases physical damage dealt by 0.1 x Str every attack. Damage increases up to a limit of lvl x 2 x Str. Lasts for 5 seconds from the last attack.",
+    "As Vivpire continues fighting hordes of enemies, their claws starts hungering for more and more blood. Increases physical damage dealt by 0.1 x Str every attack. Damage increases up to a limit of lvl x 2 x Str. Lasts for 5 sec from the last attack.",
     (int lvl) -> "Limit {0} x Str additional damage with each attack.".format(
         vivpire_abi2_Limit[lvl-1].toString()
     ))
@@ -167,7 +167,7 @@ public constant int array[9] vivpire_abi4_Str = [
     ..register(HERO_VIVPIRE, "Prey Marked".setColor(colAbilitiesVivpire), 
     "Marks the target as a Prey, making them able to be cursed by Vampiric Bite. Also, Vivpire drains blood from the killed Prey and permanently gets Strength. Vivpire marks as a Prey not only the single target but also 2 x Lvl random units in 800 AoE.\n" +
     wordNote + "Type '-blood' to see your current Blood amount.",
-    (int lvl) -> "+{0} Str on kill. {1} preys in AoE limit. Duration {2} seconds.".format(
+    (int lvl) -> "+{0} Str on kill. {1} preys in AoE limit. Duration {2} sec.".format(
         vivpire_abi4_Str[lvl-1].toString(),
         (2*lvl).toString(),
         (10 + 2*(lvl-1)).toString()
@@ -196,7 +196,7 @@ public constant int array[4] vivpire_abi5_Damage = [
     ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_5))
     ..register(HERO_VIVPIRE, "Vampire-Lord Unleashed".setColor(colAbilitiesVivpire), 
     "Vivpire unleashes their true form dramatically increasing their power. Gets additional damage and HP based on the ability level and the Blood amount. Increases all stats in 4 times.",
-    (int lvl) -> "+{0} + 8 x Blood damage. +{1} + 12 x Blood HP. Duration {2} seconds. Cd {3} seconds.".format(
+    (int lvl) -> "+{0} + 8 x Blood damage. +{1} + 12 x Blood HP. Duration {2} sec. Cd {3} sec.".format(
         vivpire_abi5_Damage[lvl-1].toString(),
         (1000 * Pow(2, lvl - 1.)).toString(0),
         (10 + lvl * 5).toString(),

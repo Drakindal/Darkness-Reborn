@@ -38,7 +38,7 @@ import Abilities
     ..register(HERO_JACKSMITH, "Forge".setColor(colAbilitiesJacksmith), 
     "The Jacksmith's distinct skills allow him to forge a better item from the components.\n" +
     "Check discord server for a list of all available recipes.",
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    (int lvl) -> "Cd {0} sec.".format(
         (135 - 15*lvl).toString()
     ))
 
@@ -61,7 +61,7 @@ import Abilities
     ..setTargetAttachmentPoint("")
     ..register(HERO_JACKSMITH, "Radiant Forge".setColor(colAbilitiesJacksmith), 
     "The Jacksmith forges a random item with a small chance to create a legendary one.",
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    (int lvl) -> "Cd {0} sec.".format(
         (75 - 5*lvl).toString()
     ))
 
@@ -84,7 +84,7 @@ import Abilities
     ..setTargetAttachmentPoint("")
     ..register(HERO_JACKSMITH, "Forge Smart".setColor(colAbilitiesJacksmith), 
     "The Jacksmith uses Bullion to upgrade some legendary items. However, there is a chance to fail and destroy the Bullion, but not the item.",
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    (int lvl) -> "Cd {0} sec.".format(
         (225 - 25*lvl).toString()
     ))
     
@@ -134,7 +134,7 @@ import Abilities
     ..setTargetAttachmentPoint("")
     ..register(HERO_JACKSMITH, "Metal Strength".setColor(colAbilitiesJacksmith), 
     "The Jacksmith abilities are inherited through the generations allowing the Jacksmith to forge perfect items in the Tinker's Blacksmith. However, only the Thief can find components for this exciting recipes.",
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    (int lvl) -> "Cd {0} sec.".format(
         (275 - 25*lvl).toString()
     ))
     
@@ -153,7 +153,7 @@ import Abilities
     ..setArtCaster("Abilities\\Spells\\Undead\\Darksummoning\\DarkSummonTarget.mdl")
     ..register(HERO_JACKSMITH, "Forge Mastery".setColor(colAbilitiesJacksmith), 
     "The Jacksmith has skills to professionally forge items that commonly used by human knights and mages that are not strong enough for heroes. However, the Jacksmith knows secret recipes to upgrade these items further into legendary ammunition.",
-    (int lvl) -> "The Jacksmith can create a special item with level up to {0}. Cooldown {1}".format(
+    (int lvl) -> "The Jacksmith can create a special item with level up to {0}. Cd {1}".format(
         lvl.toString(),
         (210 - 30*lvl).toString()
     ))

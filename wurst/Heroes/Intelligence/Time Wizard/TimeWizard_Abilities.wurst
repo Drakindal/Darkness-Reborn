@@ -31,7 +31,7 @@ constant real array[4] abi1_Cd = [
     ..setManaCost(4, 1500)
     ..presetFollowThroughTime(lvl -> 0.2)
     ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.UNIVERSALSPELL, true)
+    ..presetOption(Option.UNIQUECAST, true)
     ..presetArtDuration(lvl -> 0.2)
     ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
     ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
@@ -44,7 +44,7 @@ constant real array[4] abi1_Cd = [
     ..register(HERO_TIME_WIZARD, "Time Travel".setColor(colAbilitiesTimeWizard), 
     "The magic of Time Wizard allows her to travel in the space and the time, creating a tunnel to the specified location. You and your allies can freely move back and forth through tunnel portals.\n" +
     "The ability can be learned at levels: 10 - 20 - 30 - 40.".setColor(colCanLearn),
-    (int lvl) -> "Duration 15 seconds. Cooldown {1} seconds.".format(
+    (int lvl) -> "Duration 15 sec. Cd {0} sec.".format(
         (70 - 10*lvl).toString()
     ))
 
@@ -82,7 +82,7 @@ public constant int array[4] timeWizard_abi2_Stats = [
     ..register(HERO_TIME_WIZARD, "Punish Time".setColor(colAbilitiesTimeWizard),
     "Breakthrough skill of time Time Wizard allows her to permanently increase a selected teammate stats. But if Time Wizard dies, the teammate will be punished for number of Punish Time casts x 10000 magic damage.\n" +
     "The ability can be learned at levels: 12 - 24 - 36 - 48.".setColor(colCanLearn),
-    (int lvl) -> "Adds {0} stats on use. Cooldown {1} seconds.".format(
+    (int lvl) -> "Adds {0} stats on use. Cd {1} sec.".format(
         timeWizard_abi2_Stats[lvl-1].toString(),
         (120 - 15*lvl).toString()
     ))
@@ -111,9 +111,9 @@ public constant int array[4] timeWizard_abi2_Stats = [
     ..setRequiredLevel(16)
     ..setMaxLevels(4)
     ..register(HERO_TIME_WIZARD, "Stop Time".setColor(colAbilitiesTimeWizard), 
-    "Stops the time for all your enemies for 10 seconds.\n" +
+    "Stops the time for all your enemies for 10 sec.\n" +
     "The ability can be learned at levels: 16 - 32 - 44 - 56.".setColor(colCanLearn),
-    (int lvl) -> "Cooldown {0} seconds.".format(
+    (int lvl) -> "Cd {0} sec.".format(
         (200.0 - 20*lvl).toString()
     ))
     
@@ -187,9 +187,9 @@ public constant int array[4] timeWizard_abi2_Stats = [
     ..register(HERO_TIME_WIZARD, "Radar Time".setColor(colAbilitiesTimeWizard), 
     "Time Wizard unleashes power accumulated over the life to summon time rift that deals magical damage to all enemies in 600 AoE and heals allies for 5% of max HP per second.\n" +
     "At the end of cast resets cooldown of all allies in AoE.\n" +
-    "Has a 15% chance to reset Time Wizard cooldown." +
+    "Has a 15% chance to reset Time Wizard cooldown.\n" +
     "The ability can be learned at levels: 20 - 40 - 60 - 80.".setColor(colCanLearn),
-    (int lvl) -> "Deals {0} x Int damage every 0.05 seconds during 4 seconds. Cooldown {1} seconds.".format(
+    (int lvl) -> "Deals {0} x Int damage every 0.05 sec during 4 sec. Cd {1} sec.".format(
         (1.5*lvl).toString(1),
         (200.0 - 20*lvl).toString()
     ))

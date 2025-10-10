@@ -38,8 +38,13 @@ constant real array[9] abi1_Damage = [
     ..presetBackstabDamage1(lvl -> abi1_Damage[lvl-1])
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNInvisibility.blp")
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Windwalk".setColor(colAbilitiesPriestessOfTheMoon),
-    "",
-    (int lvl) -> "Priestess of the Moon becomes invisible moving faster (+{0}%) for {1} seconds (cd {2} seconds). When Priestess of the Moon attacks the enemy from the shadows she deals {3} additional damage.".format((10*lvl).toString(), (8.0 + 2*lvl).toString(), (15.0 - lvl).toString(0), abi1_Damage[lvl-1].toString(0)))
+    "Priestess of the Moon becomes invisible moving faster. When Priestess of the Moon attacks the enemy from the shadows she deals additional damage.",
+    (int lvl) -> "+{0}% move speed for {1} sec (cd {2} sec). +{3} additional damage.".format(
+        (10*lvl).toString(),
+        (8.0 + 2*lvl).toString(),
+        (15.0 - lvl).toString(0),
+        abi1_Damage[lvl-1].toString(0)
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -76,8 +81,12 @@ constant real array[9] abi2_Stun = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireBolt.blp")
     ..setMissileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Fire bolt".setColor(colAbilitiesPriestessOfTheMoon), 
-    "",
-    (int lvl) -> "Hurls a fiery bolt that deals {0} damage and stuns a target enemy for {1} seconds (cd {2} seconds).".format(abi2_Damage[lvl-1].toString(0), abi2_Stun[lvl - 1].toString(1), (24.0 - lvl).toString(0)))
+    "Hurls a fiery bolt that deals damage and stuns a target enemy.",
+    (int lvl) -> "Deals {0} damage. Stuns for {1} sec. Cd {2} sec.".format(
+        abi2_Damage[lvl-1].toString(0),
+        abi2_Stun[lvl - 1].toString(1),
+        (24.0 - lvl).toString(0)
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -106,8 +115,12 @@ constant real array[9] abi3_Damage = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNStarfall.blp")
     ..setArtCaster("Abilities\\Spells\\NightElf\\Starfall\\StarfallCaster.mdl")
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Starfall".setColor(colAbilitiesPriestessOfTheMoon), 
-    "",
-    (int lvl) -> "Summons stars falling from the sky on enemies in {0} range immobilizing enemies for {1} seconds and dealing {2} damage".format((400 + 50*lvl).toString(), (2.0 + 0.2*(lvl-1)).toString(1), abi3_Damage[lvl-1].toString(0)))
+    "Summons stars falling from the sky on nearby enemies, immobilizing them and dealing damage.",
+    (int lvl) -> "Deals {0} damage in {0} range. Immobilizes for {1} sec.".format(
+        abi3_Damage[lvl-1].toString(0),
+        (400 + 50*lvl).toString(),
+        (2.0 + 0.2*(lvl-1)).toString(1)
+    ))
     
 // ----------------------------------------------------------------------------
 
@@ -139,8 +152,11 @@ constant real array[9] abi4_Damage = [
     ..presetRangedBonus(lvl -> true)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Trueshot Aura".setColor(colAbilitiesPriestessOfTheMoon),
-    "",
-    (int lvl) -> "An aura that gives friendly units around {1} range of Priestess of the Moon {0}% bonus damage to their ranged attacks.".format((100*abi4_Damage[lvl-1]).toString(0), (900.0 + 100*lvl).toString(0)))
+    "Trueshot aura gives bonus damage to nearby ranged allies.",
+    (int lvl) -> "+{0}% bonus damage in {1} AoE.".format(
+        (100*abi4_Damage[lvl-1]).toString(0),
+        (900.0 + 100*lvl).toString(0)
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -155,7 +171,10 @@ constant real array[9] abi4_Damage = [
     ..presetIcon(Icons.bTNHeroMoonPriestess)
     ..presetManaCost(lvl -> 150 * lvl)
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Dark Mirana".setColor(colAbilitiesPriestessOfTheMoon),
-    "",
-    (int lvl) ->"Priestess of the Moon taps into the powers of Darkness dramatically increasing her attack speed (+340% base attack speed) for {0} seconds (cd {1} seconds).".format((10. + 5 * lvl).toString(0), (60. - 5*(lvl-1)).toString(0)))
+    "Priestess of the Moon taps into the powers of Darkness dramatically increasing her attack speed (+340% base attack speed).",
+    (int lvl) ->"Duration {0} sec. Cd {1} sec.".format(
+        (10. + 5 * lvl).toString(0),
+        (60. - 5*(lvl-1)).toString(0)
+    ))
     
 // ----------------------------------------------------------------------------

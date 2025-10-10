@@ -144,7 +144,7 @@ public constant real array[4] lich_abi5_Hp = [
     ..setTargetAttachmentPoint("")
     ..register(HERO_LICH, "Death And Decay".setColor(colAbilitiesLich), 
     "The scary beauty of darkness leaches enemies life energy in area.",
-    (int lvl) -> "Permanently steals {0}% of target max HP. Deals {1}% of target max HP as magic damage every 0.8 seconds {2} times in {3} range.".format(
+    (int lvl) -> "Permanently steals {0}% of target max HP. Deals {1}% of target max HP as magic damage every 0.8 sec {2} times in {3} range.".format(
         (100*lich_abi5_Hp[lvl-1]).toString(),
         (100*lich_abi5_Damage[lvl-1]).toString(),
         (3+lvl).toString(),

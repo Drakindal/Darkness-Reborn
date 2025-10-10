@@ -5,6 +5,7 @@ import ClosureForGroups
 import ClosureTimers
 import MyUnitIds
 import MoonUtils
+import Global_Variables
 
 function unit.swapPlayTech(int setTo)
     let conID = this.getTypeId()
@@ -65,7 +66,8 @@ public function construction()
                     u.remove()
     CreateTrigger()..registerRectEnterEventSource(gg_rct_BlockTinkerBuildings)..addAction() ->
         let u = GetEnteringUnit()
-        if u.isType(UNIT_TYPE_STRUCTURE)
+        let hid = playerHero.get(u.getOwner()).getTypeId()
+        if u.isType(UNIT_TYPE_STRUCTURE) and (hid == HERO_TINKER or hid == HERO_TINKER_ROBOT)
             u.kill()
             u.swapPlayTech(1)
             if u.getTypeId() == TINKERBUILDING_103

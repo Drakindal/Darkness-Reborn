@@ -154,7 +154,7 @@ init
     ..addStats(addArmor(130))
     ..addStats(addAllStats(130))
     ..addStats(addMovementSpeed(160))
-    ..addStats("[WIP] Can activate stealth skill Invisible Cooldown 15  seconds")
+    ..addStats("[WIP] Can activate stealth skill Invisible Cd 15  seconds")
     ..addComponents(
     ITEM_STORM_BOOTS_L7,
     ITEM_BOOTS_OF_INVISIBILITY,

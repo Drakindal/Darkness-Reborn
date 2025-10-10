@@ -75,8 +75,8 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
     ..setArtEffect("")
     ..setArtTarget("")
     ..register(HERO_KEEPER_OF_THE_GROVE, "Natural Orb".setColor(colAbilitiesKeeperOfTheGrove),
-    "Creates a blob of nature power that moves forwardly and absorbs power of nearby plants increasing in size and causes damage to all nearby enemies every 0.05 seconds",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.05 seconds. Range linearly increases from {2} to {3}".format(
+    "Creates a blob of nature power that moves forwardly and absorbs power of nearby plants increasing in size and causes damage to all nearby enemies.",
+    (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.05 sec. Range linearly increases from {2} to {3}".format(
         (10*lvl).toString(),
         (0.15*lvl).toString(2),
         "350",
@@ -101,7 +101,7 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
     ..setArtEffect("")
     ..setArtTarget("")
     ..register(HERO_KEEPER_OF_THE_GROVE, "Hawkeye Spirit".setColor(colAbilitiesKeeperOfTheGrove),
-    "Summon the soul of Hawkeye that shoots arrows every 0.25 seconds to all enemies within range.",
+    "Summon the soul of Hawkeye that shoots arrows to all enemies within range.",
     (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.25 seconds in {2} range.".format(
         (60*lvl).toString(),
         (0.6*lvl).toString(1),
@@ -156,7 +156,7 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
     ..setTargetAttachmentPoint("chest")
     ..register(HERO_KEEPER_OF_THE_GROVE, "Guardians of the Grove".setColor(colAbilitiesKeeperOfTheGrove),
     "Summon spirits of the Grove guardians to protect it.",
-    (int lvl) -> "Summons {0} spirits, duration 30 seconds, cd {2} seconds.".format(
+    (int lvl) -> "Summons {0} spirits. Duration 30 sec. Cd {1} sec.".format(
         (6 + 2*(lvl-1)).toString(),
         (180 - 20*(lvl-1)).toString()
     ))

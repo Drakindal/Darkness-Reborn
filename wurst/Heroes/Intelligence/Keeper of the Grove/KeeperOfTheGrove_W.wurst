@@ -15,7 +15,7 @@ public function naturalOrb()
         let sfx = addEffect(Abilities.manaFlareMissile, pos)
         let angle = sfx.getPos().angleTo(target)
         let startScale = 2
-        let stopScale  = 4
+        let stopScale  = 0.8
         let startRange = 350
         let stopRange  = 350.0 + 20*(lvl-1)
         let period     = 0.05
@@ -27,7 +27,7 @@ public function naturalOrb()
             
             sfx.setPos(sfx.getPos().polarOffset(angle, 13))
 
-            let range = (startRange + (stopRange - startRange) * cb.getCount() / N)/2
+            let range = (startRange + (stopRange - startRange) * cb.getCount() / N) /2
             let scale = startScale + (stopScale - startScale) * cb.getCount() / N
 
             sfx..setScale(scale)

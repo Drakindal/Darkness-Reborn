@@ -50,12 +50,13 @@ public constant real array[9] shadowHunter_abi1_Damage = [
     ..setManaCost(9, 410)
     ..presetDamageperSecond(lvl -> shadowHunter_abi1_Damage[lvl-1])
     ..presetCastRange(lvl -> 900.0)
+    ..setRequirements("")
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
     ..register(HERO_SHADOW_HUNTER, "Spinning Blade".setColor(colAbilitiesShadowHunter), 
     "Creates a rotation blade on the allied unit dealing damage to all nearby enemies. Increases damage taken by the target from all sources by 40%.\n" +
     wordPassive + "Increases the Shadow Hunter's damage against Shadow Hexed units by +100% per level.\n",
-    (int lvl) -> "Deals {0} + {1} x Int damage per second in {2} range. Lasts for {3} seconds. Cd {4} seconds.".format(
+    (int lvl) -> "Deals {0} + {1} x Int damage per second in {2} range. Lasts for {3} sec. Cd {4} sec.".format(
         shadowHunter_abi1_Damage[lvl-1].toString(),
         (1.5*lvl).toString(),
         (180+30*lvl).toString(),
@@ -99,14 +100,37 @@ public constant real array[9] shadowHunter_abi1_Damage = [
     ..setManaCost(7, 210)
     ..setManaCost(8, 250)
     ..setManaCost(9, 290)
-    ..register(HERO_SHADOW_HUNTER, "Serpent Ward".setColor(colAbilitiesShadowHunter), 
-    "Shadow Hunter summons Serpent Wards at the specified place that attack nearby enemies.",
-    (int lvl) -> "Deals {0} + {1} x Int damage with attacks. +{2}% Attack Speed. Ward's HP = {3} + {4}% of Shadow Hunter max HP.".format(
+    ..register(HERO_SHADOW_HUNTER, "Serpent Ward".setColor(colAbilitiesShadowHunter),
+    "Shadow Hunter summons Serpent Wards.\n"+
+    "Health: {0} + {1} x max HP.\n" + 
+    "Damage: {2} + {3} x Int.\n" + 
+    "Attack Speed: +{4}%.\n" +
+    "Armor Penetration: {5}% of Shadow Hunter's Armor Penetration.\n" +
+    "Duration: {6} seconds.\n" +
+    "Cooldown: {7} seconds.",
+    (string format) -> format.format(
+        "(10 x Lvl)",
+        "90 x Lvl",
+
+        "50 x Lvl",
+        "0.3 x Lvl",
+        "(5 x (Lvl - 1))",
+        "(8 x Lvl)",
+
+        "30.0 + Lvl",
+        "25.0 - 2 x Lvl"
+    ),
+    (string format, int lvl) -> format.format(
+        (90*lvl).toString(),
+        (0.1*lvl).toString(1),
+
         (50*lvl).toString(),
-        (0.3*lvl).toString(),
+        (0.3*lvl).toString(1),
         (5*(lvl-1)).toString(),
-        (50*lvl).toString(),
-        (10*lvl).toString()
+        (8*lvl).toString(),
+
+        (30+lvl).toString(),
+        (25 - 2*lvl).toString()
     ))
 
 // ----------------------------------------------------------------------------
@@ -130,7 +154,7 @@ public constant real array[9] shadowHunter_abi1_Damage = [
     ..presetDuration(lvl -> 2.5 + 0.5*lvl)
     ..register(HERO_SHADOW_HUNTER, "Hex".setColor(colAbilitiesShadowHunter), 
     "The Shadow Hunter transforms an enemy into a critter, making them unable to attack or cast spells. Increases damage taken by the target from all sources by 20%.",
-    (int lvl) -> "Deals {0} x Int damage in {1} range and hexes enemies for {2} seconds. Cd {3} seconds".format(
+    (int lvl) -> "Deals {0} x Int damage in {1} range and hexes enemies for {2} sec. Cd {3} sec".format(
         (lvl).toString(),
         (700+40*lvl).toString(),
         (3.5 + 0.5*lvl).toString(1),
@@ -230,13 +254,14 @@ public constant real array[4] shadowHunter_abi5_Mana = [
     ..presetManaCost(lvl -> 200*lvl)
     ..presetDuration(lvl -> 20.0 + 10*(lvl-1))
     ..presetCastRange(lvl -> 500.0)
+    ..setRequirements("")
     ..presetAreaofEffect(lvl -> 700.0 + 50*lvl)
     ..presetWardUnitType(lvl -> SHADOW_HUNTER_HEALING_WARD.toRawCode())
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNHealingWard.blp")
     ..register(HERO_SHADOW_HUNTER, "Healing Ward".setColor(colAbilitiesShadowHunter), 
     "Sets up a magic ward in target location that recovers percent of allies max hp per second.",
-    (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range. Duration {3} seconds. Cd {4} seconds".format(
+    (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range. Duration {3} sec. Cd {4} sec".format(
         (100*shadowHunter_abi5_Heal[lvl-1]).toString(),
         (100*shadowHunter_abi5_Mana[lvl-1]).toString(),
         (700 + 50*lvl).toString(),

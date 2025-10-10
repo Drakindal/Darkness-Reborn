@@ -36,9 +36,9 @@ public class ShopInfo
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-public let shopsInfo = new LinkedList<ShopInfo>()
+public let shopsInfo = compiletime(new LinkedList<ShopInfo>())
 // key = itemId, value = shopId
-let itemsShopsMap = new HashMap<int, int>()
+let itemsShopsMap = compiletime(new HashMap<int, int>())
 
 public var ITEMS_LOCATIONS_SHOPS_INITED = false
 

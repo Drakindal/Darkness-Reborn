@@ -128,7 +128,7 @@ constant real array[9] abi2_DamageTaken = [
     ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\BTNAdept 002.blp")
     ..register(HERO_BLADEMASTER, "Rampage".setColor(colAbilitiesBlademaster), 
     "Blademaster quickly moves to the target slashing it 11 times and stunning it. Also Blademaster deals the same amount of damage to all enemies around the target.",
-    (int lvl) -> "Deals {0} damage to all enemies in {1} range. Stun duration {2} seconds.".format(
+    (int lvl) -> "Deals {0} damage to all enemies in {1} range. Stun duration {2} sec.".format(
         "{0} + ({1} x Agility)".format((50*lvl).toString(), (0.5*lvl).toString(1)),
         ((300 + 30*lvl)*2).toString(),
         (lvl + 2).toString()
@@ -153,6 +153,6 @@ constant real array[9] abi2_DamageTaken = [
     ..setArtSpecial("")
     ..register(HERO_BLADEMASTER, "Haste Slash".setColor(colAbilitiesBlademaster), 
     "Blademaster begins to spin rapidly at a target location, dealing damage and ending with a huge finishing burst of damage (x4 damage).",
-    (int lvl) -> "Deals {0} x Agi + {1} damage every 0.3 seconds within 3 seconds.".format((0.75*lvl).toString(2), (3000*lvl).toString()))
+    (int lvl) -> "Deals {0} x Agi + {1} damage every 0.3 sec within 3 sec.".format((0.75*lvl).toString(2), (3000*lvl).toString()))
     
 // ----------------------------------------------------------------------------

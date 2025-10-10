@@ -12,6 +12,14 @@ import MyBuffIds
 import MyUnitIds
 
 public function repair()
+    EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
+        let skill = GetLearnedSkill()
+        if (skill == TINKER_ABILITY_4)
+            let lvl = GetLearnedSkillLevel()
+            let hero = GetLearningUnit()
+            hero.removeAbility(TINKER_ABILITY_4_AURA)
+            hero.addAbility(TINKER_ABILITY_4_AURA, lvl)
+        
     EventListener.onTargetCast(TINKER_ABILITY_4) (unit caster, unit target) ->
         if (target.getTypeId() == HERO_TINKER)
             printTimedToPlayer("Tinker cannot repair himself, because he is organic creature, but he can repair Robo-Goblin.", 6, caster.getOwner())

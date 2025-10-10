@@ -71,7 +71,7 @@ constant real array[9] abi2_Range = [
     ..setArtSpecial("Grin Curse.mdx")
     ..register(HERO_WARDEN, "Shadow Blink".setColor(colAbilitiesWarden), 
     "Warden blinks to another location.",
-    (int lvl) -> "Blink: {0} range, cd {1} seconds.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+    (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
     
 // ----------------------------------------------------------------------------
 

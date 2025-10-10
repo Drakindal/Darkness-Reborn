@@ -76,7 +76,7 @@ constant real array[9] abi2_LifeSteal = [
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_deathwing_bloodcorruption_death.blp")
     ..register(HERO_SATYR, "Heath Rain".setColor(colAbilitiesSatyr), 
     "Satyr extremely increases his power. The souls of those who die are gathered into the arms of the Satyr increasing his damage and healing him.",
-    (int lvl) -> "+{0} damage, +{1}% life steal. Duration {2} seconds (cd {3} seconds).".format(
+    (int lvl) -> "+{0} damage, +{1}% life steal. Duration {2} sec (cd {3} sec).".format(
         abi2_Damage[lvl-1].toString(0),
         (100*abi2_LifeSteal[lvl-1]).toString(1),
         (6.0 + lvl).toString(0),
@@ -150,12 +150,12 @@ constant real array[9] abi2_LifeSteal = [
     ..setAnimationNames("spell")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDevourMagic.blp")
     ..setArtTarget("")
-    // ..setLvlDataString("aub1", 1, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 1800 HP and reducing his armor by 120 for 20 seconds.")
-    // ..setLvlDataString("aub1", 2, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 3600 HP and reducing his armor by 180 for 20 seconds.")
-    // ..setLvlDataString("aub1", 3, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 5400 HP and reducing his armor by 240 for 20 seconds.")
-    // ..setLvlDataString("aub1", 4, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 7200 HP and reducing his armor by 300 for 20 seconds.")
+    // ..setLvlDataString("aub1", 1, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 1800 HP and reducing his armor by 120 for 20 sec.")
+    // ..setLvlDataString("aub1", 2, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 3600 HP and reducing his armor by 180 for 20 sec.")
+    // ..setLvlDataString("aub1", 3, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 5400 HP and reducing his armor by 240 for 20 sec.")
+    // ..setLvlDataString("aub1", 4, 0, "Satyr enhances his fangs with dark magic and then bites the enemy, draining 7200 HP and reducing his armor by 300 for 20 sec.")
     ..setUltimateAbility()
     ..register(HERO_SATYR, "Bite of Death".setColor(colAbilitiesSatyr), 
-    "Satyr enhances his fangs with dark magic and then bites the enemy, draining his HP and reducing his armor for 20 seconds.")
+    "Satyr enhances his fangs with dark magic and then bites the enemy, draining his HP and reducing his armor for 20 sec.")
     
 // ----------------------------------------------------------------------------

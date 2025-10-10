@@ -70,9 +70,9 @@ constant int array[9] abi1_Mana = [
     ..presetDetectionRadius(lvl -> 400. + 40*(lvl-1))
     ..register(HERO_NAGA_SEA_WITCH, "Bubble Trap".setColor(colAbilitiesNagaWitch), 
     "Naga Sea Witch creates a bubble that traps enemies for 2 seconds and deals damage to them.",
-    (int lvl) -> "Deals [{0} + {1}% of Max Mana] damage in {2} range. Mana cost {3}. Cd {4} seconds.".format(
+    (int lvl) -> "Deals [{0} + {1}% of Max Mana] damage in {2} range. Mana cost {3}. Cd {4} sec.".format(
         (200*lvl).toString(),
-        (100*0.3*lvl).toString(),
+        (100*0.3*lvl).toString(1),
         (400 + 40*(lvl-1)).toString(),
         abi1_Mana[lvl-1].toString(),
         (18 - lvl).toString()

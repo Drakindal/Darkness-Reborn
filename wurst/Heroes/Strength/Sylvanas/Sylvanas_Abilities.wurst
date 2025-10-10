@@ -150,7 +150,7 @@ import MyUpgradesIds
     ..setMissileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
     ..register(HERO_SYLVANAS, "Venom Arrow".setColor(colAbilitiesSylvanas),
     "Sylvanas shoots an arrow that contains the energy of Quel'Thalas Forest entangling the enemy and dealing massive damage.",
-    (int lvl) -> "Deals {0} x Str physical damage and {1} x max Hp magical damage. Duration {2} seconds. Cd {3} seconds.".format(
+    (int lvl) -> "Deals {0} x Str physical damage and {1} x max Hp magical damage. Duration {2} sec. Cd {3} sec.".format(
         (lvl*8).toString(),
         (lvl*3).toString(),
         (7 + lvl).toString(),

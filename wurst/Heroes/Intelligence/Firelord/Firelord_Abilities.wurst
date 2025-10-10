@@ -38,12 +38,10 @@ import MyBuffIds
     ..setBuffs(1, FIRELORD_BUFF_BLAZE.toRawCode())
 
     new AbilityDefinitionDemonHunterEvasion(FIRELORD_ABILITY_BLAZE)
-    // T with no levels, so we don't use ..setUltimateAbility()
-    ..setButtonPositionNormalX(2)
-    ..setButtonPositionNormalY(1)
+    ..setPosition(AbilityPosition.T)
     ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNBlaze.blp")
-    ..register(HERO_FIRELORD, "".setColor(colAbilitiesFirelord),
-    "The magic of the Firelord burns enemies with great intensity, each ability causes [30 x (Firelord Level) + 1% of target max HP] pure damage and [1 x Intelligence] magical damage each second over 4 seconds.")
+    ..register(HERO_FIRELORD, "Blaze".setColor(colAbilitiesFirelord),
+    "The magic of the Firelord burns enemies with great intensity, each ability causes [30 x (Firelord Level) + 1% of target max HP] pure damage and [1 x Intelligence] magical damage each second over 4 sec.")
     ..setHeroAbility(false)
     
 // ----------------------------------------------------------------------------
@@ -90,7 +88,7 @@ import MyBuffIds
     ..setArtTarget("")
     ..register(HERO_FIRELORD, "Sear".setColor(colAbilitiesFirelord), 
     "Firelord launches a fireball in the target point that splits into hot fragments upon hitting a ground damaging all units in range.\n" +
-    "If the target is affected by Blaze, it also gets stunned for 9 seconds.",
+    "If the target is affected by Blaze, it also gets stunned for 9 sec.",
     (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
         (400*lvl).toString(),
         (lvl).toString(),
@@ -129,7 +127,7 @@ import MyBuffIds
     "Deals 4 times damage to targets affected by Blaze.",
     (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
         (300*lvl).toString(),
-        (0.8*lvl).toString(),
+        (0.8*lvl).toString(1),
         ((400 + 20*lvl)*2).toString()
     ))
     
@@ -161,7 +159,7 @@ import MyBuffIds
     "Firelord makes the target enemy suffer from an intensive stream of burning Inferno energy. A target affected by Blaze will spread Conflagration to all enemies in 300 range damaging them too.",
     (int lvl) -> "Deals {0} + {1} x Intelligence damage.".format(
         (550*lvl).toString(),
-        (1.8*lvl).toString()
+        (1.8*lvl).toString(1)
     ))
 
 // ----------------------------------------------------------------------------
@@ -192,6 +190,7 @@ public constant int array[9] firelord_abi4_BounceAmount = [
 
 @compiletime function defineAbilities2()
     new ChannelAbilityPreset(FIRELORD_ABILITY_4, 9, true)
+    ..setGeneralAbility(AbilityPosition.R)
     ..presetCooldown(lvl -> 21.0 - lvl)
     ..setManaCost(1, 100)
     ..setManaCost(2, 120)
@@ -215,13 +214,12 @@ public constant int array[9] firelord_abi4_BounceAmount = [
     ..setArtEffect("")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
     ..setArtTarget("")
-    ..setGeneralAbility(AbilityPosition.Q)
     ..register(HERO_FIRELORD, "Pyroclasm".setColor(colAbilitiesFirelord), 
     "Firelord launches a fireball at the target enemy that bounces between nearby enemies several times, dealing 2000 + 7.2x Intelligence damage to enemies each time.\n" +
     "Prioritizes targets affected by Blaze.",
     (int lvl) -> "Deals {0} + {1} x Intelligence damage. Max {2} targets.".format(
         firelord_abi4_Damage[lvl-1].toString(0),
-        (0.8*lvl).toString(),
+        (0.8*lvl).toString(1),
         firelord_abi4_BounceAmount[lvl-1].toString()
     ))
     
