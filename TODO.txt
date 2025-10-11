@@ -1,0 +1,36 @@
+Need to be tested:
+
+Assassin
+Blade
+Dark Ranger
+Illusionist
+Priestess
+Satyr
+Shadow Vengeance
+Thief
+Warden
+
+Archmage
+Firelord
+Firemage
+Guard of Light
+Herald of Lightning
+Keeper
+King of Loas
+Lich
+Naga
+Shadow Hunter
+Time wizard
+Tinker
+
+Arthas
+Beastmaster
+Death Knight
+Jacksmith
+Mountain King
+Pit lord
+Sylvanas
+Tauren Chieftain
+Uther 
+Vivpire
+Wolfman
