@@ -14,7 +14,7 @@ import onDamageDifficulty
 
 // ----------------------------------------------------------------------------
 
-function modifyAmountArmorType(unit src, unit targ)
+function modifyAmountArmorType(unit src, unit _targ)
     src.getFieldWeapon(UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0)
     DamageCustomEvent.setAmount(DamageCustomEvent.getAmount())
 
@@ -41,6 +41,8 @@ function damageSwitcher(unit src, unit targ)
 
 // Process general attacks (both melee and ranged)
 function anyAttack(unit src, unit targ)
+    autoAttackPreChecks(src, targ)
+
     let dt = src.isRanged() ? customDamageType.PhysicalRanged : customDamageType.PhysicalMelee
     let damageAmount = targ.getStats().calcDamage(dt, DamageCustomEvent.getUnreducedAmount())
     DamageCustomEvent.setAmount(damageAmount)
@@ -54,7 +56,7 @@ function anyAttack(unit src, unit targ)
     else
         handlePhysicalRangedAttackChecks(src, targ)
 
-    autoAttackChecks(src, targ)
+    autoAttackPostChecks(src, targ)
 
 // Process any coded damage
 function anyCodeAttack(unit src, unit targ)

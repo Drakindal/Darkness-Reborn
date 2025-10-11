@@ -53,9 +53,6 @@ public constant ASSASSIN_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant ASSASSIN_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant ASSASSIN_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
-public constant ASSASSIN_BUFF_1 = compiletime(ABIL_ID_GEN.next())
-public constant ASSASSIN_BUFF_3 = compiletime(ABIL_ID_GEN.next())
-
 public constant BLADEMASTER_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant BLADEMASTER_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
 public constant BLADEMASTER_ABILITY_3 = compiletime(ABIL_ID_GEN.next())

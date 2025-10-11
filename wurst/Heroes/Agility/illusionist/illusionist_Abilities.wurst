@@ -7,6 +7,9 @@ import AbilityObjEditing
 import ObjectIds
 import MyColors
 import Orders
+import BuffObjEditing
+import MyBuffIds
+import BuffIds
 
 // ----------------------------------------------------------------------------
 
@@ -107,6 +110,7 @@ constant real array[9] abi2_DamageTaken = [
     ..presetNumberofImages(lvl -> abi2_Images[lvl - 1])
     ..presetDamageDealt(lvl -> abi2_DamageDealt[lvl - 1])
     ..presetDamageTaken(lvl -> abi2_DamageTaken[lvl - 1])
+    ..setOrderStringUseTurnOn(OrderIds.roar.toRawCode())
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNShadown (3).blp")
     ..register(HERO_ILLUSIONIST, "Dark Shadow".setColor(colAbilitiesIllusionist), 
     "Illusionist summons shadow illusions that distract enemies.",
@@ -151,6 +155,12 @@ public constant real array[9] illusionist_abi3_DamageMult = [
 ]
 
 @compiletime function defineAbilities3()
+    new BuffDefinition(ILLUSIONIST_BUFF_3, BuffIds.roar)
+    ..setIcon("ReplaceableTextures\\CommandButtons\\PASShadown (1).blp")
+    ..setArtTarget("")
+    ..register("Juxtapose".setColor(colAbilitiesIllusionist),
+    "The Assassin's mastery of the blade allows him to deal more damage.")
+
     new AbilityDefinitionItemIllusion(ILLUSIONIST_ABILITY_3_ILLUSION)
     ..setLevels(9)
     ..presetTargetsAllowed(lvl -> commaList("ground", "structure", "debris", "air", "item", "ward"))
@@ -160,7 +170,7 @@ public constant real array[9] illusionist_abi3_DamageMult = [
 
     new AbilityDefinitionMountainKingBash(ILLUSIONIST_ABILITY_3)
     ..setGeneralAbility(AbilityPosition.E)
-    ..presetBuffs(lvl -> "B017")
+    ..presetBuffs(lvl -> ILLUSIONIST_BUFF_3.toRawCode())
     ..presetChancetoBash(lvl -> 0.0)
     ..presetDamageBonus(lvl -> 0.0)
     ..presetDuration(lvl -> 0.01)

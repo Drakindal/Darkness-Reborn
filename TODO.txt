@@ -1,14 +1,15 @@
-Need to be tested:
+Game crash:
 
-Assassin
-Blade
-Dark Ranger
-Illusionist
-Priestess
-Satyr
-Shadow Vengeance
-Thief
-Warden
+Dark Ranger W
+Shadow Vengeance Q
+Vivpire
+
+Bugs:
+
+Blademaster T teleports him far away
+Illusionist. W and T (both are summon illusions) have conflicts. If I press T, the W is executed instead of T.
+
+Need to be tested:
 
 Archmage
 Firelord
@@ -32,5 +33,19 @@ Pit lord
 Sylvanas
 Tauren Chieftain
 Uther 
-Vivpire
 Wolfman
+
+Resistances should be added:
+    Satyr
+    Archmage W
+    Lich armor bonus
+    Shadow Hunter
+
+    BeastMaster Summons Resistances
+    Keeper Summons
+    Tinker Summons, Armor bonus
+    Mountain King Armor Bonus
+    Pitlord Armor bonus
+    Uther
+    Vivpire
+    Wolfman

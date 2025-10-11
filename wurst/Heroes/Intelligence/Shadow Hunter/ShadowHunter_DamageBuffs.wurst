@@ -1,0 +1,14 @@
+package ShadowHunter_DamageBuffs
+
+import DamageCustomEvent
+import MyBuffIds
+
+// ----------------------------------------------------------------------------
+
+public function shadowHunter_checks(unit _src, unit targ)
+    if targ.hasAbility(SHADOW_HUNTER_BUFF_3)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 1.2)
+    if targ.hasAbility(SHADOW_HUNTER_BUFF_1)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * 1.4)
+
+// ----------------------------------------------------------------------------

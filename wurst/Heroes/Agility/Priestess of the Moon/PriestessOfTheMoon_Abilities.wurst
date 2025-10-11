@@ -73,6 +73,7 @@ constant real array[9] abi2_Stun = [
 ]
 
 @compiletime function priestessOfTheMoonAbils2()
+    // WIP Add stats scale.
     new AbilityDefinitionMountainKingThunderBolt(PRIESTESS_ABILITY_2)
     ..setGeneralAbility(AbilityPosition.W)
     ..presetCooldown(lvl -> 24.0 - lvl)
@@ -103,6 +104,7 @@ constant real array[9] abi3_Damage = [
 ]
 
 @compiletime function priestessOfTheMoonAbils3()
+    // WIP Add stats scale.
     new AbilityDefinitionTaurenChieftainWarStomp(PRIESTESS_ABILITY_3)
     ..setGeneralAbility(AbilityPosition.E)
     ..presetAreaofEffect(lvl -> 400.0 + 50*lvl)
@@ -167,7 +169,6 @@ constant real array[9] abi4_Damage = [
     ..presetDurationHero(lvl -> 10. + 5 * lvl)
     ..presetCooldown(lvl -> 60. - 5*(lvl-1))
     ..presetNormalFormUnit(lvl -> commaList(HERO_PRIESTESS_OF_THE_MOON))
-    ..setRequiredLevel(8)
     ..presetIcon(Icons.bTNHeroMoonPriestess)
     ..presetManaCost(lvl -> 150 * lvl)
     ..register(HERO_PRIESTESS_OF_THE_MOON, "Dark Mirana".setColor(colAbilitiesPriestessOfTheMoon),

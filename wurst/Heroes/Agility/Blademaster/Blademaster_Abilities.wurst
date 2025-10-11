@@ -9,18 +9,19 @@ import MyColors
 // ----------------------------------------------------------------------------
 
 public constant real array[9] abi1_Damage = [
-  200.0,
-  600.0,
- 1200.0,
- 2000.0,
- 3000.0,
- 4000.0,
- 6000.0,
- 8000.0,
-12000.0
+  150.0,
+  340.0,
+  620.0,
+  960.0,
+ 1220.0,
+ 1840.0,
+ 2560.0,
+ 3600.0,
+ 6200.0
 ]
 
 @compiletime function defineAbilities()
+    // WIP Add stats scale.
     new AbilityDefinitionBladeMasterWindWalk(BLADEMASTER_ABILITY_1)
     ..setGeneralAbility(AbilityPosition.Q)
     ..presetCooldown(lvl -> 19.0 - lvl)

@@ -3,9 +3,18 @@ package Warden_T
 import ClosureEvents
 import ClosureTimers
 import MyAbilityIds
+import MyBuffIds
+import DamageCustomEvent
+import Warden_Abilities
 
 public function deadlyStrike()
     EventListener.onCast(WARDEN_ABILITY_5) (unit caster) ->
         caster.addAbility(WARDEN_ABILITY_5_DUMMY)
         doAfter(10) ->
             caster.removeAbility(WARDEN_ABILITY_5_DUMMY)
+
+public function warden_T_checks(unit src, unit _targ)
+    if src.hasAbility(WARDEN_BUFF_5)
+        let lvl = src.getAbilityLevel(WARDEN_ABILITY_5)
+        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * warden_abi5_Damage[lvl-1])
+        src.removeAbility(WARDEN_BUFF_5)

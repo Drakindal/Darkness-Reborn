@@ -6,6 +6,7 @@ import MyItemIds
 import MyAbilityIds
 
 function addItemLevelPicker(int abiLvl, JsCraftItemDialog d, int lvl, int itemId)
+    printTimedToPlayer("abi = {0}, lvl = {1}".format(abiLvl.toString(), lvl.toCharsetString()), 5, d.js.getOwner())
     if (abiLvl >= lvl)
         let name = "Level " + lvl.toString()
         d.itemTypeBox.addButton(name) ->
@@ -47,6 +48,7 @@ class JsCraftItemDialog
             forgeBox.display(GetOwningPlayer(js), false)
 
             itemTypeBox = new DialogBox("Select " + currItemName + " Level")
+            
             func.run(this, abilityLvl)
 
             itemTypeBox.addButton("Cancel") ->
@@ -61,65 +63,65 @@ class JsCraftItemDialog
         currItemName = "Armor"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_ARMOR_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_ARMOR_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_ARMOR_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_ARMOR_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_ARMOR_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_ARMOR_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_ARMOR_L4)
         
         currItemName = "Axe"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_AXE_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_AXE_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_AXE_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_AXE_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_AXE_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_AXE_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_AXE_L4)
         
         currItemName = "Blade"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BLADE_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BLADE_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BLADE_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BLADE_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_BLADE_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_BLADE_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_BLADE_L4)
         
         currItemName = "Boots"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BOOTS_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BOOTS_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BOOTS_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_BOOTS_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_BOOTS_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_BOOTS_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_BOOTS_L4)
 
         currItemName = "Gloves"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_GLOVES_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_GLOVES_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_GLOVES_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_GLOVES_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_GLOVES_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_GLOVES_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_GLOVES_L4)
 
         currItemName = "Helm"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_HELM_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_HELM_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_HELM_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_HELM_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_HELM_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_HELM_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_HELM_L4)
         
         currItemName = "Shield"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SHIELD_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SHIELD_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SHIELD_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SHIELD_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_SHIELD_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_SHIELD_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_SHIELD_L4)
         
         currItemName = "Staff"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_STAFF_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_STAFF_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_STAFF_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_STAFF_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_STAFF_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_STAFF_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_STAFF_L4)
 
         currItemName = "Sword"
         addItemType() (JsCraftItemDialog d, int abiLvl) ->
             addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SWORD_L1)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SWORD_L2)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SWORD_L3)
-            addItemLevelPicker(abiLvl, d, 1, ITEM_FORGE_SWORD_L4)
+            addItemLevelPicker(abiLvl, d, 2, ITEM_FORGE_SWORD_L2)
+            addItemLevelPicker(abiLvl, d, 3, ITEM_FORGE_SWORD_L3)
+            addItemLevelPicker(abiLvl, d, 4, ITEM_FORGE_SWORD_L4)
 
 public function forgeMaster()
     EventListener.onCast(JACKSMITH_ABILITY_5) (unit caster) ->

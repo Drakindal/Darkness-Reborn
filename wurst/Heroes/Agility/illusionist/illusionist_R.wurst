@@ -4,6 +4,7 @@ import MyUnitIds
 import Global_Variables
 import ClosureEvents
 import MyAbilityIds
+import Abilities
 
 public function shadowDancer()
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) -> 
@@ -13,3 +14,4 @@ public function shadowDancer()
             let lvl = hero.getAbilityLevel(ILLUSIONIST_ABILITY_4)
             if GetRandomInt(1, 100) < lvl*7
                 hero.addAgi(2)
+                flashEffect(Abilities.aIamTarget, hero.getPos()) // Agility gain from book animation.

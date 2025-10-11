@@ -40,18 +40,18 @@ public function rampage()
             target.pauseIndef()
             SetUnitPathing(caster, false)
             doPeriodically(0.02) (CallbackPeriodic cb) ->
-                let pos1 = caster.getPos()
-                let pos2 = target.getPos()
-                let angle = pos1.angleTo(pos2)
-                let pos3 = pos1.polarOffset(angle, 7.)
                 let isAlive = target.isAlive()
-                caster..setPos(pos3).setFacing(angle)
-                let dist = pos1.distanceTo(pos2)
-                if(dist <= 7.)
-                    if(isAlive)
+                if (isAlive)
+                    let posC = caster.getPos()
+                    let posT = target.getPos()
+                    let angle = posC.angleTo(posT)
+                    let newPos = posC.polarOffset(angle, 7.)
+                    caster..setPos(newPos).setFacing(angle)
+                    let dist = newPos.distanceTo(posT)
+                    if(dist <= 7.)
                         rampage2(caster, target)
                         destroy cb
-                    else
-                        caster.unPauseUnitIndef()
-                        caster.setInvulnerable(false)
-                        destroy cb
+                else
+                    caster.unPauseUnitIndef()
+                    caster.setInvulnerable(false)
+                    destroy cb

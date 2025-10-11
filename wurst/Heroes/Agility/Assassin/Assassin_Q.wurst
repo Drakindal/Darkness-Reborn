@@ -11,14 +11,16 @@ public function shadowWalk()
     EventListener.onCast(ASSASSIN_ABILITY_1) (unit caster) ->
         let lvl = GetUnitAbilityLevel(caster, ASSASSIN_ABILITY_1)
         let dmg = ((lvl*0.22) * caster.getAgi(true)) + 10*lvl
+        let duration = 1.0 + 0.2 * lvl
+
         caster
         ..setVertexColor(color(100, 100, 100))
         ..setAnimation("ready")
-        doPeriodicallyTimed(0.03, 1) (CallbackCounted cb) ->
-            caster.setPos(caster.getPos().polarOffset(caster.getFacingAngle(),20))
+
+        doPeriodicallyTimed(0.03, duration) (CallbackCounted cb) ->
+            caster.setPos(caster.getPos().polarOffset(caster.getFacingAngle(), 20))
             forUnitsInRange(caster.getPos(), 175, true) (unit u) ->
                 if caster.isEnemyOf(u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
             if cb.isLast()
-                caster
-                ..setVertexColor(color(255, 255, 255))
+                caster.setVertexColor(color(255, 255, 255))

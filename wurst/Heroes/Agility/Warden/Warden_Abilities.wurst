@@ -111,7 +111,7 @@ constant real array[9] abi2_Range = [
     
 // ----------------------------------------------------------------------------
 
-constant real array[4] abi5_Damage = [
+public constant real array[4] warden_abi5_Damage = [
     150,
     200,
     250,
@@ -142,7 +142,7 @@ constant real array[4] abi5_Damage = [
     ..setManaCost(2, 180)
     ..setManaCost(3, 240)
     ..setManaCost(4, 280)
-    ..presetDamageIncrease(lvl -> abi5_Damage[lvl-1])
+    ..presetDamageIncrease(lvl -> warden_abi5_Damage[lvl-1])
     ..presetDuration(lvl -> 30.0)
     ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
     ..setAnimationNames("")
@@ -152,7 +152,7 @@ constant real array[4] abi5_Damage = [
     ..register(HERO_WARDEN, "Ghostly Strike".setColor(colAbilitiesWarden), 
     "The Warden collects all her energy, unleashing it all on her next hit within the next 30 seconds, dealing massive damage. She also gains 100% evasion for 10 seconds.",
     (int lvl) -> "Increases the next hit's damage by x{0}.".format(
-        abi5_Damage[lvl-1].toString(0)
+        warden_abi5_Damage[lvl-1].toString(0)
     ))
     
 // ----------------------------------------------------------------------------
