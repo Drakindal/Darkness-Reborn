@@ -1,4 +1,4 @@
-package heroLoader
+package HeroLoader
 
 import MyUnitIds
 import Jacksmith_E

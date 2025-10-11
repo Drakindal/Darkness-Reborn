@@ -1,0 +1,28 @@
+package AddBase
+
+import MyUnitIds
+import MyBuildingsIds
+import FountainQuest
+import GameEnd
+import UpdateDropSite
+import Global_Variables
+
+// ----------------------------------------------------------------------------
+
+real facing = 270
+
+// ----------------------------------------------------------------------------
+
+public function addBase()
+    let posX = GetRectCenterX(gg_rct_Base)
+    let posY = GetRectCenterY(gg_rct_Base) + 200
+
+    CreateUnit(PLAYER_ALLY_BASE, BUILDING_FOUNTAIN, posX, posY, 270.000).questItemPickup() // Fountain of Healing (at base)
+
+    dropSite = CreateUnit(PLAYER_ALLY_BASE, DROPSITE, posX, posY - 800, 270.)//Dropsite
+    updateDropSite() 
+    elementalSoul = createUnit(PLAYER_ALLY_BASE, ELEMENTAL_SOUL, gg_rct_AllSpawnMove2.getCenter(), facing.asAngleDegrees()) // Elemental Soul    
+        
+    elementalSoul.onDefeat()
+
+// ----------------------------------------------------------------------------

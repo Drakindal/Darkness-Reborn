@@ -2,123 +2,41 @@ package onStart
 
 import ClosureTimers
 import WaveSetup
-import DialogBox
-import MyBuildingsIds
 import RespawnCreeps
-import MyUnitIds
 import CodeDialog
-import Global_Variables
 import TeleportToMobs
-import GameEnd
-import heroLoader
-import UpdateDropSite
 import MultiboardTimer
-import ClosureEvents
-import Object_Units
-import LinkedList
-import FountainQuest
 import Debug
-import Quest
-import Icons
-import DebugVar
-import MyItemIds
+import Quests_Tab_F9
+import ModeSelectionDialog
+import HeroSelectionSystem
+import AddTaverns
+import AddShops
+import AddBase
 
-real facing = 270
-real facingUp = 90
-
-public let taverns = new LinkedList<unit>()
+// ----------------------------------------------------------------------------
 
 init
-    mapSetup()
+    startModeSelectionDialog()
 
-    doAfter(0.01) -> 
+    doAfter(0.01) ->
+        questSetup()
         for i = 0 to 9
             gg_cam_CameraHeroPick.apply(true, players[i], 0.3)
             CreateFogModifierRectBJ( true, players[i], FOG_OF_WAR_VISIBLE, GetPlayableMapRect() )
 
-public function questSetup()
-    // Tutorial
-    CreateQuest()..discovered(true)
-    ..setIcon(Icons.bTNSelectHeroOn)
-    ..setTitle("Tutorial")
-    ..setDescription(
-     "If you haven't played this map select farmer hero.\n\n"
-    +"You can use -repick command within 10 minutes to change your hero, but beware that your hero's level will be reset to 1.\n\n"
-    +"You shouldn't go mid and steal creeps from the player who defend mid waves. Instead you should farm gold for late-game items to kill final bosses. For that select top left shop at the right side of the fountain and click on creep icon to teleport to farm room.\n\n"
-    +"You can get maximum of 3 quests in the fountain (A) to earn additional gold and experience. Also you can buy courier (donkey and horse) there.\n\n"
-    +"Join discord to not miss next games, get an advice and find out late-game items recipes (check recipes-jacksmith, jacksmith-builds and recipe-thief channels).")
-    
-    // Commands
-    CreateQuest()..discovered(true)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpy.blp")
-    ..setTitle("Commands")
-    ..setDescription(
-     "-cam 500-4000 : Adjusts the camera view\n"
-    +"-clean : Remove all items lying on the ground after 20 seconds\n"
-    +"-stopclean : Use to cancel -clean command\n"
-    +"-quests, -q : View your questlist\n"
-    +"-votekick <Player Name>: Kicks the player, you can use number, full name, and partial name\n"
-    +"-random, -repick : Select random hero or repick your hero. Only works within the first 10 minutes. Your hero's level will be reset to 1!\n\n"
-    +"Command specific for thief hero:\n"
-    +"-sb : Move an item stolen from creep from the 1 slot to the item box.")
+public function onGameModeSelected()
+    preWaveSetup()
+    createSetup()
 
-    // Discord
-    CreateQuest()..discovered(true)
-    ..setIcon("ReplaceableTextures\\Icons\\discordIcon.blp")
-    ..setTitle("Discord")
-    ..setDescription(
-     "Discord invite: https://discord.gg/pnrhrHS\n"
-    +"Join Discord to get new updates, to find out hidden jacksmith and thief late-game item recipes (In next versions UI frame with these recipes will be added).")
-    
-    // Recipe
-    CreateQuest()..discovered(true)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAdvStruct.blp")
-    ..setTitle("Recipe for non-store items")
-    ..setDescription("Khadgar's Pendant of Health + Periapt of Vitality = Jewelry of Life\n"
-    +"Pendant of Mana + Pendant of Energy = jewelry of Mana\n"
-    +"Jewelry of Life + Periapt of Vitality + Ring of Regeneration = Guinevere's Ring\n"
-    +"Jewelry of Mana + Pendant of Mana = Lancelot's Ring\n"
-    +"Lancelot's Ring + Guinevere's Ring + Pendant of Energy = Arkenstone Fragment")
+    eliteSideCreepsSetup()
+    bossCreepSetup()
+    overdryaSetup()
+    codeDialog()
+    setRegions()
 
-    // Credits
-    CreateQuest()..discovered(true)
-    ..setIcon(Icons.bTNFaerieFire)
-    ..setDescription("Talavaj - Models\n If anyone is missing here, I just don't know who to credit")
-    ..setTitle("Model Credits")
-    ..setRequired(true)
+    initDebug()
 
-public function unit.setPlayersResearch(boolean active)
-    let toSet = active ? 1 : 0
-    let uid = this.getTypeId()
-    heroPickedUpgradeHash.get(uid).active = active
-    for i = 0 to 9
-        SetPlayerTechResearched(players[i], heroPickedUpgradeHash.get(uid).upgradeID, toSet)
-        
-
-public function createWisp(player p)
-    playerHero.put(p, createUnit(p, HERO_PICKER, gg_rct_HeroPicker.getCenter()))
-
-function onBuyHero(unit u)
-    EventListener.add(u, EVENT_PLAYER_UNIT_SELL) ->
-        let soldUnit = GetSoldUnit()
-        let p = soldUnit.getOwner()
-        let playHero = playerHero.get(p)
-        if playHero.getTypeId() == HERO_PICKER
-            playerHero.put(p, soldUnit)
-            soldUnit..registerHero()
-            .setPlayersResearch(false)
-            gg_cam_CameraHeroPicked.apply(true, p, 0.5)
-            soldUnit.setPos(gg_rct_Base.getCenter())
-            p.setState(PLAYER_STATE_RESOURCE_FOOD_CAP, 0)
-            GetBuyingUnit().remove()
-
-            if (DEBUG)
-                soldUnit.addItemToSlot(ITEM_BLINK_MAP, 0)
-
-        else
-            soldUnit.remove()
-            printTimedToPlayer("Your hero was killed by the newly recruited one as it left.", 10, p)
-            playHero.kill()
 
 function createSetup()
     createMulti()
@@ -127,181 +45,9 @@ function createSetup()
     SetPlayerState(players[12], PLAYER_STATE_GIVES_BOUNTY, 1)
     SetPlayerState(players[13], PLAYER_STATE_GIVES_BOUNTY, 1)
 
-    for i = 0 to 9
-        createWisp(players[i])
-        players[i]..addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)..addState(PLAYER_STATE_RESOURCE_GOLD, 800)
-        heroPickedUpgrades.forEach() (integer t) ->
-            SetPlayerTechResearched(players[i], t, 1)
-        
-    var posX = GetRectCenterX(gg_rct_HeroPicker) - 384.
-    var posY = GetRectCenterY(gg_rct_HeroPicker) - 128
-
-    let defenderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_DEFENDER, posX, posY, bj_UNIT_FACING)
-    taverns.add(defenderTavern)
-    onBuyHero(defenderTavern)
-
-    let supportTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_SUPPORT, posX, posY + 164, bj_UNIT_FACING)
-    taverns.add(supportTavern)
-    onBuyHero(supportTavern)
-
-    let ascensionTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_ASCENSION, posX, posY + 328, bj_UNIT_FACING)
-    taverns.add(ascensionTavern)
-    onBuyHero(ascensionTavern)
-
-    posX = GetRectCenterX(gg_rct_HeroPicker)
-    let physicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_PHYSICAL_DPS, posX, posY, bj_UNIT_FACING)
-    taverns.add(physicalTavern)
-    onBuyHero(physicalTavern)
-
-    let magicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_MAGICAL_DPS, posX, posY + 328, bj_UNIT_FACING)
-    taverns.add(magicalTavern)
-    onBuyHero(magicalTavern)
-
-    posX = GetRectCenterX(gg_rct_HeroPicker) + 384.
-
-    let builderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_BUILDER, posX, posY, bj_UNIT_FACING)
-    taverns.add(builderTavern)
-    onBuyHero(builderTavern)
-
-    let gatherTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_GATHERER, posX, posY + 328, bj_UNIT_FACING)
-    taverns.add(gatherTavern)
-    onBuyHero(gatherTavern)
-
-    let crafterTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_CRAFTER, posX, posY + 164, bj_UNIT_FACING)
-    taverns.add(crafterTavern)
-    onBuyHero(crafterTavern)
-
-    posX = GetRectCenterX(gg_rct_ShopLeft) + 150
-    var posMax = GetRectMaxY(gg_rct_ShopLeft)
-    var posMin = GetRectMinY(gg_rct_ShopLeft)
-    var dividend = (posMax - posMin) / 4
-    posY = posMin + 100
-
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS4, posX, posY, 270.000) // Basic Items 4
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS3, posX, posY, 270.000) // Basic Items 3
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS2, posX, posY, 270.000) // Basic Items 2
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS1, posX, posY, 270.000) // Basic Items 1
-
-    posX = GetRectCenterX(gg_rct_ShopRight) - 150
-    posMax = GetRectMaxY(gg_rct_ShopRight)
-    posMin = GetRectMinY(gg_rct_ShopRight)
-    dividend = (posMax - posMin) / 4
-    posY = posMin + 100
-
-    let endGamebosses = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP4, posX, posY, 270.000) // End-game bosses
-    posY = posY + dividend
-    let eliteGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP3, posX, posY, 270.000) // Elite hunting grounds
-    posY = posY + dividend
-    let intermediateGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP2, posX, posY, 270.000) // Intermediate hunting grounds
-    posY = posY + dividend
-    let easyGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP1, posX, posY, 270.000) // Easy hunting grounds
-
-    posX = GetRectCenterX(gg_rct_ShopLeft) - 150
-    posMax = GetRectMaxY(gg_rct_ShopLeft)
-    posMin = GetRectMinY(gg_rct_ShopLeft)
-    dividend = (posMax - posMin) / 4
-    posY = posMin + 100
-
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES4, posX, posY, 270.000) // Recipe shop 4
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES3, posX, posY, 270.000) // Recipe Shop 3
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES2, posX, posY, 270.000) // Recipe Shop 2
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES1, posX, posY, 270.000) // Recipe Shop 1
-
-    posX = GetRectCenterX(gg_rct_ShopRight) + 150
-    posMax = GetRectMaxY(gg_rct_ShopRight)
-    posMin = GetRectMinY(gg_rct_ShopRight)
-    dividend = (posMax - posMin) / 4
-    posY = posMin + 100
-
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS4, posX, posY, 270.000) // End Game Items
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_GEMS, posX, posY, 270.000) // Decent Items
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS2, posX, posY, 270.000) // Late Game Items
-    posY = posY + dividend
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS1, posX, posY, 270.000) // Late Game Items
+    initHeroShops()
+    addTaverns()
+    addShops()
+    addBase()
  
-    posX = GetRectCenterX(gg_rct_Base)
-    posY = GetRectCenterY(gg_rct_Base) + 200
-
-    CreateUnit(PLAYER_ALLY_BASE, BUILDING_FOUNTAIN, posX, posY, 270.000).questItemPickup() // Fountain of Healing (at base)
-
-    dropSite = CreateUnit(PLAYER_ALLY_BASE, DROPSITE, posX, posY - 800, 270.)//Dropsite
-    updateDropSite() 
-    elementalSoul = createUnit(PLAYER_ALLY_BASE, ELEMENTAL_SOUL, gg_rct_AllSpawnMove2.getCenter(), facing.asAngleDegrees()) // Elemental Soul    
-        
-    elementalSoul.onDefeat()
-
-    teleportToMobs(easyGrounds, intermediateGrounds, eliteGrounds, endGamebosses)
-
-    doAfter(600) -> 
-        print("No more repicking or randoming can be done")
-        randomRepick = false
-
-    initDebug()
-
-function dialogBoxClick()
-    preWaveSetup()
-    questSetup()
-    createSetup()
-    eliteSideCreepsSetup()
-    bossCreepSetup()
-    overdryaSetup()
-    codeDialog()
-    setRegions()
-
-function automaticPick()
-    gameMode = 1
-    dialogBoxClick()
-    print("Automatically chosen Easy mode")
-
-function mapSetup()
-    doAfter(0.5) -> 
-        let dBox = new DialogBox("Choose difficulty")
-
-        gameMode = -1
-
-        dBox.addButton("Baby") -> 
-            gameMode = 0
-            dialogBoxClick()
-            print("All enemies will have 0.5x the health and 0.5x the damage/armor. \nAbilities of Tower bosses have been disabled.")
-            destroy dBox
-
-        dBox.addButton("Easy") -> 
-            gameMode = 1
-            dialogBoxClick()
-            print("All enemies will have 0.75x the health and 0.75x the damage/armor. \nAbilities of Tower bosses have been disabled.")
-            destroy dBox
-
-        dBox.addButton("Normal") ->
-            gameMode = 2
-            dialogBoxClick()
-            print("All enemies will have 1x the health and 1x the damage/armor.")
-            destroy dBox
-
-        dBox.addButton("Hard") -> 
-            gameMode = 3
-            dialogBoxClick()
-            print("All enemies will have 2x the health and 1.5x the damage/armor. \nHealth and Armor WIP on the first 4 spawn mobs.")
-            destroy dBox
-        
-        dBox.addButton("Extreme") -> 
-            gameMode = 4
-            dialogBoxClick()
-            print("All enemies will have 4x the health and 2x the damage/armor. \nHealth and Armor WIP on the first 4 spawn mobs.")
-            destroy dBox
-        
-        dBox.display(players[0], true)
-
-        doAfter(30) -> 
-            if(gameMode == -1)
-                automaticPick()
-                dBox.display(players[0], false)
-                print("All enemies will have 0.75x the health and 0.75x the damage/armor. \nAbilities of Tower bosses have been disabled.")
-                destroy dBox
+// ----------------------------------------------------------------------------

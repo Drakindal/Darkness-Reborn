@@ -1,59 +1,39 @@
 package PlayerCommands
+
 import Votekick
 import ClosureEvents
-import Global_Variables
-import MyUnitIds
-import onStart
-import DebugVar
-import heroLoader
-import ClosureTimers
+import HeroSelectionSystem
+
+// ----------------------------------------------------------------------------
+
 camerafield cam
 
-init
-    changeCameraDistInit()
-    startVoteKick()
-    repickHero()
 
-function changeCameraDistInit()
+init
     EventListener.add(EVENT_PLAYER_CHAT_FILTER) -> 
-        if EventData.getChatMessage().substring(0, 4).toLowerCase() == "-cam"
-            let distance = EventData.getChatMessage().substring(5, EventData.getChatMessage().length()).toReal()
+        let message = EventData.getChatMessage()
+// ----------------------------------------------------------------------------
+// Change camera distance 
+// ----------------------------------------------------------------------------
+
+        if message.substring(0, 4).toLowerCase() == "-cam"
+
+            let distance = message.substring(5, message.length()).toReal()
             if distance >= 4000 or distance <= 500
                 printTimedToPlayer("Input has to be between 500 and 4000", 3, GetTriggerPlayer())
             else
                 cam.setCameraField(GetTriggerPlayer(), distance, 1.5)
 
-function repickHero()
-    
-    EventListener.add(EVENT_PLAYER_CHAT_FILTER) ->
-        if not randomRepick and not DEBUG
-            skip
-        else if EventData.getChatMessage().substring(0, 7).toLowerCase() == "-repick"
-            let trigP = EventData.getTriggerPlayer()
-            let hero  = playerHero.get(trigP)
+// ----------------------------------------------------------------------------
+// Vote kick
+// ----------------------------------------------------------------------------
 
-            // After picking hero food limit is set to 0, increase it in order to repick
-            // Naga, thief and js also take food limit in Debug mode.
-            if DEBUG
-                trigP.setState(PLAYER_STATE_RESOURCE_FOOD_CAP, 200)
+        if message.substring(0, 9).toLowerCase() == "-votekick"
 
-            if(hero.getTypeId() == HERO_PICKER)
-                skip
-            else
-                hero
-                ..repickHero()
-                ..setPlayersResearch(true)
-                ..remove()
-                
-                createWisp(trigP)
-                gg_cam_CameraHeroPick.apply(true, trigP, 0.3)
-
-function startVoteKick()
-    EventListener.add(EVENT_PLAYER_CHAT_FILTER) -> 
-        if EventData.getChatMessage().substring(0, 9).toLowerCase() == "-votekick"
             let commandPlayer = GetTriggerPlayer()
-            let partialText = EventData.getChatMessage().substring(10, EventData.getChatMessage().length())
+            let partialText = message.substring(10, message.length())
             let targplayer = getPlayerFromPartialNameColorOrId(partialText, commandPlayer)
+            
             if(targplayer != null)
                 if (targplayer.isIngame())
                     VoteKick.start(commandPlayer, targplayer)
@@ -61,6 +41,18 @@ function startVoteKick()
                     printTimedToPlayer("Player {0} is not a playing human player".format(targplayer.getName()), 15, commandPlayer)
             else
                 printTimedToPlayer("Could not find player \"{0}\"".format(partialText), 15, commandPlayer)
+
+// ----------------------------------------------------------------------------
+// -repick, -random
+// ----------------------------------------------------------------------------
+
+        else if message.substring(0, 7).toLowerCase() == "-repick"
+            handleRepickCommand()
+
+        else if message.substring(0, 7).toLowerCase() == "-random"
+            handleRandomCommand()
+            
+// ----------------------------------------------------------------------------
 
 public function getPlayerIdFromPartialNameColorOrId(string playerPartialNameColorOrId) returns int
     // Check for an ID match first since toInt() will return -1 when parsing an int fails
@@ -85,3 +77,5 @@ public function getPlayerIdFromPartialNameColorOrId(string playerPartialNameColo
 public function getPlayerFromPartialNameColorOrId(string playerPartialNameColorOrId, player ignore) returns player
     let id = getPlayerIdFromPartialNameColorOrId(playerPartialNameColorOrId)
     return (id >= 0 and id < bj_MAX_PLAYERS and id != ignore.getId()) ? players[id] : null
+
+// ----------------------------------------------------------------------------

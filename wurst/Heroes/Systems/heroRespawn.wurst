@@ -1,4 +1,5 @@
-package heroRespawn
+package HeroRespawn
+
 import ClosureEvents
 import Global_Variables
 import HashMap

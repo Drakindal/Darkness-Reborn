@@ -16,7 +16,7 @@ public function deathKnight_R_UnholyLink()
     EventListener.onCast(DEATH_KNIGHT_ABILITY_4) (unit caster) ->
         unholyLink = true
 
-// Do not call this function in heroLoader.
+// Do not call this function in HeroLoader.
 public function checkDeathKnightR(unit _src, unit targ)
     if (targ.hasAbility(DEATH_KNIGHT_BUFF_4) and deathKnightHero != null)
         if (not unholyLink)

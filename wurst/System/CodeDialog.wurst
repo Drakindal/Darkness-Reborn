@@ -75,9 +75,9 @@ public function codeDialog()
                     PLAYER_SET.add(pnu)
                     printTimedToPlayer("Select a hero first", 3, pt)
                 destroy buffBox
-            if gameMode == 2
+            if gameDifficulty == 2
                 buffBox.addButton("Gold (+1800)") ->
-                    if gameMode == 2
+                    if gameDifficulty == 2
                         pt.addGold(1800)
                     destroy buffBox
 

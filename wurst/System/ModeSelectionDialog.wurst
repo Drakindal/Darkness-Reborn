@@ -1,0 +1,119 @@
+package ModeSelectionDialog
+
+import ClosureTimers
+import DialogBox
+import Global_Variables
+import initlater onStart
+import HeroSelectionSystem
+
+// ----------------------------------------------------------------------------
+
+ModeSelectionDialog currDialog = null
+
+// ----------------------------------------------------------------------------
+
+public function startModeSelectionDialog()
+    doAfter(0.5) ->
+        startDialog()
+
+    doAfter(60) ->
+        if(gameDifficulty == -1)
+            selectDefaultValues()
+
+            currDialog.hide()
+            destroy currDialog
+
+// ----------------------------------------------------------------------------
+
+function selectDefaultValues()
+    print("Automatically chosen Normal mode.")
+    selectDifficulty(GameDifficultyType.Normal)
+    setRepickMode(RepickRandomMode.Limited, 10*60.)
+    onGameModeSelected()
+
+// ----------------------------------------------------------------------------
+
+function startDialog()
+    currDialog = new ModeSelectionDialog("Select Game Mode", null)
+    ..addButton("Manually", () -> selectRepickPeriod())
+    ..addButton("Default",  () -> selectDefaultValues())
+    ..show()
+
+// ----------------------------------------------------------------------------
+
+function selectRepickPeriod()
+    currDialog = new ModeSelectionDialog("Availability of '-repick'", () -> selectDifficulty())
+    ..addButton("Prohibited",            () -> setRepickMode(RepickRandomMode.Prohibited, 0))
+    ..addButton("2 minutes",             () -> setRepickMode(RepickRandomMode.Limited,  2*60.))
+    ..addButton("5 minutes",             () -> setRepickMode(RepickRandomMode.Limited,  5*60.))
+    ..addButton("10 minutes",            () -> setRepickMode(RepickRandomMode.Limited, 10*60.))
+    ..addButton("During the whole game", () -> setRepickMode(RepickRandomMode.WholeGame, 0))
+    ..show()
+
+// ----------------------------------------------------------------------------
+
+function selectDifficulty()
+    currDialog = new ModeSelectionDialog("Choose difficulty", () -> onGameModeSelected())
+    ..addButton("Baby",    () -> selectDifficulty(GameDifficultyType.Baby))
+    ..addButton("Easy",    () -> selectDifficulty(GameDifficultyType.Easy))
+    ..addButton("Normal",  () -> selectDifficulty(GameDifficultyType.Normal))
+    ..addButton("Hard",    () -> selectDifficulty(GameDifficultyType.Hard))
+    ..addButton("Extreme", () -> selectDifficulty(GameDifficultyType.Extreme))
+    ..show()
+
+// ----------------------------------------------------------------------------
+
+function selectDifficulty(GameDifficultyType diff)
+    switch diff
+        case GameDifficultyType.Baby
+            gameDifficulty = 0
+            print("All enemies will have 0.5x the health and 0.5x the damage/armor. \nAbilities of Tower bosses have been disabled.")
+            
+        case GameDifficultyType.Easy
+            gameDifficulty = 1
+            print("All enemies will have 0.75x the health and 0.75x the damage/armor. \nAbilities of Tower bosses have been disabled.")
+
+        case GameDifficultyType.Normal
+            gameDifficulty = 2
+            print("All enemies will have 1x the health and 1x the damage/armor.")
+
+        case GameDifficultyType.Hard
+            gameDifficulty = 3
+            print("All enemies will have 2x the health and 1.5x the damage/armor. \nHealth and Armor WIP on the first 4 spawn mobs.")
+
+        case GameDifficultyType.Extreme
+            gameDifficulty = 4
+            print("All enemies will have 4x the health and 2x the damage/armor. \nHealth and Armor WIP on the first 4 spawn mobs.")
+
+// ----------------------------------------------------------------------------
+
+interface ModeSelectionAction
+    function run()
+
+class ModeSelectionDialog
+    DialogBox d
+    ModeSelectionAction nextAction
+
+    ondestroy
+        destroy d
+
+    construct(string title, ModeSelectionAction nextAction)
+        d = new DialogBox(title)
+        this.nextAction = nextAction
+
+    function addButton(string text, ModeSelectionAction action)
+        d.addButton(text) ->
+            hide()
+            if (action != null)
+                action.run()
+            if (nextAction != null)
+                nextAction.run()
+            destroy this
+
+    function show()
+        d.display(players[0], true)
+    
+    function hide()
+        d.display(players[0], false)
+
+// ----------------------------------------------------------------------------

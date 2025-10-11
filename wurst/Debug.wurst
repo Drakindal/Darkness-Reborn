@@ -6,7 +6,7 @@ import MyUpgradesIds
 import MyItemIds
 import DebugVar
 import ClosureEvents
-import heroLoader
+import HeroLoader
 
 public function initDebug()
     if (not DEBUG)

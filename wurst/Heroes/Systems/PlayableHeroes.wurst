@@ -1,0 +1,50 @@
+package PlayableHeroes
+
+import MyUnitIds
+
+// ----------------------------------------------------------------------------
+
+public let playableHeroes = [
+    HERO_ASSASSIN,
+    HERO_BLADEMASTER,
+    HERO_DARK_RANGER,
+    HERO_DEMON_HUNTER,
+    HERO_ILLUSIONIST,
+    HERO_PRIESTESS_OF_THE_MOON,
+    HERO_SATYR,
+    HERO_SHADOW_OF_VENGEANCE,
+    HERO_THIEF,
+    HERO_TRACKER,
+    HERO_WARDEN,
+
+    HERO_ARCHMAGE,
+    HERO_FIRELORD,
+    HERO_FIRE_MAGE,
+    HERO_GUARDIAN_OF_LIGHT,
+    HERO_HERALD_OF_LIGHTNING,
+    HERO_KEEPER_OF_THE_GROVE,
+    HERO_KING_OF_LOAS,
+    HERO_LICH,
+    HERO_NAGA_SEA_WITCH,
+    HERO_SHADOW_HUNTER,
+    HERO_TIME_WIZARD,
+    HERO_TINKER,
+
+    HERO_ARTHAS,
+    HERO_BEASTMASTER,
+    HERO_DEATH_KNIGHT,
+    HERO_JACKSMITH,
+    HERO_MOUNTAIN_KING,
+    HERO_PANDAREN_MONK,
+    HERO_PITLORD,
+    HERO_SYLVANAS,
+    HERO_TAUREN_CHIEFTAIN,
+    HERO_UTHER,
+    HERO_VIVPIRE,
+    HERO_WOLFMAN_INITIAL
+]
+
+public function getRandomHero() returns int
+    return playableHeroes[GetRandomInt(0, playableHeroes.length-1)]
+
+// ----------------------------------------------------------------------------

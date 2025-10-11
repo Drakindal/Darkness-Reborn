@@ -1,0 +1,53 @@
+package AddTaverns
+
+import LinkedList
+import MyUnitIds
+import MyBuildingsIds
+import HeroSelectionSystem
+
+// ----------------------------------------------------------------------------
+
+public let taverns = new LinkedList<unit>()
+
+// ----------------------------------------------------------------------------
+
+public function addTaverns()
+    var posX = GetRectCenterX(gg_rct_HeroPicker) - 384.
+    let posY = GetRectCenterY(gg_rct_HeroPicker) - 128
+
+    let defenderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_DEFENDER, posX, posY, bj_UNIT_FACING)
+    taverns.add(defenderTavern)
+    onBuyHero(defenderTavern)
+
+    let supportTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_SUPPORT, posX, posY + 164, bj_UNIT_FACING)
+    taverns.add(supportTavern)
+    onBuyHero(supportTavern)
+
+    let ascensionTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_ASCENSION, posX, posY + 328, bj_UNIT_FACING)
+    taverns.add(ascensionTavern)
+    onBuyHero(ascensionTavern)
+
+    posX = GetRectCenterX(gg_rct_HeroPicker)
+    let physicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_PHYSICAL_DPS, posX, posY, bj_UNIT_FACING)
+    taverns.add(physicalTavern)
+    onBuyHero(physicalTavern)
+
+    let magicalTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_MAGICAL_DPS, posX, posY + 328, bj_UNIT_FACING)
+    taverns.add(magicalTavern)
+    onBuyHero(magicalTavern)
+
+    posX = GetRectCenterX(gg_rct_HeroPicker) + 384.
+
+    let builderTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_BUILDER, posX, posY, bj_UNIT_FACING)
+    taverns.add(builderTavern)
+    onBuyHero(builderTavern)
+
+    let gatherTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_GATHERER, posX, posY + 328, bj_UNIT_FACING)
+    taverns.add(gatherTavern)
+    onBuyHero(gatherTavern)
+
+    let crafterTavern = CreateUnit(PLAYER_ALLY_BASE, BUILDING_TAVERN_CRAFTER, posX, posY + 164, bj_UNIT_FACING)
+    taverns.add(crafterTavern)
+    onBuyHero(crafterTavern)
+    
+// ----------------------------------------------------------------------------

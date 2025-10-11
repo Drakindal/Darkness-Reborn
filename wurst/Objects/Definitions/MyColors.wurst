@@ -3,6 +3,10 @@ import ItemObjEditing
 
 // ----------------------------------------------------------------------------
 
+public let colRed             = "|cffdc4848"
+public let colGreen           = "|cff53c44f"
+public let colYellow          = "|cffe2e042"
+
 public let colRst             = "|r"
 public let colBasic           = "|cff00C800"
 public let colRecipe          = "|cff2979fa"

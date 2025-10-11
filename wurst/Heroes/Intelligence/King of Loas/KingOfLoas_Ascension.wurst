@@ -7,7 +7,7 @@ import MyAbilityIds
 import MyUnitIds
 import Global_Variables
 import PauseAllocation
-import heroLoader
+import HeroLoader
 // when all base skills maxed, ascends
 
 init

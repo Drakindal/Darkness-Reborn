@@ -6,7 +6,7 @@ import ClosureTimers
 import MoonUtils
 import Global_Variables
 import PauseAllocation
-import heroLoader
+import HeroLoader
 // Ascends at level 12 and 28
 
 function newHero(unit replaced,int unitType)
