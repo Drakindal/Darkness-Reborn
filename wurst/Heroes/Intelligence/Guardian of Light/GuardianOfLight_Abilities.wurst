@@ -7,6 +7,7 @@ import MyColors
 import BuffIds
 import ChannelAbilityPreset
 import Orders
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -35,55 +36,56 @@ public constant int array[9] guardianOfLight_abi1_Hp = [
 ]
 
 @compiletime function defineAbilities()
-    new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_1, 9, true)
-    ..setIcon(Icons.bTNHolyBolt)
-    ..presetBuffs(lvl -> "")
-    ..presetCastRange(lvl -> 1600.0)
-    ..presetDuration(lvl -> 3.0)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetCooldown(lvl -> 15.0 - lvl)
-    ..presetManaCost(lvl -> abi1_ManaCost[lvl-1])
-    ..presetArtDuration(lvl -> 1)
-    ..presetFollowThroughTime(lvl -> 0.1)
-    ..presetTargetTypes(Targettype.UNIT)
-    ..presetOption(Option.UNIVERSALSPELL, true)
-    ..presetCastingTime(lvl -> 1)
-    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Light".setColor(colAbilitiesGuardianOfLight), 
-    "Holy Light heals allies or damages enemy by half amount. Also permanently adds HP and MP to ally.",
-    (int lvl) -> "Heal amount {0} + {1} x Int. Permanently: +{2} HP and MP. Cd {3} sec. Mana cost {4}.".format(
-        (800*lvl).toString(),
-        (3*lvl).toString(),
-        guardianOfLight_abi1_Hp[lvl-1].toString(),
-        (15 - lvl).toString(),
-        abi1_ManaCost[lvl-1].toString()
-    ))
-    
+    if (BUILD_INT_HEROES)
+        new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_1, 9, true)
+        ..setIcon(Icons.bTNHolyBolt)
+        ..presetBuffs(lvl -> "")
+        ..presetCastRange(lvl -> 1600.0)
+        ..presetDuration(lvl -> 3.0)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetCooldown(lvl -> 15.0 - lvl)
+        ..presetManaCost(lvl -> abi1_ManaCost[lvl-1])
+        ..presetArtDuration(lvl -> 1)
+        ..presetFollowThroughTime(lvl -> 0.1)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetOption(Option.UNIVERSALSPELL, true)
+        ..presetCastingTime(lvl -> 1)
+        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Light".setColor(colAbilitiesGuardianOfLight), 
+        "Holy Light heals allies or damages enemy by half amount. Also permanently adds HP and MP to ally.",
+        (int lvl) -> "Heal amount {0} + {1} x Int. Permanently: +{2} HP and MP. Cd {3} sec. Mana cost {4}.".format(
+            (800*lvl).toString(),
+            (3*lvl).toString(),
+            guardianOfLight_abi1_Hp[lvl-1].toString(),
+            (15 - lvl).toString(),
+            abi1_ManaCost[lvl-1].toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionPaladinDivineShield(GUARDIAN_OF_LIGHT_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 20.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 130)
-    ..setManaCost(3, 169)
-    ..setManaCost(4, 219)
-    ..setManaCost(5, 255)
-    ..setManaCost(6, 285)
-    ..setManaCost(7, 320)
-    ..setManaCost(8, 367)
-    ..setManaCost(9, 420)
-    ..presetCanDeactivate(lvl -> true)
-    ..presetDuration(lvl -> 3.0 + lvl)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAnkhOfRebirth.BLP")
-    ..setIconTurnOff("ReplaceableTextures\\CommandButtonsDisabled\\DISBTNAnkhOfRebirth.BLP")
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Divine Shield".setColor(colAbilitiesGuardianOfLight), 
-    "The Guardian temporarily casts a Divine Shield on himself, protecting him from all damage.",
-    (int lvl) -> "Duration {0} sec.".format(
-        (3+lvl).toString()
-    ))
-    
+        new AbilityDefinitionPaladinDivineShield(GUARDIAN_OF_LIGHT_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 20.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 130)
+        ..setManaCost(3, 169)
+        ..setManaCost(4, 219)
+        ..setManaCost(5, 255)
+        ..setManaCost(6, 285)
+        ..setManaCost(7, 320)
+        ..setManaCost(8, 367)
+        ..setManaCost(9, 420)
+        ..presetCanDeactivate(lvl -> true)
+        ..presetDuration(lvl -> 3.0 + lvl)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAnkhOfRebirth.BLP")
+        ..setIconTurnOff("ReplaceableTextures\\CommandButtonsDisabled\\DISBTNAnkhOfRebirth.BLP")
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Divine Shield".setColor(colAbilitiesGuardianOfLight), 
+        "The Guardian temporarily casts a Divine Shield on himself, protecting him from all damage.",
+        (int lvl) -> "Duration {0} sec.".format(
+            (3+lvl).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
 constant real array[9] abi3_Damage = [
@@ -123,31 +125,32 @@ constant int array[9] abi3_Mana = [
 ]
 
 @compiletime function defineAbilities3()
-    new AbilityDefinitionInnerFireCreep(GUARDIAN_OF_LIGHT_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetBuffs(lvl -> BuffIds.innerFire.toRawCode())
-    ..presetCooldown(lvl -> 15.0 - lvl)
-    ..presetDuration(lvl -> 6.0 + lvl)
-    ..presetManaCost(lvl -> abi3_Mana[lvl-1])
-    ..presetDamageIncrease(lvl -> abi3_Damage[lvl-1])
-    ..presetDefenseIncrease(lvl -> 0)
-    ..presetAutocastRange(lvl -> 1600.0)
-    ..presetCastRange(lvl -> 1600.0)
-    ..presetLifeRegenRate(lvl -> abi3_HpReg[lvl-1])
-    ..presetDuration(lvl -> 6.5 + 0.5*lvl)
-    ..presetCastRange(lvl -> 1200.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpiritMagic.blp")
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Inner Fire".setColor(colAbilitiesGuardianOfLight),
-    "The Guardian supports the chosen ally temporally increasing their damage dealt and HP regeneration.",
-    (int lvl) -> "+{0}% damage, +{1} HP/s. Duration {2} sec. Cd {3} sec. Mana cost {4}.".format(
-        (100*abi3_Damage[lvl-1]).toString(),
-        abi3_HpReg[lvl-1].toString(),
-        (6 + lvl).toString(),
-        (15 - lvl).toString(),
-        abi3_Mana[lvl-1].toString()
-    ))
-    
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionInnerFireCreep(GUARDIAN_OF_LIGHT_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetBuffs(lvl -> BuffIds.innerFire.toRawCode())
+        ..presetCooldown(lvl -> 15.0 - lvl)
+        ..presetDuration(lvl -> 6.0 + lvl)
+        ..presetManaCost(lvl -> abi3_Mana[lvl-1])
+        ..presetDamageIncrease(lvl -> abi3_Damage[lvl-1])
+        ..presetDefenseIncrease(lvl -> 0)
+        ..presetAutocastRange(lvl -> 1600.0)
+        ..presetCastRange(lvl -> 1600.0)
+        ..presetLifeRegenRate(lvl -> abi3_HpReg[lvl-1])
+        ..presetDuration(lvl -> 6.5 + 0.5*lvl)
+        ..presetCastRange(lvl -> 1200.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpiritMagic.blp")
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Inner Fire".setColor(colAbilitiesGuardianOfLight),
+        "The Guardian supports the chosen ally temporally increasing their damage dealt and HP regeneration.",
+        (int lvl) -> "+{0}% damage, +{1} HP/s. Duration {2} sec. Cd {3} sec. Mana cost {4}.".format(
+            (100*abi3_Damage[lvl-1]).toString(),
+            abi3_HpReg[lvl-1].toString(),
+            (6 + lvl).toString(),
+            (15 - lvl).toString(),
+            abi3_Mana[lvl-1].toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
 public constant int array[9] guardianOfLight_abi4_Stats = [
@@ -174,36 +177,37 @@ constant int array[9] abi4_Mana = [
 ]
 
 @compiletime function defineAbilities4()
-    new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_4, 9, true)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetAreaofEffect(lvl -> 500.0 + 50*lvl)
-    ..presetCooldown(lvl -> 26.0 - lvl)
-    ..presetManaCost(lvl -> abi4_Mana[lvl-1])
-    ..presetFollowThroughTime(lvl -> 0.5)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.TARGETIMAGE, true)
-    ..presetArtDuration(lvl -> 1)
-    ..presetCastingTime(lvl -> 1)
-    ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
-    ..presetCastRange(lvl -> 1200.0)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolySmite.blp")
-    ..setArtCaster("")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..setTargetAttachmentPoint("")
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Wrath".setColor(colAbilitiesGuardianOfLight),
-    "A burst of light is sent at the target location dealing damage to enemies and healing allies. Also permanently increases random stats of all allies heroes in the area.",
-    (int lvl) -> "Deals {0} + {1} x Int damage. +{2} to random stats. Cd {3} sec. Mana cost {4}.".format(
-        (300*lvl).toString(),
-        (1.5*lvl).toString(),
+    if (BUILD_INT_HEROES)
+        new ChannelAbilityPreset(GUARDIAN_OF_LIGHT_ABILITY_4, 9, true)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetAreaofEffect(lvl -> 500.0 + 50*lvl)
+        ..presetCooldown(lvl -> 26.0 - lvl)
+        ..presetManaCost(lvl -> abi4_Mana[lvl-1])
+        ..presetFollowThroughTime(lvl -> 0.5)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.TARGETIMAGE, true)
+        ..presetArtDuration(lvl -> 1)
+        ..presetCastingTime(lvl -> 1)
+        ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
+        ..presetCastRange(lvl -> 1200.0)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolySmite.blp")
+        ..setArtCaster("")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..setTargetAttachmentPoint("")
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Wrath".setColor(colAbilitiesGuardianOfLight),
+        "A burst of light is sent at the target location dealing damage to enemies and healing allies. Also permanently increases random stats of all allies heroes in the area.",
+        (int lvl) -> "Deals {0} + {1} x Int damage. +{2} to random stats. Cd {3} sec. Mana cost {4}.".format(
+            (300*lvl).toString(),
+            (1.5*lvl).toString(),
 
-        guardianOfLight_abi4_Stats[lvl-1].toString(),
+            guardianOfLight_abi4_Stats[lvl-1].toString(),
 
-        (26 - lvl).toString(),
-        abi4_Mana[lvl-1].toString()
-    ))
-    
+            (26 - lvl).toString(),
+            abi4_Mana[lvl-1].toString()
+        ))
+        
 // ----------------------------------------------------------------------------
     
 constant int array[4] abi5_Mana = [
@@ -214,24 +218,25 @@ constant int array[4] abi5_Mana = [
 ]
 
 @compiletime function defineAbilities5()
-    new AbilityDefinitionBerserk(GUARDIAN_OF_LIGHT_ABILITY_5)
-    ..setUltimateAbility()
-    ..presetBuffs(lvl -> "")
-    ..presetDamageTakenIncrease(lvl -> 0.0)
-    ..presetMovementSpeedIncrease(lvl -> 0.0)
-    ..presetAttackSpeedIncrease(lvl -> 0.0)
-    ..presetDuration(lvl -> 0.01)
-    ..presetAreaofEffect(lvl -> 0.0)
-    ..presetCooldown(lvl -> 130.0 - 30*(lvl-1))
-    ..presetManaCost(lvl -> abi5_Mana[lvl-1])
-    ..presetDuration(lvl -> 0.01)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolyNova.BLP")
-    ..setArtCaster("Abilities\\Spells\\Human\\Resurrect\\ResurrectTarget.mdl")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolyNova.BLP")
-    ..setArtTarget("")
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Gods Blessing".setColor(colAbilitiesGuardianOfLight), 
-    "The Guardian of Light calls for the blessing of the god Aelion to fully restore the health of all allied units and increase their max HP.",
-    (int lvl) -> "Fully restores heal of all allied units and increases their max HP by {0}".format((500*lvl).toString()))
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionBerserk(GUARDIAN_OF_LIGHT_ABILITY_5)
+        ..setUltimateAbility()
+        ..presetBuffs(lvl -> "")
+        ..presetDamageTakenIncrease(lvl -> 0.0)
+        ..presetMovementSpeedIncrease(lvl -> 0.0)
+        ..presetAttackSpeedIncrease(lvl -> 0.0)
+        ..presetDuration(lvl -> 0.01)
+        ..presetAreaofEffect(lvl -> 0.0)
+        ..presetCooldown(lvl -> 130.0 - 30*(lvl-1))
+        ..presetManaCost(lvl -> abi5_Mana[lvl-1])
+        ..presetDuration(lvl -> 0.01)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolyNova.BLP")
+        ..setArtCaster("Abilities\\Spells\\Human\\Resurrect\\ResurrectTarget.mdl")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolyNova.BLP")
+        ..setArtTarget("")
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Gods Blessing".setColor(colAbilitiesGuardianOfLight), 
+        "The Guardian of Light calls for the blessing of the god Aelion to fully restore the health of all allied units and increase their max HP.",
+        (int lvl) -> "Fully restores heal of all allied units and increases their max HP by {0}".format((500*lvl).toString()))
 
 // ----------------------------------------------------------------------------
 
@@ -259,21 +264,22 @@ constant int array[20] abi6_Stats = [
 ]
 
 @compiletime function defineAbilities6()
-    new AbilityDefinitionAttributeModifierSkill(GUARDIAN_OF_LIGHT_ABILITY_6)
-    ..setGeneralAbility(AbilityPosition.LearnableHidden1)
-    ..setLevels(20)
-    ..setLevelSkipRequirement(0)
-    ..presetHideButton(lvl -> true)
-    ..presetStrengthBonus(lvl -> abi6_Stats[lvl-1])
-    ..presetAgilityBonus(lvl -> (0.5*abi6_Stats[lvl-1]).ceil())
-    ..presetIntelligenceBonus(lvl -> (1.5*abi6_Stats[lvl-1]).ceil())
-    ..setArtTarget("")
-    ..register(HERO_GUARDIAN_OF_LIGHT, "Light Empower".setColor(colAbilitiesGuardianOfLight), 
-    "The Guardian of Light passively gets stats.",
-    (int lvl) -> "+{0} Str, +{1} Agi, +{2} Int.".format(
-        abi6_Stats[lvl-1].toString(),
-        (0.5*abi6_Stats[lvl-1]).ceil().toString(),
-        (1.5*abi6_Stats[lvl-1]).ceil().toString()
-    ))
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionAttributeModifierSkill(GUARDIAN_OF_LIGHT_ABILITY_6)
+        ..setGeneralAbility(AbilityPosition.LearnableHidden1)
+        ..setLevels(20)
+        ..setLevelSkipRequirement(0)
+        ..presetHideButton(lvl -> true)
+        ..presetStrengthBonus(lvl -> abi6_Stats[lvl-1])
+        ..presetAgilityBonus(lvl -> (0.5*abi6_Stats[lvl-1]).ceil())
+        ..presetIntelligenceBonus(lvl -> (1.5*abi6_Stats[lvl-1]).ceil())
+        ..setArtTarget("")
+        ..register(HERO_GUARDIAN_OF_LIGHT, "Light Empower".setColor(colAbilitiesGuardianOfLight), 
+        "The Guardian of Light passively gets stats.",
+        (int lvl) -> "+{0} Str, +{1} Agi, +{2} Int.".format(
+            abi6_Stats[lvl-1].toString(),
+            (0.5*abi6_Stats[lvl-1]).ceil().toString(),
+            (1.5*abi6_Stats[lvl-1]).ceil().toString()
+        ))
     
 // ----------------------------------------------------------------------------

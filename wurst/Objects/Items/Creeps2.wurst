@@ -3,7 +3,6 @@ package Creeps2
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
-import DamageTarget
 
 init
 

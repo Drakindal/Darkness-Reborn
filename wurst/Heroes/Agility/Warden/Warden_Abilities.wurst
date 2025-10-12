@@ -9,6 +9,7 @@ import ObjectIds
 import BuffIds
 import BuffObjEditing
 import MyColors
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -25,28 +26,29 @@ constant real array[9] abi1_Damage = [
 ]
 
 @compiletime function defineAbilities()
-    new AbilityDefinitionWardenFanofKnives(WARDEN_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 300.0+20*lvl)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(2, 130)
-    ..setManaCost(3, 160)
-    ..setManaCost(4, 190)
-    ..setManaCost(5, 230)
-    ..setManaCost(6, 270)
-    ..setManaCost(7, 310)
-    ..setManaCost(8, 350)
-    ..setManaCost(9, 390)
-    ..presetDamagePerTarget(lvl -> abi1_Damage[lvl-1])
-    ..presetMaximumTotalDamage(lvl -> 999999.0)
-    ..presetMaximumSpeedAdjustment(lvl -> 10.0)
-    ..register(HERO_WARDEN, "Fan of Knives".setColor(colAbilitiesWarden), 
-    "The Warden flings a flurry of knives at multiple enemy targets.",
-    (int lvl) -> "Deals {0} damage per target in {1} range.".format(
-        abi1_Damage[lvl-1].toString(),
-        (300+20*lvl).toString()
-    ))
-    
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionWardenFanofKnives(WARDEN_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetAreaofEffect(lvl -> 300.0+20*lvl)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(2, 130)
+        ..setManaCost(3, 160)
+        ..setManaCost(4, 190)
+        ..setManaCost(5, 230)
+        ..setManaCost(6, 270)
+        ..setManaCost(7, 310)
+        ..setManaCost(8, 350)
+        ..setManaCost(9, 390)
+        ..presetDamagePerTarget(lvl -> abi1_Damage[lvl-1])
+        ..presetMaximumTotalDamage(lvl -> 999999.0)
+        ..presetMaximumSpeedAdjustment(lvl -> 10.0)
+        ..register(HERO_WARDEN, "Fan of Knives".setColor(colAbilitiesWarden), 
+        "The Warden flings a flurry of knives at multiple enemy targets.",
+        (int lvl) -> "Deals {0} damage per target in {1} range.".format(
+            abi1_Damage[lvl-1].toString(),
+            (300+20*lvl).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
 constant real array[9] abi2_Range = [
@@ -62,52 +64,53 @@ constant real array[9] abi2_Range = [
 ]
 
 @compiletime function defineAbilities2()
-    new AbilityDefinitionWardenBlink(WARDEN_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 50 + 50*lvl)
-    ..presetMaximumRange(lvl -> abi2_Range[lvl-1])
-    ..setAreaEffect("Grin Curse.mdx")
-    ..setArtSpecial("Grin Curse.mdx")
-    ..register(HERO_WARDEN, "Shadow Blink".setColor(colAbilitiesWarden), 
-    "Warden blinks to another location.",
-    (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionWardenBlink(WARDEN_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 50 + 50*lvl)
+        ..presetMaximumRange(lvl -> abi2_Range[lvl-1])
+        ..setAreaEffect("Grin Curse.mdx")
+        ..setArtSpecial("Grin Curse.mdx")
+        ..register(HERO_WARDEN, "Shadow Blink".setColor(colAbilitiesWarden), 
+        "Warden blinks to another location.",
+        (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi2_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
     
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionDreadlordCarrionSwarm(WARDEN_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetAreaofEffect(lvl -> 1.0)
-    ..presetManaCost(lvl -> 90)
-    ..presetDamage(lvl -> 0.0)
-    ..presetMaxDamage(lvl -> 0.0)
-    ..presetFinalArea(lvl -> 1.0)
-    ..setMissileSpeed(900)
-    ..setAnimationNames("walk")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNShadowStrike.blp")
-    ..setMissileArt("")
-    ..setArtSpecial("")
-    ..register(HERO_WARDEN, "Shadow Raze".setColor(colAbilitiesWarden), 
-    "Warden goes into the dark state, the illusion, swirling on a straight line and damaging all enemies in 300 range.",
-    (int lvl) -> "Deals {0} x Agility damage.".format(
-        (2*lvl).toString())
-    )
-    
+        new AbilityDefinitionDreadlordCarrionSwarm(WARDEN_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetAreaofEffect(lvl -> 1.0)
+        ..presetManaCost(lvl -> 90)
+        ..presetDamage(lvl -> 0.0)
+        ..presetMaxDamage(lvl -> 0.0)
+        ..presetFinalArea(lvl -> 1.0)
+        ..setMissileSpeed(900)
+        ..setAnimationNames("walk")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNShadowStrike.blp")
+        ..setMissileArt("")
+        ..setArtSpecial("")
+        ..register(HERO_WARDEN, "Shadow Raze".setColor(colAbilitiesWarden), 
+        "Warden goes into the dark state, the illusion, swirling on a straight line and damaging all enemies in 300 range.",
+        (int lvl) -> "Deals {0} x Agility damage.".format(
+            (2*lvl).toString())
+        )
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionBrewmasterDrunkenBrawler(WARDEN_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetChancetoCriticalStrike(lvl -> 6.0 * lvl)
-    ..presetDamageMultiplier(lvl -> 2.25 + 0.75*lvl)
-    ..presetChancetoEvade(lvl -> 0.03 + 0.03*lvl)
-    ..presetNeverMiss(lvl -> true)
-    ..register(HERO_WARDEN, "Drunken Brawler".setColor(colAbilitiesWarden), 
-    "The Warden manages to strike the weak spots of an enemy as well as move swiftly to dodge attacks.",
-    (int lvl) -> "{0}% Chance to deal x{1} damage. {2}% Evasion".format(
-        (6 * lvl).toString(),
-        (2.25 + 0.75*lvl).toString(2),
-        (3 + 3*lvl).toString()
-    ))
+        new AbilityDefinitionBrewmasterDrunkenBrawler(WARDEN_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetChancetoCriticalStrike(lvl -> 6.0 * lvl)
+        ..presetDamageMultiplier(lvl -> 2.25 + 0.75*lvl)
+        ..presetChancetoEvade(lvl -> 0.03 + 0.03*lvl)
+        ..presetNeverMiss(lvl -> true)
+        ..register(HERO_WARDEN, "Drunken Brawler".setColor(colAbilitiesWarden), 
+        "The Warden manages to strike the weak spots of an enemy as well as move swiftly to dodge attacks.",
+        (int lvl) -> "{0}% Chance to deal x{1} damage. {2}% Evasion".format(
+            (6 * lvl).toString(),
+            (2.25 + 0.75*lvl).toString(2),
+            (3 + 3*lvl).toString()
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -119,40 +122,41 @@ public constant real array[4] warden_abi5_Damage = [
 ]
 
 @compiletime function defineAbilities5()
-    new BuffDefinition(WARDEN_BUFF_5, BuffIds.roar)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNCurse.blp")
-    ..setArtTarget("Abilities\\Spells\\Human\\Feedback\\SpellBreakerAttack.mdl,Abilities\\Weapons\\PhoenixMissile\\Phoenix_Missile_mini.mdl")
-    ..setTargetAttachmentPoint0("weapon")
-    ..setTargetAttachmentPoint1("weapon")
-    ..setTargetAttachments(2)
-    ..register("Ghostly Strike".setColor(colAbilitiesWarden),
-    "Next attack will deal more damage.")
+    if (BUILD_AGI_HEROES)
+        new BuffDefinition(WARDEN_BUFF_5, BuffIds.roar)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNCurse.blp")
+        ..setArtTarget("Abilities\\Spells\\Human\\Feedback\\SpellBreakerAttack.mdl,Abilities\\Weapons\\PhoenixMissile\\Phoenix_Missile_mini.mdl")
+        ..setTargetAttachmentPoint0("weapon")
+        ..setTargetAttachmentPoint1("weapon")
+        ..setTargetAttachments(2)
+        ..register("Ghostly Strike".setColor(colAbilitiesWarden),
+        "Next attack will deal more damage.")
 
-    new AbilityDefinitionEvasioncreep(WARDEN_ABILITY_5_DUMMY)
-    ..setLevels(1)
-    ..setChancetoEvade(1, 100)
-    ..setHeroAbility(false)
-    ..setItemAbility(false)
-    
-    new AbilityDefinitionBattleRoar(WARDEN_ABILITY_5)
-    ..presetAreaofEffect(lvl -> 500.0)
-    ..presetBuffs(lvl -> WARDEN_BUFF_5.toRawCode())
-    ..presetCooldown(lvl -> 140.0 - 20*lvl)
-    ..setManaCost(1, 150)
-    ..setManaCost(2, 180)
-    ..setManaCost(3, 240)
-    ..setManaCost(4, 280)
-    ..presetDamageIncrease(lvl -> warden_abi5_Damage[lvl-1])
-    ..presetDuration(lvl -> 30.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
-    ..setAnimationNames("")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNCurse.blp")
-    ..setArtCaster("")
-    ..setUltimateAbility()
-    ..register(HERO_WARDEN, "Ghostly Strike".setColor(colAbilitiesWarden), 
-    "The Warden collects all her energy, unleashing it all on her next hit within the next 30 seconds, dealing massive damage. She also gains 100% evasion for 10 seconds.",
-    (int lvl) -> "Increases the next hit's damage by x{0}.".format(
-        warden_abi5_Damage[lvl-1].toString(0)
-    ))
+        new AbilityDefinitionEvasioncreep(WARDEN_ABILITY_5_DUMMY)
+        ..setLevels(1)
+        ..setChancetoEvade(1, 100)
+        ..setHeroAbility(false)
+        ..setItemAbility(false)
+        
+        new AbilityDefinitionBattleRoar(WARDEN_ABILITY_5)
+        ..presetAreaofEffect(lvl -> 500.0)
+        ..presetBuffs(lvl -> WARDEN_BUFF_5.toRawCode())
+        ..presetCooldown(lvl -> 140.0 - 20*lvl)
+        ..setManaCost(1, 150)
+        ..setManaCost(2, 180)
+        ..setManaCost(3, 240)
+        ..setManaCost(4, 280)
+        ..presetDamageIncrease(lvl -> warden_abi5_Damage[lvl-1])
+        ..presetDuration(lvl -> 30.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+        ..setAnimationNames("")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNCurse.blp")
+        ..setArtCaster("")
+        ..setUltimateAbility()
+        ..register(HERO_WARDEN, "Ghostly Strike".setColor(colAbilitiesWarden), 
+        "The Warden collects all her energy, unleashing it all on her next hit within the next 30 seconds, dealing massive damage. She also gains 100% evasion for 10 seconds.",
+        (int lvl) -> "Increases the next hit's damage by x{0}.".format(
+            warden_abi5_Damage[lvl-1].toString(0)
+        ))
     
 // ----------------------------------------------------------------------------

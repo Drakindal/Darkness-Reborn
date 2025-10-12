@@ -6,164 +6,165 @@ import MyUnitIds
 import BuffIds
 import ChannelAbilityPreset
 import MyColors
-import Orders
 import BuffObjEditing
 import MyBuffIds
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineAbilities()
-    new BuffDefinition(FIRELORD_BUFF_BLAZE, BuffIds.unsummon)
-    ..setIconNormal(1, Icons.bTNInnerFire)
-    ..setArtTarget("")
-    ..register("Blaze".setColor(colAbilitiesFirelord),
-    "This unit is under the effect of Blaze, hot hot hot! Liar Liar pants on Fire!")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(FIRELORD_BUFF_BLAZE, BuffIds.unsummon)
+        ..setIconNormal(1, Icons.bTNInnerFire)
+        ..setArtTarget("")
+        ..register("Blaze".setColor(colAbilitiesFirelord),
+        "This unit is under the effect of Blaze, hot hot hot! Liar Liar pants on Fire!")
 
-    new AbilityDefinitionCripple(FIRELORD_ABILITY_BLAZE_DUMMY)
-    ..setLevels(1)
-    ..setDurationHero(1, 5)
-    ..setDurationNormal(1, 5)
-    ..setAttackSpeedReduction(1, 0)
-    ..setDamageReduction(1, 0)
-    ..setCooldown(1, 0)
-    ..setManaCost(1, 0)
-    ..setCastingTime(1, 0)
-    ..setCastRange(1, 99999)
-    ..setRequirements("")
-    ..setArtTarget(".mdl")
-    ..setArtSpecial(".mdl")
-    ..setArtEffect(".mdl")
-    ..setArtCaster(".mdl")
-    ..setMissileArt(".mdl")
-    ..setBuffs(1, FIRELORD_BUFF_BLAZE.toRawCode())
+        new AbilityDefinitionCripple(FIRELORD_ABILITY_BLAZE_DUMMY)
+        ..setLevels(1)
+        ..setDurationHero(1, 5)
+        ..setDurationNormal(1, 5)
+        ..setAttackSpeedReduction(1, 0)
+        ..setDamageReduction(1, 0)
+        ..setCooldown(1, 0)
+        ..setManaCost(1, 0)
+        ..setCastingTime(1, 0)
+        ..setCastRange(1, 99999)
+        ..setRequirements("")
+        ..setArtTarget(".mdl")
+        ..setArtSpecial(".mdl")
+        ..setArtEffect(".mdl")
+        ..setArtCaster(".mdl")
+        ..setMissileArt(".mdl")
+        ..setBuffs(1, FIRELORD_BUFF_BLAZE.toRawCode())
 
-    new AbilityDefinitionDemonHunterEvasion(FIRELORD_ABILITY_BLAZE)
-    ..setPosition(AbilityPosition.T)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNBlaze.blp")
-    ..register(HERO_FIRELORD, "Blaze".setColor(colAbilitiesFirelord),
-    "The magic of the Firelord burns enemies with great intensity, each ability causes [30 x (Firelord Level) + 1% of target max HP] pure damage and [1 x Intelligence] magical damage each second over 4 sec.")
-    ..setHeroAbility(false)
-    
+        new AbilityDefinitionDemonHunterEvasion(FIRELORD_ABILITY_BLAZE)
+        ..setPosition(AbilityPosition.T)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNBlaze.blp")
+        ..register(HERO_FIRELORD, "Blaze".setColor(colAbilitiesFirelord),
+        "The magic of the Firelord burns enemies with great intensity, each ability causes [30 x (Firelord Level) + 1% of target max HP] pure damage and [1 x Intelligence] magical damage each second over 4 sec.")
+        ..setHeroAbility(false)
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionMountainKingThunderBolt(FIRELORD_ABILITY_1_DUMMY)
-    ..setLevels(1)
-    ..setDurationHero(1, 9)
-    ..setDurationNormal(1, 9)
-    ..setManaCost(1, 0)
-    ..setCastRange(1, 9999)
-    ..setCastingTime(1, 0)
-    ..setCooldown(1, 0)
-    ..setRequiredLevel(0)
-    ..setRequirements("")
-    ..setArtTarget(".mdl")
-    ..setArtSpecial(".mdl")
-    ..setArtEffect(".mdl")
-    ..setArtCaster(".mdl")
-    ..setMissileArt(".mdl")
-    ..setMissileSpeed(9999)
-    
-    new ChannelAbilityPreset(FIRELORD_ABILITY_1, 9, true)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 120)
-    ..setManaCost(3, 140)
-    ..setManaCost(4, 160)
-    ..setManaCost(5, 180)
-    ..setManaCost(6, 200)
-    ..setManaCost(7, 240)
-    ..setManaCost(8, 280)
-    ..setManaCost(9, 320)
-    ..presetFollowThroughTime(lvl -> 0.25)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetArtDuration(lvl -> 1.0)
-    ..presetBaseOrderID(lvl -> "shockwave")
-    ..setOrderStringUseTurnOn("shockwave")
-    ..presetCastRange(lvl -> 900.0)
-    ..setAnimationNames("attack")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSear.blp")
-    ..setArtCaster("")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..register(HERO_FIRELORD, "Sear".setColor(colAbilitiesFirelord), 
-    "Firelord launches a fireball in the target point that splits into hot fragments upon hitting a ground damaging all units in range.\n" +
-    "If the target is affected by Blaze, it also gets stunned for 9 sec.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
-        (400*lvl).toString(),
-        (lvl).toString(),
-        ((300 + 20*lvl)*2).toString()
-    ))
-    
+        new AbilityDefinitionMountainKingThunderBolt(FIRELORD_ABILITY_1_DUMMY)
+        ..setLevels(1)
+        ..setDurationHero(1, 9)
+        ..setDurationNormal(1, 9)
+        ..setManaCost(1, 0)
+        ..setCastRange(1, 9999)
+        ..setCastingTime(1, 0)
+        ..setCooldown(1, 0)
+        ..setRequiredLevel(0)
+        ..setRequirements("")
+        ..setArtTarget(".mdl")
+        ..setArtSpecial(".mdl")
+        ..setArtEffect(".mdl")
+        ..setArtCaster(".mdl")
+        ..setMissileArt(".mdl")
+        ..setMissileSpeed(9999)
+        
+        new ChannelAbilityPreset(FIRELORD_ABILITY_1, 9, true)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 120)
+        ..setManaCost(3, 140)
+        ..setManaCost(4, 160)
+        ..setManaCost(5, 180)
+        ..setManaCost(6, 200)
+        ..setManaCost(7, 240)
+        ..setManaCost(8, 280)
+        ..setManaCost(9, 320)
+        ..presetFollowThroughTime(lvl -> 0.25)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetArtDuration(lvl -> 1.0)
+        ..presetBaseOrderID(lvl -> "shockwave")
+        ..setOrderStringUseTurnOn("shockwave")
+        ..presetCastRange(lvl -> 900.0)
+        ..setAnimationNames("attack")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSear.blp")
+        ..setArtCaster("")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..register(HERO_FIRELORD, "Sear".setColor(colAbilitiesFirelord), 
+        "Firelord launches a fireball in the target point that splits into hot fragments upon hitting a ground damaging all units in range.\n" +
+        "If the target is affected by Blaze, it also gets stunned for 9 sec.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
+            (400*lvl).toString(),
+            (lvl).toString(),
+            ((300 + 20*lvl)*2).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new ChannelAbilityPreset(FIRELORD_ABILITY_2, 9, true)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetAreaofEffect(lvl -> (400.0 + 20*lvl)*2)
-    ..presetCastRange(lvl -> 900.0)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 120)
-    ..setManaCost(3, 140)
-    ..setManaCost(4, 160)
-    ..setManaCost(5, 180)
-    ..setManaCost(6, 200)
-    ..setManaCost(7, 240)
-    ..setManaCost(8, 280)
-    ..setManaCost(9, 320)
-    ..presetFollowThroughTime(lvl -> 0.25)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.TARGETIMAGE, true)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetArtDuration(lvl -> 1.0)
-    ..presetBaseOrderID(lvl -> "impale")
-    ..setOrderStringUseTurnOn("impale")
-    ..setAnimationNames("channel")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPOF.blp")
-    ..setArtCaster("")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..register(HERO_FIRELORD, "Pillar of Flame".setColor(colAbilitiesFirelord), 
-    "After a 1 second delay, Firelord erupts a pillar of flame at the target location that deals damage to all enemies in range.\n" +
-    "Deals 4 times damage to targets affected by Blaze.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
-        (300*lvl).toString(),
-        (0.8*lvl).toString(1),
-        ((400 + 20*lvl)*2).toString()
-    ))
-    
+        new ChannelAbilityPreset(FIRELORD_ABILITY_2, 9, true)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetAreaofEffect(lvl -> (400.0 + 20*lvl)*2)
+        ..presetCastRange(lvl -> 900.0)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 120)
+        ..setManaCost(3, 140)
+        ..setManaCost(4, 160)
+        ..setManaCost(5, 180)
+        ..setManaCost(6, 200)
+        ..setManaCost(7, 240)
+        ..setManaCost(8, 280)
+        ..setManaCost(9, 320)
+        ..presetFollowThroughTime(lvl -> 0.25)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.TARGETIMAGE, true)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetArtDuration(lvl -> 1.0)
+        ..presetBaseOrderID(lvl -> "impale")
+        ..setOrderStringUseTurnOn("impale")
+        ..setAnimationNames("channel")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPOF.blp")
+        ..setArtCaster("")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..register(HERO_FIRELORD, "Pillar of Flame".setColor(colAbilitiesFirelord), 
+        "After a 1 second delay, Firelord erupts a pillar of flame at the target location that deals damage to all enemies in range.\n" +
+        "Deals 4 times damage to targets affected by Blaze.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
+            (300*lvl).toString(),
+            (0.8*lvl).toString(1),
+            ((400 + 20*lvl)*2).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new ChannelAbilityPreset(FIRELORD_ABILITY_3, 9, true)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 120)
-    ..setManaCost(3, 140)
-    ..setManaCost(4, 160)
-    ..setManaCost(5, 180)
-    ..setManaCost(6, 200)
-    ..setManaCost(7, 240)
-    ..setManaCost(8, 280)
-    ..setManaCost(9, 320)
-    ..presetFollowThroughTime(lvl -> 0.25)
-    ..presetTargetTypes(Targettype.UNIT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetArtDuration(lvl -> 0.25)
-    ..presetBaseOrderID(lvl -> "frostnova")
-    ..setOrderStringUseTurnOn("frostnova")
-    ..presetCastRange(lvl -> 900.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setAnimationNames("spell")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNConflagration.blp")
-    ..setArtTarget("")
-    ..register(HERO_FIRELORD, "Conflagration".setColor(colAbilitiesFirelord), 
-    "Firelord makes the target enemy suffer from an intensive stream of burning Inferno energy. A target affected by Blaze will spread Conflagration to all enemies in 300 range damaging them too.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage.".format(
-        (550*lvl).toString(),
-        (1.8*lvl).toString(1)
-    ))
+        new ChannelAbilityPreset(FIRELORD_ABILITY_3, 9, true)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 120)
+        ..setManaCost(3, 140)
+        ..setManaCost(4, 160)
+        ..setManaCost(5, 180)
+        ..setManaCost(6, 200)
+        ..setManaCost(7, 240)
+        ..setManaCost(8, 280)
+        ..setManaCost(9, 320)
+        ..presetFollowThroughTime(lvl -> 0.25)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetArtDuration(lvl -> 0.25)
+        ..presetBaseOrderID(lvl -> "frostnova")
+        ..setOrderStringUseTurnOn("frostnova")
+        ..presetCastRange(lvl -> 900.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..setAnimationNames("spell")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNConflagration.blp")
+        ..setArtTarget("")
+        ..register(HERO_FIRELORD, "Conflagration".setColor(colAbilitiesFirelord), 
+        "Firelord makes the target enemy suffer from an intensive stream of burning Inferno energy. A target affected by Blaze will spread Conflagration to all enemies in 300 range damaging them too.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage.".format(
+            (550*lvl).toString(),
+            (1.8*lvl).toString(1)
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -192,39 +193,40 @@ public constant int array[9] firelord_abi4_BounceAmount = [
 ]
 
 @compiletime function defineAbilities2()
-    new ChannelAbilityPreset(FIRELORD_ABILITY_4, 9, true)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 120)
-    ..setManaCost(3, 140)
-    ..setManaCost(4, 160)
-    ..setManaCost(5, 180)
-    ..setManaCost(6, 200)
-    ..setManaCost(7, 240)
-    ..setManaCost(8, 280)
-    ..setManaCost(9, 320)
-    ..presetFollowThroughTime(lvl -> 0.25)
-    ..presetTargetTypes(Targettype.UNIT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetArtDuration(lvl -> 0.25)
-    ..presetBaseOrderID(lvl -> "acidbomb")
-    ..setOrderStringUseTurnOn("acidbomb")
-    ..presetCastRange(lvl -> 750.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setAnimationNames("attack")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
-    ..setArtCaster("")
-    ..setArtEffect("")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
-    ..setArtTarget("")
-    ..register(HERO_FIRELORD, "Pyroclasm".setColor(colAbilitiesFirelord), 
-    "Firelord launches a fireball at the target enemy that bounces between nearby enemies several times, dealing 2000 + 7.2x Intelligence damage to enemies each time.\n" +
-    "Prioritizes targets affected by Blaze.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage. Max {2} targets.".format(
-        firelord_abi4_Damage[lvl-1].toString(0),
-        (0.8*lvl).toString(1),
-        firelord_abi4_BounceAmount[lvl-1].toString()
-    ))
-    
+    if (BUILD_INT_HEROES)
+        new ChannelAbilityPreset(FIRELORD_ABILITY_4, 9, true)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 120)
+        ..setManaCost(3, 140)
+        ..setManaCost(4, 160)
+        ..setManaCost(5, 180)
+        ..setManaCost(6, 200)
+        ..setManaCost(7, 240)
+        ..setManaCost(8, 280)
+        ..setManaCost(9, 320)
+        ..presetFollowThroughTime(lvl -> 0.25)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetArtDuration(lvl -> 0.25)
+        ..presetBaseOrderID(lvl -> "acidbomb")
+        ..setOrderStringUseTurnOn("acidbomb")
+        ..presetCastRange(lvl -> 750.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..setAnimationNames("attack")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
+        ..setArtCaster("")
+        ..setArtEffect("")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
+        ..setArtTarget("")
+        ..register(HERO_FIRELORD, "Pyroclasm".setColor(colAbilitiesFirelord), 
+        "Firelord launches a fireball at the target enemy that bounces between nearby enemies several times, dealing 2000 + 7.2x Intelligence damage to enemies each time.\n" +
+        "Prioritizes targets affected by Blaze.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage. Max {2} targets.".format(
+            firelord_abi4_Damage[lvl-1].toString(0),
+            (0.8*lvl).toString(1),
+            firelord_abi4_BounceAmount[lvl-1].toString()
+        ))
+        
 // ----------------------------------------------------------------------------

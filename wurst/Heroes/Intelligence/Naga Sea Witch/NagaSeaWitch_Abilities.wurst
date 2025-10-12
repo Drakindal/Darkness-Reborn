@@ -11,36 +11,38 @@ import MyColors
 import MyBuffIds
 import BuffIds
 import BuffObjEditing
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineAbils()
-    new BuffDefinition(NAGA_WITCH_BUFF_1, BuffIds.stunned)
-    ..setArtTarget(1, ".mdl")
-    ..setArtSpecial(1, ".mdl")
-    ..setIconNormal(1, Icons.bTNStun)
-    ..register("Bubble Trap".setColor(colAbilitiesNagaWitch),
-    "Recently hit by Naga Sea Witch Bubble Trap")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(NAGA_WITCH_BUFF_1, BuffIds.stunned)
+        ..setArtTarget(1, ".mdl")
+        ..setArtSpecial(1, ".mdl")
+        ..setIconNormal(1, Icons.bTNStun)
+        ..register("Bubble Trap".setColor(colAbilitiesNagaWitch),
+        "Recently hit by Naga Sea Witch Bubble Trap")
 
-    new AbilityDefinitionFireBolt(NAGA_WITCH_ABILITY_1_DUMMY)
-    ..setLevels(1)
-    ..setManaCost(1, 0)
-    ..setCastRange(1, 9999)
-    ..setCastingTime(1, 0)
-    ..setCooldown(1, 0)
-    ..setDamage(1, 0)
-    ..setMissileSpeed(9999)
-    ..setDurationNormal(1, 2)
-    ..setDurationHero(1, 2)
-    ..setTargetsAllowed(1, commaList(TargetsAllowed.alive))
-    ..setRequirements("")
-    ..setArtTarget(".mdl")
-    ..setArtSpecial(".mdl")
-    ..setArtEffect(".mdl")
-    ..setArtCaster(".mdl")
-    ..setMissileArt(".mdl")
-    ..setBuffs(1, NAGA_WITCH_BUFF_1.toRawCode())
-    
+        new AbilityDefinitionFireBolt(NAGA_WITCH_ABILITY_1_DUMMY)
+        ..setLevels(1)
+        ..setManaCost(1, 0)
+        ..setCastRange(1, 9999)
+        ..setCastingTime(1, 0)
+        ..setCooldown(1, 0)
+        ..setDamage(1, 0)
+        ..setMissileSpeed(9999)
+        ..setDurationNormal(1, 2)
+        ..setDurationHero(1, 2)
+        ..setTargetsAllowed(1, commaList(TargetsAllowed.alive))
+        ..setRequirements("")
+        ..setArtTarget(".mdl")
+        ..setArtSpecial(".mdl")
+        ..setArtEffect(".mdl")
+        ..setArtCaster(".mdl")
+        ..setMissileArt(".mdl")
+        ..setBuffs(1, NAGA_WITCH_BUFF_1.toRawCode())
+        
 // ----------------------------------------------------------------------------
 
 constant int array[9] abi1_Mana = [
@@ -56,27 +58,28 @@ constant int array[9] abi1_Mana = [
 ]
 
 @compiletime function defineAbilities1()
-    new AbilityDefinitionStasisTrap(NAGA_WITCH_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..setIcon(Icons.bTNCrushingWave)
-    ..presetManaCost(lvl -> abi1_Mana[lvl-1])
-    ..setRequirements("")
-    ..presetCooldown(lvl -> 18.0 - lvl)
-    ..presetStunDuration(lvl -> 0.01)
-    ..presetWardUnitType(lvl -> "")
-    ..presetCastRange(lvl -> 800.)
-    ..presetAreaofEffect(lvl -> 400. + 40*(lvl-1))
-    ..presetDetonationRadius(lvl -> 400. + 40*(lvl-1))
-    ..presetDetectionRadius(lvl -> 400. + 40*(lvl-1))
-    ..register(HERO_NAGA_SEA_WITCH, "Bubble Trap".setColor(colAbilitiesNagaWitch), 
-    "Naga Sea Witch creates a bubble that traps enemies for 2 seconds and deals damage to them.",
-    (int lvl) -> "Deals [{0} + {1}% of Max Mana] damage in {2} range. Mana cost {3}. Cd {4} sec.".format(
-        (200*lvl).toString(),
-        (100*0.3*lvl).toString(1),
-        (400 + 40*(lvl-1)).toString(),
-        abi1_Mana[lvl-1].toString(),
-        (18 - lvl).toString()
-    ))
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionStasisTrap(NAGA_WITCH_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..setIcon(Icons.bTNCrushingWave)
+        ..presetManaCost(lvl -> abi1_Mana[lvl-1])
+        ..setRequirements("")
+        ..presetCooldown(lvl -> 18.0 - lvl)
+        ..presetStunDuration(lvl -> 0.01)
+        ..presetWardUnitType(lvl -> "")
+        ..presetCastRange(lvl -> 800.)
+        ..presetAreaofEffect(lvl -> 400. + 40*(lvl-1))
+        ..presetDetonationRadius(lvl -> 400. + 40*(lvl-1))
+        ..presetDetectionRadius(lvl -> 400. + 40*(lvl-1))
+        ..register(HERO_NAGA_SEA_WITCH, "Bubble Trap".setColor(colAbilitiesNagaWitch), 
+        "Naga Sea Witch creates a bubble that traps enemies for 2 seconds and deals damage to them.",
+        (int lvl) -> "Deals [{0} + {1}% of Max Mana] damage in {2} range. Mana cost {3}. Cd {4} sec.".format(
+            (200*lvl).toString(),
+            (100*0.3*lvl).toString(1),
+            (400 + 40*(lvl-1)).toString(),
+            abi1_Mana[lvl-1].toString(),
+            (18 - lvl).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -93,43 +96,44 @@ constant int array[9] abi2_Mana = [
 ]
 
 @compiletime function defineAbilities2()
-    new AbilityDefinitionRangerColdArrows(NAGA_WITCH_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetManaCost(lvl -> abi2_Mana[lvl-1])
-    ..setMissileArt(Abilities.coldArrowMissile)
-    ..setAnimationNames("attack")
-    ..setIconNormal(Icons.bTNColdArrowsOff)
-    ..setIconResearch(Icons.bTNColdArrows)
-    ..setIconTurnOff(Icons.bTNColdArrowsOn)
-    ..presetDuration(lvl -> 0.0)
-    ..presetBuffs(lvl -> "")
-    ..presetAttackSpeedFactor(lvl -> 0.6 - 0.04*lvl)
-    ..presetMovementSpeedFactor(lvl -> 0.6 - 0.04*lvl)
-    ..presetExtraDamage(lvl -> 0)
-    ..presetCastRange(lvl -> 600)
-    ..presetCastingTime(lvl -> 0.3)
-    ..presetCooldown(lvl -> 0)
-    ..presetDurationHero(lvl -> 1.5)
-    ..presetDurationNormal(lvl -> 5.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..register(HERO_NAGA_SEA_WITCH, "Frost Arrows".setColor(colAbilitiesNagaWitch), 
-    "Frost arrows deal damage based on Naga the Sea Witch maximum mana decreasing target's attack and move speed.",
-    (int lvl) -> "Deals {0}% of Max Mana damage. Attack speed/move speed decreased by {1}%. Mana cost {2}.".format(
-        (100*0.04*lvl).toString(),
-        (100-(0.4 - 0.02*lvl)*100).toString(0),
-        abi2_Mana[lvl-1].toString()
-    ))
-    ..setAutoCastingTooltip()
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionRangerColdArrows(NAGA_WITCH_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetManaCost(lvl -> abi2_Mana[lvl-1])
+        ..setMissileArt(Abilities.coldArrowMissile)
+        ..setAnimationNames("attack")
+        ..setIconNormal(Icons.bTNColdArrowsOff)
+        ..setIconResearch(Icons.bTNColdArrows)
+        ..setIconTurnOff(Icons.bTNColdArrowsOn)
+        ..presetDuration(lvl -> 0.0)
+        ..presetBuffs(lvl -> "")
+        ..presetAttackSpeedFactor(lvl -> 0.6 - 0.04*lvl)
+        ..presetMovementSpeedFactor(lvl -> 0.6 - 0.04*lvl)
+        ..presetExtraDamage(lvl -> 0)
+        ..presetCastRange(lvl -> 600)
+        ..presetCastingTime(lvl -> 0.3)
+        ..presetCooldown(lvl -> 0)
+        ..presetDurationHero(lvl -> 1.5)
+        ..presetDurationNormal(lvl -> 5.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..register(HERO_NAGA_SEA_WITCH, "Frost Arrows".setColor(colAbilitiesNagaWitch), 
+        "Frost arrows deal damage based on Naga the Sea Witch maximum mana decreasing target's attack and move speed.",
+        (int lvl) -> "Deals {0}% of Max Mana damage. Attack speed/move speed decreased by {1}%. Mana cost {2}.".format(
+            (100*0.04*lvl).toString(),
+            (100-(0.4 - 0.02*lvl)*100).toString(0),
+            abi2_Mana[lvl-1].toString()
+        ))
+        ..setAutoCastingTooltip()
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionSeaWitchManaShield(NAGA_WITCH_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetCooldown(lvl -> 14. - lvl)
-    ..presetManaperHitPoint(lvl -> 0.4 * lvl)
-    ..register(HERO_NAGA_SEA_WITCH, "Water Shield".setColor(colAbilitiesNagaWitch), 
-    "Absorbs damage per mana points.",
-    (int lvl) -> "Absorbs damage: {0} damage = 1 MP.".format((0.4).toString(1)))
+        new AbilityDefinitionSeaWitchManaShield(NAGA_WITCH_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetCooldown(lvl -> 14. - lvl)
+        ..presetManaperHitPoint(lvl -> 0.4 * lvl)
+        ..register(HERO_NAGA_SEA_WITCH, "Water Shield".setColor(colAbilitiesNagaWitch), 
+        "Absorbs damage per mana points.",
+        (int lvl) -> "Absorbs damage: {0} damage = 1 MP.".format((0.4).toString(1)))
 
 // ----------------------------------------------------------------------------
 
@@ -146,40 +150,41 @@ public constant int array[9] nagaWitch_abi4_Mana = [
 ]
 
 @compiletime function defineAbilities4()
-    new AbilityDefinitionAttributeModifierSkill(NAGA_WITCH_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\PASL (1).blp")
-    ..presetAgilityBonus(lvl -> 0)
-    ..presetStrengthBonus(lvl -> 0)
-    ..presetIntelligenceBonus(lvl -> 0)
-    ..register(HERO_NAGA_SEA_WITCH, "Blue Sea".setColor(colAbilitiesNagaWitch), 
-    "Has chance to get permanently mana on enemy kill",
-    (int lvl) -> "{0}% chance to get {1} mana.".format(
-        (4*lvl).toString(),
-        nagaWitch_abi4_Mana[lvl-1].toString()
-    ))
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionAttributeModifierSkill(NAGA_WITCH_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PASL (1).blp")
+        ..presetAgilityBonus(lvl -> 0)
+        ..presetStrengthBonus(lvl -> 0)
+        ..presetIntelligenceBonus(lvl -> 0)
+        ..register(HERO_NAGA_SEA_WITCH, "Blue Sea".setColor(colAbilitiesNagaWitch), 
+        "Has chance to get permanently mana on enemy kill",
+        (int lvl) -> "{0}% chance to get {1} mana.".format(
+            (4*lvl).toString(),
+            nagaWitch_abi4_Mana[lvl-1].toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionSentryWard(NAGA_WITCH_ABILITY_5)
-    ..setUltimateAbility()
-    ..setIcon(Icons.bTNTornado)
-    ..setRequirements("")
-    ..setTooltipLearn("Learn Tornado  [ |c00FFFC01T|r ] - [|c00FFFC01Level %d|r] ")
-    ..setTooltipLearnExtended("Naga Sea Witch shoots out a giant tornado dealing 75% * lvl max mana damage to all enemies in 400 range")
-    ..presetWardUnitType(lvl -> "")
-    ..presetAreaofEffect(lvl -> 0.)
-    ..presetCastRange(lvl -> 700.)
-    ..presetCooldown(lvl -> 140. - 20 * lvl)
-    ..presetDurationHero(lvl -> 0.01)
-    ..presetDurationNormal(lvl -> 0.01)
-    ..presetTooltipNormal(lvl -> "Tornado [ |c00FFFC01T|r ] -[|c00FFFC01Level " + lvl.toString() + "|r ]")
-    ..presetTooltipNormalExtended(lvl -> "Naga Sea Witch shoots out a giant tornado dealing " + (75*lvl).toString() + "% max mana damage to all enemies in 400 range")
-    ..register(HERO_NAGA_SEA_WITCH, "Tornado".setColor(colAbilitiesNagaWitch), 
-    "Naga the Sea Witch creates a giant tornado that pulls enemies away dealing damage based on maximum mana points to them.",
-    (int lvl) -> "Deals {0}% of max MP damage per second in {1} range.".format(
-        (90*lvl).toString(),
-        (500+50*lvl).toString()
-    ))
+        new AbilityDefinitionSentryWard(NAGA_WITCH_ABILITY_5)
+        ..setUltimateAbility()
+        ..setIcon(Icons.bTNTornado)
+        ..setRequirements("")
+        ..setTooltipLearn("Learn Tornado  [ |c00FFFC01T|r ] - [|c00FFFC01Level %d|r] ")
+        ..setTooltipLearnExtended("Naga Sea Witch shoots out a giant tornado dealing 75% * lvl max mana damage to all enemies in 400 range")
+        ..presetWardUnitType(lvl -> "")
+        ..presetAreaofEffect(lvl -> 0.)
+        ..presetCastRange(lvl -> 700.)
+        ..presetCooldown(lvl -> 140. - 20 * lvl)
+        ..presetDurationHero(lvl -> 0.01)
+        ..presetDurationNormal(lvl -> 0.01)
+        ..presetTooltipNormal(lvl -> "Tornado [ |c00FFFC01T|r ] -[|c00FFFC01Level " + lvl.toString() + "|r ]")
+        ..presetTooltipNormalExtended(lvl -> "Naga Sea Witch shoots out a giant tornado dealing " + (75*lvl).toString() + "% max mana damage to all enemies in 400 range")
+        ..register(HERO_NAGA_SEA_WITCH, "Tornado".setColor(colAbilitiesNagaWitch), 
+        "Naga the Sea Witch creates a giant tornado that pulls enemies away dealing damage based on maximum mana points to them.",
+        (int lvl) -> "Deals {0}% of max MP damage per second in {1} range.".format(
+            (90*lvl).toString(),
+            (500+50*lvl).toString()
+        ))
     
 // ----------------------------------------------------------------------------

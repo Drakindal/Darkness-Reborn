@@ -10,56 +10,58 @@ import BuffIds
 import BuffObjEditing
 import MyColors
 import CommonDescriptions
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function vivpireAbils()
-    new BuffDefinition(VIVPIRE_BUFF_1A, BuffIds.animateDead)
-    ..register("This unit has been afflicted by Blood Hunter.".setColor(colAbilitiesVivpire),
-    "This unit recieves additional damage by Vivpire.")
+    if (BUILD_STR_HEROES)
+        new BuffDefinition(VIVPIRE_BUFF_1A, BuffIds.animateDead)
+        ..register("This unit has been afflicted by Blood Hunter.".setColor(colAbilitiesVivpire),
+        "This unit recieves additional damage by Vivpire.")
 
-    new BuffDefinition(VIVPIRE_BUFF_1B, BuffIds.curse)
-    ..register("Vampiric Bite".setColor(colAbilitiesVivpire),
-    "This unit has been bitten by Vivpire.")
-    
-    new AbilityDefinitionCripplecreep(VIVPIRE_ABILITY_1_DUMMY_1)
-    ..setLevels(1)
-    ..setAttackSpeedReduction(1, 0.75)
-    ..setMovementSpeedReduction(1, 0.75)
-    ..setDamageReduction(1, 0.75)
-    ..setDurationHero(1, 10)
-    ..setDurationNormal(1, 10)
-    ..setManaCost(1, 0)
-    ..setBuffs(1, commaList(VIVPIRE_BUFF_1B))
-    ..setCastRange(1, 99999)
+        new BuffDefinition(VIVPIRE_BUFF_1B, BuffIds.curse)
+        ..register("Vampiric Bite".setColor(colAbilitiesVivpire),
+        "This unit has been bitten by Vivpire.")
+        
+        new AbilityDefinitionCripplecreep(VIVPIRE_ABILITY_1_DUMMY_1)
+        ..setLevels(1)
+        ..setAttackSpeedReduction(1, 0.75)
+        ..setMovementSpeedReduction(1, 0.75)
+        ..setDamageReduction(1, 0.75)
+        ..setDurationHero(1, 10)
+        ..setDurationNormal(1, 10)
+        ..setManaCost(1, 0)
+        ..setBuffs(1, commaList(VIVPIRE_BUFF_1B))
+        ..setCastRange(1, 99999)
 
-    new AbilityDefinitionCursecreep(VIVPIRE_ABILITY_1_DUMMY_2)
-    ..setLevels(1)
-    ..setChancetoMiss(1, 0.75)
-    ..setManaCost(1, 0)
-    ..setDurationHero(1, 10)
-    ..setDurationNormal(1, 10)
-    ..setCastRange(1, 99999)
-    
-    new AbilityDefinitionCripple(VIVPIRE_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..setIcon("Units\\Vivpire\\BTNBloodyBite\\BTNBloodyBite.blp")
-    ..setMissileArt("")
-    ..setArtTarget("")
-    ..presetBuffs(lvl -> commaList(""))
-    ..setRequirements("")
-    ..presetCooldown(lvl -> 21. - lvl)
-    ..presetManaCost(lvl -> 75 + 20 * lvl + 10 * (lvl-2))
-    ..presetCastRange(lvl -> 180)
-    ..presetTargetsAllowed(lvl -> commaList(TargetsAllowed.enemies))
-    ..presetDurationHero(lvl -> 0.01)
-    ..presetDurationNormal(lvl -> 0.01)
-    ..register(HERO_VIVPIRE, "Vampiric Bite".setColor(colAbilitiesVivpire), 
-    "Bites the victim dealing 3 x Str x Lvl physical damage. Vivpire cripples a target marked with 'Prey' reducing attack speed and movement speed by 75% and adding 75% chance to miss.",
-    (int lvl) -> "Deals {0} + {1} x Str damage".format(
-        (50*lvl).toString(),
-        (3*lvl).toString()
-    ))
+        new AbilityDefinitionCursecreep(VIVPIRE_ABILITY_1_DUMMY_2)
+        ..setLevels(1)
+        ..setChancetoMiss(1, 0.75)
+        ..setManaCost(1, 0)
+        ..setDurationHero(1, 10)
+        ..setDurationNormal(1, 10)
+        ..setCastRange(1, 99999)
+        
+        new AbilityDefinitionCripple(VIVPIRE_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..setIcon("Units\\Vivpire\\BTNBloodyBite\\BTNBloodyBite.blp")
+        ..setMissileArt("")
+        ..setArtTarget("")
+        ..presetBuffs(lvl -> commaList(""))
+        ..setRequirements("")
+        ..presetCooldown(lvl -> 21. - lvl)
+        ..presetManaCost(lvl -> 75 + 20 * lvl + 10 * (lvl-2))
+        ..presetCastRange(lvl -> 180)
+        ..presetTargetsAllowed(lvl -> commaList(TargetsAllowed.enemies))
+        ..presetDurationHero(lvl -> 0.01)
+        ..presetDurationNormal(lvl -> 0.01)
+        ..register(HERO_VIVPIRE, "Vampiric Bite".setColor(colAbilitiesVivpire), 
+        "Bites the victim dealing 3 x Str x Lvl physical damage. Vivpire cripples a target marked with 'Prey' reducing attack speed and movement speed by 75% and adding 75% chance to miss.",
+        (int lvl) -> "Deals {0} + {1} x Str damage".format(
+            (50*lvl).toString(),
+            (3*lvl).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -76,16 +78,17 @@ public constant int array[9] vivpire_abi2_Limit = [
 ]
 
 @compiletime function defineAbilities2()
-    new AbilityDefinitionBladeMasterCriticalStrike(VIVPIRE_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..setIcon("Units\\Vivpire\\Red Orb\\PASRed orb.blp")
-    ..presetTooltipNormalExtended(lvl -> "As you continue fighting hordes of enemies, your claws start hungering for more and more blood. Increasing damage done by 0.1xstr every attack. Damage increase Limit is lvl " + (lvl *2).toString() + " str physical damage. Lasts for 5 sec from last attack.")
-    ..presetChancetoCriticalStrike(lvl -> 0)
-    ..register(HERO_VIVPIRE, "Blood Hunter".setColor(colAbilitiesVivpire), 
-    "As Vivpire continues fighting hordes of enemies, their claws starts hungering for more and more blood. Increases physical damage dealt by 0.1 x Str every attack. Damage increases up to a limit of lvl x 2 x Str. Lasts for 5 sec from the last attack.",
-    (int lvl) -> "Limit {0} x Str additional damage with each attack.".format(
-        vivpire_abi2_Limit[lvl-1].toString()
-    ))
+    if (BUILD_STR_HEROES)
+        new AbilityDefinitionBladeMasterCriticalStrike(VIVPIRE_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..setIcon("Units\\Vivpire\\Red Orb\\PASRed orb.blp")
+        ..presetTooltipNormalExtended(lvl -> "As you continue fighting hordes of enemies, your claws start hungering for more and more blood. Increasing damage done by 0.1xstr every attack. Damage increase Limit is lvl " + (lvl *2).toString() + " str physical damage. Lasts for 5 sec from last attack.")
+        ..presetChancetoCriticalStrike(lvl -> 0)
+        ..register(HERO_VIVPIRE, "Blood Hunter".setColor(colAbilitiesVivpire), 
+        "As Vivpire continues fighting hordes of enemies, their claws starts hungering for more and more blood. Increases physical damage dealt by 0.1 x Str every attack. Damage increases up to a limit of lvl x 2 x Str. Lasts for 5 sec from the last attack.",
+        (int lvl) -> "Limit {0} x Str additional damage with each attack.".format(
+            vivpire_abi2_Limit[lvl-1].toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -102,21 +105,22 @@ public constant real array[9] vivpire_abi3_Aura = [
 ]
 
 @compiletime function defineAbilities3()
-    new BuffDefinition(VIVPIRE_BUFF_3, BuffIds.vampiricAura)
-    ..register("Vampiric Aura".setColor(colAbilitiesVivpire),
-    "This unit will receive healing from physical attacks.")
+    if (BUILD_STR_HEROES)
+        new BuffDefinition(VIVPIRE_BUFF_3, BuffIds.vampiricAura)
+        ..register("Vampiric Aura".setColor(colAbilitiesVivpire),
+        "This unit will receive healing from physical attacks.")
 
-    new AbilityDefinitionDreadlordVampiricAura(VIVPIRE_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetAttackDamageStolen(lvl -> 0)
-    ..presetAreaofEffect(lvl -> 1100.0 + 100*(lvl-1))
-    ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_3))
-    ..register(HERO_VIVPIRE, "Vampiric Aura".setColor(colAbilitiesVivpire), 
-    "Gives life steal aura to nearby allies.",
-    (int lvl) -> "{0}% Life Steal Aura in {1} Aoe.".format(
-        (100*vivpire_abi3_Aura[lvl-1]).toString(1),
-        (1100+100*(lvl-1)).toString()
-    ))
+        new AbilityDefinitionDreadlordVampiricAura(VIVPIRE_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetAttackDamageStolen(lvl -> 0)
+        ..presetAreaofEffect(lvl -> 1100.0 + 100*(lvl-1))
+        ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_3))
+        ..register(HERO_VIVPIRE, "Vampiric Aura".setColor(colAbilitiesVivpire), 
+        "Gives life steal aura to nearby allies.",
+        (int lvl) -> "{0}% Life Steal Aura in {1} Aoe.".format(
+            (100*vivpire_abi3_Aura[lvl-1]).toString(1),
+            (1100+100*(lvl-1)).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -133,45 +137,46 @@ public constant int array[9] vivpire_abi4_Str = [
 ]
 
 @compiletime function defineAbilities4()
-    new BuffDefinition(VIVPIRE_BUFF_4, BuffIds.berserk)
-    ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
-    ..setTargetAttachmentPoint0("chest")
-    ..register("Prey".setColor(colAbilitiesVivpire),
-    "This is the prey of the Vivpire, grants blood upon death.")
-    
-    new AbilityDefinitionCurse(VIVPIRE_DUMMY_ABILITY_4)
-    ..setLevels(1)
-    ..setChancetoMiss(1, 0)
-    ..setDummyAbility()
-    ..setDurationHero(1, 10)
-    ..setDurationNormal(1, 10)
-    ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_4))
+    if (BUILD_STR_HEROES)
+        new BuffDefinition(VIVPIRE_BUFF_4, BuffIds.berserk)
+        ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
+        ..setTargetAttachmentPoint0("chest")
+        ..register("Prey".setColor(colAbilitiesVivpire),
+        "This is the prey of the Vivpire, grants blood upon death.")
+        
+        new AbilityDefinitionCurse(VIVPIRE_DUMMY_ABILITY_4)
+        ..setLevels(1)
+        ..setChancetoMiss(1, 0)
+        ..setDummyAbility()
+        ..setDurationHero(1, 10)
+        ..setDurationNormal(1, 10)
+        ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_4))
 
-    new AbilityDefinitionPurge(VIVPIRE_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_4))
-    ..setMissileArt("")
-    ..setIcon("Units\\Vivpire\\Vampire bite\\BTNvampirebite.blp")
-    ..presetDurationHero(lvl -> 10)
-    ..presetDurationNormal(lvl -> 10)
-    ..presetAttackUpdateFrequency(lvl -> 0)
-    ..presetHeroPauseDuration(lvl-> 0)
-    ..presetMovementUpdateFrequency(lvl -> 0)
-    ..presetSummonedUnitDamage(lvl -> 0)
-    ..presetCastRange(lvl -> 280)
-    ..presetCooldown(lvl -> 45.5 - lvl * 2.5)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
-    ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
-    ..setArtSpecial("")
-    ..presetUnitPauseDuration(lvl -> 0)
-    ..register(HERO_VIVPIRE, "Prey Marked".setColor(colAbilitiesVivpire), 
-    "Marks the target as a Prey, making them able to be cursed by Vampiric Bite. Also, Vivpire drains blood from the killed Prey and permanently gets Strength. Vivpire marks as a Prey not only the single target but also 2 x Lvl random units in 800 AoE.\n" +
-    wordNote + "Type '-blood' to see your current Blood amount.",
-    (int lvl) -> "+{0} Str on kill. {1} preys in AoE limit. Duration {2} sec.".format(
-        vivpire_abi4_Str[lvl-1].toString(),
-        (2*lvl).toString(),
-        (10 + 2*(lvl-1)).toString()
-    ))
+        new AbilityDefinitionPurge(VIVPIRE_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_4))
+        ..setMissileArt("")
+        ..setIcon("Units\\Vivpire\\Vampire bite\\BTNvampirebite.blp")
+        ..presetDurationHero(lvl -> 10)
+        ..presetDurationNormal(lvl -> 10)
+        ..presetAttackUpdateFrequency(lvl -> 0)
+        ..presetHeroPauseDuration(lvl-> 0)
+        ..presetMovementUpdateFrequency(lvl -> 0)
+        ..presetSummonedUnitDamage(lvl -> 0)
+        ..presetCastRange(lvl -> 280)
+        ..presetCooldown(lvl -> 45.5 - lvl * 2.5)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+        ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
+        ..setArtSpecial("")
+        ..presetUnitPauseDuration(lvl -> 0)
+        ..register(HERO_VIVPIRE, "Prey Marked".setColor(colAbilitiesVivpire), 
+        "Marks the target as a Prey, making them able to be cursed by Vampiric Bite. Also, Vivpire drains blood from the killed Prey and permanently gets Strength. Vivpire marks as a Prey not only the single target but also 2 x Lvl random units in 800 AoE.\n" +
+        wordNote + "Type '-blood' to see your current Blood amount.",
+        (int lvl) -> "+{0} Str on kill. {1} preys in AoE limit. Duration {2} sec.".format(
+            vivpire_abi4_Str[lvl-1].toString(),
+            (2*lvl).toString(),
+            (10 + 2*(lvl-1)).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -183,24 +188,25 @@ public constant int array[4] vivpire_abi5_Damage = [
 ]
 
 @compiletime function defineAbilities5()
-    new BuffDefinition(VIVPIRE_BUFF_5, BuffIds.vampiricPotion)
-    ..register("Vivpire's True Form".setColor(colAbilitiesVivpire),
-    "The Vivpire has returned to their ancestral form, receiving power from their foes.")
+    if (BUILD_STR_HEROES)
+        new BuffDefinition(VIVPIRE_BUFF_5, BuffIds.vampiricPotion)
+        ..register("Vivpire's True Form".setColor(colAbilitiesVivpire),
+        "The Vivpire has returned to their ancestral form, receiving power from their foes.")
 
-    // WIP armor.
-    new AbilityDefinitionBerserk(VIVPIRE_ABILITY_5)
-    ..setUltimateAbility()
-    ..setIcon("Units\\Vivpire\\BTNVarimathrasClaw\\BTNVarimathrasClaw.blp")
-    ..presetDurationHero(lvl -> 10. + lvl * 5)
-    ..presetCooldown(lvl -> 175. - 15 * (lvl-1))
-    ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_5))
-    ..register(HERO_VIVPIRE, "Vampire-Lord Unleashed".setColor(colAbilitiesVivpire), 
-    "Vivpire unleashes their true form dramatically increasing their power. Gets additional damage and HP based on the ability level and the Blood amount. Increases all stats in 4 times.",
-    (int lvl) -> "+{0} + 8 x Blood damage. +{1} + 12 x Blood HP. Duration {2} sec. Cd {3} sec.".format(
-        vivpire_abi5_Damage[lvl-1].toString(),
-        (1000 * Pow(2, lvl - 1.)).toString(0),
-        (10 + lvl * 5).toString(),
-        (175 - 15 * (lvl-1)).toString()
-    ))
+        // WIP armor.
+        new AbilityDefinitionBerserk(VIVPIRE_ABILITY_5)
+        ..setUltimateAbility()
+        ..setIcon("Units\\Vivpire\\BTNVarimathrasClaw\\BTNVarimathrasClaw.blp")
+        ..presetDurationHero(lvl -> 10. + lvl * 5)
+        ..presetCooldown(lvl -> 175. - 15 * (lvl-1))
+        ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_5))
+        ..register(HERO_VIVPIRE, "Vampire-Lord Unleashed".setColor(colAbilitiesVivpire), 
+        "Vivpire unleashes their true form dramatically increasing their power. Gets additional damage and HP based on the ability level and the Blood amount. Increases all stats in 4 times.",
+        (int lvl) -> "+{0} + 8 x Blood damage. +{1} + 12 x Blood HP. Duration {2} sec. Cd {3} sec.".format(
+            vivpire_abi5_Damage[lvl-1].toString(),
+            (1000 * Pow(2, lvl - 1.)).toString(0),
+            (10 + lvl * 5).toString(),
+            (175 - 15 * (lvl-1)).toString()
+        ))
 
 // ----------------------------------------------------------------------------

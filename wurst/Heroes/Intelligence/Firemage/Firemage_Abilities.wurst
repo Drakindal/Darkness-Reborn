@@ -10,6 +10,7 @@ import MyColors
 import CommonDescriptions
 import Orders
 import ChannelAbilityPreset
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -38,31 +39,32 @@ constant real array[9] abi1_Duration = [
 ]
 
 @compiletime function defineAbilities()
-    new AbilityDefinitionBloodMageFlameStrike(FIREMAGE_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 450.0 + 50*lvl)
-    ..presetCooldown(lvl -> 14.5 - 0.5*lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 160)
-    ..setManaCost(3, 240)
-    ..setManaCost(4, 360)
-    ..setManaCost(5, 480)
-    ..setManaCost(6, 640)
-    ..setManaCost(7, 920)
-    ..setManaCost(8, 1150)
-    ..setManaCost(9, 1670)
-    ..presetFullDamageDealt(lvl -> abi1_Damage[lvl-1])
-    ..presetHalfDamageDealt(lvl -> 0.0)
-    ..presetMaximumDamage(lvl -> 1000000.0)
-    ..presetDuration(lvl -> abi1_Duration[lvl-1])
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..register(HERO_FIRE_MAGE, "Flame Strike".setColor(colAbilitiesFiremage), 
-    "After a brief delay Firemage creates a pillar of magical flame that burns enemies.",
-    (int lvl) -> "Deals {0} damage/s in {1} range for {2} sec.".format(
-        abi1_Damage[lvl-1].toString(0),
-        (450 + 50*lvl).toString(),
-        abi1_Duration[lvl-1].toString(0)
-    ))
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionBloodMageFlameStrike(FIREMAGE_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetAreaofEffect(lvl -> 450.0 + 50*lvl)
+        ..presetCooldown(lvl -> 14.5 - 0.5*lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 160)
+        ..setManaCost(3, 240)
+        ..setManaCost(4, 360)
+        ..setManaCost(5, 480)
+        ..setManaCost(6, 640)
+        ..setManaCost(7, 920)
+        ..setManaCost(8, 1150)
+        ..setManaCost(9, 1670)
+        ..presetFullDamageDealt(lvl -> abi1_Damage[lvl-1])
+        ..presetHalfDamageDealt(lvl -> 0.0)
+        ..presetMaximumDamage(lvl -> 1000000.0)
+        ..presetDuration(lvl -> abi1_Duration[lvl-1])
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..register(HERO_FIRE_MAGE, "Flame Strike".setColor(colAbilitiesFiremage), 
+        "After a brief delay Firemage creates a pillar of magical flame that burns enemies.",
+        (int lvl) -> "Deals {0} damage/s in {1} range for {2} sec.".format(
+            abi1_Damage[lvl-1].toString(0),
+            (450 + 50*lvl).toString(),
+            abi1_Duration[lvl-1].toString(0)
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -91,44 +93,45 @@ public constant real array[9] firemage_abi2_Duration = [
 ]
 
 @compiletime function defineAbilities2()
-    new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_2_DUMMY)
-    ..setLevels(9)
-    ..presetAreaofEffect(lvl -> 600.0)
-    ..presetCooldown(lvl -> 0.05)
-    ..presetInitialDamage(lvl -> abi2_Damage[lvl-1])
-    ..presetDamagePerSecond(lvl -> abi2_Damage[lvl-1])
-    ..presetDuration(lvl -> 0.01)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setName("Firemage - 2 - Phoenix Fire - Dummy")
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_2_DUMMY)
+        ..setLevels(9)
+        ..presetAreaofEffect(lvl -> 600.0)
+        ..presetCooldown(lvl -> 0.05)
+        ..presetInitialDamage(lvl -> abi2_Damage[lvl-1])
+        ..presetDamagePerSecond(lvl -> abi2_Damage[lvl-1])
+        ..presetDuration(lvl -> 0.01)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..setName("Firemage - 2 - Phoenix Fire - Dummy")
 
-    new AbilityDefinitionTaurenChieftainShockWave(FIREMAGE_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetAreaofEffect(lvl -> 0.0)
-    ..presetCastRange(lvl -> 400.0)
-    ..presetBuffs(lvl -> "")
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..setManaCost(2, 130)
-    ..setManaCost(3, 170)
-    ..setManaCost(4, 210)
-    ..setManaCost(5, 260)
-    ..setManaCost(6, 300)
-    ..setManaCost(7, 340)
-    ..setManaCost(8, 380)
-    ..setManaCost(9, 420)
-    ..presetDamage(lvl -> 0.0)
-    ..presetMaximumDamage(lvl -> 0.0)
-    ..presetDistance(lvl -> 0.0)
-    ..presetFinalArea(lvl -> 0.0)
-    ..setMissileSpeed(0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMarkOfFire.blp")
-    ..setMissileArt("")
-    ..register(HERO_FIRE_MAGE, "Phoenix".setColor(colAbilitiesFiremage), 
-    "Summons 1 Phoenix at target location that shoots rays of fire, dealing damage to all nearby enemies.",
-    (int lvl) -> "Deals {0} damage every 0.05 sec.".format(
-        abi2_Damage[lvl-1].toString(0)
-    ))
-    
+        new AbilityDefinitionTaurenChieftainShockWave(FIREMAGE_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetAreaofEffect(lvl -> 0.0)
+        ..presetCastRange(lvl -> 400.0)
+        ..presetBuffs(lvl -> "")
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..setManaCost(2, 130)
+        ..setManaCost(3, 170)
+        ..setManaCost(4, 210)
+        ..setManaCost(5, 260)
+        ..setManaCost(6, 300)
+        ..setManaCost(7, 340)
+        ..setManaCost(8, 380)
+        ..setManaCost(9, 420)
+        ..presetDamage(lvl -> 0.0)
+        ..presetMaximumDamage(lvl -> 0.0)
+        ..presetDistance(lvl -> 0.0)
+        ..presetFinalArea(lvl -> 0.0)
+        ..setMissileSpeed(0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMarkOfFire.blp")
+        ..setMissileArt("")
+        ..register(HERO_FIRE_MAGE, "Phoenix".setColor(colAbilitiesFiremage), 
+        "Summons 1 Phoenix at target location that shoots rays of fire, dealing damage to all nearby enemies.",
+        (int lvl) -> "Deals {0} damage every 0.05 sec.".format(
+            abi2_Damage[lvl-1].toString(0)
+        ))
+        
 // ----------------------------------------------------------------------------
 
 constant real array[9] abi3_Absorption = [
@@ -156,95 +159,96 @@ public constant real array[9] firemage_abi3_IntScale = [
 ]
 
 @compiletime function defineAbilities3()
-    new BuffDefinition(FIREMAGE_BUFF_3, BuffIds.entanglingRoots)
-    ..setIconNormal(1, Icons.bTNInnerFire)
-    ..setArtTarget("Abilities\\Spells\\NightElf\\Immolation\\ImmolationTarget.mdl")
-    ..register("Fire Shield".setColor(colAbilitiesFiremage),
-    "This unit is surrounded by a deadly fire shield that burns any attackers")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(FIREMAGE_BUFF_3, BuffIds.entanglingRoots)
+        ..setIconNormal(1, Icons.bTNInnerFire)
+        ..setArtTarget("Abilities\\Spells\\NightElf\\Immolation\\ImmolationTarget.mdl")
+        ..register("Fire Shield".setColor(colAbilitiesFiremage),
+        "This unit is surrounded by a deadly fire shield that burns any attackers")
 
-    new AbilityDefinitionSeaWitchManaShield(FIREMAGE_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetBuffs(lvl -> FIREMAGE_BUFF_3.toRawCode())
-    ..presetManaperHitPoint(lvl -> abi3_Absorption[lvl-1])
-    ..presetDamageAbsorbed(lvl -> 0.99)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireShield.blp")
-    ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASFireShield.blp")
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..register(HERO_FIRE_MAGE, "Fire Shield".setColor(colAbilitiesFiremage), 
-    "Creates a fire shield that reduces incoming damage in exchange for mana points. Passively deals damage to enemies that damage Firemage.",
-    (int lvl) -> "Absorbs damage: {0} damage = 1 MP. Passively returns {1}x Intelligence damage.".format(
-        abi3_Absorption[lvl-1].toString(1),
-        firemage_abi3_IntScale[lvl-1].toString(2)
-    ))
-    
+        new AbilityDefinitionSeaWitchManaShield(FIREMAGE_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetBuffs(lvl -> FIREMAGE_BUFF_3.toRawCode())
+        ..presetManaperHitPoint(lvl -> abi3_Absorption[lvl-1])
+        ..presetDamageAbsorbed(lvl -> 0.99)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireShield.blp")
+        ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASFireShield.blp")
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..register(HERO_FIRE_MAGE, "Fire Shield".setColor(colAbilitiesFiremage), 
+        "Creates a fire shield that reduces incoming damage in exchange for mana points. Passively deals damage to enemies that damage Firemage.",
+        (int lvl) -> "Absorbs damage: {0} damage = 1 MP. Passively returns {1}x Intelligence damage.".format(
+            abi3_Absorption[lvl-1].toString(1),
+            firemage_abi3_IntScale[lvl-1].toString(2)
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetAreaofEffect(lvl -> 600.0)
-    ..presetCooldown(lvl -> 1.1 - 0.1*lvl)
-    ..presetInitialDamage(lvl -> 70.0*lvl)
-    ..presetDamagePerSecond(lvl -> 0.0)
-    ..presetDuration(lvl -> 0.1)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEyeOfTheFireStorm.blp")
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..register(HERO_FIRE_MAGE, "Darkness Fire".setColor(colAbilitiesFiremage), 
-    wordPassive + "Firemage shoots out rays of fire to an enemy within 600 Range.",
-    (int lvl) -> "Deals {0} damage every {1} sec.".format(
-        (70*lvl).toString(),
-        (1.1 - 0.1*lvl).toString(1)
-    ))
-    
+        new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetAreaofEffect(lvl -> 600.0)
+        ..presetCooldown(lvl -> 1.1 - 0.1*lvl)
+        ..presetInitialDamage(lvl -> 70.0*lvl)
+        ..presetDamagePerSecond(lvl -> 0.0)
+        ..presetDuration(lvl -> 0.1)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEyeOfTheFireStorm.blp")
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..register(HERO_FIRE_MAGE, "Darkness Fire".setColor(colAbilitiesFiremage), 
+        wordPassive + "Firemage shoots out rays of fire to an enemy within 600 Range.",
+        (int lvl) -> "Deals {0} damage every {1} sec.".format(
+            (70*lvl).toString(),
+            (1.1 - 0.1*lvl).toString(1)
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_5_DUMMY)
-    ..setLevels(4)
-    ..presetAreaofEffect(lvl -> 800.0)
-    ..presetCooldown(lvl -> 0.05)
-    ..presetInitialDamage(lvl -> 500.0 * lvl)
-    ..presetDamagePerSecond(lvl -> 0.0)
-    ..presetDuration(lvl -> 0.01)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        new AbilityDefinitionPhoenixFire(FIREMAGE_ABILITY_5_DUMMY)
+        ..setLevels(4)
+        ..presetAreaofEffect(lvl -> 800.0)
+        ..presetCooldown(lvl -> 0.05)
+        ..presetInitialDamage(lvl -> 500.0 * lvl)
+        ..presetDamagePerSecond(lvl -> 0.0)
+        ..presetDuration(lvl -> 0.01)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
 
-    new ChannelAbilityPreset(FIREMAGE_ABILITY_5, 9, true)
-    ..setUltimateAbility()
-    ..presetAreaofEffect(lvl -> 300.0 + 125*(lvl-1))
-    ..presetCooldown(lvl -> 100.0 - 10*lvl)
-    ..setManaCost(1,  900)
-    ..setManaCost(2, 1800)
-    ..setManaCost(3, 2600)
-    ..setManaCost(4, 3400)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.TARGETIMAGE, true)
-    ..presetArtDuration(lvl -> 0.0)
-    ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
-    ..presetCastRange(lvl -> 400.0)
-    ..setAnimationNames("spell")
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMarkOfFire.blp")
-    ..setArtCaster("")
-    ..setCasterAttachmentPoint("")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..setTargetAttachmentPoint("")
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..register(HERO_FIRE_MAGE, "Melting Phoenixes".setColor(colAbilitiesFiremage), 
-    "Firemage summons four of his Phoenix, circling and closing in on target point for 8 seconds. Explodes after the duration, dealing damage. The presence of the Phoenix executes any enemy under 5% health.",
-    (int lvl) -> "Deals {0} damage per second. Explosion deals 5 x Intelligence damage.".format(
-        (500 * lvl).toString()
-    ))
+        new ChannelAbilityPreset(FIREMAGE_ABILITY_5, 9, true)
+        ..setUltimateAbility()
+        ..presetAreaofEffect(lvl -> 300.0 + 125*(lvl-1))
+        ..presetCooldown(lvl -> 100.0 - 10*lvl)
+        ..setManaCost(1,  900)
+        ..setManaCost(2, 1800)
+        ..setManaCost(3, 2600)
+        ..setManaCost(4, 3400)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.TARGETIMAGE, true)
+        ..presetArtDuration(lvl -> 0.0)
+        ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+        ..presetCastRange(lvl -> 400.0)
+        ..setAnimationNames("spell")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMarkOfFire.blp")
+        ..setArtCaster("")
+        ..setCasterAttachmentPoint("")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..setTargetAttachmentPoint("")
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..register(HERO_FIRE_MAGE, "Melting Phoenixes".setColor(colAbilitiesFiremage), 
+        "Firemage summons four of his Phoenix, circling and closing in on target point for 8 seconds. Explodes after the duration, dealing damage. The presence of the Phoenix executes any enemy under 5% health.",
+        (int lvl) -> "Deals {0} damage per second. Explosion deals 5 x Intelligence damage.".format(
+            (500 * lvl).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionAttributeModifierSkill(FIREMAGE_ABILITY_PASSIVE)
-    ..setPosition(AbilityPosition.M)
-    ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNImmolation.blp")
-    ..register(HERO_FIRE_MAGE, "Eternal Flame".setColor(colAbilitiesFiremage), (
-    "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +
-    "Increases damage from spells by [0.1 + 0.1 x (Phoenix {0} Skill Level) + 0.4 x (Melting Phoenixes {1} Level)] x Intelligence.\n").format(
-        "[W]".setColor(colAbilityLevel),
-        "[T]".setColor(colAbilityLevel)
-    ),
-    (string format) -> format,
-    (string format, int lvl) -> format)
-    
+        new AbilityDefinitionAttributeModifierSkill(FIREMAGE_ABILITY_PASSIVE)
+        ..setPosition(AbilityPosition.M)
+        ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNImmolation.blp")
+        ..register(HERO_FIRE_MAGE, "Eternal Flame".setColor(colAbilitiesFiremage), (
+        "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +
+        "Increases damage from spells by [0.1 + 0.1 x (Phoenix {0} Skill Level) + 0.4 x (Melting Phoenixes {1} Level)] x Intelligence.\n").format(
+            "[W]".setColor(colAbilityLevel),
+            "[T]".setColor(colAbilityLevel)
+        ),
+        (string format) -> format,
+        (string format, int lvl) -> format)
+        
 // ----------------------------------------------------------------------------

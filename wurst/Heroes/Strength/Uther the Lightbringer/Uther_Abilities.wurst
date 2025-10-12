@@ -11,77 +11,79 @@ import BuffIds
 import BuffObjEditing
 import MyColors
 import CommonDescriptions
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function utherAbils()
-    new AbilityDefinitionThunderBoltCreep(UTHER_DUMMY_1)
-    ..setLevels(9)
-    ..setDummyAbility()
-    ..presetDurationHero(lvl -> 0.25 * lvl)
-    ..presetDurationNormal(lvl -> 0.25 * lvl)
+    if (BUILD_STR_HEROES)
+        new AbilityDefinitionThunderBoltCreep(UTHER_DUMMY_1)
+        ..setLevels(9)
+        ..setDummyAbility()
+        ..presetDurationHero(lvl -> 0.25 * lvl)
+        ..presetDurationNormal(lvl -> 0.25 * lvl)
 
-    new AbilityDefinitionStasisTrap(UTHER_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetCooldown(lvl -> 20.-lvl)
-    ..presetManaCost(lvl -> 140-5*lvl)
-    ..presetDurationHero(lvl -> 0.01)
-    ..presetDurationNormal(lvl -> 0.01)
-    ..presetWardUnitType(lvl -> "")
-    ..presetCastRange(lvl -> 800.)
-    ..presetAreaofEffect(lvl -> 400.)
-    ..presetDetonationRadius(lvl -> 400.)
-    ..presetDetectionRadius(lvl -> 400.)
-    ..presetIcon(Icons.bTNHammer)
-    ..setRequirements("")
-    ..register(HERO_UTHER, "Judgement".setColor(colAbilitiesUther), 
-    "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 800 AoE receive damage and get stunned.\n" +
-    "Uther will consume gathered Holy Power to boost the ability:\n" +
-    " 1 Holy Power = x1.3 damage.\n" +
-    " 2 Holy Power = x1.4 damage.\n" +
-    " 3 Holy Power = x1.5 damage.\n" +
-    " 6 Holy Power = x2.3 damage.\n" +
-    "12 Holy Power = x3.4 damage.\n" +
-    "24 Holy Power = x4.5 damage.",
-    (int lvl) -> "Deals {0} + {1} x Str damage.".format(
-        (150*lvl).toString(),
-        (2.4*lvl).toString(1)
-    ))
-
-// ----------------------------------------------------------------------------
-
-    new AbilityDefinitionFrenzy(UTHER_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 24.-lvl)
-    ..presetManaCost(lvl -> 90-5*lvl)
-    ..presetDurationHero(lvl -> 0.01)
-    ..presetDurationNormal(lvl -> 0.01)
-    ..presetAreaofEffect(lvl -> 400.)
-    ..presetIcon(Icons.bTNInnerFire)
-    ..register(HERO_UTHER, "Holy Storm".setColor(colAbilitiesUther), 
-    "The holy light shrouds around Uther dealing damage to nearby enemies in 300 range each second.\n" +
-    "Uther will consume gathered Holy Power to boost the ability:\n" +
-    "10 Holy Power = x2.0 damage, x2.0 duration.\n" +
-    "20 Holy Power = x2.5 damage, x2.5 duration.\n" +
-    "30 Holy Power = x3.5 damage, x3.0 duration.",
-    (int lvl) -> "Deals {0} x Str magical damage per second. Duration {1} sec. Cd {2} sec.".format(
-        (0.8*lvl).toString(1),
-        (2 + 1.5 * lvl).toString(1),
-        (24 - lvl).toString()
-    ))
+        new AbilityDefinitionStasisTrap(UTHER_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetCooldown(lvl -> 20.-lvl)
+        ..presetManaCost(lvl -> 140-5*lvl)
+        ..presetDurationHero(lvl -> 0.01)
+        ..presetDurationNormal(lvl -> 0.01)
+        ..presetWardUnitType(lvl -> "")
+        ..presetCastRange(lvl -> 800.)
+        ..presetAreaofEffect(lvl -> 400.)
+        ..presetDetonationRadius(lvl -> 400.)
+        ..presetDetectionRadius(lvl -> 400.)
+        ..presetIcon(Icons.bTNHammer)
+        ..setRequirements("")
+        ..register(HERO_UTHER, "Judgement".setColor(colAbilitiesUther), 
+        "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 800 AoE receive damage and get stunned.\n" +
+        "Uther will consume gathered Holy Power to boost the ability:\n" +
+        " 1 Holy Power = x1.3 damage.\n" +
+        " 2 Holy Power = x1.4 damage.\n" +
+        " 3 Holy Power = x1.5 damage.\n" +
+        " 6 Holy Power = x2.3 damage.\n" +
+        "12 Holy Power = x3.4 damage.\n" +
+        "24 Holy Power = x4.5 damage.",
+        (int lvl) -> "Deals {0} + {1} x Str damage.".format(
+            (150*lvl).toString(),
+            (2.4*lvl).toString(1)
+        ))
 
 // ----------------------------------------------------------------------------
 
-    // WIP armor. WIP onDamageChecks.
-    new AbilityDefinitionPaladinDevotionAura(UTHER_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetAreaofEffect(lvl -> 2000.)
-    ..presetArmorBonus(lvl -> 5. * lvl)
-    ..register(HERO_UTHER, "Devotion Aura".setColor(colAbilitiesUther), 
-    "Damage reduction aura for all units in 2000 AoE.",
-    (int lvl) -> "+{0}% damage reduction post-mitigation.".format(
-        (2*lvl).toString()
-    ))
+        new AbilityDefinitionFrenzy(UTHER_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 24.-lvl)
+        ..presetManaCost(lvl -> 90-5*lvl)
+        ..presetDurationHero(lvl -> 0.01)
+        ..presetDurationNormal(lvl -> 0.01)
+        ..presetAreaofEffect(lvl -> 400.)
+        ..presetIcon(Icons.bTNInnerFire)
+        ..register(HERO_UTHER, "Holy Storm".setColor(colAbilitiesUther), 
+        "The holy light shrouds around Uther dealing damage to nearby enemies in 300 range each second.\n" +
+        "Uther will consume gathered Holy Power to boost the ability:\n" +
+        "10 Holy Power = x2.0 damage, x2.0 duration.\n" +
+        "20 Holy Power = x2.5 damage, x2.5 duration.\n" +
+        "30 Holy Power = x3.5 damage, x3.0 duration.",
+        (int lvl) -> "Deals {0} x Str magical damage per second. Duration {1} sec. Cd {2} sec.".format(
+            (0.8*lvl).toString(1),
+            (2 + 1.5 * lvl).toString(1),
+            (24 - lvl).toString()
+        ))
+
+// ----------------------------------------------------------------------------
+
+        // WIP armor. WIP onDamageChecks.
+        new AbilityDefinitionPaladinDevotionAura(UTHER_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetAreaofEffect(lvl -> 2000.)
+        ..presetArmorBonus(lvl -> 5. * lvl)
+        ..register(HERO_UTHER, "Devotion Aura".setColor(colAbilitiesUther), 
+        "Damage reduction aura for all units in 2000 AoE.",
+        (int lvl) -> "+{0}% damage reduction post-mitigation.".format(
+            (2*lvl).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -110,56 +112,57 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
     )
 
 @compiletime function utherAbils4()
-    new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
-    ..register("Uther's Blessing".setColor(colAbilitiesUther),
-    "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
-    
-    new AbilityDefinitionPaladinHolyLight(UTHER_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetAmountHealedDamaged(lvl -> 0)
-    ..presetBuffs(lvl -> commaList(UTHER_BUFF_4))
-    ..presetDurationHero(lvl -> 14.0 + 2 * (lvl-1))
-    ..presetCastRange(lvl -> 99999)
-    ..presetManaCost(lvl -> 200 - 15 * lvl)
-    ..presetCooldown(lvl -> 3)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
-    ..presetIcon(Icons.bTNCheese)
-    ..register(HERO_UTHER, "Redemption".setColor(colAbilitiesUther), 
-    uther_abi4_descr,
-    (string format) -> format.format(
-        "5 x Lvl",
+    if (BUILD_STR_HEROES)
+        new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
+        ..register("Uther's Blessing".setColor(colAbilitiesUther),
+        "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
+        
+        new AbilityDefinitionPaladinHolyLight(UTHER_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetAmountHealedDamaged(lvl -> 0)
+        ..presetBuffs(lvl -> commaList(UTHER_BUFF_4))
+        ..presetDurationHero(lvl -> 14.0 + 2 * (lvl-1))
+        ..presetCastRange(lvl -> 99999)
+        ..presetManaCost(lvl -> 200 - 15 * lvl)
+        ..presetCooldown(lvl -> 3)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
+        ..presetIcon(Icons.bTNCheese)
+        ..register(HERO_UTHER, "Redemption".setColor(colAbilitiesUther), 
+        uther_abi4_descr,
+        (string format) -> format.format(
+            "5 x Lvl",
 
-        "75 x Lvl", "0.5 x Lvl",
-        "50 x Lvl", "1.2 x Lvl",
+            "75 x Lvl", "0.5 x Lvl",
+            "50 x Lvl", "1.2 x Lvl",
 
-        "ceil(0.25 x Lvl)",
-        "ceil(0.20 x Lvl)",
+            "ceil(0.25 x Lvl)",
+            "ceil(0.20 x Lvl)",
 
-        "0.2 x Lvl",
+            "0.2 x Lvl",
 
-        "(12 + 2 x Lvl)",
-        "0"
-    ),
-    (string format, int lvl) -> uther_abi4_formatDescr(lvl, 0))
+            "(12 + 2 x Lvl)",
+            "0"
+        ),
+        (string format, int lvl) -> uther_abi4_formatDescr(lvl, 0))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionCripple(UTHER_ABILITY_5)
-    ..setUltimateAbility()
-    ..presetMovementSpeedReduction(lvl -> 0)
-    ..presetAttackSpeedReduction(lvl -> 0)
-    ..presetDurationHero(lvl -> 0.01)
-    ..presetDurationNormal(lvl -> 0.01)
-    ..presetBuffs(lvl -> "")
-    ..presetManaCost(lvl -> 500 - 25 * lvl)
-    ..presetCooldown(lvl -> 120. - lvl * 2)
-    ..presetIcon(Icons.bTNBerserk)
-    ..setRequirements("")
-    ..register(HERO_UTHER, "Light's Wrath".setColor(colAbilitiesUther), 
-    "Sends the wrath of the Light onto an enemy, expending all Holy Power to sear their flesh.  Restores half of the damage amount HP to all allies in 1200 AoE and heals Uther even if he is outside the range.",
-    (int lvl) -> "Deals {0} x Holy Power x Str magical damage. Also, restores {1}% of Uther max HP.".format(
-        (0.25*lvl).toString(2),
-        (20 + 10*(lvl-1)).toString()
-    ))
+        new AbilityDefinitionCripple(UTHER_ABILITY_5)
+        ..setUltimateAbility()
+        ..presetMovementSpeedReduction(lvl -> 0)
+        ..presetAttackSpeedReduction(lvl -> 0)
+        ..presetDurationHero(lvl -> 0.01)
+        ..presetDurationNormal(lvl -> 0.01)
+        ..presetBuffs(lvl -> "")
+        ..presetManaCost(lvl -> 500 - 25 * lvl)
+        ..presetCooldown(lvl -> 120. - lvl * 2)
+        ..presetIcon(Icons.bTNBerserk)
+        ..setRequirements("")
+        ..register(HERO_UTHER, "Light's Wrath".setColor(colAbilitiesUther), 
+        "Sends the wrath of the Light onto an enemy, expending all Holy Power to sear their flesh.  Restores half of the damage amount HP to all allies in 1200 AoE and heals Uther even if he is outside the range.",
+        (int lvl) -> "Deals {0} x Holy Power x Str magical damage. Also, restores {1}% of Uther max HP.".format(
+            (0.25*lvl).toString(2),
+            (20 + 10*(lvl-1)).toString()
+        ))
 
 // ----------------------------------------------------------------------------

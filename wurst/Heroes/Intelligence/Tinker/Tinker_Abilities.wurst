@@ -10,88 +10,90 @@ import CommonDescriptions
 import MyBuffIds
 import BuffObjEditing
 import BuffIds
+import DebugVar
 // ----------------------------------------------------------------------------
 
 @compiletime function tinkerAbils()
-    new AbilityDefinitionMountainKingThunderBolt(TINKER_ABILITY_1_DUMMY) //Tinker Cluster Stun
-    ..setLevels(1)
-    ..setDurationHero(1, 1.2)
-    ..setDurationNormal(1, 1.2)
-    ..setManaCost(1, 0)
-    ..setCastRange(1, 9999)
-    ..setCastingTime(1, 0)
-    ..setCooldown(1, 0)
-    ..setDamage(1, 0)
-    ..setRequiredLevel(0)
-    ..setRequirements("")
-    ..setArtTarget("")
-    ..setArtSpecial("")
-    ..setArtEffect("")
-    ..setArtCaster("")
-    ..setMissileArt("")
-    ..setMissileSpeed(9999)
+    if (BUILD_INT_HEROES)
+        new AbilityDefinitionMountainKingThunderBolt(TINKER_ABILITY_1_DUMMY) //Tinker Cluster Stun
+        ..setLevels(1)
+        ..setDurationHero(1, 1.2)
+        ..setDurationNormal(1, 1.2)
+        ..setManaCost(1, 0)
+        ..setCastRange(1, 9999)
+        ..setCastingTime(1, 0)
+        ..setCooldown(1, 0)
+        ..setDamage(1, 0)
+        ..setRequiredLevel(0)
+        ..setRequirements("")
+        ..setArtTarget("")
+        ..setArtSpecial("")
+        ..setArtEffect("")
+        ..setArtCaster("")
+        ..setMissileArt("")
+        ..setMissileSpeed(9999)
 
-    new AbilityDefinitionTinkererClusterRocketsLevel1(TINKER_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..setIcon(Icons.bTNClusterRockets)
-    ..presetDamageAmount(lvl -> 0)
-    ..presetManaCost(lvl -> 100 + lvl * 10 + (lvl-1) * 10)
-    ..presetCooldown(lvl -> 15.0-lvl)
-    ..presetMissileCount(lvl -> 0)
-    ..presetDurationHero(lvl -> 1.010 + 0.3 * lvl)
-    ..presetDurationNormal(lvl -> 1.010 + 0.3 * lvl)
-    ..register(HERO_TINKER, "Cluster Rockets".setColor(colAbilitiesTinker), 
-    "Tinker shoots out rockets in an area of 250 range that deals damage and stuns for 1.2 sec.",
-    (int lvl) -> "Deals {0} + {1} x Int damage. Number of rockets {2}.".format(
-        (20*lvl).toString(),
-        (0.4*lvl).toString(1),
-        (lvl * 2 + 8).toString()
-    ))
-
-// ----------------------------------------------------------------------------
-
-    new AbilityDefinitionArchMageSummonWaterElemental(TINKER_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..setIcon(Icons.bTNClockWerkGoblin)
-    ..presetSummonedUnitCount(lvl -> 1)
-    ..presetSummonedUnitType(lvl -> CLOCKWERK_0.toRawCode())
-    ..presetCooldown(lvl -> 190.-10*lvl)
-    ..presetDurationHero(lvl -> 90)
-    ..presetDurationNormal(lvl -> 90)  
-    ..presetManaCost(lvl -> 200 + 20 * lvl)
-    ..register(HERO_TINKER, "Summon Goblin Mini".setColor(colAbilitiesTinker), 
-    "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 sec.",
-    (int lvl) -> "Cd {0} sec.".format(
-        (190-10*lvl).toString()
-    ))
+        new AbilityDefinitionTinkererClusterRocketsLevel1(TINKER_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..setIcon(Icons.bTNClusterRockets)
+        ..presetDamageAmount(lvl -> 0)
+        ..presetManaCost(lvl -> 100 + lvl * 10 + (lvl-1) * 10)
+        ..presetCooldown(lvl -> 15.0-lvl)
+        ..presetMissileCount(lvl -> 0)
+        ..presetDurationHero(lvl -> 1.010 + 0.3 * lvl)
+        ..presetDurationNormal(lvl -> 1.010 + 0.3 * lvl)
+        ..register(HERO_TINKER, "Cluster Rockets".setColor(colAbilitiesTinker), 
+        "Tinker shoots out rockets in an area of 250 range that deals damage and stuns for 1.2 sec.",
+        (int lvl) -> "Deals {0} + {1} x Int damage. Number of rockets {2}.".format(
+            (20*lvl).toString(),
+            (0.4*lvl).toString(1),
+            (lvl * 2 + 8).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionTinkererSummonFactoryLevel3(TINKER_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..setIcon(Icons.bTNPocketFactory)
-    ..setFactoryUnitID(1, FACTORYROBO.toRawCode())
-    ..setSpawnUnitID(1, POCKETFACTORYROBO_0.toRawCode())
-    ..setSpawnUnitID(2, POCKETFACTORYROBO_1.toRawCode())
-    ..setSpawnUnitID(3, POCKETFACTORYROBO_2.toRawCode())
-    ..setSpawnUnitID(4, POCKETFACTORYROBO_3.toRawCode())
-    ..setSpawnUnitID(5, POCKETFACTORYROBO_4.toRawCode())
-    ..setSpawnUnitID(6, POCKETFACTORYROBO_5.toRawCode())
-    ..setSpawnUnitID(7, POCKETFACTORYROBO_6.toRawCode())
-    ..setSpawnUnitID(8, POCKETFACTORYROBO_7.toRawCode())
-    ..setSpawnUnitID(9, POCKETFACTORYROBO_8.toRawCode())
-    ..presetCooldown(lvl -> 30. - 2 * lvl)
-    ..presetDurationHero(lvl -> 40)
-    ..presetDurationNormal(lvl -> 40)  
-    ..presetManaCost(lvl -> 200 + 20 * lvl)
-    ..presetSpawnInterval(lvl -> 4)
-    ..presetLeashRange(lvl -> 1800)
-    ..presetSpawnUnitDuration(lvl -> 22.5 + 2.5 * lvl)
-    ..register(HERO_TINKER, "Pocket Factory".setColor(colAbilitiesTinker), 
-    "Creates a factory producing Clockwerk Goblins, production is every 4 sec. Duration 40 sec",
-    (int lvl) -> "Summon lifetime is {0} sec.".format(
-        (22.5 + lvl * 2.5).toString(1)
-    ))
+        new AbilityDefinitionArchMageSummonWaterElemental(TINKER_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..setIcon(Icons.bTNClockWerkGoblin)
+        ..presetSummonedUnitCount(lvl -> 1)
+        ..presetSummonedUnitType(lvl -> CLOCKWERK_0.toRawCode())
+        ..presetCooldown(lvl -> 190.-10*lvl)
+        ..presetDurationHero(lvl -> 90)
+        ..presetDurationNormal(lvl -> 90)  
+        ..presetManaCost(lvl -> 200 + 20 * lvl)
+        ..register(HERO_TINKER, "Summon Goblin Mini".setColor(colAbilitiesTinker), 
+        "Summon 1 Goblin Mini building towers and supportive buildings, the duration is 90 sec.",
+        (int lvl) -> "Cd {0} sec.".format(
+            (190-10*lvl).toString()
+        ))
+
+// ----------------------------------------------------------------------------
+
+        new AbilityDefinitionTinkererSummonFactoryLevel3(TINKER_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..setIcon(Icons.bTNPocketFactory)
+        ..setFactoryUnitID(1, FACTORYROBO.toRawCode())
+        ..setSpawnUnitID(1, POCKETFACTORYROBO_0.toRawCode())
+        ..setSpawnUnitID(2, POCKETFACTORYROBO_1.toRawCode())
+        ..setSpawnUnitID(3, POCKETFACTORYROBO_2.toRawCode())
+        ..setSpawnUnitID(4, POCKETFACTORYROBO_3.toRawCode())
+        ..setSpawnUnitID(5, POCKETFACTORYROBO_4.toRawCode())
+        ..setSpawnUnitID(6, POCKETFACTORYROBO_5.toRawCode())
+        ..setSpawnUnitID(7, POCKETFACTORYROBO_6.toRawCode())
+        ..setSpawnUnitID(8, POCKETFACTORYROBO_7.toRawCode())
+        ..setSpawnUnitID(9, POCKETFACTORYROBO_8.toRawCode())
+        ..presetCooldown(lvl -> 30. - 2 * lvl)
+        ..presetDurationHero(lvl -> 40)
+        ..presetDurationNormal(lvl -> 40)  
+        ..presetManaCost(lvl -> 200 + 20 * lvl)
+        ..presetSpawnInterval(lvl -> 4)
+        ..presetLeashRange(lvl -> 1800)
+        ..presetSpawnUnitDuration(lvl -> 22.5 + 2.5 * lvl)
+        ..register(HERO_TINKER, "Pocket Factory".setColor(colAbilitiesTinker), 
+        "Creates a factory producing Clockwerk Goblins, production is every 4 sec. Duration 40 sec",
+        (int lvl) -> "Summon lifetime is {0} sec.".format(
+            (22.5 + lvl * 2.5).toString(1)
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -132,37 +134,38 @@ public constant real array[9] tinker_abi4_aura_range = [
 ]
 
 @compiletime function defineAbilities4()
-    new BuffDefinition(TINKER_BUFF_AURA, BuffIds.unsummon)
-    ..setArtTarget(1, "")
-    ..setIconNormal(1, Icons.pASBTNEngineeringUpgrade)
-    ..register("Tinker Repair Aura".setColor(colAbilitiesFirelord),
-    "Tinker slowly repairs this unit!")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(TINKER_BUFF_AURA, BuffIds.unsummon)
+        ..setArtTarget(1, "")
+        ..setIconNormal(1, Icons.pASBTNEngineeringUpgrade)
+        ..register("Tinker Repair Aura".setColor(colAbilitiesFirelord),
+        "Tinker slowly repairs this unit!")
 
-    new AbilityDefinitionTaurenChieftainEnduranceAura(TINKER_ABILITY_4_AURA)
-    ..setPosition(AbilityPosition.Hidden)
-    ..presetBuffs(lvl -> TINKER_BUFF_AURA.toRawCode())
-    ..presetAreaofEffect(lvl -> tinker_abi4_aura_range[lvl-1])
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits))
+        new AbilityDefinitionTaurenChieftainEnduranceAura(TINKER_ABILITY_4_AURA)
+        ..setPosition(AbilityPosition.Hidden)
+        ..presetBuffs(lvl -> TINKER_BUFF_AURA.toRawCode())
+        ..presetAreaofEffect(lvl -> tinker_abi4_aura_range[lvl-1])
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits))
 
-    new ChannelAbilityPreset(TINKER_ABILITY_4, 9, true)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetCooldown(lvl -> 1)
-    ..presetManaCost(lvl -> 10*lvl)
-    ..presetTargetTypes(Targettype.UNIT)
-    ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
-    ..presetCastRange(lvl -> 99999.0)
-    ..presetTargetsAllowed(lvl -> commaList(getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits), TargetsAllowed.self))
-    ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
-    ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
-    ..register(HERO_TINKER, "Repair".setColor(colAbilitiesTinker), 
-    wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
-    wordPassive + "Slowly repairs all mechanical units near Tinker.",
-    (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
-        tinker_abi4_hp[lvl-1].toString(0),
-        (10*lvl).toString(),
-        tinker_abi4_aura_hp[lvl-1].toString(0),
-        tinker_abi4_aura_range[lvl-1].toString(0)
-    ))
+        new ChannelAbilityPreset(TINKER_ABILITY_4, 9, true)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetCooldown(lvl -> 1)
+        ..presetManaCost(lvl -> 10*lvl)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+        ..presetCastRange(lvl -> 99999.0)
+        ..presetTargetsAllowed(lvl -> commaList(getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits), TargetsAllowed.self))
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
+        ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
+        ..register(HERO_TINKER, "Repair".setColor(colAbilitiesTinker), 
+        wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
+        wordPassive + "Slowly repairs all mechanical units near Tinker.",
+        (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
+            tinker_abi4_hp[lvl-1].toString(0),
+            (10*lvl).toString(),
+            tinker_abi4_aura_hp[lvl-1].toString(0),
+            tinker_abi4_aura_range[lvl-1].toString(0)
+        ))
 
 // ----------------------------------------------------------------------------
     
@@ -174,21 +177,22 @@ constant int array[4] abi5_Str = [
 ]
 
 @compiletime function defineAbilities5()
-    // WIP add defense bonus.
-    new AbilityDefinitionTinkererRoboGoblinLevel0(TINKER_ABILITY_5)
-    ..setUltimateAbility()
-    ..presetStrengthBonus(lvl -> abi5_Str[lvl-1])
-    ..presetDefenseBonus(lvl -> 0)
-    ..presetManaCost(lvl -> 25*lvl)
-    ..presetAlternateFormUnit(lvl -> HERO_TINKER_ROBOT.toRawCode())
-    ..presetNormalFormUnit(lvl -> HERO_TINKER.toRawCode())
-    ..register(HERO_TINKER, "Robo-Goblin".setColor(colAbilitiesTinker), 
-    "Transforms the Tinker into a Robo-Goblin, a powerful armored tank increasing HP, Str, Agi but reducing Int and MP. Robo-Goblin is immune to most forms of stun and has better offensive potential.\n" +
-    "Changes damage type to Blood.".setColor("|cffff0000B"),
-    (int lvl) -> "Robo-Goblin has additional +{0} Str.".format(
-        abi5_Str[lvl-1].toString()
-    ))
-    ..presetTooltipTurnOff(lvl -> "Revert to Tinker Form")
-    ..presetTooltipTurnOffExtended(lvl -> "Returns to normal Tinker form, losing the benefits of Robo-Goblin but once again becoming organic.")
+    if (BUILD_INT_HEROES)
+        // WIP add defense bonus.
+        new AbilityDefinitionTinkererRoboGoblinLevel0(TINKER_ABILITY_5)
+        ..setUltimateAbility()
+        ..presetStrengthBonus(lvl -> abi5_Str[lvl-1])
+        ..presetDefenseBonus(lvl -> 0)
+        ..presetManaCost(lvl -> 25*lvl)
+        ..presetAlternateFormUnit(lvl -> HERO_TINKER_ROBOT.toRawCode())
+        ..presetNormalFormUnit(lvl -> HERO_TINKER.toRawCode())
+        ..register(HERO_TINKER, "Robo-Goblin".setColor(colAbilitiesTinker), 
+        "Transforms the Tinker into a Robo-Goblin, a powerful armored tank increasing HP, Str, Agi but reducing Int and MP. Robo-Goblin is immune to most forms of stun and has better offensive potential.\n" +
+        "Changes damage type to Blood.".setColor("|cffff0000B"),
+        (int lvl) -> "Robo-Goblin has additional +{0} Str.".format(
+            abi5_Str[lvl-1].toString()
+        ))
+        ..presetTooltipTurnOff(lvl -> "Revert to Tinker Form")
+        ..presetTooltipTurnOffExtended(lvl -> "Returns to normal Tinker form, losing the benefits of Robo-Goblin but once again becoming organic.")
     
 // ----------------------------------------------------------------------------

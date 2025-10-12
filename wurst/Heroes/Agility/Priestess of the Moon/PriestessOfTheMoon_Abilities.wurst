@@ -10,6 +10,7 @@ import MyColors
 import BuffObjEditing
 import MyBuffIds
 import BuffIds
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -26,25 +27,26 @@ constant real array[9] abi1_Damage = [
 ]
 
 @compiletime function priestessOfTheMoonAbils()
-    // WIP Add stats scale.
-    new AbilityDefinitionBladeMasterWindWalk(PRIESTESS_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetCooldown(lvl -> 15.0 - lvl)
-    ..presetManaCost(lvl -> 25 + 20*lvl)
-    ..presetDuration(lvl -> 8.0 + 2*lvl)
-    ..presetTransitionTime(lvl -> 0.2)
-    ..presetMovementSpeedIncrease(lvl -> 0.1*lvl)
-    ..presetBackstabDamage(lvl -> true)
-    ..presetBackstabDamage1(lvl -> abi1_Damage[lvl-1])
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNInvisibility.blp")
-    ..register(HERO_PRIESTESS_OF_THE_MOON, "Windwalk".setColor(colAbilitiesPriestessOfTheMoon),
-    "Priestess of the Moon becomes invisible moving faster. When Priestess of the Moon attacks the enemy from the shadows she deals additional damage.",
-    (int lvl) -> "+{0}% move speed for {1} sec (cd {2} sec). +{3} additional damage.".format(
-        (10*lvl).toString(),
-        (8.0 + 2*lvl).toString(),
-        (15.0 - lvl).toString(0),
-        abi1_Damage[lvl-1].toString(0)
-    ))
+    if (BUILD_AGI_HEROES)
+        // WIP Add stats scale.
+        new AbilityDefinitionBladeMasterWindWalk(PRIESTESS_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetCooldown(lvl -> 15.0 - lvl)
+        ..presetManaCost(lvl -> 25 + 20*lvl)
+        ..presetDuration(lvl -> 8.0 + 2*lvl)
+        ..presetTransitionTime(lvl -> 0.2)
+        ..presetMovementSpeedIncrease(lvl -> 0.1*lvl)
+        ..presetBackstabDamage(lvl -> true)
+        ..presetBackstabDamage1(lvl -> abi1_Damage[lvl-1])
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNInvisibility.blp")
+        ..register(HERO_PRIESTESS_OF_THE_MOON, "Windwalk".setColor(colAbilitiesPriestessOfTheMoon),
+        "Priestess of the Moon becomes invisible moving faster. When Priestess of the Moon attacks the enemy from the shadows she deals additional damage.",
+        (int lvl) -> "+{0}% move speed for {1} sec (cd {2} sec). +{3} additional damage.".format(
+            (10*lvl).toString(),
+            (8.0 + 2*lvl).toString(),
+            (15.0 - lvl).toString(0),
+            abi1_Damage[lvl-1].toString(0)
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -73,21 +75,22 @@ constant real array[9] abi2_Stun = [
 ]
 
 @compiletime function priestessOfTheMoonAbils2()
-    // WIP Add stats scale.
-    new AbilityDefinitionMountainKingThunderBolt(PRIESTESS_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 24.0 - lvl)
-    ..presetDuration(lvl -> abi2_Stun[lvl - 1])
-    ..presetDamage(lvl -> abi2_Damage[lvl-1])
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireBolt.blp")
-    ..setMissileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
-    ..register(HERO_PRIESTESS_OF_THE_MOON, "Fire bolt".setColor(colAbilitiesPriestessOfTheMoon), 
-    "Hurls a fiery bolt that deals damage and stuns a target enemy.",
-    (int lvl) -> "Deals {0} damage. Stuns for {1} sec. Cd {2} sec.".format(
-        abi2_Damage[lvl-1].toString(0),
-        abi2_Stun[lvl - 1].toString(1),
-        (24.0 - lvl).toString(0)
-    ))
+    if (BUILD_AGI_HEROES)
+        // WIP Add stats scale.
+        new AbilityDefinitionMountainKingThunderBolt(PRIESTESS_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 24.0 - lvl)
+        ..presetDuration(lvl -> abi2_Stun[lvl - 1])
+        ..presetDamage(lvl -> abi2_Damage[lvl-1])
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireBolt.blp")
+        ..setMissileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
+        ..register(HERO_PRIESTESS_OF_THE_MOON, "Fire bolt".setColor(colAbilitiesPriestessOfTheMoon), 
+        "Hurls a fiery bolt that deals damage and stuns a target enemy.",
+        (int lvl) -> "Deals {0} damage. Stuns for {1} sec. Cd {2} sec.".format(
+            abi2_Damage[lvl-1].toString(0),
+            abi2_Stun[lvl - 1].toString(1),
+            (24.0 - lvl).toString(0)
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -104,26 +107,27 @@ constant real array[9] abi3_Damage = [
 ]
 
 @compiletime function priestessOfTheMoonAbils3()
-    // WIP Add stats scale.
-    new AbilityDefinitionTaurenChieftainWarStomp(PRIESTESS_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetAreaofEffect(lvl -> 400.0 + 50*lvl)
-    ..presetBuffs(lvl -> "AEsd")
-    ..presetCooldown(lvl -> 15.0 - lvl)
-    ..presetManaCost(lvl -> 70 + 25*lvl)
-    ..presetDamage(lvl -> abi3_Damage[lvl-1])
-    ..presetDuration(lvl -> 2.0 + 0.2*(lvl-1))
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNStarfall.blp")
-    ..setArtCaster("Abilities\\Spells\\NightElf\\Starfall\\StarfallCaster.mdl")
-    ..register(HERO_PRIESTESS_OF_THE_MOON, "Starfall".setColor(colAbilitiesPriestessOfTheMoon), 
-    "Summons stars falling from the sky on nearby enemies, immobilizing them and dealing damage.",
-    (int lvl) -> "Deals {0} damage in {0} range. Immobilizes for {1} sec.".format(
-        abi3_Damage[lvl-1].toString(0),
-        (400 + 50*lvl).toString(),
-        (2.0 + 0.2*(lvl-1)).toString(1)
-    ))
-    
+    if (BUILD_AGI_HEROES)
+        // WIP Add stats scale.
+        new AbilityDefinitionTaurenChieftainWarStomp(PRIESTESS_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetAreaofEffect(lvl -> 400.0 + 50*lvl)
+        ..presetBuffs(lvl -> "AEsd")
+        ..presetCooldown(lvl -> 15.0 - lvl)
+        ..presetManaCost(lvl -> 70 + 25*lvl)
+        ..presetDamage(lvl -> abi3_Damage[lvl-1])
+        ..presetDuration(lvl -> 2.0 + 0.2*(lvl-1))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNStarfall.blp")
+        ..setArtCaster("Abilities\\Spells\\NightElf\\Starfall\\StarfallCaster.mdl")
+        ..register(HERO_PRIESTESS_OF_THE_MOON, "Starfall".setColor(colAbilitiesPriestessOfTheMoon), 
+        "Summons stars falling from the sky on nearby enemies, immobilizing them and dealing damage.",
+        (int lvl) -> "Deals {0} damage in {0} range. Immobilizes for {1} sec.".format(
+            abi3_Damage[lvl-1].toString(0),
+            (400 + 50*lvl).toString(),
+            (2.0 + 0.2*(lvl-1)).toString(1)
+        ))
+        
 // ----------------------------------------------------------------------------
 
 constant real array[9] abi4_Damage = [
@@ -139,43 +143,44 @@ constant real array[9] abi4_Damage = [
 ]
 
 @compiletime function priestessOfTheMoonAbils4()
-    new BuffDefinition(PRIESTESS_BUFF_1, BuffIds.trueshotAura)
-    ..setIcon(Icons.bTNHeroMoonPriestess)
-    ..setTooltipNormalExtended("This unit will receive healing from physical attacks")
-    ..register("Priestess of the Moon trueshot aura".setColor(colAbilitiesPriestessOfTheMoon), 
-    "An aura that gives friendly units around Priestess of the Moon bonus damage to their ranged attacks.")
+    if (BUILD_AGI_HEROES)
+        new BuffDefinition(PRIESTESS_BUFF_1, BuffIds.trueshotAura)
+        ..setIcon(Icons.bTNHeroMoonPriestess)
+        ..setTooltipNormalExtended("This unit will receive healing from physical attacks")
+        ..register("Priestess of the Moon trueshot aura".setColor(colAbilitiesPriestessOfTheMoon), 
+        "An aura that gives friendly units around Priestess of the Moon bonus damage to their ranged attacks.")
 
-    new AbilityDefinitionMoonPriestessTrueshotAura(PRIESTESS_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetBuffs(lvl -> PRIESTESS_BUFF_1.toRawCode())
-    ..presetDamageBonus(lvl -> abi4_Damage[lvl-1])
-    ..presetAreaofEffect(lvl -> 900.0 + 100*lvl)
-    ..presetFlatBonus(lvl -> false)
-    ..presetRangedBonus(lvl -> true)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
-    ..register(HERO_PRIESTESS_OF_THE_MOON, "Trueshot Aura".setColor(colAbilitiesPriestessOfTheMoon),
-    "Trueshot aura gives bonus damage to nearby ranged allies.",
-    (int lvl) -> "+{0}% bonus damage in {1} AoE.".format(
-        (100*abi4_Damage[lvl-1]).toString(0),
-        (900.0 + 100*lvl).toString(0)
-    ))
+        new AbilityDefinitionMoonPriestessTrueshotAura(PRIESTESS_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetBuffs(lvl -> PRIESTESS_BUFF_1.toRawCode())
+        ..presetDamageBonus(lvl -> abi4_Damage[lvl-1])
+        ..presetAreaofEffect(lvl -> 900.0 + 100*lvl)
+        ..presetFlatBonus(lvl -> false)
+        ..presetRangedBonus(lvl -> true)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..register(HERO_PRIESTESS_OF_THE_MOON, "Trueshot Aura".setColor(colAbilitiesPriestessOfTheMoon),
+        "Trueshot aura gives bonus damage to nearby ranged allies.",
+        (int lvl) -> "+{0}% bonus damage in {1} AoE.".format(
+            (100*abi4_Damage[lvl-1]).toString(0),
+            (900.0 + 100*lvl).toString(0)
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionIllidanMetamorphosis(PRIESTESS_ABILITY_5)
-    ..setUltimateAbility()
-    ..presetAlternateFormHitPointBonus(lvl -> 0)
-    ..presetAlternateFormUnit(lvl -> commaList(HERO_PRIESTESS_OF_THE_MOON_FORM))
-    ..presetDurationHero(lvl -> 10. + 5 * lvl)
-    ..presetCooldown(lvl -> 60. - 5*(lvl-1))
-    ..presetNormalFormUnit(lvl -> commaList(HERO_PRIESTESS_OF_THE_MOON))
-    ..presetIcon(Icons.bTNHeroMoonPriestess)
-    ..presetManaCost(lvl -> 150 * lvl)
-    ..register(HERO_PRIESTESS_OF_THE_MOON, "Dark Mirana".setColor(colAbilitiesPriestessOfTheMoon),
-    "Priestess of the Moon taps into the powers of Darkness dramatically increasing her attack speed (+340% base attack speed).",
-    (int lvl) ->"Duration {0} sec. Cd {1} sec.".format(
-        (10. + 5 * lvl).toString(0),
-        (60. - 5*(lvl-1)).toString(0)
-    ))
+        new AbilityDefinitionIllidanMetamorphosis(PRIESTESS_ABILITY_5)
+        ..setUltimateAbility()
+        ..presetAlternateFormHitPointBonus(lvl -> 0)
+        ..presetAlternateFormUnit(lvl -> commaList(HERO_PRIESTESS_OF_THE_MOON_FORM))
+        ..presetDurationHero(lvl -> 10. + 5 * lvl)
+        ..presetCooldown(lvl -> 60. - 5*(lvl-1))
+        ..presetNormalFormUnit(lvl -> commaList(HERO_PRIESTESS_OF_THE_MOON))
+        ..presetIcon(Icons.bTNHeroMoonPriestess)
+        ..presetManaCost(lvl -> 150 * lvl)
+        ..register(HERO_PRIESTESS_OF_THE_MOON, "Dark Mirana".setColor(colAbilitiesPriestessOfTheMoon),
+        "Priestess of the Moon taps into the powers of Darkness dramatically increasing her attack speed (+340% base attack speed).",
+        (int lvl) ->"Duration {0} sec. Cd {1} sec.".format(
+            (10. + 5 * lvl).toString(0),
+            (60. - 5*(lvl-1)).toString(0)
+        ))
     
 // ----------------------------------------------------------------------------

@@ -9,6 +9,7 @@ import BuffObjEditing
 import Orders
 import ChannelAbilityPreset
 import MyColors
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -25,140 +26,141 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
 ]
 
 @compiletime function defineAbilities()
-    // Keeper Entangle level 1 (Q) level 2 (R)
-    new AbilityDefinitionKeeperoftheGroveEntanglingRoots(KEEPER_OF_THE_GROVE_ABILITY_1_2_DUMMY)
-    ..setLevels(2)
-    ..setDurationHero(1, 5)
-    ..setDurationNormal(1, 5)
-    ..setDurationHero(2, 1.5)
-    ..setDurationNormal(2, 1.5)
-    ..presetDamageperSecond(int lvl -> 0)
+    if (BUILD_INT_HEROES)
+        // Keeper Entangle level 1 (Q) level 2 (R)
+        new AbilityDefinitionKeeperoftheGroveEntanglingRoots(KEEPER_OF_THE_GROVE_ABILITY_1_2_DUMMY)
+        ..setLevels(2)
+        ..setDurationHero(1, 5)
+        ..setDurationNormal(1, 5)
+        ..setDurationHero(2, 1.5)
+        ..setDurationNormal(2, 1.5)
+        ..presetDamageperSecond(int lvl -> 0)
 
-    new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_1, 9, true)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 450.0 + 40*(lvl-1))
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 70 + 30*lvl)
-    ..presetFollowThroughTime(lvl -> 1.0)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.TARGETIMAGE, true)
-    ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.blizzard.toRawCode())
-    ..presetCastRange(lvl -> 800.0)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEntanglingRoots.blp")
-    ..setArtCaster("")
-    ..setCasterAttachmentPoint("")
-    ..setArtEffect("ThornSlam.mdx")
-    ..setArtTarget("")
-    ..setTargetAttachmentPoint("")
-    ..register(HERO_KEEPER_OF_THE_GROVE, "Entangling Roots".setColor(colAbilitiesKeeperOfTheGrove), 
-    "The Keeper of the Grove bounds entangles and causes damage to all enemies in range.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage per second in {2} range".format(
-        keeperOfTheGrove_abi1_Damage[lvl-1].toString(),
-        (2*lvl).toString(),
-        (450 + 40*(lvl-1)).toString()
-    ))
-    
+        new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_1, 9, true)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetAreaofEffect(lvl -> 450.0 + 40*(lvl-1))
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 70 + 30*lvl)
+        ..presetFollowThroughTime(lvl -> 1.0)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.TARGETIMAGE, true)
+        ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
+        ..setOrderStringUseTurnOn(OrderIds.blizzard.toRawCode())
+        ..presetCastRange(lvl -> 800.0)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEntanglingRoots.blp")
+        ..setArtCaster("")
+        ..setCasterAttachmentPoint("")
+        ..setArtEffect("ThornSlam.mdx")
+        ..setArtTarget("")
+        ..setTargetAttachmentPoint("")
+        ..register(HERO_KEEPER_OF_THE_GROVE, "Entangling Roots".setColor(colAbilitiesKeeperOfTheGrove), 
+        "The Keeper of the Grove bounds entangles and causes damage to all enemies in range.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage per second in {2} range".format(
+            keeperOfTheGrove_abi1_Damage[lvl-1].toString(),
+            (2*lvl).toString(),
+            (450 + 40*(lvl-1)).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_2, 9, true)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 30 + 20*lvl)
-    ..presetCastRange(lvl -> 800.0)
-    ..presetFollowThroughTime(lvl -> 0.1)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
-    ..setArtCaster("Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..register(HERO_KEEPER_OF_THE_GROVE, "Natural Orb".setColor(colAbilitiesKeeperOfTheGrove),
-    "Creates a blob of nature power that moves forwardly and absorbs power of nearby plants increasing in size and causes damage to all nearby enemies.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.05 sec. Range linearly increases from {2} to {3}".format(
-        (10*lvl).toString(),
-        (0.15*lvl).toString(2),
-        "350",
-        (350 + 20*(lvl-1)).toString()
-    ))
+        new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_2, 9, true)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 30 + 20*lvl)
+        ..presetCastRange(lvl -> 800.0)
+        ..presetFollowThroughTime(lvl -> 0.1)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
+        ..setArtCaster("Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..register(HERO_KEEPER_OF_THE_GROVE, "Natural Orb".setColor(colAbilitiesKeeperOfTheGrove),
+        "Creates a blob of nature power that moves forwardly and absorbs power of nearby plants increasing in size and causes damage to all nearby enemies.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.05 sec. Range linearly increases from {2} to {3}".format(
+            (10*lvl).toString(),
+            (0.15*lvl).toString(2),
+            "350",
+            (350 + 20*(lvl-1)).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_3, 9, true)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 30 + 20*lvl)
-    ..presetCastRange(lvl -> 600.0)
-    ..presetFollowThroughTime(lvl -> 0.01)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNScout.blp")
-    ..setArtCaster("")
-    ..setCasterAttachmentPoint("")
-    ..setArtEffect("")
-    ..setArtTarget("")
-    ..register(HERO_KEEPER_OF_THE_GROVE, "Hawkeye Spirit".setColor(colAbilitiesKeeperOfTheGrove),
-    "Summon the soul of Hawkeye that shoots arrows to all enemies within range.",
-    (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.25 seconds in {2} range.".format(
-        (60*lvl).toString(),
-        (0.6*lvl).toString(1),
-        (450 + 30*(lvl-1)).toString()
-    ))
-    
+        new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_3, 9, true)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 30 + 20*lvl)
+        ..presetCastRange(lvl -> 600.0)
+        ..presetFollowThroughTime(lvl -> 0.01)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
+        ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNScout.blp")
+        ..setArtCaster("")
+        ..setCasterAttachmentPoint("")
+        ..setArtEffect("")
+        ..setArtTarget("")
+        ..register(HERO_KEEPER_OF_THE_GROVE, "Hawkeye Spirit".setColor(colAbilitiesKeeperOfTheGrove),
+        "Summon the soul of Hawkeye that shoots arrows to all enemies within range.",
+        (int lvl) -> "Deals {0} + {1} x Intelligence damage every 0.25 seconds in {2} range.".format(
+            (60*lvl).toString(),
+            (0.6*lvl).toString(1),
+            (450 + 30*(lvl-1)).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new BuffDefinition(KEEPER_OF_THE_GROVE_BUFF_4, BuffIds.roar)
-    ..setArtTarget(1, "")
-    ..setTargetAttachmentPoint0(1, "weapon")
-    ..setTargetAttachmentPoint1(1, "weapon")
-    ..setIconNormal(1, "ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
-    ..register("Tree Roots".setColor(colAbilitiesKeeperOfTheGrove),
-    "Tree Roots")
+        new BuffDefinition(KEEPER_OF_THE_GROVE_BUFF_4, BuffIds.roar)
+        ..setArtTarget(1, "")
+        ..setTargetAttachmentPoint0(1, "weapon")
+        ..setTargetAttachmentPoint1(1, "weapon")
+        ..setIconNormal(1, "ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
+        ..register("Tree Roots".setColor(colAbilitiesKeeperOfTheGrove),
+        "Tree Roots")
 
-    new AbilityDefinitionArchMageBrillianceAura(KEEPER_OF_THE_GROVE_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetAreaofEffect(lvl -> 0.0)
-    ..presetBuffs(lvl -> KEEPER_OF_THE_GROVE_BUFF_4.toRawCode())
-    ..presetManaRegenerationIncrease(lvl -> 0.0)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
-    ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
-    ..setArtTarget("Abilities\\Spells\\NightElf\\ThornsAura\\ThornsAura.mdl")
-    ..register(HERO_KEEPER_OF_THE_GROVE, "Tree Roots".setColor(colAbilitiesKeeperOfTheGrove),
-    "The magic force of the Grove helps its Defenders entangling with roots attacking enemies for 1.5 seconds.",
-    (int lvl) -> "{0}% chance to entangle and deal {1} + {2} x Int damage to attacker.".format(
-        (2*lvl).toString(),
-        (40*lvl).toString(),
-        (lvl).toString()
-    ))
-    
+        new AbilityDefinitionArchMageBrillianceAura(KEEPER_OF_THE_GROVE_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetAreaofEffect(lvl -> 0.0)
+        ..presetBuffs(lvl -> KEEPER_OF_THE_GROVE_BUFF_4.toRawCode())
+        ..presetManaRegenerationIncrease(lvl -> 0.0)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
+        ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
+        ..setArtTarget("Abilities\\Spells\\NightElf\\ThornsAura\\ThornsAura.mdl")
+        ..register(HERO_KEEPER_OF_THE_GROVE, "Tree Roots".setColor(colAbilitiesKeeperOfTheGrove),
+        "The magic force of the Grove helps its Defenders entangling with roots attacking enemies for 1.5 seconds.",
+        (int lvl) -> "{0}% chance to entangle and deal {1} + {2} x Int damage to attacker.".format(
+            (2*lvl).toString(),
+            (40*lvl).toString(),
+            (lvl).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_5, 9, true)
-    ..setUltimateAbility()
-    ..presetCooldown(lvl -> 60.0 - 10 * (lvl-1))
-    ..setManaCost(1, 300)
-    ..setManaCost(2, 400)
-    ..setManaCost(3, 600)
-    ..setManaCost(4, 800)
-    ..presetFollowThroughTime(lvl -> 1.0)
-    ..presetTargetTypes(Targettype.POINT)
-    ..presetOption(Option.UNIQUECAST, true)
-    ..presetBaseOrderID(lvl -> OrderIds.carrionswarm.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.carrionswarm.toRawCode())
-    ..presetCastRange(lvl -> 800.0)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
-    ..setArtCaster("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
-    ..setArtEffect("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
-    ..setArtTarget("Abilities\\Spells\\Human\\FlameStrike\\FlameStrikeTarget.mdl")
-    ..setTargetAttachmentPoint("chest")
-    ..register(HERO_KEEPER_OF_THE_GROVE, "Guardians of the Grove".setColor(colAbilitiesKeeperOfTheGrove),
-    "Summon spirits of the Grove guardians to protect it.",
-    (int lvl) -> "Summons {0} spirits. Duration 30 sec. Cd {1} sec.".format(
-        (6 + 2*(lvl-1)).toString(),
-        (60.0 - 10 * (lvl-1)).toString()
-    ))
-    
+        new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_5, 9, true)
+        ..setUltimateAbility()
+        ..presetCooldown(lvl -> 60.0 - 10 * (lvl-1))
+        ..setManaCost(1, 300)
+        ..setManaCost(2, 400)
+        ..setManaCost(3, 600)
+        ..setManaCost(4, 800)
+        ..presetFollowThroughTime(lvl -> 1.0)
+        ..presetTargetTypes(Targettype.POINT)
+        ..presetOption(Option.UNIQUECAST, true)
+        ..presetBaseOrderID(lvl -> OrderIds.carrionswarm.toRawCode())
+        ..setOrderStringUseTurnOn(OrderIds.carrionswarm.toRawCode())
+        ..presetCastRange(lvl -> 800.0)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
+        ..setArtCaster("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
+        ..setArtEffect("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
+        ..setArtTarget("Abilities\\Spells\\Human\\FlameStrike\\FlameStrikeTarget.mdl")
+        ..setTargetAttachmentPoint("chest")
+        ..register(HERO_KEEPER_OF_THE_GROVE, "Guardians of the Grove".setColor(colAbilitiesKeeperOfTheGrove),
+        "Summon spirits of the Grove guardians to protect it.",
+        (int lvl) -> "Summons {0} spirits. Duration 30 sec. Cd {1} sec.".format(
+            (6 + 2*(lvl-1)).toString(),
+            (60.0 - 10 * (lvl-1)).toString()
+        ))
+        
 // ----------------------------------------------------------------------------

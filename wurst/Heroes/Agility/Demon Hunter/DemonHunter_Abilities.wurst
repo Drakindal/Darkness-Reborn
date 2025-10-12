@@ -6,47 +6,48 @@ import MyUnitIds
 import AbilityObjEditing
 import MyColors
 import CommonDescriptions
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineAbilities()
-
-    new AbilityDefinitionFarseerChainLightning(DEMON_HUNTER_ABILITY_1)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 1.0)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 80 + 20 * lvl)
-    ..presetDamageperTarget(lvl -> 0.0)
-    ..presetNumberofTargetsHit(lvl -> 1)
-    ..presetDamageReductionperTarget(lvl -> 0.0)
-    ..presetCastRange(lvl -> 650.0)
-    ..register(HERO_DEMON_HUNTER, "Chain Flash".setColor(colAbilitiesDemonHunter), 
-    "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing damage to all enemies within 600 AoE.",
-    (int lvl) -> "Deals {0} + {1} x Agi damage.".format(
-        (300*lvl).toString(),
-        (2*lvl).toString()
-    ))
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionFarseerChainLightning(DEMON_HUNTER_ABILITY_1)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetAreaofEffect(lvl -> 1.0)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 80 + 20 * lvl)
+        ..presetDamageperTarget(lvl -> 0.0)
+        ..presetNumberofTargetsHit(lvl -> 1)
+        ..presetDamageReductionperTarget(lvl -> 0.0)
+        ..presetCastRange(lvl -> 650.0)
+        ..register(HERO_DEMON_HUNTER, "Chain Flash".setColor(colAbilitiesDemonHunter), 
+        "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing damage to all enemies within 600 AoE.",
+        (int lvl) -> "Deals {0} + {1} x Agi damage.".format(
+            (300*lvl).toString(),
+            (2*lvl).toString()
+        ))
     
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionShadowHunterHex(DEMON_HUNTER_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..presetCooldown(lvl -> 12.0)
-    ..setManaCost(1, 70)
-    ..setManaCost(2, 80)
-    ..setManaCost(3, 90)
-    ..setManaCost(4, 100)
-    ..setManaCost(5, 120)
-    ..setManaCost(6, 140)
-    ..setManaCost(7, 170)
-    ..setManaCost(8, 200)
-    ..setManaCost(9, 240)
-    ..presetDuration(lvl -> 1.5 + 0.5*lvl)
-    ..register(HERO_DEMON_HUNTER, "Hex".setColor(colAbilitiesDemonHunter),
-    "Transforms an enemy into random animal.",
-    (int lvl) -> "Duration {0} sec.".format(
-        (1.5 + 0.5*lvl).toString(1)
-    ))
+        new AbilityDefinitionShadowHunterHex(DEMON_HUNTER_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..presetCooldown(lvl -> 12.0)
+        ..setManaCost(1, 70)
+        ..setManaCost(2, 80)
+        ..setManaCost(3, 90)
+        ..setManaCost(4, 100)
+        ..setManaCost(5, 120)
+        ..setManaCost(6, 140)
+        ..setManaCost(7, 170)
+        ..setManaCost(8, 200)
+        ..setManaCost(9, 240)
+        ..presetDuration(lvl -> 1.5 + 0.5*lvl)
+        ..register(HERO_DEMON_HUNTER, "Hex".setColor(colAbilitiesDemonHunter),
+        "Transforms an enemy into random animal.",
+        (int lvl) -> "Duration {0} sec.".format(
+            (1.5 + 0.5*lvl).toString(1)
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -63,14 +64,15 @@ constant real array[9] abi3_Evasion = [
 ]
 
 @compiletime function defineAbilities3()
-    new AbilityDefinitionDemonHunterEvasion(DEMON_HUNTER_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..presetChancetoEvade(lvl -> abi3_Evasion[lvl-1])
-    ..register(HERO_DEMON_HUNTER, "Evasion".setColor(colAbilitiesDemonHunter),
-    wordEvasion + "Gives the Demon Hunter a chance to avoid attacks.",
-    (int lvl) -> wordEvasion + "{0}% evasion.".setColor(colEvasion).format(
-        (100*abi3_Evasion[lvl-1]).toString(0)
-    ))
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionDemonHunterEvasion(DEMON_HUNTER_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..presetChancetoEvade(lvl -> abi3_Evasion[lvl-1])
+        ..register(HERO_DEMON_HUNTER, "Evasion".setColor(colAbilitiesDemonHunter),
+        wordEvasion + "Gives the Demon Hunter a chance to avoid attacks.",
+        (int lvl) -> wordEvasion + "{0}% evasion.".setColor(colEvasion).format(
+            (100*abi3_Evasion[lvl-1]).toString(0)
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -87,15 +89,16 @@ constant int array[9] abi4_Agi = [
 ]
 
 @compiletime function defineAbilities4()
-    new AbilityDefinitionAttributeModifierSkill(DEMON_HUNTER_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..presetStrengthBonus(lvl -> 5 + 5*lvl)
-    ..presetAgilityBonus(lvl -> abi4_Agi[lvl-1])
-    ..presetIntelligenceBonus(lvl -> 5 + 5*lvl)
-    ..setIcon("ReplaceableTextures\\CommandButtons\\PAS_cr_CarA10.blp")
-    ..register(HERO_DEMON_HUNTER, "Demon Power".setColor(colAbilitiesDemonHunter), 
-    "Demon Hunter releases his power after 25 times attack increasing his amount of Agility fold 10 times. Also he passively gets a large amount of Agility along with a small amount of Strength and Intelligence.",
-    (int lvl) -> "+{0} Strength, +{1} Agility, +{2} Intelligence. Increased power lasts for {3} attacks.".format((5 + 5*lvl).toString(), abi4_Agi[lvl-1].toString(), (5 + 5*lvl).toString(), (lvl + 1).toString()))
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionAttributeModifierSkill(DEMON_HUNTER_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..presetStrengthBonus(lvl -> 5 + 5*lvl)
+        ..presetAgilityBonus(lvl -> abi4_Agi[lvl-1])
+        ..presetIntelligenceBonus(lvl -> 5 + 5*lvl)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PAS_cr_CarA10.blp")
+        ..register(HERO_DEMON_HUNTER, "Demon Power".setColor(colAbilitiesDemonHunter), 
+        "Demon Hunter releases his power after 25 times attack increasing his amount of Agility fold 10 times. Also he passively gets a large amount of Agility along with a small amount of Strength and Intelligence.",
+        (int lvl) -> "+{0} Strength, +{1} Agility, +{2} Intelligence. Increased power lasts for {3} attacks.".format((5 + 5*lvl).toString(), abi4_Agi[lvl-1].toString(), (5 + 5*lvl).toString(), (lvl + 1).toString()))
 
 // ----------------------------------------------------------------------------
 
@@ -112,15 +115,16 @@ constant real array[9] abi5_Range = [
 ]
 
 @compiletime function defineAbilities5()
-    new AbilityDefinitionWardenBlink(DEMON_HUNTER_ABILITY_5)
-    ..setGeneralAbility(AbilityPosition.T)
-    ..presetCooldown(lvl -> 21.0 - lvl)
-    ..presetManaCost(lvl -> 50 + 50*lvl)
-    ..presetMaximumRange(lvl -> abi5_Range[lvl-1])
-    ..setAreaEffect("Grin Curse.mdx")
-    ..setArtSpecial("Grin Curse.mdx")
-    ..register(HERO_DEMON_HUNTER, "Shadow Blink".setColor(colAbilitiesDemonHunter), 
-    "Demon Hunter immediately moves through the shadows to another location.",
-    (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi5_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+    if (BUILD_AGI_HEROES)
+        new AbilityDefinitionWardenBlink(DEMON_HUNTER_ABILITY_5)
+        ..setGeneralAbility(AbilityPosition.T)
+        ..presetCooldown(lvl -> 21.0 - lvl)
+        ..presetManaCost(lvl -> 50 + 50*lvl)
+        ..presetMaximumRange(lvl -> abi5_Range[lvl-1])
+        ..setAreaEffect("Grin Curse.mdx")
+        ..setArtSpecial("Grin Curse.mdx")
+        ..register(HERO_DEMON_HUNTER, "Shadow Blink".setColor(colAbilitiesDemonHunter), 
+        "Demon Hunter immediately moves through the shadows to another location.",
+        (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi5_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
 
 // ----------------------------------------------------------------------------
