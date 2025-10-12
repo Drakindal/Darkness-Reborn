@@ -1,0 +1,26 @@
+package MyOrderIds
+
+public class MyOrderIds
+    static let aoeBlizzard           = "blizzard"
+    static let aoeClusterRockets     = "clusterrockets"
+    static let aoeFlameStrike        = "flamestrike"
+    static let aoeRainOfFire         = "rainoffire"
+
+    static let groundShockWave       = "shockwave"
+    static let groundImpale          = "impale"
+    static let groundCarrionSwarm    = "carrionswarm"
+
+    static let targetChainLightning  = "chainlightning"
+    static let targetThunderBolt     = "thunderbolt"
+    static let targetFrostNova       = "frostnova"
+    static let targetAcidBomb        = "acidbomb"
+    static let targetCripple         = "cripple"
+    static let targetEntanglingRoots = "entanglingroots"
+    static let targetForkedLightning = "forkedlightning"
+
+    static let castBloodlust         = "bloodlust"
+    static let castInnerFire         = "innerfire"
+    static let castInnerFireOn       = "innerfireon"
+    static let castThunderClap       = "thunderclap"
+    static let castBerserk           = "berserk"
+    static let castStomp             = "stomp"
