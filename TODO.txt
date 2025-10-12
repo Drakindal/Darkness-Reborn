@@ -6,7 +6,6 @@ Vivpire
 
 Bugs:
 
-Blademaster T teleports him far away
 Illusionist. W and T (both are summon illusions) have conflicts. If I press T, the W is executed instead of T.
 
 Need to be tested:

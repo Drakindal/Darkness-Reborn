@@ -29,16 +29,17 @@ function rampage2(unit caster, unit target)
         if cb.isLast()
             caster.unPauseUnitIndef()
             caster.setInvulnerable(false)
-            target.unPauseUnitIndef()
             caster.setPathing(true)
+            target.unPauseUnitIndef()
 
 public function rampage()
     EventListener.onTargetCast(BLADEMASTER_ABILITY_4) (unit caster, unit target) ->
         doAfter(0.5) -> 
             caster.pauseIndef()
             caster.setInvulnerable(true)
+            caster.setPathing(false)
             target.pauseIndef()
-            SetUnitPathing(caster, false)
+            
             doPeriodically(0.02) (CallbackPeriodic cb) ->
                 let isAlive = target.isAlive()
                 if (isAlive)

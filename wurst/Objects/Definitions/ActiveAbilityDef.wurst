@@ -13,6 +13,9 @@ import DummyCaster
 import Orders
 import ClosureTimers
 import ClosureEvents
+import MyAbilityIds
+import MyUnitIds
+import HashMap
 
 // ----------------------------------------------------------------------------
 
@@ -221,10 +224,16 @@ public function addAbilityStunTargetPassive(real chance, real cd, string effects
 public interface OnPointCastHandler
     function run(unit caster, vec2 target)
 
+let pointCastLock = new HashList<int>()
+
 public function registerOnPointCast(int abi_id, OnPointCastHandler handler)
-    EventListener.onPointCast(abi_id) (unit caster, vec2 target) ->
-        handler.run(caster, target)
     EventListener.onTargetCast(abi_id) (unit caster, unit target) ->
+        pointCastLock.add(abi_id)
         handler.run(caster, target.getPos())
+        pointCastLock.remove(abi_id)
+
+    EventListener.onPointCast(abi_id) (unit caster, vec2 target) ->
+        if not (pointCastLock.has(abi_id))
+            handler.run(caster, target)
 
 // ----------------------------------------------------------------------------

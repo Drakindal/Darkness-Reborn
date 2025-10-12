@@ -17,6 +17,7 @@ public function hasteSlash()
         let dmg = caster.getAgi(true)*lvl*0.75 + 3000*lvl
         
         caster.pauseIndef()
+        caster.setInvulnerable(true)
         caster.setPathing(false)
         caster.setPos(target)
 
@@ -24,17 +25,22 @@ public function hasteSlash()
             flashEffect(Abilities.warStompCaster, target)
             caster.issueImmediateOrder("thunderclap")
             caster.setAnimation("slam")
+
             forUnitsInRange(caster.getPos(), 350, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
             
             if cb.isLast()
                 flashEffect(Abilities.warStompCaster, target, 3)
-                caster.setPathing(true)
-                caster.unPauseUnitIndef()
+
                 forUnitsInRange(caster.getPos(), 600, true) (unit u) ->
-                    if caster.isEnemyOf(u)
+                    if caster.isEnemyOf(u) and u.isAlive()
                         slashText = createCriticalStrikeTextTag(caster, R2I(dmg*4))
                         slashText.setColor(colorA(252, 25, 25, 225))
                         slashText.setScaledText("SLAM", 1.5)
                         caster.damageTargetCode(dmg * 4, u, null, -1, customDamageType.PhysicalMelee)
+                
+                caster.unPauseUnitIndef()
+                caster.setInvulnerable(false)
+                caster.setPathing(true)
+                destroy cb
