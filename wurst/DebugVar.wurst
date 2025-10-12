@@ -1,9 +1,9 @@
 package DebugVar
 
 public let DEBUG = true
-public let BUILD_JS_ITEMS = false or not DEBUG
-public let BUILD_THIEF_ITEMS = false or not DEBUG
+public let BUILD_JS_ITEMS = true or not DEBUG
+public let BUILD_THIEF_ITEMS = true or not DEBUG
 
-public let BUILD_AGI_HEROES = false or not DEBUG
-public let BUILD_INT_HEROES = false or not DEBUG
-public let BUILD_STR_HEROES = false or not DEBUG
+public let BUILD_AGI_HEROES = true or not DEBUG
+public let BUILD_INT_HEROES = true or not DEBUG
+public let BUILD_STR_HEROES = true or not DEBUG
