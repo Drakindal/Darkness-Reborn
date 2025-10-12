@@ -6,7 +6,6 @@ import MyItemIds
 import MyAbilityIds
 
 function addItemLevelPicker(int abiLvl, JsCraftItemDialog d, int lvl, int itemId)
-    printTimedToPlayer("abi = {0}, lvl = {1}".format(abiLvl.toString(), lvl.toCharsetString()), 5, d.js.getOwner())
     if (abiLvl >= lvl)
         let name = "Level " + lvl.toString()
         d.itemTypeBox.addButton(name) ->

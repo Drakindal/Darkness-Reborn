@@ -241,12 +241,12 @@ public function AbilityDefinition.setPosition(AbilityPosition pos)
             ..setButtonPositionResearchY(1)
 
         case AbilityPosition.Hidden
-            this..setButtonPositionNormalX(-1)
-            ..setButtonPositionNormalY(-1)
-            ..setButtonPositionTurnOffX(-1)
-            ..setButtonPositionTurnOffY(-1)
-            ..setButtonPositionResearchX(-1)
-            ..setButtonPositionResearchY(-1)
+            this..setButtonPositionNormalX(-2)
+            ..setButtonPositionNormalY(-2)
+            ..setButtonPositionTurnOffX(-2)
+            ..setButtonPositionTurnOffY(-2)
+            ..setButtonPositionResearchX(-2)
+            ..setButtonPositionResearchY(-2)
 
         case AbilityPosition.Z
             currHotkey = "Z"

@@ -6,11 +6,10 @@ Vivpire
 
 Bugs:
 
-Illusionist. W and T (both are summon illusions) have conflicts. If I press T, the W is executed instead of T.
+Archmage Order Ids
 
 Need to be tested:
 
-Archmage
 Firelord
 Firemage
 Guard of Light

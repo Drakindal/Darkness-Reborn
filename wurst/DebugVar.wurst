@@ -1,3 +1,4 @@
 package DebugVar
 
 public let DEBUG = true
+public let BUILD_JS_ITEMS = false or not DEBUG

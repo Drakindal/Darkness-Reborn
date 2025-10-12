@@ -78,6 +78,7 @@ public constant ILLUSIONIST_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
 public constant ILLUSIONIST_ABILITY_3_ILLUSION = compiletime(ABIL_ID_GEN.next())
 public constant ILLUSIONIST_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant ILLUSIONIST_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
+public constant ILLUSIONIST_ABILITY_5_DUMMY = compiletime(ABIL_ID_GEN.next())
 
 public constant PRIESTESS_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant PRIESTESS_ABILITY_2 = compiletime(ABIL_ID_GEN.next())

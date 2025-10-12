@@ -78,6 +78,7 @@ import DarkRanger_R
 import DarkRanger_E
 import illusionist_R
 import illusionist_E
+import illusionist_T
 import Sylvanas_W
 import Sylvanas_E
 import Sylvanas_R
@@ -222,6 +223,7 @@ init
     // HERO_ILLUSIONIST
     shadowDancer()
     juxtapose()
+    illusionist_T_twinShadows()
     // HERO_SYLVANAS
     phantomArrow()
     poisonArrow()

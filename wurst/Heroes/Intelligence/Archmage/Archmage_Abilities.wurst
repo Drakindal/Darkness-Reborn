@@ -3,7 +3,6 @@ package Archmage_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import OrderIds
 import ChannelAbilityPreset
 import MyColors
 import BuffObjEditing
@@ -48,8 +47,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..presetTargetTypes(Targettype.POINT)
     ..presetOption(Option.TARGETIMAGE, true)
     ..presetArtDuration(lvl -> 1.0)
-    ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.blizzard.toRawCode())
+    ..presetBaseOrderID(lvl -> "blizzard")
+    ..setOrderStringUseTurnOn("blizzard")
     ..presetCastRange(lvl -> 900.0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEclipse.blp")
     ..setArtCaster("")
@@ -100,8 +99,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..presetFollowThroughTime(lvl -> 0.01)
     ..presetTargetTypes(Targettype.POINT)
     ..presetOption(Option.TARGETIMAGE, true)
-    ..presetBaseOrderID(lvl -> OrderIds.clusterrockets.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.clusterrockets.toRawCode())
+    ..presetBaseOrderID(lvl -> "clusterrockets")
+    ..setOrderStringUseTurnOn("clusterrockets")
     ..presetCastRange(lvl -> 800.0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNF1.blp")
     ..setArtCaster("")
@@ -153,8 +152,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..presetTargetTypes(Targettype.POINT)
     ..presetArtDuration(lvl -> 1)
     ..presetFollowThroughTime(lvl -> 4)
-    ..presetBaseOrderID(lvl -> OrderIds.flamestrike.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.flamestrike.toRawCode())
+    ..presetBaseOrderID(lvl -> "flamestrike")
+    ..setOrderStringUseTurnOn("flamestrike")
     ..presetCastRange(lvl -> 800)
     ..presetCastingTime(lvl -> 0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUltima.blp")
@@ -178,8 +177,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..presetTargetTypes(Targettype.POINT)
     ..presetOption(Option.TARGETIMAGE, true)
     ..presetArtDuration(lvl -> 1.0)
-    ..presetBaseOrderID(lvl -> OrderIds.rainoffire.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.rainoffire.toRawCode())
+    ..presetBaseOrderID(lvl -> "rainoffire")
+    ..setOrderStringUseTurnOn("rainoffire")
     ..presetCastRange(lvl -> 800.0)
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNL1.blp")
     ..setArtCaster("")
@@ -208,8 +207,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
     ..presetTargetTypes(Targettype.UNIT)
     ..presetOption(Option.UNIVERSALSPELL, true)
     ..presetCastingTime(lvl -> 1)
-    ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-    ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+    ..presetBaseOrderID(lvl -> "chainlightning")
+    ..setOrderStringUseTurnOn("chainlightning")
     ..presetDurationHero(lvl -> 140.0 - 20.0 * lvl)
     ..setRequirements("")
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNL2.blp")
