@@ -27,7 +27,7 @@ import MyAbilityIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\WardenMissile\\WardenMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-        
+    
     ..setHitPointsRegenerationType("night")
     ..setHitPointsRegenerationRate(0.50)
     

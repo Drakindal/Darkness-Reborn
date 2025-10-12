@@ -5,11 +5,11 @@ import MyHeroAbilityDefinition
 import MyUnitIds
 import AbilityObjEditing
 import MyBuffIds
-import ObjectIds
 import BuffIds
 import BuffObjEditing
 import MyColors
 import DebugVar
+import ObjectIds
 
 // ----------------------------------------------------------------------------
 
@@ -138,7 +138,8 @@ public constant real array[4] warden_abi5_Damage = [
         ..setHeroAbility(false)
         ..setItemAbility(false)
         
-        new AbilityDefinitionBattleRoar(WARDEN_ABILITY_5)
+        new AbilityDefinitionRoar(WARDEN_ABILITY_5)
+        ..setUltimateAbility()
         ..presetAreaofEffect(lvl -> 500.0)
         ..presetBuffs(lvl -> WARDEN_BUFF_5.toRawCode())
         ..presetCooldown(lvl -> 140.0 - 20*lvl)
@@ -146,13 +147,12 @@ public constant real array[4] warden_abi5_Damage = [
         ..setManaCost(2, 180)
         ..setManaCost(3, 240)
         ..setManaCost(4, 280)
-        ..presetDamageIncrease(lvl -> warden_abi5_Damage[lvl-1])
+        ..presetDamageIncrease(lvl -> 0.0)
         ..presetDuration(lvl -> 30.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
         ..setAnimationNames("")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNCurse.blp")
         ..setArtCaster("")
-        ..setUltimateAbility()
         ..register(HERO_WARDEN, "Ghostly Strike".setColor(colAbilitiesWarden), 
         "The Warden collects all her energy, unleashing it all on her next hit within the next 30 seconds, dealing massive damage. She also gains 100% evasion for 10 seconds.",
         (int lvl) -> "Increases the next hit's damage by x{0}.".format(

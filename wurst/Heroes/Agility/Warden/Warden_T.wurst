@@ -16,5 +16,7 @@ public function deadlyStrike()
 public function warden_T_checks(unit src, unit _targ)
     if src.hasAbility(WARDEN_BUFF_5)
         let lvl = src.getAbilityLevel(WARDEN_ABILITY_5)
-        DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * warden_abi5_Damage[lvl-1])
+        let dmg = DamageCustomEvent.getAmount() * warden_abi5_Damage[lvl-1]
+        
+        DamageCustomEvent.setAmount(dmg)
         src.removeAbility(WARDEN_BUFF_5)
