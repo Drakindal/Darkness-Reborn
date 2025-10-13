@@ -3,7 +3,6 @@ package Thief_Abilities
 import UnitIds
 import MyUnitIds
 import MyAbilityIds
-import Orders
 import MyHeroAbilityDefinition
 import MyColors
 import ChannelAbilityPreset
@@ -11,6 +10,7 @@ import MyBuffIds
 import BuffIds
 import BuffObjEditing
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -33,8 +33,8 @@ import DebugVar
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetArtDuration(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetCastRange(lvl -> 100.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..setAnimationNames("attack")
@@ -71,8 +71,8 @@ public constant real array[9] thief_abi2_Duration = [
         ..setCooldown(1, 0.1)
         ..setArtCaster("Abilities\\Spells\\NightElf\\Taunt\\TauntCaster.mdl")
         ..setAreaofEffect(1, 900)
-        ..setOrderStringActivate(OrderIds.taunt.toString())
-        ..setOrderStringUseTurnOn(OrderIds.taunt.toString())
+        ..setOrderStringActivate(MyOrderIds.castTaunt)
+        ..setOrderStringUseTurnOn(MyOrderIds.castTaunt)
         ..setMaxUnits(1, 10)
 
         new UnitDefinition(THIEF_W_DUMMY_UNIT, UnitIds.footman)

@@ -6,8 +6,8 @@ import MyUnitIds
 import MyColors
 import BuffIds
 import ChannelAbilityPreset
-import Orders
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -50,7 +50,8 @@ public constant int array[9] guardianOfLight_abi1_Hp = [
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetCastingTime(lvl -> 1)
-        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.All))
         ..register(HERO_GUARDIAN_OF_LIGHT, "Holy Light".setColor(colAbilitiesGuardianOfLight), 
         "Holy Light heals allies or damages enemy by half amount. Also permanently adds HP and MP to ally.",
@@ -188,7 +189,8 @@ constant int array[9] abi4_Mana = [
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetArtDuration(lvl -> 1)
         ..presetCastingTime(lvl -> 1)
-        ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeBlizzard)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeBlizzard)
         ..presetCastRange(lvl -> 1200.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Holy_HolySmite.blp")
         ..setArtCaster("")

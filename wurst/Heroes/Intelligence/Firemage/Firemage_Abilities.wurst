@@ -8,9 +8,9 @@ import BuffIds
 import BuffObjEditing
 import MyColors
 import CommonDescriptions
-import Orders
 import ChannelAbilityPreset
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -221,7 +221,8 @@ public constant real array[9] firemage_abi3_IntScale = [
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetArtDuration(lvl -> 0.0)
-        ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeBlizzard)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeBlizzard)
         ..presetCastRange(lvl -> 400.0)
         ..setAnimationNames("spell")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNMarkOfFire.blp")

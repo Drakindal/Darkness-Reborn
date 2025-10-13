@@ -9,6 +9,7 @@ import MyColors
 import BuffObjEditing
 import MyBuffIds
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -80,8 +81,8 @@ import DebugVar
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
         ..presetArtDuration(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> "shockwave")
-        ..setOrderStringUseTurnOn("shockwave")
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundShockWave)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundShockWave)
         ..presetCastRange(lvl -> 900.0)
         ..setAnimationNames("attack")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSear.blp")
@@ -118,8 +119,8 @@ import DebugVar
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetOption(Option.UNIQUECAST, true)
         ..presetArtDuration(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> "impale")
-        ..setOrderStringUseTurnOn("impale")
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundImpale)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundImpale)
         ..setAnimationNames("channel")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPOF.blp")
         ..setArtCaster("")
@@ -152,8 +153,8 @@ import DebugVar
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIQUECAST, true)
         ..presetArtDuration(lvl -> 0.25)
-        ..presetBaseOrderID(lvl -> "frostnova")
-        ..setOrderStringUseTurnOn("frostnova")
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetFrostNova)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetFrostNova)
         ..presetCastRange(lvl -> 900.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..setAnimationNames("spell")
@@ -210,8 +211,8 @@ public constant int array[9] firelord_abi4_BounceAmount = [
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIQUECAST, true)
         ..presetArtDuration(lvl -> 0.25)
-        ..presetBaseOrderID(lvl -> "acidbomb")
-        ..setOrderStringUseTurnOn("acidbomb")
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetAcidBomb)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetAcidBomb)
         ..presetCastRange(lvl -> 750.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..setAnimationNames("attack")

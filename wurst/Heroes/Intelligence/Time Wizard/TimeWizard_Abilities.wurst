@@ -4,9 +4,9 @@ import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
 import ChannelAbilityPreset
-import Orders
 import MyColors
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -35,8 +35,8 @@ constant real array[4] abi1_Cd = [
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
         ..presetArtDuration(lvl -> 0.2)
-        ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundBlink)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundBlink)
         ..presetCastRange(lvl -> 99999.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime1.blp")
         ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
@@ -74,8 +74,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetArtDuration(lvl -> 0.0)
-        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetCastRange(lvl -> 99999.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime2.blp")
@@ -102,8 +102,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..presetFollowThroughTime(lvl -> 0.5)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetArtDuration(lvl -> 0.5)
-        ..presetBaseOrderID(lvl -> OrderIds.roar.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.roar.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.castRoar)
+        ..setOrderStringUseTurnOn(MyOrderIds.castRoar)
         ..presetCastRange(lvl -> 0.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime3.blp")
         ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
@@ -128,8 +128,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..setFollowThroughTime(1, 0.0)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..setArtDuration(1, 0.0)
-        ..setBaseOrderID(1, OrderIds.avatar.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.avatar.toRawCode())
+        ..setBaseOrderID(1, MyOrderIds.castAvatar)
+        ..setOrderStringUseTurnOn(MyOrderIds.castAvatar)
         ..setCastRange(1, 0.0)
         ..setArtEffect("")
         ..setArtTarget("")
@@ -149,8 +149,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..presetFollowThroughTime(lvl -> 0.5)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetArtDuration(lvl -> 0.5)
-        ..presetBaseOrderID(lvl -> OrderIds.berserk.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.berserk.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.castBerserk)
+        ..setOrderStringUseTurnOn(MyOrderIds.castBerserk)
         ..presetCastRange(lvl -> 0.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime4.blp")
         ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")
@@ -179,8 +179,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetArtDuration(lvl -> 0.5)
-        ..presetBaseOrderID(lvl -> OrderIds.deathanddecay.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.deathanddecay.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeDeathAndDecay)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeDeathAndDecay)
         ..presetCastRange(lvl -> 99999.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNTime5.blp")
         ..setArtCaster("Abilities\\Spells\\Other\\Charm\\CharmTarget.mdl")

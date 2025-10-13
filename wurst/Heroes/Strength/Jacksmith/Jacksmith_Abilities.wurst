@@ -3,7 +3,6 @@ package Jacksmith_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import Orders
 import ChannelAbilityPreset
 import MyColors
 import BuffObjEditing
@@ -11,6 +10,7 @@ import BuffIds
 import MyBuffIds
 import Abilities
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -52,8 +52,8 @@ import DebugVar
         ..presetManaCost(lvl -> 100*lvl)
         ..presetCooldown(lvl -> 75.0 - 5*lvl)
         ..presetFollowThroughTime(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> OrderIds.windwalk.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.windwalk.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.castWindWalk)
+        ..setOrderStringUseTurnOn(MyOrderIds.castWindWalk)
         ..presetCastRange(lvl -> 0.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNF11.blp")
@@ -75,8 +75,8 @@ import DebugVar
         ..setCooldown(9, 5)
         ..presetManaCost(lvl -> 250*lvl)
         ..presetFollowThroughTime(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> OrderIds.starfall.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.starfall.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.castBloodlust)
+        ..setOrderStringUseTurnOn(MyOrderIds.castBloodlust)
         ..presetCastRange(lvl -> 0.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_paladin_judgementofthewise.blp")
@@ -124,8 +124,8 @@ import DebugVar
         ..presetFollowThroughTime(lvl -> 1.0)
         ..presetTargetTypes(Targettype.UNIT)
         ..presetOption(Option.UNIVERSALSPELL, true)
-        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetCastRange(lvl -> 100.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructures))
         ..setAnimationNames("spell,attack")

@@ -7,7 +7,7 @@ import DamageTarget
 import MyAbilityIds
 import Thief_Abilities
 import ClosureTimers
-import Orders
+import MyOrderIds
 
 public boolean isWindwalk
 
@@ -21,7 +21,7 @@ public function windwalk()
 
         doPeriodicallyTimed(1.5, thief_abi2_Duration[lvl-1]) (CallbackCounted cb) ->
             if (dummy.isAlive())
-                dummy.issueImmediateOrderById(OrderIds.taunt)
+                dummy.issueImmediateOrder(MyOrderIds.castTaunt)
         
         let agi = caster.getAgi(true)
         let range = 300.0 + 50*lvl

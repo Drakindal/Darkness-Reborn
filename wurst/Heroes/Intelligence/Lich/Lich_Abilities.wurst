@@ -5,9 +5,9 @@ import MyHeroAbilityDefinition
 import MyUnitIds
 import MyColors
 import ChannelAbilityPreset
-import Orders
 import CommonDescriptions
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -66,7 +66,8 @@ import DebugVar
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetFollowThroughTime(lvl -> 1.0)
         ..presetTargetTypes(Targettype.UNIT)
-        ..presetBaseOrderID(lvl -> OrderIds.corporealform.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetCastRange(lvl -> 900.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..setAnimationNames("spell")
@@ -138,7 +139,8 @@ public constant real array[4] lich_abi5_Hp = [
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetArtDuration(lvl -> 0.0)
-        ..presetBaseOrderID(lvl -> OrderIds.deathanddecay.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeDeathAndDecay)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeDeathAndDecay)
         ..presetCastRange(lvl -> 900.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDeathAndDecay.blp")
         ..setArtCaster("")

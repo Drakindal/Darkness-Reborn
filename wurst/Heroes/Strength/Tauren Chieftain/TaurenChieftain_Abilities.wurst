@@ -10,6 +10,7 @@ import BuffIds
 import MyBuffIds
 import BuffObjEditing
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -32,7 +33,8 @@ import DebugVar
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.TARGETIMAGE, true)
         ..presetArtDuration(lvl -> 0.5)
-        ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeBlizzard)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeBlizzard)
         ..presetCastRange(lvl -> 1000.0)
         ..setAnimationNames("attack,slam")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEarthquake.blp")
@@ -160,8 +162,8 @@ public constant int array[9] tauren_abi3_Chance = [
         ..presetManaCost(lvl -> 500*lvl)
         ..presetFollowThroughTime(lvl -> 0.5)
         ..presetArtDuration(lvl -> 0.01)
-        ..presetBaseOrderID(lvl -> OrderIds.stomp.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.stomp.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.castStomp)
+        ..setOrderStringUseTurnOn(MyOrderIds.castStomp)
         ..presetCastRange(lvl -> 700.0)
         ..presetDuration(lvl -> 10.0)
         ..presetBuffs(lvl -> BuffIds.stunned.toRawCode())

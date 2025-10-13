@@ -10,6 +10,7 @@ import Tinker_Abilities
 import Abilities
 import MyBuffIds
 import MyUnitIds
+import MyOrderIds
 
 public function repair()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
@@ -30,7 +31,7 @@ public function repair()
             let hp = tinker_abi4_hp[lvl-1] * period
 
             doPeriodically(period) (CallbackPeriodic cb) ->
-                if not caster.getMana() < manaCost and caster.getCurrentOrder() == OrderIds.channel
+                if not caster.getMana() < manaCost and caster.getCurrentOrder() == OrderIds.chainlightning
                     target.addHP(hp)
                     caster.addMana(-manaCost)
                 else

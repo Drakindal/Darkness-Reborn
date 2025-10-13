@@ -6,12 +6,12 @@ import MyUnitIds
 import MyBuffIds
 import BuffIds
 import BuffObjEditing
-import Orders
 import MyColors
 import ChannelAbilityPreset
 import UpgradeObjEditing
 import MyUpgradesIds
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -86,8 +86,8 @@ import DebugVar
         ..presetFollowThroughTime(lvl -> 0.1)
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
-        ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.impale.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundImpale)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundImpale)
         ..presetCastRange(lvl -> 1100.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNA.blp")
         ..setArtCaster("Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl")

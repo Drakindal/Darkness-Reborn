@@ -9,7 +9,6 @@ import ObjectIds
 import BuffIds
 import BuffObjEditing
 import MyColors
-import Orders
 import DebugVar
     
 // ----------------------------------------------------------------------------
@@ -147,7 +146,6 @@ constant real array[9] abi2_LifeSteal = [
         ..presetDamageperTarget(lvl -> 0.0)
         ..presetNumberofTargetsHit(lvl -> 1)
         ..presetDamageReductionperTarget(lvl -> 0.0)
-        ..setOrderStringUseTurnOn(OrderIds.hex.toRawCode())
         ..setLightningEffects("")
         ..setMissileArt("")
         ..setAnimationNames("spell")

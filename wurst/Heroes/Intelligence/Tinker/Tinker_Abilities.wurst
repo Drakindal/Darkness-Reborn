@@ -5,12 +5,12 @@ import MyHeroAbilityDefinition
 import MyUnitIds
 import MyColors
 import ChannelAbilityPreset
-import Orders
 import CommonDescriptions
 import MyBuffIds
 import BuffObjEditing
 import BuffIds
 import DebugVar
+import MyOrderIds
 // ----------------------------------------------------------------------------
 
 @compiletime function tinkerAbils()
@@ -152,7 +152,8 @@ public constant real array[9] tinker_abi4_aura_range = [
         ..presetCooldown(lvl -> 1)
         ..presetManaCost(lvl -> 10*lvl)
         ..presetTargetTypes(Targettype.UNIT)
-        ..presetBaseOrderID(lvl -> OrderIds.channel.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetCastRange(lvl -> 99999.0)
         ..presetTargetsAllowed(lvl -> commaList(getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits), TargetsAllowed.self))
         ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")

@@ -8,9 +8,9 @@ import MyColors
 import BuffObjEditing
 import BuffIds
 import ChannelAbilityPreset
-import Orders
 import MyBuffIds
 import DebugVar
+import MyOrderIds
     
 // ----------------------------------------------------------------------------
 
@@ -54,8 +54,8 @@ import DebugVar
         ..presetOption(Option.UNIVERSALSPELL, true)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..presetArtDuration(lvl -> 1.0)
-        ..presetBaseOrderID(lvl -> OrderIds.chainlightning.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.chainlightning.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..setArtCaster("Blue Quick.mdx")
         ..setArtEffect("")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS2.blp")

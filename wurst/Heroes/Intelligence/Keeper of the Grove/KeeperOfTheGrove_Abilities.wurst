@@ -6,10 +6,10 @@ import MyUnitIds
 import MyBuffIds
 import BuffIds
 import BuffObjEditing
-import Orders
 import ChannelAbilityPreset
 import MyColors
 import DebugVar
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -44,8 +44,8 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         ..presetFollowThroughTime(lvl -> 1.0)
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.TARGETIMAGE, true)
-        ..presetBaseOrderID(lvl -> OrderIds.blizzard.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.blizzard.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.aoeBlizzard)
+        ..setOrderStringUseTurnOn(MyOrderIds.aoeBlizzard)
         ..presetCastRange(lvl -> 800.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEntanglingRoots.blp")
         ..setArtCaster("")
@@ -71,7 +71,8 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         ..presetFollowThroughTime(lvl -> 0.1)
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
-        ..presetBaseOrderID(lvl -> OrderIds.impale.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundImpale)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundImpale)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
         ..setArtCaster("Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl")
         ..setArtEffect("")
@@ -95,8 +96,8 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         ..presetFollowThroughTime(lvl -> 0.01)
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
-        ..presetBaseOrderID(lvl -> OrderIds.blink.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.blink.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundBlink)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundBlink)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNScout.blp")
         ..setArtCaster("")
         ..setCasterAttachmentPoint("")
@@ -148,8 +149,8 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         ..presetFollowThroughTime(lvl -> 1.0)
         ..presetTargetTypes(Targettype.POINT)
         ..presetOption(Option.UNIQUECAST, true)
-        ..presetBaseOrderID(lvl -> OrderIds.carrionswarm.toRawCode())
-        ..setOrderStringUseTurnOn(OrderIds.carrionswarm.toRawCode())
+        ..presetBaseOrderID(lvl -> MyOrderIds.groundCarrionSwarm)
+        ..setOrderStringUseTurnOn(MyOrderIds.groundCarrionSwarm)
         ..presetCastRange(lvl -> 800.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
         ..setArtCaster("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
