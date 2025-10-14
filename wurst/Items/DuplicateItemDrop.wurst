@@ -1,11 +1,8 @@
 package DuplicateItemDrop
 import MoonUtils
-import DamageTarget
 import ClosureEvents
-init
-    duplicateItemDrop()
 
-function duplicateItemDrop()
+init
     EventListener.add(EVENT_PLAYER_UNIT_PICKUP_ITEM) -> 
         let u = GetTriggerUnit()
         if u.isType(UNIT_TYPE_HERO)

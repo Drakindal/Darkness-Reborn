@@ -74,6 +74,10 @@ public function handleRepickCommand()
     else
         let currH = playerHero.get(trigP)
 
+        // Drop all items on the ground.
+        for i = 0 to 5
+            currH.removeItem(currH.itemInSlot(i))
+
         // After picking hero food limit is set to 0, increase it in order to repick
         // Naga, thief and js also take food limit in Debug mode.
         if DEBUG
