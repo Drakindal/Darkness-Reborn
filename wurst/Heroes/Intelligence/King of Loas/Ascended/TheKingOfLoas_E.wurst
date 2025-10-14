@@ -16,7 +16,7 @@ public function superKingOfloasE()
             if src.isIllusion()
                 skip
             else
-                let lvl = src.getAbilityLevel(ABILITY_50)
+                let lvl = src.getAbilityLevel(KING_OF_LOAS_ASC_ABILITY_3)
                 if lvl > 0 and GetRandomInt(1, 100) <= 30
                     let target = DamageEvent.getTarget()
                     let dmg = src.getInt(true) * 27.
@@ -26,6 +26,6 @@ public function superKingOfloasE()
                                 new DummyCaster()
                                 ..owner(GetOwningPlayer(src))
                                 ..origin(src.getPos())
-                                ..castTarget(ABILITY_49, 1, OrderIds.forkedlightning, u)
+                                ..castTarget(KING_OF_LOAS_ASC_ABILITY_3_DUMMY, 1, OrderIds.forkedlightning, u)
                                 doAfter(0.05) -> 
                                     src.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

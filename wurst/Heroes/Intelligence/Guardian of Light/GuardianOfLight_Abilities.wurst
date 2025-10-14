@@ -140,7 +140,7 @@ constant int array[9] abi3_Mana = [
         ..presetLifeRegenRate(lvl -> abi3_HpReg[lvl-1])
         ..presetDuration(lvl -> 6.5 + 0.5*lvl)
         ..presetCastRange(lvl -> 1200.0)
-        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSpiritMagic.blp")
         ..register(HERO_GUARDIAN_OF_LIGHT, "Inner Fire".setColor(colAbilitiesGuardianOfLight),
         "The Guardian supports the chosen ally temporally increasing their damage dealt and HP regeneration.",

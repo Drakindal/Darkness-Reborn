@@ -203,7 +203,7 @@ import LinkedList
     ..setManaInitialAmount(5000)
     ..setAnimationCastPoint(0)
     ..setAnimationCastBackswing(0)
-    ..setNormalAbilities(commaList(ABILITY_36, AbilityIds.locust, AbilityIds.invulnerable))
+    ..setNormalAbilities(commaList(KING_OF_LOAS_ABILITY_1_DUMMY, AbilityIds.locust, AbilityIds.invulnerable))
 
     new UnitDefinition(DUMMY_UNIT_5, UnitIds.gryphonrider)
     ..setName("sorceress dummy")

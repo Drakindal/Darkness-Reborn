@@ -52,7 +52,7 @@ import MyOrderIds
         ..presetArmorDuration(lvl -> 0.0)
         ..presetArmorBonus(lvl -> 0.0)
         ..presetDuration(lvl -> 30.0)
-        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..register(HERO_LICH, "Frost Armor".setColor(colAbilitiesLich), 
         "Creates an armor from steady ice shards that protects a target.",
         (int lvl) -> "Heal {0} x Int HP.".format(

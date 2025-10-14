@@ -13,7 +13,7 @@ public function thunderOfAkunda()
             skip
         else
             if DamageEvent.getType() == ATTACK
-                let lvl = src.getAbilityLevel(ABILITY_40)
+                let lvl = src.getAbilityLevel(KING_OF_LOAS_ABILITY_3)
                 if lvl > 0
                     if GetRandomInt(1, 100) <= lvl*3
                         let target = DamageEvent.getTarget()

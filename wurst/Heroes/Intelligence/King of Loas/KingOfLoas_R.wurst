@@ -8,12 +8,13 @@ import MyAbilityIds
 // Blood of Hakkar
 
 public function kingOfloasRact()
-    EventListener.onCast(ABILITY_41) (unit caster) ->
+    EventListener.onCast(KING_OF_LOAS_ABILITY_4) (unit caster) ->
         new DummyCaster()
         ..owner(caster.getOwner())
         ..origin(caster.getPos())
-        ..castTarget(ABILITY_52, 1, OrderIds.innerfire, caster)
+        ..castTarget(KING_OF_LOAS_ABILITY_4_DUMMY, 1, OrderIds.innerfire, caster)
+        
         doAfter(0.2) ->      
             caster
             ..issueImmediateOrderById(OrderIds.stop)
-            ..startAbilityCooldown(ABILITY_41)
+            ..startAbilityCooldown(KING_OF_LOAS_ABILITY_4)

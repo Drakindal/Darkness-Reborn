@@ -53,7 +53,7 @@ public constant real array[9] shadowHunter_abi1_Damage = [
         ..presetDamageperSecond(lvl -> shadowHunter_abi1_Damage[lvl-1])
         ..presetCastRange(lvl -> 900.0)
         ..setRequirements("")
-        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
         ..register(HERO_SHADOW_HUNTER, "Spinning Blade".setColor(colAbilitiesShadowHunter), 
         "Creates a rotation blade on the allied unit dealing damage to all nearby enemies. Increases damage taken by the target from all sources by 40%.\n" +
@@ -260,7 +260,7 @@ public constant real array[4] shadowHunter_abi5_Mana = [
         ..setRequirements("")
         ..presetAreaofEffect(lvl -> 700.0 + 50*lvl)
         ..presetWardUnitType(lvl -> SHADOW_HUNTER_HEALING_WARD.toRawCode())
-        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNHealingWard.blp")
         ..register(HERO_SHADOW_HUNTER, "Healing Ward".setColor(colAbilitiesShadowHunter), 
         "Sets up a magic ward in target location that recovers percent of allies max hp per second.",

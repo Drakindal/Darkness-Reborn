@@ -144,7 +144,7 @@ public enum AbilityTargets
     All
     EnemiesAll
     EnemiesNonStructuresMechUnits
-    AlliesAll
+    AlliesAllOrganic
     AlliesNotSelf
     AlliesOnlyStructuresMechUnits
     AlliesOnlyStructures
@@ -160,7 +160,7 @@ public function getTargets(AbilityTargets targets) returns string
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral, TargetsAllowed.structure)
         case EnemiesNonStructuresMechUnits
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.enemies, TargetsAllowed.neutral)
-        case AlliesAll
+        case AlliesAllOrganic
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend, TargetsAllowed.self)
         case AlliesNotSelf
             return commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend)
@@ -233,10 +233,10 @@ public function AbilityDefinition.setPosition(AbilityPosition pos)
             
         case AbilityPosition.LearnableHidden1
             currHotkey = "F"
-            this..setButtonPositionNormalX(-1)
-            ..setButtonPositionNormalY(-1)
-            ..setButtonPositionTurnOffX(-1)
-            ..setButtonPositionTurnOffY(-1)
+            this..setButtonPositionNormalX(2)
+            ..setButtonPositionNormalY(1)
+            ..setButtonPositionTurnOffX(2)
+            ..setButtonPositionTurnOffY(1)
             ..setButtonPositionResearchX(2)
             ..setButtonPositionResearchY(1)
 

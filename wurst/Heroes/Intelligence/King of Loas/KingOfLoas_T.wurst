@@ -7,22 +7,24 @@ import OrderIds
 import ClosureEvents
 import MyAbilityIds
 import DamageTarget
+import KingOfLoas_Abilities
 
 // Aura of Bwonsamdi
 public function kingOfloasTinit()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) ->
         let caster = GetTriggerUnit()
-        if GetLearnedSkill() == ABILITY_42 and caster.getUserData() != 1
+        if GetLearnedSkill() == KING_OF_LOAS_ABILITY_5 and caster.getUserData() != 1
             caster.setUserData(1)
             doPeriodically(2) (CallbackPeriodic cb) ->
-                let lvl = caster.getAbilityLevel(ABILITY_42)
+                let lvl = caster.getAbilityLevel(KING_OF_LOAS_ABILITY_5)
                 let dmg = caster.getInt(true) * (2 + lvl * 0.5)
-                forUnitsInRange(caster.getPos(), caster.getAbility(ABILITY_42).getField(ABILITY_RLF_AREA_OF_EFFECT, lvl-1), true) (unit u) ->
+
+                forUnitsInRange(caster.getPos(), loas_abi5_Range[lvl-1], true) (unit u) ->
                     if caster.isEnemyOf(u)
                         new DummyCaster()
                         ..owner(GetOwningPlayer(caster))
                         ..origin(caster.getPos())
-                        ..castTarget(ABILITY_43, lvl, OrderIds.slow, u)
+                        ..castTarget(KING_OF_LOAS_ABILITY_5_DUMMY, lvl, OrderIds.slow, u)
                         ..delay(1)
                         if u.isAlive()
                             caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

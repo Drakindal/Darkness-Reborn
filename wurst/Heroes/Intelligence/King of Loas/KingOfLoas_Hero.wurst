@@ -14,7 +14,7 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_KING_OF_LOAS, UnitIds.paladin)
-    ..setHeroAbilities(commaList(ABILITY_35, ABILITY_39, ABILITY_40, ABILITY_41, ABILITY_42))
+    ..setHeroAbilities(commaList(KING_OF_LOAS_ABILITY_1, KING_OF_LOAS_ABILITY_2, KING_OF_LOAS_ABILITY_3, KING_OF_LOAS_ABILITY_4, KING_OF_LOAS_ABILITY_5))
 
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(27, 21, 41)

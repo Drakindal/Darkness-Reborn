@@ -13,8 +13,8 @@ import MyHeroDefinition
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_KING_OF_LOAS_ASCENDED, UnitIds.paladin)
-    ..setHeroAbilities(commaList(ABILITY_46, ABILITY_47, ABILITY_50, ABILITY_51, ABILITY_54))
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, ABILITY_44, AbilityIds.inventory))
+    ..setHeroAbilities(commaList(KING_OF_LOAS_ASC_ABILITY_1, KING_OF_LOAS_ASC_ABILITY_2, KING_OF_LOAS_ASC_ABILITY_3, KING_OF_LOAS_ASC_ABILITY_5, KING_OF_LOAS_ASC_ABILITY_4))
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, KING_OF_LOAS_ASC_ABILITY_6, AbilityIds.inventory))
     
     ..setPrimaryAttribute("Intelligence")
     ..setStatsBase(27, 21, 41)

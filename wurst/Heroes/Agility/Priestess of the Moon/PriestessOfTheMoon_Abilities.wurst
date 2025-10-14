@@ -157,7 +157,7 @@ constant real array[9] abi4_Damage = [
         ..presetAreaofEffect(lvl -> 900.0 + 100*lvl)
         ..presetFlatBonus(lvl -> false)
         ..presetRangedBonus(lvl -> true)
-        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAll))
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..register(HERO_PRIESTESS_OF_THE_MOON, "Trueshot Aura".setColor(colAbilitiesPriestessOfTheMoon),
         "Trueshot aura gives bonus damage to nearby ranged allies.",
         (int lvl) -> "+{0}% bonus damage in {1} AoE.".format(

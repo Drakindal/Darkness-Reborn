@@ -19,20 +19,24 @@ public function embodimentOfGral()
             skip
         else
             if DamageEvent.getType() == ATTACK
-                let lvl = src.getAbilityLevel(ABILITY_47)
-                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_15) and lvl > 0
+                let lvl = src.getAbilityLevel(KING_OF_LOAS_ASC_ABILITY_2)
+                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_2) and lvl > 0
                     let targ = DamageEvent.getTarget()
+
                     new DummyCaster()
                     ..owner(src.getOwner())
                     ..origin(src.getPos())
-                    ..castTarget(ABILITY_48, 1, OrderIds.bloodlust, src)
-                    if not targ.hasAbility(KING_OF_LOAS_BUFF_22)
+                    ..castTarget(KING_OF_LOAS_ASC_ABILITY_2_DUMMY_1, 1, OrderIds.bloodlust, src)
+                    
+                    if not targ.hasAbility(KING_OF_LOAS_BUFF_ASC_2_1)
                         let shark = createUnit(src.getOwner(), DUMMY_UNIT_5, src.getPos(), src.getPos().angleTo(targ.getPos()))
                         new DummyCaster()
                         ..owner(targ.getOwner())
-                        ..castTarget(ABILITY_55, 1, OrderIds.innerfire, targ)
+                        ..castTarget(KING_OF_LOAS_ASC_ABILITY_2_DUMMY_2, 1, OrderIds.innerfire, targ)
+
                         doPeriodicallyTimed(1, 5) (CallbackCounted cb) ->
-                            src.damageTargetCode(src.getInt(true) * 1., targ, null, -1, customDamageType.PhysicalRanged)
+                            src.damageTargetCode(src.getInt(true) * 5., targ, null, -1, customDamageType.PhysicalRanged)
+
                         doAfter(0.01) ->
                             shark.setAnimation(0)
                             gralBite.playOnPoint(targ.getPos3Real())

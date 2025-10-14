@@ -12,7 +12,7 @@ import DamageTarget
 public function avatarOfBwonsamdi()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
         let caster = GetTriggerUnit()
-        if GetLearnedSkill() == ABILITY_51 and caster.getUserData() != 1
+        if GetLearnedSkill() == KING_OF_LOAS_ASC_ABILITY_5 and caster.getUserData() != 1
             caster.setUserData(1)
             doPeriodically(2) (CallbackPeriodic cb) ->
                 forUnitsInRange(caster.getPos(), 800) (unit u) ->
@@ -20,5 +20,5 @@ public function avatarOfBwonsamdi()
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())
-                        ..castTarget(ABILITY_36, 1, OrderIds.slow, u)
+                        ..castTarget(KING_OF_LOAS_ABILITY_1_DUMMY, 1, OrderIds.slow, u)
                         caster.damageTargetCode(caster.getInt(true) * 4., u, null, -1, customDamageType.Magical)

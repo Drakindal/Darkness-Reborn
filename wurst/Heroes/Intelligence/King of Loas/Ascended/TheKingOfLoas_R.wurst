@@ -10,16 +10,16 @@ import ClosureTimers
 // Cursed Blood of Hakkar
 
 public function bloodOfHakkar()
-    EventListener.onCast(ABILITY_54) (unit caster) ->
+    EventListener.onCast(KING_OF_LOAS_ASC_ABILITY_4) (unit caster) ->
         if caster.getTypeId() == HERO_KING_OF_LOAS_ASCENDED
             doAfter(0.2) ->      
                 caster
                 ..issueImmediateOrderById(OrderIds.stop)
-                ..startAbilityCooldown(ABILITY_41)
+                ..startAbilityCooldown(KING_OF_LOAS_ABILITY_4)
                 forUnitsInRange(caster.getPos(), 600) (unit u) ->
                     if u.isAllyOf(GetOwningPlayer(caster))
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())
-                        ..castTarget(ABILITY_53, 1, OrderIds.innerfire, u)
+                        ..castTarget(KING_OF_LOAS_ASC_ABILITY_4_DUMMY, 1, OrderIds.innerfire, u)
                         ..delay(0.5)
