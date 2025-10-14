@@ -4,7 +4,7 @@ import ClosureEvents
 import MyAbilityIds
 import ClosureTimers
 import MyUnitIds
-import BeastMaster_Summons
+import BeastMaster_SummonStats
 import ArmorLimiter
 import ArmorWeaponTypes
 

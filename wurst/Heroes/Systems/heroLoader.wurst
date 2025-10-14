@@ -49,7 +49,7 @@ import DeathKnight_E
 import DeathKnight_R
 import DeathKnight_T
 import BeastMaster_T
-import BeastMaster_Summons
+import BeastMaster_SummonStats
 import Pitlord_Q
 import Pitlord_W
 import Pitlord_T
@@ -175,7 +175,7 @@ init
     deathKnight_R_UnholyLink()
     // HERO_BEASTMASTER
     spirits()
-    quilBeast()
+    beastMasterSummons()
     // HERO_PITLORD
     rainofFire()
     strikeSlam()

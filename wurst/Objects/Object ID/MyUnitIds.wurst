@@ -196,6 +196,9 @@ public constant QUILBEAST = compiletime(UNIT_ID_GEN.next())
 public constant MISHABEAR = compiletime(UNIT_ID_GEN.next())
 public constant HAWK = compiletime(UNIT_ID_GEN.next())
 
+public constant KEEPER_SUMMON_MAIN_SPIRIT = compiletime(UNIT_ID_GEN.next())
+public constant KEEPER_SUMMON_MINI_SPIRIT = compiletime(UNIT_ID_GEN.next())
+
 public constant HERO_MOUNTAIN_KING = compiletime(HERO_ID_GEN.next())
 public constant HERO_WOLFMAN_INITIAL = compiletime(HERO_ID_GEN.next())
 public constant HERO_WOLFMAN_INITIATE = compiletime(HERO_ID_GEN.next())

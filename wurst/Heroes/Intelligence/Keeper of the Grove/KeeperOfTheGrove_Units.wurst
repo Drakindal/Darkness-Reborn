@@ -1,0 +1,70 @@
+package KeeperOfTheGrove_Units
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import AbilityObjEditing
+import MyAbilityIds
+import ObjectIds
+import BuffIds
+import MyHeroAbilityDefinition
+import MyColors
+
+// ----------------------------------------------------------------------------
+
+@compiletime function beastMasterUnits()
+    new AbilityDefinitionVengeance(KEEPER_OF_THE_GROVE_SUMMON_ABILITY_1)
+    ..setLevels(4)
+    ..presetUnitTypeOne(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
+    ..presetUnitTypeTwo(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
+    ..setUnitsSummonedTypeTwo(1, 1)
+    ..setUnitsSummonedTypeTwo(1, 2)
+    ..setUnitsSummonedTypeTwo(1, 2)
+    ..setUnitsSummonedTypeTwo(1, 2)
+    ..presetUnitsSummonedTypeOne(lvl -> 0)
+    ..presetMaxUnitsSummoned(lvl -> 6 + 2*(lvl-1))
+    ..presetBuffs(lvl -> BuffIds.spiritofVengeance.toRawCode())
+    ..presetCastRange(lvl -> 800)
+    ..presetCooldown(lvl -> 5.0)
+    ..presetDuration(lvl -> 10.0 + 7 * lvl)
+    ..presetKillOnCasterDeath(lvl -> true)
+    ..setCheckDependencies(false)
+    ..setHeroAbility(false) // previously it was true
+    ..presetAreaofEffect(lvl -> 900.0)
+    ..presetManaCost(lvl -> 25 + 10*lvl)
+    ..presetTargetsAllowed(lvl -> commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.dead))
+    ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
+    ..register(-1, "Cenarius's Spirits".setColor(colAbilitiesKeeperOfTheGrove),
+        "Raises an invulnerable feral spirit from a corpse. Lasts <Avng,Dur1> seconds or until the avatar dies."
+    )
+    ..setAutoCastingTooltip()
+
+    new UnitDefinition(KEEPER_SUMMON_MAIN_SPIRIT, UnitIds.spiritofvengeance)
+    ..setNormalAbilities(commaList(AbilityIds.magicImmunityCreep, AbilityIds.resistantSkin, KEEPER_OF_THE_GROVE_SUMMON_ABILITY_1)) // Asp1
+    ..setAttack1DamageBase(280)
+    ..setDefenseBase(28)
+    ..setManaInitialAmount(1000)
+    ..setManaMaximum(2000)
+    ..setManaRegeneration(20)
+    ..setHitPointsMaximumBase(5200)
+    ..setHitPointsRegenerationRate(25)
+    ..setAttack1Range(650)
+    ..setAttack1DamageNumberofDice(5)
+    ..setAttack1DamageSidesperDie(9)
+    ..setName("Cenarius's Spirit")
+    ..setModelFile("units\\nightelf\\HeroKeeperoftheGroveGhost\\HeroKeeperoftheGroveGhost.mdl")
+    ..setIconGameInterface("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
+    ..setArmorType(ArmorType.Large)
+    
+    new UnitDefinition(KEEPER_SUMMON_MINI_SPIRIT, UnitIds.vengeance)
+    ..setAttack1DamageBase(48)
+    ..setDefenseBase(12)
+    ..setHitPointsMaximumBase(640)
+    ..setHitPointsRegenerationRate(9.2)
+    ..setAttack1Range(350)
+    ..setAttack1DamageNumberofDice(5)
+    ..setAttack1DamageSidesperDie(9)
+    ..setName("The Grove's Spirit")
+    ..setArmorType(ArmorType.Large)
+    
+// ----------------------------------------------------------------------------

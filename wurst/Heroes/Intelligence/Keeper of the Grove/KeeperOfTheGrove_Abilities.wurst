@@ -139,6 +139,7 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         
 // ----------------------------------------------------------------------------
 
+        // WIP Armor
         new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_5, 9, true)
         ..setUltimateAbility()
         ..presetCooldown(lvl -> 60.0 - 10 * (lvl-1))
@@ -158,10 +159,39 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         ..setArtTarget("Abilities\\Spells\\Human\\FlameStrike\\FlameStrikeTarget.mdl")
         ..setTargetAttachmentPoint("chest")
         ..register(HERO_KEEPER_OF_THE_GROVE, "Guardians of the Grove".setColor(colAbilitiesKeeperOfTheGrove),
-        "Summon spirits of the Grove guardians to protect it.",
-        (int lvl) -> "Summons {0} spirits. Duration 30 sec. Cd {1} sec.".format(
+        "",
+        (string format) -> "Summons spirits of the Grove guardians to protect it.",
+        (string format, int lvl) -> ("Summons spirits of the Grove guardians to protect it.\n"+
+        "Number of spirits: {0}.\n" +
+        "Duration: 30 seconds.\n" +
+        "Cooldown: {1} seconds.\n\n").format(
             (6 + 2*(lvl-1)).toString(),
             (60.0 - 10 * (lvl-1)).toString()
-        ))
+        ) +
+
+        ("Cenarius's Spirit:\n" +
+        "Health: {0} + {1} x Int.\n" + 
+        "Armor: ....\n" +
+        "Damage: {2} + {3} x Int.\n" + 
+        "Armor Penetration: {4}% of Keeper's Armor Penetration.").format(
+            (2600 + 340*lvl).toString(),
+            (0.19*lvl).toString(2),
+            (256 + 121*lvl).toString(),
+            (1.9*lvl).toString(1),
+            (0.2*lvl).toString(1)
+        ) +
+
+        ("The Grove's Spirit:\n" +
+        "Health: {0} + {1} x Int.\n" + 
+        "Armor: ....\n" +
+        "Damage: {2} + {3} x Int.\n" + 
+        "Armor Penetration: {4}% of Keeper's Armor Penetration.").format(
+            (420 + 125*lvl).toString(),
+            (0.1*lvl).toString(2),
+            (56 + 37*lvl).toString(),
+            (0.8*lvl).toString(),
+            (0.2*lvl).toString(1)      
+        )
+        )
         
 // ----------------------------------------------------------------------------

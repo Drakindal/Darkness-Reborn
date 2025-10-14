@@ -1,0 +1,48 @@
+package BeastMaster_Units
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+
+// ----------------------------------------------------------------------------
+
+@compiletime function beastMasterUnits()
+    new UnitDefinition(MISHABEAR, UnitIds.misha1)
+    ..setName("Misha Bear")
+    ..setNormalAbilities("")
+    ..setScalingValue(1)
+    ..setSelectionScale(1)
+    ..setAttack1AttackType(AttackType.Normal)
+    ..setAttack1Range(150)
+    ..setDefenseBase(9)
+    ..setHitPointsMaximumBase(1000)
+    ..setArmorType(ArmorType.Large)
+
+    new UnitDefinition(QUILBEAST, UnitIds.quillbeast3)
+    ..setName("Quilbeast")
+    ..setNormalAbilities("Afzy")
+    ..setDefaultActiveAbility("Afzy")
+    ..setScalingValue(1)
+    ..setSelectionScale(1)
+    ..setAttack1AttackType(AttackType.Normal)
+    ..setAttack1Range(650)
+    ..setDefenseBase(3)
+    ..setHitPointsMaximumBase(500)
+    ..setArmorType(ArmorType.Normal)
+
+    new UnitDefinition(HAWK, UnitIds.wareagle3)
+    ..setName("Hawk")
+    //..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraLightningMissile\\ChimaeraLightningMissile.mdl")
+    ..setScalingValue(1)
+    ..setSelectionScale(1)
+    ..setAttack1AttackType(AttackType.Normal)
+    ..setAttack1Range(650)
+    ..setAttack1DamageBase(72)
+    ..setDefenseBase(5)
+    ..setAttack1AreaofEffectFullDamage(0)
+    ..setAttack1AreaofEffectMediumDamage(0)
+    ..setAttack1AreaofEffectSmallDamage(0)
+    ..setHitPointsMaximumBase(750)
+    ..setArmorType(ArmorType.Normal)
+
+// ----------------------------------------------------------------------------

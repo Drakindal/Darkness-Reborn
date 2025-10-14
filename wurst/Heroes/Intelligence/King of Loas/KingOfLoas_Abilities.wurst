@@ -11,102 +11,104 @@ import MyUnitIds
 import MyColors
 import BuffObjEditing
 import BuffIds
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineAbilities()
-    new BuffDefinition(KING_OF_LOAS_BUFF_1, BuffIds.slow)
-    ..setIcon(Icons.bTNSlow)
-    ..setArtTarget("")
-    ..register("Shadra's Poison".setColor(colAbilitiesKingOfLoas),
-    "Movement and attack speed of this unit are decreased.")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(KING_OF_LOAS_BUFF_1, BuffIds.slow)
+        ..setIcon(Icons.bTNSlow)
+        ..setArtTarget("")
+        ..register("Shadra's Poison".setColor(colAbilitiesKingOfLoas),
+        "Movement and attack speed of this unit are decreased.")
 
-    new AbilityDefinitionSlow(KING_OF_LOAS_ABILITY_1_DUMMY)
-    ..setLevels(9)
-    ..setName("slow")
-    ..setOrderStringActivate("slow")
-    ..setOrderStringUseTurnOn("slow")
-    ..presetAttackSpeedFactor(lvl -> 0.05 * lvl)
-    ..presetMovementSpeedFactor(lvl -> 0.5 + 0.03*(lvl-1))
-    ..presetCastRange(lvl -> 5000)
-    ..presetCastingTime(lvl -> 0)
-    ..presetCooldown(lvl -> 0)
-    ..presetManaCost(lvl -> 0)
-    ..presetDuration(lvl -> 5)
-    ..setIconNormal(Icons.bTNSlow)
-    ..setEffectSound("")
-    ..setArtCaster("")
-    ..setBuffs(1, KING_OF_LOAS_BUFF_1.toRawCode())
+        new AbilityDefinitionSlow(KING_OF_LOAS_ABILITY_1_DUMMY)
+        ..setLevels(9)
+        ..setName("slow")
+        ..setOrderStringActivate("slow")
+        ..setOrderStringUseTurnOn("slow")
+        ..presetAttackSpeedFactor(lvl -> 0.05 * lvl)
+        ..presetMovementSpeedFactor(lvl -> 0.5 + 0.03*(lvl-1))
+        ..presetCastRange(lvl -> 5000)
+        ..presetCastingTime(lvl -> 0)
+        ..presetCooldown(lvl -> 0)
+        ..presetManaCost(lvl -> 0)
+        ..presetDuration(lvl -> 5)
+        ..setIconNormal(Icons.bTNSlow)
+        ..setEffectSound("")
+        ..setArtCaster("")
+        ..setBuffs(1, KING_OF_LOAS_BUFF_1.toRawCode())
 
-    new AbilityDefinition(KING_OF_LOAS_ABILITY_1, AbilityIds.silence)
-    ..setGeneralAbility(AbilityPosition.Q)
-    ..presetAreaofEffect(lvl -> 350)
-    ..presetCastRange(lvl -> 600)
-    ..presetCastingTime(lvl -> 0)
-    ..presetCooldown(lvl -> 17.0 - lvl)
-    ..setManaCost(1, 100)
-    ..setManaCost(2, 120)
-    ..setManaCost(3, 140)
-    ..setManaCost(4, 160)
-    ..setManaCost(5, 180)
-    ..setManaCost(6, 200)
-    ..setManaCost(7, 220)
-    ..setManaCost(8, 240)
-    ..setManaCost(9, 260)
-    ..setArtEffect("")
-    ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_1.toRawCode())
-    ..register(HERO_KING_OF_LOAS, "Poison of Shadra".setColor(colAbilitiesKingOfLoas),
-    "The King of loas spit out some of Shadra's poison over his foes, temporarily slowing them down by and dealing damage within 5 seconds in 350 range.",
-    (int lvl) -> "Reduces attack speed by {0}%, move speed by {1}%. Deals {2} x Int dps.".format(
-        (5 * lvl).toString(),
-        (50 + 3*(lvl-1)).toString(),
-        (1.8*lvl).toString(1)
-    ))
+        new AbilityDefinition(KING_OF_LOAS_ABILITY_1, AbilityIds.silence)
+        ..setGeneralAbility(AbilityPosition.Q)
+        ..presetAreaofEffect(lvl -> 350)
+        ..presetCastRange(lvl -> 600)
+        ..presetCastingTime(lvl -> 0)
+        ..presetCooldown(lvl -> 17.0 - lvl)
+        ..setManaCost(1, 100)
+        ..setManaCost(2, 120)
+        ..setManaCost(3, 140)
+        ..setManaCost(4, 160)
+        ..setManaCost(5, 180)
+        ..setManaCost(6, 200)
+        ..setManaCost(7, 220)
+        ..setManaCost(8, 240)
+        ..setManaCost(9, 260)
+        ..setArtEffect("")
+        ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_1.toRawCode())
+        ..register(HERO_KING_OF_LOAS, "Poison of Shadra".setColor(colAbilitiesKingOfLoas),
+        "The King of loas spit out some of Shadra's poison over his foes, temporarily slowing them down by and dealing damage within 5 seconds in 350 range.",
+        (int lvl) -> "Reduces attack speed by {0}%, move speed by {1}%. Deals {2} x Int dps.".format(
+            (5 * lvl).toString(),
+            (50 + 3*(lvl-1)).toString(),
+            (1.8*lvl).toString(1)
+        ))
 
 // ----------------------------------------------------------------------------
 
-    new BuffDefinition(KING_OF_LOAS_BUFF_2, BuffIds.bloodlust)
-    ..setArtTarget("")
-    ..setIcon(Icons.bTNBerserk)
-    ..register("Fins of Gral".setColor(colAbilitiesKingOfLoas),
-    "Loas is furious, his attack rate and movement speed are increased.")
+        new BuffDefinition(KING_OF_LOAS_BUFF_2, BuffIds.bloodlust)
+        ..setArtTarget("")
+        ..setIcon(Icons.bTNBerserk)
+        ..register("Fins of Gral".setColor(colAbilitiesKingOfLoas),
+        "Loas is furious, his attack rate and movement speed are increased.")
 
-    new AbilityDefinitionBloodlust(KING_OF_LOAS_ABILITY_2_DUMMY) // on dummy
-    ..setLevels(9)
-    ..presetAttackSpeedIncrease(lvl -> 0.15 * lvl)
-    ..presetScalingFactor(lvl -> 0.05 * lvl)
-    ..setOrderStringActivate("bloodlust")
-    ..setOrderStringUseTurnOn("bloodlust")
-    ..presetCastRange(lvl -> 2000)
-    ..presetCooldown(lvl -> 0)
-    ..presetDurationHero(lvl -> 10)
-    ..presetMovementSpeedIncrease(lvl -> 0.0)
-    ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_2.toRawCode())
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
-    ..setRequirements("")
+        new AbilityDefinitionBloodlust(KING_OF_LOAS_ABILITY_2_DUMMY) // on dummy
+        ..setLevels(9)
+        ..presetAttackSpeedIncrease(lvl -> 0.15 * lvl)
+        ..presetScalingFactor(lvl -> 0.05 * lvl)
+        ..setOrderStringActivate("bloodlust")
+        ..setOrderStringUseTurnOn("bloodlust")
+        ..presetCastRange(lvl -> 2000)
+        ..presetCooldown(lvl -> 0)
+        ..presetDurationHero(lvl -> 10)
+        ..presetMovementSpeedIncrease(lvl -> 0.0)
+        ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_2.toRawCode())
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
+        ..setRequirements("")
 
-    new AbilityDefinitionBladeMasterCriticalStrike(KING_OF_LOAS_ABILITY_2)
-    ..setGeneralAbility(AbilityPosition.W)
-    ..setIcon(Icons.bTNBerserk)
-    ..presetChancetoCriticalStrike(lvl -> 0)
-    ..register(HERO_KING_OF_LOAS, "Fins of Gral".setColor(colAbilitiesKingOfLoas),
-    "On every attack the King of loas has a 15% chance to enrage, increasing his attack speed for 10 seconds.",
-    (int lvl) -> "+{0}% attack speed.".format(
-        (15 * lvl).toString()
-    ))
-    
+        new AbilityDefinitionBladeMasterCriticalStrike(KING_OF_LOAS_ABILITY_2)
+        ..setGeneralAbility(AbilityPosition.W)
+        ..setIcon(Icons.bTNBerserk)
+        ..presetChancetoCriticalStrike(lvl -> 0)
+        ..register(HERO_KING_OF_LOAS, "Fins of Gral".setColor(colAbilitiesKingOfLoas),
+        "On every attack the King of loas has a 15% chance to enrage, increasing his attack speed for 10 seconds.",
+        (int lvl) -> "+{0}% attack speed.".format(
+            (15 * lvl).toString()
+        ))
+        
 // ----------------------------------------------------------------------------
 
-    new AbilityDefinitionMountainKingBash(KING_OF_LOAS_ABILITY_3)
-    ..setGeneralAbility(AbilityPosition.E)
-    ..setIcon(Icons.bTNAkama)
-    ..presetChancetoBash(lvl -> 0)
-    ..register(HERO_KING_OF_LOAS, "Thunder of Akunda".setColor(colAbilitiesKingOfLoas),
-    "Every attack, the King of loas has a chance to release the thundering might of Akunda dealing increased damage to the target.",
-    (int lvl) -> "{0}% chance to deal {1} x Int magical damage.".format(
-        (3 * lvl).toString(),
-        (1.5*lvl).toString(1)
-    ))
+        new AbilityDefinitionMountainKingBash(KING_OF_LOAS_ABILITY_3)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..setIcon(Icons.bTNAkama)
+        ..presetChancetoBash(lvl -> 0)
+        ..register(HERO_KING_OF_LOAS, "Thunder of Akunda".setColor(colAbilitiesKingOfLoas),
+        "Every attack, the King of loas has a chance to release the thundering might of Akunda dealing increased damage to the target.",
+        (int lvl) -> "{0}% chance to deal {1} x Int magical damage.".format(
+            (3 * lvl).toString(),
+            (1.5*lvl).toString(1)
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -123,58 +125,59 @@ public constant real array[9] loas_abi4_Heal = [
 ]
 
 @compiletime function defineAbilities4()
-    new BuffDefinition(KING_OF_LOAS_BUFF_4, BuffIds.innerFire)
-    ..setArtTarget("")
-    ..setArtTarget(Abilities.doomTarget)
-    ..setIcon(Icons.bTNBerserk)
-    ..setTargetAttachmentPoint0(1, "origin")
-    ..setTargetAttachments(1, 1)
-    ..register("Blood of Hakkar".setColor(colAbilitiesKingOfLoas),
-    "King of loas is inbued with the Blood of Hakkar.")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(KING_OF_LOAS_BUFF_4, BuffIds.innerFire)
+        ..setArtTarget("")
+        ..setArtTarget(Abilities.doomTarget)
+        ..setIcon(Icons.bTNBerserk)
+        ..setTargetAttachmentPoint0(1, "origin")
+        ..setTargetAttachments(1, 1)
+        ..register("Blood of Hakkar".setColor(colAbilitiesKingOfLoas),
+        "King of loas is inbued with the Blood of Hakkar.")
 
-    new AbilityDefinitionInnerFire(KING_OF_LOAS_ABILITY_4_DUMMY)
-    ..setName("Blood of Hakkar")
-    ..setLevels(1)
-    ..setCooldown(1, 0)
-    ..setManaCost(1, 0)
-    ..setCastRange(1, 9999)
-    ..setDamageIncrease(1, 0)
-    ..setDefenseIncrease(1, 0)
-    ..setDuration(1, 10)
-    ..setPriorityforSpellSteal(0)
-    ..setTargetsAllowed(1, commaList("Air", "Ground", "Self"))
-    ..setCheckDependencies(false)
-    ..setRequirements("")
-    ..setBuffs(1, KING_OF_LOAS_BUFF_4.toRawCode())
-    
-    new AbilityDefinitionRoar(KING_OF_LOAS_ABILITY_4)
-    ..setGeneralAbility(AbilityPosition.R)
-    ..setIcon(Icons.bTNAmulet)
-    ..setTargetsAllowed(1, commaList("Air", "Ground", "Self"))
-    ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_4.toRawCode())
-    ..presetCooldown(lvl -> 20.0 - (lvl-1))
-    ..presetDamageIncrease(lvl -> 0)
-    ..presetAreaofEffect(lvl -> 0)
-    ..presetDurationHero(lvl -> 10)
-    ..setManaCost(1, 50)
-    ..setManaCost(2, 100)
-    ..setManaCost(3, 150)
-    ..setManaCost(4, 200)
-    ..setManaCost(5, 250)
-    ..setManaCost(6, 300)
-    ..setManaCost(7, 350)
-    ..setManaCost(8, 350)
-    ..setManaCost(9, 350)
-    ..setLevelSkipRequirement(4)
-    ..setRequiredLevel(4)
-    ..setArtCaster("Loas Assets\\az_ts_v2.mdx")
-    ..setArtSpecial("Loas Assets\\az_ts_v2.mdx")
-    ..setAreaEffect("Loas Assets\\az_ts_v2.mdx")
-    ..register(HERO_KING_OF_LOAS, "Blood of Hakkar".setColor(colAbilitiesKingOfLoas),
-    "The King of loas is filled with the blood of Hakkar, drinking the blood of his enemies for 10 seconds, healing for damage dealt.",
-    (int lvl) -> "Heals for {0}% of damage dealt.".format(
-        (100*loas_abi4_Heal[lvl-1]).toString()
-    ))
+        new AbilityDefinitionInnerFire(KING_OF_LOAS_ABILITY_4_DUMMY)
+        ..setName("Blood of Hakkar")
+        ..setLevels(1)
+        ..setCooldown(1, 0)
+        ..setManaCost(1, 0)
+        ..setCastRange(1, 9999)
+        ..setDamageIncrease(1, 0)
+        ..setDefenseIncrease(1, 0)
+        ..setDuration(1, 10)
+        ..setPriorityforSpellSteal(0)
+        ..setTargetsAllowed(1, commaList("Air", "Ground", "Self"))
+        ..setCheckDependencies(false)
+        ..setRequirements("")
+        ..setBuffs(1, KING_OF_LOAS_BUFF_4.toRawCode())
+        
+        new AbilityDefinitionRoar(KING_OF_LOAS_ABILITY_4)
+        ..setGeneralAbility(AbilityPosition.R)
+        ..setIcon(Icons.bTNAmulet)
+        ..setTargetsAllowed(1, commaList("Air", "Ground", "Self"))
+        ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_4.toRawCode())
+        ..presetCooldown(lvl -> 20.0 - (lvl-1))
+        ..presetDamageIncrease(lvl -> 0)
+        ..presetAreaofEffect(lvl -> 0)
+        ..presetDurationHero(lvl -> 10)
+        ..setManaCost(1, 50)
+        ..setManaCost(2, 100)
+        ..setManaCost(3, 150)
+        ..setManaCost(4, 200)
+        ..setManaCost(5, 250)
+        ..setManaCost(6, 300)
+        ..setManaCost(7, 350)
+        ..setManaCost(8, 350)
+        ..setManaCost(9, 350)
+        ..setLevelSkipRequirement(4)
+        ..setRequiredLevel(4)
+        ..setArtCaster("Loas Assets\\az_ts_v2.mdx")
+        ..setArtSpecial("Loas Assets\\az_ts_v2.mdx")
+        ..setAreaEffect("Loas Assets\\az_ts_v2.mdx")
+        ..register(HERO_KING_OF_LOAS, "Blood of Hakkar".setColor(colAbilitiesKingOfLoas),
+        "The King of loas is filled with the blood of Hakkar, drinking the blood of his enemies for 10 seconds, healing for damage dealt.",
+        (int lvl) -> "Heals for {0}% of damage dealt.".format(
+            (100*loas_abi4_Heal[lvl-1]).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -186,46 +189,47 @@ public constant real array[4] loas_abi5_Range = [
 ]
 
 @compiletime function defineAbilities5()
-    new BuffDefinition(KING_OF_LOAS_BUFF_5, BuffIds.slow)
-    ..setIcon(Icons.bTNAmbush)
-    ..setArtTarget("")
-    ..register("Aura of Bwonsamdi".setColor(colAbilitiesKingOfLoas),
-    "King of loas has caused this unit to tremble in fear, losing health, movement- and attack speed.")
+    if (BUILD_INT_HEROES)
+        new BuffDefinition(KING_OF_LOAS_BUFF_5, BuffIds.slow)
+        ..setIcon(Icons.bTNAmbush)
+        ..setArtTarget("")
+        ..register("Aura of Bwonsamdi".setColor(colAbilitiesKingOfLoas),
+        "King of loas has caused this unit to tremble in fear, losing health, movement- and attack speed.")
 
-    new AbilityDefinitionSlow(KING_OF_LOAS_ABILITY_5_DUMMY) // on dummy
-    ..setLevels(9)
-    ..setName("slow")
-    ..setOrderStringActivate("slow")
-    ..setOrderStringUseTurnOn("slow")
-    ..presetAttackSpeedFactor(lvl -> 0.1*lvl)
-    ..presetMovementSpeedFactor(lvl -> 0.1*lvl)
-    ..presetCastRange(lvl -> 5000)
-    ..presetCastingTime(lvl -> 0)
-    ..presetCooldown(lvl -> 0)
-    ..presetDuration(lvl -> 2)
-    ..presetManaCost(lvl -> 0)
-    ..setIconNormal(Icons.bTNSlow)
-    ..setEffectSound("")
-    ..setArtCaster("")
-    ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_5.toRawCode())
+        new AbilityDefinitionSlow(KING_OF_LOAS_ABILITY_5_DUMMY) // on dummy
+        ..setLevels(9)
+        ..setName("slow")
+        ..setOrderStringActivate("slow")
+        ..setOrderStringUseTurnOn("slow")
+        ..presetAttackSpeedFactor(lvl -> 0.1*lvl)
+        ..presetMovementSpeedFactor(lvl -> 0.1*lvl)
+        ..presetCastRange(lvl -> 5000)
+        ..presetCastingTime(lvl -> 0)
+        ..presetCooldown(lvl -> 0)
+        ..presetDuration(lvl -> 2)
+        ..presetManaCost(lvl -> 0)
+        ..setIconNormal(Icons.bTNSlow)
+        ..setEffectSound("")
+        ..setArtCaster("")
+        ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_5.toRawCode())
 
-    new AbilityDefinitionTaurenChieftainEnduranceAura(KING_OF_LOAS_ABILITY_5)
-    ..setUltimateAbility()
-    ..presetAreaofEffect(lvl -> 600)
-    ..setIcon(Icons.bTNDeathPact)
-    ..setEffectSound("")
-    ..setArtCaster(Abilities.commandAura)
-    ..setArtTarget(Abilities.commandAuraTarget)
-    ..presetAttackSpeedIncrease(lvl -> -0.1 * lvl)
-    ..presetMovementSpeedIncrease(lvl -> -0.1 * lvl)
-    ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
-    ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_5.toRawCode())
-    ..register(HERO_KING_OF_LOAS, "Aura of Bwonsamdi".setColor(colAbilitiesKingOfLoas),
-    "The King of loas exudes the presence of Bwonsamdi on all enemies reducing their movement and attack speed and dealing damage every 2 seconds.",
-    (int lvl) -> "-{0}% attack and movement speed. Deals {1} x Int damage. {2} range.".format(
-        (10*lvl).toString(),
-        (2 + lvl * 0.5).toString(1),
-        (loas_abi5_Range[lvl-1]).toString()
-    ))
+        new AbilityDefinitionTaurenChieftainEnduranceAura(KING_OF_LOAS_ABILITY_5)
+        ..setUltimateAbility()
+        ..presetAreaofEffect(lvl -> 600)
+        ..setIcon(Icons.bTNDeathPact)
+        ..setEffectSound("")
+        ..setArtCaster(Abilities.commandAura)
+        ..setArtTarget(Abilities.commandAuraTarget)
+        ..presetAttackSpeedIncrease(lvl -> -0.1 * lvl)
+        ..presetMovementSpeedIncrease(lvl -> -0.1 * lvl)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+        ..presetBuffs(lvl -> KING_OF_LOAS_BUFF_5.toRawCode())
+        ..register(HERO_KING_OF_LOAS, "Aura of Bwonsamdi".setColor(colAbilitiesKingOfLoas),
+        "The King of loas exudes the presence of Bwonsamdi on all enemies reducing their movement and attack speed and dealing damage every 2 seconds.",
+        (int lvl) -> "-{0}% attack and movement speed. Deals {1} x Int damage. {2} range.".format(
+            (10*lvl).toString(),
+            (2 + lvl * 0.5).toString(1),
+            (loas_abi5_Range[lvl-1]).toString()
+        ))
 
 // ----------------------------------------------------------------------------
