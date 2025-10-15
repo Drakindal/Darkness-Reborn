@@ -44,7 +44,7 @@ import MyOrderIds
         ..setArtTarget("")
         ..setTargetAttachmentPoint("")
         ..register(HERO_TAUREN_CHIEFTAIN, "Shock Explosion".setColor(colAbilitiesTaurenChieftain), 
-        "Tauren the Chieftain hits the ground with his mighty force causing an earthquake in 1000 AoE area.",
+        "Tauren the Chieftain hits the ground with his mighty force causing an earthquake in 500 range area.",
         (int lvl) -> "Deals {0} + {1} x Str dps. Duration {2} sec.".format(
             (50*lvl).toString(),
             (0.8*lvl).toString(1),

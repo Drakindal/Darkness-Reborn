@@ -16,7 +16,7 @@ public function tornado()
         let tickRate = 0.05
         let transitProjectile = new PointTransitProjectile(target, sfx, tickRate)
         let time = 6.
-        let range = (500.0+50*lvl)/2
+        let range = 250.0+50*lvl
         transitProjectile.timedMoveForward(dist, time) (vec2 target, boolean inTransit) ->
             let dmg = caster.getMaxMana() * lvl * 0.90/(1/tickRate)
             if inTransit

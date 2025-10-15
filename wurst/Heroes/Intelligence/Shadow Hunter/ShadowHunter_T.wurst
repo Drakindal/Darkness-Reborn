@@ -9,7 +9,7 @@ import ClosureTimers
 public function shadowHunter_T_healingWard()
     EventListener.onPointCast(SHADOW_HUNTER_ABILITY_5) (unit caster, vec2 target) ->
         let lvl = caster.getAbilityLevel(SHADOW_HUNTER_ABILITY_5)
-        let range = (700.0 + 50*lvl)/2
+        let range = 700.0 + 50*lvl
         let duration = 20.0 + 10*(lvl-1)
         let period = 0.05
 

@@ -73,7 +73,7 @@ import DebugVar
         ..presetCooldown(lvl -> 12.-lvl)
         ..presetManaCost(lvl -> 0)
         ..register(HERO_WOLFMAN_INITIATE, "Howl".setColor(colAbilitiesWolfman), 
-        "Howls to the sky. Stuns enemies for 2 sec. Reduces movement and attack speed and damage of enemies in 800 AoE for 10 sec.",
+        "Howls to the sky. Stuns enemies for 2 sec. Reduces movement and attack speed and damage of enemies in 400 range for 10 sec.",
         (int lvl) -> "-{0}% damage, -{1}% attack speed, -{2}% move speed. Cd {3} sec".format(
             (2*lvl).toString(),
             (3*lvl).toString(),

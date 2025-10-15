@@ -22,7 +22,7 @@ import DebugVar
         ..presetDamageReductionperTarget(lvl -> 0.0)
         ..presetCastRange(lvl -> 650.0)
         ..register(HERO_DEMON_HUNTER, "Chain Flash".setColor(colAbilitiesDemonHunter), 
-        "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing damage to all enemies within 600 AoE.",
+        "Demon Hunter channels his own power into his weapon striking an enemy with lightning and dealing damage to all enemies within 300 range.",
         (int lvl) -> "Deals {0} + {1} x Agi damage.".format(
             (300*lvl).toString(),
             (2*lvl).toString()
@@ -98,7 +98,12 @@ constant int array[9] abi4_Agi = [
         ..setIcon("ReplaceableTextures\\CommandButtons\\PAS_cr_CarA10.blp")
         ..register(HERO_DEMON_HUNTER, "Demon Power".setColor(colAbilitiesDemonHunter), 
         "Demon Hunter releases his power after 25 times attack increasing his amount of Agility fold 10 times. Also he passively gets a large amount of Agility along with a small amount of Strength and Intelligence.",
-        (int lvl) -> "+{0} Strength, +{1} Agility, +{2} Intelligence. Increased power lasts for {3} attacks.".format((5 + 5*lvl).toString(), abi4_Agi[lvl-1].toString(), (5 + 5*lvl).toString(), (lvl + 1).toString()))
+        (int lvl) -> "+{0} Strength, +{1} Agility, +{2} Intelligence. Increased power lasts for {3} attacks.".format(
+            (5 + 5*lvl).toString(),
+            abi4_Agi[lvl-1].toString(),
+            (5 + 5*lvl).toString(),
+            (lvl + 1).toString()
+        ))
 
 // ----------------------------------------------------------------------------
 
@@ -125,6 +130,9 @@ constant real array[9] abi5_Range = [
         ..setArtSpecial("Grin Curse.mdx")
         ..register(HERO_DEMON_HUNTER, "Shadow Blink".setColor(colAbilitiesDemonHunter), 
         "Demon Hunter immediately moves through the shadows to another location.",
-        (int lvl) -> "Blink: {0} range, cd {1} sec.".format(abi5_Range[lvl-1].toString(), (21.0 - lvl).toString(0)))
+        (int lvl) -> "Blink: {0} range, cd {1} sec.".format(
+            abi5_Range[lvl-1].toString(),
+            (21.0 - lvl).toString(0)
+        ))
 
 // ----------------------------------------------------------------------------

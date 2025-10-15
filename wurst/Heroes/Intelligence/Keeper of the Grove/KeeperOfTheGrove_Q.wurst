@@ -14,7 +14,7 @@ public function entanglingRoots()
     EventListener.onPointCast(KEEPER_OF_THE_GROVE_ABILITY_1) (unit caster, vec2 target) ->
         let lvl = caster.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_1)
         let dmg = 2.00 * lvl * caster.getInt(true) + keeperOfTheGrove_abi1_Damage[lvl-1]
-        let range = (450.0 + 40*(lvl-1))/2
+        let range = 450.0 + 40*(lvl-1)
         forUnitsInRange(target, range, true) (unit u) ->
             if caster.isEnemyOf(u) and u.isAlive()
                 new DummyCaster()

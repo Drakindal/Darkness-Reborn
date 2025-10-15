@@ -92,7 +92,11 @@ constant real array[9] abi2_DamageTaken = [
         ..presetDuration(lvl -> 30.0)
         ..register(HERO_BLADEMASTER, "Mirror Image".setColor(colAbilitiesBlademaster), 
         "Confuses the enemy by creating illusions of the Blademaster and dispelling all magic from the Blademaster (cd 30 sec).",
-        (int lvl) -> "Creates {0} illusions that deal {1}% damage and take {2}% damage.".format(abi2_Images[lvl - 1].toString(), (100*abi2_DamageDealt[lvl - 1]).toString(0), (100*abi2_DamageTaken[lvl - 1]).toString(0)))
+        (int lvl) -> "Creates {0} illusions that deal {1}% damage and take {2}% damage.".format(
+            abi2_Images[lvl - 1].toString(),
+            (100*abi2_DamageDealt[lvl - 1]).toString(0),
+            (100*abi2_DamageTaken[lvl - 1]).toString(0)
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -102,7 +106,10 @@ constant real array[9] abi2_DamageTaken = [
         ..presetDamageMultiplier(lvl -> 3.0 + lvl)
         ..register(HERO_BLADEMASTER, "Critical Strike".setColor(colAbilitiesBlademaster), 
         "Gives a chance that the Blademaster will do more damage on his attacks.",
-        (int lvl) -> "{0}% chance to deal x{1} damage".format((7.5 + 2.5*lvl).toString(1), (3 + lvl).toString()))
+        (int lvl) -> "{0}% chance to deal x{1} damage".format(
+            (7.5 + 2.5*lvl).toString(1),
+            (3 + lvl).toString()
+        ))
     
 // ----------------------------------------------------------------------------
 
@@ -133,7 +140,7 @@ constant real array[9] abi2_DamageTaken = [
         (int lvl) -> "Deals {0} + {1} x Agi damage in {2} range. Stun duration {3} sec.".format(
             (50*lvl).toString(),
             (0.5*lvl).toString(1),
-            ((300 + 30*lvl)*2).toString(),
+            (300 + 30*lvl).toString(),
             (0.5*lvl + 2).toString()
         ))
         
@@ -154,7 +161,7 @@ constant real array[9] abi2_DamageTaken = [
         ..setMissileArt("")
         ..setArtSpecial("")
         ..register(HERO_BLADEMASTER, "Haste Slash".setColor(colAbilitiesBlademaster), 
-        "Blademaster begins to spin rapidly at a target location, dealing damage and ending with a huge finishing burst of damage (x4 damage).",
+        "Blademaster begins to spin rapidly at a target location, dealing damage for all units in 350 range and ending with a huge finishing burst of damage (x4 damage).",
         (int lvl) -> "Deals {0} x Agi + {1} damage every 0.3 sec within 3 sec.".format(
             (0.75*lvl).toString(2),
             (3000*lvl).toString()

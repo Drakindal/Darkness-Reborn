@@ -50,12 +50,12 @@ import DebugVar
         ..presetManaCost(lvl -> 75 + 10 * lvl + 10 * lvl + 10 * (lvl-2))
         ..register(HERO_PITLORD, "Meteor".setColor(colAbilitiesPitLord), 
         "Causes a meteor to fall down from the sky, dealing damage and burning enemies.",
-        (int lvl) -> "Deals {0} + {1} x Str damage in {4} AoE initially, and then {2} x Str dps within {3} sec.".format(
+        (int lvl) -> "Deals {0} + {1} x Str damage in {4} range initially, and then {2} x Str dps within {3} sec.".format(
             (30*lvl).toString(),
             (1.5*lvl).toString(),
             (0.5*lvl).toString(1),
             (lvl).toString(),
-            (2*(175+25*lvl)).toString()
+            (175+25*lvl).toString()
         ))
 
 // ----------------------------------------------------------------------------

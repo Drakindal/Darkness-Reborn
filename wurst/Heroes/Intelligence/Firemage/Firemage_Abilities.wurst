@@ -193,7 +193,7 @@ public constant real array[9] firemage_abi3_IntScale = [
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNEyeOfTheFireStorm.blp")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..register(HERO_FIRE_MAGE, "Darkness Fire".setColor(colAbilitiesFiremage), 
-        wordPassive + "Firemage shoots out rays of fire to an enemy within 600 Range.",
+        wordPassive + "Firemage shoots out rays of fire to an enemy within 600 range.",
         (int lvl) -> "Deals {0} damage every {1} sec.".format(
             (70*lvl).toString(),
             (1.1 - 0.1*lvl).toString(1)

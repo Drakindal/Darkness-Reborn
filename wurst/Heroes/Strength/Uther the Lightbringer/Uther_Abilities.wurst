@@ -31,13 +31,13 @@ import DebugVar
         ..presetDurationNormal(lvl -> 0.01)
         ..presetWardUnitType(lvl -> "")
         ..presetCastRange(lvl -> 800.)
-        ..presetAreaofEffect(lvl -> 400.)
-        ..presetDetonationRadius(lvl -> 400.)
-        ..presetDetectionRadius(lvl -> 400.)
+        ..presetAreaofEffect(lvl -> 300.)
+        ..presetDetonationRadius(lvl -> 300.)
+        ..presetDetectionRadius(lvl -> 300.)
         ..presetIcon(Icons.bTNHammer)
         ..setRequirements("")
         ..register(HERO_UTHER, "Judgement".setColor(colAbilitiesUther), 
-        "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 800 AoE receive damage and get stunned.\n" +
+        "A Judgement Hammer falls from the sky landing in the enemy's lines. All enemies in 300 range receive damage and get stunned.\n" +
         "Uther will consume gathered Holy Power to boost the ability:\n" +
         " 1 Holy Power = x1.3 damage.\n" +
         " 2 Holy Power = x1.4 damage.\n" +
@@ -77,10 +77,10 @@ import DebugVar
         // WIP armor. WIP onDamageChecks.
         new AbilityDefinitionPaladinDevotionAura(UTHER_ABILITY_3)
         ..setGeneralAbility(AbilityPosition.E)
-        ..presetAreaofEffect(lvl -> 2000.)
+        ..presetAreaofEffect(lvl -> 1500.)
         ..presetArmorBonus(lvl -> 5. * lvl)
         ..register(HERO_UTHER, "Devotion Aura".setColor(colAbilitiesUther), 
-        "Damage reduction aura for all units in 2000 AoE.",
+        "Damage reduction aura for all units in 1500 range.",
         (int lvl) -> "+{0}% damage reduction post-mitigation.".format(
             (2*lvl).toString()
         ))
@@ -159,7 +159,7 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
         ..presetIcon(Icons.bTNBerserk)
         ..setRequirements("")
         ..register(HERO_UTHER, "Light's Wrath".setColor(colAbilitiesUther), 
-        "Sends the wrath of the Light onto an enemy, expending all Holy Power to sear their flesh.  Restores half of the damage amount HP to all allies in 1200 AoE and heals Uther even if he is outside the range.",
+        "Sends the wrath of the Light onto an enemy, expending all Holy Power to sear their flesh.  Restores half of the damage amount HP to all allies in 1200 range and heals Uther even if he is outside the range.",
         (int lvl) -> "Deals {0} x Holy Power x Str magical damage. Also, restores {1}% of Uther max HP.".format(
             (0.25*lvl).toString(2),
             (20 + 10*(lvl-1)).toString()

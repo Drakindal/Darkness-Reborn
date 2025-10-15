@@ -51,7 +51,7 @@ import DebugVar
         ..setArtCaster("Units\\Far seer(Zues)\\LightningNova.mdx")
         ..presetDuration(lvl -> 1 + 0.15*(lvl-1))
         ..presetCooldown(lvl -> 25)
-        ..presetAreaofEffect(lvl -> 600)
+        ..presetAreaofEffect(lvl -> 500)
         ..presetBuffs(lvl -> commaList(HERALD_BUFF_W))
         ..presetManaCost(lvl -> (80*lvl))
         ..register(HERO_HERALD_OF_LIGHTNING, "Lightning Nova".setColor(colAbilitiesHeraldOfLightning), 

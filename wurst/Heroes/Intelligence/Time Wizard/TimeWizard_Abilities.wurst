@@ -188,8 +188,8 @@ public constant int array[4] timeWizard_abi2_Stats = [
         ..setArtTarget("")
         ..setTargetAttachmentPoint("")
         ..register(HERO_TIME_WIZARD, "Radar Time".setColor(colAbilitiesTimeWizard), 
-        "Time Wizard unleashes power accumulated over the life to summon time rift that deals magical damage to all enemies in 600 AoE and heals allies for 5% of max HP per second.\n" +
-        "At the end of cast resets cooldown of all allies in AoE.\n" +
+        "Time Wizard unleashes power accumulated over the life to summon time rift that deals magical damage to all enemies in 600 range and heals allies for 5% of max HP per second.\n" +
+        "At the end of cast resets cooldown of all allies in range.\n" +
         "Has a 15% chance to reset Time Wizard cooldown.\n" +
         "The ability can be learned at levels: 20 - 40 - 60 - 80.".setColor(colCanLearn),
         (int lvl) -> "Deals {0} x Int damage every 0.05 sec during 4 sec. Cd {1} sec.".format(

@@ -12,7 +12,7 @@ public function chainTest()
     EventListener.onTargetCast(LICH_ABILITY_3) (unit caster, unit target) ->
         let lvl = caster.getAbilityLevel(LICH_ABILITY_3)
         let sfx = addEffect(Abilities.frostBoltMissile, caster.getPos())..setZ(caster.getLocalZ() + 10)..setScale(1.5)
-        let bounceRange = (400. + 40*(lvl-1))/2
+        let bounceRange = 400. + 40*(lvl-1)
         let closestEnemy = true
         let maxBounceCount = lvl+3
         let bouncingProjectiles = new BouncingProjectiles(sfx, caster, target, bounceRange, closestEnemy, maxBounceCount)

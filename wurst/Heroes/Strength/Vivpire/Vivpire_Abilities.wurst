@@ -117,7 +117,7 @@ public constant real array[9] vivpire_abi3_Aura = [
         ..presetBuffs(lvl -> commaList(VIVPIRE_BUFF_3))
         ..register(HERO_VIVPIRE, "Vampiric Aura".setColor(colAbilitiesVivpire), 
         "Gives life steal aura to nearby allies.",
-        (int lvl) -> "{0}% Life Steal Aura in {1} Aoe.".format(
+        (int lvl) -> "{0}% Life Steal Aura in {1} range.".format(
             (100*vivpire_abi3_Aura[lvl-1]).toString(1),
             (1100+100*(lvl-1)).toString()
         ))
@@ -170,9 +170,9 @@ public constant int array[9] vivpire_abi4_Str = [
         ..setArtSpecial("")
         ..presetUnitPauseDuration(lvl -> 0)
         ..register(HERO_VIVPIRE, "Prey Marked".setColor(colAbilitiesVivpire), 
-        "Marks the target as a Prey, making them able to be cursed by Vampiric Bite. Also, Vivpire drains blood from the killed Prey and permanently gets Strength. Vivpire marks as a Prey not only the single target but also 2 x Lvl random units in 800 AoE.\n" +
+        "Marks the target as a Prey, making them able to be cursed by Vampiric Bite. Also, Vivpire drains blood from the killed Prey and permanently gets Strength. Vivpire marks as a Prey not only the single target but also 2 x Lvl random units in 400 range.\n" +
         wordNote + "Type '-blood' to see your current Blood amount.",
-        (int lvl) -> "+{0} Str on kill. {1} preys in AoE limit. Duration {2} sec.".format(
+        (int lvl) -> "+{0} Str on kill. {1} preys in range limit. Duration {2} sec.".format(
             vivpire_abi4_Str[lvl-1].toString(),
             (2*lvl).toString(),
             (10 + 2*(lvl-1)).toString()

@@ -95,7 +95,7 @@ import MyOrderIds
         ..setArtTarget("")
         ..register(HERO_SYLVANAS, "Dark Arrow".setColor(colAbilitiesSylvanas), 
         "Sylvanas coats an arrow with Dark Magic and targets an enemy. All enemies in a 400 range proximity of the target will take damage based on Sylvanas's Strength.",
-        (int lvl) -> "Deals {0} x Str damage in 800 AoE.".format(
+        (int lvl) -> "Deals {0} x Str damage.".format(
             (2*lvl).toString()
         ))
 

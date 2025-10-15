@@ -71,7 +71,7 @@ import DebugVar
         ..setCooldown(1, 6.)
         ..setManaCost(1, 0)
         ..register(HERO_WOLFMAN_FINAL, "Howl".setColor(colAbilitiesWolfman),
-        "Howls to the sky. Stuns enemies for 3.5 sec. Reduces movement and attack speed and damage of enemies in 800 AoE for 14 sec.\n" +
+        "Howls to the sky. Stuns enemies for 3.5 sec. Reduces movement and attack speed and damage of enemies in 400 range for 14 sec.\n" +
         "-25% damage, -45% attack speed, -90% move speed. Cd 6 sec.")
 
 // ----------------------------------------------------------------------------

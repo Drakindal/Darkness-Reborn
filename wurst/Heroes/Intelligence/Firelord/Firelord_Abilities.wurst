@@ -95,7 +95,7 @@ import MyOrderIds
         (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
             (400*lvl).toString(),
             (lvl).toString(),
-            ((300 + 20*lvl)*2).toString()
+            (300 + 30*lvl).toString()
         ))
         
 // ----------------------------------------------------------------------------
@@ -132,7 +132,7 @@ import MyOrderIds
         (int lvl) -> "Deals {0} + {1} x Intelligence damage in {2} range.".format(
             (300*lvl).toString(),
             (0.8*lvl).toString(1),
-            ((400 + 20*lvl)*2).toString()
+            (400 + 20*lvl).toString()
         ))
         
 // ----------------------------------------------------------------------------
@@ -222,7 +222,7 @@ public constant int array[9] firelord_abi4_BounceAmount = [
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNPyroclasm.blp")
         ..setArtTarget("")
         ..register(HERO_FIRELORD, "Pyroclasm".setColor(colAbilitiesFirelord), 
-        "Firelord launches a fireball at the target enemy that bounces between nearby enemies several times, dealing 2000 + 7.2x Intelligence damage to enemies each time.\n" +
+        "Firelord launches a fireball at the target enemy that bounces between nearby enemies several times.\n" +
         "Prioritizes targets affected by Blaze.",
         (int lvl) -> "Deals {0} + {1} x Intelligence damage. Max {2} targets.".format(
             firelord_abi4_Damage[lvl-1].toString(0),

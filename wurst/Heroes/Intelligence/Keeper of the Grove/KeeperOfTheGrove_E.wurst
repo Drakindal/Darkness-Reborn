@@ -16,7 +16,7 @@ public function hawkeyeSplit()
         caster.setUserData(GetRandomInt(0, 359))
         owl.setYaw(caster.getUserData().toReal())
         owl.setHeight(150)
-        let range = (450.0 + 30*(lvl-1))/2
+        let range = 450.0 + 30*(lvl-1)
         doPeriodicallyTimed(0.25, 5) (CallbackCounted cb) ->
             if(caster.getUserData() + 18 > 360)
                 caster.setUserData(caster.getUserData() + 18 - 360)

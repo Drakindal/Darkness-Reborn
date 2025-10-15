@@ -15,7 +15,7 @@ import MyOrderIds
     if (BUILD_INT_HEROES)
         new AbilityDefinitionLichFrostNova(LICH_ABILITY_1)
         ..setGeneralAbility(AbilityPosition.Q)
-        ..presetAreaofEffect(lvl -> 500.0)
+        ..presetAreaofEffect(lvl -> 800.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..setManaCost(1, 150)
         ..setManaCost(2, 250)
@@ -29,7 +29,7 @@ import MyOrderIds
         ..presetAreaofEffectDamage(lvl -> 0.0)
         ..presetDuration(lvl -> 15.0)
         ..register(HERO_LICH, "Frost Nova".setColor(colAbilitiesLich), 
-        "Blasts enemy units with a wave of chilling frost in 1000 range slowing movement speed and attack rate. Slows enemies for 50% for 15 seconds.",
+        "Blasts enemy units with a wave of chilling frost in 800 range slowing movement speed and attack rate. Slows enemies for 50% for 15 seconds.",
         (int lvl) -> "Deals {0} x Int damage.".format(
             (2*lvl).toString()
         ))

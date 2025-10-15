@@ -13,7 +13,7 @@ public function radarTime()
         let lvl = GetUnitAbilityLevel(caster, TIME_WIZARD_ABILITY_5)
         let dmg = caster.getInt(true) * lvl * 1.5
         doPeriodicallyTimed(0.05, 4) (CallbackCounted cb) ->
-            forUnitsInRange(target, 300, true) (unit u) ->
+            forUnitsInRange(target, 600, true) (unit u) ->
                 u.pauseIndef()
                 if caster.isEnemyOf(u)
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
@@ -21,7 +21,7 @@ public function radarTime()
                     u.addHP(u.getMaxHP()*0.05)
 
             if cb.isLast()
-                forUnitsInRange(target, 300, true) (unit u) ->
+                forUnitsInRange(target, 600, true) (unit u) ->
                     u.unPauseUnitIndef()
                     if caster.isAllyOf(u) and u != caster
                         u.resetCooldown()

@@ -13,7 +13,7 @@ public function lightsWrath()
         setHolyPower(0)
         flashEffect("Units\\Uther\\Sacred Storm\\Sacred Storm.mdx", target.getPos())
         caster.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
-        forUnitsInRange(caster.getPos(), 600) (unit u) ->
+        forUnitsInRange(caster.getPos(), 1200) (unit u) ->
             if u.isAllyOf(caster)
                 u.addHP(dmg / 2)
         caster.addHP( caster.getMaxHP() * (0.20 + 0.10*(lvl-1)) )

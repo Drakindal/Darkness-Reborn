@@ -12,7 +12,7 @@ public function deathandnDecay()
     EventListener.onPointCast(LICH_ABILITY_5) (unit caster, vec2 target) ->
         let lvl = caster.getAbilityLevel(LICH_ABILITY_5)
         let damage = lich_abi5_Damage[lvl-1]
-        let range = (450.0 + 70*lvl)/2
+        let range = 450.0 + 70*lvl
         
         forUnitsInRange(target, range, true) (unit u) ->
             if caster.isEnemyOf(u)

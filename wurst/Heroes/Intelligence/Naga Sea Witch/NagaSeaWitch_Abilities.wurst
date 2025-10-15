@@ -184,7 +184,7 @@ public constant int array[9] nagaWitch_abi4_Mana = [
         "Naga the Sea Witch creates a giant tornado that pulls enemies away dealing damage based on maximum mana points to them.",
         (int lvl) -> "Deals {0}% of max MP damage per second in {1} range.".format(
             (90*lvl).toString(),
-            (500+50*lvl).toString()
+            (250+50*lvl).toString()
         ))
     
 // ----------------------------------------------------------------------------

@@ -43,7 +43,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 
         new ChannelAbilityPreset(ARCHMAGE_ABILITY_1, 9, true)
         ..setGeneralAbility(AbilityPosition.Q)
-        ..presetAreaofEffect(lvl -> 500.0*2)
+        ..presetAreaofEffect(lvl -> 500.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 50 + 25*lvl)
         ..presetFollowThroughTime(lvl -> 0.1)
@@ -61,7 +61,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
         ..setTargetAttachmentPoint("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..register(HERO_ARCHMAGE, "Eclipse".setColor(colAbilitiesArchmage), 
-        "Power from the eclipse falls upon your enemies in range causing 1.25 x (Skill Level) x Intelligence damage and applying the Eclipse buff (88% miss)\n\n" +
+        "Power from the eclipse falls upon your enemies in 500 range causing 1.25 x (Skill Level) x Intelligence damage and applying the Eclipse buff (88% miss)\n\n" +
         wordAbilityDoubleDamage,
         (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {1}.".format(
             (1.25*lvl).toString(2),
@@ -96,7 +96,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
         // WIP Armor reduction.
         new ChannelAbilityPreset(ARCHMAGE_ABILITY_2, 9, true)
         ..setGeneralAbility(AbilityPosition.W)
-        ..presetAreaofEffect(lvl -> 500.0*2)
+        ..presetAreaofEffect(lvl -> 500.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 50 + 25*lvl)
         ..presetFollowThroughTime(lvl -> 0.01)
@@ -113,7 +113,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
         ..setTargetAttachmentPoint("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..register(HERO_ARCHMAGE, "Falling Light".setColor(colAbilitiesArchmage), 
-        "Create a circle of light, damaging enemies in range every 1 second for 2 seconds dealing 0.45 x (Skill Level) x Intelligence damage. Each hit applies Falling Light reducing armor of enemies by 10 for 15 seconds.\n\n" +
+        "Create a circle of light, damaging enemies in 500 range every 1 second for 2 seconds dealing 0.45 x (Skill Level) x Intelligence damage. Each hit applies Falling Light reducing armor of enemies by 10 for 15 seconds.\n\n" +
         wordAbilityDoubleDamage,
         (int lvl) -> "Deals {0} x Intelligence damage. Mana cost {1}.".format(
             (0.45*lvl).toString(2),
@@ -148,7 +148,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 
         new ChannelAbilityPreset(ARCHMAGE_ABILITY_3, 9, true)
         ..setGeneralAbility(AbilityPosition.E)
-        ..presetAreaofEffect(lvl -> 500.0*2)
+        ..presetAreaofEffect(lvl -> 500.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 50 + 25 * lvl)
         ..presetOption(Option.TARGETIMAGE, true)
@@ -173,7 +173,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 
         new ChannelAbilityPreset(ARCHMAGE_ABILITY_4, 9, true)
         ..setGeneralAbility(AbilityPosition.R)
-        ..presetAreaofEffect(lvl -> 500.0*2)
+        ..presetAreaofEffect(lvl -> 500.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 50 + 25*lvl)
         ..presetFollowThroughTime(lvl -> 4.0)
@@ -191,7 +191,7 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
         ..setTargetAttachmentPoint("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..register(HERO_ARCHMAGE, "Lightning Shock".setColor(colAbilitiesArchmage), 
-        "Electrify target area damaging every enemy for 0.01 x (Skill Level) x Intelligence every 0.05 seconds.\n\n" +
+        "Electrify target area damaging every enemy in 500 range for 0.01 x (Skill Level) x Intelligence every 0.05 seconds.\n\n" +
         wordAbilityDoubleDamage,
         (int lvl) -> "Deals {0} x Intelligence damage every 0.05 sec. Mana cost {1}.".format(
             (0.01*lvl).toString(2),
