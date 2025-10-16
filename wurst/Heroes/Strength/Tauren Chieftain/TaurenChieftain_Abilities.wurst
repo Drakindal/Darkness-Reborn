@@ -3,7 +3,6 @@ package TaurenChieftain_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import Orders
 import ChannelAbilityPreset
 import MyColors
 import BuffIds
@@ -128,13 +127,14 @@ public constant int array[9] tauren_abi3_Chance = [
         ..setGeneralAbility(AbilityPosition.E)
         ..setIcon("ReplaceableTextures\\CommandButtons\\PASAxeslam2.blp")
         ..presetChancetoStomp(lvl -> 0.0)
+        ..setRequirements("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
         ..register(HERO_TAUREN_CHIEFTAIN, "Pulverize Strength".setColor(colAbilitiesTaurenChieftain), 
         "Tauren the Chieftain's hits are so strong that he has a chance to pulverize bones of a target and push them far away. Also deals half of the damage to nearby enemies.\n" +
         "Permanently gets 3 Str on Pulverize.".setColor(colAbilitiesTaurenChieftain),
-        (int lvl) -> "{0}% chance to pulverize for {1} x max Hp + {2} x Str damage. Totally, {3}% chance to get 3 Str.".format(
+        (int lvl) -> "{0}% chance to pulverize for {1} x max Hp + {2} x Str damage.".format(
             tauren_abi3_Chance[lvl-1].toString(),
-            (0.4*lvl).toString(1),
+            (0.05*lvl).toString(1),
             (1.5*lvl).toString(1),
             (tauren_abi3_Chance[lvl-1]*0.6).toString(0)
         ))
@@ -179,9 +179,9 @@ public constant int array[9] tauren_abi3_Chance = [
         "Tauren the Chieftain slams the ground stunning all enemies for 10 sec on the entire map.\n" +
         "Permanently gets 500 HP and 40 Str with each cast.".setColor(colAbilitiesTaurenChieftain),
         (int lvl) -> "Deals {0} + {1} x Str + {2} x max HP damage.".format(
-            (5.5*lvl).toString(1),
             (1500*lvl).toString(),
-            (2.5*lvl).toString(1)
+            (5.5*lvl).toString(1),
+            (1.5*lvl).toString(1)
         ))
         
 // ----------------------------------------------------------------------------

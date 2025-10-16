@@ -161,7 +161,7 @@ public constant real array[9] tinker_abi4_aura_range = [
         ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
         ..register(HERO_TINKER, "Repair".setColor(colAbilitiesTinker), 
         wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
-        wordPassive + "Slowly repairs all mechanical units near Tinker.",
+        wordPassive + "Slowly repairs all mechanical units near Tinker (Doesn't work in robo-goblin mode).",
         (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
             tinker_abi4_hp[lvl-1].toString(0),
             (10*lvl).toString(),
@@ -170,7 +170,7 @@ public constant real array[9] tinker_abi4_aura_range = [
         ))
 
 // ----------------------------------------------------------------------------
-    
+
 constant int array[4] abi5_Str = [
     25,
     55,

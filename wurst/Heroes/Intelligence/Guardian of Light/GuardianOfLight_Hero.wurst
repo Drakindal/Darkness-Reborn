@@ -15,7 +15,7 @@ import MyAbilityIds
 
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_GUARDIAN_OF_LIGHT, UnitIds.keeperofthegrove)
-    ..setHeroAbilities(commaList(GUARDIAN_OF_LIGHT_ABILITY_1, GUARDIAN_OF_LIGHT_ABILITY_2, GUARDIAN_OF_LIGHT_ABILITY_3, GUARDIAN_OF_LIGHT_ABILITY_4, GUARDIAN_OF_LIGHT_ABILITY_5, GUARDIAN_OF_LIGHT_ABILITY_6))
+    ..setHeroAbilities(commaList(GUARDIAN_OF_LIGHT_ABILITY_1, GUARDIAN_OF_LIGHT_ABILITY_2, GUARDIAN_OF_LIGHT_ABILITY_3, GUARDIAN_OF_LIGHT_ABILITY_4, GUARDIAN_OF_LIGHT_ABILITY_5))
     
     ..setNormalAbilities(commaList(ABILITY_HERO_BLINK_MAP, AbilityIds.inventory))
     

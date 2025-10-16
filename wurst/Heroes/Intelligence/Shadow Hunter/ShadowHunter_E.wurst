@@ -3,7 +3,6 @@ package ShadowHunter_E
 import ClosureEvents
 import DamageTarget
 import ClosureForGroups
-import MyBuffIds
 import DummyCaster
 import MyAbilityIds
 import Orders
@@ -17,9 +16,10 @@ public function shadowHex()
         let range = 350.0 +40*lvl
 
         forUnitsInRange(target.getPos(), range, true) (unit u) ->
-            if caster.isEnemyOf(u) and not u.hasAbility(SHADOW_HUNTER_BUFF_3)
+            if caster.isEnemyOf(u)
                 new DummyCaster()
                 ..owner(caster.getOwner())
                 ..origin(caster.getPos())
-                ..castTarget(SHADOW_HUNTER_ABILITY_3, lvl, OrderIds.hex, u)
+                ..castTarget(SHADOW_HUNTER_ABILITY_3_DUMMY, lvl, OrderIds.hex, u)
+
                 caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

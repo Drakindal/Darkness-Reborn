@@ -5,6 +5,7 @@ import Global_Variables
 import DamageEvent
 import MyAbilityIds
 import MyUnitIds
+import ClosureEvents
 
 function eternalFlameDamage(unit src, unit target)
     let fireMage = playerHero.get(src.getOwner())
@@ -25,3 +26,9 @@ public function eternalFlame()
                     eternalFlameDamage(src, targ)
             default
                 skip
+
+init
+    EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
+        let u = GetTriggerUnit()
+        if u.getTypeId() == HERO_FIRE_MAGE
+            u.hideAbility(FIREMAGE_ABILITY_PASSIVE, true)

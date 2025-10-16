@@ -3,8 +3,6 @@ package ShadowHunter_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import AbilityObjEditing
-import ObjectIds
 import MyColors
 import UnitIds
 import CommonDescriptions
@@ -12,7 +10,8 @@ import BuffIds
 import MyBuffIds
 import BuffObjEditing
 import DebugVar
-import Icons
+import ChannelAbilityPreset
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -144,10 +143,17 @@ public constant real array[9] shadowHunter_abi1_Damage = [
         ..register("Shadow Hex".setColor(colAbilitiesShadowHunter),
         "This unit is under Shadow Hex. It has been transformed into a critter.")
 
-        new AbilityDefinitionShadowHunterHex(SHADOW_HUNTER_ABILITY_3)
+        new AbilityDefinitionShadowHunterHex(SHADOW_HUNTER_ABILITY_3_DUMMY)
         ..setGeneralAbility(AbilityPosition.E)
         ..setIcon(Icons.bTNHex)
         ..presetBuffs(lvl -> SHADOW_HUNTER_BUFF_3.toRawCode())
+        ..presetCooldown(lvl -> 0.)
+        ..presetDuration(lvl -> 2.5 + 0.5*lvl)
+        ..presetManaCost(lvl -> 0)
+        
+        new ChannelAbilityPreset(SHADOW_HUNTER_ABILITY_3, 9, true)
+        ..setGeneralAbility(AbilityPosition.E)
+        ..setIcon(Icons.bTNHex)
         ..presetCooldown(lvl -> 12.0 - 0.5*(lvl-1))
         ..setManaCost(2, 80)
         ..setManaCost(3, 90)
@@ -157,7 +163,12 @@ public constant real array[9] shadowHunter_abi1_Damage = [
         ..setManaCost(7, 170)
         ..setManaCost(8, 200)
         ..setManaCost(9, 240)
-        ..presetDuration(lvl -> 2.5 + 0.5*lvl)
+        ..presetCastRange(lvl -> 900.0)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetOption(Option.UNIVERSALSPELL, true)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..register(HERO_SHADOW_HUNTER, "Hex".setColor(colAbilitiesShadowHunter), 
         "The Shadow Hunter transforms an enemy into a critter, making them unable to attack or cast spells. Increases damage taken by the target from all sources by 20%.",
         (int lvl) -> "Deals {0} x Int damage in {1} range and hexes enemies for {2} sec. Cd {3} sec".format(
@@ -235,6 +246,7 @@ public constant real array[4] shadowHunter_abi5_Mana = [
         "This unit is under Shadow Hunter Magic Ward Aura. Its mana and hp are restored per second.")
 
         new UnitDefinition(SHADOW_HUNTER_HEALING_WARD, UnitIds.healingward)
+        ..setNormalAbilities("")
         ..setTargetedAs("Ward")
         ..setHitPointsMaximumBase(300)
         ..setHitPointsRegenerationRate(10)
@@ -247,11 +259,13 @@ public constant real array[4] shadowHunter_abi5_Mana = [
         ..setButtonPositionNormalY(2)
         ..presetAreaofEffect(lvl -> 700.0 + 50*lvl)
         ..presetAmountofHitPointsRegenerated(lvl -> 0)
+        ..setHeroAbility(true)
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
         ..register(HERO_SHADOW_HUNTER, "Shadow Hunter Magic Ward Aura".setColor(colAbilitiesShadowHunter), 
         "",
         (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range".format(
-            (100*shadowHunter_abi5_Heal[lvl-1]).toString(),
-            (100*shadowHunter_abi5_Mana[lvl-1]).toString(),
+            (100*shadowHunter_abi5_Heal[lvl-1]).toString(0),
+            (100*shadowHunter_abi5_Mana[lvl-1]).toString(0),
             (700 + 50*lvl).toString()
         ))
 
@@ -269,8 +283,8 @@ public constant real array[4] shadowHunter_abi5_Mana = [
         ..register(HERO_SHADOW_HUNTER, "Healing Ward".setColor(colAbilitiesShadowHunter), 
         "Sets up a magic ward in target location that recovers percent of allies max hp per second.",
         (int lvl) -> "Heals {0}% hp/s, restores {1}% mp/s in {2} range. Duration {3} sec. Cd {4} sec".format(
-            (100*shadowHunter_abi5_Heal[lvl-1]).toString(),
-            (100*shadowHunter_abi5_Mana[lvl-1]).toString(),
+            (100*shadowHunter_abi5_Heal[lvl-1]).toString(0),
+            (100*shadowHunter_abi5_Mana[lvl-1]).toString(0),
             (700 + 50*lvl).toString(),
             (20 + 10*(lvl-1)).toString(),
             (100 - 15*lvl).toString()

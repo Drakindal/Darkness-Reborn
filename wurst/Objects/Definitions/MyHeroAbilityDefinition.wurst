@@ -255,8 +255,8 @@ public function AbilityDefinition.setPosition(AbilityPosition pos)
             
         case AbilityPosition.M
             currHotkey = "M"
-            this..setButtonPositionNormalX(0)
-            ..setButtonPositionNormalY(0)
+            this..setButtonPositionNormalX(-2147483648)
+            ..setButtonPositionNormalY(-2147483648)
             
         case AbilityPosition.S
             currHotkey = "S"

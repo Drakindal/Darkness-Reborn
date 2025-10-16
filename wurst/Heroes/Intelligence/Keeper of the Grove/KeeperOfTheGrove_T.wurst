@@ -1,13 +1,11 @@
 package KeeperOfTheGrove_T
 
-import Abilities
 import ClosureEvents
 import MyUnitIds
 import Global_Variables
 import MyAbilityIds
 import UnitStats
 
-// WIP. Refactor summons definition.
 public function spiritGuardian()
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         let summoner = GetSummoningUnit()
@@ -21,12 +19,16 @@ public function spiritGuardian()
             let armorPen = 0.2*lvl*hero.getStats().getPen(penType.Physical)
 
             if summon.getTypeId() == KEEPER_SUMMON_MAIN_SPIRIT
-                summon.setMaxHP(((0.19*heroInt + 340) * lvl + 2600).toInt(), true)
-                //summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
-                summon.setBaseDamage(((1.9 * heroInt + 121) * lvl + 256).toInt(), 0)
+                summon
+                ..setAbilityLevel(KEEPER_OF_THE_GROVE_SUMMON_ABILITY_1, lvl)
+                ..setMaxHP(((0.19*heroInt + 340) * lvl + 2600).toInt(), true)
+                //..setArmor(0.4 * summoner.getArmor() + lvl * 8)
+                ..setBaseDamage(((1.9 * heroInt + 121) * lvl + 256).toInt(), 0)
                 summon.getStats().setBasePen(penType.Physical, 1.5 * armorPen)
+
             if summon.getTypeId() == KEEPER_SUMMON_MINI_SPIRIT
-                summon.setMaxHP(((0.1 * heroInt + 125) * lvl + 420).toInt(), true)
-                //summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
-                summon.setBaseDamage(((0.8 * heroInt + 37)*lvl + 56).toInt(), 0)
+                summon
+                ..setMaxHP(((0.1 * heroInt + 125) * lvl + 420).toInt(), true)
+                //..setArmor(0.4 * summoner.getArmor() + lvl * 8)
+                ..setBaseDamage(((0.8 * heroInt + 37)*lvl + 56).toInt(), 0)
                 summon.getStats().setBasePen(penType.Physical, armorPen)

@@ -11,8 +11,6 @@ import HeroLoader
 // when all base skills maxed, ascends
 
 init
-    ascension()
-function ascension()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
         let u = GetTriggerUnit()
         if u.getTypeId() == HERO_KING_OF_LOAS and u.getAbilityLevel(KING_OF_LOAS_ABILITY_1) == 9 and u.getAbilityLevel(KING_OF_LOAS_ABILITY_2) == 9 and u.getAbilityLevel(KING_OF_LOAS_ABILITY_3) == 9 and u.getAbilityLevel(KING_OF_LOAS_ABILITY_4) == 9 and u.getAbilityLevel(KING_OF_LOAS_ABILITY_5) == 4

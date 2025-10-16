@@ -17,13 +17,10 @@ import MyColors
     ..presetUnitTypeOne(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
     ..presetUnitTypeTwo(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
     ..setUnitsSummonedTypeOne(1, 1)
-    ..setUnitsSummonedTypeOne(1, 2)
-    ..setUnitsSummonedTypeOne(1, 2)
-    ..setUnitsSummonedTypeOne(1, 2)
-    ..setUnitsSummonedTypeTwo(1, 1)
-    ..setUnitsSummonedTypeTwo(1, 2)
-    ..setUnitsSummonedTypeTwo(1, 2)
-    ..setUnitsSummonedTypeTwo(1, 2)
+    ..setUnitsSummonedTypeOne(2, 2)
+    ..setUnitsSummonedTypeOne(3, 2)
+    ..setUnitsSummonedTypeOne(4, 3)
+    ..presetUnitsSummonedTypeTwo(lvl -> 0)
     ..presetMaxUnitsSummoned(lvl -> 6 + 2*(lvl-1))
     ..presetBuffs(lvl -> BuffIds.spiritofVengeance.toRawCode())
     ..presetCastRange(lvl -> 800)
@@ -31,14 +28,16 @@ import MyColors
     ..presetDuration(lvl -> 10.0 + 7 * lvl)
     ..presetKillOnCasterDeath(lvl -> true)
     ..setCheckDependencies(false)
-    ..setHeroAbility(false) // previously it was true
+    ..setHeroAbility(true)
     ..presetAreaofEffect(lvl -> 900.0)
     ..presetManaCost(lvl -> 25 + 10*lvl)
     ..presetTargetsAllowed(lvl -> commaList(TargetsAllowed.air, TargetsAllowed.ground, TargetsAllowed.dead))
     ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
     ..register(-1, "Cenarius's Spirits".setColor(colAbilitiesKeeperOfTheGrove),
-        "Raises an invulnerable feral spirit from a corpse. Lasts <Avng,Dur1> seconds or until the avatar dies."
-    )
+    "Raises an invulnerable feral spirit from a corpse.",
+    (int lvl) -> "Lasts {0} seconds or until the avatar dies.".format(
+        (10 + 7 * lvl).toString()
+    ))
     ..setAutoCastingTooltip()
 
     new UnitDefinition(KEEPER_SUMMON_MAIN_SPIRIT, UnitIds.spiritofvengeance)
@@ -46,7 +45,7 @@ import MyColors
     ..setAttack1DamageBase(280)
     ..setDefenseBase(28)
     ..setManaInitialAmount(1000)
-    ..setManaMaximum(2000)
+    ..setManaMaximum(1000)
     ..setManaRegeneration(20)
     ..setHitPointsMaximumBase(5200)
     ..setHitPointsRegenerationRate(25)

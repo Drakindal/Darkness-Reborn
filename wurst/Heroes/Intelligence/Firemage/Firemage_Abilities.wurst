@@ -241,7 +241,8 @@ public constant real array[9] firemage_abi3_IntScale = [
 // ----------------------------------------------------------------------------
 
         new AbilityDefinitionAttributeModifierSkill(FIREMAGE_ABILITY_PASSIVE)
-        ..setPosition(AbilityPosition.M)
+        ..setButtonPositionNormalX(3)
+        ..setButtonPositionNormalY(2)
         ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNImmolation.blp")
         ..register(HERO_FIRE_MAGE, "Eternal Flame".setColor(colAbilitiesFiremage), (
         "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +

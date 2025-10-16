@@ -8,9 +8,8 @@ import ClosureForGroups
 import Tinker_Hero
 import Tinker_Abilities
 import Abilities
-import MyBuffIds
 import MyUnitIds
-import MyOrderIds
+import MyUnitTypes
 
 public function repair()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
@@ -43,9 +42,6 @@ public function addTinkerAura()
             let lvl = tinkerHero.getAbilityLevel(TINKER_ABILITY_4)
             if (lvl > 0)
                 forUnitsInRange(tinkerHero.getPos(), tinker_abi4_aura_range[lvl-1]) (unit u) ->
-                    if (u.hasAbility(TINKER_BUFF_AURA))
+                    if (u.checkType(MyUnitType.StructureMechUnit))
                         u.addHP(tinker_abi4_aura_hp[lvl-1])
                         flashEffect(Abilities.replenishHealthCasterOverhead, u.getPos())
-                    else if (u.getTypeId() == HERO_TINKER_ROBOT)
-                        u.addHP(tinker_abi4_aura_hp[lvl-1])
-                        flashEffect(Abilities.replenishHealthCaster, u.getPos())

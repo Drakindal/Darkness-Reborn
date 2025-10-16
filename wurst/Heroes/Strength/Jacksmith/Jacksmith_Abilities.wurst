@@ -22,6 +22,7 @@ import MyOrderIds
         ..presetBuffs(lvl -> "")
         ..presetManaCost(lvl -> 100 + 50*lvl)
         ..presetCooldown(lvl -> 135.0 - 15*lvl)
+        ..setCooldown(9, 5)
         ..setManaCost(1, 220)
         ..setManaCost(2, 200)
         ..setManaCost(3, 180)

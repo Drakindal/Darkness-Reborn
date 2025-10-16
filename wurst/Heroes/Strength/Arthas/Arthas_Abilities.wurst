@@ -17,7 +17,7 @@ import DebugVar
     if (BUILD_STR_HEROES)
         new AbilityDefinitionFarseerChainLightning(ARTHAS_ABILITY_1)
         ..setGeneralAbility(AbilityPosition.Q)
-        ..presetAreaofEffect(lvl -> 0.0)
+        ..presetAreaofEffect(lvl -> 0.1)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..setManaCost(1, 90)
         ..setManaCost(2, 100)

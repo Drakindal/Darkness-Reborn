@@ -142,7 +142,7 @@ public constant real array[9] deathKnight_abi3_Hp = [
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
         ..register(HERO_DEATH_KNIGHT, "Curse of the Death".setColor(colAbilitiesDeathKnight), 
         "The Death Knight has a chance to absorb the life force of the attacking enemy.",
-        (int lvl) -> "{0} chance to leach {1} HP.".format(
+        (int lvl) -> "{0}% chance to leach {1} HP.".format(
             (3*lvl).toString(),
             deathKnight_abi3_Hp[lvl-1].toString()
         ))
@@ -189,7 +189,7 @@ public constant int array[9] deathKnight_abi4_Targets = [
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSkullSpirits.blp")
         ..register(HERO_DEATH_KNIGHT, "Unholy Link".setColor(colAbilitiesDeathKnight), 
-        "The Death Knight unseals and shares his power with his allies. Unholy Link reduces incoming damage and allows the Death Knight to harvest souls of enemies killed by his allies. Also, Unholy Link will transfer part of the damage that an ally would receive to the Death Knight. Thus, reducing the damage received by an ally. However, if the Death Knight becomes weak (has less than 20% hp) Unholy Link will be broken. The Death Knight will spend 5 souls to recover his unholy power.\n" +
+        "The Death Knight unseals and shares his power with his allies. Unholy Link reduces incoming damage and allows the Death Knight with 33% chance to harvest souls of enemies killed by his allies. Also, Unholy Link will transfer part of the damage that an ally would receive to the Death Knight. Thus, reducing the damage received by an ally. However, if the Death Knight becomes weak (has less than 20% hp) Unholy Link will be broken. The Death Knight will spend 5 souls to recover his unholy power.\n" +
         wordNote + "Ability has the entire map cast range and area of effect.\n" + 
         "Damage reduction {0}%. Damage share with the Death Knight {1}%. Number of targets {0}. Duration {1} sec. Cd {2} sec.",
         (string format) ->  format.format(

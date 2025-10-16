@@ -105,7 +105,7 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
         (0.25*lvl).ceil().toString(),       // 5. Uther's Holy Power
         (0.2*lvl).ceil().toString(),        // 6. Ally's Holy Power
 
-        (0.20*lvl).toString(),              // 7. Ally's Heal
+        (0.20*lvl).toString(1),              // 7. Ally's Heal
 
         (14 + 2 * (lvl-1)).toString(),      // 8. Duration
         holyPower.toString()                // 9. Amount of Holy Power 
@@ -114,7 +114,7 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
 @compiletime function utherAbils4()
     if (BUILD_STR_HEROES)
         new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
-        ..presetIcon(Icons.bTNCheese)
+        ..setIcon(Icons.bTNCheese)
         ..register("Uther's Blessing".setColor(colAbilitiesUther),
         "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
         

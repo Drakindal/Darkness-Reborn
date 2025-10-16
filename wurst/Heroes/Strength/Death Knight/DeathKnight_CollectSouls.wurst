@@ -5,6 +5,7 @@ import ClosureEvents
 import StandardTextTags
 import DeathKnight_Hero
 import MyBuffIds
+import RandomGen
 
 public int souls = 0
 
@@ -12,13 +13,18 @@ public function soulCollectorTarget()
     EventListener.add(EVENT_PLAYER_UNIT_DEATH) ->
         if (deathKnightHero != null)
             let u = GetKillingUnit()
-            if u.getTypeId() == HERO_DEATH_KNIGHT or u.hasAbility(DEATH_KNIGHT_BUFF_4)
-                souls = souls + 1
-                deathKnightHero.addStr(1)
-                if souls % 5 == 0
-                    printSouls()
+            if u.getTypeId() == HERO_DEATH_KNIGHT
+                collectSoul()
+            else if (u.hasAbility(DEATH_KNIGHT_BUFF_4) and checkChanceI(33))
+                collectSoul()
 
 public function printSouls()
     createLumberBountyTextTag(deathKnightHero, souls)
     ..setColor(colorA(93, 247, 55, 255))
     ..setText("Souls: "+I2S(souls))
+
+public function collectSoul()
+    souls = souls + 1
+    deathKnightHero.addStr(1)
+    if souls % 5 == 0
+        printSouls()

@@ -11,7 +11,7 @@ public function warStomp()
     EventListener.onCast(TAUREN_CHIEFTAIN_ABILITY_5) (unit caster) ->
         let str = caster.getStr(true)
         let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_5)
-        let dmg = ((5.5*lvl*str)+(1500.*lvl)) + 2.5 * caster.getMaxHP() * lvl
+        let dmg = ((5.5*lvl*str)+(1500.*lvl)) + 1.5 * caster.getMaxHP() * lvl
         addEffect("WindWeak(Thicker).mdl", caster.getPos())
         flashEffect(Abilities.warStompCaster, caster.getPos(), 2)
 

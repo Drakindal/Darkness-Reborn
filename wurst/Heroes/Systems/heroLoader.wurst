@@ -133,11 +133,12 @@ import Arthas_Q
 import GuardianOfLight_R
 import GuardianOfLight_T
 import ShadowHunter_Q
-import ShadowHunter_T
 import DeathKnight_Hero
 import DeathKnight_CollectSouls
 import Tinker_Hero
 import Uther_Hero
+import GuardianOfLight_Q
+import MyAbilityIds
 
 init
     // HERO_MOUNTAIN_KING
@@ -168,6 +169,7 @@ init
     bloodHunter()
     vivpireAura()
     // HERO_DEATH_KNIGHT
+    soulCollectorTarget()
     soulCollector()
     curseOfDarkness()
     soulsKing()
@@ -255,7 +257,6 @@ init
     shadowHex()
     craggyHex()
     shWardSummon()
-    shadowHunter_T_healingWard()
     // HERO_LICH
     deathandnDecay()
     frostArmor()
@@ -276,7 +277,7 @@ init
     clusterRockets()
     addTinkerAura()
     // HERO_GUARDIAN_OF_LIGHT
-    lightRemoval()
+    guardianOfLight_Q_holyLight()
     holyWrath()
     godsBlessing()
     // HERO_ARCHMAGE
@@ -320,14 +321,12 @@ init
 
 public function unit.registerHero()
     switch this.getTypeId()
-        case HERO_FIRE_MAGE
-            
-            this.hideAbility(abilId, flag)
         case HERO_TIME_WIZARD
             // Works fine if Time Wizard was re-picked.
             this.punishTimeAct()
         case HERO_TINKER
             tinkerHero = this
+            tinkerHero.hideAbility(TINKER_ABILITY_4_AURA, true)
         case HERO_DEATH_KNIGHT
             deathKnightHero = this
             souls = 0

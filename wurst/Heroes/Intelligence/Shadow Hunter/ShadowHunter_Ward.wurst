@@ -4,6 +4,9 @@ import MyUnitIds
 import ClosureEvents
 import MyAbilityIds
 import UnitStats
+import ShadowHunter_Abilities
+import ClosureTimers
+import ClosureForGroups
 
 public function shWardSummon()
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
@@ -29,4 +32,25 @@ public function shWardSummon()
                     BlzSetUnitWeaponIntegerField(summon, UNIT_WEAPON_IF_ATTACK_ATTACK_TYPE, 0, 5)
                 summon.setName("Serpent Ward Lvl" + lvl.toString())
             if summon.getTypeId() == SHADOW_HUNTER_HEALING_WARD
+                let lvl = summoner.getAbilityLevel(SHADOW_HUNTER_ABILITY_5)
                 
+                summon
+                ..setMaxHP((0.1*hp + lvl * 1260).toInt(), true)
+                ..setArmor(0.25*armor)
+                ..addAbility(SHADOW_HUNTER_ABILITY_5_DUMMY, lvl)
+
+                doAfter(0.01) ->
+                    let range = 700.0 + 50*lvl
+                    let duration = 20.0 + 10*(lvl-1)
+                    let period = 0.05
+                    let pos = summon.getPos()
+        
+                    let heal = shadowHunter_abi5_Heal[lvl-1] * period
+                    let mana = shadowHunter_abi5_Mana[lvl-1] * period
+
+                    doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
+                        forUnitsInRange(pos, range, true) (unit u) ->
+                            if summon.isAllyOf(u) and u.isAlive()
+                                u
+                                ..addHP(u.getMaxHP() * heal)
+                                ..addMana(u.getMaxMana() * mana)                    
