@@ -16,7 +16,7 @@ import MyOrderIds
 @compiletime function defineAbilities()
     if (BUILD_INT_HEROES)
         new BuffDefinition(FIRELORD_BUFF_BLAZE, BuffIds.unsummon)
-        ..setIconNormal(1, Icons.bTNInnerFire)
+        ..setIcon(Icons.bTNInnerFire)
         ..setArtTarget("")
         ..register("Blaze".setColor(colAbilitiesFirelord),
         "This unit is under the effect of Blaze, hot hot hot! Liar Liar pants on Fire!")
@@ -102,7 +102,7 @@ import MyOrderIds
 
         new ChannelAbilityPreset(FIRELORD_ABILITY_2, 9, true)
         ..setGeneralAbility(AbilityPosition.W)
-        ..presetAreaofEffect(lvl -> (400.0 + 20*lvl)*2)
+        ..presetAreaofEffect(lvl -> 400.0 + 20*lvl)
         ..presetCastRange(lvl -> 900.0)
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..setManaCost(1, 100)

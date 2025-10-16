@@ -1,6 +1,5 @@
 package KeeperOfTheGrove_Units
 
-import UnitObjEditing
 import MyUnitIds
 import UnitIds
 import AbilityObjEditing
@@ -12,16 +11,19 @@ import MyColors
 
 // ----------------------------------------------------------------------------
 
-@compiletime function beastMasterUnits()
+@compiletime function keeperUnits()
     new AbilityDefinitionVengeance(KEEPER_OF_THE_GROVE_SUMMON_ABILITY_1)
     ..setLevels(4)
     ..presetUnitTypeOne(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
     ..presetUnitTypeTwo(lvl -> KEEPER_SUMMON_MINI_SPIRIT.toRawCode())
+    ..setUnitsSummonedTypeOne(1, 1)
+    ..setUnitsSummonedTypeOne(1, 2)
+    ..setUnitsSummonedTypeOne(1, 2)
+    ..setUnitsSummonedTypeOne(1, 2)
     ..setUnitsSummonedTypeTwo(1, 1)
     ..setUnitsSummonedTypeTwo(1, 2)
     ..setUnitsSummonedTypeTwo(1, 2)
     ..setUnitsSummonedTypeTwo(1, 2)
-    ..presetUnitsSummonedTypeOne(lvl -> 0)
     ..presetMaxUnitsSummoned(lvl -> 6 + 2*(lvl-1))
     ..presetBuffs(lvl -> BuffIds.spiritofVengeance.toRawCode())
     ..presetCastRange(lvl -> 800)

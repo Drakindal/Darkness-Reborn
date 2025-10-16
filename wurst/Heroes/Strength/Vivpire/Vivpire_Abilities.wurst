@@ -11,16 +11,18 @@ import BuffObjEditing
 import MyColors
 import CommonDescriptions
 import DebugVar
+import Icons
 
 // ----------------------------------------------------------------------------
 
 @compiletime function vivpireAbils()
     if (BUILD_STR_HEROES)
-        new BuffDefinition(VIVPIRE_BUFF_1A, BuffIds.animateDead)
+        new BuffDefinition(VIVPIRE_BUFF_1A, BuffIds.curse)
         ..register("This unit has been afflicted by Blood Hunter.".setColor(colAbilitiesVivpire),
         "This unit recieves additional damage by Vivpire.")
 
         new BuffDefinition(VIVPIRE_BUFF_1B, BuffIds.curse)
+        ..setIcon("Units\\Vivpire\\BTNBloodyBite\\BTNBloodyBite.blp")
         ..register("Vampiric Bite".setColor(colAbilitiesVivpire),
         "This unit has been bitten by Vivpire.")
         
@@ -107,6 +109,7 @@ public constant real array[9] vivpire_abi3_Aura = [
 @compiletime function defineAbilities3()
     if (BUILD_STR_HEROES)
         new BuffDefinition(VIVPIRE_BUFF_3, BuffIds.vampiricAura)
+        ..setIcon(Icons.bTNVampiricAura)
         ..register("Vampiric Aura".setColor(colAbilitiesVivpire),
         "This unit will receive healing from physical attacks.")
 
@@ -139,6 +142,7 @@ public constant int array[9] vivpire_abi4_Str = [
 @compiletime function defineAbilities4()
     if (BUILD_STR_HEROES)
         new BuffDefinition(VIVPIRE_BUFF_4, BuffIds.berserk)
+        ..setIcon("Units\\Vivpire\\Vampire bite\\BTNvampirebite.blp")
         ..setArtTarget("Units\\Vivpire\\Affliction\\Affliction040.mdx")
         ..setTargetAttachmentPoint0("chest")
         ..register("Prey".setColor(colAbilitiesVivpire),
@@ -190,6 +194,7 @@ public constant int array[4] vivpire_abi5_Damage = [
 @compiletime function defineAbilities5()
     if (BUILD_STR_HEROES)
         new BuffDefinition(VIVPIRE_BUFF_5, BuffIds.vampiricPotion)
+        ..setIcon("Units\\Vivpire\\BTNVarimathrasClaw\\BTNVarimathrasClaw.blp")
         ..register("Vivpire's True Form".setColor(colAbilitiesVivpire),
         "The Vivpire has returned to their ancestral form, receiving power from their foes.")
 

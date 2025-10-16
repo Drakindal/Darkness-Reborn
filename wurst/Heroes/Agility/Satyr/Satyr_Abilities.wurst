@@ -16,12 +16,14 @@ import DebugVar
 @compiletime function satyrAbilities()
     if (BUILD_AGI_HEROES)
         new BuffDefinition(SATYR_BUFF_1, BuffIds.faerieFire)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp")
         ..register("This unit is under " + "Dark Fire".setColor(colAbilitiesSatyr),
         "Satyr is mad, target armor poof")
         
         // WIP. Add armor and resistances reduction.
         new AbilityDefinitionFaerieFire(SATYR_ABILITY_1)
         ..setGeneralAbility(AbilityPosition.Q)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp")
         ..presetBuffs(lvl -> SATYR_BUFF_1.toRawCode())
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 20 + 20*lvl)
@@ -29,7 +31,6 @@ import DebugVar
         ..presetDuration(lvl -> 20.0)
         ..presetCastRange(lvl -> 700.0)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
-        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFaerieFireOn.blp")
         ..register(HERO_SATYR, "Dark Fire".setColor(colAbilitiesSatyr), 
         "Satyr sets curse of darkness onto the enemy, reducing the amount of Damage Reduction and Resistances.")
         
@@ -62,11 +63,13 @@ constant real array[9] abi2_LifeSteal = [
 @compiletime function satyrAbilities2()
     if (BUILD_AGI_HEROES)
         new BuffDefinition(SATYR_BUFF_2, BuffIds.vampiricPotion)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_deathwing_bloodcorruption_death.blp")
         ..register("Heath Rain".setColor(colAbilitiesSatyr),
         "Heath Rain.")
 
         new AbilityDefinitionItemPotionVampirism(SATYR_ABILITY_2)
         ..setGeneralAbility(AbilityPosition.W)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_deathwing_bloodcorruption_death.blp")
         ..presetBuffs(lvl -> SATYR_BUFF_2.toRawCode())
         ..presetCooldown(lvl -> 20.0 - 0.5*lvl)
         ..presetManaCost(lvl -> 15 + 20*lvl)
@@ -75,7 +78,6 @@ constant real array[9] abi2_LifeSteal = [
         ..presetDuration(lvl -> 6.0 + lvl)
         ..setItemAbility(false)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.Self))
-        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNAbility_deathwing_bloodcorruption_death.blp")
         ..register(HERO_SATYR, "Heath Rain".setColor(colAbilitiesSatyr), 
         "Satyr extremely increases his power. The souls of those who die are gathered into the arms of the Satyr increasing his damage and healing him.",
         (int lvl) -> "+{0} damage, +{1}% life steal. Duration {2} sec (cd {3} sec).".format(
@@ -134,6 +136,7 @@ constant real array[9] abi2_LifeSteal = [
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(SATYR_BUFF_5, BuffIds.faerieFire)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDevourMagic.blp")
         ..register("This unit is under " + "Bite of Death".setColor(colAbilitiesSatyr),
         "Satyr is mad, target armor poof")
 

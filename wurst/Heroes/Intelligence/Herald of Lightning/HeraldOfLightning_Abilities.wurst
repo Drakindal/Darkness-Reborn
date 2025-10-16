@@ -41,6 +41,7 @@ import DebugVar
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(HERALD_BUFF_W, BuffIds.stunned)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesW.blp")
         ..setArtTarget("")
         ..register("Lightning Nova".setColor(colAbilitiesHeraldOfLightning),
         "Hit by the Nova from the Herald of Lightning, momentarily stunned.")
@@ -64,10 +65,10 @@ import DebugVar
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(HERALD_BUFF_E, BuffIds.berserk)
-        ..setName("Lightning Empowerment")
-        ..setTooltipNormal("")
-        ..setTooltipNormalExtended("Herald is empowered by the gods, granting his lightning more ferocity.")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNZuesE.blp")
         ..setArtTarget("")
+        ..register("Lightning Empowerment".setColor(colAbilitiesHeraldOfLightning),
+        "Herald is empowered by the gods, granting his lightning more ferocity.")
         
         new AbilityDefinitionFrenzy(HERALD_ABILITY_3)
         ..setGeneralAbility(AbilityPosition.E)
@@ -76,7 +77,7 @@ import DebugVar
         ..presetDurationHero(lvl -> 15)
         ..presetDurationNormal(lvl -> 15)
         ..presetCooldown(lvl -> 25)
-        ..presetBuffs(lvl -> commaList(HERALD_BUFF_E))
+        ..presetBuffs(lvl -> HERALD_BUFF_E.toRawCode())
         ..presetMovementSpeedIncrease(lvl-> 0.)
         ..presetAttackSpeedIncrease(lvl-> 0.3*lvl)
         ..register(HERO_HERALD_OF_LIGHTNING, "Lightning Empowerment".setColor(colAbilitiesHeraldOfLightning), 

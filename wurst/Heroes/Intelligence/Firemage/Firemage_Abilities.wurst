@@ -161,7 +161,7 @@ public constant real array[9] firemage_abi3_IntScale = [
 @compiletime function defineAbilities3()
     if (BUILD_INT_HEROES)
         new BuffDefinition(FIREMAGE_BUFF_3, BuffIds.entanglingRoots)
-        ..setIconNormal(1, Icons.bTNInnerFire)
+        ..setIcon(Icons.bTNInnerFire)
         ..setArtTarget("Abilities\\Spells\\NightElf\\Immolation\\ImmolationTarget.mdl")
         ..register("Fire Shield".setColor(colAbilitiesFiremage),
         "This unit is surrounded by a deadly fire shield that burns any attackers")
@@ -248,8 +248,6 @@ public constant real array[9] firemage_abi3_IntScale = [
         "Increases damage from spells by [0.1 + 0.1 x (Phoenix {0} Skill Level) + 0.4 x (Melting Phoenixes {1} Level)] x Intelligence.\n").format(
             "[W]".setColor(colAbilityLevel),
             "[T]".setColor(colAbilityLevel)
-        ),
-        (string format) -> format,
-        (string format, int lvl) -> format)
+        ))
         
 // ----------------------------------------------------------------------------

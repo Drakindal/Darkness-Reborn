@@ -4,20 +4,21 @@ Dark Ranger W
 Shadow Vengeance Q
 Vivpire
 
+Test:
+
+Firemage extra ability 
+Guard of light extra abi
+Guar of light Q
+Keeper mini spirits
+
 Need to be tested:
 
-Archmage
-Firelord
-Firemage
-Guard of Light
-Herald of Lightning
-Keeper
-King of Loas
+King of Loas revive in ascended form
 Lich
 Naga
 Shadow Hunter
 Time wizard
-Tinker
+Tinker aura
 
 Arthas
 Beastmaster

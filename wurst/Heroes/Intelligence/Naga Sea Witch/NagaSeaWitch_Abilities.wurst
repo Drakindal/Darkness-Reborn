@@ -15,12 +15,24 @@ import DebugVar
 
 // ----------------------------------------------------------------------------
 
+constant int array[9] abi1_Mana = [
+     120,
+     210,
+     420,
+     920,
+    1540,
+    2380,
+    3210,
+    5260,
+    7530
+]
+
 @compiletime function defineAbils()
     if (BUILD_INT_HEROES)
         new BuffDefinition(NAGA_WITCH_BUFF_1, BuffIds.stunned)
         ..setArtTarget(1, ".mdl")
         ..setArtSpecial(1, ".mdl")
-        ..setIconNormal(1, Icons.bTNStun)
+        ..setIcon(Icons.bTNCrushingWave)
         ..register("Bubble Trap".setColor(colAbilitiesNagaWitch),
         "Recently hit by Naga Sea Witch Bubble Trap")
 
@@ -43,21 +55,6 @@ import DebugVar
         ..setMissileArt(".mdl")
         ..setBuffs(1, NAGA_WITCH_BUFF_1.toRawCode())
         
-// ----------------------------------------------------------------------------
-
-constant int array[9] abi1_Mana = [
-     120,
-     210,
-     420,
-     920,
-    1540,
-    2380,
-    3210,
-    5260,
-    7530
-]
-
-@compiletime function defineAbilities1()
     if (BUILD_INT_HEROES)
         new AbilityDefinitionStasisTrap(NAGA_WITCH_ABILITY_1)
         ..setGeneralAbility(AbilityPosition.Q)

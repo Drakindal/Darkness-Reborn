@@ -19,8 +19,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 @compiletime function archmageAbilities()
     if (BUILD_INT_HEROES)
         new BuffDefinition(ARCHMAGE_BUFF_1, BuffIds.curse)
-        ..setArtTarget(1, Abilities.curseTarget)
-        ..setIconNormal(1, Icons.bTNCurse)
+        ..setArtTarget(Abilities.curseTarget)
+        ..setIcon(Icons.bTNCurse)
         ..register("Eclipse".setColor(colAbilitiesArchmage),
         "This unit has been hit by Eclipse")
         
@@ -71,8 +71,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 // ----------------------------------------------------------------------------
     
         new BuffDefinition(ARCHMAGE_BUFF_2, BuffIds.faerieFire)
-        ..setArtTarget(1, Abilities.faerieFireTarget)
-        ..setIconNormal(1, Icons.bTNFaerieFire)
+        ..setArtTarget(Abilities.faerieFireTarget)
+        ..setIcon(Icons.bTNFaerieFire)
         ..register("Falling Light".setColor(colAbilitiesArchmage),
         "This unit has been hit by Falling Light")
         
@@ -123,8 +123,8 @@ let wordAbilityDoubleDamage = "Any magical buff not from this spell will double 
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(ARCHMAGE_BUFF_3, BuffIds.cripple)
-        ..setArtTarget(1, Abilities.crippleTarget)
-        ..setIconNormal(1, Icons.bTNCripple)
+        ..setArtTarget(Abilities.crippleTarget)
+        ..setIcon(Icons.bTNCripple)
         ..register("Ultima".setColor(colAbilitiesArchmage),
         "This unit has been hit by Ultima")
 

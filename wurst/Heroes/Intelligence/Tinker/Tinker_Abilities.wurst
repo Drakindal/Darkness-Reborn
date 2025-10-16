@@ -136,6 +136,7 @@ public constant real array[9] tinker_abi4_aura_range = [
 @compiletime function defineAbilities4()
     if (BUILD_INT_HEROES)
         new BuffDefinition(TINKER_BUFF_AURA, BuffIds.unsummon)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
         ..setArtTarget(1, "")
         ..setIconNormal(1, Icons.pASBTNEngineeringUpgrade)
         ..register("Tinker Repair Aura".setColor(colAbilitiesFirelord),

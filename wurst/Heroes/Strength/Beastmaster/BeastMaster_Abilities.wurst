@@ -48,7 +48,7 @@ constant int array[9] abi1_SummonsAmount = [
         ..presetCooldown(lvl -> 35)
         ..presetManaCost(lvl -> 75 + lvl*25)
         ..presetNumberofSummonedUnits(lvl -> abi1_SummonsAmount[lvl-1])
-        ..presetSummonedUnit(lvl -> commaList(MISHABEAR))
+        ..presetSummonedUnit(lvl -> MISHABEAR.toRawCode())
         ..register(HERO_BEASTMASTER, "Summon Misha the Bear".setColor(colAbilitiesBeastmaster), 
         "Summons Misha the Bear.\n" +
         "Health: {0} + 0.45 x Beastmaster max HP.\n" +
@@ -102,7 +102,7 @@ constant int array[9] abi2_SummonsAmount = [
         ..presetCooldown(lvl -> 35)
         ..presetManaCost(lvl -> 75 + lvl*25)
         ..presetSummonedUnitCount(lvl -> abi2_SummonsAmount[lvl-1])
-        ..presetSummonedUnitType(lvl -> commaList(QUILBEAST))
+        ..presetSummonedUnitType(lvl -> QUILBEAST.toRawCode())
         ..register(HERO_BEASTMASTER, "Summon Quilbeasts".setColor(colAbilitiesBeastmaster), 
         "Summons Quilbeasts\n"+
         "Ability: Bloodrage (25% attackspeed)\n" + 
@@ -157,7 +157,7 @@ constant int array[9] abi3_SummonsAmount = [
         ..presetCooldown(lvl -> 35)
         ..presetManaCost(lvl -> 75 + lvl*25)
         ..presetSummonedUnitCount(lvl -> abi3_SummonsAmount[lvl-1])
-        ..presetSummonedUnitType(lvl -> commaList(HAWK))
+        ..presetSummonedUnitType(lvl -> HAWK.toRawCode())
         ..register(HERO_BEASTMASTER, "Summon Falcons".setColor(colAbilitiesBeastmaster), 
         "Summons Falcons\n"+
         "Health: {0} + 0.05 x max HP.\n" + 

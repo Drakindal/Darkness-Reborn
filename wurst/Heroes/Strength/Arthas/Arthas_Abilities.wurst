@@ -125,8 +125,8 @@ constant real array[9] abi3_Range = [
 @compiletime function defineAbilities3()
     if (BUILD_STR_HEROES)
         new BuffDefinition(ARTHAS_BUFF_3, BuffIds.roar)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDevourAura.blp")
         ..setArtTarget(1, "")
-        ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNKingArthas.blp")
         ..register("Death King Aura".setColor(colAbilitiesFirelord),
         "This unit is under Death King frosty Aura, their attack and move speed dramatically decreased!")
 

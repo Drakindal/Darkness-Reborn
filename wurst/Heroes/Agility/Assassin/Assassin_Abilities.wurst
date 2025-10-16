@@ -17,7 +17,7 @@ import MyOrderIds
 @compiletime function assassinAbils()
     if (BUILD_AGI_HEROES)
         new BuffDefinition(ASSASSIN_BUFF_1, BuffIds.roar)
-        ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\BTNASS1.blp")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNASS1.blp")
         ..register("Shadow Walk".setColor(colAbilitiesAssassin),
         "Assassin moves ahead with lightning speed simultaneously causing damage to enemies.")
 
@@ -78,7 +78,7 @@ constant real array[9] damageAura = [0.4, 0.6, 0.8, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5
 @compiletime function assassinAbilsE()
     if (BUILD_AGI_HEROES)
         new BuffDefinition(ASSASSIN_BUFF_3, BuffIds.roar)
-        ..setIconNormal(1, "ReplaceableTextures\\CommandButtons\\PASASS4.blp")
+        ..setIcon("ReplaceableTextures\\CommandButtons\\PASASS4.blp")
         ..register("Enchanted Weapon".setColor(colAbilitiesAssassin),
         "The Assassin's mastery of the blade allows him to deal more damage.")
 

@@ -114,6 +114,7 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
 @compiletime function utherAbils4()
     if (BUILD_STR_HEROES)
         new BuffDefinition(UTHER_BUFF_4, BuffIds.innerFire)
+        ..presetIcon(Icons.bTNCheese)
         ..register("Uther's Blessing".setColor(colAbilitiesUther),
         "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
         

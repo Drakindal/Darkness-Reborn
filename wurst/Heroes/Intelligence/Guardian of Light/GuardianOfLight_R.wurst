@@ -18,25 +18,24 @@ public function holyWrath()
         flashEffect(Abilities.massTeleportCaster, caster.getPos())
 
         forUnitsInRange(target, range, true) (unit u) ->
-            if (u.getTypeId() == HERO_GUARDIAN_OF_LIGHT)
-                if (u.isAllyOf(caster.getOwner()))
-                    flashEffect(Abilities.holyBoltMissile, u.getPos())
-                    // Heal
-                    u.addHP(dmg)
-                    // Add stats
-                    if (IsHeroUnitId(u.getTypeId()))
-                        string msg
-                        let rnd = GetRandomInt(1, 1000)
-                        if (rnd <= 333)
-                            u.addStr(stats)
-                            msg = "Strength"
-                        else if (rnd <= 666)
-                            u.addAgi(stats)
-                            msg = "Agility"
-                        else
-                            u.addInt(stats)
-                            msg = "Intelligence"
-                        printTimedToPlayer("Guardian of Light blessing: +{0} {1}!".format(stats.toString(), msg), 5, u.getOwner())
-                else // enemy
-                    flashEffect(Abilities.orbCorruptionMissile, u.getPos())
-                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+            if (u.isAllyOf(caster.getOwner()))
+                flashEffect(Abilities.holyBoltMissile, u.getPos())
+                // Heal
+                u.addHP(dmg)
+                // Add stats
+                if (IsHeroUnitId(u.getTypeId()))
+                    string msg
+                    let rnd = GetRandomInt(1, 1000)
+                    if (rnd <= 333)
+                        u.addStr(stats)
+                        msg = "Strength"
+                    else if (rnd <= 666)
+                        u.addAgi(stats)
+                        msg = "Agility"
+                    else
+                        u.addInt(stats)
+                        msg = "Intelligence"
+                    printTimedToPlayer("Guardian of Light blessing: +{0} {1}!".format(stats.toString(), msg), 5, u.getOwner())
+            else // enemy
+                flashEffect(Abilities.orbCorruptionMissile, u.getPos())
+                caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

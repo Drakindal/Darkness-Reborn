@@ -18,7 +18,7 @@ function explosion(unit caster, vec2 target)
     forUnitsInRange(target, 750, true) (unit u) ->
         if caster.isEnemyOf(u)
             caster.damageTargetCode(dmg, u, null, 'phoe', customDamageType.Magical)
-
+            
 function spawnPhoenix(unit caster, vec2 target)
     let lvl = GetUnitAbilityLevel(caster, FIREMAGE_ABILITY_5)
     var decrease = 1000.00

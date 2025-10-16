@@ -12,7 +12,7 @@ init
 
 @compiletime function buffs()
     new BuffDefinition(BUFF_ITEM_BASH, BuffIds.stunned)
-    ..setIcon(Icons.bTNStun)
+    ..setIcon(Icons.bTNStormHammer)
     ..register("Stunned",
     "This unit is stunned for a while.")
 

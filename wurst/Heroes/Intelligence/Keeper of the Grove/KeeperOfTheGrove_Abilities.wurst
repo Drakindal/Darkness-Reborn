@@ -38,7 +38,7 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
 
         new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_1, 9, true)
         ..setGeneralAbility(AbilityPosition.Q)
-        ..presetAreaofEffect(lvl -> 450.0 + 40*(lvl-1))
+        ..presetAreaofEffect(lvl -> 350.0 + 30*(lvl-1))
         ..presetCooldown(lvl -> 21.0 - lvl)
         ..presetManaCost(lvl -> 70 + 30*lvl)
         ..presetFollowThroughTime(lvl -> 1.0)
@@ -114,10 +114,10 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(KEEPER_OF_THE_GROVE_BUFF_4, BuffIds.roar)
-        ..setArtTarget(1, "")
+        ..setArtTarget("")
         ..setTargetAttachmentPoint0(1, "weapon")
         ..setTargetAttachmentPoint1(1, "weapon")
-        ..setIconNormal(1, "ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
+        ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNThorns.blp")
         ..register("Tree Roots".setColor(colAbilitiesKeeperOfTheGrove),
         "Tree Roots")
 
@@ -140,18 +140,16 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
 // ----------------------------------------------------------------------------
 
         // WIP Armor
-        new ChannelAbilityPreset(KEEPER_OF_THE_GROVE_ABILITY_5, 9, true)
+        new AbilityDefinitionFarseerSpiritWolf(KEEPER_OF_THE_GROVE_ABILITY_5)
         ..setUltimateAbility()
         ..presetCooldown(lvl -> 60.0 - 10 * (lvl-1))
+        ..presetDuration(lvl -> 30.0 + 10*(lvl-1))
         ..setManaCost(1, 300)
         ..setManaCost(2, 400)
         ..setManaCost(3, 600)
         ..setManaCost(4, 800)
-        ..presetFollowThroughTime(lvl -> 1.0)
-        ..presetTargetTypes(Targettype.POINT)
-        ..presetOption(Option.UNIQUECAST, true)
-        ..presetBaseOrderID(lvl -> MyOrderIds.groundCarrionSwarm)
-        ..setOrderStringUseTurnOn(MyOrderIds.groundCarrionSwarm)
+        ..presetNumberofSummonedUnits(lvl -> 1)
+        ..presetSummonedUnit(lvl -> KEEPER_SUMMON_MAIN_SPIRIT.toRawCode())
         ..presetCastRange(lvl -> 800.0)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNKeeperGhostBlue.blp")
         ..setArtCaster("Abilities\\Spells\\Orc\\Disenchant\\DisenchantSpecialArt.mdl")
@@ -163,10 +161,11 @@ public constant real array[9] keeperOfTheGrove_abi1_Damage = [
         (string format) -> "Summons spirits of the Grove guardians to protect it.",
         (string format, int lvl) -> ("Summons spirits of the Grove guardians to protect it.\n"+
         "Number of spirits: {0}.\n" +
-        "Duration: 30 seconds.\n" +
-        "Cooldown: {1} seconds.\n\n").format(
+        "Duration: {1} seconds.\n" +
+        "Cooldown: {2} seconds.\n\n").format(
             (6 + 2*(lvl-1)).toString(),
-            (60.0 - 10 * (lvl-1)).toString()
+            (30 + 10*(lvl-1)).toString(),
+            (60 - 10 * (lvl-1)).toString()
         ) +
 
         ("Cenarius's Spirit:\n" +

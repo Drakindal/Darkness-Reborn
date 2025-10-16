@@ -164,7 +164,7 @@ import DebugVar
 
         new BuffDefinition(KING_OF_LOAS_BUFF_ASC_4, BuffIds.innerFire)
         ..setArtTarget("")
-        ..setIcon(Icons.bTNBerserk)
+        ..setIcon(Icons.bTNAmulet)
         ..setTargetAttachmentPoint0(1, "origin")
         ..setTargetAttachments(1, 1)
         ..setArtTarget(Abilities.doomTarget)

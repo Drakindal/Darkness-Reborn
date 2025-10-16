@@ -12,6 +12,7 @@ import BuffIds
 import MyBuffIds
 import BuffObjEditing
 import DebugVar
+import Icons
 
 // ----------------------------------------------------------------------------
 
@@ -30,6 +31,7 @@ public constant real array[9] shadowHunter_abi1_Damage = [
 @compiletime function defineAbilities()
     if (BUILD_INT_HEROES)
         new BuffDefinition(SHADOW_HUNTER_BUFF_1, BuffIds.lightningShield)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
         ..setArtSpecial("Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl")
         ..setArtTarget("Abilities\\Weapons\\ShadowHunterMissile\\ShadowHunterMissile.mdl")
         ..register("Spinning Blade".setColor(colAbilitiesShadowHunter),
@@ -37,6 +39,7 @@ public constant real array[9] shadowHunter_abi1_Damage = [
 
         new AbilityDefinitionLightningShield(SHADOW_HUNTER_ABILITY_1)
         ..setGeneralAbility(AbilityPosition.Q)
+        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
         ..presetAreaofEffect(lvl -> 180.0+20*lvl)
         ..presetBuffs(lvl -> commaList(SHADOW_HUNTER_BUFF_1, BuffIds.lightningShieldCaster))
         ..presetCooldown(lvl -> 15.0 - lvl)
@@ -54,7 +57,6 @@ public constant real array[9] shadowHunter_abi1_Damage = [
         ..presetCastRange(lvl -> 900.0)
         ..setRequirements("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesAllOrganic))
-        ..setIcon("ReplaceableTextures\\CommandButtons\\BTNUpgradeMoonGlaive.blp")
         ..register(HERO_SHADOW_HUNTER, "Spinning Blade".setColor(colAbilitiesShadowHunter), 
         "Creates a rotation blade on the allied unit dealing damage to all nearby enemies. Increases damage taken by the target from all sources by 40%.\n" +
         wordPassive + "Increases the Shadow Hunter's damage against Shadow Hexed units by +100% per level.\n",
@@ -138,11 +140,13 @@ public constant real array[9] shadowHunter_abi1_Damage = [
 // ----------------------------------------------------------------------------
 
         new BuffDefinition(SHADOW_HUNTER_BUFF_3, BuffIds.hex)
+        ..setIcon(Icons.bTNHex)
         ..register("Shadow Hex".setColor(colAbilitiesShadowHunter),
         "This unit is under Shadow Hex. It has been transformed into a critter.")
 
         new AbilityDefinitionShadowHunterHex(SHADOW_HUNTER_ABILITY_3)
         ..setGeneralAbility(AbilityPosition.E)
+        ..setIcon(Icons.bTNHex)
         ..presetBuffs(lvl -> SHADOW_HUNTER_BUFF_3.toRawCode())
         ..presetCooldown(lvl -> 12.0 - 0.5*(lvl-1))
         ..setManaCost(2, 80)

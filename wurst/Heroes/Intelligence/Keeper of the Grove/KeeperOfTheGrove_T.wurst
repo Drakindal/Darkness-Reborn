@@ -9,13 +9,6 @@ import UnitStats
 
 // WIP. Refactor summons definition.
 public function spiritGuardian()
-    EventListener.onPointCast(KEEPER_OF_THE_GROVE_ABILITY_5) (unit caster, vec2 target) ->
-        let spirit = createUnit(caster.getOwner(), KEEPER_SUMMON_MAIN_SPIRIT, target)
-        ..setTimedLife(30)
-        
-        spirit.setAbilityLevel(KEEPER_OF_THE_GROVE_SUMMON_ABILITY_1, caster.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_5))
-        AddSpecialEffect(Abilities.animateDeadTarget, target.x, target.y).destr()
-    
     EventListener.add(EVENT_PLAYER_UNIT_SUMMON) ->
         let summoner = GetSummoningUnit()
         if(summoner.getTypeId() == HERO_KEEPER_OF_THE_GROVE or summoner.getTypeId() == KEEPER_SUMMON_MAIN_SPIRIT)
@@ -25,13 +18,13 @@ public function spiritGuardian()
             let lvl = hero.getAbilityLevel(KEEPER_OF_THE_GROVE_ABILITY_5)
             let heroInt = hero.getInt(true)
             
-            let armorPen = 0.2*lvl*summoner.getStats().getPen(penType.Physical)
+            let armorPen = 0.2*lvl*hero.getStats().getPen(penType.Physical)
 
             if summon.getTypeId() == KEEPER_SUMMON_MAIN_SPIRIT
                 summon.setMaxHP(((0.19*heroInt + 340) * lvl + 2600).toInt(), true)
                 //summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)
                 summon.setBaseDamage(((1.9 * heroInt + 121) * lvl + 256).toInt(), 0)
-                summon.getStats().setBasePen(penType.Physical, armorPen)
+                summon.getStats().setBasePen(penType.Physical, 1.5 * armorPen)
             if summon.getTypeId() == KEEPER_SUMMON_MINI_SPIRIT
                 summon.setMaxHP(((0.1 * heroInt + 125) * lvl + 420).toInt(), true)
                 //summon.setArmor(0.4 * summoner.getArmor() + lvl * 8)

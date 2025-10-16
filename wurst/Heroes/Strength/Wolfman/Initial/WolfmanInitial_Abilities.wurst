@@ -35,6 +35,7 @@ import DebugVar
 
         new AbilityDefinitionTaurenChieftainWarStomp(MAN_ABILITY_2)
         ..setGeneralAbility(AbilityPosition.W)
+        ..setIcon(Icons.bTNHowlOfTerror)
         ..presetDurationHero(lvl -> 2)
         ..presetDurationNormal(lvl -> 2)
         ..presetBuffs(lvl -> commaList(MAN_BUFF))

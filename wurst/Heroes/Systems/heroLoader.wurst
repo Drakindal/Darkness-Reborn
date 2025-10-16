@@ -276,6 +276,7 @@ init
     clusterRockets()
     addTinkerAura()
     // HERO_GUARDIAN_OF_LIGHT
+    lightRemoval()
     holyWrath()
     godsBlessing()
     // HERO_ARCHMAGE
@@ -319,6 +320,9 @@ init
 
 public function unit.registerHero()
     switch this.getTypeId()
+        case HERO_FIRE_MAGE
+            
+            this.hideAbility(abilId, flag)
         case HERO_TIME_WIZARD
             // Works fine if Time Wizard was re-picked.
             this.punishTimeAct()
