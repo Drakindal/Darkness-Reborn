@@ -4,12 +4,9 @@ Dark Ranger W
 Shadow Vengeance Q
 Vivpire
 
-Bugs:
-
-Archmage Order Ids
-
 Need to be tested:
 
+Archmage
 Firelord
 Firemage
 Guard of Light

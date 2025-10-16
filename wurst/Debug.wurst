@@ -76,8 +76,8 @@ public function initDebug()
     ..addItemToSlot(ITEM_VAMPIRELLA_L5, 5)
 
     EventListener.add(EVENT_PLAYER_CHAT_FILTER) -> 
-        let setLvlLength = "-setlvl".length()
-        if EventData.getChatMessage().substring(0, setLvlLength).toLowerCase() == "-setlvl"
+        let setLvlLength = "-sl".length()
+        if EventData.getChatMessage().substring(0, setLvlLength).toLowerCase() == "-sl"
             let lvl = EventData.getChatMessage().substring(setLvlLength, EventData.getChatMessage().length()).toInt()
 
             let selected = GetUnitsSelectedAll(GetTriggerPlayer())
