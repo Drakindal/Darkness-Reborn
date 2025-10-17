@@ -94,7 +94,7 @@ public constant int array[9] abi1_Targets = [
         ..setManaCost(1, 0)
         ..setArtTarget("")
         ..setMissileSpeed(800)
-        ..setTargetsAllowed(1, commaList(getTargets(AbilityTargets.EnemiesAll), TargetsAllowed.dead))
+        ..setTargetsAllowed(1, commaList(getTargets(AbilityTargets.EnemiesAll), TargetsAllowed.dead, TargetsAllowed.alive))
 
         new AbilityDefinitionBerserk(DEATH_KNIGHT_ABILITY_2)
         ..setGeneralAbility(AbilityPosition.W)

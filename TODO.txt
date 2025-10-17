@@ -2,18 +2,12 @@ Game crash:
 
 Vivpire
 
-King of Loas ascended does not revive.
-
 Bugs:
 
 Shadow Hunter healing ward does not show buff.
 
+Firemage's R doesn't show up.
 Tinker active R.
-
-Test:
-
-Fire mage Q, E. Passive
-tinker test passive abilities
 
 Resistances should be added:
     Satyr
