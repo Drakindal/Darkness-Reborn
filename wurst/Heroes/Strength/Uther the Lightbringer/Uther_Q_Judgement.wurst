@@ -48,7 +48,7 @@ public function judgement()
                 dmg = dmg * 1.3
 
             forUnitsInRange(target, 400) (unit u) ->
-                if u.isEnemyOf(caster)
+                if u.isEnemyOf(caster) and u.isAlive()
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                     
                     new DummyCaster()

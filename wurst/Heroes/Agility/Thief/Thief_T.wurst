@@ -1,18 +1,18 @@
 package Thief_T
 
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 
 public function noCommand()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            let targ = DamageEvent.getTarget()
-            if (DamageEvent.getType() == ATTACK)
-                let damtyp = DamageEvent.getDamageType()
+            let targ = DamageCustomEvent.getTarget()
+            if (DamageCustomEvent.getType() == ATTACK)
+                let damtyp = DamageCustomEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     if GetRandomInt(0, 100) < src.getAbilityLevel(THIEF_ABILITY_5) * 2
                         let lvl = src.getAbilityLevel(THIEF_ABILITY_5)

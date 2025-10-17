@@ -24,7 +24,7 @@ public function rainofFire()
             flashEffect(Abilities.fireLordDeathExplode, target, 2)
 
             forUnitsInRange(target, range, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))
                     ..origin(vec2(caster.getX(), caster.getY()))

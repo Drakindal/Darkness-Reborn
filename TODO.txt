@@ -1,26 +1,14 @@
 Game crash:
 
-Dark Ranger W
-Shadow Vengeance Q
 Vivpire
-Naga the Sea Witch W
-Sylvanas W
 
-King of Loas ascended does not revive. W always triggers even if Loas do not attack (in debug mode, then jacksmith attacks enemies)
+King of Loas ascended does not revive.
 
 Bugs:
 
 Shadow Hunter healing ward does not show buff.
 
-Uther's R doesn't work on allies.
-Uther's W increases holy power.
-
-
-Pitlord reflections.
-
-
 Tinker active R.
-Death Knight animation.
 
 Test:
 

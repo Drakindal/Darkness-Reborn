@@ -20,7 +20,7 @@ public function shadowWalk()
         doPeriodicallyTimed(0.03, duration) (CallbackCounted cb) ->
             caster.setPos(caster.getPos().polarOffset(caster.getFacingAngle(), 20))
             forUnitsInRange(caster.getPos(), 175, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
             if cb.isLast()
                 caster.setVertexColor(color(255, 255, 255))

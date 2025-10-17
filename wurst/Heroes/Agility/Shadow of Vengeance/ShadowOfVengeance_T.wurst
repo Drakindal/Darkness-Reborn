@@ -2,7 +2,7 @@ package ShadowOfVengeance_T
 
 import DamageTarget
 import ClosureEvents
-import DamageEvent
+import DamageCustomEvent
 import MyBuffIds
 import MyAbilityIds
 import ShadowOfVengeance_Abilities
@@ -11,17 +11,17 @@ public function blackHole()
     EventListener.onCast(SHADOW_OF_VENGEANCE_ABILITY_5) (unit caster) ->
         if caster.hasAbility(SHADOW_OF_VENGEANCE_BUFF_1)
             caster.removeAbility(SHADOW_OF_VENGEANCE_BUFF_1)
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            if (DamageEvent.getType() == ATTACK)
-                let damtyp = DamageEvent.getDamageType()
+            if (DamageCustomEvent.getType() == ATTACK)
+                let damtyp = DamageCustomEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     if src.hasAbility(SHADOW_OF_VENGEANCE_BUFF_5)
                         let lvl = src.getAbilityLevel(SHADOW_OF_VENGEANCE_ABILITY_5)
-                        let targ = DamageEvent.getTarget()
+                        let targ = DamageCustomEvent.getTarget()
                         let missingHp = targ.getMissingHP() * shadow_of_vengeance_abi5_DamageMult[lvl-1]
                         src.removeAbility(SHADOW_OF_VENGEANCE_BUFF_5)
                         src.damageTargetCode(missingHp, targ, null, -1, customDamageType.Magical)

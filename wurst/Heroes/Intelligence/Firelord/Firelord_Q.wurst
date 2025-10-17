@@ -3,8 +3,7 @@ package Firelord_Q
 import ClosureEvents
 import Abilities
 import ClosureForGroups
-import DamageEvent
-import Global_Variables
+import DamageElements
 import MyBuffIds
 import MyAbilityIds
 import OrderIds

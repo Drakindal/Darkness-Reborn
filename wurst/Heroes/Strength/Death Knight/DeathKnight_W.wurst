@@ -15,7 +15,7 @@ public function tasteOfDeath()
         let dmg = 25*lvl + (10.*lvl)*souls
     
         forUnitsInRange(caster.getPos(), 500, true) (unit u) ->
-            if caster.isEnemyOf(u)
+            if caster.isEnemyOf(u) and u.isAlive()
                 
                 new DummyCaster()
                 ..owner(caster.getOwner())

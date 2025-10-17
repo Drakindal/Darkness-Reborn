@@ -31,7 +31,7 @@ public function shockExplosion()
                     pathable.setPos(pos)
                     if pathable.getPos().isTerrainWalkable()
                         forUnitsInRange(pos, 300) (unit u) ->
-                            if caster.isEnemyOf(u)
+                            if caster.isEnemyOf(u) and u.isAlive()
                                 u.setPos(pos)                      
                 else
                     flashEffect(Abilities.volcanoDeath, target)
@@ -40,5 +40,5 @@ public function shockExplosion()
 
                         doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
                             forUnitsInRange(target, 500, true) (unit u) ->
-                                if caster.isEnemyOf(u)
+                                if caster.isEnemyOf(u) and u.isAlive()
                                     caster.damageTargetCode(dps, u, null, -1, customDamageType.PhysicalRanged)

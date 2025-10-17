@@ -11,7 +11,7 @@ public function doghowl()
     EventListener.onCast(WOLF_INITIATE_ABILITY_2) (unit caster) ->
         let lvl = caster.getAbilityLevel(WOLF_INITIATE_ABILITY_2)
         forUnitsInRange(caster.getPos(), 400, true) (unit u) ->
-            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit)
+            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit) and u.isAlive()
                 new DummyCaster()
                 ..origin(caster.getPos())
                 ..owner(caster.getOwner())

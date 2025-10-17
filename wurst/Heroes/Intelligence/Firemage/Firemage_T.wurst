@@ -16,7 +16,7 @@ function explosion(unit caster, vec2 target)
     let dmg = caster.getInt(true)*(lvl*5.00) 
     flashEffect("NewMassiveEX.mdl", target, 3)
     forUnitsInRange(target, 750, true) (unit u) ->
-        if caster.isEnemyOf(u)
+        if caster.isEnemyOf(u) and u.isAlive()
             caster.damageTargetCode(dmg, u, null, 'phoe', customDamageType.Magical)
             
 function spawnPhoenix(unit caster, vec2 target)

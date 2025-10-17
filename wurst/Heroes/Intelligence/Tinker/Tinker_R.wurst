@@ -42,23 +42,10 @@ public function repair()
             let lvl = tinkerHero.getAbilityLevel(TINKER_ABILITY_4)
             if (lvl > 0)
                 forUnitsInRange(tinkerHero.getPos(), tinker_abi4_aura_range[lvl-1]) (unit u) ->
-
-                    let cond = (u.getTypeId() == HERO_TINKER_ROBOT or u.checkType(MyUnitType.StructureMechUnit))
-                    and not  u.isInvulnerable()
-                    and      u.isAlive()
-                    and not (u.getHPRatio() > 0.995)
-
-                    printTimedToPlayer("Name = {0}, Cond = {1}. not maxHp = {2}, {3}.".format(
-                        u.getName(),
-                        cond.toString(),
-                        u.getHPRatio().toString(4),
-                        (not (u.getHPRatio() > 0.995)).toString()
-                    ), 5, tinkerHero.getOwner())
-                    
                     if (u.getTypeId() == HERO_TINKER_ROBOT or u.checkType(MyUnitType.StructureMechUnit))
                     and not  u.isInvulnerable()
                     and      u.isAlive()
-                    and not (u.getHPRatio() > 0.995)
+                    and not (u.getHPRatio() > 0.9999)
 
                         u.addHP(tinker_abi4_aura_hp[lvl-1])
                         flashEffect(Abilities.replenishHealthCasterOverhead, u.getPos())

@@ -11,7 +11,7 @@ public function thunderRage()
         let lvl = caster.getAbilityLevel(HERALD_ABILITY_5)
         let dmg = caster.getInt(true) * (lvl * 5.00) + caster.getMaxMana()
         forUnitsInRange(target.getPos(), 500) (unit u) ->
-            if u.isEnemyOf(caster.getOwner())
+            if u.isEnemyOf(caster.getOwner()) and u.isAlive()
                 let upos = u.getPos()
                 let templight = addLightning("CLPB", true, caster.getPos(), upos)
                 doAfter(2) -> 

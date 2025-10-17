@@ -21,7 +21,7 @@ public function tornado()
             let dmg = caster.getMaxMana() * lvl * 0.90/(1/tickRate)
             if inTransit
                 forUnitsInRange(target, range, true) (unit u) ->
-                    if u.isEnemyOf(caster)
+                    if u.isEnemyOf(caster) and u.isAlive()
                         caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                         if sfx.getPos().isTerrainWalkable()
                             u.setPos(sfx.getPos())
@@ -29,7 +29,7 @@ public function tornado()
                 sfx.destr()
                 flashEffect("Effects\\Vashj\\WaterBlast.mdl", sfx.getPos(), 8)
                 forUnitsInRange(sfx.getPos(), range, true) (unit u) ->
-                    if u.isEnemyOf(caster)
+                    if u.isEnemyOf(caster) and u.isAlive()
                         caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                         if sfx.getPos().isTerrainWalkable()
                             u.setPos(sfx.getPos())

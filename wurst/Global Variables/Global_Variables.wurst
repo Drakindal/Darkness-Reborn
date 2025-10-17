@@ -1,9 +1,6 @@
 package Global_Variables
 
-import DamageEvent
 import HashMap
-import MyUnitIds
-import MyUpgradesIds
 
 public rect array creepLoc = []
 public rect array eliteLoc = []
@@ -30,7 +27,7 @@ public constant DAMAGE_EVENT_PRIO_RELATIVE  = 1 // Apply relative changes (multi
 public constant DAMAGE_EVENT_PRIO_ABSOLUTE  = 2 // Apply absolute changes (addition and subtraction)
 public constant DAMAGE_EVENT_PRIO_SHIELD    = 4 // Apply reduction from "shield" effects
 public constant DAMAGE_EVENT_PRIO_FINAL     = 5 // Final damage (won't be changed at this stage)
-public constant DAMAGE_ELEMENT_FIRE  = new DamageElement("Fire", colorA(255, 0, 0, 255)) // Primarily used for Firelord (may be used for others)
+
 public int bossKills = 0
 public unit dropSite
 

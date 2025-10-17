@@ -19,7 +19,7 @@ public function superShadraPoison()
             SOUND_POISON_SPIT.playOnPoint(targetPos.toVec3())
 
             forUnitsInRange(targetPos, 400, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
 
                     new DummyCaster()
                     ..owner(caster.getOwner())
@@ -31,4 +31,5 @@ public function superShadraPoison()
 
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                     doPeriodicallyCounted(1, 4) (CallbackCounted cb) ->
-                        caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+                        if (u.isAlive())
+                            caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

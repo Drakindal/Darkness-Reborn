@@ -11,7 +11,7 @@ public function godsBlessing()
         let hpAdd = 500*lvl
 
         forUnitsInRange(caster.getPos(), 99999) (unit u) ->
-            if caster.isAllyOf(u)
+            if caster.isAllyOf(u) and u.isAlive()
                 flashEffect(Abilities.resurrecttarget, u.getPos())
                 flashEffect(Abilities.divineShieldTarget, u.getPos())
 

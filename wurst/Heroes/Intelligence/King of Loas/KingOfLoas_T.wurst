@@ -20,11 +20,10 @@ public function kingOfloasTinit()
                 let dmg = caster.getInt(true) * (2 + lvl * 0.5)
 
                 forUnitsInRange(caster.getPos(), loas_abi5_Range[lvl-1], true) (unit u) ->
-                    if caster.isEnemyOf(u)
+                    if caster.isEnemyOf(u) and u.isAlive()
                         new DummyCaster()
                         ..owner(GetOwningPlayer(caster))
                         ..origin(caster.getPos())
                         ..castTarget(KING_OF_LOAS_ABILITY_5_DUMMY, lvl, OrderIds.slow, u)
                         ..delay(1)
-                        if u.isAlive()
-                            caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+                        caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

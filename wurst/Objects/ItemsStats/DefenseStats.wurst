@@ -3,7 +3,6 @@ package DefenseStats
 import ObjectIdGenerator
 import AbilityObjEditing
 import CommonDescriptions
-import DamageTarget
 import ObjectIds
 import ItemStatsDef
 import DS_DataCompileTime

@@ -6,7 +6,7 @@ import MyBuffIds
 import MyAbilityIds
 import DummyCaster
 import OrderIds
-import Global_Variables
+import DamageElements
 import DamageTarget
 import Firelord_Blaze
 
@@ -17,7 +17,7 @@ public function pillarOfFlame()
         let range = 400.0 + 20*lvl
         flashEffect("Effects\\Firelord\\Flame Burst.mdl", target)
         forUnitsInRange(target, range, true) (unit u) ->
-            if caster.isEnemyOf(u)
+            if caster.isEnemyOf(u) and u.isAlive()
                 blaze(caster, u)
                 if u.hasAbility(FIRELORD_BUFF_BLAZE)
                     caster.damageTargetCode(dmg * 4, u, DAMAGE_ELEMENT_FIRE, 'blaz', customDamageType.Magical)

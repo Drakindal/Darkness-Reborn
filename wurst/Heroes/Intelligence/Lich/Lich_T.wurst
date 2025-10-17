@@ -22,6 +22,6 @@ public function deathandnDecay()
         doAfter(1) ->
             doPeriodicallyTimed(0.8, 0.8*(3+lvl)) (CallbackCounted cb) ->
                 forUnitsInRange(target, range, true) (unit u) ->
-                    if caster.isEnemyOf(u)
+                    if caster.isEnemyOf(u) and u.isAlive()
                         flashEffect(Abilities.deathandDecayTarget, u.getPos())
                         caster.damageTargetCode(damage * u.getMaxHP(), u, null, -1, customDamageType.Magical)

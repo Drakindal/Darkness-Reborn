@@ -239,18 +239,11 @@ public constant real array[9] firemage_abi3_IntScale = [
 
 // ----------------------------------------------------------------------------
 
-        new AbilityDefinitionItemTownPortal(FIREMAGE_ABILITY_PASSIVE)
-        ..setLevels(1)
+        new AbilityDefinitionAttributeModifierSkill(FIREMAGE_ABILITY_PASSIVE)
         ..setPosition(AbilityPosition.Z)
-        ..setItemAbility(false)
-        ..presetAreaofEffect(lvl -> 0)
-        ..presetCastingTime(lvl -> 1.5)
-        ..presetMaximumNumberofUnits(lvl -> 0)
-        ..presetCooldown(lvl -> 8)
         ..setIcon("ReplaceableTextures\\PassiveButtons\\PASBTNImmolation.blp")
         ..register(HERO_FIRE_MAGE, "Eternal Flame".setColor(colAbilitiesFiremage), (
-        wordActive + "Teleports the caster to targeted friendly building. The caster is invulnerable while channelling. Cd 10 sec." +
-        wordPassive + "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +
+        "Firemage enhances his spell and ability damage with the Eternal Flame.\n" +
         "Increases damage from spells by [0.1 + 0.1 x (Phoenix {0} Skill Level) + 0.4 x (Melting Phoenixes {1} Level)] x Intelligence.\n").format(
             "[W]".setColor(colAbilityLevel),
             "[T]".setColor(colAbilityLevel)

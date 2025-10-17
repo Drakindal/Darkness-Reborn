@@ -7,7 +7,7 @@ import MyAbilityIds
 import MyBuffIds
 import Abilities
 import DummyCaster
-import Global_Variables
+import DamageElements
 import DamageTarget
 import Firelord_Blaze
 
@@ -17,7 +17,7 @@ public function conflagration()
         let dmg = caster.getInt(true)*(lvl*1.8)+lvl*550
         if target.hasAbility(FIRELORD_BUFF_BLAZE)
             forUnitsInRange(target.getPos(), 300, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     blaze(caster, u)
                     flashEffect(Abilities.fireLordDeathExplode, target.getPos())
                     caster.damageTargetCode(dmg, u, DAMAGE_ELEMENT_FIRE, 'blaz', customDamageType.Magical)

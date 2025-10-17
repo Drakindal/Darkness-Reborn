@@ -1,22 +1,22 @@
 package Vivpire_E
 
-import DamageEvent
+import DamageCustomEvent
 import MyBuffIds
 import Vivpire_Abilities
 
 public function vivpireAura()
-    DamageEvent.addListener(0) -> 
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(0) -> 
+        let src = DamageCustomEvent.getSource()
         if src.hasAbility(VIVPIRE_BUFF_3)
-            switch DamageEvent.getType()
+            switch DamageCustomEvent.getType()
                 case ATTACK
                     let lvl = src.getAbilityLevel(VIVPIRE_BUFF_3)
-                    src.addHP(DamageEvent.getAmount() * vivpire_abi3_Aura[lvl-1])
+                    src.addHP(DamageCustomEvent.getAmount() * vivpire_abi3_Aura[lvl-1])
                     
                 case CODE
-                    if DamageEvent.getDamageType() == DAMAGE_TYPE_MAGIC
+                    if DamageCustomEvent.getDamageType() == DAMAGE_TYPE_MAGIC
                         skip
                     else
                         let lvl = src.getAbilityLevel(VIVPIRE_BUFF_3)
-                        src.addHP(DamageEvent.getAmount() * vivpire_abi3_Aura[lvl-1])
+                        src.addHP(DamageCustomEvent.getAmount() * vivpire_abi3_Aura[lvl-1])
                 default

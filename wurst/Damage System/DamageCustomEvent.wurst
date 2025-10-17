@@ -1,25 +1,339 @@
 package DamageCustomEvent
-import DamageEvent
-import DamageTypes
 import ClosureEvents
+import DamageElements
+import DamageTypes
+import DamageInstance
 
-public class DamageCustomEvent extends DamageEvent
-    // Extended next damage instances
+/* CONFIGURATION */
+
+/** If true, any damage instance of attacktype ATTACK_TYPE_NORMAL is passed with DamageType SPELL */
+@configurable constant DETECT_NATIVE_ABILITIES = true
+
+/** A damage instance can have an element.
+    DAMAGE_ELEMENT_ATTACK is the defaut element added to any damage instances of DamageType ATTACK */
+@configurable public constant DAMAGE_ELEMENT_ATTACK = new DamageElement("Physical", colorA(223, 59, 33, 255))
+
+/* DAMAGE TYPE */
+
+
+
+    
+
+
+
+/* DAMAGE EVENT */
+
+public class DamageCustomEvent
+    // Next damage instance
+    protected static int            nextDamageId      = 0
+    protected static WC3InternalDetectionDamageTypes     nextDamageType    = UNKNOWN
+    protected static DamageElement  nextDamageElement = null
     protected static customDamageType nextCustomDamageType = customDamageType.Pure
+    // Mid damage instance
+    protected static bool abort = false
+    // Damage listeners
+    protected static DamageListener array firstListeners
+    protected static int maxPriority = 0
+    protected static DamageListener array firstUnreducedListeners
+    protected static int maxUnreducedPriority = 0
+
+    /* ON DAMAGE */
+    protected static function onUnreducedDamage()
+        let amount = GetEventDamage()
+
+        let attackType = BlzGetEventAttackType()
+        if nextDamageType == WC3InternalDetectionDamageTypes.UNKNOWN// Damage type hasn't been defined -> detect it
+            if DETECT_NATIVE_ABILITIES and attackType == ATTACK_TYPE_NORMAL
+                nextDamageType = SPELL
+            else
+                nextDamageType = ATTACK
+                nextDamageElement = DAMAGE_ELEMENT_ATTACK
+
+        let dmg = new DamageInstance(nextDamageId, GetEventDamageSource(), GetTriggerUnit(), amount, attackType, BlzGetEventDamageType(), BlzGetEventWeaponType(), nextDamageType, nextDamageElement)
+
+        nextDamageId = 0
+        nextDamageType = UNKNOWN
+        nextDamageElement = null
+
+        for i = 0 to maxUnreducedPriority
+            var listener = firstUnreducedListeners[i]
+            while listener != null
+                listener.onEvent()
+                if abort
+                    dmg.amount = 0
+                    break
+                else
+                    listener = listener.next
+            if abort
+                break
+
+        BlzSetEventAttackType(dmg.nativeAttackType)
+        BlzSetEventDamageType(dmg.nativeDamageType)
+        BlzSetEventWeaponType(dmg.nativeWeaponType)
+        BlzSetEventDamage(dmg.amount)
+
+    protected static function onDamage()
+        let dmg = DamageInstance.current
+        if not abort
+            dmg.setReducedAmount(GetEventDamage())
+            for i = 0 to maxPriority
+                var listener = firstListeners[i]
+                while listener != null
+                    listener.onEvent()
+                    if abort
+                        dmg.amount = 0
+                        break
+                    else
+                        listener = listener.next
+                if abort
+                    break
+
+            BlzSetEventAttackType(dmg.nativeAttackType)
+            BlzSetEventDamageType(dmg.nativeDamageType)
+            BlzSetEventWeaponType(dmg.nativeWeaponType)
+            BlzSetEventDamage(dmg.amount)
+
+        destroy dmg
+        abort = false
+
+    /* LISTENERS */
+    /** Adds a damage event listener.
+        If The order of firing is important, use addListener(priority, listener) */
+    static function addListener(DamageListener listener) returns DamageListener
+        return addListener(maxPriority, listener)
+
+    /** Adds a damage event listener with a given priority.
+        Listeners of different priorities fire from the lowest priority to the highest priority added.
+        Listeners of the same priority fire by order of addition (FIFO) */
+    static function addListener(int priority, DamageListener listener) returns DamageListener
+        listener.priority = priority
+        listener.unreduced = false
+        if firstListeners[priority] != null
+            firstListeners[priority].prev = listener
+            listener.next = firstListeners[priority]
+
+        firstListeners[priority] = listener
+
+        if maxPriority < priority
+            maxPriority = priority
+
+        return listener
+
+    protected static function removeListener(DamageListener listener)
+        if listener.unreduced
+            removeUnreducedListener(listener)
+            return
+        var prio = listener.priority
+        if firstListeners[prio] == listener
+            firstListeners[prio] = listener.next
+            if listener.next == null and maxPriority == prio
+                while firstListeners[prio] == null and prio > 0
+                    prio--
+                maxPriority = prio
+
+        else if listener.prev != null
+            listener.prev.next = listener.next
+
+        listener.next.prev = listener.prev
+
+    /** Adds a damage event listener that fires before any damage reduction is applied (such as armor).
+    If The order of firing is important, use addListener(priority, listener) */
+    static function addUnreducedListener(DamageListener listener) returns DamageListener
+        return addUnreducedListener(maxUnreducedPriority, listener)
+
+    /** Adds a damage event listener with a given priority that fires before any damage reduction is applied (such as armor).
+        Listeners of different priorities fire from the lowest priority to the highest priority added.
+        Listeners of the same priority fire by order of addition (FIFO) */
+    static function addUnreducedListener(int priority, DamageListener listener) returns DamageListener
+        listener.priority = priority
+        listener.unreduced = true
+        if firstUnreducedListeners[priority] != null
+            firstUnreducedListeners[priority].prev = listener
+            listener.next = firstUnreducedListeners[priority]
+
+        firstUnreducedListeners[priority] = listener
+
+        if maxUnreducedPriority < priority
+            maxUnreducedPriority = priority
+
+        return listener
+
+    protected static function removeUnreducedListener(DamageListener listener)
+        var prio = listener.priority
+        if firstUnreducedListeners[prio] == listener
+            firstUnreducedListeners[prio] = listener.next
+            if listener.next == null and maxUnreducedPriority == prio
+                while firstUnreducedListeners[prio] == null and prio > 0
+                    prio--
+                maxUnreducedPriority = prio
+
+        else if listener.prev != null
+            listener.prev.next = listener.next
+
+        listener.next.prev = listener.prev
+
+    /* GETTERS */
+    /** Returns the id of the damage instance being currently fired */
+    static function getId() returns int
+        return DamageInstance.current.id
+
+    /** Returns the source of the damage instance being currently fired */
+    static function getSource() returns unit
+        return DamageInstance.current.source
+
+    /** Returns the target of the damage instance being currently fired */
+    static function getTarget() returns unit
+        return DamageInstance.current.target
+
+    /** Returns the damage amount of the damage instance being currently fired */
+    static function getAmount() returns real
+        return DamageInstance.current.amount
+
+    /** Returns the original reduced damage amount of the damage instance being currently fired */
+    static function getOriginalAmount() returns real
+        return DamageInstance.current.originalAmount
+
+    /** Returns the unreduced damage amount of the damage instance being currently fired */
+    static function getUnreducedAmount() returns real
+        return DamageInstance.current.unreducedAmount
+
+    /** Returns the original unreduced damage amount of the damage instance being currently fired */
+    static function getUnreducedOriginalAmount() returns real
+        return DamageInstance.current.unreducedOriginalAmount
+
+    /** Returns the percent of damage reduced from the *original unreduced amount* by damage reducing effects.
+        If the damage instance is still unreduced, returns zero */
+    static function getNativeDamageReductionPercent() returns real
+        if DamageInstance.current.unreduced
+            return 0.
+        return 1. - DamageInstance.current.originalAmount / DamageInstance.current.unreducedOriginalAmount
+
+    /** Returns the attacktype of the damage instance being currently fired */
+    static function getAttackType() returns attacktype
+        return DamageInstance.current.nativeAttackType
+
+    /** Returns the damagetype of the damage instance being currently fired */
+    static function getDamageType() returns damagetype
+        return DamageInstance.current.nativeDamageType
+
+    /** Returns the weapontype of the damage instance being currently fired */
+    static function getWeaponType() returns weapontype
+        return DamageInstance.current.nativeWeaponType
+
+    /** Returns the DamageType of the damage instance being currently fired */
+    static function getType() returns WC3InternalDetectionDamageTypes
+        return DamageInstance.current.damageType
+
+    /** Returns the DamageElement of the damage instance being currently fired */
+    static function getElement() returns DamageElement
+        return DamageInstance.current.damageElement
+
+    /** Returns true if a damage instance is currently firing */
+    static function isFiring() returns bool
+        return DamageInstance.count > 0
 
     /** Returns the damagetype of the damage instance being currently fired */
     static function getCustomDamageType() returns customDamageType
         return nextCustomDamageType
 
+    /* SETTERS */
+    /** Sets the damage amount of the damage instance being currently fired */
+    static function setAmount(real amount)
+        DamageInstance.current.setAmount(amount)
+
+    /** Adds to the damage amount of the damage instance being currently fired */
+    static function addAmount(real amount)
+        DamageInstance.current.setAmount(DamageInstance.current.amount + amount)
+
+    /** Substracts from the damage amount of the damage instance being currently fired */
+    static function subAmount(real amount)
+        DamageInstance.current.setAmount(DamageInstance.current.amount - amount)
+
+    /** Sets the attacktype of the damage instance being currently fired */
+    static function setAttackType(attacktype attackType)
+        DamageInstance.current.nativeAttackType = attackType
+
+    /** Sets the damagetype of the damage instance being currently fired */
+    static function setDamageType(damagetype damageType)
+        DamageInstance.current.nativeDamageType = damageType
+
+    /** Sets the weapontype of the damage instance being currently fired */
+    static function setWeaponType(weapontype weaponType)
+        DamageInstance.current.nativeWeaponType = weaponType
+
+    /** Sets the id for the next damage instance */
+    static function setNextDamageId(int id)
+        nextDamageId = id
+
+    /** Sets the DamageType to CODE for the next damage instance */
+    static function setNextDamageFromCode()
+        nextDamageType = WC3InternalDetectionDamageTypes.CODE
+
+    /** Sets the DamageType for the next damage instance */
+    static function setNextDamageType(WC3InternalDetectionDamageTypes damageType)
+        nextDamageType = damageType
+
+    /** Sets the DamageElement for the next damage instance */
+    static function setNextDamageElement(DamageElement damageElement)
+        nextDamageElement = damageElement
+
     /** Sets the DamageType for the next damage instance */
     static function setNextCustomDamageType(customDamageType damageType)
         nextCustomDamageType = damageType
 
+    /* UTILS */
+    /** Nulls the damage amount and skip all remaining listeners for the damage instance being currently fired */
+    static function abortCurrent()
+        abort = true
 
-    // Reset next custom damage type and call damage event reduce function
-    static protected function onUnreducedDamage()
-        DamageEvent.onUnreducedDamage()
-        nextCustomDamageType = customDamageType.Pure
+
+
+/* LISTENER */
+
+public abstract class DamageListener
+    int priority = 0
+    thistype prev = null
+    thistype next = null
+    bool unreduced = false
+
+    abstract function onEvent()
+
+    ondestroy
+        DamageCustomEvent.removeListener(this)
+
+
+/* MISC */
+/** Returns the name of the given DamageType */
+@configurable public function getDamageTypeName(WC3InternalDetectionDamageTypes t) returns string
+    switch t
+        case ATTACK
+            return "Physical"
+        case SPELL
+            return "Ability"
+        case CODE
+            return "Code"
+        default
+            return "Unknown"
+
+/** Returns a damage designation given a DamageType and a DamageElement */
+@configurable public function getDamageDesignation(WC3InternalDetectionDamageTypes t, DamageElement e) returns string
+    if t != WC3InternalDetectionDamageTypes.UNKNOWN and e != null
+        if t==WC3InternalDetectionDamageTypes.ATTACK and e==DAMAGE_ELEMENT_ATTACK
+            return "Pure Physical Damage"
+        return e.getName() + " " + getDamageTypeName(t) + " Damage"
+    else if t != WC3InternalDetectionDamageTypes.UNKNOWN
+        return getDamageTypeName(t) + " Damage"
+    else if e != null
+        return e.getName() + " Damage"
+    return "Damage"
+
+/** Returns the damage designation of the damage instance being currently fired */
+function getEventDamageDesignation() returns string
+    return getDamageDesignation(DamageCustomEvent.getType(), DamageCustomEvent.getElement())
+
+
+/* INIT */
 
 init
     EventListener.add(EVENT_PLAYER_UNIT_DAMAGING, () -> DamageCustomEvent.onUnreducedDamage())
+    EventListener.add(EVENT_PLAYER_UNIT_DAMAGED,  () -> DamageCustomEvent.onDamage())

@@ -18,5 +18,5 @@ public function spinningBlade()
 
         doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
             forUnitsInRange(target.getPos(), range, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)

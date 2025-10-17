@@ -1,6 +1,5 @@
 package Recipes3
 
-import CommonDescriptions
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds

@@ -42,7 +42,7 @@ public function holyStorm()
 
         doPeriodicallyTimed(period, duration) (CallbackCounted cb) ->
             forUnitsInRange(caster.getPos(), 300) (unit u) ->
-                if u.isEnemyOf(caster)
+                if u.isEnemyOf(caster) and u.isAlive()
                     caster.damageTargetCode(dps, u, null, -1, customDamageType.Magical)
 
             if cb.isLast()

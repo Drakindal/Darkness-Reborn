@@ -1,5 +1,3 @@
 package RAAbilities
 
-import Global_Variables
-
 public function raSetup()

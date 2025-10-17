@@ -5,23 +5,23 @@ import OrderIds
 import MyAbilityIds
 import DamageTarget
 import ClosureEvents
-import DamageEvent
+import DamageCustomEvent
 import MyBuffIds
 
 public function furyPeak()
     EventListener.onCast(SHADOW_OF_VENGEANCE_ABILITY_1) (unit caster) ->
         if caster.hasAbility(SHADOW_OF_VENGEANCE_BUFF_5)
             caster.removeAbility(SHADOW_OF_VENGEANCE_BUFF_5)
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            if (DamageEvent.getType() == ATTACK)
-                let damtyp = DamageEvent.getDamageType()
+            if (DamageCustomEvent.getType() == ATTACK)
+                let damtyp = DamageCustomEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     if src.hasAbility(SHADOW_OF_VENGEANCE_BUFF_1)
-                        let targ = DamageEvent.getTarget()
+                        let targ = DamageCustomEvent.getTarget()
                         let missingHp = src.getMissingHP()
                         new DummyCaster()
                         ..owner(GetOwningPlayer(src))

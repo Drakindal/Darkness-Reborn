@@ -32,8 +32,9 @@ public function hourglass()
         hourglass.destr()
         caster..removeAbility(TIME_WIZARD_ABILITY_4_DUMMY)..addAbility(ABILITY_HERO_TP)
         forUnitsInRange(caster.getPos(), 99999, true) (unit u) ->
-            if caster.isEnemyOf(u)
-                caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
-            else
-                if u.getOwner() != Player(10)
-                    u.addHP(dmg)
+            if u.isAlive()
+                if caster.isEnemyOf(u)
+                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
+                else
+                    if u.getOwner() != Player(10)
+                        u.addHP(dmg)

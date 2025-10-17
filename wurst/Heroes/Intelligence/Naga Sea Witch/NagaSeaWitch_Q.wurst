@@ -22,7 +22,7 @@ public function bubbleBomb()
             flashEffect("Effects\\Vashj\\WaterBlast.mdl", targetPos, 4)
             let range = 400. + 40*(lvl-1)
             forUnitsInRange(targetPos.toVec2(), range, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     new DummyCaster()
                     ..owner(caster.getOwner())
                     ..origin(caster.getPos())

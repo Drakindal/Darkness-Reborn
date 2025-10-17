@@ -13,7 +13,7 @@ public function vampiricBite()
         let lvl = caster.getAbilityLevel(VIVPIRE_ABILITY_1)
         let amount = caster.getStr(true) * lvl * 3. + 50*lvl
         forUnitsInRange(caster.getPos(), 600) (unit u) ->
-            if(u.hasAbility(VIVPIRE_BUFF_4))
+            if u.hasAbility(VIVPIRE_BUFF_4) and u.isAlive()
                 new DummyCaster()
                 ..owner(GetOwningPlayer(caster))
                 ..origin(caster.getPos())

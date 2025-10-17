@@ -35,7 +35,7 @@ public function goldenArrow()
                     flashEffect(Abilities.fireLordDeathExplode, sfx.getPos3())
 
                 forUnitsInRange(pos, 300, true) (unit u) ->
-                    if u.isEnemyOf(caster)
+                    if u.isEnemyOf(caster) and u.isAlive()
                         caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                         if sfx.getPos().isTerrainWalkable()
                             u.setPos(sfx.getPos())

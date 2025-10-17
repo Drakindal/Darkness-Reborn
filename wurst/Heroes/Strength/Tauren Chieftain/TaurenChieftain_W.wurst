@@ -24,7 +24,7 @@ public function blessedHammer()
         transitProjectile.timedMoveForward(range, time) (vec2 target, boolean inTransit) ->
             if inTransit
                 forUnitsInRange(target, 150) (unit u) ->
-                    if caster.isEnemyOf(u)
+                    if caster.isEnemyOf(u) and u.isAlive()
                         new DummyCaster()
                         ..owner(GetOwningPlayer(caster))
                         ..castTarget(TAUREN_CHIEFTAIN_ABILITY_2_DUMMY, 1, OrderIds.cripple, u)

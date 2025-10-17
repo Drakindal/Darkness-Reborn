@@ -17,7 +17,7 @@ public function bloodOfHakkar()
                 ..issueImmediateOrderById(OrderIds.stop)
                 ..startAbilityCooldown(KING_OF_LOAS_ABILITY_4)
                 forUnitsInRange(caster.getPos(), 600) (unit u) ->
-                    if u.isAllyOf(GetOwningPlayer(caster))
+                    if u.isAllyOf(GetOwningPlayer(caster)) and u.isAlive()
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())

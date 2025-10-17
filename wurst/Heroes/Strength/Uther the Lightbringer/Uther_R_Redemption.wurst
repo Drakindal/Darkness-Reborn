@@ -5,7 +5,7 @@ import ClosureEvents
 import MyAbilityIds
 import MyBuffIds
 import Abilities
-import DamageEvent
+import DamageCustomEvent
 import RandomGen
 import Uther_Abilities
 import ClosureTimers
@@ -22,23 +22,24 @@ let holyAllies = new HashMap<int, int>
 
 // Uther ability handler.
 public function redemptionHoly()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            if (DamageEvent.getType() == ATTACK)
-                let lvl = src.getAbilityLevel(UTHER_ABILITY_4)
-                if (lvl > 0 and checkChanceI(5 * lvl))
-                    let targ = DamageEvent.getTarget()
-                    let str = src.getStr(true)
-                    let amount = (str * 0.5 + 75) * lvl
-                    let heal = 50*lvl + lvl * 1.2 * str
-
-                    src.damageTargetCode(amount, targ, null, -1, customDamageType.Magical)
-
-                    src.addHP(heal)
-                    addHolyPower((lvl*0.25).ceil())
+            if (DamageCustomEvent.getType() == ATTACK)
+                let damtyp = DamageCustomEvent.getDamageType()
+                if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
+                    let lvl = src.getAbilityLevel(UTHER_ABILITY_4)
+                    if (lvl > 0 and checkChanceI(5 * lvl))
+                        let targ = DamageCustomEvent.getTarget()
+                        let str = src.getStr(true)
+                        let amount = (str * 0.5 + 75) * lvl
+                        let heal = 50*lvl + lvl * 1.2 * str
+                        flashEffect(Abilities.holyBoltSpecialArt, targ.getPos())
+                        src.damageTargetCode(amount, targ, null, -1, customDamageType.PhysicalMelee)
+                        src.addHP(heal)
+                        addHolyPower((lvl*0.25).ceil())
 
 // ----------------------------------------------------------------------------
 

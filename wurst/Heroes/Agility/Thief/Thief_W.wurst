@@ -26,5 +26,5 @@ public function windwalk()
         let agi = caster.getAgi(true)
         let range = 300.0 + 50*lvl
         forUnitsInRange(caster.getPos(), range, true) (unit u) ->
-            if(u.isEnemyOf(caster))
+            if u.isEnemyOf(caster) and u.isAlive()
                 caster.damageTargetCode((3.0 * lvl * agi), u, null, -1, customDamageType.PhysicalMelee)

@@ -1,6 +1,6 @@
 package DeathKnight_E
 
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import DeathKnight_Abilities
 import MyUnitTypes
@@ -9,12 +9,12 @@ import DummyCaster
 import Orders
 
 public function curseOfDarkness()
-    DamageEvent.addListener(1) ->
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(1) ->
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let src  = DamageEvent.getSource()
-                let targ = DamageEvent.getTarget()
+                let src  = DamageCustomEvent.getSource()
+                let targ = DamageCustomEvent.getTarget()
                 let lvl = targ.getAbilityLevel(DEATH_KNIGHT_ABILITY_3)
                 
                 if  lvl > 0

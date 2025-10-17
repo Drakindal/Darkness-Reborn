@@ -13,7 +13,7 @@ public function eclipse()
         let dmg = (caster.getInt(true) * 1.25) * lvl
         flashEffect("Effects\\Archmage\\ShadowSlam(Normal Size).mdl", target)
         forUnitsInRange(target, 500) (unit u) ->
-            if caster.isEnemyOf(u)
+            if caster.isEnemyOf(u) and u.isAlive()
                 let buffs = UnitCountBuffsEx(u, false, false, true, false, false, false, false) - 1.
                 if buffs > 0
                     caster.damageTargetCode(dmg * Pow(2, buffs), u, null, -1, customDamageType.Magical)

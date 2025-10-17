@@ -15,7 +15,7 @@ public function fallingLight()
         flashEffect("Effects\\Archmage\\Falling Light.mdl", target)
         forUnitsInRange(target, 500, true) (unit u) ->
             doPeriodicallyCounted(1, 2) (CallbackCounted cb) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     let buffs = UnitCountBuffsEx(u, false, false, true, false, false, false, false) - 1.
                     if buffs > 0
                         caster.damageTargetCode(dmg * Pow(2, buffs), u, null, -1, customDamageType.Magical)

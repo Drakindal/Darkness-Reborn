@@ -16,7 +16,7 @@ public function dragonClaw()
             caster.setAnimation("slam")
             flashEffect(Abilities.thunderclapTarget, target.getPos(), 2)
             forUnitsInRange(target.getPos(), 350, true) (unit u) ->
-                if caster.isEnemyOf(u)
+                if caster.isEnemyOf(u) and u.isAlive()
                     caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalMelee)
                     new DummyCaster()
                     ..owner(GetOwningPlayer(caster))

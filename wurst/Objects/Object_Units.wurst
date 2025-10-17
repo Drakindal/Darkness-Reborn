@@ -8,10 +8,7 @@ import Icons
 import MyAbilityIds
 import Abilities
 import AbilityObjEditing
-import UpgradeObjEditing
-import MyUpgradesIds
-import LinkedList
- 
+
 @compiletime function horseUnits()
     new UnitDefinition(HORSE_UNIT_1, UnitIds.packhorse)
     ..setName("Weak Horse")

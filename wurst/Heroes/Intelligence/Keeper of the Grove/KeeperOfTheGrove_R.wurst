@@ -2,18 +2,18 @@ package KeeperOfTheGrove_R
 
 import DamageTarget
 import MyAbilityIds
-import DamageEvent
+import DamageCustomEvent
 import OrderIds
 import DummyCaster
 import Global_Variables
 import MyUnitIds
 
 public function thornRoot()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
-        let targ = DamageEvent.getTarget()
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
+        let targ = DamageCustomEvent.getTarget()
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 if (src.isEnemyOf(PLAYER_ALLY_BASE))
                     let hero = playerHero.get(targ.getOwner())

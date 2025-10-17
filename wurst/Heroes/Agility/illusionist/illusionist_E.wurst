@@ -3,7 +3,7 @@ package illusionist_E
 import Global_Variables
 import DummyCaster
 import ClosureTimers
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import OrderIds
 import RandomGen
@@ -12,10 +12,10 @@ import illusionist_Abilities
 int limit = 0
 
 public function juxtapose()
-    DamageEvent.addListener(1) ->
-        let src = DamageEvent.getSource()
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(1) ->
+        let src = DamageCustomEvent.getSource()
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let lvl = src.getAbilityLevel(ILLUSIONIST_ABILITY_3)
                 if checkChanceI(lvl)

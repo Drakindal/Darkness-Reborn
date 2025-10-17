@@ -2,7 +2,7 @@ package Firemage_EternalFlame
 
 import DamageTarget
 import Global_Variables
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import MyUnitIds
 import ClosureEvents
@@ -17,16 +17,16 @@ function eternalFlameDamage(unit src, unit target)
     src.damageTargetCode(amount, target, null, -1, customDamageType.Magical)
 
 public function eternalFlame()
-    DamageEvent.addListener(2) -> 
-        let src  = DamageEvent.getSource()
-        let targ = DamageEvent.getTarget()
-        switch DamageEvent.getType()
+    DamageCustomEvent.addListener(2) -> 
+        let src  = DamageCustomEvent.getSource()
+        let targ = DamageCustomEvent.getTarget()
+        switch DamageCustomEvent.getType()
             case SPELL
                 //Firemage
                 if src.getTypeId() == HERO_FIRE_MAGE
                     eternalFlameDamage(src, targ)
             case CODE
-                if DamageEvent.getId() == 'phoe'
+                if DamageCustomEvent.getId() == 'phoe'
                     eternalFlameDamage(src, targ)
             default
                 skip
@@ -35,7 +35,3 @@ public function eternalFlame()
         let u = GetTriggerUnit()
         if u.getTypeId() == HERO_FIRE_MAGE
             u.hideAbility(FIREMAGE_ABILITY_PASSIVE, true)
-
-    EventListener.onCast(FIREMAGE_ABILITY_PASSIVE) (unit caster) ->
-        doAfter(1.5) -> 
-            caster.unPauseUnitIndef()

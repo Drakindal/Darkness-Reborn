@@ -16,7 +16,7 @@ public function avatarOfBwonsamdi()
             caster.setUserData(1)
             doPeriodically(2) (CallbackPeriodic cb) ->
                 forUnitsInRange(caster.getPos(), 800) (unit u) ->
-                    if caster.isEnemyOf(u)
+                    if caster.isEnemyOf(u) and u.isAlive()
                         new DummyCaster()
                         ..owner(caster.getOwner())
                         ..origin(caster.getPos())

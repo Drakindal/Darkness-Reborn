@@ -10,7 +10,7 @@ import MyUnitTypes
 public function wolfhowl()
     EventListener.onCast(WOLF_FINAL_ABILITY_2) (unit caster) ->
         forUnitsInRange(caster.getPos(), 400, true) (unit u) ->
-            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit)
+            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit) and u.isAlive()
                 new DummyCaster()
                 ..origin(caster.getPos())
                 ..owner(caster.getOwner())

@@ -1,7 +1,5 @@
 package Format
 
-import MyColors
-
 // ----------------------------------------------------------------------------
 
 public function intToString(int value) returns string

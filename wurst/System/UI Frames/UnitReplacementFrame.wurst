@@ -1,7 +1,6 @@
 package UnitReplacementFrame
 import FramehandleNames
 import ClosureEvents
-import DamageTypes
 import UnitStats
 import HashMap
 import Format
