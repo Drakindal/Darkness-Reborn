@@ -1,6 +1,6 @@
 package DamageTypes
 
-// ----------------------------------------------------------------------------
+/* DAMAGE TYPE */
 
 /** Each damage instance has a DamageType associated to it.
     ATTACK and SPELL are detected by the system.
@@ -17,6 +17,7 @@ public enum customDamageType
     PhysicalMelee
     PhysicalRanged
     Magical
+    Reflection
 
 public enum penType
     Magical
@@ -43,6 +44,8 @@ public function customDamageType.toString() returns string
             return "Physical Ranged Damage"
         case customDamageType.Pure
             return "Pure Damage"
+        case customDamageType.Reflection
+            return "Reflection Damage"
 
 public function penType.toString() returns string
     switch this
