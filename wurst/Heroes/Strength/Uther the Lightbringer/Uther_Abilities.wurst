@@ -151,13 +151,13 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
 
 // ----------------------------------------------------------------------------
 
-        new AbilityDefinitionCripple(UTHER_ABILITY_5)
+        new ChannelAbilityPreset(UTHER_ABILITY_5, 4, true)
         ..setUltimateAbility()
-        ..presetMovementSpeedReduction(lvl -> 0)
-        ..presetAttackSpeedReduction(lvl -> 0)
         ..presetDurationHero(lvl -> 0.01)
         ..presetDurationNormal(lvl -> 0.01)
         ..presetBuffs(lvl -> "")
+        ..presetCastingTime(lvl -> 0.2)
+        ..presetTargetTypes(Targettype.UNIT)
         ..presetManaCost(lvl -> 500 - 25 * lvl)
         ..presetCooldown(lvl -> 120. - lvl * 2)
         ..presetIcon(Icons.bTNBerserk)
