@@ -6,12 +6,20 @@ import Abilities
 import DamageTarget
 import DeathKnight_CollectSouls
 import MyAbilityIds
+import DummyCaster
+import Orders
 
 public function tasteOfDeath()
     EventListener.onCast(DEATH_KNIGHT_ABILITY_2) (unit caster) ->
         let lvl = GetUnitAbilityLevel(caster, DEATH_KNIGHT_ABILITY_2)
         let dmg = 25*lvl + (10.*lvl)*souls
+    
         forUnitsInRange(caster.getPos(), 500, true) (unit u) ->
             if caster.isEnemyOf(u)
+                new DummyCaster()
+                ..owner(caster.getOwner())
+                ..origin(caster.getPos())
+                ..castTarget(DEATH_KNIGHT_ABILITY_2_DUMMY, 1, OrderIds.chainlightning, u)
+
                 caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                 flashEffect(Abilities.illidanMissile, u.getPos(), 1)

@@ -12,13 +12,17 @@ Bugs:
 Shadow Hunter healing ward does not show buff.
 Arthas Auras and Q doesn't work
 Uther's R doesn't work on allies.
+Pitlord reflections.
+
+Tinker active R.
+
+Test:
+
+Death Knight
+Fire mage, tinker test passive abilities
 
 Need to be tested:
 
-
-Death Knight
-Mountain King
-Pit lord
 Sylvanas
 Tauren Chieftain
 Uther 

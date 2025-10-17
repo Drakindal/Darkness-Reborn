@@ -3,17 +3,29 @@ package DeathKnight_E
 import DamageEvent
 import MyAbilityIds
 import DeathKnight_Abilities
+import MyUnitTypes
+import RandomGen
+import DummyCaster
+import Orders
 
 public function curseOfDarkness()
     DamageEvent.addListener(1) ->
         if (DamageEvent.getType() == ATTACK)
             let damtyp = DamageEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let source = DamageEvent.getSource()
+                let src  = DamageEvent.getSource()
                 let targ = DamageEvent.getTarget()
                 let lvl = targ.getAbilityLevel(DEATH_KNIGHT_ABILITY_3)
-                if lvl > 0
-                    if GetRandomInt(1, 100) < lvl*3
-                        let dmg = deathKnight_abi3_Hp[lvl-1]
-                        targ.addHP(dmg)
-                        source.addHP(-dmg)
+                
+                if  lvl > 0
+                    and not src.checkType(MyUnitType.StructureMechUnit)
+                    and checkChanceI(lvl * 3)
+                    
+                    let dmg = deathKnight_abi3_Hp[lvl-1]
+                    targ.addHP(dmg)
+                    src.addHP(-dmg)
+                    
+                    new DummyCaster()
+                    ..owner(targ.getOwner())
+                    ..origin(targ.getPos())
+                    ..castTarget(DEATH_KNIGHT_ABILITY_3_DUMMY, 1, OrderIds.chainlightning, src)

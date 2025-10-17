@@ -27,7 +27,6 @@ public function eternalFlame()
             default
                 skip
 
-init
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
         let u = GetTriggerUnit()
         if u.getTypeId() == HERO_FIRE_MAGE

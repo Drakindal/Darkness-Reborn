@@ -14,14 +14,11 @@ let difficultyEnemyResistanceIncrease = [1.5, 1.3, 1., 0.6, 0.5]
 
 public function increaseEnemyDamageForDifficulty(unit src)
     // Change damage dealt by enemies to players due to game difficulty
-
     if(src.isEnemyOf(PLAYER_ALLY_BASE))
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * difficultyEnemyDamageIncrease[gameDifficulty])
 
-
 public function increaseEnemyResistanceForDifficulty(unit target)
     // Change damage received by enemies due to game difficulty
-
     if(target.isEnemyOf(PLAYER_ALLY_BASE))
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * difficultyEnemyResistanceIncrease[gameDifficulty])
 
