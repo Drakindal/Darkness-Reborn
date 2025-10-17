@@ -72,9 +72,9 @@ function printNumberOfBlessed()
 // ----------------------------------------------------------------------------
 
 function redemptionAddAlly(unit target)
-    let lvl = utherHero.getAbilityLevel(UTHER_BUFF_4)
-
     if (not target.hasAbility(UTHER_BUFF_4))
+        let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
+
         holyAllies.put(target.getTypeId(), lvl)
         printNumberOfBlessed()
         doAfter(14.0 + 2 * (lvl-1)) ->
@@ -105,13 +105,14 @@ public function redemptionAlly()
         let u = GetTriggerUnit()
         let uid = u.getTypeId()
         if holyAllies.has(uid)
-            addHolyPower((holyAllies.get(uid)*0.2).ceil())
+            let lvl = holyAllies.get(uid)
+            let addHolyPower = (lvl*0.2).ceil()
+            addHolyPower(addHolyPower)
             
             createLumberBountyTextTag(u, 1)
             ..setColor(colorA(236, 240, 97, 255))
-            ..setText("+{0} Holy Power".format((holyAllies.get(uid)*0.2).ceil().toString()))
+            ..setText("+{0} Holy Power".format(addHolyPower.toString()))
             
-            let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
             let heal = lvl * 0.1 * utherHero.getStr(true)
             flashEffect(Abilities.holyBoltSpecialArt, u.getPos())
             u.addHP(heal)

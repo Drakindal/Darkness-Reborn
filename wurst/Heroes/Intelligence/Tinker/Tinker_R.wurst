@@ -29,9 +29,9 @@ public function repair()
         let hp = tinker_abi4_hp[lvl-1] * period
 
         doPeriodically(period) (CallbackPeriodic cb) ->
-            printTimedToPlayer("ord = {0}, {1}".format(caster.getCurrentOrder().toString(),OrderIds.chainlightning.toString() ), 5, caster.getOwner())
+            printTimedToPlayer("ord = {0}, {1}".format(caster.getCurrentOrder().toString(), OrderIds.channel.toString() ), 5, caster.getOwner())
 
-            if caster.getMana() >= manaCost and caster.getCurrentOrder() == OrderIds.chainlightning
+            if caster.getMana() >= manaCost and caster.getCurrentOrder() == OrderIds.channel
                 target.addHP(hp)
                 caster.addMana(-manaCost)
             else
@@ -42,18 +42,23 @@ public function repair()
             let lvl = tinkerHero.getAbilityLevel(TINKER_ABILITY_4)
             if (lvl > 0)
                 forUnitsInRange(tinkerHero.getPos(), tinker_abi4_aura_range[lvl-1]) (unit u) ->
-                            
-                    printTimedToPlayer("u.getTypeId() = {0}, {1}. mech = {2}, not inv = {3}, not maxHp = {4}.".format(
-                        u.getTypeId().toString(),
-                        HERO_TINKER_ROBOT.toString(),
-                        u.checkType(MyUnitType.StructureMechUnit).toString(),
-                        (not u.isInvulnerable()).toString(),
-                        (not (u.getMaxHP() != u.getHP())).toString()
+
+                    let cond = (u.getTypeId() == HERO_TINKER_ROBOT or u.checkType(MyUnitType.StructureMechUnit))
+                    and not  u.isInvulnerable()
+                    and      u.isAlive()
+                    and not (u.getHPRatio() > 0.995)
+
+                    printTimedToPlayer("Name = {0}, Cond = {1}. not maxHp = {2}, {3}.".format(
+                        u.getName(),
+                        cond.toString(),
+                        u.getHPRatio().toString(4),
+                        (not (u.getHPRatio() > 0.995)).toString()
                     ), 5, tinkerHero.getOwner())
                     
                     if (u.getTypeId() == HERO_TINKER_ROBOT or u.checkType(MyUnitType.StructureMechUnit))
-                        and not u.isInvulnerable()
-                        and not (u.getMaxHP() != u.getHP())
+                    and not  u.isInvulnerable()
+                    and      u.isAlive()
+                    and not (u.getHPRatio() > 0.995)
 
                         u.addHP(tinker_abi4_aura_hp[lvl-1])
                         flashEffect(Abilities.replenishHealthCasterOverhead, u.getPos())

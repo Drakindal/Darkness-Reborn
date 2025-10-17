@@ -4,13 +4,8 @@ import ClosureEvents
 import ClosureTimers
 import PauseAllocation
 import MyAbilityIds
-import MyHeroAbilityDefinition
-import MyUnitIds
 
-function unpauseOnTeleportFinish()
+init
     EventListener.onCast(ABILITY_HERO_TP) (unit caster) ->
         doAfter(2) -> 
             caster.unPauseUnitIndef()
-
-init
-    unpauseOnTeleportFinish()

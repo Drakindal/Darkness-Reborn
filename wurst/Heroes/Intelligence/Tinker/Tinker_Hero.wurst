@@ -55,7 +55,7 @@ public unit tinkerHero = null
     new MyHeroDefinition(HERO_TINKER_ROBOT, UnitIds.robogoblintinker)
     ..setHeroAbilities(commaList(TINKER_ABILITY_1, TINKER_ABILITY_2, TINKER_ABILITY_3, TINKER_ABILITY_4, TINKER_ABILITY_5))
     
-    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory))
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, TINKER_ABILITY_4_AURA))
     
     // ..setPrimaryAttribute("Intelligence")
     // ..setStatsBase(40, 25, 10)

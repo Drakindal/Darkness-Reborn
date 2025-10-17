@@ -6,10 +6,14 @@ import DamageEvent
 import MyAbilityIds
 import MyUnitIds
 import ClosureEvents
+import ClosureTimers
+import PauseAllocation
 
 function eternalFlameDamage(unit src, unit target)
     let fireMage = playerHero.get(src.getOwner())
-    let amount = (fireMage.getAbilityLevel(FIREMAGE_ABILITY_2)*0.1 + fireMage.getAbilityLevel(FIREMAGE_ABILITY_PASSIVE)*0.4 + 0.1) * fireMage.getInt(true) 
+    let lvl2 = fireMage.getAbilityLevel(FIREMAGE_ABILITY_2)
+    let lvl5 = fireMage.getAbilityLevel(FIREMAGE_ABILITY_5)
+    let amount = (lvl2*0.1 + lvl5*0.4 + 0.1) * fireMage.getInt(true) 
     src.damageTargetCode(amount, target, null, -1, customDamageType.Magical)
 
 public function eternalFlame()
@@ -31,3 +35,7 @@ public function eternalFlame()
         let u = GetTriggerUnit()
         if u.getTypeId() == HERO_FIRE_MAGE
             u.hideAbility(FIREMAGE_ABILITY_PASSIVE, true)
+
+    EventListener.onCast(FIREMAGE_ABILITY_PASSIVE) (unit caster) ->
+        doAfter(1.5) -> 
+            caster.unPauseUnitIndef()

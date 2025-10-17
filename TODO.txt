@@ -12,9 +12,6 @@ Bugs:
 
 Shadow Hunter healing ward does not show buff.
 
-Arthas Auras and Q doesn't work
-
-
 Uther's R doesn't work on allies.
 Uther's W increases holy power.
 
@@ -22,11 +19,7 @@ Uther's W increases holy power.
 Pitlord reflections.
 
 
-Wolfman W, E.
-
 Tinker active R.
-Uther W adds Holy power.
-
 Death Knight animation.
 
 Test:

@@ -42,7 +42,7 @@ import MyOrderIds
         "The Jacksmith's distinct skills allow him to forge a better item from the components.\n" +
         "Check discord server for a list of all available recipes.",
         (int lvl) -> "Cd {0} sec.".format(
-            (135 - 15*lvl).toString()
+            (lvl <= 8) ? (135 - 15*lvl).toString() : "5"
         ))
 
 // ----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ import MyOrderIds
         ..register(HERO_JACKSMITH, "Forge Smart".setColor(colAbilitiesJacksmith), 
         "The Jacksmith uses Bullion to upgrade some legendary items. However, there is a chance to fail and destroy the Bullion, but not the item.",
         (int lvl) -> "Cd {0} sec.".format(
-            (225 - 25*lvl).toString()
+            (lvl <= 8) ? (225 - 25*lvl).toString() : "5"
         ))
         
 // ----------------------------------------------------------------------------

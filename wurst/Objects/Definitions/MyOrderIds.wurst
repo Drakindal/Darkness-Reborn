@@ -18,6 +18,7 @@ public class MyOrderIds
     static let targetAcidBomb        = "acidbomb"
     static let targetCripple         = "cripple"
     static let targetHex             = "hex"
+    static let targetChannel         = "channel"
     static let targetEntanglingRoots = "entanglingroots"
     static let targetForkedLightning = "forkedlightning"
 

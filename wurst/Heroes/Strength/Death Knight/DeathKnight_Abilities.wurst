@@ -87,14 +87,14 @@ public constant int array[9] abi1_Targets = [
         ..setCastingTime(1, 0)
         ..setBuffs(1, "")
         ..setDamage(1, 0)
+        ..setDuration(1, 0.01)
         ..setCastRange(1, 9999)
-        ..setMissileArt(Abilities.chimaeraAcidMissile)
+        ..setMissileArt(Abilities.deathCoilMissile) // Abilities.chimaeraAcidMissile
         ..setCooldown(1, 0)
         ..setManaCost(1, 0)
-        ..setDuration(1, 0.0)
         ..setArtTarget("")
-        ..setMissileSpeed(500)
-        ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesAll))
+        ..setMissileSpeed(1000)
+        ..setTargetsAllowed(1, commaList(getTargets(AbilityTargets.EnemiesAll), TargetsAllowed.dead))
 
         new AbilityDefinitionBerserk(DEATH_KNIGHT_ABILITY_2)
         ..setGeneralAbility(AbilityPosition.W)
@@ -116,6 +116,7 @@ public constant int array[9] abi1_Targets = [
         ..presetDuration(lvl -> 0.01)
         ..setAnimationNames("spell,slam")
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDeathCoil.blp")
+        ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..register(HERO_DEATH_KNIGHT, "Taste of Death".setColor(colAbilitiesDeathKnight), 
         "The Death Knight unleashes a flurry of souls around him, dealing damage based on how many Souls he has collected.",
         (int lvl) -> "Deals {0} + {1} x Souls damage. Cd {2} sec.".format(
@@ -156,15 +157,13 @@ public constant real array[9] deathKnight_abi3_Hp = [
         ..setDamageperTarget(1, 0)
         ..setNumberofTargetsHit(1, 1)
         ..setDamageReductionperTarget(1, 0)
-        
         ..setLightningEffects("DRAL") // Life Drain
-        
         ..setAnimationNames("spell")
         ..setArtTarget(Abilities.curseTarget)
         ..setMissileSpeed(500)
         ..setBuffs(1, "")
         ..setCastRange(1, 9999)
-        ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
+        ..setTargetsAllowed(1, commaList(TargetsAllowed.ground, TargetsAllowed.allies, TargetsAllowed.friend)) // Dummy Caster targets the Death Knight.
 
         new AbilityDefinitionTaurenChieftainEnduranceAura(DEATH_KNIGHT_ABILITY_3)
         ..setGeneralAbility(AbilityPosition.E)

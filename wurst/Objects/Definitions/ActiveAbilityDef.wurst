@@ -13,9 +13,6 @@ import DummyCaster
 import Orders
 import ClosureTimers
 import ClosureEvents
-import MyAbilityIds
-import MyUnitIds
-import HashMap
 
 // ----------------------------------------------------------------------------
 

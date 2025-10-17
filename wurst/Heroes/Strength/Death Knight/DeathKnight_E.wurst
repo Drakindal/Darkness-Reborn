@@ -18,8 +18,8 @@ public function curseOfDarkness()
                 let lvl = targ.getAbilityLevel(DEATH_KNIGHT_ABILITY_3)
                 
                 if  lvl > 0
-                    and not src.checkType(MyUnitType.StructureMechUnit)
-                    and checkChanceI(lvl * 3)
+                and not src.checkType(MyUnitType.StructureMechUnit)
+                and checkChanceI(lvl * 3)
                     
                     let dmg = deathKnight_abi3_Hp[lvl-1]
                     targ.addHP(dmg)
@@ -27,5 +27,5 @@ public function curseOfDarkness()
                     
                     new DummyCaster()
                     ..owner(targ.getOwner())
-                    ..origin(targ.getPos())
-                    ..castTarget(DEATH_KNIGHT_ABILITY_3_DUMMY, 1, OrderIds.chainlightning, src)
+                    ..origin(src.getPos())
+                    ..castTarget(DEATH_KNIGHT_ABILITY_3_DUMMY, 1, OrderIds.chainlightning, targ)

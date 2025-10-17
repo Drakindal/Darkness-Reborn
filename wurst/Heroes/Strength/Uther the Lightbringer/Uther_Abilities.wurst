@@ -3,15 +3,14 @@ package Uther_Abilities
 import MyAbilityIds
 import MyHeroAbilityDefinition
 import MyUnitIds
-import AbilityObjEditing
 import MyBuffIds
-import ObjectIds
-import Icons
 import BuffIds
 import BuffObjEditing
 import MyColors
 import CommonDescriptions
 import DebugVar
+import ChannelAbilityPreset
+import MyOrderIds
 
 // ----------------------------------------------------------------------------
 
@@ -118,14 +117,16 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
         ..register("Uther's Blessing".setColor(colAbilitiesUther),
         "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
         
-        new AbilityDefinitionPaladinHolyLight(UTHER_ABILITY_4)
+        new ChannelAbilityPreset(UTHER_ABILITY_4, 9, true)
         ..setGeneralAbility(AbilityPosition.R)
-        ..presetAmountHealedDamaged(lvl -> 0)
         ..presetBuffs(lvl -> commaList(UTHER_BUFF_4))
         ..presetDurationHero(lvl -> 14.0 + 2 * (lvl-1))
         ..presetCastRange(lvl -> 99999)
         ..presetManaCost(lvl -> 200 - 15 * lvl)
         ..presetCooldown(lvl -> 3)
+        ..presetTargetTypes(Targettype.UNIT)
+        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
+        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
         ..presetIcon(Icons.bTNCheese)
         ..register(HERO_UTHER, "Redemption".setColor(colAbilitiesUther), 

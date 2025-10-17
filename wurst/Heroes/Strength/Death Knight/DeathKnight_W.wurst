@@ -16,6 +16,7 @@ public function tasteOfDeath()
     
         forUnitsInRange(caster.getPos(), 500, true) (unit u) ->
             if caster.isEnemyOf(u)
+                
                 new DummyCaster()
                 ..owner(caster.getOwner())
                 ..origin(caster.getPos())
