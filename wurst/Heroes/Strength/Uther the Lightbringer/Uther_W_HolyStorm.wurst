@@ -6,25 +6,34 @@ import ClosureForGroups
 import MyAbilityIds
 import DamageTarget
 import Uther_R_Redemption
+import StandardTextTags
+
+function printBoost(unit caster, string value)
+    createLumberBountyTextTag(caster, 1)
+    ..setColor(colorA(236, 240, 97, 255))
+    ..setText(value)
 
 public function holyStorm()
     EventListener.onCast(UTHER_ABILITY_2) (unit caster) ->
         let lvl = caster.getAbilityLevel(UTHER_ABILITY_2)
         let sfx = caster.addEffect("Units\\Uther\\BladeStorm\\HolyTornado.mdx", "origin")
         let dmg = caster.getStr(true) * lvl * 0.8
-        let period = 0.03
+        let period = 0.1
         var dps = dmg * period
         var duration = 2 + 1.5 * lvl
 
         if (holyPower >= 30)
+            printBoost(caster, "Holy Storm x3.5")
             removeHolyPower(30)
             dps *= 3.5
             duration *= 3
         else if (holyPower >= 20)
+            printBoost(caster, "Holy Storm x2.5")
             removeHolyPower(20)
             dps *= 2.5
             duration *= 2.5
         else if (holyPower >= 10)
+            printBoost(caster, "Holy Storm x2")
             removeHolyPower(10)
             dps *= 2
             duration *= 2

@@ -15,33 +15,45 @@ public function repair()
     EventListener.add(EVENT_PLAYER_HERO_SKILL) -> 
         let skill = GetLearnedSkill()
         if (skill == TINKER_ABILITY_4)
-            let lvl = GetLearnedSkillLevel()
             let hero = GetLearningUnit()
-            hero.removeAbility(TINKER_ABILITY_4_AURA)
-            hero.addAbility(TINKER_ABILITY_4_AURA, lvl)
-        
+            let lvl = hero.getAbilityLevel(TINKER_ABILITY_4)
+            hero..setAbilityLevel(TINKER_ABILITY_4_AURA, lvl)
+    
     EventListener.onTargetCast(TINKER_ABILITY_4) (unit caster, unit target) ->
-        if (target.getTypeId() == HERO_TINKER)
-            printTimedToPlayer("Tinker cannot repair himself, because he is organic creature, but he can repair Robo-Goblin.", 6, caster.getOwner())
-        else
-            let lvl = caster.getAbilityLevel(TINKER_ABILITY_4)
-            let period = 0.1
-            let manaCost = 10.0*lvl * period
-            let hp = tinker_abi4_hp[lvl-1] * period
+        // HERO_TINKER is organic, so cannot target himself due to settings in presetTargetsAllowed.
+        // if (target.getTypeId() == HERO_TINKER)
+        //     printTimedToPlayer("Tinker cannot repair himself, because he is organic creature, but he can repair Robo-Goblin.", 6, caster.getOwner())
+        let lvl = caster.getAbilityLevel(TINKER_ABILITY_4)
+        let period = 0.1
+        let manaCost = 10.0*lvl * period
+        let hp = tinker_abi4_hp[lvl-1] * period
 
-            doPeriodically(period) (CallbackPeriodic cb) ->
-                if not caster.getMana() < manaCost and caster.getCurrentOrder() == OrderIds.chainlightning
-                    target.addHP(hp)
-                    caster.addMana(-manaCost)
-                else
-                    destroy cb
+        doPeriodically(period) (CallbackPeriodic cb) ->
+            printTimedToPlayer("ord = {0}, {1}".format(caster.getCurrentOrder().toString(),OrderIds.chainlightning.toString() ), 5, caster.getOwner())
 
-public function addTinkerAura()
+            if caster.getMana() >= manaCost and caster.getCurrentOrder() == OrderIds.chainlightning
+                target.addHP(hp)
+                caster.addMana(-manaCost)
+            else
+                destroy cb
+
     doPeriodically(1) (CallbackPeriodic cb) ->
         if (tinkerHero != null)
             let lvl = tinkerHero.getAbilityLevel(TINKER_ABILITY_4)
             if (lvl > 0)
                 forUnitsInRange(tinkerHero.getPos(), tinker_abi4_aura_range[lvl-1]) (unit u) ->
-                    if (u.checkType(MyUnitType.StructureMechUnit))
+                            
+                    printTimedToPlayer("u.getTypeId() = {0}, {1}. mech = {2}, not inv = {3}, not maxHp = {4}.".format(
+                        u.getTypeId().toString(),
+                        HERO_TINKER_ROBOT.toString(),
+                        u.checkType(MyUnitType.StructureMechUnit).toString(),
+                        (not u.isInvulnerable()).toString(),
+                        (not (u.getMaxHP() != u.getHP())).toString()
+                    ), 5, tinkerHero.getOwner())
+                    
+                    if (u.getTypeId() == HERO_TINKER_ROBOT or u.checkType(MyUnitType.StructureMechUnit))
+                        and not u.isInvulnerable()
+                        and not (u.getMaxHP() != u.getHP())
+
                         u.addHP(tinker_abi4_aura_hp[lvl-1])
                         flashEffect(Abilities.replenishHealthCasterOverhead, u.getPos())

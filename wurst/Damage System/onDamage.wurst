@@ -41,15 +41,15 @@ function damageSwitcher(unit src, unit targ)
 
 // Process general attacks (both melee and ranged)
 function anyAttack(unit src, unit targ)
+    increaseEnemyDamageForDifficulty(src)
+    increaseEnemyResistanceForDifficulty(targ)
+
     autoAttackPreChecks(src, targ)
 
     let dt = src.isRanged() ? customDamageType.PhysicalRanged : customDamageType.PhysicalMelee
     let damageAmount = targ.getStats().calcDamage(dt, DamageCustomEvent.getUnreducedAmount())
     DamageCustomEvent.setAmount(damageAmount)
     modifyAmountArmorType(src, targ)
-
-    increaseEnemyDamageForDifficulty(src)
-    increaseEnemyResistanceForDifficulty(targ)
 
     if dt == customDamageType.PhysicalMelee
         handlePhysicalMeleeAttackChecks(src, targ)
@@ -60,11 +60,11 @@ function anyAttack(unit src, unit targ)
 
 // Process any coded damage
 function anyCodeAttack(unit src, unit targ)
-    // Calculate damage based on pen stats and res stats
-    DamageCustomEvent.setAmount(targ.getStats().calcDamage(DamageCustomEvent.getCustomDamageType(), DamageCustomEvent.getUnreducedAmount()))
-
     increaseEnemyDamageForDifficulty(src)
     increaseEnemyResistanceForDifficulty(targ)
+
+    // Calculate damage based on pen stats and res stats
+    DamageCustomEvent.setAmount(targ.getStats().calcDamage(DamageCustomEvent.getCustomDamageType(), DamageCustomEvent.getUnreducedAmount()))
     
     // Checks for reflections and any modifiers to damage amount
     switch DamageCustomEvent.getCustomDamageType()
@@ -79,10 +79,10 @@ function anyCodeAttack(unit src, unit targ)
 
 // Process any ability damage
 function anySpell(unit src, unit targ)
-    DamageCustomEvent.setAmount(targ.getStats().calcDamage(customDamageType.Magical, DamageCustomEvent.getUnreducedAmount()))
-
     increaseEnemyDamageForDifficulty(src)
     increaseEnemyResistanceForDifficulty(targ)
+
+    DamageCustomEvent.setAmount(targ.getStats().calcDamage(customDamageType.Magical, DamageCustomEvent.getUnreducedAmount()))
 
 // ----------------------------------------------------------------------------
 // Special unit/item abilities checks for each customDamageType

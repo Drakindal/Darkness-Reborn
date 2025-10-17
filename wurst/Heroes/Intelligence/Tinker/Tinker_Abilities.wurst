@@ -138,12 +138,15 @@ public constant real array[9] tinker_abi4_aura_range = [
         new BuffDefinition(TINKER_BUFF_AURA, BuffIds.unsummon)
         ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
         ..setArtTarget(1, "")
-        ..setIconNormal(1, Icons.pASBTNEngineeringUpgrade)
+        ..setIcon(Icons.pASBTNEngineeringUpgrade)
         ..register("Tinker Repair Aura".setColor(colAbilitiesFirelord),
         "Tinker slowly repairs this unit!")
 
         new AbilityDefinitionTaurenChieftainEnduranceAura(TINKER_ABILITY_4_AURA)
-        ..setPosition(AbilityPosition.Hidden)
+        ..setLevels(9)
+        ..setButtonPositionNormalX(3)
+        ..setButtonPositionNormalY(2)
+        ..setIcon(Icons.pASBTNEngineeringUpgrade)
         ..presetBuffs(lvl -> TINKER_BUFF_AURA.toRawCode())
         ..presetAreaofEffect(lvl -> tinker_abi4_aura_range[lvl-1])
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits))
@@ -155,13 +158,13 @@ public constant real array[9] tinker_abi4_aura_range = [
         ..presetTargetTypes(Targettype.UNIT)
         ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
         ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
-        ..presetCastRange(lvl -> 99999.0)
+        ..presetCastRange(lvl -> 500.0)
         ..presetTargetsAllowed(lvl -> commaList(getTargets(AbilityTargets.AlliesOnlyStructuresMechUnits), TargetsAllowed.self))
         ..setIcon("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
         ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASBTNEngineeringUpgrade.blp")
         ..register(HERO_TINKER, "Repair".setColor(colAbilitiesTinker), 
         wordActive + "Ability allows Tinker to rapidly repair any mechanical unit or building.\n" +
-        wordPassive + "Slowly repairs all mechanical units near Tinker (Doesn't work in robo-goblin mode).",
+        wordPassive + "Slowly repairs all mechanical units near Tinker.",
         (int lvl) -> "Active: restores {0} hp/s for {1} mana. Passively restores {2} hp/s in {3} range.".format(
             tinker_abi4_hp[lvl-1].toString(0),
             (10*lvl).toString(),

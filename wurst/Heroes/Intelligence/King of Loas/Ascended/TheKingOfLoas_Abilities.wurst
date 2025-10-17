@@ -222,8 +222,11 @@ import DebugVar
 // ----------------------------------------------------------------------------
 
         new AbilityDefinitionPillage(KING_OF_LOAS_ASC_ABILITY_6)
-        ..setPosition(AbilityPosition.LearnableHidden1)
         ..setLevels(1)
+        ..setButtonPositionNormalX(2)
+        ..setButtonPositionNormalY(1)
+        ..setButtonPositionResearchX(2)
+        ..setButtonPositionResearchY(1)
         ..setTargetsAllowed(1, commaList("Enemy"))
         ..setCheckDependencies(false)
         ..setIcon(Icons.bTNTrueShot)

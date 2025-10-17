@@ -7,12 +7,18 @@ import DamageTarget
 import MyAbilityIds
 import Abilities
 
+function handleSlam(unit caster, real dmg)
+    flashEffect(Abilities.thunderclapCaster, caster.getPos())
+    forUnitsInRange(caster.getPos(), 400, true) (unit u) ->
+        if caster.isEnemyOf(u)
+            caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalRanged)
+
 public function thunderClap()
     EventListener.onCast(MOUNTAIN_KING_ABILITY_2) (unit caster) ->
         let lvl = caster.getAbilityLevel(MOUNTAIN_KING_ABILITY_2)
         let dmg = ((caster.getStr(true)*0.5+50)*lvl)
-        doPeriodicallyCounted(0.5, 3) (CallbackCounted cb) ->
-            flashEffect(Abilities.thunderclapCaster, caster.getPos())
-            forUnitsInRange(caster.getPos(), 300, true) (unit u) ->
-                if caster.isEnemyOf(u)
-                    caster.damageTargetCode(dmg, u, null, -1, customDamageType.PhysicalRanged)
+        
+        handleSlam(caster, dmg)
+        
+        doPeriodicallyCounted(0.5, 2) (CallbackCounted cb) ->
+            handleSlam(caster, dmg)

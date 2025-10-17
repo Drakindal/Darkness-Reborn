@@ -16,12 +16,16 @@ public function soulCollectorTarget()
             if u.getTypeId() == HERO_DEATH_KNIGHT
                 collectSoul()
             else if (u.hasAbility(DEATH_KNIGHT_BUFF_4) and checkChanceI(33))
+                createLumberBountyTextTag(u, 1)
+                ..setColor(colorA(93, 247, 55, 255))
+                ..setText("+ 1 soul")
                 collectSoul()
 
 public function printSouls()
-    createLumberBountyTextTag(deathKnightHero, souls)
-    ..setColor(colorA(93, 247, 55, 255))
-    ..setText("Souls: "+I2S(souls))
+    if deathKnightHero.isAlive()
+        createLumberBountyTextTag(deathKnightHero, souls)
+        ..setColor(colorA(93, 247, 55, 255))
+        ..setText("Souls: "+I2S(souls))
 
 public function collectSoul()
     souls = souls + 1

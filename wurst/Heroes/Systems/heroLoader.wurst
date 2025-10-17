@@ -139,6 +139,7 @@ import Tinker_Hero
 import Uther_Hero
 import GuardianOfLight_Q
 import MyAbilityIds
+import Sylvanas_T
 
 init
     // HERO_MOUNTAIN_KING
@@ -231,6 +232,7 @@ init
     poisonArrow()
     longRange()
     goldenArrow()
+    sylvanas_T_venomArrow()
     // HERO_FIRELORD
     conflagration()
     pillarOfFlame()
@@ -275,7 +277,6 @@ init
     repair()
     factorySpawn()
     clusterRockets()
-    addTinkerAura()
     // HERO_GUARDIAN_OF_LIGHT
     guardianOfLight_Q_holyLight()
     holyWrath()
@@ -326,7 +327,9 @@ public function unit.registerHero()
             this.punishTimeAct()
         case HERO_TINKER
             tinkerHero = this
-            tinkerHero.hideAbility(TINKER_ABILITY_4_AURA, true)
+            tinkerHero
+            ..hideAbility(TINKER_ABILITY_4_AURA, true)
+            ..setAbilityLevel(TINKER_ABILITY_4_AURA, 0)
         case HERO_DEATH_KNIGHT
             deathKnightHero = this
             souls = 0

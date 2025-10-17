@@ -5,6 +5,7 @@ import ClosureEvents
 import ClosureForGroups
 import DamageTarget
 import MyAbilityIds
+import Abilities
 
 public function lightsWrath()
     EventListener.onTargetCast(UTHER_ABILITY_5) (unit caster, unit target) ->
@@ -12,8 +13,11 @@ public function lightsWrath()
         let dmg = caster.getStr(true) * holyPower * lvl * 0.25
         setHolyPower(0)
         flashEffect("Units\\Uther\\Sacred Storm\\Sacred Storm.mdx", target.getPos())
+
+        caster.addHP( caster.getMaxHP() * (0.20 + 0.10*(lvl-1)) )
         caster.damageTargetCode(dmg, target, null, -1, customDamageType.Magical)
+
         forUnitsInRange(caster.getPos(), 1200) (unit u) ->
             if u.isAllyOf(caster)
                 u.addHP(dmg / 2)
-        caster.addHP( caster.getMaxHP() * (0.20 + 0.10*(lvl-1)) )
+                flashEffect(Abilities.resurrectcaster, u.getPos())

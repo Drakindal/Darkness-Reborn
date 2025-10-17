@@ -223,7 +223,9 @@ public constant BEASTMASTER_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 
 public constant DEATH_KNIGHT_ABILITY_1 = compiletime(ABIL_ID_GEN.next())
 public constant DEATH_KNIGHT_ABILITY_2 = compiletime(ABIL_ID_GEN.next())
+public constant DEATH_KNIGHT_ABILITY_2_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant DEATH_KNIGHT_ABILITY_3 = compiletime(ABIL_ID_GEN.next())
+public constant DEATH_KNIGHT_ABILITY_3_DUMMY = compiletime(ABIL_ID_GEN.next())
 public constant DEATH_KNIGHT_ABILITY_4 = compiletime(ABIL_ID_GEN.next())
 public constant DEATH_KNIGHT_ABILITY_5 = compiletime(ABIL_ID_GEN.next())
 

@@ -11,6 +11,7 @@ import Uther_Abilities
 import ClosureTimers
 import Uther_Hero
 import HashMap
+import StandardTextTags
 
 // ----------------------------------------------------------------------------
 
@@ -27,18 +28,17 @@ public function redemptionHoly()
             skip
         else
             if (DamageEvent.getType() == ATTACK)
-                let damtyp = DamageEvent.getDamageType()
-                if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                    let lvl = src.getAbilityLevel(UTHER_ABILITY_4)
-                    if (lvl > 0 and checkChanceI(5 * lvl))
-                        let targ = DamageEvent.getTarget()
-                        let str = src.getStr(true)
-                        let amount = (str * 0.5 + 75) * lvl
-                        let heal = 50*lvl + lvl * 1.2 * str
-                        flashEffect(Abilities.holyBoltSpecialArt, targ.getPos())
-                        src.damageTargetCode(amount, targ, null, -1, customDamageType.PhysicalMelee)
-                        src.addHP(heal)
-                        addHolyPower((lvl*0.25).ceil())
+                let lvl = src.getAbilityLevel(UTHER_ABILITY_4)
+                if (lvl > 0 and checkChanceI(5 * lvl))
+                    let targ = DamageEvent.getTarget()
+                    let str = src.getStr(true)
+                    let amount = (str * 0.5 + 75) * lvl
+                    let heal = 50*lvl + lvl * 1.2 * str
+
+                    src.damageTargetCode(amount, targ, null, -1, customDamageType.Magical)
+
+                    src.addHP(heal)
+                    addHolyPower((lvl*0.25).ceil())
 
 // ----------------------------------------------------------------------------
 
@@ -106,6 +106,10 @@ public function redemptionAlly()
         let uid = u.getTypeId()
         if holyAllies.has(uid)
             addHolyPower((holyAllies.get(uid)*0.2).ceil())
+            
+            createLumberBountyTextTag(u, 1)
+            ..setColor(colorA(236, 240, 97, 255))
+            ..setText("+{0} Holy Power".format((holyAllies.get(uid)*0.2).ceil().toString()))
             
             let lvl = utherHero.getAbilityLevel(UTHER_ABILITY_4)
             let heal = lvl * 0.1 * utherHero.getStr(true)
