@@ -61,12 +61,16 @@ public constant int array[9] abi1_Targets = [
         ..presetNumberofTargetsHit(lvl -> abi1_Targets[lvl-1])
         ..presetCastRange(lvl -> 300.0+30*lvl)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNDeathCoil2.blp")
-        ..setArtCaster("Abilities\\Weapons\\IllidanMissile\\IllidanMissile.mdl")
+        ..setArtCaster("")
         ..setCasterAttachmentPoint("weapon")
         ..setCasterAttachmentPoint1("hand,left")
         ..setCasterAttachments(2)
-        ..setLightningEffects(Abilities.drainTarget)
-        ..setMissileArt(Abilities.deathCoilMissile)
+
+        ..setLightningEffects("DRAL") // Life Drain
+
+        ..setArtSpecial("Abilities\\Weapons\\IllidanMissile\\IllidanMissile.mdl")
+        ..setMissileArt("Abilities\\Weapons\\IllidanMissile\\IllidanMissile.mdl")
+
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.EnemiesAll))
         ..setArtTarget("Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl")
         ..register(HERO_DEATH_KNIGHT, "Unholy Execution".setColor(colAbilitiesDeathKnight), 
@@ -89,7 +93,7 @@ public constant int array[9] abi1_Targets = [
         ..setManaCost(1, 0)
         ..setDuration(1, 0.0)
         ..setArtTarget("")
-        ..setMissileSpeed(3000)
+        ..setMissileSpeed(500)
         ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesAll))
 
         new AbilityDefinitionBerserk(DEATH_KNIGHT_ABILITY_2)
@@ -152,10 +156,12 @@ public constant real array[9] deathKnight_abi3_Hp = [
         ..setDamageperTarget(1, 0)
         ..setNumberofTargetsHit(1, 1)
         ..setDamageReductionperTarget(1, 0)
-        ..setLightningEffects(Abilities.drainTarget)
+        
+        ..setLightningEffects("DRAL") // Life Drain
+        
         ..setAnimationNames("spell")
         ..setArtTarget(Abilities.curseTarget)
-        ..setMissileSpeed(3000)
+        ..setMissileSpeed(500)
         ..setBuffs(1, "")
         ..setCastRange(1, 9999)
         ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
@@ -205,7 +211,8 @@ public constant int array[9] deathKnight_abi4_Targets = [
         ..presetAreaofEffect(lvl -> 32000.0)
         ..presetCastRange(lvl -> 32000.0)
         ..presetBuffs(lvl -> DEATH_KNIGHT_BUFF_4.toRawCode())
-        ..presetCooldown(lvl -> 40.0 - 4 * (lvl-1))
+        ..presetCooldown(lvl -> 40.0 - 2 * (lvl-1))
+        ..presetDuration(lvl -> 10.0 + 3 * (lvl-1))
         ..setManaCost(2, 85)
         ..setManaCost(3, 95)
         ..setManaCost(4, 115)
@@ -216,7 +223,6 @@ public constant int array[9] deathKnight_abi4_Targets = [
         ..setManaCost(9, 165)
         ..presetDistributedDamageFactor(lvl -> 0.0)
         ..presetMaximumNumberofTargets(lvl -> deathKnight_abi4_Targets[lvl-1])
-        ..presetDuration(lvl -> 10.0 + 5 * (lvl-1))
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNSkullSpirits.blp")
         ..register(HERO_DEATH_KNIGHT, "Unholy Link".setColor(colAbilitiesDeathKnight), 
@@ -234,8 +240,8 @@ public constant int array[9] deathKnight_abi4_Targets = [
             (lvl + 1).toString(),
             (25 + 5 * lvl).toString(),
             deathKnight_abi4_Targets[lvl-1].toString(),
-            (10 + 5 * (lvl-1)).toString(),
-            (40 - 4 * (lvl-1)).toString()
+            (10 + 3 * (lvl-1)).toString(),
+            (40 - 2 * (lvl-1)).toString()
         ))
 
 // ----------------------------------------------------------------------------

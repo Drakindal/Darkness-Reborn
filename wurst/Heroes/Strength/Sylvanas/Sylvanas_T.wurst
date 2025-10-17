@@ -8,7 +8,7 @@ import ClosureTimers
 
 bool run = true
 
-public function goldenArrow()
+public function sylvanas_T_venomArrow()
     EventListener.onTargetCast(SYLVANAS_ABILITY_5) (unit caster, unit target) ->
         let lvl = caster.getAbilityLevel(SYLVANAS_ABILITY_5)
         let dmg1 = (lvl*3) * caster.getMaxHP()

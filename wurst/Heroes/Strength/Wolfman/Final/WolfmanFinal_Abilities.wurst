@@ -57,7 +57,7 @@ import DebugVar
         ..setCastRange(1, 93083)
         ..setManaCost(1, 0)
         ..setAreaofEffect(1, 400)
-        ..setDuration(1, 2)
+        ..setDuration(1, 14)
         ..setTargetsAllowed(1, getTargets(AbilityTargets.EnemiesNonStructuresMechUnits))
 
         new AbilityDefinitionBerserk(WOLF_FINAL_ABILITY_2)

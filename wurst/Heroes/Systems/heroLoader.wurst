@@ -139,6 +139,7 @@ import Tinker_Hero
 import Uther_Hero
 import GuardianOfLight_Q
 import MyAbilityIds
+import Sylvanas_T
 
 init
     // HERO_MOUNTAIN_KING
@@ -231,6 +232,7 @@ init
     poisonArrow()
     longRange()
     goldenArrow()
+    sylvanas_T_venomArrow()
     // HERO_FIRELORD
     conflagration()
     pillarOfFlame()

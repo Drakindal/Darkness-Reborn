@@ -173,7 +173,6 @@ public constant real array[9] firemage_abi3_IntScale = [
         ..presetDamageAbsorbed(lvl -> 0.99)
         ..setIcon("ReplaceableTextures\\CommandButtons\\BTNFireShield.blp")
         ..setIconTurnOff("ReplaceableTextures\\CommandButtons\\PASFireShield.blp")
-        ..setGeneralAbility(AbilityPosition.Q)
         ..register(HERO_FIRE_MAGE, "Fire Shield".setColor(colAbilitiesFiremage), 
         "Creates a fire shield that reduces incoming damage in exchange for mana points. Passively deals damage to enemies that damage Firemage.",
         (int lvl) -> "Absorbs damage: {0} damage = 1 MP. Passively returns {1}x Intelligence damage.".format(

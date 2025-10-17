@@ -19,7 +19,7 @@ public function tasteOfDeath()
                 new DummyCaster()
                 ..owner(caster.getOwner())
                 ..origin(caster.getPos())
-                ..castTarget(DEATH_KNIGHT_ABILITY_2_DUMMY, 1, OrderIds.chainlightning, u)
+                ..castTarget(DEATH_KNIGHT_ABILITY_2_DUMMY, 1, OrderIds.thunderbolt, u)
 
                 caster.damageTargetCode(dmg, u, null, -1, customDamageType.Magical)
                 flashEffect(Abilities.illidanMissile, u.getPos(), 1)
