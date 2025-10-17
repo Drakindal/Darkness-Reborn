@@ -40,6 +40,7 @@ public function demonPower()
                                 count
                                 ..setColor(colorA(252, 25, 25, 225))
                                 ..setScaledText("Demon Unleashed", 1.5)
+                                ..destr()
                                 src.setAgi(src.getAgi(true)*10)
                                 src.limitArmorImmediate()
                                 BlzSetUnitSkin(src, SKIN_1)

@@ -152,6 +152,7 @@ public function onBuyHero(unit u)
 
             if (DEBUG)
                 soldUnit.addItemToSlot(ITEM_BLINK_MAP, 0)
+                soldUnit.setLevel(20, false)
 
         else
             soldUnit.remove()

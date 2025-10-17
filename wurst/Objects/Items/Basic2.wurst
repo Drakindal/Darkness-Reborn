@@ -64,7 +64,7 @@ init
     ..setClassification("PowerUp")
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(300)
-    ..addStats(addArmor(4))
+    ..addStats(addRes(resType.Universal, 0.01))
     ..addHotKey()
     ..register()
 
