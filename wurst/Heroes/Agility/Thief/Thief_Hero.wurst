@@ -38,7 +38,7 @@ import MyAbilityIds
     
     ..setSpeedBase(320)
     ..setTurnRate(0.60)
-    ..setRequirements(commaList(HERO_THIEF_PICKED))
+    ..setRequirements(commaList(HERO_GATHERER_PICKED))
     
     ..setTooltipExtended(
     rolesList(roleFarmer),

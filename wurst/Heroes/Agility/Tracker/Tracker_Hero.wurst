@@ -37,7 +37,7 @@ import MyHeroDefinition
     
     ..setManaInitialAmount(200)
     
-    ..setRequirements(commaList(heroPickBlocker, HERO_TRACKER_PICKED))
+    ..setRequirements(commaList(HERO_NOTREADY_BLOCKER, HERO_TRACKER_PICKED))
     ..setTurnRate(0.60)
     
     ..setTooltipExtended(

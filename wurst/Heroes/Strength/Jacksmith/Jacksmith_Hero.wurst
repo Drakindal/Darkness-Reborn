@@ -34,7 +34,7 @@ import MyAbilityIds
     ..setDefenseBase(2)
 
     ..setTurnRate(0.60)
-    ..setRequirements(commaList(HERO_JACKSMITH_PICKED))
+    ..setRequirements(commaList(HERO_CRAFTER_PICKED))
 
     ..setTooltipExtended(
     rolesList(roleCrafter),

@@ -39,7 +39,7 @@ public unit tinkerHero = null
     ..setDefenseBase(1)
     
     ..setTurnRate(0.60)
-    ..setRequirements(commaList(HERO_TINKER_PICKED))
+    ..setRequirements(commaList(HERO_BUILDER_PICKED))
     
     ..setTooltipExtended(
     rolesList(roleBuilder, roleFarmer),

@@ -100,7 +100,7 @@ init
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(1550)
     ..addStats(addDamage(8))
-    ..addStats(addArmorOnHit(-5))
+    ..addStats(addPen(penType.Physical, 0.02))
     ..addHotKey()
     ..register()
 
