@@ -21,7 +21,7 @@ import MyHeroDefinition
     ..setStatsPerLvl(3.00, 1.50, 1.50)
     
     ..setScalingValue(0.75)
-    ..setRequirements(commaList(heroPickBlocker,HERO_PANDAREN_MONK_PICKED))
+    ..setRequirements(commaList(HERO_NOTREADY_BLOCKER,HERO_PANDAREN_MONK_PICKED))
     ..setModelFile(Units.stormPandarenBrewmaster)
     ..setIconGameInterface(Icons.bTNStormBrewMaster)
     ..setIconScoreScreen(Icons.bTNStormBrewMaster)

@@ -4,7 +4,6 @@ import ClosureTimers
 
 public interface OnProjectileHit
     function hit(effect detectionUnit, vec2 target)
-    function hit(unit detectionunit, vec2 target)
 
 public class FallingProjectile
     protected vec2 target

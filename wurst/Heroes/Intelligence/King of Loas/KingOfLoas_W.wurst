@@ -14,28 +14,31 @@ public constant gralBite = new SoundDefinition("Loas Assets\\Shark\\gralBite.mp3
 public function finsofGral()
     DamageEvent.addListener(2) ->
         let src = DamageEvent.getSource()
-        if src.isIllusion()
+        if src.getTypeId() != HERO_KING_OF_LOAS
             skip
         else
-            if DamageEvent.getType() == ATTACK
-                let lvl = src.getAbilityLevel(KING_OF_LOAS_ABILITY_2)
-                if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_2) and lvl > 0
-                    let attacked = DamageEvent.getTarget()
-                    let pos = src.getPos()
-                    let owner = GetOwningPlayer(src)
-                    let vec2_target = attacked.getPos()
-                    let shark = createUnit(owner, DUMMY_UNIT_5, pos, pos.angleTo(vec2_target))
+            if src.isIllusion()
+                skip
+            else
+                if DamageEvent.getType() == ATTACK
+                    let lvl = src.getAbilityLevel(KING_OF_LOAS_ABILITY_2)
+                    if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_2) and lvl > 0
+                        let attacked = DamageEvent.getTarget()
+                        let pos = src.getPos()
+                        let owner = GetOwningPlayer(src)
+                        let vec2_target = attacked.getPos()
+                        let shark = createUnit(owner, DUMMY_UNIT_5, pos, pos.angleTo(vec2_target))
 
-                    new DummyCaster()
-                    ..owner(owner)
-                    ..origin(pos)
-                    ..castTarget(KING_OF_LOAS_ABILITY_2_DUMMY, lvl, OrderIds.bloodlust, src)
-                    ..delay(0.2)
-                    
-                    doAfter(0.01) -> 
-                        shark.setAnimation(0)
-                        gralBite.playOnPoint(attacked.getPos3Real())
-                        doAfter(0.5) -> 
-                            shark.setAnimation(1)
-                            doAfter(0.8) -> 
-                                shark.remove()
+                        new DummyCaster()
+                        ..owner(owner)
+                        ..origin(pos)
+                        ..castTarget(KING_OF_LOAS_ABILITY_2_DUMMY, lvl, OrderIds.bloodlust, src)
+                        ..delay(0.2)
+                        
+                        doAfter(0.01) -> 
+                            shark.setAnimation(0)
+                            gralBite.playOnPoint(attacked.getPos3Real())
+                            doAfter(0.5) -> 
+                                shark.setAnimation(1)
+                                doAfter(0.8) -> 
+                                    shark.remove()
