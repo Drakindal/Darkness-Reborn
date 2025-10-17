@@ -5,7 +5,7 @@ import Abilities
 import StandardTextTags
 import MyUnitIds
 import ArmorLimiter
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 
 int attackCount = 0
@@ -15,13 +15,13 @@ int oldskin
 texttag count
 
 public function demonPower()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            if (DamageEvent.getType() == ATTACK)
-                let damtyp = DamageEvent.getDamageType()
+            if (DamageCustomEvent.getType() == ATTACK)
+                let damtyp = DamageCustomEvent.getDamageType()
                 if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                     let lvl = GetUnitAbilityLevel(src, DEMON_HUNTER_ABILITY_4)
                     if lvl >= 1

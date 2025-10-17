@@ -2,16 +2,16 @@ package MountainKing_R
 
 import MyBuffIds
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import MountainKing_Abilities
 
 public function overPower()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
-        let targ = DamageEvent.getTarget()
-        if (DamageEvent.getType() == ATTACK and src.isIllusion() == false)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
+        let targ = DamageCustomEvent.getTarget()
+        if (DamageCustomEvent.getType() == ATTACK and src.isIllusion() == false)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
                 let lvl = src.getAbilityLevel(MOUNTAIN_KING_ABILITY_4)
                 if lvl >= 1 and (targ.hasAbility(MOUNTAIN_KING_BUFF_1) or targ.hasAbility(BUFF_ITEM_BASH)) and GetRandomInt(1, 100) < 35

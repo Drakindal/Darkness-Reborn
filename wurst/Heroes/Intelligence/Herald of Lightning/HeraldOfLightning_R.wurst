@@ -1,15 +1,15 @@
 package HeraldOfLightning_R
 
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import RandomGen
 import ClosureTimers
 
 function heraldAutoAttack()
-    let src = DamageEvent.getSource()
+    let src = DamageCustomEvent.getSource()
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
-    let targ = DamageEvent.getTarget()
+    let targ = DamageCustomEvent.getTarget()
     let intellect = src.getInt(true)
     let dmg = intellect * (lvl * 2.00)
     src.damageTargetCode(dmg, targ, null, 'MRIP', customDamageType.Magical)
@@ -20,12 +20,12 @@ function heraldAutoAttack()
 
 function heraldUlt(unit src)
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
-    DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
+    DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1+0.2*lvl))
     giveInt(src)
 
 function heraldQ_W(unit src)
     let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
-    DamageEvent.setAmount(DamageEvent.getAmount() * (1+0.2*lvl))
+    DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1+0.2*lvl))
     giveInt(src)
 
 function giveInt(unit src)
@@ -33,17 +33,17 @@ function giveInt(unit src)
     src.addInt((0.01+0.25*(lvl-1)).ceil())
 
 public function mindRipper()
-    DamageEvent.addListener(0) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(0) ->
+        let src = DamageCustomEvent.getSource()
         let lvl = src.getAbilityLevel(HERALD_ABILITY_4)
         let addChance = src.getAbilityLevel(HERALD_ABILITY_3)
         if (lvl > 0)
-            switch DamageEvent.getType()
+            switch DamageCustomEvent.getType()
                 case ATTACK
                     if (checkChanceI(lvl * 5 + addChance))
                         heraldAutoAttack()
                 case CODE
-                    let id = DamageEvent.getId()
+                    let id = DamageCustomEvent.getId()
                     switch id
                         // Damage from ultimate.
                         case 'HTIM'

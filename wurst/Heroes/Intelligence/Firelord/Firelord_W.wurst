@@ -6,7 +6,7 @@ import MyBuffIds
 import MyAbilityIds
 import DummyCaster
 import OrderIds
-import Global_Variables
+import DamageElements
 import DamageTarget
 import Firelord_Blaze
 

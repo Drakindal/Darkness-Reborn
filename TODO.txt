@@ -1,12 +1,8 @@
 Game crash:
 
-Dark Ranger W
-Shadow Vengeance Q
 Vivpire
-Naga the Sea Witch W
-Sylvanas W
 
-King of Loas ascended does not revive. W always triggers even if Loas do not attack (in debug mode, then jacksmith attacks enemies)
+King of Loas ascended does not revive.
 
 Bugs:
 
@@ -15,12 +11,9 @@ Arthas Auras and Q doesn't work
 Uther's R doesn't work on allies.
 Pitlord reflections.
 
-Uther's W increases holy power.
-
 Wolfman W, E.
 
 Tinker active R.
-Uther W adds Holy power.
 
 Death Knight animation.
 

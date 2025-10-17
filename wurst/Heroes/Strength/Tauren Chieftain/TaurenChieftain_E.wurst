@@ -5,19 +5,19 @@ import Objects
 import TerrainUtils
 import DamageTarget
 import MyAbilityIds
-import DamageEvent
+import DamageCustomEvent
 import TaurenChieftain_Abilities
 import ClosureForGroups
 import RandomGen
 
 public function pulverize()
-    DamageEvent.addListener(1) ->
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
-            let caster = DamageEvent.getSource()
+    DamageCustomEvent.addListener(1) ->
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
+            let caster = DamageCustomEvent.getSource()
             let lvl = caster.getAbilityLevel(TAUREN_CHIEFTAIN_ABILITY_3)
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC) and lvl > 0 and checkChanceI(tauren_abi3_Chance[lvl-1])
-                let target = DamageEvent.getTarget()
+                let target = DamageCustomEvent.getTarget()
                 let dmg = ((1.5*caster.getStr(true)) * lvl) + 0.05 * caster.getMaxHP() * lvl
                 var distance = 0.0
                 let targetPos = target.getPos()

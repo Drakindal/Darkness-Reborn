@@ -5,7 +5,6 @@ import AbilityObjEditing
 import CommonDescriptions
 import Format
 import ItemStatsDef
-import DS_DataCompileTime
 import public DamageTypes
 
 // ----------------------------------------------------------------------------

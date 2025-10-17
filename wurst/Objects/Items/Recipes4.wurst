@@ -4,7 +4,6 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import RecipeItems
-import DamageTarget
 import StatsType
 
 init

@@ -5,7 +5,6 @@ import ClosureForGroups
 import Abilities
 import DamageTarget
 import MyAbilityIds
-import MyUnitIds
 import GuardianOfLight_Abilities
 
 public function holyWrath()

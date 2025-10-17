@@ -1,0 +1,26 @@
+package DamageElements
+
+/* DAMAGE ELEMENT */
+
+/** Each damage instance can have a DamageElement associated to it.
+    Allowing for categories of damage instances:
+
+        DAMAGE_ELEMENT_FIRE  = new DamageElement("Fire", colorA(255, 0, 0, 255))
+        DAMAGE_ELEMENT_WATER = new DamageElement("Water", colorA(0, 0, 255, 255))
+
+    The user can extends from DamageElement to add his own settings.*/
+public class DamageElement
+    protected string name
+    protected colorA color = COLOR_WHITE
+
+    construct(string name, colorA color)
+        this.name = name
+        this.color = color
+
+    function getName() returns string
+        return name
+
+    function getColor() returns colorA
+        return color
+
+public constant DAMAGE_ELEMENT_FIRE  = new DamageElement("Fire", colorA(255, 0, 0, 255)) // Primarily used for Firelord (may be used for others)

@@ -7,7 +7,7 @@ import MyAbilityIds
 import MyBuffIds
 import Abilities
 import DummyCaster
-import Global_Variables
+import DamageElements
 import DamageTarget
 import Firelord_Blaze
 

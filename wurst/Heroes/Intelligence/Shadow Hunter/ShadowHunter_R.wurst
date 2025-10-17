@@ -3,21 +3,21 @@ package ShadowHunter_R
 import DummyCaster
 import MyAbilityIds
 import OrderIds
-import DamageEvent
+import DamageCustomEvent
 import DamageTarget
 import MyBuffIds
 
 public function craggyHex()
-    DamageEvent.addListener(2) ->
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(2) ->
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let targ = DamageEvent.getTarget()
+                let targ = DamageCustomEvent.getTarget()
                 if targ.hasAbility(SHADOW_HUNTER_BUFF_4)
                     let lvl = targ.getAbilityLevel(SHADOW_HUNTER_ABILITY_4)
                     let dmg = targ.getMaxHP()*(lvl*0.05) + 0.5*lvl*targ.getInt(true)
                     if GetRandomInt(1, 100) < lvl*2
-                        let src = DamageEvent.getSource()
+                        let src = DamageCustomEvent.getSource()
                         new DummyCaster()
                         ..owner(targ.getOwner())
                         ..origin(targ.getPos())

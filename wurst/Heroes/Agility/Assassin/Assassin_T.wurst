@@ -3,24 +3,24 @@ package Assassin_T
 import Abilities
 import ClosureTimers
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 import MyAbilityIds
 import StandardTextTags
 
 bool once = true
 
 public function lastKiller()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.isIllusion()
             skip
         else
-            if DamageEvent.getType() == ATTACK
-                let damtyp = DamageEvent.getDamageType()
+            if DamageCustomEvent.getType() == ATTACK
+                let damtyp = DamageCustomEvent.getDamageType()
                 if damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC
                     if src.hasAbility(ASSASSIN_ABILITY_5)
                         if once
-                            let target = DamageEvent.getTarget()
+                            let target = DamageCustomEvent.getTarget()
                             once = false
 
                             let lvl = ((GetUnitAbilityLevel(src, ASSASSIN_ABILITY_5))*5) + 35

@@ -1,0 +1,57 @@
+package DamageInstance
+import DamageTypes
+import DamageElements
+
+/* DAMAGE INSTANCE */
+
+public class DamageInstance
+    int id
+    unit source
+    unit target
+    real amount
+    real originalAmount
+    real unreducedAmount
+    real unreducedOriginalAmount
+    bool unreduced
+    attacktype nativeAttackType
+    damagetype nativeDamageType
+    weapontype nativeWeaponType
+    WC3InternalDetectionDamageTypes damageType
+    DamageElement damageElement
+
+    static thistype current = null
+    static thistype array stack
+    static int count = 0
+
+    construct(int id, unit source, unit target, real unreducedAmount, attacktype nativeAttackType, damagetype nativeDamageType, weapontype nativeWeaponType, WC3InternalDetectionDamageTypes damageType, DamageElement damageElement)
+        this.id = id
+        this.source = source
+        this.target = target
+        this.amount = unreducedAmount
+        this.originalAmount = unreducedAmount
+        this.unreducedAmount = unreducedAmount
+        this.unreducedOriginalAmount = unreducedAmount
+        this.unreduced = true
+        this.nativeAttackType = nativeAttackType
+        this.nativeDamageType = nativeDamageType
+        this.nativeWeaponType = nativeWeaponType
+        this.damageType = damageType
+        this.damageElement = damageElement
+
+        count++
+        stack[count] = this
+        current = this
+
+    function setAmount(real amount)
+        this.amount = amount
+        if unreduced
+            this.unreducedAmount = amount
+
+    function setReducedAmount(real amount)
+        this.amount = amount
+        this.originalAmount = amount
+        this.unreduced = false
+
+    ondestroy
+        count--
+        current = stack[count]

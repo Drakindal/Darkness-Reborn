@@ -2,6 +2,16 @@ package DamageTypes
 
 // ----------------------------------------------------------------------------
 
+/** Each damage instance has a DamageType associated to it.
+    ATTACK and SPELL are detected by the system.
+    CODE **must** be declared by the user using DamageEvent.setNextDamageFromCode() before dealing damage  */
+public enum WC3InternalDetectionDamageTypes
+    ATTACK  // From units' attacks or native abilities if DETECT_NATIVE_ABILITIES is false (PHYSICAL)
+    SPELL   // From native abilities (NATIVE_ABILITY)
+    CODE    // From user code
+    NULLED  // For backward compatibility -> has no utility
+    UNKNOWN
+
 public enum customDamageType
     Pure
     PhysicalMelee
@@ -30,7 +40,7 @@ public function customDamageType.toString() returns string
         case customDamageType.PhysicalMelee
             return "Physical Melee Damage"
         case customDamageType.PhysicalRanged
-            return "Physical Range Damage"
+            return "Physical Ranged Damage"
         case customDamageType.Pure
             return "Pure Damage"
 

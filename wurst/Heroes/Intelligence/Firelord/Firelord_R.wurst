@@ -3,7 +3,7 @@ package Firelord_R
 import Abilities
 import ClosureEvents
 import MyBuffIds
-import Global_Variables
+import DamageElements
 import DummyCaster
 import MyAbilityIds
 import OrderIds

@@ -2,21 +2,21 @@ package Vivpire_W
 
 import MyAbilityIds
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 import Vivpire_Abilities
 
 var currentDmg = 0.
 
 public function bloodHunter()
     let attacked = CreateTimer()
-    DamageEvent.addListener(1) ->
-        if (DamageEvent.getType() == ATTACK)
-            let damtyp = DamageEvent.getDamageType()
+    DamageCustomEvent.addListener(1) ->
+        if (DamageCustomEvent.getType() == ATTACK)
+            let damtyp = DamageCustomEvent.getDamageType()
             if (damtyp == DAMAGE_TYPE_NORMAL or damtyp == DAMAGE_TYPE_MAGIC)
-                let src = DamageEvent.getSource()
+                let src = DamageCustomEvent.getSource()
                 let lvl = src.getAbilityLevel(VIVPIRE_ABILITY_2)
                 if lvl > 0
-                    let targ = DamageEvent.getTarget()
+                    let targ = DamageCustomEvent.getTarget()
                     currentDmg = currentDmg + 0.1
                     if (currentDmg > vivpire_abi2_Limit[lvl-1])
                         currentDmg = vivpire_abi2_Limit[lvl-1].toReal()

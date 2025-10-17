@@ -6,19 +6,19 @@ import ClosureForGroups
 import ClosureTimers
 import MyAbilityIds
 import DamageTarget
-import DamageEvent
+import DamageCustomEvent
 // Storm of Akunda
 
 public function superKingOfloasE()
-    DamageEvent.addListener(2) ->
-        if DamageEvent.getType() == ATTACK
-            let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        if DamageCustomEvent.getType() == ATTACK
+            let src = DamageCustomEvent.getSource()
             if src.isIllusion()
                 skip
             else
                 let lvl = src.getAbilityLevel(KING_OF_LOAS_ASC_ABILITY_3)
                 if lvl > 0 and GetRandomInt(1, 100) <= 30
-                    let target = DamageEvent.getTarget()
+                    let target = DamageCustomEvent.getTarget()
                     let dmg = src.getInt(true) * 27.
                     forUnitsInRange(target.getPos(), 450) (unit u) ->
                         if src.isEnemyOf(u)

@@ -7,24 +7,24 @@ import MyAbilityIds
 import MyUnitIds
 import MyBuffIds
 import KingOfLoas_W
-import DamageEvent
+import DamageCustomEvent
 import DamageTarget
 
 // Embodiment of Gral
 
 public function embodimentOfGral()
-    DamageEvent.addListener(2) ->
-        let src = DamageEvent.getSource()
+    DamageCustomEvent.addListener(2) ->
+        let src = DamageCustomEvent.getSource()
         if src.getTypeId() != HERO_KING_OF_LOAS_ASCENDED
             skip
         else
             if src.isIllusion()
                 skip
             else
-                if DamageEvent.getType() == ATTACK
+                if DamageCustomEvent.getType() == ATTACK
                     let lvl = src.getAbilityLevel(KING_OF_LOAS_ASC_ABILITY_2)
                     if GetRandomInt(1, 100) <= 15 and not src.hasAbility(KING_OF_LOAS_BUFF_2) and lvl > 0
-                        let targ = DamageEvent.getTarget()
+                        let targ = DamageCustomEvent.getTarget()
 
                         new DummyCaster()
                         ..owner(src.getOwner())

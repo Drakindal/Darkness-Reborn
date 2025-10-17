@@ -8,7 +8,6 @@ import DamageTarget
 import ActiveAbilityDef
 import ClosureForGroups
 import CommonDescriptions
-import HashList
 import MyColors
 
 init
