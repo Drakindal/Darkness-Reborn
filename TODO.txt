@@ -11,11 +11,16 @@ King of Loas ascended does not revive. W always triggers even if Loas do not att
 Bugs:
 
 Shadow Hunter healing ward does not show buff.
+
 Arthas Auras and Q doesn't work
+
+
 Uther's R doesn't work on allies.
+Uther's W increases holy power.
+
+
 Pitlord reflections.
 
-Uther's W increases holy power.
 
 Wolfman W, E.
 

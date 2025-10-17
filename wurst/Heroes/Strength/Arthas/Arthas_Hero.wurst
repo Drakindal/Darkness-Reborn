@@ -14,7 +14,7 @@ import MyHeroDefinition
 @compiletime function defineHero()
     new MyHeroDefinition(HERO_ARTHAS, UnitIds.arthaswithfrostmourne)
     
-    ..setHeroAbilities(commaList('A00A', 'A00B', 'A00H', ARTHAS_ABILITY_5, 'A00S'))
+    ..setHeroAbilities(commaList(ARTHAS_ABILITY_1, ARTHAS_ABILITY_2, ARTHAS_ABILITY_3, ARTHAS_ABILITY_4, ARTHAS_ABILITY_5))
     
     ..setPrimaryAttribute("Strength")
     ..setStatsBase(22, 13, 17)

@@ -5,22 +5,15 @@ import MyAbilityIds
 import DummyCaster
 import OrderIds
 import ClosureForGroups
+import MyUnitTypes
 
 public function doghowl()
     EventListener.onCast(WOLF_INITIATE_ABILITY_2) (unit caster) ->
         let lvl = caster.getAbilityLevel(WOLF_INITIATE_ABILITY_2)
         forUnitsInRange(caster.getPos(), 400, true) (unit u) ->
-            if (u.isEnemyOf(caster)) // and not u.checkType(MyUnitType.StructureMechUnit)
+            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit)
                 new DummyCaster()
                 ..origin(caster.getPos())
                 ..owner(caster.getOwner())
-                ..castImmediate(WOLF_INITIATE_ABILITY_2_DUMMY_1, 
-                lvl,
-                OrderIds.stomp)
-        
-                new DummyCaster()
-                ..origin(caster.getPos())
-                ..owner(caster.getOwner())
-                ..castImmediate(WOLF_INITIATE_ABILITY_2_DUMMY_2, 
-                lvl,
-                OrderIds.cripple)
+                ..castImmediate(WOLF_INITIATE_ABILITY_2_DUMMY_1, lvl, OrderIds.stomp)
+                ..castImmediate(WOLF_INITIATE_ABILITY_2_DUMMY_2, lvl, OrderIds.cripple)

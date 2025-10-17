@@ -5,21 +5,14 @@ import MyAbilityIds
 import OrderIds
 import DummyCaster
 import ClosureForGroups
+import MyUnitTypes
 
 public function wolfhowl()
     EventListener.onCast(WOLF_FINAL_ABILITY_2) (unit caster) ->
         forUnitsInRange(caster.getPos(), 400, true) (unit u) ->
-            if (u.isEnemyOf(caster)) // and not u.checkType(MyUnitType.StructureMechUnit)
+            if u.isEnemyOf(caster) and not u.checkType(MyUnitType.StructureMechUnit)
                 new DummyCaster()
                 ..origin(caster.getPos())
                 ..owner(caster.getOwner())
-                ..castImmediate(WOLF_FINAL_ABILITY_2_DUMMY_1, 
-                1, 
-                OrderIds.stomp)
-
-                new DummyCaster()
-                ..origin(caster.getPos())
-                ..owner(caster.getOwner())
-                ..castImmediate(WOLF_FINAL_ABILITY_2_DUMMY_2, 
-                1,
-                OrderIds.cripple)
+                ..castImmediate(WOLF_FINAL_ABILITY_2_DUMMY_1, 1, OrderIds.stomp)
+                ..castImmediate(WOLF_FINAL_ABILITY_2_DUMMY_2, 1, OrderIds.cripple)
