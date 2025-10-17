@@ -1,6 +1,6 @@
 package DamageTypes
 
-// ----------------------------------------------------------------------------
+/* DAMAGE TYPE */
 
 /** Each damage instance has a DamageType associated to it.
     ATTACK and SPELL are detected by the system.

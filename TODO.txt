@@ -1,14 +1,14 @@
 Game crash:
 
-Vivpire
 
-King of Loas ascended does not revive.
 
 Bugs:
 
 Shadow Hunter healing ward does not show buff.
 
 Tinker active R.
+
+Loa might not revive (may be fixed? Could not reproduce)
 
 Test:
 

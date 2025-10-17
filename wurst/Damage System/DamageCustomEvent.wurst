@@ -9,18 +9,6 @@ import DamageInstance
 /** If true, any damage instance of attacktype ATTACK_TYPE_NORMAL is passed with DamageType SPELL */
 @configurable constant DETECT_NATIVE_ABILITIES = true
 
-/** A damage instance can have an element.
-    DAMAGE_ELEMENT_ATTACK is the defaut element added to any damage instances of DamageType ATTACK */
-@configurable public constant DAMAGE_ELEMENT_ATTACK = new DamageElement("Physical", colorA(223, 59, 33, 255))
-
-/* DAMAGE TYPE */
-
-
-
-    
-
-
-
 /* DAMAGE EVENT */
 
 public class DamageCustomEvent

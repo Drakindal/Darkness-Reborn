@@ -2,6 +2,10 @@ package DamageElements
 
 /* DAMAGE ELEMENT */
 
+/** A damage instance can have an element.
+    DAMAGE_ELEMENT_ATTACK is the defaut element added to any damage instances of DamageType ATTACK */
+@configurable public constant DAMAGE_ELEMENT_ATTACK = new DamageElement("Physical", colorA(223, 59, 33, 255))
+
 /** Each damage instance can have a DamageElement associated to it.
     Allowing for categories of damage instances:
 

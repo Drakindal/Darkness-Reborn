@@ -117,16 +117,18 @@ public function uther_abi4_formatDescr(int lvl, int holyPower) returns string
         ..register("Uther's Blessing".setColor(colAbilitiesUther),
         "This unit has been blessed by Uther the Lightbringer, casting spells grant him holy power.")
         
-        new ChannelAbilityPreset(UTHER_ABILITY_4, 9, true)
+        new AbilityDefinitionCripple(UTHER_ABILITY_4)
         ..setGeneralAbility(AbilityPosition.R)
+        ..presetDurationNormal(lvl -> 14.0 + 2 * (lvl-1))
         ..presetBuffs(lvl -> commaList(UTHER_BUFF_4))
         ..presetDurationHero(lvl -> 14.0 + 2 * (lvl-1))
         ..presetCastRange(lvl -> 99999)
         ..presetManaCost(lvl -> 200 - 15 * lvl)
         ..presetCooldown(lvl -> 3)
-        ..presetTargetTypes(Targettype.UNIT)
-        ..presetBaseOrderID(lvl -> MyOrderIds.targetChainLightning)
-        ..setOrderStringUseTurnOn(MyOrderIds.targetChainLightning)
+        ..presetAttackSpeedReduction(lvl -> 0)
+        ..presetDamageReduction(lvl -> 0)
+        ..presetMovementSpeedReduction(lvl -> 0)
+        ..setRequirements("")
         ..presetTargetsAllowed(lvl -> getTargets(AbilityTargets.AlliesNotSelf))
         ..presetIcon(Icons.bTNCheese)
         ..register(HERO_UTHER, "Redemption".setColor(colAbilitiesUther), 
