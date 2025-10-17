@@ -114,7 +114,7 @@ public function addSpikes(real factor) returns ItemStats
 
     return new ItemStatsCustomFunc(-1, wordPassive + effects, (int itemId, ItemDefinition itemDef) -> begin
         abilitiesListReflections.add(new ItemWurstAbility(itemId, (unit src, unit target) -> begin
-            target.damageTargetCode(DamageCustomEvent.getAmount() * factor, src, null, -1, customDamageType.PhysicalRanged)
+            target.damageTargetCode(DamageCustomEvent.getAmount() * factor, src, null, -1, customDamageType.Reflection)
         end))
     end)
 

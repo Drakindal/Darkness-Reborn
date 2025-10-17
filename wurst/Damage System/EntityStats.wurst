@@ -226,7 +226,7 @@ public class EntityStats
         switch damageType
             case damageType.Pure
                 damage = damage * (1 - universalRes)
-            case damageType.PhysicalMelee | damageType.PhysicalRanged
+            case damageType.PhysicalMelee | damageType.PhysicalRanged | damageType.Reflection
                 damage = physDamage.calcDamage(damage) * (1 - universalRes)
             case damageType.Magical
                 damage = magicDamage.calcDamage(damage) * (1 - universalRes)

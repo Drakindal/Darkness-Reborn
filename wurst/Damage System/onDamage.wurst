@@ -76,6 +76,8 @@ function anyCodeAttack(unit src, unit targ)
             handlePhysicalRangedAttackChecks(src, targ)
         case customDamageType.Pure
             handlePureAttackChecks(src, targ)
+        case customDamageType.Reflection
+            skip
 
 // Process any ability damage
 function anySpell(unit src, unit targ)

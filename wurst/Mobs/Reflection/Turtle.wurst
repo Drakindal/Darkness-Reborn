@@ -2,4 +2,4 @@ package Turtle
 
 import DamageTarget
 public function turtle(unit holder, unit attacker, real dam)
-    holder.damageTargetCode(dam * 0.3, attacker, null, -1, customDamageType.PhysicalRanged)
+    holder.damageTargetCode(dam * 0.3, attacker, null, -1, customDamageType.Reflection)

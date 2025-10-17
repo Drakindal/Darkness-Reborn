@@ -8,4 +8,4 @@ public function pitLordThorn(unit holder, unit attacker)
     var dmg = 60. * lvl
     if (lvl == 9)
         dmg += 1.5* holder.getStr(true)
-    holder.damageTargetCode(dmg, attacker, null, -1, customDamageType.PhysicalRanged)
+    holder.damageTargetCode(dmg, attacker, null, -1, customDamageType.Reflection)
