@@ -6,8 +6,6 @@ import ItemIds
 import MyItemIds
 import Icons
 
-init
-
 @compiletime function createItems()
 
 //I015

@@ -6,11 +6,11 @@ import MyColors
 import MyItemIds
 import RecipeItems
 import CommonDescriptions
-
-init
+import DebugVar
 
 @compiletime function createItems()
 
+    addItemInBoxForDebug = DEBUG
 //I0JT
     new MyItemWithRecipeDefinition(ITEM_ICE_AND_FIRE_SWORD_II, itemRecipeList, ITEM_RECIPE_ICE_AND_FIRE_SWORD_II,
     (MyItemDefinitionBase itemRecipe) -> itemRecipe
@@ -168,3 +168,5 @@ init
     ITEM_O3_CLOCK)
     ..addHotKey()
     ..register()
+    
+    addItemInBoxForDebug = false

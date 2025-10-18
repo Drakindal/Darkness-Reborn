@@ -4,8 +4,8 @@ import MyItemIds
 
 // ----------------------------------------------------------------------------
 
-public function getItemName(int id) returns string
-    switch (id)
+public function int.getItemName() returns string
+    switch (this)
         // Basic Items (1)
         case ITEM_GLOVES_OF_HASTE
             return "Gloves of Haste"
@@ -108,168 +108,168 @@ public function getItemName(int id) returns string
         // Recipes (1)
 
         case ITEM_RECIPE_ICE_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_ICE_SWORD))
+            return "Recipe " + compiletime(ITEM_ICE_SWORD.getItemName())
         case ITEM_RECIPE_FIRE_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_FIRE_SWORD))
+            return "Recipe " + compiletime(ITEM_FIRE_SWORD.getItemName())
         case ITEM_RECIPE_BOOTS_OF_TELEPORTATION
-            return "Recipe " + compiletime(getItemName(ITEM_BOOTS_OF_TELEPORTATION))
+            return "Recipe " + compiletime(ITEM_BOOTS_OF_TELEPORTATION.getItemName())
         case ITEM_RECIPE_BOOTS_OF_INVISIBILITY
-            return "Recipe " + compiletime(getItemName(ITEM_BOOTS_OF_INVISIBILITY))
+            return "Recipe " + compiletime(ITEM_BOOTS_OF_INVISIBILITY.getItemName())
 
         case ITEM_RECIPE_WINGED_BOOTS
-            return "Recipe " + compiletime(getItemName(ITEM_WINGED_BOOTS))
+            return "Recipe " + compiletime(ITEM_WINGED_BOOTS.getItemName())
         case ITEM_RECIPE_STEEL_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_STEEL_AXE))
+            return "Recipe " + compiletime(ITEM_STEEL_AXE.getItemName())
         case ITEM_RECIPE_SILVER_HAMMER
-            return "Recipe " + compiletime(getItemName(ITEM_SILVER_HAMMER))
+            return "Recipe " + compiletime(ITEM_SILVER_HAMMER.getItemName())
         case ITEM_RECIPE_GLOVES_OF_SPEED
-            return "Recipe " + compiletime(getItemName(ITEM_GLOVES_OF_SPEED))
+            return "Recipe " + compiletime(ITEM_GLOVES_OF_SPEED.getItemName())
 
         case ITEM_RECIPE_HALF_OF_ARKENSTONE
-            return "Recipe " + compiletime(getItemName(ITEM_HALF_OF_ARKENSTONE))
+            return "Recipe " + compiletime(ITEM_HALF_OF_ARKENSTONE.getItemName())
         case ITEM_RECIPE_LIGHT_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_LIGHT_ARMOR))
+            return "Recipe " + compiletime(ITEM_LIGHT_ARMOR.getItemName())
         case ITEM_RECIPE_SCROLL_OF_FUSION
-            return "Recipe " + compiletime(getItemName(ITEM_SCROLL_OF_FUSION))
+            return "Recipe " + compiletime(ITEM_SCROLL_OF_FUSION.getItemName())
         case ITEM_RECIPE_AMULET_OF_THE_WILD
-            return "Recipe " + compiletime(getItemName(ITEM_AMULET_OF_THE_WILD))
+            return "Recipe " + compiletime(ITEM_AMULET_OF_THE_WILD.getItemName())
         
         // Recipes (2)
 
         case ITEM_RECIPE_HELM_OF_VALOR
-            return "Recipe " + compiletime(getItemName(ITEM_HELM_OF_VALOR))
+            return "Recipe " + compiletime(ITEM_HELM_OF_VALOR.getItemName())
         case ITEM_RECIPE_MEDALLION_OF_COURAGE
-            return "Recipe " + compiletime(getItemName(ITEM_MEDALLION_OF_COURAGE))
+            return "Recipe " + compiletime(ITEM_MEDALLION_OF_COURAGE.getItemName())
         case ITEM_RECIPE_ALLERIA_FLUTE_OF_ACCURACY
-            return "Recipe " + compiletime(getItemName(ITEM_ALLERIA_FLUTE_OF_ACCURACY))
+            return "Recipe " + compiletime(ITEM_ALLERIA_FLUTE_OF_ACCURACY.getItemName())
         case ITEM_RECIPE_ANCIENT_JANGGO_OF_ENDURANCE
-            return "Recipe " + compiletime(getItemName(ITEM_ANCIENT_JANGGO_OF_ENDURANCE))
+            return "Recipe " + compiletime(ITEM_ANCIENT_JANGGO_OF_ENDURANCE.getItemName())
 
         case ITEM_RECIPE_THE_LION_HORN_OF_STORMWIND
-            return "Recipe " + compiletime(getItemName(ITEM_THE_LION_HORN_OF_STORMWIND))
+            return "Recipe " + compiletime(ITEM_THE_LION_HORN_OF_STORMWIND.getItemName())
         case ITEM_RECIPE_WARSONG_BATTLE_DRUMS
-            return "Recipe " + compiletime(getItemName(ITEM_WARSONG_BATTLE_DRUMS))
+            return "Recipe " + compiletime(ITEM_WARSONG_BATTLE_DRUMS.getItemName())
         case ITEM_RECIPE_DRUMS_OF_FUTURE
-            return "Recipe " + compiletime(getItemName(ITEM_DRUMS_OF_FUTURE))
+            return "Recipe " + compiletime(ITEM_DRUMS_OF_FUTURE.getItemName())
         case ITEM_RECIPE_THE_GOLDEN_HORN
-            return "Recipe " + compiletime(getItemName(ITEM_THE_GOLDEN_HORN))
+            return "Recipe " + compiletime(ITEM_THE_GOLDEN_HORN.getItemName())
 
         case ITEM_RECIPE_TRIBAL_DRUMS
-            return "Recipe " + compiletime(getItemName(ITEM_TRIBAL_DRUMS))
+            return "Recipe " + compiletime(ITEM_TRIBAL_DRUMS.getItemName())
         case ITEM_RECIPE_NATURE_FLUTE
-            return "Recipe " + compiletime(getItemName(ITEM_NATURE_FLUTE))
+            return "Recipe " + compiletime(ITEM_NATURE_FLUTE.getItemName())
         case ITEM_RECIPE_VOID_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_VOID_AXE))
+            return "Recipe " + compiletime(ITEM_VOID_AXE.getItemName())
         case ITEM_RECIPE_AINZ_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_AINZ_SWORD))
+            return "Recipe " + compiletime(ITEM_AINZ_SWORD.getItemName())
         
         // Recipes (3)
 
         case ITEM_RECIPE_SEER_STAFF
-            return "Recipe " + compiletime(getItemName(ITEM_SEER_STAFF))
+            return "Recipe " + compiletime(ITEM_SEER_STAFF.getItemName())
         case ITEM_RECIPE_SCALE_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_SCALE_AXE))
+            return "Recipe " + compiletime(ITEM_SCALE_AXE.getItemName())
         case ITEM_RECIPE_DALAN_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_DALAN_AXE))
+            return "Recipe " + compiletime(ITEM_DALAN_AXE.getItemName())
         case ITEM_RECIPE_DURATION_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_DURATION_AXE))
+            return "Recipe " + compiletime(ITEM_DURATION_AXE.getItemName())
 
         case ITEM_RECIPE_DWARVEN_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_DWARVEN_AXE))
+            return "Recipe " + compiletime(ITEM_DWARVEN_AXE.getItemName())
         case ITEM_RECIPE_BLADE_OF_HELL
-            return "Recipe " + compiletime(getItemName(ITEM_BLADE_OF_HELL))
+            return "Recipe " + compiletime(ITEM_BLADE_OF_HELL.getItemName())
         case ITEM_RECIPE_KRAKEN_DAGGER
-            return "Recipe " + compiletime(getItemName(ITEM_KRAKEN_DAGGER))
+            return "Recipe " + compiletime(ITEM_KRAKEN_DAGGER.getItemName())
         case ITEM_RECIPE_MIDNIGHT_BLADE
-            return "Recipe " + compiletime(getItemName(ITEM_MIDNIGHT_BLADE))
+            return "Recipe " + compiletime(ITEM_MIDNIGHT_BLADE.getItemName())
 
         case ITEM_RECIPE_BLOOD_GORGED_BLADE
-            return "Recipe " + compiletime(getItemName(ITEM_BLOOD_GORGED_BLADE))
+            return "Recipe " + compiletime(ITEM_BLOOD_GORGED_BLADE.getItemName())
         case ITEM_RECIPE_STEEL_SHIELD
-            return "Recipe " + compiletime(getItemName(ITEM_STEEL_SHIELD))
+            return "Recipe " + compiletime(ITEM_STEEL_SHIELD.getItemName())
         case ITEM_RECIPE_SACRED_SHIELD
-            return "Recipe " + compiletime(getItemName(ITEM_SACRED_SHIELD))
+            return "Recipe " + compiletime(ITEM_SACRED_SHIELD.getItemName())
         case ITEM_RECIPE_IRON_SHIELD
-            return "Recipe " + compiletime(getItemName(ITEM_IRON_SHIELD))
+            return "Recipe " + compiletime(ITEM_IRON_SHIELD.getItemName())
 
         // Recipes (4)
 
         case ITEM_RECIPE_SPLIT_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_SPLIT_ARMOR))
+            return "Recipe " + compiletime(ITEM_SPLIT_ARMOR.getItemName())
         case ITEM_RECIPE_AVATAR_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_AVATAR_ARMOR))
+            return "Recipe " + compiletime(ITEM_AVATAR_ARMOR.getItemName())
         case ITEM_RECIPE_CHAOS_BLADE
-            return "Recipe " + compiletime(getItemName(ITEM_CHAOS_BLADE))
+            return "Recipe " + compiletime(ITEM_CHAOS_BLADE.getItemName())
         case ITEM_RECIPE_O_CLOCK
-            return "Recipe " + compiletime(getItemName(ITEM_O_CLOCK))
+            return "Recipe " + compiletime(ITEM_O_CLOCK.getItemName())
 
         case ITEM_RECIPE_THUNDER_BOW
-            return "Recipe " + compiletime(getItemName(ITEM_THUNDER_BOW))
+            return "Recipe " + compiletime(ITEM_THUNDER_BOW.getItemName())
         case ITEM_RECIPE_SOUL_OF_KILJEADEN
-            return "Recipe " + compiletime(getItemName(ITEM_SOUL_OF_KILJEADEN))
+            return "Recipe " + compiletime(ITEM_SOUL_OF_KILJEADEN.getItemName())
         case ITEM_RECIPE_LIZARD_PENDANT
-            return "Recipe " + compiletime(getItemName(ITEM_LIZARD_PENDANT))
+            return "Recipe " + compiletime(ITEM_LIZARD_PENDANT.getItemName())
         case ITEM_RECIPE_HELM_HERMES
-            return "Recipe " + compiletime(getItemName(ITEM_HELM_HERMES))
+            return "Recipe " + compiletime(ITEM_HELM_HERMES.getItemName())
 
         case ITEM_RECIPE_DARK_SPHERE
-            return "Recipe " + compiletime(getItemName(ITEM_DARK_SPHERE))
+            return "Recipe " + compiletime(ITEM_DARK_SPHERE.getItemName())
         case ITEM_RECIPE_MYSTERY_GREEN_STAFF
-            return "Recipe " + compiletime(getItemName(ITEM_MYSTERY_GREEN_STAFF))
+            return "Recipe " + compiletime(ITEM_MYSTERY_GREEN_STAFF.getItemName())
         case ITEM_RECIPE_ICE_WAND
-            return "Recipe " + compiletime(getItemName(ITEM_ICE_WAND))
+            return "Recipe " + compiletime(ITEM_ICE_WAND.getItemName())
         case ITEM_RECIPE_WAR_ENERGY
-            return "Recipe " + compiletime(getItemName(ITEM_WAR_ENERGY))
+            return "Recipe " + compiletime(ITEM_WAR_ENERGY.getItemName())
 
         // Late Game (1)
 
         case ITEM_RECIPE_ICE_AND_FIRE_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_ICE_AND_FIRE_SWORD))
+            return "Recipe " + compiletime(ITEM_ICE_AND_FIRE_SWORD.getItemName())
         case ITEM_RECIPE_BOOTS_OF_CRYSTAL_GOLD
-            return "Recipe " + compiletime(getItemName(ITEM_BOOTS_OF_CRYSTAL_GOLD))
+            return "Recipe " + compiletime(ITEM_BOOTS_OF_CRYSTAL_GOLD.getItemName())
         case ITEM_RECIPE_DESTROY_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_DESTROY_SWORD))
+            return "Recipe " + compiletime(ITEM_DESTROY_SWORD.getItemName())
         case ITEM_RECIPE_PLATINUM_HAMMER
-            return "Recipe " + compiletime(getItemName(ITEM_PLATINUM_HAMMER))
+            return "Recipe " + compiletime(ITEM_PLATINUM_HAMMER.getItemName())
 
         case ITEM_RECIPE_GLOVES_OF_FLASH
-            return "Recipe " + compiletime(getItemName(ITEM_GLOVES_OF_FLASH))
+            return "Recipe " + compiletime(ITEM_GLOVES_OF_FLASH.getItemName())
         case ITEM_RECIPE_DARK_STEEL_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_DARK_STEEL_SWORD))
+            return "Recipe " + compiletime(ITEM_DARK_STEEL_SWORD.getItemName())
         case ITEM_RECIPE_PERFECT_ARKENSTONE
-            return "Recipe " + compiletime(getItemName(ITEM_PERFECT_ARKENSTONE))
+            return "Recipe " + compiletime(ITEM_PERFECT_ARKENSTONE.getItemName())
         case ITEM_RECIPE_SHINY_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_SHINY_ARMOR))
+            return "Recipe " + compiletime(ITEM_SHINY_ARMOR.getItemName())
 
         case ITEM_RECIPE_REACTIVE_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_REACTIVE_ARMOR))
+            return "Recipe " + compiletime(ITEM_REACTIVE_ARMOR.getItemName())
         case ITEM_RECIPE_HOLY_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_HOLY_ARMOR))
+            return "Recipe " + compiletime(ITEM_HOLY_ARMOR.getItemName())
         case ITEM_RECIPE_GOLD_AXE
-            return "Recipe " + compiletime(getItemName(ITEM_GOLD_AXE))
+            return "Recipe " + compiletime(ITEM_GOLD_AXE.getItemName())
 
         // Late Game (2)
 
         case ITEM_RECIPE_DARK_MATTER
-            return "Recipe " + compiletime(getItemName(ITEM_DARK_MATTER))
+            return "Recipe " + compiletime(ITEM_DARK_MATTER.getItemName())
         case ITEM_RECIPE_RAIN_SWORD
-            return "Recipe " + compiletime(getItemName(ITEM_RAIN_SWORD))
+            return "Recipe " + compiletime(ITEM_RAIN_SWORD.getItemName())
         case ITEM_RECIPE_CORROSIVE_HAMMER
-            return "Recipe " + compiletime(getItemName(ITEM_CORROSIVE_HAMMER))
+            return "Recipe " + compiletime(ITEM_CORROSIVE_HAMMER.getItemName())
         case ITEM_RECIPE_VAMPIRELLA
-            return "Recipe " + compiletime(getItemName(ITEM_VAMPIRELLA))
+            return "Recipe " + compiletime(ITEM_VAMPIRELLA.getItemName())
 
         case ITEM_RECIPE_LANCELOT_SHIELD
-            return "Recipe " + compiletime(getItemName(ITEM_LANCELOT_SHIELD))
+            return "Recipe " + compiletime(ITEM_LANCELOT_SHIELD.getItemName())
         case ITEM_RECIPE_LANCELOT_ARMOR
-            return "Recipe " + compiletime(getItemName(ITEM_LANCELOT_ARMOR))
+            return "Recipe " + compiletime(ITEM_LANCELOT_ARMOR.getItemName())
         case ITEM_RECIPE_LANCELOT_HELM
-            return "Recipe " + compiletime(getItemName(ITEM_LANCELOT_HELM))
+            return "Recipe " + compiletime(ITEM_LANCELOT_HELM.getItemName())
         case ITEM_RECIPE_MYSTERY_BLUE_STAFF
-            return "Recipe " + compiletime(getItemName(ITEM_MYSTERY_BLUE_STAFF))
+            return "Recipe " + compiletime(ITEM_MYSTERY_BLUE_STAFF.getItemName())
 
         case ITEM_RECIPE_FREEZE_WAND
-            return "Recipe " + compiletime(getItemName(ITEM_FREEZE_WAND))
+            return "Recipe " + compiletime(ITEM_FREEZE_WAND.getItemName())
 
         // Gems (3)
 
@@ -773,8 +773,6 @@ public function getItemName(int id) returns string
             return "Manual of Mana"
         case ITEM_TOME_OF_DAMAGE
             return "Manual of Damage"
-        case ITEM_TOME_OF_ARMOR
-            return "Manual of Armor"
         case ITEM_TOME_OF_AGILITY_L1
             return "Tome of Agility"
         case ITEM_TOME_OF_INTELLIGENCE_L1

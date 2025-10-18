@@ -3,10 +3,10 @@ package Creeps3
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
-
-init
+import DebugVar
 
 @compiletime function createItems()
+    addItemInBoxForDebug = ADD_CREEPS_ITEMS
 
 //I047
     new MyItemDefinition(ITEM_SPHERE_OF_FIRE)
@@ -141,3 +141,5 @@ init
     ..addStats(addEvasion(0.5))
     ..setStockMaximum(99)
     ..register()
+
+    addItemInBoxForDebug = false

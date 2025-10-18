@@ -7,10 +7,9 @@ import Jacksmith_Q
 import Jacksmith_E
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
+        addItemInBoxForDebug = ADD_JS_T_ITEMS
     //I09A
         new MyItemDefinition(ITEM_FORGE_AXE_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWarAxe.blp")    
@@ -38,6 +37,7 @@ init
         ..setClassification("Purchasable")
         ..addStats(addDamage(400))
         ..register()
+        addItemInBoxForDebug = false
 
     //I09D
         new MyItemWithCraftInfoDefinition(ITEM_EXOTIC_AXE_L1, jackSmithRecipe, -1)
@@ -158,6 +158,7 @@ init
         ITEM_DURATION_AXE)
         ..register()
         
+        addItemInBoxForDebug = DEBUG
     //I09P
         new MyItemWithCraftInfoDefinition(ITEM_STRIKE_AXE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNGromHellscreamsAxe.blp")
@@ -169,6 +170,7 @@ init
         ITEM_GOLD_AXE)
         ..register()
         
+        addItemInBoxForDebug = DEBUG
     //I09O
         new MyItemWithCraftInfoDefinition(ITEM_CRITICAL_AXE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNragingstrike.blp")    
@@ -176,10 +178,11 @@ init
         ..addStats(addDamage(1500))
         ..addStats(addCrit(1.00, 2))
         ..addComponents(
-        ITEM_CRITICAL_AXE,
+        ITEM_STRIKE_AXE,
         ITEM_GOLD_AXE)
         ..register()
-
+        addItemInBoxForDebug = false
+    
     //I0FJ
         new MyItemWithCraftInfoDefinition(ITEM_BATTLE_AXE_L0, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
@@ -189,6 +192,7 @@ init
         ITEM_EXOTIC_AXE_L8,
         ITEM_PLATINUM_HAMMER)
         ..register()
+        addItemInBoxForDebug = false
 
     //I0FK
         new MyItemBulionUpgradeDefinition(ITEM_BATTLE_AXE_L1, ITEM_BATTLE_AXE_L0, jacksmithBulionChanceL1)
@@ -222,6 +226,7 @@ init
         ..addStats(addPen(penType.Physical, 0.16))
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I0FO
         new MyItemBulionUpgradeDefinition(ITEM_BATTLE_AXE_L5, ITEM_BATTLE_AXE_L4, jacksmithBulionChanceL5)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
@@ -229,3 +234,5 @@ init
         ..addStats(addDamage(22000))
         ..addStats(addPen(penType.Physical, 0.20))
         ..register()
+        
+        addItemInBoxForDebug = false

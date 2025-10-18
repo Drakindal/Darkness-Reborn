@@ -7,10 +7,9 @@ import Jacksmith_Q
 import StatsType
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
+        addItemInBoxForDebug = ADD_JS_T_ITEMS
     //I05Z
         new MyItemDefinition(ITEM_FORGE_STAFF_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNIce Staff.blp")    
@@ -46,6 +45,7 @@ init
         ..addStats(addMp(4000))
         ..addStats(addMpReg(3))
         ..register()
+        addItemInBoxForDebug = false
 
     //I0A2
         new MyItemWithCraftInfoDefinition(ITEM_GOLDEN_STAFF_L1, jackSmithRecipe, -1)
@@ -111,6 +111,7 @@ init
         ITEM_AMULET_OF_RECALL)
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I0A8
         new MyItemWithCraftInfoDefinition(ITEM_HEAVEN_STAFF_L3, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArcane Staff.blp")    
@@ -124,6 +125,7 @@ init
         ITEM_FORGE_STAFF_L4,
         ITEM_SCEPTER_OF_MASTERY)
         ..register()
+        addItemInBoxForDebug = false
 
     //I0A6
         new MyItemWithCraftInfoDefinition(ITEM_NERUBIAN_STAFF_L1, jackSmithRecipe, -1)
@@ -153,6 +155,7 @@ init
         ITEM_SEER_STAFF)
         ..register()
         
+        addItemInBoxForDebug = DEBUG
     //I0A7
         new MyItemWithCraftInfoDefinition(ITEM_BERSERKERS_STAFF, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLunarEdge.blp")    
@@ -166,3 +169,5 @@ init
         ITEM_BOOK_OF_RAIN,
         ITEM_SEER_STAFF)
         ..register()
+
+        addItemInBoxForDebug = false

@@ -4,8 +4,6 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 
-init
-
 @compiletime function createItems()
 
 //I0CZ

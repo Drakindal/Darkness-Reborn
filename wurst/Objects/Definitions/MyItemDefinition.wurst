@@ -30,6 +30,8 @@ import public SummonAbilities
 import ItemLocationSearch
 import Jacksmith_E
 import MyItemIds
+import UpdateDropSite
+import DebugVar
 
 // ----------------------------------------------------------------------------
 
@@ -106,6 +108,8 @@ public class MyItemDefinitionBase extends ItemDefinition
         setStockStartDelay(100)
 
     function register()
+        if (addItemInBoxForDebug)
+            addItemToTheDropSiteCompileTime(itemId)
 
     function addHotKey()
         setHotkey(getHotKey(itemId))
@@ -187,7 +191,7 @@ public class MyItemDefinition extends MyItemDefinitionBase
         return result
 
     protected function basicEffectsDescr()
-        let itemName = getItemName(itemId)
+        let itemName = itemId.getItemName()
         let descrEffects = getEffectsDescription()
 
         // The item name
@@ -203,6 +207,9 @@ public class MyItemDefinition extends MyItemDefinitionBase
         applyStats()
         basicEffectsDescr()
         applyChestColors(this)
+        
+        if (addItemInBoxForDebug)
+            addItemToTheDropSiteCompileTime(itemId)
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -240,7 +247,7 @@ public class MyItemWithCraftInfoDefinition extends MyItemDefinition
         for comp in components
             let shopName = getItemLocation(comp)
 
-            materials = materials + getItemName(comp) + " (" + shopName + ")\n"
+            materials = materials + comp.getItemName() + " (" + shopName + ")\n"
         return materials
 
     protected function getRecipeDescription() returns string
@@ -250,8 +257,11 @@ public class MyItemWithCraftInfoDefinition extends MyItemDefinition
         applyStats()
         basicEffectsDescr()
         applyChestColors(this)
+        
+        if (addItemInBoxForDebug)
+            addItemToTheDropSiteCompileTime(itemId)
 
-        let itemName = getItemName(itemId)
+        let itemName = itemId.getItemName()
         let descrRecipe  = getRecipeDescription()
 
         if (recipeItemId != -1)
@@ -315,8 +325,8 @@ public class MyItemBulionUpgradeDefinition extends MyItemDefinition
     protected function getMaterialsDescription() returns string
         return wordBulionUpgradable
         + wordSuccessChance.format((100*chance).toString(0))
-        + getItemName(componentId) + " (" + getItemLocation(componentId) + ")\n"
-        + getItemName(ITEM_BULION) + " (" + getItemLocation(ITEM_BULION) + ")\n"
+        + componentId.getItemName() + " (" + getItemLocation(componentId) + ")\n"
+        + ITEM_BULION.getItemName() + " (" + getItemLocation(ITEM_BULION) + ")\n"
 
     protected function getRecipeDescription() returns string
         return getEffectsDescription() + getMaterialsDescription()
@@ -325,6 +335,9 @@ public class MyItemBulionUpgradeDefinition extends MyItemDefinition
         applyStats()
         basicEffectsDescr()
         applyChestColors(this)
+        
+        if (addItemInBoxForDebug)
+            addItemToTheDropSiteCompileTime(itemId)
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -358,7 +371,7 @@ public class MyItemWithRecipeDefinition extends MyItemWithCraftInfoDefinition
             // list already shown in recipe item.
             if (comp != recipeItemId)
                 let shopName = getItemLocation(comp)
-                materials = materials + getItemName(comp) + " (" + shopName + ")\n"
+                materials = materials + comp.getItemName() + " (" + shopName + ")\n"
         return materials
 
     override function register()
@@ -366,7 +379,10 @@ public class MyItemWithRecipeDefinition extends MyItemWithCraftInfoDefinition
         basicEffectsDescr()
         applyChestColors(this)
         
-        let itemName = getItemName(itemId)
+        if (addItemInBoxForDebug)
+            addItemToTheDropSiteCompileTime(itemId)
+        
+        let itemName = itemId.getItemName()
         let descrRecipe  = getRecipeDescription()
 
         let recipeItemDef = new MyItemDefinitionBase(recipeItemId)

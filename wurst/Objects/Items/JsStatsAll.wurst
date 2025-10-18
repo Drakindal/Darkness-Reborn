@@ -6,8 +6,6 @@ import MyItemIds
 import Jacksmith_Q
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
     //I0AC
@@ -127,6 +125,7 @@ init
         ITEM_NECROPEDIA)
         ..register()
         
+        addItemInBoxForDebug = DEBUG
     //I0AK
         new MyItemWithCraftInfoDefinition(ITEM_ODIN_NECKLE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_jewelry_necklace_32.blp")    
@@ -136,3 +135,4 @@ init
         ITEM_LOKI_NECKLACE,
         ITEM_SCARYS_POTION)
         ..register()
+        addItemInBoxForDebug = false

@@ -3,11 +3,11 @@ package Creeps1
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
-
-init
+import DebugVar
 
 @compiletime function createItems()
-
+    addItemInBoxForDebug = ADD_CREEPS_ITEMS
+    
 //I037
     new MyItemDefinition(ITEM_GAUNTLETS_OF_OGRE_STRENGTH)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNGauntletsOfOgrePower.blp")
@@ -201,3 +201,5 @@ init
     ..addStats(addHpReg(15))
     ..setStockMaximum(99)
     ..register()
+
+    addItemInBoxForDebug = false

@@ -6,10 +6,9 @@ import MyItemIds
 import Jacksmith_Q
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
+        addItemInBoxForDebug = DEBUG
     //I0EI
         new MyItemWithCraftInfoDefinition(ITEM_LANCELOT_SET, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNA111.blp")
@@ -62,3 +61,4 @@ init
         ITEM_SKULL_OF_MALGANIS,
         ITEM_SPHERE_OF_FIRE)
         ..register()
+        addItemInBoxForDebug = false

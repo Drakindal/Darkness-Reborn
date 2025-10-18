@@ -8,10 +8,9 @@ import ObjectIds
 import Jacksmith_R
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_THIEF_ITEMS)
+        addItemInBoxForDebug = ADD_THIEF_RECIPES
     //I0HU
         new MyItemWithCraftInfoDefinition(ITEM_GOLDEN_RING, blacksmithJackedList, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif7.blp")   
@@ -321,3 +320,5 @@ init
         ITEM_ABO_TREASURE,
         ITEM_DARK_MATTER)
         ..register()
+        
+        addItemInBoxForDebug = false

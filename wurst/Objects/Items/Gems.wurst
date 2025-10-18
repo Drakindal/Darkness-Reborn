@@ -6,8 +6,6 @@ import MyItemIds
 import RecipeItems
 import MyUnitIds
 
-init
-
 @compiletime function createItems()
 
 

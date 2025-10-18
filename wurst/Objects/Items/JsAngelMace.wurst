@@ -10,22 +10,25 @@ import Jacksmith_E
 import DebugVar
 
 @compiletime function createItems()
-    if (BUILD_JS_ITEMS)
+    addItemInBoxForDebug = DEBUG
     //I0E1
-        new MyItemWithRecipeDefinition(ITEM_RAIN_SWORD, itemRecipeList, ITEM_RECIPE_RAIN_SWORD,
-        (MyItemDefinitionBase itemRecipe) -> itemRecipe
-        ..setGoldCost(35000)
-        )
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNS 1.blp")
-        ..setClassification("Artifact")
-        ..addStats(addDamage(700))
-        ..addStats(addAgi(350))
-        ..addStats(addRes(resType.Physical, 0.01))
-        ..addComponents(
-        ITEM_AINZ_SWORD)
-        ..addHotKey()
-        ..register()
+    new MyItemWithRecipeDefinition(ITEM_RAIN_SWORD, itemRecipeList, ITEM_RECIPE_RAIN_SWORD,
+    (MyItemDefinitionBase itemRecipe) -> itemRecipe
+    ..setGoldCost(35000)
+    )
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNS 1.blp")
+    ..setClassification("Artifact")
+    ..addStats(addDamage(700))
+    ..addStats(addAgi(350))
+    ..addStats(addRes(resType.Physical, 0.01))
+    ..addComponents(
+    ITEM_AINZ_SWORD)
+    ..addHotKey()
+    ..register()
+    
+    addItemInBoxForDebug = false
 
+    if (BUILD_JS_ITEMS)
     //I0EM
         new MyItemBulionUpgradeDefinition(ITEM_RAIN_SWORD_L1, ITEM_RAIN_SWORD, jacksmithBulionChanceL1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNS 1.blp")
@@ -81,23 +84,26 @@ import DebugVar
         ..setChestColors(colItemL5)
         ..register()
 
+    addItemInBoxForDebug = DEBUG
     //I0E3
-        new MyItemWithRecipeDefinition(ITEM_VAMPIRELLA, itemRecipeList, ITEM_RECIPE_VAMPIRELLA,
-        (MyItemDefinitionBase itemRecipe) -> itemRecipe
-        ..setGoldCost(35000)
-        )
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNVampirellaBlade.blp")
-        ..setClassification("Artifact")
-        ..addStats(addDamage(700))
-        ..addStats(addInt(400))
-        ..addStats(addMp(6000))
-        ..addStats(addRes(resType.Magical, 0.01))
-        ..addComponents(
-        ITEM_SEER_STAFF)
-        ..addHotKey()
-        ..register()
+    new MyItemWithRecipeDefinition(ITEM_VAMPIRELLA, itemRecipeList, ITEM_RECIPE_VAMPIRELLA,
+    (MyItemDefinitionBase itemRecipe) -> itemRecipe
+    ..setGoldCost(35000)
+    )
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNVampirellaBlade.blp")
+    ..setClassification("Artifact")
+    ..addStats(addDamage(700))
+    ..addStats(addInt(400))
+    ..addStats(addMp(6000))
+    ..addStats(addRes(resType.Magical, 0.01))
+    ..addComponents(
+    ITEM_SEER_STAFF)
+    ..addHotKey()
+    ..register()
+    
+    addItemInBoxForDebug = false
 
-
+    if (BUILD_JS_ITEMS)
     //I0EW
         new MyItemBulionUpgradeDefinition(ITEM_VAMPIRELLA_L1, ITEM_VAMPIRELLA, jacksmithBulionChanceL1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNVampirellaBlade.blp")
@@ -158,22 +164,25 @@ import DebugVar
         ..setChestColors(colItemL5)
         ..register()
 
+    addItemInBoxForDebug = DEBUG
     //I0E2
-        new MyItemWithRecipeDefinition(ITEM_CORROSIVE_HAMMER, itemRecipeList, ITEM_RECIPE_CORROSIVE_HAMMER,
-        (MyItemDefinitionBase itemRecipe) -> itemRecipe
-        ..setGoldCost(35000)
-        )
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNCurrosiveHammerBTN.blp")
-        ..setClassification("Artifact")
-        ..addStats(addDamage(700))
-        ..addStats(addStr(350))
-        ..addStats(addHp(6000))
-        ..addStats(addRes(resType.Universal, 0.01))
-        ..addComponents(
-        ITEM_VOID_AXE)
-        ..addHotKey()
-        ..register()
+    new MyItemWithRecipeDefinition(ITEM_CORROSIVE_HAMMER, itemRecipeList, ITEM_RECIPE_CORROSIVE_HAMMER,
+    (MyItemDefinitionBase itemRecipe) -> itemRecipe
+    ..setGoldCost(35000)
+    )
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNCurrosiveHammerBTN.blp")
+    ..setClassification("Artifact")
+    ..addStats(addDamage(700))
+    ..addStats(addStr(350))
+    ..addStats(addHp(6000))
+    ..addStats(addRes(resType.Universal, 0.01))
+    ..addComponents(
+    ITEM_VOID_AXE)
+    ..addHotKey()
+    ..register()
+    addItemInBoxForDebug = false
 
+    if (BUILD_JS_ITEMS)
     //I0ER
         new MyItemBulionUpgradeDefinition(ITEM_CORROSIVE_HAMMER_L1, ITEM_CORROSIVE_HAMMER, jacksmithBulionChanceL1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNCurrosiveHammerBTN.blp")
@@ -234,6 +243,7 @@ import DebugVar
         ..setChestColors(colItemL5)
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I0E7
         new MyItemWithCraftInfoDefinition(ITEM_ANGEL_MACE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_mace_82.blp")    
@@ -275,3 +285,5 @@ import DebugVar
         ITEM_VAMPIRELLA_L5,
         ITEM_CORROSIVE_HAMMER_L5)
         ..register()
+    
+        addItemInBoxForDebug = false

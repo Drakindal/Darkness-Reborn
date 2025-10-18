@@ -4,10 +4,10 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import RecipeItems
-
-init
+import DebugVar
 
 @compiletime function createItems()
+    addItemInBoxForDebug = ADD_MID_RECIPES
 
 //I04Z
     new MyItemWithRecipeDefinition(ITEM_SEER_STAFF, itemRecipeList, ITEM_RECIPE_SEER_STAFF,
@@ -214,3 +214,5 @@ init
     ITEM_HELM_OF_VALOR)
     ..addHotKey()
     ..register()
+    
+    addItemInBoxForDebug = false

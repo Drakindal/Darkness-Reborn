@@ -3,10 +3,10 @@ package Creeps2
 import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
-
-init
+import DebugVar
 
 @compiletime function createItems()
+    addItemInBoxForDebug = ADD_CREEPS_ITEMS
 
 //I06S
     new MyItemDefinition(ITEM_STAFF_OF_PRESERVATION)
@@ -208,3 +208,5 @@ init
     ..addStats(addAllStats(54))
     ..setStockMaximum(99)
     ..register()
+
+    addItemInBoxForDebug = false

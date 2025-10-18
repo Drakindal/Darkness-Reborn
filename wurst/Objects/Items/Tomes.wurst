@@ -8,8 +8,6 @@ import MyItemIds
 import Icons
 import CommonDescriptions
 
-init
-
 @compiletime function createItems()
 
 //I0CI
@@ -126,22 +124,6 @@ init
     ..setUseAutomaticallyWhenAcquired(true)
     ..addExtraDescription(wordNote + "You can use tome in horse to give stats to the hero.")
     ..setChestColors(new Color(230, 220, 140))
-    ..addHotKey()
-    ..register()
-
-    new MyItemDefinition(ITEM_TOME_OF_ARMOR)
-    ..setInterfaceIcon(Icons.bTNTomeBrown)
-    ..setModelUsed("Objects\\InventoryItems\\tome\\tome.mdl")
-    ..setActivelyUsed(true)
-    ..setGoldCost(2500)
-    ..setNumberofCharges(1)
-    ..setPerishable(true)
-    ..setStockMaximum(10)
-    ..setStockReplenishInterval(60)
-    ..addStats(addTomeStatGivingAuto(10, statTome.ARMOR))
-    ..setUseAutomaticallyWhenAcquired(true)
-    ..addExtraDescription(wordNote + "You can use tome in horse to give stats to the hero.")
-    ..setChestColors(new Color(60, 60, 60))
     ..addHotKey()
     ..register()
 

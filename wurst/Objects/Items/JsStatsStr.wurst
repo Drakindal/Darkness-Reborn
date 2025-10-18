@@ -8,8 +8,6 @@ import StatsType
 import Jacksmith_E
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
     //I0BX
@@ -75,6 +73,7 @@ init
         ITEM_TITANIUM)
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I0BY
         new MyItemWithCraftInfoDefinition(ITEM_ATHENA, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
@@ -85,6 +84,7 @@ init
         ITEM_HYPERION,
         ITEM_PERFECT_RUBYSTONE)
         ..register()
+        addItemInBoxForDebug = false
         
     //I0IO
         new MyItemWithCraftInfoDefinition(ITEM_ATHENA_L1, jackSmithRecipe, -1)
@@ -126,6 +126,7 @@ init
         ..register()
 
         
+        addItemInBoxForDebug = DEBUG
         new MyItemBulionUpgradeDefinition(ITEM_ATHENA_L5, ITEM_ATHENA_L4, jacksmithBulionChanceL5)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
         ..setClassification("Campaign")
@@ -144,3 +145,5 @@ init
         ITEM_ASTRAEUS_BELT,
         ITEM_HELM_HERMES)
         ..register()
+
+        addItemInBoxForDebug = false

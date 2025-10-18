@@ -20,9 +20,7 @@ init
                         hero.removeItem(ite)
                         ite.remove()
                         // Add item to the box
-                        itemDropsInTavern.put(itemId, itemDropsInTavern.get(itemId) + 1)
-                        itemDropsEnumerator.add(itemId)
-                        updateItemPool()
+                        addItemToTheDropSite(itemId)
                     else
                         printTimedToPlayer("You can only send to box items stolen from T1 and T2 creeps, and also from Nerubian Queen and Hydralisk", 5, commandPlayer)
                 else

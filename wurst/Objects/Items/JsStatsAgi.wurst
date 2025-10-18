@@ -7,8 +7,6 @@ import Jacksmith_Q
 import Jacksmith_E
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
     //I0BG
@@ -91,6 +89,7 @@ init
         ITEM_TITANIUM)
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I0BN
         new MyItemWithCraftInfoDefinition(ITEM_VALKYRIE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (8).blp")    
@@ -104,6 +103,7 @@ init
         ITEM_BOOK_OF_WIND,
         ITEM_PERFECT_RUBYSTONE)
         ..register()
+        addItemInBoxForDebug = false
         
     //I0IN
         new MyItemWithCraftInfoDefinition(ITEM_VALKYRIE_L1, jackSmithRecipe, -1)
@@ -148,6 +148,7 @@ init
         ..addStats(addEvasion(0.55))
         ..register()
 
+        addItemInBoxForDebug = DEBUG
         new MyItemBulionUpgradeDefinition(ITEM_VALKYRIE_L5, ITEM_VALKYRIE_L4, jacksmithBulionChanceL5)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (8).blp")    
         ..setClassification("Campaign")
@@ -156,3 +157,4 @@ init
         ..addStats(addDamage(15400))
         ..addStats(addEvasion(0.64))
         ..register()
+        addItemInBoxForDebug = false

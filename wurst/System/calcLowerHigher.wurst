@@ -1,7 +1,5 @@
 package calcLowerHigher
 
-init
-
 public function calc_higherBigBoss(int highBoss) returns integer
 
     if (highBoss == 1)

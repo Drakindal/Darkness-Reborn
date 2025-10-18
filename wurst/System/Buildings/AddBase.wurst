@@ -20,7 +20,7 @@ public function addBase()
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_FOUNTAIN, posX, posY, 270.000).questItemPickup() // Fountain of Healing (at base)
 
     dropSite = CreateUnit(PLAYER_ALLY_BASE, DROPSITE, posX, posY - 800, 270.)//Dropsite
-    updateDropSite() 
+    initDropSite() 
     elementalSoul = createUnit(PLAYER_ALLY_BASE, ELEMENTAL_SOUL, gg_rct_AllSpawnMove2.getCenter(), facing.asAngleDegrees()) // Elemental Soul    
         
     elementalSoul.onDefeat()

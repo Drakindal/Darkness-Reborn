@@ -5,11 +5,11 @@ import ItemObjEditing
 import MyItemIds
 import RecipeItems
 import MyColors
-
-init
+import DebugVar
 
 @compiletime function createItems()
 
+    addItemInBoxForDebug = ADD_LATE_GAME_RECIPES
 //I005
     new MyItemWithRecipeDefinition(ITEM_ICE_AND_FIRE_SWORD, itemRecipeList, ITEM_RECIPE_ICE_AND_FIRE_SWORD,
     (MyItemDefinitionBase itemRecipe) -> itemRecipe
@@ -181,3 +181,5 @@ init
     ITEM_CROWN_OF_ASSASSIN)
     ..addHotKey()
     ..register()
+    
+    addItemInBoxForDebug = false

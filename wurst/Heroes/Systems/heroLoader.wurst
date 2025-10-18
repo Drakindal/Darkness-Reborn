@@ -273,7 +273,7 @@ init
     // HERO_TINKER
     construction()
     tinkerResourceProduction()
-    blacksmithDoAfter()
+    initBlacksmith()
     repair()
     factorySpawn()
     clusterRockets()

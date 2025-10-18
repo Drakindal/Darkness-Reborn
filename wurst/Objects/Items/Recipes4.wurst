@@ -5,10 +5,10 @@ import ItemObjEditing
 import MyItemIds
 import RecipeItems
 import StatsType
-
-init
+import DebugVar
 
 @compiletime function createItems()
+    addItemInBoxForDebug = ADD_MID_RECIPES
 
 //I05I
     new MyItemWithRecipeDefinition(ITEM_SPLIT_ARMOR, itemRecipeList, ITEM_RECIPE_SPLIT_ARMOR,
@@ -222,3 +222,5 @@ init
     ITEM_ARKENSTONE_FRAGMENT)
     ..addHotKey()
     ..register()
+
+    addItemInBoxForDebug = false

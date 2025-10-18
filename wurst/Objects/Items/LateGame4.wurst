@@ -6,11 +6,10 @@ import MyItemIds
 import RecipeItems
 import StatsType
 import MyColors
-
-init
+import DebugVar
 
 @compiletime function createItems()
-
+    addItemInBoxForDebug = ADD_LATE_GAME_RECIPES
 //I0EL
     new MyItemDefinition(ITEM_BULION)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNGold.blp")    
@@ -96,3 +95,5 @@ init
     ITEM_DRAGON_SPIRIT)
     ..addHotKey()
     ..register()
+    
+    addItemInBoxForDebug = false

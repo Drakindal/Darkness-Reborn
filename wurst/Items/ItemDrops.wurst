@@ -443,10 +443,7 @@ init
             if(itemPickedup.has(t))
                 dropItemsToStore.remove(t)
             else
-                let iteId = t.getTypeId()
-                itemDropsInTavern.put(iteId, itemDropsInTavern.get(iteId) + 1)
-                itemDropsEnumerator.add(iteId)
-                updateItemPool()
+                addItemToTheDropSite(t.getTypeId())
                 dropItemsToStore.remove(t)
                 t.remove()
 

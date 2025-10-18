@@ -1,0 +1,15 @@
+package TestRecipeSystem
+
+import Recipes
+import MyItemIds
+import LinkedList
+
+@Test
+function testGeneralRecipe()
+    let rl = new RecipeList()
+    rl.addRecipe(new Recipe(ITEM_RING_OF_REGENERATION, ITEM_RING_OF_PROTECTION, ITEM_CIRCLET_OF_NOBILITY, ITEM_RECIPE_SCROLL_OF_FUSION, ITEM_SCROLL_OF_FUSION))
+
+    let inv = new LinkedList<int>()
+    ..add(ITEM_RING_OF_REGENERATION, ITEM_RING_OF_PROTECTION, ITEM_CIRCLET_OF_NOBILITY, ITEM_RECIPE_SCROLL_OF_FUSION)
+
+    // rl.getRecipePosition(inv)

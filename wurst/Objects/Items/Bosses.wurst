@@ -4,10 +4,10 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import Object_Shops
-
-init
+import DebugVar
 
 @compiletime function createItems()
+    addItemInBoxForDebug = ADD_CREEPS_ITEMS
 
 //I0C0
     new MyItemDefinition(ITEM_SCOURGE_BONE_CHIMES)
@@ -125,3 +125,5 @@ init
     ..addStats(addInt(420))
     ..setStockMaximum(99)
     ..register()
+
+    addItemInBoxForDebug = false

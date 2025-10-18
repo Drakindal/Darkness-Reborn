@@ -6,7 +6,6 @@ import MyItemIds
 import RecipeItems
 
 @compiletime function createItems()
-
 //I01A    
     new MyItemWithRecipeDefinition(ITEM_ICE_SWORD, itemRecipeList, ITEM_RECIPE_ICE_SWORD,
     (MyItemDefinitionBase itemRecipe) -> itemRecipe

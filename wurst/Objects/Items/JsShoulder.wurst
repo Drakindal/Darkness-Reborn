@@ -6,8 +6,6 @@ import MyItemIds
 import Jacksmith_Q
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_JS_ITEMS)
     //I0AN
@@ -59,6 +57,7 @@ init
         ITEM_LIGHT_ARMOR)
         ..register()
         
+        addItemInBoxForDebug = DEBUG
     //I0AW
         new MyItemWithCraftInfoDefinition(ITEM_NOBLESSE_SHOULDER, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHr.BLP")    
@@ -71,3 +70,4 @@ init
         ITEM_ROYAL_SHOULDER,
         ITEM_AVATAR_ARMOR)
         ..register()
+        addItemInBoxForDebug = false

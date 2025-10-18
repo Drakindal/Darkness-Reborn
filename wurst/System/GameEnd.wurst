@@ -4,9 +4,6 @@ import Dialog
 import ClosureEvents
 import Global_Variables
 
-
-init
-
 function finalBossDamaged(unit u)
     CreateTrigger()..registerUnitEvent(u, EVENT_UNIT_DAMAGED)..addAction() ->
         let final = GetTriggerUnit()

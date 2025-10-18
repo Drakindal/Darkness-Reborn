@@ -11,9 +11,9 @@ import MyUnitIds
 import StatsType
 import DebugVar
 
-init
-
 @compiletime function createItems()
+    addItemInBoxForDebug = DEBUG
+
     if (BUILD_THIEF_ITEMS)
     //I0IX
         new MyItemDefinition(ITEM_HYDRAS_TREASURE)
@@ -131,3 +131,5 @@ init
         ..addStats(ITEM_SCORPION_POTION_ABI1, "Can activate the toxins up ourselves. immediately increase 10,000 damage in 15 seconds, and has the ability to convert 10% of damage into HP itself, Cd 30 sec.")
         ..addStats(addAllStats(200))
         ..register()
+        
+    addItemInBoxForDebug = false

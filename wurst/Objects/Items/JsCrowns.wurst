@@ -7,21 +7,22 @@ import Jacksmith_Q
 import Jacksmith_E
 import DebugVar
 
-init
-
 @compiletime function createItems()
+    addItemInBoxForDebug = DEBUG
+//I043
+    new MyItemDefinition(ITEM_CROWN_OF_ASSASSIN)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHelmutPurple.blp")
+    ..setClassification("Artifact")
+    ..addStats(addArmor(120))
+    ..addStats(addStr(40))
+    ..addStats(addAgi(100))
+    ..addStats(addInt(40))
+    ..addStats(addEvasion(0.25))
+    ..setStockMaximum(99)
+    ..register()
+    addItemInBoxForDebug = false
+
     if (BUILD_JS_ITEMS)
-    //I043
-        new MyItemDefinition(ITEM_CROWN_OF_ASSASSIN)
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHelmutPurple.blp")
-        ..setClassification("Artifact")
-        ..addStats(addArmor(120))
-        ..addStats(addStr(40))
-        ..addStats(addAgi(100))
-        ..addStats(addInt(40))
-        ..addStats(addEvasion(0.25))
-        ..setStockMaximum(99)
-        ..register()
 
     //I0F3
         new MyItemBulionUpgradeDefinition(ITEM_CROWN_OF_ASSASSIN_L1, ITEM_CROWN_OF_ASSASSIN, jacksmithBulionChanceL1)
@@ -78,20 +79,24 @@ init
         ..addStats(addInt(350))
         ..register()
         
+    addItemInBoxForDebug = DEBUG
     //I044
-        new MyItemDefinition(ITEM_CROWN_OF_SOLDIER)
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHeroHelmet.blp")
-        ..setActivelyUsed(true)
-        ..setClassification("Artifact")
-        ..addStats(addAbilityRestoreHp(6000, 60))
-        ..addStats(addHp(5000))
-        ..addStats(addHpReg(40))
-        ..addStats(addStr(100))
-        ..addStats(addAgi(40))
-        ..addStats(addInt(40))
-        ..setStockMaximum(99)
-        ..register()
+    new MyItemDefinition(ITEM_CROWN_OF_SOLDIER)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHeroHelmet.blp")
+    ..setActivelyUsed(true)
+    ..setClassification("Artifact")
+    ..addStats(addAbilityRestoreHp(6000, 60))
+    ..addStats(addHp(5000))
+    ..addStats(addHpReg(40))
+    ..addStats(addStr(100))
+    ..addStats(addAgi(40))
+    ..addStats(addInt(40))
+    ..setStockMaximum(99)
+    ..register()
+    
+    addItemInBoxForDebug = false
 
+    if (BUILD_JS_ITEMS)
     //I0F8
         new MyItemBulionUpgradeDefinition(ITEM_CROWN_OF_SOLDIER_L1, ITEM_CROWN_OF_SOLDIER, jacksmithBulionChanceL1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHeroHelmet.blp")
@@ -157,20 +162,23 @@ init
         ..addStats(addInt(350))
         ..register()
 
-    //I045
-        new MyItemDefinition(ITEM_CROWN_OF_WIZARD)
-        ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Magic_MageArmor.blp")
-        ..setClassification("Artifact")
-        ..setActivelyUsed(true)
-        ..addStats(addAbilityRestoreMp(1000, 60))
-        ..addStats(addMp(5000))
-        ..addStats(addMpReg(1))
-        ..addStats(addStr(40))
-        ..addStats(addAgi(40))
-        ..addStats(addInt(100))
-        ..setStockMaximum(99)
-        ..register()
+    addItemInBoxForDebug = DEBUG
+//I045
+    new MyItemDefinition(ITEM_CROWN_OF_WIZARD)
+    ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Magic_MageArmor.blp")
+    ..setClassification("Artifact")
+    ..setActivelyUsed(true)
+    ..addStats(addAbilityRestoreMp(1000, 60))
+    ..addStats(addMp(5000))
+    ..addStats(addMpReg(1))
+    ..addStats(addStr(40))
+    ..addStats(addAgi(40))
+    ..addStats(addInt(100))
+    ..setStockMaximum(99)
+    ..register()
+    addItemInBoxForDebug = false
 
+    if (BUILD_JS_ITEMS)
     //I0FE
         new MyItemBulionUpgradeDefinition(ITEM_CROWN_OF_WIZARD_L1, ITEM_CROWN_OF_WIZARD, jacksmithBulionChanceL1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSpell_Magic_MageArmor.blp")
@@ -236,6 +244,7 @@ init
         ..addStats(addInt(1200))
         ..register()
 
+        addItemInBoxForDebug = DEBUG
     //I07U
         new MyItemWithCraftInfoDefinition(ITEM_CROWN_OF_EVIL, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkerHelm.blp")
@@ -272,3 +281,5 @@ init
         ITEM_CROWN_OF_SOLDIER_L5,
         ITEM_CROWN_OF_WIZARD_L5)
         ..register()
+        
+        addItemInBoxForDebug = false

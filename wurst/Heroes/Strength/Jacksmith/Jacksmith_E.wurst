@@ -23,6 +23,6 @@ public function forgeSmart()
 
         let resultItemId = jacksmithBulionsList.checkAndDoRecipe(js)
         if (resultItemId != -1)
-            printTimed(text + getItemName(resultItemId), 10)
+            printTimed(text + resultItemId.getItemName(), 10)
         else
-            printTimedToPlayer(textFail, 10, GetOwningPlayer(js))
+            printTimed(textFail, 10)

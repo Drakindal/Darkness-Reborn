@@ -7,8 +7,6 @@ import MyItemDefinition
 import AbilityIds
 import Icons
 
-init
-
 @compiletime function createItems()
 
     new MyItemDefinition(NEXTPAGE, ItemIds.amuletofRecall)

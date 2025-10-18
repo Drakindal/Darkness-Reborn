@@ -5,72 +5,141 @@ import ClosureEvents
 import MyUnitIds
 import LinkedList
 import Recipes
+import UnitInventory
+import StandardTextTags
+import Jacksmith_R
+import MyBuffIds
+import ItemsNames
+
+// ----------------------------------------------------------------------------
+
+class BlacksmithRecipe
+    Recipe          currRecipe
+    CallbackCounted timerCb
+    CallbackSingle  processEndCb
+    unit            bs
+
+    construct(unit bs, Recipe recipe)
+        currRecipe   = recipe
+        timerCb      = null
+        processEndCb = null
+        this.bs      = bs
+
+    function interrupt()
+        printTimed("Interrupting! {0}".format(currRecipe.completedItem.getItemName()), 5)
+        destroy timerCb
+        destroy processEndCb
+        bs.setAnimation("Stand")
+        createTextTag(bs, "Interrupted!")
+        destroy this
+
+// ----------------------------------------------------------------------------
 
 public let blacksmithThiefList = compiletime(new RecipeList())
 
-CallbackCounted countedTime
+let processDuration = 6.0
+BlacksmithRecipe bsCurrRecipe = null
 
-texttag timerTextTag
+// ----------------------------------------------------------------------------
 
-public function blacksmithDoAfter()
+function createTextTag(unit bs, string text)
+    createLumberBountyTextTag(bs, 1)
+    ..setColor(colorA(206, 128, 44, 255))
+    ..setVelocity(0., .06)
+    ..setLifespan(3)
+    ..setText(text)
+
+function updateTimer(unit bs, int time)
+    createTextTag(bs, time.toString())
+
+// ----------------------------------------------------------------------------
+
+function startRecipe(unit bs, BlacksmithRecipe bsRecipe)
+    bs.setAnimation("Work")
+    // Timer
+    let timerMaxNumber = processDuration.floor()
+    bsRecipe.timerCb = doPeriodicallyCounted(1, timerMaxNumber - 1) (CallbackCounted cb) ->
+        updateTimer(bs, timerMaxNumber - cb.getCount())
+    
+    bsRecipe.processEndCb = doAfter(processDuration) ->
+        recipeIsReady(bs, bsRecipe)
+
+function recipeIsReady(unit bs, BlacksmithRecipe bsRecipe)
+    bsCurrRecipe = null
+
+    // Add completed item
+    let bsInv = getUnitInventory(bs)
+    bsRecipe.currRecipe.consumeComponents(bsInv)
+    let completedItem = bsRecipe.currRecipe.completedItem
+    destroy bsInv
+
+    destroy bsRecipe
+
+    // Animation
+    createTextTag(bs, "Done!")
+    bs.setAnimation("Stand")
+    
+    // Let's wait until "Done!" text will go upper before adding item.
+    // If we add item immediately after createTextTag(bs, "Done!"), "Done!" will overlap with
+    // possible new recipe text.
+    doAfter(1) ->
+        bs.addItemById(completedItem)
+
+    // Check for new recipes.
+    // Completed item is already added to blacksmith.
+    // Thus it will trigger EventListener.add(EVENT_PLAYER_UNIT_PICKUP_ITEM)
+    // doAfter(2) ->
+    //     checkBlacksmithRecipe(bs)
+
+// ----------------------------------------------------------------------------
+
+public function checkBlacksmithRecipe(unit bs)
+    if bsCurrRecipe == null
+        // Select recipe.
+        let bsInv = getUnitInventory(bs)
+        // Upgrade Thief items
+        var idx = blacksmithThiefList.getRecipePosition(bsInv)
+        if (idx != -1)
+            let recipe = blacksmithThiefList.getRecipe(idx)
+            bsCurrRecipe = new BlacksmithRecipe(bs, recipe)
+            createTextTag(bs, "Item Upgrading")
+        // Jacksmith's R
+        else if (bs.hasAbility(JACKSMITH_BUFF_4))
+            idx = blacksmithJackedList.getRecipePosition(bsInv)
+            if (idx != -1)
+                let recipe = blacksmithJackedList.getRecipe(idx)
+                bsCurrRecipe = new BlacksmithRecipe(bs, recipe)
+                createTextTag(bs, "Item Fusing")
+
+        destroy bsInv
+
+        // Start up the process.
+        if (bsCurrRecipe != null)
+            startRecipe(bs, bsCurrRecipe)
+
+public function initBlacksmith()
     EventListener.add(EVENT_PLAYER_UNIT_PICKUP_ITEM) ->
         let bs = GetTriggerUnit()
         if bs.getTypeId() == BUILDING_TINKER_BLACKSMITH
-            if countedTime == null
-                let itemInBs = new LinkedList<item>()
-                for int i = 0 to 5
-                    itemInBs.add(bs.itemInSlot(i))
-                itemInBs.forEach() (item t) ->
-                    if(t == null)
-                        itemInBs.remove(t)
-                var atSpot = blacksmithThiefList.getRecipePosition(itemInBs) // Check if at least 1 item is upgradeable
-                if atSpot > -1
-                    bs.setAnimation("Work")
-                    let bsPos = bs.getPos()
-                    timerTextTag = createTTEx(vec3(bsPos.x, bsPos.y, 64),"20",12)
-                    timerTextTag.setColor(GetPlayerColor(bs.getOwner()).toColor().withAlpha(255))
-                    countedTime = doPeriodicallyCounted(1, 20) (CallbackCounted cb) ->
-                        if cb.isLast()
-                            countedTime = null
-                            itemInBs.clear()
-                            for int i = 0 to 5
-                                itemInBs.add(bs.itemInSlot(i))
-                            itemInBs.forEach() (item t) ->
-                                if(t == null)
-                                    itemInBs.remove(t)
-                            
-                            for int i = 0 to itemInBs.size() - 1
-                                let perItem = new LinkedList<item>()
-                                perItem.add(itemInBs.get(i))
-                                atSpot = blacksmithThiefList.getRecipePosition(perItem)
-                                let rightList = blacksmithThiefList.getRecipe(atSpot)
-                                let newite = rightList.completedItem
-                                for int j = 0 to rightList.items.size() - 1
-                                    bs.removeItemById(rightList.items.get(j))
-                                let newitecur = bs.addItemById(newite)
-                                newitecur.setPos(bs.getPos())
-                                printTimed(COLOR_GOLD.toColorString()+"Blacksmith: Completed|r" + newitecur.getName(), 7)
-                                destroy perItem
-                            destroy itemInBs
-                            bs.setAnimation("Stand")
-                            timerTextTag.destr()
-                        else
-                            timerTextTag.setText((cb.getCount()-1).toString(), 12)
+            printTimed("i {0} picked up".format(GetManipulatedItem().getTypeId().getItemName()), 5)
+
+            checkBlacksmithRecipe(bs)
 
     EventListener.add(EVENT_PLAYER_UNIT_DROP_ITEM) -> 
         let bs = GetTriggerUnit()
-        if bs.getTypeId() == BUILDING_TINKER_BLACKSMITH and countedTime != null
-            let itemInBs = new LinkedList<item>()
-            for int i = 0 to 5
-                itemInBs.add(bs.itemInSlot(i))
-            itemInBs.forEach() (item t) ->
-                if(t == null or t == EventData.getManipulatedItem())
-                    itemInBs.remove(t)
-            let atSpot = blacksmithThiefList.getRecipePosition(itemInBs)
-            if atSpot == -1
-                bs.setAnimation("Stand")
-                countedTime.stop()
-                timerTextTag.destr()
-                destroy itemInBs
-                destroy countedTime
-                countedTime = null
+        if bs.getTypeId() == BUILDING_TINKER_BLACKSMITH and bsCurrRecipe != null
+            printTimed("i {0} dropped".format(GetManipulatedItem().getTypeId().getItemName()), 5)
+
+            // Interrupt if recipe was broken
+            let bsInv = getUnitInventory(bs)
+            bsInv.remove(GetManipulatedItem())
+
+            if (not bsCurrRecipe.currRecipe.checkRecipe(bsInv))
+                bsCurrRecipe.interrupt()
+                bsCurrRecipe = null
+
+                doAfter(1) ->
+                    checkBlacksmithRecipe(bs)
+            destroy bsInv
+                
+// ----------------------------------------------------------------------------

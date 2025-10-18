@@ -4,11 +4,8 @@ import Recipes
 import ClosureEvents
 
 public let itemRecipeList = compiletime(new RecipeList())
-
-init
-    registerTrigger()
     
-function registerTrigger()
+public function registerItemRecipes()
     EventListener.add(EVENT_PLAYER_UNIT_PICKUP_ITEM) -> 
         let u = EventData.getTriggerUnit()
         u.checkRecipe(itemRecipeList)

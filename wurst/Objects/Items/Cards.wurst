@@ -10,8 +10,6 @@ import ClosureForGroups
 import CommonDescriptions
 import MyColors
 
-init
-
 @compiletime function createItems()
 
 //I0CP

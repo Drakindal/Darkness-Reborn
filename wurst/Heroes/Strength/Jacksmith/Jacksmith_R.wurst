@@ -5,27 +5,20 @@ import DummyCaster
 import OrderIds
 import MyAbilityIds
 import Recipes
-import LinkedList
+import initlater Blacksmith
 import MyUnitIds
 
 public let blacksmithJackedList = compiletime(new RecipeList())
 
 public function metalStrength()
     EventListener.onTargetCast(JACKSMITH_ABILITY_4) (unit caster, unit target) ->
-        new DummyCaster()
-        ..owner(GetOwningPlayer(caster))
-        ..origin(caster.getPos())
-        ..castTarget(JACKSMITH_ABILITY_4_DUMMY, 1, OrderIds.innerfire, target)
-        let bs = target
-        if bs.getTypeId() == BUILDING_TINKER_BLACKSMITH
-            let itemInBs = new LinkedList<item>()
-            for int i = 0  to 5
-                itemInBs.add(bs.itemInSlot(i))
-            let recipePos = blacksmithJackedList.getRecipePosition(itemInBs)
-            if recipePos > -1
-                let foundRecipe = blacksmithJackedList.getRecipe(recipePos)
-                for int i = 0 to foundRecipe.items.size()
-                    bs.removeItemById(foundRecipe.items.get(i))
-                let newite = bs.addItemById(foundRecipe.completedItem)
-                newite.setPos(bs.getPos())
-                destroy itemInBs
+        if (target.getTypeId() != BUILDING_TINKER_BLACKSMITH)
+            printTimedToPlayer("You can only target Tinker's Blacksmith.", 10, caster.getOwner())
+            caster.resetAbilityCooldown(JACKSMITH_ABILITY_4)
+        else
+            new DummyCaster()
+            ..owner(GetOwningPlayer(caster))
+            ..origin(caster.getPos())
+            ..castTarget(JACKSMITH_ABILITY_4_DUMMY, 1, OrderIds.innerfire, target)
+
+            checkBlacksmithRecipe(target)

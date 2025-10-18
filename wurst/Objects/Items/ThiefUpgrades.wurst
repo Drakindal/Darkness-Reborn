@@ -6,8 +6,6 @@ import MyItemIds
 import Blacksmith
 import DebugVar
 
-init
-
 @compiletime function createItems()
     if (BUILD_THIEF_ITEMS)    
     //I0HP

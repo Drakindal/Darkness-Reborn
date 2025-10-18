@@ -5,9 +5,9 @@ import ItemObjEditing
 import MyItemIds
 import DebugVar
 
-init
-
 @compiletime function createItems()
+    addItemInBoxForDebug = DEBUG
+
     if (BUILD_THIEF_ITEMS)
     //I0HM
         new MyItemDefinition(ITEM_APOCALYPSE)
@@ -322,3 +322,5 @@ init
         ..register()
 
     //I0II
+    
+    addItemInBoxForDebug = false

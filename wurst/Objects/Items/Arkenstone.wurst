@@ -5,8 +5,6 @@ import ItemObjEditing
 import MyItemIds
 import RecipeItems
 
-init
-
 @compiletime function createItems()
 
 //I027

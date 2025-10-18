@@ -5,8 +5,7 @@ import MyItemDefinition
 import ItemObjEditing
 import MyItemIds
 import RecipeItems
-
-init
+import DebugVar
 
 @compiletime function createItems()
 
@@ -25,6 +24,7 @@ init
     ..addHotKey()
     ..register()
     
+    addItemInBoxForDebug = DEBUG
 //I02G
     new MyItemDefinition(ITEM_RUBY_FRAGMENTS_L1)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_jewelcrafting_gem_12.blp")
@@ -34,6 +34,8 @@ init
     ..addExtraDescription(wordNote + "Buy an Empty Vial from the Fountain to fuse Ruby Fragments together!")
     ..addStats(addAllStats(1))
     ..register()
+
+    addItemInBoxForDebug = false
 
 //I02H
     new MyItemWithCraftInfoDefinition(ITEM_RUBY_FRAGMENTS_L2, itemRecipeList, -1)
@@ -277,6 +279,8 @@ init
     ITEM_RUBY_FRAGMENTS_L1)
     ..register()
 
+    addItemInBoxForDebug = DEBUG
+    
 //I02V
     new MyItemWithCraftInfoDefinition(ITEM_PERFECT_RUBYSTONE, itemRecipeList, -1)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_jewelcrafting_gem_16.blp")
@@ -288,3 +292,5 @@ init
     ITEM_RUBYSTONE,
     ITEM_RUBY_FRAGMENTS_L1)
     ..register()
+    
+    addItemInBoxForDebug = false

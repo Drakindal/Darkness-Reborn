@@ -5,12 +5,23 @@ import HashMap
 import HashSet
 import MyItemIds
 import Global_Variables
+import LinkedList
 
-public let itemDropsInTavern = new HashMap<int,int> //Item ID linked to amount of item
-public let itemDropsEnumerator = new HashSet<int> //List of dropped Item Ids to enumerate over
+// ----------------------------------------------------------------------------
+
+let itemDropsInTavern   = new HashMap<int,int> //Item ID linked to amount of item
+let itemDropsEnumerator = new HashSet<int> //List of dropped Item Ids to enumerate over
 var page = 0
 
-public function updateItemPool()
+function addItemToTheDropSite(int itemId, int amount)
+    itemDropsInTavern.put(itemId, itemDropsInTavern.get(itemId) + amount)
+    itemDropsEnumerator.add(itemId)
+    updateItemPool()
+
+public function addItemToTheDropSite(int itemId)
+    addItemToTheDropSite(itemId, 1)
+
+function updateItemPool()
     itemDropsEnumerator.forEach() (integer t) ->
         RemoveItemFromStock(dropSite, t)
     if(page > 0)
@@ -43,7 +54,16 @@ public function updateItemPool()
         if(stock > 0)
             AddItemToStock(dropSite, temp, stock, stock)*/
 
-public function updateDropSite()
+// ----------------------------------------------------------------------------
+
+let compileTimeDebugItemsList = compiletime(new LinkedList<int>)
+
+public function addItemToTheDropSiteCompileTime(int itemId)
+    compileTimeDebugItemsList.add(itemId)
+
+// ----------------------------------------------------------------------------
+
+public function initDropSite()
     EventListener.add(EVENT_PLAYER_UNIT_SELL_ITEM) ->
         if EventData.getSellingUnit() == dropSite
             let ite = EventData.getSoldItem()
@@ -59,3 +79,12 @@ public function updateDropSite()
             else if itemDropsEnumerator.has(iteId)
                 itemDropsInTavern.put(iteId, itemDropsInTavern.get(iteId) - 1)
             updateItemPool()
+    
+    for itemId in compileTimeDebugItemsList
+        itemDropsInTavern.put(itemId, 30)
+        itemDropsEnumerator.add(itemId)
+    updateItemPool()
+    compileTimeDebugItemsList.clear()
+    destroy compileTimeDebugItemsList
+            
+// ----------------------------------------------------------------------------

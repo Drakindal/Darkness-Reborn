@@ -13,6 +13,7 @@ import HeroSelectionSystem
 import AddTaverns
 import AddShops
 import AddBase
+import RecipeItems
 
 // ----------------------------------------------------------------------------
 
@@ -36,6 +37,8 @@ public function onGameModeSelected()
     setRegions()
 
     initDebug()
+    
+    registerItemRecipes()
 
 
 function createSetup()
