@@ -21,30 +21,30 @@ function addItemToTheDropSite(int itemId, int amount)
 public function addItemToTheDropSite(int itemId)
     addItemToTheDropSite(itemId, 1)
 
-function updateItemPool()
-    itemDropsEnumerator.forEach() (integer t) ->
+public function updateItemPool()
+    itemDropsEnumerator.forEach() (integer t) -> // Remove all items from drop site.
         RemoveItemFromStock(dropSite, t)
-    if(page > 0)
+    if(page > 0) // Add previous page and next page based on amount of items available in drop site and what page we're on.
         AddItemToStock(dropSite, PREVPAGE, 1, 1)
     if(itemDropsEnumerator.size() > 8 + page * 8)
         AddItemToStock(dropSite, NEXTPAGE, 1, 1)
     
     let itemToAdd = new HashSet<int>
 
-    for int i = 0 to 8
-        for int j = 0 to itemDropsEnumerator.size()
+    for int i = 0 to 8 // Loop through all drop site item entries
+        for int j = 0 to itemDropsEnumerator.size() // Go through all items available to be sold
             let temp = itemDropsEnumerator.get(page * 8 + i + j)
-            if itemToAdd.has(temp) == false
+            if itemToAdd.has(temp) == false // If we haven't already added the item continue
                 let stock = itemDropsInTavern.get(temp)
-                if stock > 0
+                if stock > 0 // If item has more than 0 stock break loop and go to next drop site item entry
                     itemToAdd.add(temp)
                     break
                 else
                     DoNothing()
 
-    itemToAdd.forEach() (integer t) ->
+    itemToAdd.forEach() (integer t) -> // as with previous loop, will always fall within the desired range thus using forEach rather than checking again.
         let stock = itemDropsInTavern.get(t)
-        BlzSetItemIntegerField(CreateItem(t,0,0)..remove(), ConvertItemIntegerField('ista'), stock)
+        BlzSetItemIntegerField(CreateItem(t,0,0)..remove(), ConvertItemIntegerField('ista'), stock) // Add all items to drop site
         AddItemToStock(dropSite, t, stock, stock)
 
     /*for int i = 0 to 8
