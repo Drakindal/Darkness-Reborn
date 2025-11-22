@@ -21,7 +21,7 @@ public unit timeWizardHero = null
     ..setStatsBase(15, 17, 19)
     ..setStatsPerLvl(1.80, 1.00, 3.20)
 
-    ..setRangedAttack(600)    
+    ..setRangedAttack1(600)    
     ..setAttack1CooldownTime(2.13)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1ProjectileArc(0.15)

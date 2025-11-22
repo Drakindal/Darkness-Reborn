@@ -49,6 +49,7 @@ public let wordLevel                  = "Level {0}:".setColor(colAbilityLevel)
 
 public let monsterDrop            = "Monster Drop"
 public let bossDrop               = "Boss Drop"
+public let wordChanceToDrop       = "Chance to drop:".setColor("|cffffff00")
    
 public let wordEffects            = "|c00FFFC01Effects:|r\n"
 public let wordExtraEffects       = "|c00FFFC01Extra Effects:|r\n"

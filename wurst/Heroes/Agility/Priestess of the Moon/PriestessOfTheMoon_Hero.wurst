@@ -21,7 +21,7 @@ import MyHeroDefinition
     
     ..setSelectionScale(2.25)
 
-    ..setRangedAttack(600)
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.70)
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1ProjectileArc(0.15)
@@ -57,7 +57,7 @@ import MyHeroDefinition
     
     ..setSelectionScale(2.25)
 
-    ..setRangedAttack(600)
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(0.5)
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1ProjectileArc(0.15)

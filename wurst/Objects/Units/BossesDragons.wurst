@@ -1,0 +1,254 @@
+package BossesDragons
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import ObjectIds
+import MyCreepDefinition
+import MyAbilityIds
+
+@compiletime function defineCreeps()
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L1, "GhostDragon I", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList('Afrz', 'Afrb'))
+    ..setScalingValue(1.50)
+    ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(500)
+    ..setAttack1CooldownTime(0.50)
+    ..setAttack1DamageBase(825)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(400.00)
+    ..setAttack1DamageSpillRadius(400.00)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    ..setAoe1(200, 300, 400)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+
+    ..setGoldBounty(7500, 11500)
+    ..setHpRel(55000, 0.04)
+    ..setMp(6000, 1.5)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L2, "GhostDragon II", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList('Afrz', 'Afrb'))
+
+    ..setScalingValue(1.75)
+    ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(800)
+    ..setAttack1CooldownTime(0.50)
+    ..setAttack1DamageBase(1095)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(600.00)
+    ..setAttack1DamageSpillRadius(600.00)
+    ..setAoe1(300, 400, 500)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(300)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+
+    ..setGoldBounty(10000, 15000)
+    ..setHpRel(85200, 0.035)
+    ..setMp(11000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L3, "GhostDragon III", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.50)
+
+    ..setRangedAttack1(1000)
+    ..setAttack1CooldownTime(0.40)
+    ..setAttack1DamageBase(1825)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(600.00)
+    ..setAttack1DamageSpillRadius(600.00)
+    ..setAoe1(400, 500, 600)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(330)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(15000, 19000)
+    ..setHpRel(182500, 0.03)
+    ..setMp(25000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L4, "GhostDragon IV", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.25)
+    ..setSelectionScale(2.50)
+
+    ..setRangedAttack1(1200)
+    ..setAttack1CooldownTime(0.30)
+    ..setAttack1DamageBase(2225)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(500, 600, 700)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(350)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(18000, 28000)
+    ..setHpRel(365000, 0.025)
+    ..setMp(152000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L5, "GhostDragon V", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.50)
+    ..setSelectionScale(2.50)
+
+    ..setRangedAttack1(1200)
+    ..setAttack1CooldownTime(0.20)
+    ..setAttack1DamageBase(3866)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1Range(1200)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(600, 700, 800)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(350)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(32000, 42000)
+    ..setHpRel(685000, 0.02)
+    ..setMp(255000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L6, "GhostDragon VI", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.50)
+    ..setSelectionScale(2.60)
+
+    ..setRangedAttack1(1200)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(4888)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(600, 700, 800)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.500)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(350)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+
+    ..setGoldBounty(46000, 86000)
+    ..setHpRel(885000, 0.03)
+    ..setMp(32000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L7, "GhostDragon VII", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.60)
+    ..setSelectionScale(2.60)
+
+    ..setRangedAttack1(1200)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(5888)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(600, 700, 800)
+    ..setAttack1AnimationBackswingPoint(0.450)
+    ..setAttack1AnimationDamagePoint(0.400)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(350)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(92000, 156000)
+    ..setHpRel(1244000, 0.04)
+    ..setMp(35000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L8, "GhostDragon VIII", 50, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.70)
+    ..setSelectionScale(2.70)
+
+    ..setRangedAttack1(1200)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(7888)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(600, 700, 800)
+    ..setAttack1AnimationBackswingPoint(0.350)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(400)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(252000, 442000)
+    ..setHpRel(1856000, 0.05)
+    ..setMp(45000, 1)
+
+// ----------------------------------------------------------------------------

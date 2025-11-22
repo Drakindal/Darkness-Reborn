@@ -28,7 +28,7 @@ import MyAbilityIds
     ..setIconGameInterface(Icons.bTNSatyrTrickster)
     ..setIconScoreScreen(Icons.bTNSatyrTrickster)
     
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.97)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.840)

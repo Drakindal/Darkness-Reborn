@@ -21,7 +21,7 @@ import MyHeroDefinition
     
     ..setSelectionScale(2.50)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(2.05)
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.700)

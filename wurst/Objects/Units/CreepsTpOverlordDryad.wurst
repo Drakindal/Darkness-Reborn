@@ -1,0 +1,75 @@
+package CreepsTpOverlordDryad
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import ObjectIds
+import MyCreepDefinition
+import MyAbilityIds
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineCreeps()
+    new MyCreepDefinition(CREEP_ELITE_DRYAD, "Dryad", 15, UnitIds.dryad)// Dryad (e006)
+    ..setNormalAbilities(commaList('Aadm', 'Aspo', 'Ault'))
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.00)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(700)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1Range(2000)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\Dryadmissile\\Dryadmissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1WeaponType(WeaponType.Missile)
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setSpeedBase(350)
+    ..setFoodCost(3)
+    ..setGoldCost(145)
+    ..setSightRadiusDay(1800)
+    ..setSightRadiusNight(1800)
+    ..setHitPointsRegenerationType("night")
+    ..setDefenseBase(100)
+    ..setDefenseUpgradeBonus(15)
+    ..setGoldBountyAwardedBase(777)
+    ..setGoldBountyAwardedNumberofDice(3)
+    ..setGoldBountyAwardedSidesperDie(7)
+    ..setHitPointsMaximumBase(15000)
+    ..setHitPointsRegenerationRate(150.00)
+    ..setManaInitialAmount(75)
+    ..setManaMaximum(200)
+    ..setManaRegeneration(0.75)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_OVERLORD, "Overlord", 2, UnitIds.overlord)// Overlord (n011)
+    ..setScalingValue(1.50)
+    ..setSelectionScale(1.50)
+    ..setAttack1CooldownTime(0.50)
+    ..setAttack1DamageBase(354)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.400)    
+    ..setChaosAttackType1()
+    ..setSpeedBase(320)
+    ..setTurnRate(0.60)
+    ..setFoodCost(2)
+    ..setGoldCost(170)
+    ..setDefenseBase(40)
+    ..setArmorType(ArmorType.Fortified)
+    ..setDefenseUpgradeBonus(2)
+    ..setGoldBountyAwardedBase(300)
+    ..setGoldBountyAwardedNumberofDice(4)
+    ..setGoldBountyAwardedSidesperDie(3)
+    ..setHitPointsMaximumBase(8999)
+    ..setHitPointsRegenerationRate(39.00)
+    ..setManaInitialAmount(300)
+    ..setManaMaximum(300)
+    ..setManaRegeneration(0.75)
+    
+// ----------------------------------------------------------------------------

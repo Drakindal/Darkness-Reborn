@@ -23,7 +23,7 @@ import MyHeroDefinition
     ..setScalingValue(1.10)
     ..setSelectionScale(2.00)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1Range(128)
     ..setAttack1CooldownTime(2.05)
     ..setAttack1DamageSidesperDie(6)

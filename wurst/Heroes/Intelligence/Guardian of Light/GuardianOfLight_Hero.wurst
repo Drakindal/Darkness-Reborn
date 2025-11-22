@@ -28,7 +28,7 @@ import MyAbilityIds
     ..setIconGameInterface(Icons.bTNGhostOfKelThuzad)
     ..setIconScoreScreen(Icons.bTNGhostOfKelThuzad)
 
-    ..setRangedAttack(600)
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(2.18)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1ProjectileArc(0.10)

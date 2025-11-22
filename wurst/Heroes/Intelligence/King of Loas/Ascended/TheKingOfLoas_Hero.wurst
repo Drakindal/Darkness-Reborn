@@ -27,7 +27,7 @@ import MyHeroDefinition
     ..setIconScoreScreen(Icons.bTNIceTrollShaman)
     ..setScalingValue(1.3)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.7)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1WeaponType(WeaponType.Missile)

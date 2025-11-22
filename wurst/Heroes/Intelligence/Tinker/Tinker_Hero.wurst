@@ -27,7 +27,7 @@ public unit tinkerHero = null
     ..setModelFile("Units\\Creeps\\HeroTinker\\HeroTinker.mdl")
     ..setIconGameInterface("ReplaceableTextures\\CommandButtons\\BTNHeroTinker.blp")
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1Range(128)
     ..setAttack1CooldownTime(2.22)
     ..setAttack1DamageSidesperDie(4)
@@ -63,7 +63,7 @@ public unit tinkerHero = null
     
     ..setSelectionScale(2.00)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1Range(128)
     ..setAttack1CooldownTime(1.95)
     ..setAttack1DamageSidesperDie(4)

@@ -1,0 +1,120 @@
+package CreepsTpBosses
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import ObjectIds
+import MyCreepDefinition
+import MyAbilityIds
+
+@compiletime function defineCreeps()
+    new MyCreepDefinition(CREEP_BOSS_SEA_ELEMENTAL_L1, "Sea Elemental I", 50, UnitIds.seaelemental)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_5, 'ACbh', 'A0ZJ'))
+
+    ..setScalingValue(2.00)
+    ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(1250)
+    ..setAttack1CooldownTime(0.20)
+    ..setAttack1DamageBase(8755)
+    ..setAttack1DamageNumberofDice(7)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.470)
+    ..setAttack1AnimationDamagePoint(0.530)   
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(220)
+    ..setMovementType(MovementType.Amphipic)
+    ..setArmorType(ArmorType.Hero)
+    
+    ..setGoldBounty(168000, 326000)
+    ..setHpRel(2850000, 0.02)
+    ..setMp(45000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_SEA_ELEMENTAL_L2, "Sea Elemental II", 50, UnitIds.seaelemental)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_5, 'ACbh', 'A0ZJ'))
+
+    ..setScalingValue(2.50)
+    ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(1350)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(11250)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.470)
+    ..setAttack1AnimationDamagePoint(0.530)    
+    ..setChaosAttackType1()
+    
+    ..setSpeedBase(220)
+    ..setMovementType(MovementType.Amphipic)
+    ..setArmorType(ArmorType.Hero)
+    
+    ..setGoldBounty(368000, 826000)
+    ..setHpRel(5850000, 0.025)
+    ..setMp(45000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_SEA_ELEMENTAL_L3, "Sea Elemental III", 50, UnitIds.seaelemental)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_5, 'ACbh', 'A0ZJ', 'wtex'))
+
+    ..setScalingValue(3.00)
+    ..setSelectionScale(4.00)
+
+    ..setRangedAttack1(1450)
+    ..setAttack1CooldownTime(0.20)
+    ..setAttack1DamageBase(13588)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.470)
+    ..setAttack1AnimationDamagePoint(0.530)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setSpeedBase(220)
+    ..setMovementType(MovementType.Amphipic)
+    ..setArmorType(ArmorType.Hero)
+    
+    ..setGoldBounty(912000, 1862000)
+    ..setHpRel(10852000, 0.03)
+    ..setMp(55000, 1)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_TURTLE, "Dragon Turtle", 50, UnitIds.dragonturtle)
+    ..setNormalAbilities(commaList('ANth', 'Ansk', 'wtex', 'A0ZJ', 'A0ZI'))
+
+    ..setScalingValue(2.00)
+    ..setSelectionScale(5.00)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.00)
+    ..setAttack1DamageBase(28500)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1WeaponType(WeaponType.Missile)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.700)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Amphipic)
+    ..setCollisionSize(76.00)
+    ..setArmorType(ArmorType.Hero)
+
+    ..setGoldBounty(2862000, 4962000)
+    ..setHpRel(15177000, 0.033)
+    ..setMp(65000, 1)
+
+// ----------------------------------------------------------------------------

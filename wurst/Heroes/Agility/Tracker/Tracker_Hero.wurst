@@ -26,7 +26,7 @@ import MyHeroDefinition
     ..setIconGameInterface(Icons.bTNBansheeRanger)
     ..setIconScoreScreen(Icons.bTNBansheeRanger)
     
-    ..setRangedAttack(550)
+    ..setRangedAttack1(550)
     ..setAttack1CooldownTime(2.06)
     ..setAttack1DamageSidesperDie(6)
     ..setAcquisitionRange(650.00)

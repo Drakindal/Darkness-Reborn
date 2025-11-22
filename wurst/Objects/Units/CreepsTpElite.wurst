@@ -1,0 +1,244 @@
+package CreepsTpElite
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import ObjectIds
+import MyCreepDefinition
+import MyAbilityIds
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineCreeps()
+    new MyCreepDefinition(CREEP_ELITE_NERUBIAN_QUEEN, "Nerubian Queen", 25, UnitIds.nerubianqueen)
+
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(700)
+    ..setAttack1CooldownTime(0.50)
+    ..setAttackDamage1(720, 1640)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\CryptFiendMissile\\CryptFiendMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.360)
+    ..setAttack1AnimationDamagePoint(0.640)
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(320)
+    ..setCollisionSize(48.00)
+
+    ..setGoldBounty(1500, 2500)
+    ..setHpRel(65000, 0.01)
+    ..setMp(50000, 1.25)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_HYDRALISK, "Hydralisk", 25, UnitIds.hydralisk)
+    ..setModelFile("HydraliskREVISED.mdx")
+
+    ..setScalingValue(2.50)
+    ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(400)
+    ..setAttack1CooldownTime(0.20)
+    ..setAttackDamage1(1200, 2300)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\HydraliskImpact\\HydraliskImpact.mdl")
+    ..setAttack1WeaponType(WeaponType.Instant)
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setChaosAttackType1()
+
+    ..setTurnRate(0.60)
+
+    ..setGoldBounty(1700, 2700)
+    ..setHpRel(85000, 0.01)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_FURBOLG_URSA_WARRIOR, "Furbolg Ursa Warrior", 42, UnitIds.furbolgancient)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_4, 'ACac'))
+    
+    ..setScalingValue(2.50)
+    ..setSelectionScale(1.75)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.20)
+    ..setAttackDamage1(3500, 4100)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(400)
+    ..setCollisionSize(48.00)
+    
+    ..setGoldBounty(2500, 5600)
+    ..setHpRel(150000, 0.02)
+    ..setMp(500, 1.25)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_FLESH_GOLEM, "Flesh Golem", 42, UnitIds.fleshgolem)// Flesh Golem (n013)
+    
+    ..setScalingValue(1.75)
+    ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.20)
+    ..setAttackDamage1(3200, 4600)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+
+    ..setSpeedBase(400)
+    ..setCollisionSize(48.00)
+    
+    ..setGoldBounty(1800, 3800)
+    ..setHpRel(225000, 0.03)
+    ..setMp(600, 1.5)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_DOOM_GUARD, "Doom Guard", 45, UnitIds.doomguard)// Doom Guard (n015)
+    
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttackDamage1(3600, 5800)
+    ..setAttack1ProjectileArc(0.00)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\DemonHunterMissile\\DemonHunterMissile.mdl")
+    ..setAttack1WeaponType(WeaponType.MissileSplash)
+    ..setAttack1AreaofEffectFullDamage(50)
+    ..setAttack1AreaofEffectMediumDamage(150)
+    ..setAttack1AreaofEffectSmallDamage(250)
+    ..setAttack1AnimationBackswingPoint(0.600)
+    ..setAttack1AnimationDamagePoint(0.400)    
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(400)
+    ..setTurnRate(0.40)
+    ..setCollisionSize(48.00)
+    ..setGoldBounty(3500, 9200)
+    ..setHpRel(300000, 0.05)
+    ..setMp(10000, 1.5)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_BETRAY_FOOTMAN, "Betray Footman", 2, UnitIds.footman)// Betray Footman (h00C)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_10))
+    
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.35)
+    ..setAttackDamage1(720, 1450)
+    ..setAttack1AnimationBackswingPoint(0.500)
+    ..setAttack1AnimationDamagePoint(0.500)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Hero)
+    ..setGoldBounty(6500, 8500)
+    ..setHp(165000, 0.005)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_CAPTAIN, "Captain", 2, UnitIds.thecaptain)// Captain (h00D)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_10))
+    
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.35)
+    ..setAttackDamage1(1080, 1920)
+    ..setAttack1AnimationBackswingPoint(0.500)
+    ..setAttack1AnimationDamagePoint(0.500)    
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(300)
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Hero)
+    ..setGoldBounty(9500, 14200)
+    ..setHpRel(225000, 0.0125)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_SCARY_SCREAM, "Scary Scream", 70, UnitIds.eredardiabolist)// Scary Scream (u004)
+    ..setNormalAbilities(commaList('A071'))
+    
+    ..setScalingValue(2.00)
+    ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(800)
+    ..setAttack1CooldownTime(0.20)
+    ..setAttackDamage1(6800, 9400)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.360)
+    ..setAttack1AnimationDamagePoint(0.640)   
+    ..setChaosAttackType1()
+    
+    ..setSpeedBase(300)
+    ..setHitPointsRegenerationType("night")
+    ..setArmorType(ArmorType.Fortified)
+    
+    ..setGoldBounty(8500, 26200)
+    ..setHpRel(564000, 0.02)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_FROSTY_THE_SNOWMAN, "Frosty the Snowman", 99, UnitIds.chaoswarlord)// Frosty the Snowman (o005)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_5, CREEP_ABILITY_6, CREEP_ABILITY_7, 'Aasl'))
+    ..setModelFile("Units\\Frosty\\Frosty.mdx")
+
+    ..setScalingValue(1.80)
+    ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(10000)
+    ..setAttack1DamageNumberofDice(5)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.370)
+    ..setAttack1AnimationDamagePoint(0.230)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setSpeedBase(400)
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Horse)
+    ..setArmorType(ArmorType.Fortified)
+    
+    ..setGoldBounty(62000, 242000)
+    ..setHpRel(1525000, 0.01)
+    ..setMp(95000, 10)
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_ELITE_ICE_REVENANT, "Ice Revenant", 50, UnitIds.icerevenant)// Ice Revenant (n016)
+    ..setNormalAbilities(commaList('ACvp'))
+    
+    ..setScalingValue(2.00)
+    ..setSelectionScale(2.50)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.10)
+    ..setAttack1DamageBase(15211)
+    ..setAttack1DamageNumberofDice(9)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.600)    
+    ..setChaosAttackType1()
+
+    ..setSpeedBase(400)
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Hover)
+    ..setArmorType(ArmorType.Fortified)
+    
+    ..setGoldBounty(90000, 140000)
+    ..setHp(5125000, 0.005)
+    ..setMp(52000, 10)
+
+// ----------------------------------------------------------------------------

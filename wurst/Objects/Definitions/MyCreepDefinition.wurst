@@ -1,0 +1,291 @@
+package MyCreepDefinition
+
+import UnitObjEditing
+import ObjectIds
+import MyItemDefinition
+import MyColors
+import CommonDescriptions
+import ItemsNames
+
+// ----------------------------------------------------------------------------
+
+public class MyCreepDefinition extends UnitDefinition
+    constant string name
+    private string dropsDescription
+    private string targetsAllowed
+    private bool isRanged1
+    private bool isRanged2
+    constant int lvl
+
+    private let stdTargetsAllowed = commaList("ground", "structure", "debris", "ward", "enemy", "neutral")
+
+    construct(int newId, string name, int lvl, int baseId)
+        super(newId, baseId)
+        this.name = name
+        this.lvl  = lvl
+        this.dropsDescription = ""
+        this.targetsAllowed = stdTargetsAllowed
+        this.isRanged1 = false
+        initBase()
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    function setGoldBounty(int goldAwarded)
+        setGoldBounty(goldAwarded - 1, 1, 0)
+
+    function setGoldBounty(int min, int max)
+        let bountyBase = min - 1
+        setGoldBounty(bountyBase, 1, max - bountyBase)
+
+    function setGoldBounty(int goldAwarded, int numberOfDice, int sidesPerDice)
+        // Bounty = BountyBase + GetRandomInt( NumDice, NumDice*SidesDie )
+        // GetRandomInt returns random number in range including borders.
+        // MinBounty = BountyBase + NumDice
+        // MaxBounty = BountyBase + NumDice*SidesDie
+        setGoldBountyAwardedBase(goldAwarded)
+        setGoldBountyAwardedNumberofDice(numberOfDice)
+        setGoldBountyAwardedSidesperDie(sidesPerDice)
+    
+// ----------------------------------------------------------------------------
+
+    function setHp(int hp, real hpReg)
+        setHitPointsMaximumBase(hp)
+        setHitPointsRegenerationRate(hpReg)
+        
+    function setHpRel(int hp, real hpRegRelative)
+        setHitPointsMaximumBase(hp)
+        setHitPointsRegenerationRate(hp*hpRegRelative)
+        
+    function setMp(int mp, real mpReg)
+        setManaMaximum(mp)
+        setManaInitialAmount(mp)
+        setManaRegeneration(mpReg)
+
+    function addDropItems(vararg int itemIds)
+        for itemId in itemIds
+            dropsDescription += "\n" + itemId.getItemName()
+
+    function addTp(int tpItemId, string icon)
+        new MyItemDefinitionBase(tpItemId)
+        ..setInterfaceIcon(icon)
+        ..setActivelyUsed(true)
+        ..setNumberofCharges(1)
+        ..setPerishable(true)
+        ..setStockReplenishInterval(5)
+        ..setStockStartDelay(3)
+        ..setUseAutomaticallyWhenAcquired(true)
+        ..setName("Creep tp " + name)
+        ..setTooltipBasic(name + " [Level {0}]".format(lvl.toString()).setColor(colAbilityLevel))
+        ..setTooltipExtended("Teleports you to the {0}.\n\n".format(name) +
+        wordChanceToDrop + dropsDescription)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    function setAttackDamage1(int value)
+        setAttackDamage1(value - 1, 1, 0)
+
+    function setAttackDamage1(int min, int max)
+        let dmgBase = min - 1
+        setAttackDamage1(dmgBase, 1, max - dmgBase)
+
+    function setAttackDamage1(int dmgBase, int numberOfDice, int sidesPerDice)
+        setAttack1DamageBase(dmgBase)
+        setAttack1DamageNumberofDice(numberOfDice)
+        setAttack1DamageSidesperDie(sidesPerDice)
+
+// ----------------------------------------------------------------------------
+
+    function setAttackDamage2(int value)
+        setAttackDamage2(value - 1, 1, 0)
+
+    function setAttackDamage2(int min, int max)
+        let dmgBase = min - 1
+        setAttackDamage2(dmgBase, 1, max - dmgBase)
+
+    function setAttackDamage2(int dmgBase, int numberOfDice, int sidesPerDice)
+        setAttack2DamageBase(dmgBase)
+        setAttack2DamageNumberofDice(numberOfDice)
+        setAttack2DamageSidesperDie(sidesPerDice)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    function setRangedAttack1(int range)
+        isRanged1 = true
+        setAttack1Range(range)
+        setAttack1ProjectileHomingEnabled(true)
+        setAttack1WeaponType(WeaponType.Missile)
+        targetsAllowed += ",air"
+        setAttack1TargetsAllowed(targetsAllowed)
+
+    function setMeleeAttack1()
+        isRanged1 = false
+        setAttack1Range(100)
+        setAttack1ProjectileArc(0.00)
+        setAttack1ProjectileArt("None")
+        setAttack1ProjectileHomingEnabled(false)
+        setAttack1WeaponType(WeaponType.Normal)
+        setAttack1TargetsAllowed(targetsAllowed)
+
+    function setAoe1(int fullDmgRange, int mediumDmgRange, int smallDmgRange)
+        setAttack1AreaofEffectFullDamage(fullDmgRange)
+        setAttack1AreaofEffectMediumDamage(mediumDmgRange)
+        setAttack1AreaofEffectSmallDamage(smallDmgRange)
+        setAttack1AreaofEffectTargets(targetsAllowed)
+        if (isRanged1)
+            setAttack1WeaponType(WeaponType.MissileSplash)
+
+// ----------------------------------------------------------------------------
+
+    function setRangedAttack2(int range)
+        isRanged2 = true
+        setAttack2Range(range)
+        setAttack2ProjectileHomingEnabled(true)
+        setAttack2WeaponType(WeaponType.Missile)
+        targetsAllowed += ",air"
+        setAttack2TargetsAllowed(targetsAllowed)
+
+    function setMeleeAttack2()
+        isRanged2 = false
+        setAttack2Range(100)
+        setAttack2ProjectileArc(0.00)
+        setAttack2ProjectileArt("None")
+        setAttack2ProjectileHomingEnabled(false)
+        setAttack2WeaponType(WeaponType.Normal)
+        setAttack2TargetsAllowed(targetsAllowed)
+
+    function setAoe2(int fullDmgRange, int mediumDmgRange, int smallDmgRange)
+        setAttack2AreaofEffectFullDamage(fullDmgRange)
+        setAttack2AreaofEffectMediumDamage(mediumDmgRange)
+        setAttack2AreaofEffectSmallDamage(smallDmgRange)
+        setAttack2AreaofEffectTargets(targetsAllowed)
+        if (isRanged2)
+            setAttack2WeaponType(WeaponType.MissileSplash)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    function setBloodAttackType1()
+        setAttack1AttackType(AttackType.Magic)
+
+    function setChaosAttackType1()
+        setAttack1AttackType(AttackType.Chaos)
+        
+    function setBloodAttackType2()
+        setAttack2AttackType(AttackType.Magic)
+
+    function setChaosAttackType2()
+        setAttack2AttackType(AttackType.Chaos)
+
+    function setGroundUnit()
+        setTargetedAs(commaList("ground"))
+        setMovementType(MovementType.Foot)
+        setMovementHeight(0.00)
+        setMovementHeightMinimum(0.00)
+
+    function setAirUnit(real moveHeight, real moveHeightMin)
+        setTargetedAs(commaList("air"))
+        setMovementType(MovementType.Fly)
+        setMovementHeight(moveHeight)
+        setMovementHeightMinimum(moveHeightMin)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    private function initBase()
+        setNormalAbilities("")
+        setGroundUnit()
+        setCanDropItemsOnDeath(true)
+
+        setupAttack1()
+        disableAttack2()
+        setupMovement()
+
+        setSleeps(false)
+        setSightRadiusDay(1400)
+        setSightRadiusNight(800)
+
+        setLumberCost(0)
+        setGoldCost(0)
+        setFoodCost(0)
+        
+        setDefenseBase(0)
+        setDefenseUpgradeBonus(0)
+        setArmorType(ArmorType.Large)
+        setHitPointsRegenerationType("always")
+
+        setMp(0, 0.0)
+        
+        setName(name)
+        setLevel(lvl)
+    
+// ----------------------------------------------------------------------------
+
+    private function setupMovement()
+        setSpeedBase(270)
+        setSpeedMaximum(0)
+        setSpeedMinimum(0)
+        setTurnRate(0.50)
+        setCollisionSize(32.00)
+        setCanFlee(true)
+        
+// ----------------------------------------------------------------------------
+
+    private function setupAttack1()
+        setAttacksEnabled(1)
+        setMinimumAttackRange(0)
+        setAcquisitionRange(800.00)
+
+        setAttack1DamageSpillDistance(0.00)
+        setAttack1DamageSpillRadius(0.00)
+        setAttack1MaximumNumberofTargets(1)
+        setAttack1AreaofEffectFullDamage(0)
+        setAttack1AreaofEffectMediumDamage(0)
+        setAttack1AreaofEffectSmallDamage(0)
+        
+        setAttack1AttackType(AttackType.Normal)
+        setAttack1AreaofEffectTargets("")
+
+    function setupAttack2()
+        setAttacksEnabled(2)
+
+        setAttack2DamageSpillDistance(0.00)
+        setAttack2DamageSpillRadius(0.00)
+        setAttack2MaximumNumberofTargets(1)
+        setAttack2AreaofEffectFullDamage(0)
+        setAttack2AreaofEffectMediumDamage(0)
+        setAttack2AreaofEffectSmallDamage(0)
+        
+        setAttack2AttackType(AttackType.Normal)
+        setAttack2AreaofEffectTargets("")
+    
+    private function disableAttack2()
+        setAttack2CooldownTime(0.00)
+        setAttack2DamageBase(0)
+        setAttack2DamageNumberofDice(0)
+        setAttack2DamageSidesperDie(0)
+        setAttack2Range(0)
+        setAttack2ProjectileArc(0.00)
+        setAttack2ProjectileArt("None")
+        setAttack2ProjectileHomingEnabled(false)
+        setAttack2WeaponType(WeaponType.None)
+        setAttack2DamageSpillDistance(0.00)
+        setAttack2DamageSpillRadius(0.00)
+        setAttack2MaximumNumberofTargets(1)
+        setAttack2AreaofEffectFullDamage(0)
+        setAttack2AreaofEffectMediumDamage(0)
+        setAttack2AreaofEffectSmallDamage(0)
+        setAttack2AnimationBackswingPoint(0.000)
+        setAttack2AnimationDamagePoint(0.000)
+        setAttack2AttackType(AttackType.Normal)
+        setAttack2TargetsAllowed(commaList(""))
+        setAttack2AreaofEffectTargets(commaList(""))
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------

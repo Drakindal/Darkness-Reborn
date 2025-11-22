@@ -1,0 +1,354 @@
+package CreepsTp1
+
+import UnitObjEditing
+import MyUnitIds
+import UnitIds
+import ObjectIds
+import MyItemIds
+import MyCreepDefinition
+
+// ----------------------------------------------------------------------------
+
+@compiletime function defineCreeps()
+    new MyCreepDefinition(CREEP_LEFT_SPIDER, "Spider", 4, UnitIds.spider)
+    ..setNormalAbilities(commaList('Apoi'))
+    
+    ..setScalingValue(0.50)
+    ..setSelectionScale(1.10)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(24)
+    ..setAttack1DamageNumberofDice(5)
+    ..setAttack1DamageSidesperDie(2)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.500)
+
+    ..setGoldBounty(39)
+    ..setHp(355, 0.5)
+
+    ..addDropItems(
+        ITEM_RUSTY_MINING_PICK,
+        ITEM_GAUNTLETS_OF_OGRE_STRENGTH,
+        ITEM_WIRTS_LEG
+    )
+    
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_MUD_GOLEM, "Mud Golem", 6, UnitIds.mudgolem)
+    ..setNormalAbilities(commaList('ACsw'))
+    
+    ..setScalingValue(0.60)
+    ..setSelectionScale(1.75)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(28)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(2)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+    
+    ..setSpeedBase(240)
+    ..setCollisionSize(31.00)
+    
+    ..setGoldBounty(39)
+    ..setHp(425, 0.5)
+    ..setMp(300, 0.75)
+    
+    ..addDropItems(
+        ITEM_DIAMOND_OF_SUMMONING,
+        ITEM_SLIPPERS_OF_AGILITY,
+        ITEM_MANTLE_OF_INTELLIGENCE
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_MURLOC_TIDERUNNER, "Murloc Tiderunner", 6, UnitIds.murloctiderunner)
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.00)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(25)
+    ..setAttack1DamageNumberofDice(5)
+    ..setAttack1DamageSidesperDie(2)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.660)
+    
+    ..setSpeedBase(270)
+    ..setCollisionSize(31.00)
+
+    ..setGoldBounty(39)
+    ..setHp(395, 0.5)
+    
+    ..addDropItems(
+        ITEM_DIAMOND_OF_SUMMONING,
+        ITEM_WIRTS_LEG,
+        ITEM_RUSTY_MINING_PICK,
+        ITEM_MANTLE_OF_INTELLIGENCE,
+        ITEM_SKULL_SHIELD,
+        ITEM_DRUID_POUCH
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_TIMBER_WOLF, "Timber Wolf", 6, UnitIds.timberwolf)
+    ..setNormalAbilities(commaList('ACct'))
+    
+    ..setScalingValue(0.75)
+    ..setSelectionScale(1.10)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(22)
+    ..setAttack1DamageNumberofDice(6)
+    ..setAttack1DamageSidesperDie(3)
+    ..setAttack1AnimationBackswingPoint(0.640)
+    ..setAttack1AnimationDamagePoint(0.330)
+    
+    ..setSpeedBase(350)
+    ..setTurnRate(0.60)
+    ..setGoldBounty(39)
+    ..setHp(455, 0.5)
+    
+    ..addDropItems(
+        ITEM_RUNED_GAUNTLETS,
+        ITEM_SKULL_SHIELD,
+        ITEM_DRUID_POUCH
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_CRAB_SHORECRAWLER, "Crab Shorecrawler", 10, UnitIds.spidercrab)
+    
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.20)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(55)
+    ..setAttack1DamageNumberofDice(3)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.500)
+    
+    ..setSpeedBase(270)
+    ..setCollisionSize(31.00)
+
+    ..setGoldBounty(69)
+    ..setHp(1000, 0.5)
+    
+    ..addDropItems(
+        ITEM_VOODOO_DOLL,
+        ITEM_ANCIENT_FIGURINE,
+        ITEM_SPIDER_SILK_BROACH
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_FACELESS_ONE_TRICKSTER, "Faceless One Trickster", 10, UnitIds.facelessonetrickster)
+
+    ..setScalingValue(1.20)
+    ..setSelectionScale(1.40)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(88)
+    ..setAttack1DamageNumberofDice(7)
+    ..setAttack1DamageSidesperDie(3)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+    
+    ..setSpeedBase(300)
+
+    ..setGoldBounty(89)
+    ..setHp(1750, 3.0)
+    ..setMp(300, 0.75)
+    
+    ..addDropItems(
+        ITEM_BATTLE_STANDARD,
+        ITEM_BLADEBANE_ARMOR,
+        ITEM_FIREHAND_GAUNTLETS
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_SPITTING_SPIDER, "Spitting Spider", 10, UnitIds.spittingspider)
+    ..setNormalAbilities(commaList('A093', 'ACvs'))
+    
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(500)
+    ..setAttack1CooldownTime(1.80)
+    ..setAttack1DamageBase(99)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(8)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.400)
+    ..setAttack1AttackType(AttackType.Pierce)
+    
+    ..setSpeedBase(270)
+
+    ..setGoldBounty(84)
+    ..setHp(1650, 0.5)
+    
+    ..addDropItems(
+        ITEM_FLARE_GUN,
+        ITEM_ANCESTRAL_STAFF,
+        ITEM_POISON_SPEARS
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_ROCK_GOLEM, "Rock Golem", 11, UnitIds.rockgolem)
+
+    ..setScalingValue(1.05)
+    ..setSelectionScale(1.85)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(88)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(5)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+        
+    ..setSpeedBase(270)
+
+    ..setGoldBounty(89)
+    ..setHp(1700, 0.5)
+    ..setMp(400, 1.0)
+    
+    ..addDropItems(
+        ITEM_KILLMAIM,
+        ITEM_DRUID_OF_CLAW,
+        ITEM_BOOK_OF_DEAD
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_MURGUL_SHADOWCASTER, "Murgul Shadowcaster", 11, UnitIds.murgulshadowcaster)
+    ..setNormalAbilities(commaList('ACcs'))
+    
+    ..setScalingValue(1.55)
+    ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(500)
+    ..setAttack1CooldownTime(1.80)
+    ..setAttack1DamageBase(105)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.00)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\MurgulMagicMissile\\MurgulMagicMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.600)
+    ..setChaosAttackType1()
+    
+    ..setSpeedBase(270)
+    ..setMovementType(MovementType.Amphipic)
+    ..setCollisionSize(31.00)
+
+    ..setGoldBounty(94)
+    ..setHp(1850, 0.5)
+    ..setMp(400, 1.0)
+    
+    ..addDropItems(
+        ITEM_HORN_OF_CLOUDS,
+        ITEM_HALF_MOON_ARMOR
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_POLAR_FURBOLG, "Polar Furbolg", 11, UnitIds.polarfurbolg)
+    
+    ..setScalingValue(0.90)
+    ..setSelectionScale(1.00)
+
+    ..setRangedAttack1(350)
+    ..setAttack1CooldownTime(1.35)
+    ..setAttack1DamageBase(111)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.300)
+    
+    ..setSpeedBase(300)
+
+    ..setGoldBounty(94)
+    ..setHp(2255, 0.5)
+    
+    ..addDropItems(
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_GHOST, "Ghost", 14, UnitIds.ghost)
+    
+    ..setScalingValue(1.05)
+    ..setSelectionScale(1.00)
+
+    ..setRangedAttack1(400)
+    ..setAttack1CooldownTime(1.80)
+    ..setAttack1DamageBase(134)
+    ..setAttack1DamageNumberofDice(1)
+    ..setAttack1DamageSidesperDie(5)
+    ..setAttack1ProjectileArc(0.00)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\BansheeMissile\\BansheeMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.510)
+    ..setAttack1AnimationDamagePoint(0.560)
+    ..setAttack1AttackType(AttackType.Pierce)
+    
+    ..setSpeedBase(300)
+    ..setMovementHeight(50.00)
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Hover)
+    ..setCollisionSize(16.00)
+
+    ..setGoldBounty(159)
+    ..setHp(3750, 0.5)
+    ..setMp(300, 0.75)
+    
+    ..addDropItems(
+    )
+
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(CREEP_LEFT_FACELESS_ONE_DEATHBRINGER, "Faceless One Deathbringer", 16, UnitIds.facelessonedeathbringer)
+    
+    ..setScalingValue(1.80)
+    ..setSelectionScale(2.40)
+
+    ..setMeleeAttack1()
+    ..setChaosAttackType1()
+    ..setAttack1CooldownTime(1.50)
+    ..setAttack1DamageBase(255)
+    ..setAttack1DamageNumberofDice(3)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(true)
+    ..setAttack1WeaponType(WeaponType.Missile)
+    ..setAttack1AnimationBackswingPoint(0.560)
+    ..setAttack1AnimationDamagePoint(0.500)
+    ..setAoe1(75, 150, 225)
+        
+    ..setSpeedBase(300)
+    ..setCollisionSize(48.00)
+
+    ..setGoldBounty(239)
+    ..setHp(4750, 5.0)
+    ..setMp(1000, 1.25)
+    
+    ..addDropItems(
+    )
+
+// ----------------------------------------------------------------------------

@@ -21,7 +21,7 @@ import MyAbilityIds
     
     ..setSelectionScale(1.25)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.77)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.840)

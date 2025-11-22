@@ -19,7 +19,7 @@ import MyHeroDefinition
     ..setStatsBase(19, 21, 16)
     ..setStatsPerLvl(2.40, 1.50, 2.10)
     
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.60)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1ProjectileArc(0.00)

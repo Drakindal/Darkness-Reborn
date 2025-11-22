@@ -27,7 +27,7 @@ import MyAbilityIds
     ..setIconGameInterface(Icons.bTNAssassin)
     ..setUnitSoundSet(Soundsets.assassin)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.87)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.840)

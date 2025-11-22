@@ -23,7 +23,7 @@ import MyHeroDefinition
     ..setIconGameInterface("Units\\Illusionist\\BTNHeroSalandria\\BTNHeroSalandria.blp")
     ..setIconScoreScreen("Units\\Illusionist\\BTNHeroSalandria\\BTNHeroSalandria.blp")
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.90)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1ProjectileArc(0.00)

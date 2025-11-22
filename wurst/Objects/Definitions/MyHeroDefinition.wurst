@@ -184,12 +184,12 @@ public class MyHeroDefinition extends HeroDefinition
         setAgilityPerLevel(agi)
         setIntelligencePerLevel(intel)
 
-    function setRangedAttack(int range)
+    function setRangedAttack1(int range)
         setAttack1Range(range)
         setAttack1ProjectileHomingEnabled(true)
         setAttack1WeaponType(WeaponType.Missile)
 
-    function setMeleeAttack()
+    function setMeleeAttack1()
         setAttack1Range(100)
         setAttack1ProjectileArc(0.00)
         setAttack1ProjectileArt("None")

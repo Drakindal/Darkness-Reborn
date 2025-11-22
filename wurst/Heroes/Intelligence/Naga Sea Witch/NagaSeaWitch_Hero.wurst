@@ -19,7 +19,7 @@ import MyHeroDefinition
     ..setStatsBase(15, 14, 20)
     ..setStatsPerLvl(2.00, 1.00, 3.00)
 
-    ..setRangedAttack(600)
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.90)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1ProjectileArc(0.08)

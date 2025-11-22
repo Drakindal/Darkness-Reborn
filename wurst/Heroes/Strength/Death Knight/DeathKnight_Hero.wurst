@@ -31,7 +31,7 @@ public unit deathKnightHero = null
     ..setIconScoreScreen(Icons.bTNHeroDeathKnight)
     ..setUnitSoundSet(Soundsets.heroDeathKnight)
     
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(2.00)
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.410)

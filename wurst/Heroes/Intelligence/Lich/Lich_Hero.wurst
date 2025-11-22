@@ -21,7 +21,7 @@ import MyAbilityIds
     
     ..setSelectionScale(1.25)
 
-    ..setRangedAttack(600)
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.90)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1Range(600)

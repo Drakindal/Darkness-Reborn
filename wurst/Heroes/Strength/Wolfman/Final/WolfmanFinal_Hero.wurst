@@ -24,7 +24,7 @@ import MyHeroDefinition
     ..setIconGameInterface(Icons.bTNSpiritWolf)
     ..setIconScoreScreen(Icons.bTNSpiritWolf)
 
-    ..setMeleeAttack()
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(2.00)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.840)
