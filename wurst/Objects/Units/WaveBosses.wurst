@@ -6,11 +6,319 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import ItemDrops
+import MyItemIds
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineCreeps()
-    new MyCreepDefinition(WAVE_BOSS_0, "Zombie (MiniBoss)", 6, UnitIds.zombie)
+    let private_rubyDropTable = new ItemDropTable()..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    )
+    
+    let private_rubyDropTable_x4 = new ItemDropTable(4)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    )
+
+    let private_dropTable_0_9 = new ItemDropTable()..populate(
+        ITEM_GAUNTLETS_OF_OGRE_STRENGTH, //0
+        ITEM_RUSTY_MINING_PICK,
+        ITEM_WIRTS_LEG, //2
+        ITEM_SLIPPERS_OF_AGILITY,
+        ITEM_DIAMOND_OF_SUMMONING, //4
+        ITEM_MANTLE_OF_INTELLIGENCE,
+        ITEM_DRUID_POUCH, //6
+        ITEM_RUNED_GAUNTLETS,
+        ITEM_SKULL_SHIELD, //8
+        ITEM_VOODOO_DOLL
+    )
+    
+    let private_dropTable_0_14 = new ItemDropTable()..populate(
+        ITEM_GAUNTLETS_OF_OGRE_STRENGTH, //0
+        ITEM_RUSTY_MINING_PICK,
+        ITEM_WIRTS_LEG, //2
+        ITEM_SLIPPERS_OF_AGILITY,
+        ITEM_DIAMOND_OF_SUMMONING, //4
+        ITEM_MANTLE_OF_INTELLIGENCE,
+        ITEM_DRUID_POUCH, //6
+        ITEM_RUNED_GAUNTLETS,
+        ITEM_SKULL_SHIELD, //8
+        ITEM_VOODOO_DOLL,
+        ITEM_ANCIENT_FIGURINE, //10
+        ITEM_SPIDER_SILK_BROACH,
+        ITEM_BATTLE_STANDARD, //12
+        ITEM_BLADEBANE_ARMOR,
+        ITEM_FIREHAND_GAUNTLETS //14
+    )
+
+    let private_dropTable_5_14 = new ItemDropTable()..populate(
+        ITEM_MANTLE_OF_INTELLIGENCE,
+        ITEM_DRUID_POUCH, //6
+        ITEM_RUNED_GAUNTLETS,
+        ITEM_SKULL_SHIELD, //8
+        ITEM_VOODOO_DOLL,
+        ITEM_ANCIENT_FIGURINE, //10
+        ITEM_SPIDER_SILK_BROACH,
+        ITEM_BATTLE_STANDARD, //12
+        ITEM_BLADEBANE_ARMOR,
+        ITEM_FIREHAND_GAUNTLETS //14
+    )
+
+    let private_dropTable_10_19 = new ItemDropTable()..populate(
+        ITEM_ANCIENT_FIGURINE, //10
+        ITEM_SPIDER_SILK_BROACH,
+        ITEM_BATTLE_STANDARD, //12
+        ITEM_BLADEBANE_ARMOR,
+        ITEM_FIREHAND_GAUNTLETS, //14
+        ITEM_FLARE_GUN,
+        ITEM_ANCESTRAL_STAFF, //16
+        ITEM_POISON_SPEARS,
+        ITEM_KILLMAIM, //18
+        ITEM_DRUID_OF_CLAW
+    )
+
+    let private_dropTable_20_24_x3 = new ItemDropTable(3)..populate(
+        ITEM_ANCIENT_FIGURINE, //10
+        ITEM_SPIDER_SILK_BROACH,
+        ITEM_BATTLE_STANDARD, //12
+        ITEM_BLADEBANE_ARMOR,
+        ITEM_FIREHAND_GAUNTLETS, //14
+        ITEM_FLARE_GUN,
+        ITEM_ANCESTRAL_STAFF, //16
+        ITEM_POISON_SPEARS,
+        ITEM_KILLMAIM, //18
+        ITEM_DRUID_OF_CLAW
+    )
+    
+    let private_dropTable_30_34 = new ItemDropTable()..populate(
+        ITEM_MOON_ARMOR,//30
+        ITEM_AMULET_OF_RECALL,
+        ITEM_GHOUL_FRENZY,//32
+        ITEM_MAGIC_POTION,
+        ITEM_LIONS_RING//34
+    )
+    
+    let private_dropTable_35_39 = new ItemDropTable()..populate(
+        ITEM_MINDSTAFF,
+        ITEM_DRUID_OF_CLAW_AMATEUR,//36
+        ITEM_SCEPTER_OF_HEALING,
+        ITEM_ARCANE_SCROLL,//38
+        ITEM_KEY_OF_THREE_MOONS
+    )
+
+    let private_dropTable_15_24 = new ItemDropTable()..populate(
+        ITEM_FLARE_GUN,
+        ITEM_ANCESTRAL_STAFF,//16
+        ITEM_POISON_SPEARS,
+        ITEM_KILLMAIM,//18
+        ITEM_DRUID_OF_CLAW,//19
+        ITEM_BOOK_OF_DEAD,//20
+        ITEM_HORN_OF_CLOUDS,
+        ITEM_HALF_MOON_ARMOR,//22
+        ITEM_HUMAN_FLAG,
+        ITEM_BLOOD_GEM //24
+    )
+
+    let private_dropTable_20_29 = new ItemDropTable()..populate(
+        ITEM_BOOK_OF_DEAD,//20
+        ITEM_HORN_OF_CLOUDS,
+        ITEM_HALF_MOON_ARMOR,//22
+        ITEM_HUMAN_FLAG,
+        ITEM_BLOOD_GEM,//24
+        ITEM_STAFF_OF_PRESERVATION,
+        ITEM_SPIKED_ARMOR,//26
+        ITEM_FLAK_CANNONS,
+        ITEM_THUNDERLIZARD_DIAMOND,//28
+        ITEM_GEM_OF_POISON
+    )
+
+    let private_dropTable_30_49_x4 = new ItemDropTable(4)..populate(
+        ITEM_MOON_ARMOR,//30
+        ITEM_AMULET_OF_RECALL,
+        ITEM_GHOUL_FRENZY,//32
+        ITEM_MAGIC_POTION,
+        ITEM_LIONS_RING,//34
+        ITEM_MINDSTAFF,
+        ITEM_DRUID_OF_CLAW_AMATEUR,//36
+        ITEM_SCEPTER_OF_HEALING,
+        ITEM_ARCANE_SCROLL,//38
+        ITEM_KEY_OF_THREE_MOONS,
+        ITEM_GLOVES_OF_SPELL_MASTERY,//40
+        ITEM_SCEPTER_OF_MASTERY,
+        ITEM_SCROLL_OF_MAGIC,//42
+        ITEM_SHAMANIC_TOTEM,
+        ITEM_HEART_OF_SEARINOX,//44
+        ITEM_SCEPTER_OF_SEA,
+        ITEM_SACRED_RELIC,//46
+        ITEM_SCROLL_OF_UNHOLY_LEGION,
+        ITEM_DRUID_OF_CLAW_MASTER,//48
+        ITEM_CRYSTAL_SKULL
+    )
+
+    let private_dropTable_25_34 = new ItemDropTable()..populate(
+        ITEM_FLAK_CANNONS,
+        ITEM_THUNDERLIZARD_DIAMOND,//28
+        ITEM_GEM_OF_POISON,
+        ITEM_MOON_ARMOR,//30
+        ITEM_AMULET_OF_RECALL,
+        ITEM_GHOUL_FRENZY,//32
+        ITEM_MAGIC_POTION,
+        ITEM_LIONS_RING//34
+    )
+
+    let private_dropTable_30_39 = new ItemDropTable()..populate(
+        ITEM_MOON_ARMOR,//30
+        ITEM_AMULET_OF_RECALL,
+        ITEM_GHOUL_FRENZY,//32
+        ITEM_MAGIC_POTION,
+        ITEM_LIONS_RING,//34
+        ITEM_MINDSTAFF,
+        ITEM_DRUID_OF_CLAW_AMATEUR,//36
+        ITEM_SCEPTER_OF_HEALING,
+        ITEM_ARCANE_SCROLL,//38
+        ITEM_KEY_OF_THREE_MOONS
+    )
+
+    let private_dropTable_35_44 = new ItemDropTable()..populate(
+        ITEM_MINDSTAFF,
+        ITEM_DRUID_OF_CLAW_AMATEUR,//36
+        ITEM_SCEPTER_OF_HEALING,
+        ITEM_ARCANE_SCROLL,//38
+        ITEM_KEY_OF_THREE_MOONS,
+        ITEM_GLOVES_OF_SPELL_MASTERY,//40
+        ITEM_SCEPTER_OF_MASTERY,
+        ITEM_SCROLL_OF_MAGIC,//42
+        ITEM_SHAMANIC_TOTEM,
+        ITEM_HEART_OF_SEARINOX//44
+    )
+    
+    let private_dropTable_40_49 = new ItemDropTable()..populate(
+        ITEM_GLOVES_OF_SPELL_MASTERY,//40
+        ITEM_SCEPTER_OF_MASTERY,
+        ITEM_SCROLL_OF_MAGIC,//42
+        ITEM_SHAMANIC_TOTEM,
+        ITEM_HEART_OF_SEARINOX,//44
+        ITEM_SCEPTER_OF_SEA,
+        ITEM_SACRED_RELIC,//46
+        ITEM_SCROLL_OF_UNHOLY_LEGION,
+        ITEM_DRUID_OF_CLAW_MASTER,//48
+        ITEM_CRYSTAL_SKULL
+    )
+
+    // Spheres = fire and water. Crowns = 3 crowns, Swords = 2 swords + 1 dagger
+    // And also shield and essence of aszune = the items of the same rarity.
+    let private_dropTable_Spheres_Crowns_Swords = new ItemDropTable()..populate(
+        ITEM_SPHERE_OF_FIRE,
+        ITEM_SPHERE_OF_WATER,
+        ITEM_ESSENCE_OF_ASZUNE,
+        ITEM_DREAM_SWORD,//56
+        ITEM_CRYSTAL_SWORD,
+        ITEM_BLOODY_DAGGER,//58
+        ITEM_CROWN_OF_WIZARD,
+        ITEM_CROWN_OF_SOLDIER,//60
+        ITEM_CROWN_OF_ASSASSIN,
+        ITEM_GLOVERSHIELD//62
+    )
+    
+    let private_dropTable_Spheres_Ruby = new ItemDropTable()..populate(
+        ITEM_SPHERE_OF_FIRE,
+        ITEM_SPHERE_OF_WATER,
+        ITEM_RUBY_FRAGMENTS_L1
+    )
+
+// ----------------------------------------------------------------------------
+
+    let dropTable_Bosses_0_9 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_0_9)
+    ..addDropTable(private_dropTable_0_9)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_10_14 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_0_9)
+    ..addDropTable(private_dropTable_0_14)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_15_19 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_0_9)
+    ..addDropTable(private_dropTable_5_14)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_20_24_and_35_39 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_5_14)
+    ..addDropTable(private_dropTable_10_19)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_25_29 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_20_24_x3)
+    ..addDropTable(private_dropTable_30_34)
+    ..addDropTable(private_dropTable_35_39)
+    ..addDropTable(private_rubyDropTable_x4)
+
+    let dropTable_Bosses_30_34 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_5_14)
+    ..addDropTable(private_dropTable_10_19)
+
+    let dropTable_Bosses_40_44 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_5_14)
+    ..addDropTable(private_dropTable_15_24)
+
+    let dropTable_Bosses_45_49 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_10_19)
+    ..addDropTable(private_dropTable_15_24)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_50_54 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_20_29)
+    ..addDropTable(private_dropTable_10_19)
+
+    let dropTable_Bosses_55_57 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_30_49_x4)
+    ..addDropTable(private_rubyDropTable_x4)
+
+    let dropTable_Bosses_58_66 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_20_29)
+    ..addDropTable(private_dropTable_10_19)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_67_76 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_25_34)
+    ..addDropTable(private_dropTable_20_29)
+
+    let dropTable_Bosses_77_81 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_30_39)
+    ..addDropTable(private_dropTable_20_29)
+    ..addDropTable(private_rubyDropTable)
+
+    let dropTable_Bosses_82_83 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_Spheres_Crowns_Swords)
+    ..addDropTable(private_dropTable_Spheres_Crowns_Swords)
+    ..addDropTable(private_dropTable_30_49_x4)
+    ..addDropTable(private_rubyDropTable_x4)
+
+    let dropTable_Bosses_84 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_30_39)
+    ..addDropTable(private_dropTable_20_29)
+    ..addDropTable(private_dropTable_Spheres_Ruby)
+
+    let dropTable_Bosses_85_89 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_30_39)
+    ..addDropTable(private_dropTable_20_29)
+    ..addDropTable(private_dropTable_Spheres_Ruby)
+    
+    let dropTable_Bosses_90_99 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_35_44)
+    ..addDropTable(private_dropTable_30_39)
+    ..addDropTable(private_dropTable_Spheres_Ruby)
+    
+    let dropTable_Bosses_100_104 = new ItemDropTableMultiple()
+    ..addDropTable(private_dropTable_40_49)
+    ..addDropTable(private_dropTable_30_39)
+    ..addDropTable(private_dropTable_Spheres_Ruby)
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+    new MyCreepDefinition(WAVE_BOSS_0, "Zombie", 6, UnitIds.zombie)
     ..setNormalAbilities(commaList(CREEP_ABILITY_26))
 
     ..setScalingValue(2.00)
@@ -26,9 +334,11 @@ import MyAbilityIds
     ..setGoldBounty(850, 950)
     ..setHpRel(4800, 0.02)
 
+    ..addItemDropTable(dropTable_Bosses_0_9)
+    
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_BOSS_1, "Furbolg (MiniBoss)", 4, UnitIds.furbolg)
+    new MyCreepDefinition(WAVE_BOSS_1, "Furbolg", 4, UnitIds.furbolg)
     ..setScalingValue(1.40)
     ..setSelectionScale(1.00)
 
@@ -40,42 +350,38 @@ import MyAbilityIds
     ..setAttack1AnimationDamagePoint(0.300)
 
     ..setSpeedBase(300)
-    ..setFoodCost(3)
-    ..setGoldCost(255)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(3)
-    ..setDefenseUpgradeBonus(9)
+
     ..setGoldBounty(280, 340)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(2300, 0.03)
 
+    ..addItemDropTable(dropTable_Bosses_0_9)
+
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_BOSS_2, "Centaur Impaler (MiniBoss)", 4, UnitIds.centaurimpaler)
+    new MyCreepDefinition(WAVE_BOSS_2, "Centaur Impaler", 4, UnitIds.centaurimpaler)
     ..setNormalAbilities(commaList(CREEP_ABILITY_27))
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.25)
+
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(90)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setSpeedBase(350)
-    ..setFoodCost(3)
-    ..setGoldCost(255)
-    ..setDefenseBase(2)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(300)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -83,6 +389,8 @@ import MyAbilityIds
     ..setManaInitialAmount(200)
     ..setManaMaximum(200)
     ..setManaRegeneration(0.50)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
     
 // ----------------------------------------------------------------------------
 
@@ -91,20 +399,21 @@ import MyAbilityIds
 
     ..setScalingValue(1.60)
     ..setSelectionScale(1.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(100)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(2)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.660)
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(3)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(300)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(2310, 0.03)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
     
 // ----------------------------------------------------------------------------
 
@@ -113,27 +422,25 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.80)
     ..setAttackDamage1(90)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(3)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(1)
-    ..setGoldCost(105)
-    ..setDefenseBase(2)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(300)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(1900, 0.03)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
     
 // ----------------------------------------------------------------------------
 
@@ -142,62 +449,51 @@ import MyAbilityIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(1.50)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(220)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.560)
-    ..setFoodCost(0)
-    ..setGoldCost(0)
-    ..setSightRadiusDay(800)
-    ..setSightRadiusNight(600)
-    ..setDefenseBase(6)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(1050)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(7200, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
     
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_6, "Obsidian Statue", 2, UnitIds.obsidianstatue)
     ..setNormalAbilities("")
+
     ..setScalingValue(0.8)
     ..setSelectionScale(2.10)
+
+    ..setRangedAttack1(575)
     ..setAttack1CooldownTime(2.10)
     ..setAttackDamage1(195)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(575)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.470)
     ..setAttack1AnimationDamagePoint(0.530)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(3)
-    ..setCanFlee(false)
-    ..setGoldCost(200)
-    ..setSightRadiusDay(1200)
-    ..setSightRadiusNight(800)
-    ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(4)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(350)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
-    ..setHpRel(2750, 0.03)
+    ..setHpRel(2750, 0)
     ..setManaInitialAmount(400)
     ..setManaMaximum(600)
     ..setManaRegeneration(1.50)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_7, "Acolyte", 1, UnitIds.acolyte)
@@ -205,28 +501,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.00)
+
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(2.50)
     ..setAttackDamage1(110)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AvengerMissile\\AvengerMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.400)
-    ..setAttack1TargetsAllowed(commaList("air", "debris", "enemies", "ground", "item", "structure", "ward"))
+    
     ..setSpeedBase(235)
     ..setTurnRate(0.60)
-    ..setFoodCost(1)
-    ..setGoldCost(75)
-    ..setSightRadiusDay(800)
-    ..setSightRadiusNight(600)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(4)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(2)
+
     ..setGoldBounty(350)
     ..setGoldBountyAwardedNumberofDice(5)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -234,37 +526,35 @@ import MyAbilityIds
     ..setManaInitialAmount(700)
     ..setManaMaximum(700)
     ..setManaRegeneration(5.00)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_8, "Carrion Beetle", 1, UnitIds.carrionscarab1)
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.25)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(220)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(2)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(290)
     ..setTurnRate(0.60)
-    ..setFoodCost(0)
-    ..setGoldCost(0)
-    ..setSightRadiusDay(1200)
-    ..setSightRadiusNight(800)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(6)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(350)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(3500, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_0_9)
     
 // ----------------------------------------------------------------------------
 
@@ -273,23 +563,18 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(110)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(2)
-    ..setGoldCost(225)
-    ..setDefenseBase(4)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(350)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -298,6 +583,8 @@ import MyAbilityIds
     ..setManaMaximum(300)
     ..setManaRegeneration(0.75)
 
+    ..addItemDropTable(dropTable_Bosses_0_9)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_10, "Ghoul", 2, UnitIds.ghoul)
@@ -305,46 +592,22 @@ import MyAbilityIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(1.50)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(270)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.390)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack2CooldownTime(1.35)
-    ..setAttack2DamageBase(0)
-    ..setAttack2DamageNumberofDice(2)
-    ..setAttack2DamageSidesperDie(1)
-    ..setAttack2Range(66)
-    ..setAttack2ProjectileArc(0.00)
-    ..setAttack2ProjectileArt("None")
-    ..setAttack2ProjectileHomingEnabled(false)
-    ..setAttack2WeaponType(WeaponType.Normal)
-    ..setAttack2DamageSpillDistance(0.00)
-    ..setAttack2DamageSpillRadius(0.00)
-    ..setAttack2MaximumNumberofTargets(1)
-    ..setAttack2AreaofEffectFullDamage(0)
-    ..setAttack2AreaofEffectMediumDamage(0)
-    ..setAttack2AreaofEffectSmallDamage(0)
-    ..setAttack2AnimationBackswingPoint(0.433)
-    ..setAttack2AnimationDamagePoint(0.433)
-    ..setAttack2AttackType(AttackType.Normal)
-    ..setAttack2TargetsAllowed(commaList("tree"))
-    ..setAttack2AreaofEffectTargets(commaList(""))
-    ..setFoodCost(2)
-    ..setGoldCost(120)
-    ..setDefenseBase(9)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(1200)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(10890, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_10_14)
     
 // ----------------------------------------------------------------------------
 
@@ -353,27 +616,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.30)
     ..setSelectionScale(2.10)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.90)
     ..setAttackDamage1(135)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(1.170)
     ..setAttack1AnimationDamagePoint(0.500)
+
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(240)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(9)
-    ..setDefenseUpgradeBonus(9)
+
     ..setGoldBounty(400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
     ..setHpRel(5335, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_10_14)
     
 // ----------------------------------------------------------------------------
 
@@ -382,37 +642,32 @@ import MyAbilityIds
 
     ..setScalingValue(1.74)
     ..setSelectionScale(1.25)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.30)
     ..setAttackDamage1(135)
     ..setAttack1DamageNumberofDice(2)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.470)
     ..setAttack1AnimationDamagePoint(0.530)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(145)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(900)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(6)
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(4050, 0.02)
     ..setManaInitialAmount(1000)
     ..setManaMaximum(1000)
-    ..setName("Necromancer")
     ..setManaRegeneration(1.00)
-    ..setLevel(2)
+
+    ..addItemDropTable(dropTable_Bosses_10_14)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_13, "Sylvanas Windrunner", 3, UnitIds.sylvanusbanshee)
@@ -420,30 +675,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.30)
+
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.40)
     ..setAttackDamage1(265)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BansheeMissile\\BansheeMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.510)
     ..setAttack1AnimationDamagePoint(0.560)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setMovementHeight(50.00)
     ..setMovementHeightMinimum(0.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(3)
-    ..setGoldCost(225)
-    ..setDefenseBase(155)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
@@ -452,6 +701,8 @@ import MyAbilityIds
     ..setManaMaximum(300)
     ..setManaRegeneration(0.80)
 
+    ..addItemDropTable(dropTable_Bosses_10_14)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_14, "Ancient Sasquatch", 9, UnitIds.ancientsasquatch)
@@ -459,24 +710,19 @@ import MyAbilityIds
 
     ..setScalingValue(1.60)
     ..setSelectionScale(1.45)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(165)
     ..setAttack1DamageNumberofDice(8)
     ..setAttack1DamageSidesperDie(3)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(320)
-    ..setFoodCost(8)
-    ..setGoldCost(545)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(9)
-    ..setDefenseUpgradeBonus(9)
+
     ..setGoldBounty(400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -485,6 +731,8 @@ import MyAbilityIds
     ..setManaMaximum(600)
     ..setManaRegeneration(1.50)
 
+    ..addItemDropTable(dropTable_Bosses_10_14)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_15, "Crypt Fiend", 3, UnitIds.cryptfiend)
@@ -492,26 +740,25 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.85)
+    
+    ..setRangedAttack1(1000)
     ..setAttack1CooldownTime(1.40)
     ..setAttackDamage1(385)
     ..setAttack1DamageNumberofDice(8)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(1000)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\CryptFiendMissile\\CryptFiendMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.360)
     ..setAttack1AnimationDamagePoint(0.640)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setFoodCost(3)
-    ..setGoldCost(215)
-    ..setDefenseBase(8)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(1350)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(11698, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_15_19)
     
 // ----------------------------------------------------------------------------
 
@@ -520,29 +767,23 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.30)
+    
+    ..setRangedAttack1(450)
     ..setAttack1CooldownTime(1.40)
     ..setAttackDamage1(165)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(450)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\VoidWalkerMissile\\VoidWalkerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setMovementHeight(30.00)
     ..setMovementHeightMinimum(0.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(4)
-    ..setGoldCost(300)
-    ..setDefenseBase(8)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(450)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -551,6 +792,8 @@ import MyAbilityIds
     ..setManaMaximum(900)
     ..setManaRegeneration(4.00)
 
+    ..addItemDropTable(dropTable_Bosses_15_19)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_17, "Draenei Harbinger", 4, UnitIds.draeneiharbinger)
@@ -558,25 +801,21 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.05)
+
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(277)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.580)
     ..setAttack1AnimationDamagePoint(0.590)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(165)
-    ..setDefenseBase(12)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(450)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -584,6 +823,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1100)
     ..setManaMaximum(1100)
     ..setManaRegeneration(5.00)
+
+    ..addItemDropTable(dropTable_Bosses_15_19)
     
 // ----------------------------------------------------------------------------
 
@@ -592,23 +833,21 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(100)
     ..setAttack1CooldownTime(1.10)
     ..setAttackDamage1(199)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(100)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
     ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(320)
-    ..setFoodCost(3)
-    ..setGoldCost(225)
-    ..setDefenseBase(8)
-    ..setDefenseUpgradeBonus(9)
+
     ..setGoldBounty(450)
     ..setGoldBountyAwardedNumberofDice(5)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -616,6 +855,8 @@ import MyAbilityIds
     ..setManaInitialAmount(700)
     ..setManaMaximum(700)
     ..setManaRegeneration(2.00)
+
+    ..addItemDropTable(dropTable_Bosses_15_19)
     
 // ----------------------------------------------------------------------------
 
@@ -623,35 +864,30 @@ import MyAbilityIds
 
     ..setScalingValue(1.30)
     ..setSelectionScale(1.75)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(278)
     ..setAttack1DamageNumberofDice(2)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AvengerMissile\\AvengerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
+    ..setAoe1(100, 200, 300)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.400)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setTargetedAs(commaList("air"))
+    
+    ..setAirUnit(280, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(280.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.10)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(8)
-    ..setDefenseUpgradeBonus(9)
+    
     ..setGoldBounty(450)
     ..setGoldBountyAwardedNumberofDice(4)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(6000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_15_19)
     
 // ----------------------------------------------------------------------------
 
@@ -660,27 +896,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.50)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(400)
     ..setAttack1DamageNumberofDice(8)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(135)
-    ..setDefenseBase(15)
-    ..setDefenseUpgradeBonus(15)
+
     ..setGoldBounty(1500)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(21600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -689,11 +922,12 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(400)
     ..setAttack1CooldownTime(0.90)
     ..setAttackDamage1(255)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(4)
-    ..setAttack1Range(400)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -701,17 +935,16 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.170)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(10)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(500)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(8150, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -719,6 +952,8 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(200)
     ..setAttack1DamageNumberofDice(1)
@@ -726,14 +961,13 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setFoodCost(1)
-    ..setGoldCost(85)
-    ..setDefenseBase(15)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(500)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(10000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -742,37 +976,30 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.30)
-    ..setAttack1CooldownTime(1.70)
-    ..setAttackDamage1(355)
+    
+    ..setRangedAttack1(1300)
+    ..setAttack1CooldownTime(1.40)
+    ..setAttackDamage1(455)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(1300)
     ..setAttack1ProjectileArc(0.35)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Mortar\\MortarMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1WeaponType(WeaponType.Artillery)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(25)
-    ..setAttack1AreaofEffectMediumDamage(100)
-    ..setAttack1AreaofEffectSmallDamage(200)
+    ..setAoe1(100, 200, 450)
     ..setAttack1AnimationBackswingPoint(1.100)
     ..setAttack1AnimationDamagePoint(1.000)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "debris", "tree", "wall", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("ground", "structure", "debris", "tree", "wall"))
+    
     ..setMinimumAttackRange(250)
-    ..setFoodCost(3)
-    ..setGoldCost(180)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(1200)
-    ..setDefenseBase(10)
-    ..setDefenseUpgradeBonus(15)
+    ..setSpeedBase(240)
+    
     ..setGoldBounty(500)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(8200, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -781,24 +1008,22 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.20)
+    
+    ..setRangedAttack1(250)
     ..setAttack1CooldownTime(1.90)
     ..setAttackDamage1(200)
     ..setAttack1DamageNumberofDice(6)
     ..setAttack1DamageSidesperDie(3)
-    ..setAttack1Range(250)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BloodElfSpellThiefMISSILE\\BloodElfSpellThiefMISSILE.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
+
     ..setSpeedBase(300)
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(215)
-    ..setDefenseBase(10)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(500)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
@@ -806,6 +1031,8 @@ import MyAbilityIds
     ..setManaInitialAmount(75)
     ..setManaMaximum(250)
     ..setManaRegeneration(0.80)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -814,26 +1041,23 @@ import MyAbilityIds
 
     ..setScalingValue(2.40)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(800)
     ..setAttack1CooldownTime(1.20)
     ..setAttackDamage1(855)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(800)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("abilities\\weapons\\TuskarSpear\\TuskarSpear.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setSpeedBase(300)
     ..setTurnRate(0.60)
-    ..setFoodCost(4)
-    ..setGoldCost(195)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(39)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(17)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -841,42 +1065,36 @@ import MyAbilityIds
     ..setManaInitialAmount(3000)
     ..setManaMaximum(3000)
     ..setManaRegeneration(0.75)
+
+    ..addItemDropTable(dropTable_Bosses_25_29)
     
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_26, "Ancient Hydra", 41, UnitIds.ancienthydra)
     ..setNormalAbilities(commaList('Aspo', CREEP_ABILITY_45))
     ..setModelFile("Units\\Mobs\\Dragons\\Dragon1.mdx")
+
     ..setScalingValue(2.70)
     ..setSelectionScale(6.00)
+
+    ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(800)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(1200)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(100)
-    ..setAttack1AreaofEffectMediumDamage(250)
-    ..setAttack1AreaofEffectSmallDamage(300)
+    ..setAoe1(100, 250, 300)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("air", "debris", "enemies", "ground", "structure"))
-    ..setAttack1AreaofEffectTargets(commaList("air", "debris", "enemies", "ground", "structure"))
+    
     ..setSpeedBase(300)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(8)
-    ..setGoldCost(745)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(45)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(150)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
@@ -884,6 +1102,8 @@ import MyAbilityIds
     ..setManaInitialAmount(600)
     ..setManaMaximum(600)
     ..setManaRegeneration(1.50)
+
+    ..addItemDropTable(dropTable_Bosses_25_29)
     
 // ----------------------------------------------------------------------------
 
@@ -892,6 +1112,8 @@ import MyAbilityIds
 
     ..setScalingValue(3.00)
     ..setSelectionScale(4.00)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(855)
     ..setAttack1DamageNumberofDice(8)
@@ -899,15 +1121,15 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(320)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
-    ..setDefenseBase(47)
-    ..setDefenseUpgradeBonus(15)
+
     ..setGoldBounty(40)
     ..setGoldBountyAwardedNumberofDice(4)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(37250, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_25_29)
     
 // ----------------------------------------------------------------------------
 
@@ -916,30 +1138,27 @@ import MyAbilityIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(2.10)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(2.20)
     ..setAttackDamage1(1855)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(1.170)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(200)
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(240)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(56)
     ..setArmorType(ArmorType.Hero)
-    ..setDefenseUpgradeBonus(22)
+    
     ..setGoldBounty(400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
     ..setHpRel(75000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_25_29)
 
 // ----------------------------------------------------------------------------
 
@@ -948,38 +1167,30 @@ import MyAbilityIds
 
     ..setScalingValue(2.20)
     ..setSelectionScale(4.00)
+
+    ..setRangedAttack1(900)
     ..setAttack1CooldownTime(0.50)
     ..setAttackDamage1(700)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(900)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.650)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Magic)
     
-    ..setTargetedAs(commaList("air"))
+    ..setAirUnit(280, 90)
     ..setAttacksEnabled(2)
     ..setSpeedBase(300)
-    ..setMovementHeight(280.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(5)
-    ..setGoldCost(330)
-    ..setSightRadiusDay(1600)
-    ..setSightRadiusNight(800)
     ..setCollisionSize(8.00)
-    ..setDefenseBase(40)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(30)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
     ..setHpRel(38500, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_25_29)
     
 // ----------------------------------------------------------------------------
 
@@ -988,23 +1199,21 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(200)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(800)
     ..setAttack1DamageNumberofDice(8)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(200)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BloodElfSpellThiefMISSILE\\BloodElfSpellThiefMISSILE.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(155)
-    ..setDefenseBase(21)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(1650)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -1012,6 +1221,8 @@ import MyAbilityIds
     ..setManaInitialAmount(100)
     ..setManaMaximum(250)
     ..setManaRegeneration(0.63)
+
+    ..addItemDropTable(dropTable_Bosses_30_34)
     
 // ----------------------------------------------------------------------------
 
@@ -1020,6 +1231,8 @@ import MyAbilityIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(1.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(250)
     ..setAttack1DamageNumberofDice(1)
@@ -1027,11 +1240,9 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(425)
-    ..setDefenseBase(21)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(550)
     ..setGoldBountyAwardedNumberofDice(5)
     ..setGoldBountyAwardedSidesperDie(3)
@@ -1039,6 +1250,8 @@ import MyAbilityIds
     ..setManaInitialAmount(685)
     ..setManaMaximum(685)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_30_34)
     
 // ----------------------------------------------------------------------------
 
@@ -1047,24 +1260,20 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.75)
     ..setAttackDamage1(250)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(3)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\LichMissile\\LichMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.850)
     ..setAttack1AnimationDamagePoint(0.550)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(2)
-    ..setGoldCost(155)
+    
     ..setCollisionSize(16.00)
-    ..setDefenseBase(14)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(550)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1072,6 +1281,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1125)
     ..setManaMaximum(1125)
     ..setManaRegeneration(7.00)
+
+    ..addItemDropTable(dropTable_Bosses_30_34)
     
 // ----------------------------------------------------------------------------
 
@@ -1080,30 +1291,28 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(250)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(4)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.280)
     ..setAttack1AnimationDamagePoint(0.720)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(130)
-    ..setHitPointsRegenerationType("night")
-    ..setDefenseBase(14)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(550)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(11000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_30_34)
     
 // ----------------------------------------------------------------------------
 
@@ -1112,27 +1321,23 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.75)
     ..setAttackDamage1(250)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(4)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SorceressMissile\\SorceressMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.780)
     ..setAttack1AnimationDamagePoint(0.750)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(2)
-    ..setGoldCost(155)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(14)
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(550)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1140,6 +1345,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1200)
     ..setManaMaximum(1200)
     ..setManaRegeneration(7.00)
+
+    ..addItemDropTable(dropTable_Bosses_30_34)
     
 // ----------------------------------------------------------------------------
 
@@ -1148,6 +1355,8 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.70)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(888)
     ..setAttack1DamageNumberofDice(7)
@@ -1155,16 +1364,16 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.660)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(4)
-    ..setGoldCost(245)
-    ..setDefenseBase(27)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(1800)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(37000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -1173,35 +1382,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(300)
     ..setAttack1CooldownTime(1.75)
     ..setAttackDamage1(310)
     ..setAttack1DamageNumberofDice(2)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(300)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\DragonHawkMissile\\DragonHawkMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.633)
     ..setAttack1AnimationDamagePoint(0.430)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setTargetedAs(commaList("air"))
+    
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(3)
-    ..setGoldCost(200)
-    ..setSightRadiusDay(1600)
-    ..setSightRadiusNight(900)
     ..setCollisionSize(8.00)
-    ..setDefenseBase(18)
     ..setArmorType(ArmorType.Small)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(600)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1209,6 +1407,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1255)
     ..setManaMaximum(1255)
     ..setManaRegeneration(7.00)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -1217,25 +1417,21 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(610)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(4)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\PriestMissile\\PriestMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.580)
     ..setAttack1AnimationDamagePoint(0.590)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(135)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(18)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(600)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
@@ -1243,6 +1439,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1300)
     ..setManaMaximum(1300)
     ..setManaRegeneration(13.00)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -1251,29 +1449,28 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(310)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Banditmissile\\Banditmissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setSpeedBase(300)
-    ..setFoodCost(3)
-    ..setGoldCost(250)
-    ..setDefenseBase(18)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+
     ..setGoldBounty(600)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(14600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -1282,22 +1479,24 @@ import MyAbilityIds
 
     ..setScalingValue(1.30)
     ..setSelectionScale(1.50)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(377)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(2)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
+
     ..setSpeedBase(240)
-    ..setFoodCost(2)
-    ..setGoldCost(195)
-    ..setDefenseBase(27)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(600)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(18600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
 // ----------------------------------------------------------------------------
 
@@ -1306,11 +1505,12 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(2000)
     ..setAttack1CooldownTime(3.00)
-    ..setAttackDamage1(999)
+    ..setAttackDamage1(1000)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(5000)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -1318,17 +1518,16 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.170)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(205)
-    ..setDefenseBase(33)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(1950)
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(56700, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_40_44)
     
 // ----------------------------------------------------------------------------
 
@@ -1337,44 +1536,35 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(450)
     ..setAttack1CooldownTime(2.20)
     ..setAttackDamage1(380)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(450)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\GryphonRiderMissile\\GryphonRiderMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1WeaponType(WeaponType.MissileLine)
     ..setAttack1DamageSpillDistance(0.00)
     ..setAttack1DamageSpillRadius(50.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(0)
-    ..setAttack1AreaofEffectMediumDamage(0)
-    ..setAttack1AreaofEffectSmallDamage(0)
     ..setAttack1AnimationBackswingPoint(0.870)
     ..setAttack1AnimationDamagePoint(0.800)
     ..setAttack1AttackType(AttackType.Magic)
+
+    ..setAirUnit(240, 90)
     ..setTargetedAs(commaList("air"))
     ..setSpeedBase(320)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(4)
-    ..setGoldCost(280)
-    ..setSightRadiusDay(1600)
-    ..setSightRadiusNight(900)
     ..setCollisionSize(8.00)
-    ..setDefenseBase(22)
     ..setArmorType(ArmorType.Small)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(650)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(18000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_40_44)
     
 // ----------------------------------------------------------------------------
 
@@ -1383,11 +1573,12 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(4.00)
+    
+    ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(1.40)
     ..setAttackDamage1(625)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(1200)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SteamTank\\SteamTankImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -1395,19 +1586,19 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Siege)
+
     ..setSpeedBase(220)
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(195)
     ..setCollisionSize(48.00)
     ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(33)
     ..setArmorType(ArmorType.Fortified)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(650)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
-    ..setHpRel(23400, 0.02)
+    ..setHpRel(23400, 0)
+
+    ..addItemDropTable(dropTable_Bosses_40_44)
     
 // ----------------------------------------------------------------------------
 
@@ -1416,11 +1607,12 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(2.00)
     ..setAttackDamage1(380)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(4)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\GyroCopter\\GyroCopterImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -1428,26 +1620,18 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.970)
     ..setAttack1AnimationDamagePoint(0.030)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("air", "enemies", "ground", "structure"))
-    ..setTargetedAs(commaList("air"))
+    
+    ..setAirUnit(280, 90)
     ..setSpeedBase(400)
-    ..setMovementHeight(280.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(1)
-    ..setGoldCost(100)
-    ..setSightRadiusDay(1800)
-    ..setSightRadiusNight(1100)
     ..setCollisionSize(8.00)
     ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(22)
-    ..setDefenseUpgradeBonus(15)
+    
     ..setGoldBounty(650)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(17600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_40_44)
     
 // ----------------------------------------------------------------------------
 
@@ -1456,6 +1640,8 @@ import MyAbilityIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(1.75)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.10)
     ..setAttackDamage1(488)
     ..setAttack1DamageNumberofDice(2)
@@ -1463,12 +1649,10 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
+    
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(33)
-    ..setDefenseUpgradeBonus(15)
+
     ..setGoldBounty(650)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
@@ -1476,6 +1660,8 @@ import MyAbilityIds
     ..setManaInitialAmount(500)
     ..setManaMaximum(500)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_40_44)
     
 // ----------------------------------------------------------------------------
 
@@ -1484,6 +1670,8 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1320)
     ..setAttack1DamageNumberofDice(9)
@@ -1491,15 +1679,15 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(200)
-    ..setDefenseBase(39)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(2100)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(4)
     ..setHpRel(77600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_45_49)
     
 // ----------------------------------------------------------------------------
 
@@ -1508,24 +1696,20 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(400)
     ..setAttack1CooldownTime(1.75)
     ..setAttackDamage1(460)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(400)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SorceressMissile\\SorceressMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.600)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(3)
-    ..setGoldCost(195)
-    ..setDefenseBase(39)
+    
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(700)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
@@ -1533,6 +1717,8 @@ import MyAbilityIds
     ..setManaInitialAmount(100)
     ..setManaMaximum(300)
     ..setManaRegeneration(1.00)
+
+    ..addItemDropTable(dropTable_Bosses_45_49)
     
 // ----------------------------------------------------------------------------
 
@@ -1541,29 +1727,28 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.10)
+    
+    ..setRangedAttack1(550)
     ..setAttack1CooldownTime(1.70)
     ..setAttackDamage1(460)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(550)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("abilities\\weapons\\huntermissile\\huntermissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.860)
     ..setAttack1AnimationDamagePoint(0.310)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(140)
-    ..setDefenseBase(26)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(700)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(21700, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_45_49)
     
 // ----------------------------------------------------------------------------
 
@@ -1572,6 +1757,8 @@ import MyAbilityIds
 
     ..setScalingValue(2.30)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(460)
     ..setAttack1DamageNumberofDice(1)
@@ -1579,14 +1766,13 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.600)
     ..setAttack1AnimationDamagePoint(0.380)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setFoodCost(4)
-    ..setGoldCost(320)
-    ..setDefenseBase(39)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(700)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(26700, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_45_49)
     
 // ----------------------------------------------------------------------------
 
@@ -1595,6 +1781,8 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.25)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.80)
     ..setAttackDamage1(666)
     ..setAttack1DamageNumberofDice(1)
@@ -1602,11 +1790,9 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setSpeedBase(320)
-    ..setFoodCost(8)
-    ..setGoldCost(480)
-    ..setDefenseBase(26)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(700)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1614,6 +1800,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1000)
     ..setManaMaximum(1000)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_45_49)
     
 // ----------------------------------------------------------------------------
 
@@ -1622,24 +1810,19 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(200)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1855)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(100)
-    ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.430)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(32)
-    ..setDefenseUpgradeBonus(24)
+
     ..setGoldBounty(2400)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(4)
@@ -1647,6 +1830,8 @@ import MyAbilityIds
     ..setManaInitialAmount(75)
     ..setManaMaximum(300)
     ..setManaRegeneration(0.75)
+
+    ..addItemDropTable(dropTable_Bosses_50_54)
     
 // ----------------------------------------------------------------------------
 
@@ -1655,6 +1840,8 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(2.00)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.20)
     ..setAttackDamage1(550)
     ..setAttack1DamageNumberofDice(1)
@@ -1662,15 +1849,15 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.863)
     ..setAttack1AnimationDamagePoint(0.467)
     ..setAttack1AttackType(AttackType.Hero)
-    ..setFoodCost(5)
-    ..setGoldCost(280)
+    
     ..setCollisionSize(48.00)
-    ..setDefenseBase(48)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(800)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(8)
     ..setHpRel(34500, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_50_54)
     
 // ----------------------------------------------------------------------------
 
@@ -1679,26 +1866,22 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.75)
     ..setAttackDamage1(550)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\WitchDoctorMissile\\WitchDoctorMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.600)
     ..setAttack1AnimationDamagePoint(0.730)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(145)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(32)
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(800)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1707,6 +1890,8 @@ import MyAbilityIds
     ..setManaMaximum(1500)
     ..setManaRegeneration(1500.00)
 
+    ..addItemDropTable(dropTable_Bosses_50_54)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_53, "Kodo Beast", 4, UnitIds.kotobeast)
@@ -1714,31 +1899,30 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(650)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Axe\\AxeMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.320)
     ..setAttack1AnimationDamagePoint(0.850)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setSpeedBase(220)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(4)
-    ..setGoldCost(255)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(32)
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(800)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(22100, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_50_54)
     
 // ----------------------------------------------------------------------------
 
@@ -1747,28 +1931,27 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(655)
     ..setAttack1DamageNumberofDice(6)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Axe\\AxeMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(32)
+    
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(800)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(22400, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_50_54)
     
 // ----------------------------------------------------------------------------
 
@@ -1777,6 +1960,8 @@ import MyAbilityIds
 
     ..setScalingValue(5)
     ..setSelectionScale(5)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.50)
     ..setAttackDamage1(600)
     ..setAttack1DamageNumberofDice(9)
@@ -1784,19 +1969,18 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.467)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("air", "debris", "ground", "item", "player", "structure", "ward"))
+    
     ..setSpeedBase(522)
-    ..setFoodCost(1)
-    ..setGoldCost(105)
-    ..setDefenseBase(100)
     ..setArmorType(ArmorType.Hero)
-    ..setDefenseUpgradeBonus(20)
+
     ..setGoldBounty(3000)
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(85000, 0.02)
     ..setManaInitialAmount(10000)
     ..setManaMaximum(10000)
+
+    ..addItemDropTable(dropTable_Bosses_55_57)
     
 // ----------------------------------------------------------------------------
 
@@ -1805,6 +1989,8 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.50)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.70)
     ..setAttackDamage1(1600)
     ..setAttack1DamageNumberofDice(9)
@@ -1812,18 +1998,17 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.260)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("air", "debris", "ground", "item", "structure", "tree", "ward"))
+    
     ..setSpeedBase(350)
     ..setTurnRate(0.40)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(111)
-    ..setDefenseUpgradeBonus(25)
+    
     ..setGoldBounty(1200)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(97000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_55_57)
     
 // ----------------------------------------------------------------------------
 
@@ -1832,6 +2017,8 @@ import MyAbilityIds
 
     ..setScalingValue(3.00)
     ..setSelectionScale(1.80)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.10)
     ..setAttackDamage1(3500)
     ..setAttack1DamageNumberofDice(9)
@@ -1839,19 +2026,19 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.470)
     ..setAttack1AnimationDamagePoint(0.530)
     ..setAttack1AttackType(AttackType.Magic)
+
     ..setSpeedBase(420)
-    ..setFoodCost(4)
-    ..setGoldCost(255)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(100)
     ..setArmorType(ArmorType.Hero)
-    ..setDefenseUpgradeBonus(20)
+    
     ..setGoldBounty(17)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(65000, 0.02)
     ..setManaInitialAmount(12000)
     ..setManaMaximum(12000)
+
+    ..addItemDropTable(dropTable_Bosses_55_57)
     
 // ----------------------------------------------------------------------------
 
@@ -1860,6 +2047,8 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1955)
     ..setAttack1DamageNumberofDice(9)
@@ -1867,15 +2056,15 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Chaos)
+
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(200)
-    ..setDefenseBase(57)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(2700)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(4)
     ..setHpRel(112900, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -1884,35 +2073,25 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.80)
     ..setAttackDamage1(828)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BatTrollMissile\\BatTrollMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.540)
     ..setAttack1AnimationDamagePoint(0.600)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("air", "debris", "ground", "item", "structure", "ward"))
-    ..setTargetedAs(commaList("air"))
+    
+    ..setAirUnit(240, 90)
     ..setSpeedBase(320)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(2)
-    ..setGoldCost(160)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(1400)
     ..setCollisionSize(8.00)
-    ..setDefenseBase(38)
     ..setArmorType(ArmorType.Small)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(900)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -1920,6 +2099,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1155)
     ..setManaMaximum(1155)
     ..setManaRegeneration(15.00)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -1928,40 +2109,33 @@ import MyAbilityIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(1150)
     ..setAttack1CooldownTime(2.00)
     ..setAttackDamage1(925)
     ..setAttack1DamageNumberofDice(3)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(1150)
     ..setAttack1ProjectileArc(0.35)
     ..setAttack1ProjectileArt("abilities\\weapons\\DemolisherMissile\\DemolisherMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1WeaponType(WeaponType.Artillery)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(25)
-    ..setAttack1AreaofEffectMediumDamage(50)
-    ..setAttack1AreaofEffectSmallDamage(150)
+    ..setAoe1(100, 250, 500)
     ..setAttack1AnimationBackswingPoint(1.900)
     ..setAttack1AnimationDamagePoint(0.100)
     ..setAttack1AttackType(AttackType.Siege)
-    ..setAttack1AreaofEffectTargets(commaList("ground", "structure", "debris", "tree", "wall"))
+    
     ..setMinimumAttackRange(250)
     ..setSpeedBase(220)
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(220)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(1200)
     ..setCollisionSize(48.00)
     ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(38)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(900)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
-    ..setHpRel(32000, 0.02)
+    ..setHpRel(32000, 0)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -1970,32 +2144,22 @@ import MyAbilityIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.80)
     ..setAttackDamage1(660)
     ..setAttack1DamageNumberofDice(5)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\DemonHunterMissile\\DemonHunterMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(50)
-    ..setAttack1AreaofEffectMediumDamage(150)
-    ..setAttack1AreaofEffectSmallDamage(250)
+    ..setAoe1(50, 150, 250)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("ground", "structure", "debris", "air"))
+    
     ..setTurnRate(0.40)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(57)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(900)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
@@ -2003,6 +2167,8 @@ import MyAbilityIds
     ..setManaInitialAmount(500)
     ..setManaMaximum(500)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2011,11 +2177,12 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1888)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(1200)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SludgeMissile\\SludgeMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -2023,22 +2190,17 @@ import MyAbilityIds
     ..setAttack1AnimationBackswingPoint(0.370)
     ..setAttack1AnimationDamagePoint(0.600)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setTargetedAs(commaList("air"))
+
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(3)
-    ..setGoldCost(130)
-    ..setDefenseBase(44)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(3000)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(4)
     ..setHpRel(158300, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2047,28 +2209,22 @@ import MyAbilityIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.80)
     ..setAttackDamage1(1100)
     ..setAttack1DamageNumberofDice(6)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.470)
     ..setAttack1AnimationDamagePoint(0.530)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(145)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(900)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(44)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(24)
+    
     ..setGoldBounty(1000)
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
@@ -2076,6 +2232,8 @@ import MyAbilityIds
     ..setManaInitialAmount(1700)
     ..setManaMaximum(1700)
     ..setManaRegeneration(17.00)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2109,6 +2267,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(36600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2133,6 +2293,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(48000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2174,6 +2336,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(36600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_58_66)
     
 // ----------------------------------------------------------------------------
 
@@ -2208,6 +2372,8 @@ import MyAbilityIds
     ..setManaInitialAmount(200)
     ..setManaMaximum(200)
     ..setManaRegeneration(2)
+
+    ..addItemDropTable(dropTable_Bosses_67_76)
 
 // ----------------------------------------------------------------------------
 
@@ -2254,6 +2420,8 @@ import MyAbilityIds
     ..setManaMaximum(1255)
     ..setManaRegeneration(12.00)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_69, "Furbolg Elder Shaman", 7, UnitIds.furbolgeldershaman)
@@ -2290,6 +2458,8 @@ import MyAbilityIds
     ..setManaRegeneration(1.25)
     ..setLevel(7)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_70, "Dark Troll High Priest", 4, UnitIds.darktrollhighpriest)
@@ -2325,6 +2495,8 @@ import MyAbilityIds
     ..setManaRegeneration(17.00)
     ..setLevel(4)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_71, "Razormane Brute", 3, UnitIds.razormanebrute)
@@ -2346,6 +2518,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(56000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_67_76)
 
 // ----------------------------------------------------------------------------
 
@@ -2371,6 +2545,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(201500, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_67_76)
 
 // ----------------------------------------------------------------------------
 
@@ -2398,6 +2574,8 @@ import MyAbilityIds
     ..setManaInitialAmount(500)
     ..setManaMaximum(500)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_67_76)
 
 // ----------------------------------------------------------------------------
 
@@ -2439,6 +2617,8 @@ import MyAbilityIds
     ..setManaMaximum(200)
     ..setManaRegeneration(0.50)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_75, "Harpy Rogue", 3, UnitIds.harpyrogue)
@@ -2474,6 +2654,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(48600, 0.02)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_76, "Infernal", 8, UnitIds.infernal)
@@ -2501,6 +2683,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(64750, 0.02)
 
+    ..addItemDropTable(dropTable_Bosses_67_76)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_77, "Fel Orc Raider", 5, UnitIds.chaoswolfrider)
@@ -2525,6 +2709,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(235000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_77_81)
     
 // ----------------------------------------------------------------------------
 
@@ -2565,6 +2751,8 @@ import MyAbilityIds
     ..setManaMaximum(2700)
     ..setManaRegeneration(1.00)
 
+    ..addItemDropTable(dropTable_Bosses_77_81)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_79, "Enraged Wildkin", 6, UnitIds.enragedowlbear)
@@ -2596,6 +2784,8 @@ import MyAbilityIds
     ..setHpRel(74300, 0.02)
     ..setManaMaximum(2565)
     ..setManaRegeneration(2565.00)
+
+    ..addItemDropTable(dropTable_Bosses_77_81)
 
 // ----------------------------------------------------------------------------
 
@@ -2631,6 +2821,8 @@ import MyAbilityIds
     ..setManaMaximum(400)
     ..setManaRegeneration(1.00)
 
+    ..addItemDropTable(dropTable_Bosses_77_81)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_81, "Space Fel Orc", 6, UnitIds.nagacoutl)
@@ -2661,6 +2853,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(56000, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_77_81)
 
 // ----------------------------------------------------------------------------
 
@@ -2710,6 +2904,8 @@ import MyAbilityIds
     ..setManaMaximum(2100)
     ..setManaRegeneration(0.67)
 
+    ..addItemDropTable(dropTable_Bosses_82_83)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_83, "Cryptlord", 46, UnitIds.cryptlord)
@@ -2738,6 +2934,8 @@ import MyAbilityIds
     ..setManaInitialAmount(5000)
     ..setManaMaximum(5000)
     ..setManaRegeneration(50.00)
+
+    ..addItemDropTable(dropTable_Bosses_82_83)
 
 // ----------------------------------------------------------------------------
 
@@ -2775,6 +2973,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedSidesperDie(6)
     ..setHpRel(268000, 0.02)
 
+    ..addItemDropTable(dropTable_Bosses_84)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_85, "Murgul Reaver", 2, UnitIds.murgulreaver)
@@ -2798,6 +2998,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(299600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_85_89)
 
 // ----------------------------------------------------------------------------
 
@@ -2828,6 +3030,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(73400, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_85_89)
 
 // ----------------------------------------------------------------------------
 
@@ -2864,6 +3068,8 @@ import MyAbilityIds
     ..setManaMaximum(150)
     ..setManaRegeneration(0.38)
 
+    ..addItemDropTable(dropTable_Bosses_85_89)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_88, "Snap Dragon", 3, UnitIds.snapdragon)
@@ -2895,6 +3101,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(1)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(73500, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_85_89)
 
 // ----------------------------------------------------------------------------
 
@@ -2932,6 +3140,8 @@ import MyAbilityIds
     ..setManaMaximum(200)
     ..setManaRegeneration(0.50)
 
+    ..addItemDropTable(dropTable_Bosses_85_89)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_90, "Naga Royal Guard", 6, UnitIds.nagaroyalguard)
@@ -2967,6 +3177,8 @@ import MyAbilityIds
     ..setManaInitialAmount(500)
     ..setManaMaximum(500)
     ..setManaRegeneration(1.25)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
 
 // ----------------------------------------------------------------------------
 
@@ -3007,6 +3219,8 @@ import MyAbilityIds
     ..setManaMaximum(3155)
     ..setManaRegeneration(31.00)
 
+    ..addItemDropTable(dropTable_Bosses_90_99)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_92, "Ogre Lord", 7, UnitIds.ogrelord)
@@ -3034,6 +3248,8 @@ import MyAbilityIds
     ..setManaInitialAmount(2755)
     ..setManaMaximum(2755)
     ..setManaRegeneration(27.00)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
 
 // ----------------------------------------------------------------------------
 
@@ -3087,6 +3303,8 @@ import MyAbilityIds
     ..setManaMaximum(600)
     ..setManaRegeneration(1.50)
 
+    ..addItemDropTable(dropTable_Bosses_90_99)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_94, "Dark Troll Warlord", 6, UnitIds.darktrollwarlord)
@@ -3116,6 +3334,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(4)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(84200, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
 
 // ----------------------------------------------------------------------------
 
@@ -3170,6 +3390,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(3)
     ..setGoldBountyAwardedSidesperDie(7)
     ..setHpRel(385700, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
     
 // ----------------------------------------------------------------------------
 
@@ -3204,6 +3426,8 @@ import MyAbilityIds
     ..setManaMaximum(4500)
     ..setManaRegeneration(45.00)
 
+    ..addItemDropTable(dropTable_Bosses_90_99)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_97, "Dark Wizard", 8, UnitIds.darkwizard)
@@ -3237,6 +3461,8 @@ import MyAbilityIds
     ..setManaMaximum(4725)
     ..setManaRegeneration(1.25)
 
+    ..addItemDropTable(dropTable_Bosses_90_99)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_98, "Giant Polar Bear", 6, UnitIds.giantpolarbear)
@@ -3267,6 +3493,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(4)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(127700, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
 
 // ----------------------------------------------------------------------------
 
@@ -3300,6 +3528,8 @@ import MyAbilityIds
     ..setManaInitialAmount(600)
     ..setManaMaximum(600)
     ..setManaRegeneration(1.50)
+
+    ..addItemDropTable(dropTable_Bosses_90_99)
 
 // ----------------------------------------------------------------------------
 
@@ -3343,6 +3573,8 @@ import MyAbilityIds
     ..setManaMaximum(200)
     ..setManaRegeneration(0.50)
 
+    ..addItemDropTable(dropTable_Bosses_100_104)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_101, "Nerubian Webspinner", 3, UnitIds.nerubianwebspinner)
@@ -3375,6 +3607,8 @@ import MyAbilityIds
     ..setManaMaximum(7256)
     ..setManaRegeneration(0.75)
 
+    ..addItemDropTable(dropTable_Bosses_100_104)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_102, "Pandaren", 4, UnitIds.furbolgpanda)
@@ -3398,6 +3632,8 @@ import MyAbilityIds
     ..setGoldBountyAwardedNumberofDice(2)
     ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(147600, 0.02)
+
+    ..addItemDropTable(dropTable_Bosses_100_104)
 
 // ----------------------------------------------------------------------------
 
@@ -3427,6 +3663,8 @@ import MyAbilityIds
     ..setManaMaximum(500)
     ..setManaRegeneration(1.25)
 
+    ..addItemDropTable(dropTable_Bosses_100_104)
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(WAVE_BOSS_104, "Overlord", 6, UnitIds.overlord)
@@ -3453,5 +3691,7 @@ import MyAbilityIds
     ..setManaInitialAmount(300)
     ..setManaMaximum(300)
     ..setManaRegeneration(0.75)
+
+    ..addItemDropTable(dropTable_Bosses_100_104)
 
 // ----------------------------------------------------------------------------
