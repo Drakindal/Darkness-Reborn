@@ -346,9 +346,6 @@ class ItemTable //100% drop rate
 
     function giveFromTable(vec2 pos)
         dropItemsToStore.add(createItem(this.itemsListed.getRandomElement(), pos))
-
-    function giveUnitFromTable(unit toGiveTo)
-        toGiveTo.addItemById(this.itemsListed.getRandomElement())
     
 class ChanceItemTable extends ItemTable //% based drop rate
     private int dropChance
@@ -447,17 +444,17 @@ init
                 dropItemsToStore.remove(t)
                 t.remove()
 
-public function unit.giveDropItem(int targetUnit)
+public function unit.giveQuestItem(int targetUnit)
     if chanceSingleDropHash.has(targetUnit)
-        chanceSingleDropHash.get(targetUnit).giveUnitFromTable(this)
+        chanceSingleDropHash.get(targetUnit).giveFromTable(this.getPos())
     if guaranteedSingleDrophash.has(targetUnit)
-        guaranteedSingleDrophash.get(targetUnit).giveUnitFromTable(this)
+        guaranteedSingleDrophash.get(targetUnit).giveFromTable(this.getPos())
     if multiChanceMultiDropHash.has(targetUnit)
-        multiChanceMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveUnitFromTable(this)
+        multiChanceMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveFromTable(this.getPos())
     if guaranteedMultiDropHash.has(targetUnit)
-        guaranteedMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveUnitFromTable(this)
+        guaranteedMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveFromTable(this.getPos())
     if singleChanceMultiDropHash.has(targetUnit)
-        singleChanceMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveUnitFromTable(this)
+        singleChanceMultiDropHash.get(targetUnit).itemTables.getRandomElement().giveFromTable(this.getPos())
 
 function guaranteedSingleDropper(int uid, vec2 pos)
     guaranteedSingleDrophash.get(uid).giveFromTable(pos)

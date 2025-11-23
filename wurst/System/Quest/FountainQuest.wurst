@@ -85,7 +85,7 @@ function filterEpicQuestKill(int rarity, HashSet<int> targetUnitType) returns in
     return rarity * 3 + 7
 
 function player.epicQuestDrops(HashSet<int> targetUnitType)
-    playerHero.get(this).giveDropItem(targetUnitType.get(0))
+    playerHero.get(this).giveQuestItem(targetUnitType.get(0))
 
 function fountainQuestNormalReward(int rarity, player questOwner, HashSet<int> targetUnitType)
     let goldGained = 750 * rarity + 100
@@ -95,7 +95,7 @@ function fountainQuestNormalReward(int rarity, player questOwner, HashSet<int> t
     questOwner.addGold(goldGained)
     printTimedToPlayer("You have gained " + goldGained.toString() + " Gold and " + xpGained.toString() + " EXP.", 5, questOwner)
     if(rarity > 1)
-        playerHero.get(questOwner).giveDropItem(targetUnitType.get(0))
+        playerHero.get(questOwner).giveQuestItem(targetUnitType.get(0))
 
 function fountainQuestEliteReward(int rarity, player questOwner, HashSet<int> targetUnitType)
     let goldGained = 750 * rarity + 100
@@ -105,7 +105,7 @@ function fountainQuestEliteReward(int rarity, player questOwner, HashSet<int> ta
     questOwner.addGold(goldGained)
     questOwner.addLumber(lumberGain)
     printTimedToPlayer("You have gained " + goldGained.toString() + " Gold, " + lumberGain.toString() + " Lumber and " + xpGained.toString() + " EXP.", 10, questOwner)
-    playerHero.get(questOwner).giveDropItem(targetUnitType.get(0))
+    playerHero.get(questOwner).giveQuestItem(targetUnitType.get(0))
 
 function rewardTextFrame(int rarity, HashSet<int> targetUnitType) returns string
     let gold = 750 * rarity + 100
