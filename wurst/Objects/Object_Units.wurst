@@ -782,7 +782,6 @@ import AbilityObjEditing
     ..setSelectionScale(1.6)
 
 @compiletime function waveHeroes()
-
     new HeroDefinition(WAVE_HERO_7, UnitIds.paladin)// Death King (H03N)
     ..setNormalAbilities(commaList('A0NQ', 'A0NL', CREEP_ABILITY_5, CREEP_ABILITY_6, 'A0M2', 'A0DF', AbilityIds.inventory))
     ..setModelFile("Units\\Arthas Frostmourne\\KingArthas.mdx")

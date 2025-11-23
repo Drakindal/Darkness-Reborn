@@ -6,52 +6,43 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import AbilityIds
 
 @compiletime function defineCreeps()
-    new HeroDefinition(CREEP_BOSS_DREADLORD, "Dreadlord", 80, UnitIds.dreadlord)
+    new EnemyHeroDefinition(CREEP_BOSS_DREADLORD, "Dreadlord", 80, UnitIds.dreadlord)
     ..setNormalAbilities(commaList(CREEP_ABILITY_3, CREEP_ABILITY_10, 'A0NL', CREEP_ABILITY_1, 'A0NS', 'A0NN', AbilityIds.inventory))
 
-    ..setStartingStrength(902)
-    ..setStartingAgility(866)
-    ..setStartingIntelligence(759)
+    ..setStatsBase(900, 860, 740)
+
     ..setScalingValue(1.50)
     ..setSelectionScale(1.50)
+
+
     ..setAttack1CooldownTime(1.00)
-    ..setAttack1DamageBase(2000)
-    ..setAttack1DamageNumberofDice(2)
-    ..setAttack1DamageSidesperDie(6)
+    ..setAttackDamage1(2000, 4200)
     ..setAttack1AnimationBackswingPoint(0.550)
     ..setAttack1AnimationDamagePoint(0.550)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack2CooldownTime(1.80)
 
     ..setSpeedBase(450)
     ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBountyAwardedBase(4500)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
-
-    ..setHitPointsMaximumBase(865110)
-    ..setHitPointsRegenerationRate(2000.00)
-    ..setManaInitialAmount(100)
-    ..setManaMaximum(0)
-    ..setManaRegeneration(0.01)
+    ..setGoldBounty(35000, 96000)
+    ..setHpRel(865000, 0.05)
+    ..setMp(1000, 1)
 
 // ----------------------------------------------------------------------------
 
-    new HeroDefinition(CREEP_BOSS_VAMPIRE, "Vampire", 80, UnitIds.dreadlord)// Vampire (U00V)
+    new EnemyHeroDefinition(CREEP_BOSS_VAMPIRE, "Vampire", 80, UnitIds.dreadlord)
     ..setNormalAbilities(commaList('A0NL', CREEP_ABILITY_1, CREEP_ABILITY_3, 'A0NS', AbilityIds.inventory, 'A0NN'))
-    
+
+    ..setStatsBase(1320, 1150, 1200)
+
     ..setScalingValue(1.60)
-    ..setStartingStrength(1326)
-    ..setStartingAgility(1132)
-    ..setStartingIntelligence(1101)
     ..setSelectionScale(1.90)
+
     ..setAttack1CooldownTime(0.80)
-    ..setAttack1DamageBase(3000)
-    ..setAttack1DamageNumberofDice(2)
-    ..setAttack1DamageSidesperDie(6)
+    ..setAttackDamage1(3120, 6540)
     ..setAttack1AnimationBackswingPoint(0.550)
     ..setAttack1AnimationDamagePoint(0.550)
     ..setAttack1AttackType(AttackType.Magic)
@@ -59,14 +50,8 @@ import MyAbilityIds
     ..setSpeedBase(430)
     ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBountyAwardedBase(6000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
-
-    ..setHitPointsMaximumBase(1235012)
-    ..setHitPointsRegenerationRate(2500.00)
-    ..setManaInitialAmount(200)
-    ..setManaMaximum(0)
-    ..setManaRegeneration(0.01)
+    ..setGoldBounty(165000, 282000)
+    ..setHpRel(1235000, 0.08)
+    ..setMp(1000, 1)
 
 // ----------------------------------------------------------------------------
