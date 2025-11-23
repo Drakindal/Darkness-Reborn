@@ -26,7 +26,7 @@ class BlacksmithRecipe
         this.bs      = bs
 
     function interrupt()
-        printTimed("Interrupting! {0}".format(currRecipe.completedItem.getItemName()), 5)
+        printTimed("Interrupting! {0}".format(currRecipe.getCompletedItem().getItemName()), 5)
         destroy timerCb
         destroy processEndCb
         bs.setAnimation("Stand")
@@ -70,7 +70,7 @@ function recipeIsReady(unit bs, BlacksmithRecipe bsRecipe)
     // Add completed item
     let bsInv = getUnitInventory(bs)
     bsRecipe.currRecipe.consumeComponents(bsInv)
-    let completedItem = bsRecipe.currRecipe.completedItem
+    let completedItem = bsRecipe.currRecipe.getCompletedItem()
     destroy bsInv
 
     destroy bsRecipe
