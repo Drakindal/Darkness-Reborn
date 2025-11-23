@@ -6,6 +6,8 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import Units
+import ItemDrops
+import MyItemIds
 
 // ----------------------------------------------------------------------------
 
@@ -29,8 +31,11 @@ import Units
     ..setGoldBounty(249)
     ..setHp(5855, 7.6)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_GEM_OF_POISON,
+        ITEM_MOON_ARMOR
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -57,8 +62,11 @@ import Units
     ..setHp(5000, 5)
     ..setMp(600, 1.5)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_AMULET_OF_RECALL,
+        ITEM_GHOUL_FRENZY
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -84,8 +92,11 @@ import Units
     ..setGoldBounty(289)
     ..setHp(5688, 0.5)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_MAGIC_POTION,
+        ITEM_LIONS_RING
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -111,8 +122,11 @@ import Units
     ..setGoldBounty(299)
     ..setHp(5875, 10)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_MINDSTAFF,
+        ITEM_DRUID_OF_CLAW_AMATEUR
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -142,8 +156,11 @@ import Units
     ..setHp(5200, 1.5)
     ..setMp(600, 12)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SCEPTER_OF_HEALING,
+        ITEM_ARCANE_SCROLL
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -167,8 +184,11 @@ import Units
     ..setGoldBounty(309)
     ..setHp(5900, 3)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_KEY_OF_THREE_MOONS,
+        ITEM_GLOVES_OF_SPELL_MASTERY
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -194,8 +214,11 @@ import Units
     ..setGoldBounty(379, 4, 3)
     ..setHp(6800, 7.5)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SCEPTER_OF_MASTERY,
+        ITEM_SCROLL_OF_MAGIC
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -220,8 +243,11 @@ import Units
     ..setGoldBounty(399)
     ..setHp(8565, 8.0)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SHAMANIC_TOTEM,
+        ITEM_HEART_OF_SEARINOX
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -246,8 +272,11 @@ import Units
     ..setHp(5555, 13)
     ..setMp(300, 1.5)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SCEPTER_OF_SEA,
+        ITEM_SACRED_RELIC
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -270,8 +299,11 @@ import Units
     ..setGoldBounty(399)
     ..setHp(6000, 22)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SCROLL_OF_UNHOLY_LEGION,
+        ITEM_DRUID_OF_CLAW_MASTER
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -298,8 +330,11 @@ import Units
     ..setHp(15000, 50)
     ..setMp(800, 10)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_CRYSTAL_SKULL,
+        ITEM_JEWELRY_OF_LIFE
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -331,7 +366,10 @@ import Units
     ..setHp(27000, 125)
     ..setMp(500, 1.25)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_SPHERE_OF_FIRE,
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
 
 // ----------------------------------------------------------------------------

@@ -49,8 +49,12 @@ public let wordLevel                  = "Level {0}:".setColor(colAbilityLevel)
 
 public let monsterDrop            = "Monster Drop"
 public let bossDrop               = "Boss Drop"
-public let wordChanceToDrop       = "Chance to drop:".setColor("|cffffff00")
-   
+public let wordDropTable          = "Drops 1 random item from the list:".setColor("|cffffff00")
+public let wordDropTableN         = "Drops {0} random items from the list:".setColor("|cffffff00")
+public let wordDropTableChance    = "{0}% chance to drop 1 random item:".setColor("|cffffff00")
+public let wordDropTableChanceN   = "{0}% chance to drop {1} random items:".setColor("|cffffff00")
+public let wordDropTableMultiple  = "Drops random items from each row:".setColor("|cffffff00")
+
 public let wordEffects            = "|c00FFFC01Effects:|r\n"
 public let wordExtraEffects       = "|c00FFFC01Extra Effects:|r\n"
 public let wordMaterials          = "|c00FEBA0EMaterials Required to Craft This Item:|r\n"

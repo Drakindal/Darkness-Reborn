@@ -6,6 +6,7 @@ import UnitIds
 import ObjectIds
 import MyItemIds
 import MyCreepDefinition
+import ItemDrops
 
 // ----------------------------------------------------------------------------
 
@@ -27,11 +28,12 @@ import MyCreepDefinition
     ..setGoldBounty(39)
     ..setHp(355, 0.5)
 
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_RUSTY_MINING_PICK,
         ITEM_GAUNTLETS_OF_OGRE_STRENGTH,
         ITEM_WIRTS_LEG
-    )
+    ))
     
 // ----------------------------------------------------------------------------
 
@@ -56,11 +58,12 @@ import MyCreepDefinition
     ..setHp(425, 0.5)
     ..setMp(300, 0.75)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_DIAMOND_OF_SUMMONING,
         ITEM_SLIPPERS_OF_AGILITY,
         ITEM_MANTLE_OF_INTELLIGENCE
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -83,14 +86,15 @@ import MyCreepDefinition
     ..setGoldBounty(39)
     ..setHp(395, 0.5)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_DIAMOND_OF_SUMMONING,
         ITEM_WIRTS_LEG,
         ITEM_RUSTY_MINING_PICK,
         ITEM_MANTLE_OF_INTELLIGENCE,
         ITEM_SKULL_SHIELD,
         ITEM_DRUID_POUCH
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -113,11 +117,12 @@ import MyCreepDefinition
     ..setGoldBounty(39)
     ..setHp(455, 0.5)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_RUNED_GAUNTLETS,
         ITEM_SKULL_SHIELD,
         ITEM_DRUID_POUCH
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -140,11 +145,12 @@ import MyCreepDefinition
     ..setGoldBounty(69)
     ..setHp(1000, 0.5)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_VOODOO_DOLL,
         ITEM_ANCIENT_FIGURINE,
         ITEM_SPIDER_SILK_BROACH
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -167,11 +173,12 @@ import MyCreepDefinition
     ..setHp(1750, 3.0)
     ..setMp(300, 0.75)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_BATTLE_STANDARD,
         ITEM_BLADEBANE_ARMOR,
         ITEM_FIREHAND_GAUNTLETS
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -198,11 +205,12 @@ import MyCreepDefinition
     ..setGoldBounty(84)
     ..setHp(1650, 0.5)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_FLARE_GUN,
         ITEM_ANCESTRAL_STAFF,
         ITEM_POISON_SPEARS
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -227,11 +235,12 @@ import MyCreepDefinition
     ..setHp(1700, 0.5)
     ..setMp(400, 1.0)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_KILLMAIM,
         ITEM_DRUID_OF_CLAW,
         ITEM_BOOK_OF_DEAD
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -260,10 +269,11 @@ import MyCreepDefinition
     ..setHp(1850, 0.5)
     ..setMp(400, 1.0)
     
-    ..addDropItems(
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_HORN_OF_CLOUDS,
         ITEM_HALF_MOON_ARMOR
-    )
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -287,8 +297,11 @@ import MyCreepDefinition
     ..setGoldBounty(94)
     ..setHp(2255, 0.5)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_HUMAN_FLAG,
+        ITEM_BLOOD_GEM
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -318,8 +331,11 @@ import MyCreepDefinition
     ..setHp(3750, 0.5)
     ..setMp(300, 0.75)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_STAFF_OF_PRESERVATION,
+        ITEM_SPIKED_ARMOR
+    ))
 
 // ----------------------------------------------------------------------------
 
@@ -348,7 +364,10 @@ import MyCreepDefinition
     ..setHp(4750, 5.0)
     ..setMp(1000, 1.25)
     
-    ..addDropItems(
-    )
+    ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
+        ITEM_FLAK_CANNONS,
+        ITEM_THUNDERLIZARD_DIAMOND
+    ))
 
 // ----------------------------------------------------------------------------

@@ -6,6 +6,8 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import MyItemIds
+import ItemDrops
 
 @compiletime function defineCreeps()
     new MyCreepDefinition(CREEP_BOSS_SEA_ELEMENTAL_L1, "Sea Elemental I", 50, UnitIds.seaelemental)
@@ -16,9 +18,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1250)
     ..setAttack1CooldownTime(0.20)
-    ..setAttack1DamageBase(8755)
-    ..setAttack1DamageNumberofDice(7)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(8755, 14950)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -33,6 +33,23 @@ import MyAbilityIds
     ..setGoldBounty(168000, 326000)
     ..setHpRel(2850000, 0.02)
     ..setMp(45000, 1)
+    
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_PEARL,
+        ITEM_PERFECT_GARNET,
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(8)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -44,9 +61,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1350)
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(11250)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(11250, 18400)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -62,6 +77,31 @@ import MyAbilityIds
     ..setHpRel(5850000, 0.025)
     ..setMp(45000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_PEARL,
+        ITEM_PERFECT_SAPPHIRE,
+        ITEM_PERFECT_AMETHYST,
+        ITEM_PERFECT_GARNET,
+        ITEM_PERFECT_TOPAZ
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_FROST_SHIELD
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(10)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(CREEP_BOSS_SEA_ELEMENTAL_L3, "Sea Elemental III", 50, UnitIds.seaelemental)
@@ -72,9 +112,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1450)
     ..setAttack1CooldownTime(0.20)
-    ..setAttack1DamageBase(13588)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(15400, 27200)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\SeaElementalMissile\\SeaElementalMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -90,6 +128,30 @@ import MyAbilityIds
     ..setHpRel(10852000, 0.03)
     ..setMp(55000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_PERFECT_PEARL,
+        ITEM_PERFECT_SAPPHIRE,
+        ITEM_PERFECT_GARNET,
+        ITEM_FROST_SHIELD
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_WATER_SCROLL
+    ))
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(16)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(CREEP_BOSS_DRAGON_TURTLE, "Dragon Turtle", 50, UnitIds.dragonturtle)
@@ -100,9 +162,7 @@ import MyAbilityIds
     
     ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
-    ..setAttack1DamageBase(28500)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(36300, 75400)
     ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
@@ -116,5 +176,33 @@ import MyAbilityIds
     ..setGoldBounty(2862000, 4962000)
     ..setHpRel(15177000, 0.033)
     ..setMp(65000, 1)
+    
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_PERFECT_PEARL,
+        ITEM_PERFECT_SAPPHIRE,
+        ITEM_WATER_SCROLL,
+        ITEM_FROST_SHIELD,
+        ITEM_CRONUS_HAND
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_CRONUS_HAND
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_RUBYSTONE
+    ))
+    ..addDropTable(new ItemDropTable(3)..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(16)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------

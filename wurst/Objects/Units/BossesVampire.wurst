@@ -7,6 +7,8 @@ import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
 import AbilityIds
+import ItemDrops
+import MyItemIds
 
 @compiletime function defineCreeps()
     new EnemyHeroDefinition(CREEP_BOSS_DREADLORD, "Dreadlord", 80, UnitIds.dreadlord)
@@ -31,6 +33,26 @@ import AbilityIds
     ..setHpRel(865000, 0.05)
     ..setMp(1000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(5)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_HIPPOPUS
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_SCOURGE_BONE_CHIMES
+    ))
+    ..addDropTable(new ItemDropTable(3)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L2,
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
     new EnemyHeroDefinition(CREEP_BOSS_VAMPIRE, "Vampire", 80, UnitIds.dreadlord)
@@ -53,5 +75,25 @@ import AbilityIds
     ..setGoldBounty(165000, 282000)
     ..setHpRel(1235000, 0.08)
     ..setMp(1000, 1)
+
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_RUBYSTONE
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_CARNELIAN
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_SKULL_OF_MALGANIS
+    ))
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L2,
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    )
 
 // ----------------------------------------------------------------------------

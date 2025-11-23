@@ -7,6 +7,7 @@ import ClosureEvents
 import HashMap
 import TowerAbilities
 import ClosureForGroups
+import LinkedList
 // key = creep Id. value = time to respawn.
 let creepRespawns = new HashMap<int,real>
 // key = player Id. value = creep Id.
@@ -19,6 +20,27 @@ real facing = 270
 real facingUp = 90
 integer frostyCounter = 0
 
+class RespawnTime
+    int unitId
+    real timeToRespawn
+
+    construct(int unitId, real timeToRespawn)
+        this.unitId = unitId
+        this.timeToRespawn = timeToRespawn
+
+let creepsRespawnTimeInitList = new LinkedList<RespawnTime>()
+
+public function int.addRespawnTime(real timeToRespawn)
+    creepsRespawnTimeInitList.add(new RespawnTime(this, timeToRespawn))
+
+init
+    for entry in creepsRespawnTimeInitList
+        creepRespawns.put(entry.unitId, entry.timeToRespawn)
+        destroy entry
+    creepsRespawnTimeInitList.clear()
+    destroy creepsRespawnTimeInitList
+
+    creepRespawner()
 
 function int.testForEarlyMob() returns bool
     if this == CREEP_LEFT_SPIDER
@@ -30,9 +52,6 @@ function int.testForEarlyMob() returns bool
     if this == CREEP_LEFT_TIMBER_WOLF
         return false
     return true
-
-init
-    creepRespawner()
 
 public function player.setCreepSettings(int unitId, vec2 pos)
     let pid = this.getId()
@@ -84,23 +103,12 @@ function creepRespawner()
                         doAfterCreepRespawn(uid, u.getPos(), u.getFacingAngle())
         
 public function eliteSideCreepsSetup()
-    for int i = 1 to 24
-        creepRespawns.put(LEFT_CREEP[i], 1)
-
     for i = 1 to 5
-        creepRespawns.put(ELITE_CREEP[i], 5)
         let u = createUnit(hostile, ELITE_CREEP[i], eliteLoc[i].getCenter(), facingUp.asAngleDegrees())
         u..setArmor(u.getArmor() * armorDifficultyModifier[gameDifficulty])
         u..setMaxHP((u.getMaxHP() * healthDifficultyModifier[gameDifficulty]).toInt()).addHP(u.getMaxHP())
         
     for i = 6 to 10
-        if i == 6 or i == 7
-            creepRespawns.put(ELITE_CREEP[i], 1)
-        if i == 8 or i == 10
-            creepRespawns.put(ELITE_CREEP[i], 10)
-        if i == 9
-            creepRespawns.put(ELITE_CREEP[i], 30)
-                
         let u = createUnit(hostile, ELITE_CREEP[i], eliteLoc[i].getCenter(), facing.asAngleDegrees())
         u..setArmor(u.getArmor() * armorDifficultyModifier[gameDifficulty])
         u..setMaxHP((u.getMaxHP() * healthDifficultyModifier[gameDifficulty]).toInt()).addHP(u.getMaxHP())

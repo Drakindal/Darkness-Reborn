@@ -6,6 +6,8 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import ItemDrops
+import MyItemIds
 
 // ----------------------------------------------------------------------------
 
@@ -32,6 +34,13 @@ import MyAbilityIds
     ..setHpRel(65000, 0.01)
     ..setMp(50000, 1.25)
 
+    ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
+    ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_SPHERE_OF_WATER,
+        ITEM_ESSENCE_OF_ASZUNE,
+        ITEM_SPHERE_OF_FIRE
+    ))
+    
 // ----------------------------------------------------------------------------
 
     new MyCreepDefinition(CREEP_ELITE_HYDRALISK, "Hydralisk", 25, UnitIds.hydralisk)
@@ -53,6 +62,19 @@ import MyAbilityIds
 
     ..setGoldBounty(1700, 2700)
     ..setHpRel(85000, 0.01)
+    
+    ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_CRYSTAL_SWORD,
+        ITEM_ESSENCE_OF_ASZUNE,
+        ITEM_SPHERE_OF_FIRE,
+        ITEM_DREAM_SWORD
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_RARE)..populate(
+        ITEM_LAZARUS_BELT
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -75,6 +97,24 @@ import MyAbilityIds
     ..setGoldBounty(2500, 5600)
     ..setHpRel(150000, 0.02)
     ..setMp(500, 1.25)
+    
+    ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_CROWN_OF_WIZARD,
+        ITEM_CROWN_OF_ASSASSIN,
+        ITEM_CROWN_OF_SOLDIER,
+        ITEM_GLOVERSHIELD
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_DREAM_SWORD,
+        ITEM_CRYSTAL_SWORD,
+        ITEM_BLOODY_DAGGER
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -95,6 +135,27 @@ import MyAbilityIds
     ..setGoldBounty(1800, 3800)
     ..setHpRel(225000, 0.03)
     ..setMp(600, 1.5)
+    
+    ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_CROWN_OF_WIZARD,
+        ITEM_CROWN_OF_ASSASSIN,
+        ITEM_CROWN_OF_SOLDIER,
+        ITEM_GLOVERSHIELD
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_DREAM_SWORD,
+        ITEM_CRYSTAL_SWORD,
+        ITEM_BLOODY_DAGGER,
+        ITEM_ESSENCE_OF_ASZUNE,
+        ITEM_SPHERE_OF_WATER,
+        ITEM_SPHERE_OF_FIRE
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -122,6 +183,24 @@ import MyAbilityIds
     ..setGoldBounty(3500, 9200)
     ..setHpRel(300000, 0.05)
     ..setMp(10000, 1.5)
+    
+    ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_CROWN_OF_WIZARD,
+        ITEM_CROWN_OF_ASSASSIN,
+        ITEM_CROWN_OF_SOLDIER,
+        ITEM_GLOVERSHIELD
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_BOOK_OF_WIND,
+        ITEM_BOOK_OF_EARTHQUAKE,
+        ITEM_BOOK_OF_RAIN
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -141,6 +220,8 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Hero)
     ..setGoldBounty(6500, 8500)
     ..setHp(165000, 0.005)
+    
+    ..addRespawnTime(RESPAWN_TIME_GOLD_FARM)
 
 // ----------------------------------------------------------------------------
 
@@ -162,6 +243,8 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Hero)
     ..setGoldBounty(9500, 14200)
     ..setHpRel(225000, 0.0125)
+    
+    ..addRespawnTime(RESPAWN_TIME_GOLD_FARM)
 
 // ----------------------------------------------------------------------------
 
@@ -185,8 +268,18 @@ import MyAbilityIds
     ..setHitPointsRegenerationType("night")
     ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBounty(8500, 26200)
+    ..setGoldBounty(11500, 36200)
     ..setHpRel(564000, 0.02)
+    
+    ..addRespawnTime(RESPAWN_TIME_GOLD_FARM2)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(50, 4)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_TITANIUM
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -214,6 +307,19 @@ import MyAbilityIds
     ..setGoldBounty(62000, 242000)
     ..setHpRel(1525000, 0.01)
     ..setMp(95000, 10)
+    
+    ..addRespawnTime(RESPAWN_TIME_BOSSES)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_RUBY_FRAGMENTS_L1
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_RUBYSTONE
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_SCARYS_POTION
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
@@ -240,5 +346,19 @@ import MyAbilityIds
     ..setGoldBounty(90000, 140000)
     ..setHp(5125000, 0.005)
     ..setMp(52000, 10)
+    
+    ..addRespawnTime(RESPAWN_TIME_GOLD_FARM3)
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
+        ITEM_MENELAUS,
+        ITEM_CROWN_OF_EVIL,
+        ITEM_SOUL_BLAME
+    ))
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------

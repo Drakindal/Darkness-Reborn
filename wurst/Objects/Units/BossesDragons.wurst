@@ -6,6 +6,8 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import ItemDrops
+import MyItemIds
 
 @compiletime function defineCreeps()
     new MyCreepDefinition(CREEP_BOSS_DRAGON_L1, "GhostDragon I", 50, UnitIds.azuredragon)
@@ -15,9 +17,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(500)
     ..setAttack1CooldownTime(0.50)
-    ..setAttack1DamageBase(825)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(820, 1150)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(400.00)
@@ -34,10 +34,24 @@ import MyAbilityIds
     ..setGoldBounty(7500, 11500)
     ..setHpRel(55000, 0.04)
     ..setMp(6000, 1.5)
+    
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_BONE,
+        ITEM_DRAGON_SKIN
+    ))
+    ..addDropTable(new ItemDropTable(3)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L2, "GhostDragon II", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L2, "GhostDragon II", 55, UnitIds.azuredragon)
     ..setNormalAbilities(commaList('Afrz', 'Afrb'))
 
     ..setScalingValue(1.75)
@@ -45,9 +59,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(800)
     ..setAttack1CooldownTime(0.50)
-    ..setAttack1DamageBase(1095)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(1090, 1670)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(600.00)
@@ -66,9 +78,23 @@ import MyAbilityIds
     ..setHpRel(85200, 0.035)
     ..setMp(11000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_BONE,
+        ITEM_DRAGON_SKIN
+    ))
+    ..addDropTable(new ItemDropTable(3)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+    
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L3, "GhostDragon III", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L3, "GhostDragon III", 60, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.00)
@@ -76,9 +102,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1000)
     ..setAttack1CooldownTime(0.40)
-    ..setAttack1DamageBase(1825)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(1820, 2020)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(600.00)
@@ -97,9 +121,23 @@ import MyAbilityIds
     ..setHpRel(182500, 0.03)
     ..setMp(25000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SKIN,
+        ITEM_DRAGON_CLAW
+    ))
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L4, "GhostDragon IV", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L4, "GhostDragon IV", 65, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.25)
@@ -107,9 +145,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(0.30)
-    ..setAttack1DamageBase(2225)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(2150, 2780)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(800.00)
@@ -127,9 +163,23 @@ import MyAbilityIds
     ..setHpRel(365000, 0.025)
     ..setMp(152000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SKIN,
+        ITEM_DRAGON_CLAW
+    ))
+    ..addDropTable(new ItemDropTable(4)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L5, "GhostDragon V", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L5, "GhostDragon V", 70, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.50)
@@ -137,9 +187,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(0.20)
-    ..setAttack1DamageBase(3866)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(3820, 4350)
     ..setAttack1Range(1200)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
@@ -158,9 +206,23 @@ import MyAbilityIds
     ..setHpRel(685000, 0.02)
     ..setMp(255000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SPIRIT,
+        ITEM_DRAGON_CLAW
+    ))
+    ..addDropTable(new ItemDropTable(5)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L6, "GhostDragon VI", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L6, "GhostDragon VI", 75, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.50)
@@ -168,9 +230,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(4888)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(4600, 6400)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(800.00)
@@ -189,9 +249,25 @@ import MyAbilityIds
     ..setHpRel(885000, 0.03)
     ..setMp(32000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SPIRIT,
+        ITEM_DRAGON_CLAW,
+        ITEM_DRAGON_SKIN,
+        ITEM_DRAGON_BONE
+    ))
+    ..addDropTable(new ItemDropTable(5)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L7, "GhostDragon VII", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L7, "GhostDragon VII", 80, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.60)
@@ -199,9 +275,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(5888)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(5800, 7200)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(800.00)
@@ -220,9 +294,25 @@ import MyAbilityIds
     ..setHpRel(1244000, 0.04)
     ..setMp(35000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_DRAGON_SPIRIT,
+        ITEM_DRAGON_CLAW,
+        ITEM_DRAGON_SKIN,
+        ITEM_DRAGON_BONE
+    ))
+    ..addDropTable(new ItemDropTable(6)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_DRAGON_L8, "GhostDragon VIII", 50, UnitIds.azuredragon)
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L8, "GhostDragon VIII", 85, UnitIds.azuredragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
 
     ..setScalingValue(2.70)
@@ -230,9 +320,7 @@ import MyAbilityIds
 
     ..setRangedAttack1(1200)
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(7888)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(7880, 12850)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
     ..setAttack1DamageSpillDistance(800.00)
@@ -251,4 +339,140 @@ import MyAbilityIds
     ..setHpRel(1856000, 0.05)
     ..setMp(45000, 1)
 
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_DRAGON_SPIRIT,
+        ITEM_DRAGON_CLAW,
+        ITEM_DRAGON_SKIN,
+        ITEM_DRAGON_BONE
+    ))
+    ..addDropTable(new ItemDropTableChance(50)..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable(6)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+    
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L9, "GhostDragon XIX", 90, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.70)
+    ..setSelectionScale(2.70)
+
+    ..setRangedAttack1(2200)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttackDamage1(21250, 36800)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(1100, 1800, 1900)
+    ..setAttack1AnimationBackswingPoint(0.350)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(400)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(452000, 942000)
+    ..setHpRel(5456000, 0.05)
+    ..setMp(45000, 1)
+
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SPIRIT
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_CLAW
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SKIN
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_BONE
+    ))
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(2)..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_RUBYSTONE,
+        ITEM_SKULL_OF_MALGANIS
+    ))
+    ..addDropTable(new ItemDropTable(10)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
+    
+    new MyCreepDefinition(CREEP_BOSS_DRAGON_L10, "GhostDragon XX", 100, UnitIds.azuredragon)
+    ..setNormalAbilities(commaList(CREEP_ABILITY_1, CREEP_ABILITY_10, 'Afrz', 'Afrb'))
+
+    ..setScalingValue(2.70)
+    ..setSelectionScale(2.70)
+
+    ..setRangedAttack1(2200)
+    ..setAttack1CooldownTime(0.10)
+    ..setAttackDamage1(41250, 92600)
+    ..setAttack1ProjectileArc(0.10)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl")
+    ..setAttack1DamageSpillDistance(800.00)
+    ..setAttack1DamageSpillRadius(800.00)
+    ..setAoe1(1100, 1800, 1900)
+    ..setAttack1AnimationBackswingPoint(0.350)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setAirUnit(240, 90)
+    ..setSpeedBase(400)
+    ..setCollisionSize(8.00)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(1372000, 2442000)
+    ..setHpRel(12056000, 0.05)
+    ..setMp(45000, 1)
+
+    ..addItemDropTable(new ItemDropTableMultiple()
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SPIRIT
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_CLAW
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_SKIN
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_DRAGON_BONE
+    ))
+    ..addDropTable(new ItemDropTable(5)..populate(
+        ITEM_TOME_OF_KNOWLEDGE_L3
+    ))
+    ..addDropTable(new ItemDropTable(3)..populate(
+        ITEM_BULION
+    ))
+    ..addDropTable(new ItemDropTable()..populate(
+        ITEM_PERFECT_RUBYSTONE,
+        ITEM_SKULL_OF_MALGANIS
+    ))
+    ..addDropTable(new ItemDropTable(20)..populate(
+        ITEM_TOME_OF_HEALTH_L1,
+        ITEM_TOME_OF_AGILITY_L1,
+        ITEM_TOME_OF_INTELLIGENCE_L1,
+        ITEM_TOME_OF_STRENGTH_L1,
+        ITEM_TOME_OF_KNOWLEDGE_L1
+    ))
+    )
 // ----------------------------------------------------------------------------

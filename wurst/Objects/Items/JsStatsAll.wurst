@@ -127,7 +127,7 @@ import DebugVar
         
         addItemInBoxForDebug = DEBUG
     //I0AK
-        new MyItemWithCraftInfoDefinition(ITEM_ODIN_NECKLE, jackSmithRecipe, -1)
+        new MyItemWithCraftInfoDefinition(ITEM_ODIN_NECKLACE, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInv_jewelry_necklace_32.blp")    
         ..setClassification("Campaign")
         ..addStats(addAllStats(1500))

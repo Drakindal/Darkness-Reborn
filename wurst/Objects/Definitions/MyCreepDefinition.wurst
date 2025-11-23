@@ -4,8 +4,29 @@ import UnitObjEditing
 import ObjectIds
 import MyItemDefinition
 import MyColors
-import CommonDescriptions
-import ItemsNames
+import ItemDrops
+import RespawnCreeps
+
+// ----------------------------------------------------------------------------
+
+// All creeps in the left rooms.
+public constant real RESPAWN_TIME_NORMAL_CREEPS = 1
+// From nerubian queen to doom guard.
+public constant real RESPAWN_TIME_ELITE_CREEPS  = 5
+// Footman, captain
+public constant real RESPAWN_TIME_GOLD_FARM     = 1
+// Scary scream
+public constant real RESPAWN_TIME_GOLD_FARM2    = 3
+// Revenant
+public constant real RESPAWN_TIME_GOLD_FARM3    = 10
+// Frosty snowman, and other bosses.
+public constant real RESPAWN_TIME_BOSSES        = 30
+
+// 20% to drop 1 item from the list.
+public constant int  DROP_CHANCE_NORMAL_CREEPS = 20
+
+public constant int  DROP_CHANCE_ELITE_CREEPS_NORMAL = 25
+public constant int  DROP_CHANCE_ELITE_CREEPS_RARE   = 10
 
 // ----------------------------------------------------------------------------
 
@@ -18,6 +39,7 @@ module ModuleUnitDefinition
     private string targetsAllowed = stdTargetsAllowed
     private bool isRanged1 = false
     private bool isRanged2 = false
+    private ItemDropTableBase dropTable = null
     protected UnitOrBuildingOrHeroDefinition u
 
 // ----------------------------------------------------------------------------
@@ -54,12 +76,16 @@ module ModuleUnitDefinition
         u.setManaInitialAmount(mp)
         u.setManaRegeneration(mpReg)
 
-    function addDropItems(vararg int itemIds)
-        for itemId in itemIds
-            dropsDescription += "\n" + itemId.getItemName()
+    function addItemDropTable(ItemDropTableBase dropTable)
+        this.dropTable = dropTable
+        u.newId.addDropTable(dropTable)
 
-    function addTp(int tpItemId, string icon)
+    function addRespawnTime(real timeToRespawn)
+        u.newId.addRespawnTime(timeToRespawn)
+
+    private function addTp(int tpItemId, string icon)
         new MyItemDefinitionBase(tpItemId)
+        ..setGoldCost(0)
         ..setInterfaceIcon(icon)
         ..setActivelyUsed(true)
         ..setNumberofCharges(1)
@@ -68,9 +94,9 @@ module ModuleUnitDefinition
         ..setStockStartDelay(3)
         ..setUseAutomaticallyWhenAcquired(true)
         ..setName("Creep tp " + name)
-        ..setTooltipBasic(name + " [Level {0}]".format(lvl.toString()).setColor(colAbilityLevel))
+        ..setTooltipBasic("Tp to" + name + " [Level {0}]".format(lvl.toString()).setColor(colAbilityLevel))
         ..setTooltipExtended("Teleports you to the {0}.\n\n".format(name) +
-        wordChanceToDrop + dropsDescription)
+        dropTable.getDescription())
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
