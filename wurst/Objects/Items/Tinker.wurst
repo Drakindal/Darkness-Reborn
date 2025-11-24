@@ -38,7 +38,7 @@ import DebugVar
     ..setClassification("Artifact")
     ..addStats(addDamage(2000))
     ..addStats(addAttackSpeed(2.2))
-    ..addStats(addArmorOnHit(-135))
+    ..addStats(addPen(penType.Physical, 0.4))
     ..addComponents(
     ITEM_DARK_STEEL_SWORD,
     ITEM_CRYSTAL_SWORD)
@@ -104,7 +104,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAdept 002.blp") 
     ..setClassification("Artifact")
-    ..addStats(addArmor(600))
+    ..addStats(addRes(resType.Physical, 0.25))
+    ..addStats(addRes(resType.Magical, 0.25))
     ..addStats(addHp(15000))
     ..addStats(addHpReg(250))
     ..addStats(addSpikes(2.5))

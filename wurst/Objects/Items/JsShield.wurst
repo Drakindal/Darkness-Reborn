@@ -13,7 +13,8 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_SHIELD_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(8))
+        ..addStats(addRes(resType.Magical, 0.01))
+        ..addStats(addRes(resType.Physical, 0.01))
         ..addStats(addDamageBlock(blockType.PostResistances, 50))
         ..register()
 
@@ -21,7 +22,8 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_SHIELD_L2)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(20))
+        ..addStats(addRes(resType.Magical, 0.02))
+        ..addStats(addRes(resType.Physical, 0.02))
         ..addStats(addDamageBlock(blockType.PostResistances, 100))
         ..register()
 
@@ -29,7 +31,8 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_SHIELD_L3)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(45))
+        ..addStats(addRes(resType.Magical, 0.04))
+        ..addStats(addRes(resType.Physical, 0.04))
         ..addStats(addDamageBlock(blockType.PostResistances, 300))
         ..register()
 
@@ -37,7 +40,8 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_SHIELD_L4)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG2.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(80))
+        ..addStats(addRes(resType.Magical, 0.07))
+        ..addStats(addRes(resType.Physical, 0.07))
         ..addStats(addDamageBlock(blockType.PostResistances, 600))
         ..register()
         addItemInBoxForDebug = false
@@ -46,7 +50,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L1, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(15))
+        ..addStats(addRes(resType.Magical, 0.02))
+        ..addStats(addRes(resType.Physical, 0.02))
         ..addStats(addDamageBlock(blockType.PostResistances, 100))
         ..addComponents(
         ITEM_FORGE_SHIELD_L1,
@@ -57,7 +62,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L2, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(40))
+        ..addStats(addRes(resType.Magical, 0.03))
+        ..addStats(addRes(resType.Physical, 0.03))
         ..addStats(addDamageBlock(blockType.PostResistances, 250))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L1,
@@ -68,7 +74,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L3, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(60))
+        ..addStats(addRes(resType.Magical, 0.08))
+        ..addStats(addRes(resType.Physical, 0.08))
         ..addStats(addDamageBlock(blockType.PostResistances, 600))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L2,
@@ -80,7 +87,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L4, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(100))
+        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.1))
         ..addStats(addDamageBlock(blockType.PostResistances, 1200))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L3,
@@ -91,7 +99,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L5, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(130))
+        ..addStats(addRes(resType.Magical, 0.12))
+        ..addStats(addRes(resType.Physical, 0.12))
         ..addStats(addDamageBlock(blockType.PostResistances, 2500))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L4,
@@ -102,7 +111,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L6, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(160))
+        ..addStats(addRes(resType.Magical, 0.14))
+        ..addStats(addRes(resType.Physical, 0.14))
         ..addStats(addDamageBlock(blockType.PostResistances, 6000))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L5,
@@ -115,7 +125,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_BERSERKERS_SHIELD, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkersShoulder.blp")    
         ..setClassification("Campaign")
-        ..addStats(addArmor(200))
+        ..addStats(addRes(resType.Magical, 0.16))
+        ..addStats(addRes(resType.Physical, 0.16))
         ..addStats(addDamageBlock(blockType.PostResistances, 12000))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L6,

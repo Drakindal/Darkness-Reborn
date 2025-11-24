@@ -53,7 +53,7 @@ import Icons
     ..setMaxStack(1)
     ..setName("Upgrade Armor")
     ..setTooltipBasic("Upgrade Armor")
-    ..setTooltipExtended("Upgrade armor by 5 each time")
+    ..setTooltipExtended("Upgrade universal armor resistance by 4% each time")
     ..setHotkey("Q")
 
     new MyItemDefinition(UPGRADE_BASE_HEALTH, ItemIds.tomeofPower)
