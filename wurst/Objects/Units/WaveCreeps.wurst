@@ -21,6 +21,8 @@ import AbilityObjEditing
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     
+    ..setSpeedBase(210)
+
     ..setGoldBounty(30, 36)
     ..setHpRel(400, 0.02)
 

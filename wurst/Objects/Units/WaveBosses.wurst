@@ -324,13 +324,14 @@ import MyItemIds
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
 
-    ..setAttack1CooldownTime(1.50)
-    ..setAttackDamage1(180)
-    ..setAttack1DamageNumberofDice(3)
-    ..setAttack1DamageSidesperDie(6)
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.80)
+    ..setAttackDamage1(180, 240)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     
+    ..setSpeedBase(210)
+
     ..setGoldBounty(850, 950)
     ..setHpRel(4800, 0.02)
 
@@ -342,10 +343,9 @@ import MyItemIds
     ..setScalingValue(1.40)
     ..setSelectionScale(1.00)
 
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.10)
-    ..setAttackDamage1(100)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(4)
+    ..setAttackDamage1(100, 120)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
 
@@ -353,8 +353,6 @@ import MyItemIds
     ..setCollisionSize(48.00)
 
     ..setGoldBounty(280, 340)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
     ..setHpRel(2300, 0.03)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
@@ -370,9 +368,7 @@ import MyItemIds
 
     ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
-    ..setAttackDamage1(90)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(6)
+    ..setAttackDamage1(90, 140)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -382,13 +378,9 @@ import MyItemIds
     
     ..setSpeedBase(350)
     
-    ..setGoldBounty(300)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(280, 320)
     ..setHpRel(1800, 0.03)
-    ..setManaInitialAmount(200)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(0.50)
+    ..setMp(200, 0.5)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
     
@@ -408,9 +400,7 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.660)
     
-    ..setGoldBounty(300)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(280, 320)
     ..setHpRel(2310, 0.03)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
@@ -435,9 +425,7 @@ import MyItemIds
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Pierce)
     
-    ..setGoldBounty(300)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(280, 320)
     ..setHpRel(1900, 0.03)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
@@ -458,9 +446,7 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.560)
     
-    ..setGoldBounty(1050)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(950, 1100)
     ..setHpRel(7200, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
@@ -482,15 +468,11 @@ import MyItemIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.470)
     ..setAttack1AnimationDamagePoint(0.530)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
-    ..setGoldBounty(350)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(310, 390)
     ..setHpRel(2750, 0)
-    ..setManaInitialAmount(400)
-    ..setManaMaximum(600)
-    ..setManaRegeneration(1.50)
+    ..setMp(600, 1.5)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
 
@@ -519,13 +501,9 @@ import MyItemIds
     ..setCollisionSize(16.00)
     ..setArmorType(ArmorType.Medium)
 
-    ..setGoldBounty(350)
-    ..setGoldBountyAwardedNumberofDice(5)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(310, 390)
     ..setHpRel(2760, 0.03)
-    ..setManaInitialAmount(700)
-    ..setManaMaximum(700)
-    ..setManaRegeneration(5.00)
+    ..setMp(700, 5)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
 
@@ -543,15 +521,13 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(2)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(290)
     ..setTurnRate(0.60)
     ..setCollisionSize(16.00)
     
-    ..setGoldBounty(350)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(310, 390)
     ..setHpRel(3500, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
@@ -575,13 +551,9 @@ import MyItemIds
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Pierce)
     
-    ..setGoldBounty(350)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(310, 390)
     ..setHpRel(2828, 0.02)
-    ..setManaInitialAmount(300)
-    ..setManaMaximum(300)
-    ..setManaRegeneration(0.75)
+    ..setMp(300, 0.75)
 
     ..addItemDropTable(dropTable_Bosses_0_9)
 
@@ -600,11 +572,9 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.390)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1000, 1400)
     ..setHpRel(10890, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_10_14)
@@ -628,9 +598,7 @@ import MyItemIds
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
 
-    ..setGoldBounty(400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(340, 460)
     ..setHpRel(5335, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_10_14)
@@ -658,13 +626,9 @@ import MyItemIds
     ..setCollisionSize(16.00)
     ..setArmorType(ArmorType.Unarmored)
     
-    ..setGoldBounty(400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(340, 460)
     ..setHpRel(4050, 0.02)
-    ..setManaInitialAmount(1000)
-    ..setManaMaximum(1000)
-    ..setManaRegeneration(1.00)
+    ..setMp(1000, 1)
 
     ..addItemDropTable(dropTable_Bosses_10_14)
 
@@ -693,13 +657,9 @@ import MyItemIds
     ..setMovementType(MovementType.Hover)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(340, 460)
     ..setHpRel(2700, 0.02)
-    ..setManaInitialAmount(75)
-    ..setManaMaximum(300)
-    ..setManaRegeneration(0.80)
+    ..setMp(300, 0.9)
 
     ..addItemDropTable(dropTable_Bosses_10_14)
 
@@ -718,18 +678,14 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(3)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(320)
     ..setCollisionSize(48.00)
 
-    ..setGoldBounty(400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(340, 460)
     ..setHpRel(5399, 0.02)
-    ..setManaInitialAmount(600)
-    ..setManaMaximum(600)
-    ..setManaRegeneration(1.50)
+    ..setMp(600, 1.5)
 
     ..addItemDropTable(dropTable_Bosses_10_14)
 
@@ -753,9 +709,7 @@ import MyItemIds
     ..setAttack1AnimationDamagePoint(0.640)
     ..setAttack1AttackType(AttackType.Magic)
     
-    ..setGoldBounty(1350)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1100, 1700)
     ..setHpRel(11698, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_15_19)
@@ -784,13 +738,9 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
     
-    ..setGoldBounty(450)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(390, 510)
     ..setHpRel(5999, 0.02)
-    ..setManaInitialAmount(900)
-    ..setManaMaximum(900)
-    ..setManaRegeneration(4.00)
+    ..setMp(900, 4)
 
     ..addItemDropTable(dropTable_Bosses_15_19)
 
@@ -811,18 +761,14 @@ import MyItemIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.580)
     ..setAttack1AnimationDamagePoint(0.590)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(450)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(390, 510)
     ..setHpRel(7799, 0.02)
-    ..setManaInitialAmount(1100)
-    ..setManaMaximum(1100)
-    ..setManaRegeneration(5.00)
+    ..setMp(1100, 5)
 
     ..addItemDropTable(dropTable_Bosses_15_19)
     
@@ -844,17 +790,13 @@ import MyItemIds
     ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(320)
 
-    ..setGoldBounty(450)
-    ..setGoldBountyAwardedNumberofDice(5)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(390, 510)
     ..setHpRel(5699, 0.02)
-    ..setManaInitialAmount(700)
-    ..setManaMaximum(700)
-    ..setManaRegeneration(2.00)
+    ..setMp(700, 2)
 
     ..addItemDropTable(dropTable_Bosses_15_19)
     
@@ -875,16 +817,14 @@ import MyItemIds
     ..setAoe1(100, 200, 300)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.400)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setAirUnit(280, 90)
     ..setSpeedBase(350)
     ..setTurnRate(0.10)
     ..setCollisionSize(48.00)
     
-    ..setGoldBounty(450)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(390, 510)
     ..setHpRel(6000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_15_19)
@@ -904,13 +844,11 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(8)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setTurnRate(0.60)
 
-    ..setGoldBounty(1500)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1100, 1900)
     ..setHpRel(21600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -934,14 +872,12 @@ import MyItemIds
     ..setAttack1WeaponType(WeaponType.Instant)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.170)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(500)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(400, 600)
     ..setHpRel(8150, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -960,11 +896,9 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
-    ..setGoldBounty(500)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(400, 600)
     ..setHpRel(10000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -989,14 +923,12 @@ import MyItemIds
     ..setAoe1(100, 200, 450)
     ..setAttack1AnimationBackswingPoint(1.100)
     ..setAttack1AnimationDamagePoint(1.000)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setMinimumAttackRange(250)
     ..setSpeedBase(240)
     
-    ..setGoldBounty(500)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(400, 600)
     ..setHpRel(8200, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -1024,13 +956,9 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(500)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(400, 600)
     ..setHpRel(8300, 0.02)
-    ..setManaInitialAmount(75)
-    ..setManaMaximum(250)
-    ..setManaRegeneration(0.80)
+    ..setMp(250, 0.8)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
@@ -1052,19 +980,15 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(300)
     ..setTurnRate(0.60)
     ..setCollisionSize(16.00)
     
-    ..setGoldBounty(17)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1700, 2600)
     ..setHpRel(32000, 0.02)
-    ..setManaInitialAmount(3000)
-    ..setManaMaximum(3000)
-    ..setManaRegeneration(0.75)
+    ..setMp(3000, 2)
 
     ..addItemDropTable(dropTable_Bosses_25_29)
     
@@ -1088,20 +1012,16 @@ import MyItemIds
     ..setAoe1(100, 250, 300)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(300)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Amphipic)
     ..setCollisionSize(48.00)
     
-    ..setGoldBounty(150)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(1900, 2800)
     ..setHpRel(35000, 0.02)
-    ..setManaInitialAmount(600)
-    ..setManaMaximum(600)
-    ..setManaRegeneration(1.50)
+    ..setMp(600, 1.5)
 
     ..addItemDropTable(dropTable_Bosses_25_29)
     
@@ -1120,13 +1040,11 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(320)
 
-    ..setGoldBounty(40)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(2100, 3500)
     ..setHpRel(37250, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_25_29)
@@ -1146,16 +1064,14 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(1.170)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(200)
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Hero)
     
-    ..setGoldBounty(400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(3500, 6100)
     ..setHpRel(75000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_25_29)
@@ -1185,9 +1101,7 @@ import MyItemIds
     ..setSpeedBase(300)
     ..setCollisionSize(8.00)
     
-    ..setGoldBounty(30)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(2400, 3900)
     ..setHpRel(38500, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_25_29)
@@ -1210,17 +1124,13 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setTurnRate(0.60)
     
-    ..setGoldBounty(1650)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1850, 2340)
     ..setHpRel(28500, 0.02)
-    ..setManaInitialAmount(100)
-    ..setManaMaximum(250)
-    ..setManaRegeneration(0.63)
+    ..setMp(250, 1)
 
     ..addItemDropTable(dropTable_Bosses_30_34)
     
@@ -1239,17 +1149,13 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(320)
     
-    ..setGoldBounty(550)
-    ..setGoldBountyAwardedNumberofDice(5)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(400, 700)
     ..setHpRel(14200, 0.02)
-    ..setManaInitialAmount(685)
-    ..setManaMaximum(685)
-    ..setManaRegeneration(1.25)
+    ..setMp(685, 1.25)
 
     ..addItemDropTable(dropTable_Bosses_30_34)
     
@@ -1270,17 +1176,13 @@ import MyItemIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\LichMissile\\LichMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.850)
     ..setAttack1AnimationDamagePoint(0.550)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setCollisionSize(16.00)
     
-    ..setGoldBounty(550)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(400, 700)
     ..setHpRel(11300, 0.02)
-    ..setManaInitialAmount(1125)
-    ..setManaMaximum(1125)
-    ..setManaRegeneration(7.00)
+    ..setMp(1130, 7)
 
     ..addItemDropTable(dropTable_Bosses_30_34)
     
@@ -1307,9 +1209,7 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(550)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(400, 700)
     ..setHpRel(11000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_30_34)
@@ -1338,13 +1238,9 @@ import MyItemIds
     ..setCollisionSize(16.00)
     ..setArmorType(ArmorType.Unarmored)
     
-    ..setGoldBounty(550)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(400, 700)
     ..setHpRel(11000, 0.02)
-    ..setManaInitialAmount(1200)
-    ..setManaMaximum(1200)
-    ..setManaRegeneration(7.00)
+    ..setMp(1200, 7)
 
     ..addItemDropTable(dropTable_Bosses_30_34)
     
@@ -1363,14 +1259,12 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.440)
     ..setAttack1AnimationDamagePoint(0.660)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Horse)
     
-    ..setGoldBounty(1800)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1400, 2200)
     ..setHpRel(37000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -1400,13 +1294,9 @@ import MyItemIds
     ..setCollisionSize(8.00)
     ..setArmorType(ArmorType.Small)
     
-    ..setGoldBounty(600)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(400, 800)
     ..setHpRel(14500, 0.02)
-    ..setManaInitialAmount(1255)
-    ..setManaMaximum(1255)
-    ..setManaRegeneration(7.00)
+    ..setMp(1300, 6)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
@@ -1427,18 +1317,14 @@ import MyItemIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\PriestMissile\\PriestMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.580)
     ..setAttack1AnimationDamagePoint(0.590)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setTurnRate(0.60)
     ..setCollisionSize(16.00)
     
-    ..setGoldBounty(600)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(400, 800)
     ..setHpRel(14000, 0.02)
-    ..setManaInitialAmount(1300)
-    ..setManaMaximum(1300)
-    ..setManaRegeneration(13.00)
+    ..setMp(1300, 13)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
     
@@ -1460,14 +1346,12 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(300)
     ..setArmorType(ArmorType.Medium)
 
-    ..setGoldBounty(600)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(400, 800)
     ..setHpRel(14600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -1491,9 +1375,7 @@ import MyItemIds
     ..setSpeedBase(240)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(600)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(400, 800)
     ..setHpRel(18600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_20_24_and_35_39)
@@ -1522,9 +1404,7 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(1950)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(1500, 2350)
     ..setHpRel(56700, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_40_44)
@@ -1559,9 +1439,7 @@ import MyItemIds
     ..setCollisionSize(8.00)
     ..setArmorType(ArmorType.Small)
     
-    ..setGoldBounty(650)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(350, 850)
     ..setHpRel(18000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_40_44)
@@ -1593,9 +1471,7 @@ import MyItemIds
     ..setHitPointsRegenerationType("none")
     ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBounty(650)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(350, 850)
     ..setHpRel(23400, 0)
 
     ..addItemDropTable(dropTable_Bosses_40_44)
@@ -1626,9 +1502,7 @@ import MyItemIds
     ..setCollisionSize(8.00)
     ..setHitPointsRegenerationType("none")
     
-    ..setGoldBounty(650)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(350, 850)
     ..setHpRel(17600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_40_44)
@@ -1648,18 +1522,14 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(320)
     ..setCollisionSize(48.00)
 
-    ..setGoldBounty(650)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(350, 850)
     ..setHpRel(23200, 0.02)
-    ..setManaInitialAmount(500)
-    ..setManaMaximum(500)
-    ..setManaRegeneration(1.25)
+    ..setMp(500, 1.5)
 
     ..addItemDropTable(dropTable_Bosses_40_44)
     
@@ -1678,13 +1548,11 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setTurnRate(0.60)
     
-    ..setGoldBounty(2100)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(4)
+    ..setGoldBounty(1600, 2700)
     ..setHpRel(77600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_45_49)
@@ -1710,13 +1578,9 @@ import MyItemIds
     
     ..setArmorType(ArmorType.Unarmored)
     
-    ..setGoldBounty(700)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(400, 1100)
     ..setHpRel(27900, 0.02)
-    ..setManaInitialAmount(100)
-    ..setManaMaximum(300)
-    ..setManaRegeneration(1.00)
+    ..setMp(300, 1)
 
     ..addItemDropTable(dropTable_Bosses_45_49)
     
@@ -1743,9 +1607,7 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(700)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(400, 1100)
     ..setHpRel(21700, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_45_49)
@@ -1765,11 +1627,9 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1AnimationBackswingPoint(0.600)
     ..setAttack1AnimationDamagePoint(0.380)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
-    ..setGoldBounty(700)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(400, 1100)
     ..setHpRel(26700, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_45_49)
@@ -1789,17 +1649,13 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setSpeedBase(320)
     
-    ..setGoldBounty(700)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(400, 1100)
     ..setHpRel(22300, 0.02)
-    ..setManaInitialAmount(1000)
-    ..setManaMaximum(1000)
-    ..setManaRegeneration(1.25)
+    ..setMp(1000, 2)
 
     ..addItemDropTable(dropTable_Bosses_45_49)
     
@@ -1819,17 +1675,13 @@ import MyItemIds
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.430)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setTurnRate(0.60)
 
-    ..setGoldBounty(2400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(4)
+    ..setGoldBounty(3900, 8500)
     ..setHpRel(88500, 0.02)
-    ..setManaInitialAmount(75)
-    ..setManaMaximum(300)
-    ..setManaRegeneration(0.75)
+    ..setMp(300, 1)
 
     ..addItemDropTable(dropTable_Bosses_50_54)
     
@@ -1852,9 +1704,7 @@ import MyItemIds
     
     ..setCollisionSize(48.00)
     
-    ..setGoldBounty(800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(8)
+    ..setGoldBounty(600, 1500)
     ..setHpRel(34500, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_50_54)
@@ -1882,13 +1732,9 @@ import MyItemIds
     ..setCollisionSize(16.00)
     ..setArmorType(ArmorType.Unarmored)
     
-    ..setGoldBounty(800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(600, 1500)
     ..setHpRel(21300, 0.02)
-    ..setManaInitialAmount(75)
-    ..setManaMaximum(1500)
-    ..setManaRegeneration(1500.00)
+    ..setMp(1500, 1)
 
     ..addItemDropTable(dropTable_Bosses_50_54)
 
@@ -1910,16 +1756,14 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.320)
     ..setAttack1AnimationDamagePoint(0.850)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(220)
     ..setMovementType(MovementType.Horse)
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Unarmored)
     
-    ..setGoldBounty(800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(600, 1500)
     ..setHpRel(22100, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_50_54)
@@ -1942,13 +1786,11 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(800)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(600, 1500)
     ..setHpRel(22400, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_50_54)
@@ -1973,12 +1815,9 @@ import MyItemIds
     ..setSpeedBase(522)
     ..setArmorType(ArmorType.Hero)
 
-    ..setGoldBounty(3000)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(7500, 15200)
     ..setHpRel(85000, 0.02)
-    ..setManaInitialAmount(10000)
-    ..setManaMaximum(10000)
+    ..setMp(10000, 3)
 
     ..addItemDropTable(dropTable_Bosses_55_57)
     
@@ -1997,15 +1836,13 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.260)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setSpeedBase(350)
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
     
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(6400, 16400)
     ..setHpRel(97000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_55_57)
@@ -2031,12 +1868,9 @@ import MyItemIds
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Hero)
     
-    ..setGoldBounty(17)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setGoldBounty(5400, 8670)
     ..setHpRel(65000, 0.02)
-    ..setManaInitialAmount(12000)
-    ..setManaMaximum(12000)
+    ..setMp(12000, 2)
 
     ..addItemDropTable(dropTable_Bosses_55_57)
     
@@ -2055,13 +1889,11 @@ import MyItemIds
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
 
     ..setTurnRate(0.60)
     
-    ..setGoldBounty(2700)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(4)
+    ..setGoldBounty(6300, 11400)
     ..setHpRel(112900, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2084,7 +1916,7 @@ import MyItemIds
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.540)
     ..setAttack1AnimationDamagePoint(0.600)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setAirUnit(240, 90)
     ..setSpeedBase(320)
@@ -2092,13 +1924,9 @@ import MyItemIds
     ..setCollisionSize(8.00)
     ..setArmorType(ArmorType.Small)
     
-    ..setGoldBounty(900)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(2100, 2800)
     ..setHpRel(31100, 0.02)
-    ..setManaInitialAmount(1155)
-    ..setManaMaximum(1155)
-    ..setManaRegeneration(15.00)
+    ..setMp(1120, 5)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
     
@@ -2130,9 +1958,7 @@ import MyItemIds
     ..setCollisionSize(48.00)
     ..setHitPointsRegenerationType("none")
     
-    ..setGoldBounty(900)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(2100, 2800)
     ..setHpRel(32000, 0)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2155,18 +1981,14 @@ import MyItemIds
     ..setAoe1(50, 150, 250)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
     
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
     
-    ..setGoldBounty(900)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    ..setGoldBounty(2100, 2900)
     ..setHpRel(40000, 0.02)
-    ..setManaInitialAmount(500)
-    ..setManaMaximum(500)
-    ..setManaRegeneration(1.25)
+    ..setMp(500, 1.5)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
     
@@ -2195,9 +2017,7 @@ import MyItemIds
     ..setSpeedBase(350)
     ..setTurnRate(0.40)
     
-    ..setGoldBounty(3000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(4)
+    ..setGoldBounty(6500, 14200)
     ..setHpRel(158300, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2225,13 +2045,9 @@ import MyItemIds
     ..setCollisionSize(16.00)
     ..setArmorType(ArmorType.Medium)
     
-    ..setGoldBounty(1000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    ..setGoldBounty(1540, 3120)
     ..setHpRel(36450, 0.02)
-    ..setManaInitialAmount(1700)
-    ..setManaMaximum(1700)
-    ..setManaRegeneration(17.00)
+    ..setMp(1700, 5)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
     
@@ -2242,30 +2058,25 @@ import MyItemIds
 
     ..setScalingValue(1.40)
     ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1020)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Axe\\AxeMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.320)
     ..setAttack1AnimationDamagePoint(0.850)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setChaosAttackType1()
+
     ..setSpeedBase(220)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(4)
-    ..setGoldCost(255)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(44)
     ..setArmorType(ArmorType.Small)
-    ..setDefenseUpgradeBonus(24)
-    ..setGoldBounty(1000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+    
+    ..setGoldBounty(1500, 3100)
     ..setHpRel(36600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2277,21 +2088,19 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.10)
     ..setAttackDamage1(790)
     ..setAttack1DamageNumberofDice(2)
     ..setAttack1DamageSidesperDie(8)
     ..setAttack1AnimationBackswingPoint(0.468)
     ..setAttack1AnimationDamagePoint(0.500)
+
     ..setSpeedBase(240)
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(130)
-    ..setDefenseBase(66)
-    ..setDefenseUpgradeBonus(24)
-    ..setGoldBounty(1000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+    
+    ..setGoldBounty(1700, 3600)
     ..setHpRel(48000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2302,39 +2111,26 @@ import MyItemIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(999)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(6)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.08)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\RedDragonBreath\\RedDragonMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(75)
-    ..setAttack1AreaofEffectMediumDamage(150)
-    ..setAttack1AreaofEffectSmallDamage(225)
+    ..setAoe1(75, 150, 225)
     ..setAttack1AnimationBackswingPoint(0.800)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("ground", "air", "enemy", "neutral"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(180)
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(275)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(1000)
     ..setCollisionSize(48.00)
     ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(55)
-    ..setDefenseUpgradeBonus(24)
-    ..setGoldBounty(1000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(1700, 3600)
     ..setHpRel(36600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_58_66)
@@ -2346,32 +2142,24 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(200)
     ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(2555)
     ..setAttack1DamageNumberofDice(7)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(100)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.430)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(130)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(75)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(3300)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(6400, 11300)
     ..setHpRel(188200, 0.02)
-    ..setManaInitialAmount(200)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(2)
+    ..setMp(200, 2)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2382,43 +2170,29 @@ import MyItemIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(3.50)
+
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.20)
     ..setAttackDamage1(1155)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(600)
+    
     ..setAttack1ProjectileArc(0.08)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\RedDragonBreath\\RedDragonMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(75)
-    ..setAttack1AreaofEffectMediumDamage(150)
-    ..setAttack1AreaofEffectSmallDamage(225)
+    ..setAoe1(75, 150, 225)
     ..setAttack1AnimationBackswingPoint(0.800)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("ground", "air", "enemy", "neutral"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(180)
     ..setTurnRate(0.40)
-    ..setFoodCost(4)
-    ..setGoldCost(275)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(1000)
     ..setCollisionSize(48.00)
     ..setHitPointsRegenerationType("none")
-    ..setDefenseBase(50)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1100)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(2100, 3200)
     ..setHpRel(42500, 0.02)
-    ..setManaInitialAmount(1255)
-    ..setManaMaximum(1255)
-    ..setManaRegeneration(12.00)
+    ..setMp(1230, 5)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2429,34 +2203,24 @@ import MyItemIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1120)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\LichMissile\\LichMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(425)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(75)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1100)
-    ..setGoldBountyAwardedNumberofDice(5)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(2400, 3600)
     ..setHpRel(56200, 0.02)
-    ..setManaInitialAmount(1100)
-    ..setManaMaximum(1100)
-    ..setName("Furbolg Elder Shaman")
-    ..setManaRegeneration(1.25)
-    ..setLevel(7)
+    ..setMp(1100, 2)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2467,33 +2231,23 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(940)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FireballMissile\\FireballMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setFoodCost(3)
-    ..setGoldCost(255)
-    ..setDefenseBase(50)
+
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1100)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(2400, 3600)
     ..setHpRel(42400, 0.02)
-    ..setManaInitialAmount(1725)
-    ..setManaMaximum(1725)
-    ..setName("Dark Troll High Priest")
-    ..setManaRegeneration(17.00)
-    ..setLevel(4)
+    ..setMp(1600, 10)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2503,20 +2257,17 @@ import MyItemIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1325)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(2)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.600)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(75)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1100)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+    ..setChaosAttackType1()
+
+    ..setGoldBounty(2700, 4100)
     ..setHpRel(56000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
@@ -2528,6 +2279,8 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.60)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.70)
     ..setAttackDamage1(1720)
     ..setAttack1DamageNumberofDice(9)
@@ -2535,15 +2288,11 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Magic)
+
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(3)
-    ..setGoldCost(180)
-    ..setDefenseBase(84)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(3600)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(9200, 17400)
     ..setHpRel(201500, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
@@ -2555,25 +2304,21 @@ import MyItemIds
 
     ..setScalingValue(2.30)
     ..setSelectionScale(1.85)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(1110)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
-    ..setDefenseBase(84)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(2200, 4100)
     ..setHpRel(64500, 0.02)
-    ..setManaInitialAmount(500)
-    ..setManaMaximum(500)
-    ..setManaRegeneration(1.25)
+    ..setMp(500, 2)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2584,38 +2329,25 @@ import MyItemIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(2.50)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1525)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     //..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraLightningMissile\\ChimaeraLightningMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(75)
-    ..setAttack1AreaofEffectMediumDamage(150)
-    ..setAttack1AreaofEffectSmallDamage(225)
+    ..setAoe1(75, 150, 225)
     ..setAttack1AnimationBackswingPoint(0.560)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("ground", "air", "enemy", "neutral"))
-    ..setFoodCost(2)
-    ..setGoldCost(195)
+
     ..setCollisionSize(48.00)
-    ..setDefenseBase(56)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(2200, 4100)
     ..setHpRel(48800, 0.02)
-    ..setManaInitialAmount(200)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(0.50)
+    ..setMp(200, 2)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
 
@@ -2625,33 +2357,23 @@ import MyItemIds
 
     ..setScalingValue(2.30)
     ..setSelectionScale(1.20)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1755)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\HarpyMissile\\HarpyMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setTargetedAs(commaList("air"))
+    ..setChaosAttackType1()
+    
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(2)
-    ..setGoldCost(215)
-    ..setDefenseBase(56)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(2200, 4100)
     ..setHpRel(48600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
@@ -2663,24 +2385,21 @@ import MyItemIds
 
     ..setScalingValue(1.50)
     ..setSelectionScale(2.50)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1755)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.740)
     ..setAttack1AnimationDamagePoint(0.260)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "item", "ward", "tree"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(320)
     ..setTurnRate(0.40)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(84)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(2400, 4300)
     ..setHpRel(64750, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_67_76)
@@ -2692,22 +2411,20 @@ import MyItemIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(1.70)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(3200)
     ..setAttack1DamageNumberofDice(8)
     ..setAttack1DamageSidesperDie(9)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(3)
-    ..setGoldCost(180)
-    ..setDefenseBase(96)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(4200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(10100, 18200)
     ..setHpRel(235000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_77_81)
@@ -2719,37 +2436,24 @@ import MyItemIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.20)
     ..setAttackDamage1(2600)
     ..setAttack1DamageNumberofDice(6)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FarseerMissile\\FarseerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setTargetedAs(commaList("air"))
+    
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(4)
-    ..setGoldCost(320)
-    ..setDefenseBase(64)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(2600, 4500)
     ..setHpRel(55800, 0.02)
-    ..setManaInitialAmount(2700)
-    ..setManaMaximum(2700)
-    ..setManaRegeneration(1.00)
+    ..setMp(2700, 1)
 
     ..addItemDropTable(dropTable_Bosses_77_81)
 
@@ -2760,30 +2464,22 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.00)
+    
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(3200)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(96)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1400)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(3200, 5100)
     ..setHpRel(74300, 0.02)
-    ..setManaMaximum(2565)
-    ..setManaRegeneration(2565.00)
+    ..setMp(2500, 3)
 
     ..addItemDropTable(dropTable_Bosses_77_81)
 
@@ -2794,32 +2490,23 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.30)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.70)
     ..setAttackDamage1(1300)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(350)
     ..setTurnRate(0.60)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(96)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1400)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(3200, 5100)
     ..setHpRel(74500, 0.02)
-    ..setManaInitialAmount(400)
-    ..setManaMaximum(400)
-    ..setManaRegeneration(1.00)
+    ..setMp(500, 2)
 
     ..addItemDropTable(dropTable_Bosses_77_81)
 
@@ -2830,28 +2517,23 @@ import MyItemIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(300)
     ..setAttack1CooldownTime(0.90)
     ..setAttackDamage1(2600)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(300)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.170)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setChaosAttackType1()
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(215)
-    ..setDefenseBase(64)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(1400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(3200, 5100)
     ..setHpRel(56000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_77_81)
@@ -2863,46 +2545,29 @@ import MyItemIds
 
     ..setScalingValue(3.00)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(700)
     ..setAttack1CooldownTime(0.30)
     ..setAttackDamage1(3855)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(700)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BansheeMissile\\BansheeMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.MissileSplash)
-    ..setAttack1DamageSpillDistance(0.00)
-    ..setAttack1DamageSpillRadius(0.00)
-    ..setAttack1MaximumNumberofTargets(1)
-    ..setAttack1AreaofEffectFullDamage(300)
-    ..setAttack1AreaofEffectMediumDamage(300)
-    ..setAttack1AreaofEffectSmallDamage(300)
+    ..setAoe1(300, 400, 500)
     ..setAttack1AnimationBackswingPoint(0.510)
     ..setAttack1AnimationDamagePoint(0.560)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
-    ..setAttack1AreaofEffectTargets(commaList("air", "enemies", "ground"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(320)
     ..setMovementHeight(50.00)
-    ..setMovementHeightMinimum(0.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(2)
-    ..setGoldCost(155)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(100)
     ..setArmorType(ArmorType.Hero)
-    ..setDefenseUpgradeBonus(25)
-    ..setGoldBounty(788)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(5200, 8500)
     ..setHpRel(99000, 0.02)
-    ..setManaInitialAmount(2100)
-    ..setManaMaximum(2100)
-    ..setManaRegeneration(0.67)
+    ..setMp(2100, 3)
 
     ..addItemDropTable(dropTable_Bosses_82_83)
 
@@ -2913,6 +2578,8 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.50)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.20)
     ..setAttackDamage1(1750)
     ..setAttack1DamageNumberofDice(7)
@@ -2920,20 +2587,14 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.250)
     ..setAttack1AnimationDamagePoint(0.320)
     ..setAttack1AttackType(AttackType.Magic)
+
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Horse)
-    ..setFoodCost(4)
-    ..setGoldCost(245)
-    ..setDefenseBase(100)
     ..setArmorType(ArmorType.Fortified)
-    ..setDefenseUpgradeBonus(15)
-    ..setGoldBounty(3000)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(5200, 8500)
     ..setHpRel(99000, 0.02)
-    ..setManaInitialAmount(5000)
-    ..setManaMaximum(5000)
-    ..setManaRegeneration(50.00)
+    ..setMp(5000, 10)
 
     ..addItemDropTable(dropTable_Bosses_82_83)
 
@@ -2944,11 +2605,12 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.75)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(4555)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AvengerMissile\\AvengerMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -2956,21 +2618,12 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setTargetedAs(commaList("air", "enemies", "ground", "structure"))
+    
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(3)
-    ..setGoldCost(130)
-    ..setDefenseBase(72)
-    ..setDefenseUpgradeBonus(36)
-    ..setGoldBounty(4800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(11300, 19600)
     ..setHpRel(268000, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_84)
@@ -2982,6 +2635,8 @@ import MyItemIds
 
     ..setScalingValue(3.00)
     ..setSelectionScale(1.15)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.50)
     ..setAttackDamage1(4600)
     ..setAttack1DamageNumberofDice(9)
@@ -2989,14 +2644,10 @@ import MyItemIds
     ..setAttack1AnimationBackswingPoint(0.600)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Magic)
+
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(2)
-    ..setGoldCost(120)
-    ..setDefenseBase(120)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(5400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(11300, 19600)
     ..setHpRel(299600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_85_89)
@@ -3005,30 +2656,27 @@ import MyItemIds
 
     new MyCreepDefinition(WAVE_BOSS_86, "Hydralisk", 7, UnitIds.hydralisk)
     ..setModelFile("HydraliskREVISED.mdx")
+
     ..setScalingValue(1.80)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(400)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1800)
     ..setAttack1DamageNumberofDice(4)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(400)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\HydraliskImpact\\HydraliskImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1WeaponType(WeaponType.Instant)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setChaosAttackType1()
+    
     ..setTurnRate(0.60)
-    ..setFoodCost(3)
-    ..setGoldCost(280)
-    ..setDefenseBase(80)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(1800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(4900, 7200)
     ..setHpRel(73400, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_85_89)
@@ -3040,33 +2688,22 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(1800)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(2)
-    ..setAttack1Range(90)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
+
     ..setSpeedBase(350)
     ..setTurnRate(0.60)
-    ..setFoodCost(0)
-    ..setGoldCost(0)
-    ..setSightRadiusDay(1200)
-    ..setSightRadiusNight(800)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(120)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(1800)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(4900, 7800)
     ..setHpRel(97600, 0.02)
-    ..setManaInitialAmount(150)
-    ..setManaMaximum(150)
-    ..setManaRegeneration(0.38)
+    ..setMp(150, 2)
 
     ..addItemDropTable(dropTable_Bosses_85_89)
 
@@ -3077,29 +2714,24 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(550)
     ..setAttack1CooldownTime(2.00)
     ..setAttackDamage1(2900)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(550)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\snapMissile\\snapMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "air", "structure", "debris", "item", "ward"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(350)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(3)
-    ..setGoldCost(200)
-    ..setDefenseBase(80)
     ..setArmorType(ArmorType.Medium)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(1800)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(4900, 7200)
     ..setHpRel(73500, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_85_89)
@@ -3111,34 +2743,26 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.45)
     ..setAttackDamage1(1800)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.500)
     ..setAttack1AnimationDamagePoint(0.500)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setChaosAttackType1()
+    
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(2)
-    ..setGoldCost(130)
     ..setCollisionSize(16.00)
-    ..setDefenseBase(80)
     ..setArmorType(ArmorType.Unarmored)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(1800)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(4500, 7200)
     ..setHpRel(73333, 0.02)
-    ..setManaInitialAmount(200)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(0.50)
+    ..setMp(200, 2)
 
     ..addItemDropTable(dropTable_Bosses_85_89)
 
@@ -3149,34 +2773,23 @@ import MyItemIds
 
     ..setScalingValue(1.70)
     ..setSelectionScale(2.25)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(6220)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.360)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(4)
-    ..setGoldCost(300)
-    ..setSightRadiusDay(1600)
-    ..setSightRadiusNight(1000)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(132)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(6000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(11200, 21500)
     ..setHpRel(324400, 0.02)
-    ..setManaInitialAmount(500)
-    ..setManaMaximum(500)
-    ..setManaRegeneration(1.25)
+    ..setMp(500, 10)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3187,37 +2800,26 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(3.00)
+    
+    ..setRangedAttack1(450)
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(3955)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(450)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\VoidWalkerMissile\\VoidWalkerMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.700)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setMovementHeight(30.00)
-    ..setMovementHeightMinimum(0.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(4)
-    ..setGoldCost(545)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(88)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(4500, 7300)
     ..setHpRel(84300, 0.02)
-    ..setManaInitialAmount(3155)
-    ..setManaMaximum(3155)
-    ..setManaRegeneration(31.00)
+    ..setMp(3200, 10)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3228,26 +2830,22 @@ import MyItemIds
 
     ..setScalingValue(2.30)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(4220)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(6)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(425)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(132)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2000)
-    ..setGoldBountyAwardedNumberofDice(5)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(5600, 8200)
     ..setHpRel(112000, 0.02)
-    ..setManaInitialAmount(2755)
-    ..setManaMaximum(2755)
-    ..setManaRegeneration(27.00)
+    ..setMp(2700, 10)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3258,50 +2856,22 @@ import MyItemIds
 
     ..setScalingValue(1.80)
     ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(3255)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack2CooldownTime(1.35)
-    ..setAttack2DamageBase(45)
-    ..setAttack2DamageNumberofDice(1)
-    ..setAttack2DamageSidesperDie(6)
-    ..setAttack2Range(500)
-    ..setAttack2ProjectileArc(0.00)
-    ..setAttack2ProjectileArt("None")
-    ..setAttack2ProjectileHomingEnabled(false)
-    ..setAttack2WeaponType(WeaponType.Missile)
-    ..setAttack2DamageSpillDistance(0.00)
-    ..setAttack2DamageSpillRadius(0.00)
-    ..setAttack2MaximumNumberofTargets(1)
-    ..setAttack2AreaofEffectFullDamage(0)
-    ..setAttack2AreaofEffectMediumDamage(0)
-    ..setAttack2AreaofEffectSmallDamage(0)
-    ..setAttack2AnimationBackswingPoint(0.300)
-    ..setAttack2AnimationDamagePoint(0.300)
-    ..setAttack2AttackType(AttackType.Chaos)
-    ..setAttack2TargetsAllowed(commaList("air"))
-    ..setAttack2AreaofEffectTargets(commaList(""))
-    ..setFoodCost(8)
-    ..setGoldCost(545)
+    ..setChaosAttackType1()
+    
     ..setCollisionSize(48.00)
-    ..setDefenseBase(157)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2000)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(5600, 8200)
     ..setHpRel(112100, 0.02)
-    ..setManaInitialAmount(600)
-    ..setManaMaximum(600)
-    ..setManaRegeneration(1.50)
+    ..setMp(600, 3)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3312,27 +2882,22 @@ import MyItemIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(3.00)
+
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(2110)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Axe\\AxeMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     ..setAttack1AttackType(AttackType.Pierce)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    
     ..setSpeedBase(320)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
-    ..setDefenseBase(88)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2000)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(5600, 8200)
     ..setHpRel(84200, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
@@ -3344,51 +2909,25 @@ import MyItemIds
 
     ..setScalingValue(1.30)
     ..setSelectionScale(4.00)
+    
+    ..setRangedAttack1(250)
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(4920)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(125)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("None")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.700)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setAttack2CooldownTime(1.80)
-    ..setAttack2DamageBase(62)
-    ..setAttack2DamageNumberofDice(1)
-    ..setAttack2DamageSidesperDie(9)
-    ..setAttack2Range(450)
-    ..setAttack2ProjectileArc(0.00)
-    ..setAttack2ProjectileArt("None")
-    ..setAttack2ProjectileHomingEnabled(false)
-    ..setAttack2WeaponType(WeaponType.Missile)
-    ..setAttack2DamageSpillDistance(0.00)
-    ..setAttack2DamageSpillRadius(0.00)
-    ..setAttack2MaximumNumberofTargets(1)
-    ..setAttack2AreaofEffectFullDamage(0)
-    ..setAttack2AreaofEffectMediumDamage(0)
-    ..setAttack2AreaofEffectSmallDamage(0)
-    ..setAttack2AnimationBackswingPoint(0.300)
-    ..setAttack2AnimationDamagePoint(0.700)
-    ..setAttack2AttackType(AttackType.Siege)
-    ..setAttack2TargetsAllowed(commaList("structure", "tree"))
-    ..setAttack2AreaofEffectTargets(commaList(""))
+    
     ..setSpeedBase(320)
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(5)
-    ..setGoldCost(320)
-    ..setSightRadiusDay(1400)
-    ..setSightRadiusNight(950)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(200)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(4440)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(11200, 25100)
     ..setHpRel(385700, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
@@ -3400,31 +2939,22 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(2988)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.600)
     ..setAttack1AttackType(AttackType.Magic)
+
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Hover)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
-    ..setDefenseBase(96)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(5600, 8400)
     ..setHpRel(95800, 0.02)
-    ..setManaInitialAmount(4500)
-    ..setManaMaximum(4500)
-    ..setManaRegeneration(45.00)
+    ..setMp(4500, 10)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3435,31 +2965,23 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(500)
     ..setAttack1CooldownTime(1.20)
     ..setAttackDamage1(2460)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(500)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
-    ..setAttack1ProjectileHomingEnabled(true)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.850)
     ..setAttack1AnimationDamagePoint(0.550)
-    ..setAttack1AttackType(AttackType.Chaos)
-    ..setAttack1TargetsAllowed(commaList("ground", "structure", "debris", "air", "item", "ward"))
+    ..setChaosAttackType1()
+    
     ..setSpeedBase(320)
-    ..setFoodCost(6)
-    ..setGoldCost(480)
-    ..setDefenseBase(96)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(5500, 8100)
     ..setHpRel(96000, 0.02)
-    ..setManaInitialAmount(4725)
-    ..setManaMaximum(4725)
-    ..setManaRegeneration(1.25)
+    ..setMp(4500, 15)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3470,28 +2992,21 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.40)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(4255)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(5)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.670)
     ..setAttack1AnimationDamagePoint(0.630)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
     ..setMovementType(MovementType.Amphipic)
-    ..setFoodCost(5)
-    ..setGoldCost(365)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(144)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2200)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(6100, 9200)
     ..setHpRel(127700, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
@@ -3503,31 +3018,22 @@ import MyItemIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(2.50)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(4460)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(8)
-    ..setAttack1Range(128)
-    ..setAttack1ProjectileArc(0.00)
-    ..setAttack1ProjectileArt("None")
-    ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Normal)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
-    ..setFoodCost(8)
-    ..setGoldCost(545)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(144)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(7)
+
+    ..setGoldBounty(6400, 9700)
     ..setHpRel(127600, 0.02)
-    ..setManaInitialAmount(600)
-    ..setManaMaximum(600)
-    ..setManaRegeneration(1.50)
+    ..setMp(600, 3)
 
     ..addItemDropTable(dropTable_Bosses_90_99)
 
@@ -3538,40 +3044,27 @@ import MyItemIds
 
     ..setScalingValue(1.20)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(0.30)
     ..setAttackDamage1(7700)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(9)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\WingedSerpentMissile\\WingedSerpentMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(1.000)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Magic)
-    ..setTargetedAs(commaList("air"))
+
+    ..setAirUnit(240, 90)
     ..setSpeedBase(350)
-    ..setMovementHeight(240.00)
-    ..setMovementHeightMinimum(90.00)
-    ..setSpeedMaximum(0)
-    ..setSpeedMinimum(0)
     ..setTurnRate(0.40)
-    ..setMovementType(MovementType.Fly)
-    ..setFoodCost(2)
-    ..setGoldCost(235)
-    ..setSightRadiusDay(1600)
-    ..setSightRadiusNight(800)
     ..setCollisionSize(8.00)
-    ..setDefenseBase(104)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(7200)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(16100, 25400)
     ..setHpRel(420500, 0.02)
-    ..setManaInitialAmount(50)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(0.50)
+    ..setMp(200, 4)
 
     ..addItemDropTable(dropTable_Bosses_100_104)
 
@@ -3582,30 +3075,24 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+    
+    ..setRangedAttack1(600)
     ..setAttack1CooldownTime(1.60)
     ..setAttackDamage1(2850)
     ..setAttack1DamageNumberofDice(9)
     ..setAttack1DamageSidesperDie(7)
-    ..setAttack1Range(600)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\CryptFiendMissile\\CryptFiendMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
-    ..setAttack1WeaponType(WeaponType.Missile)
     ..setAttack1AnimationBackswingPoint(0.360)
     ..setAttack1AnimationDamagePoint(0.640)
     ..setAttack1AttackType(AttackType.Pierce)
+
     ..setSpeedBase(320)
-    ..setFoodCost(3)
-    ..setGoldCost(200)
-    ..setDefenseBase(104)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2400)
-    ..setGoldBountyAwardedNumberofDice(1)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(6100, 10300)
     ..setHpRel(110200, 0.02)
-    ..setManaInitialAmount(7256)
-    ..setManaMaximum(7256)
-    ..setManaRegeneration(0.75)
+    ..setMp(7200, 5)
 
     ..addItemDropTable(dropTable_Bosses_100_104)
 
@@ -3616,21 +3103,19 @@ import MyItemIds
 
     ..setScalingValue(2.50)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(2850)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
+
     ..setSpeedBase(300)
-    ..setFoodCost(3)
-    ..setGoldCost(255)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(156)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2400)
-    ..setGoldBountyAwardedNumberofDice(2)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(6400, 10500)
     ..setHpRel(147600, 0.02)
 
     ..addItemDropTable(dropTable_Bosses_100_104)
@@ -3642,26 +3127,22 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(1.75)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.00)
     ..setAttackDamage1(4855)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(7)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setSpeedBase(320)
-    ..setFoodCost(8)
-    ..setGoldCost(480)
     ..setCollisionSize(48.00)
-    ..setDefenseBase(156)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2400)
-    ..setGoldBountyAwardedNumberofDice(3)
-    ..setGoldBountyAwardedSidesperDie(6)
+
+    ..setGoldBounty(6100, 10300)
     ..setHpRel(146900, 0.02)
-    ..setManaInitialAmount(500)
-    ..setManaMaximum(500)
-    ..setManaRegeneration(1.25)
+    ..setMp(500, 3)
 
     ..addItemDropTable(dropTable_Bosses_100_104)
 
@@ -3672,25 +3153,21 @@ import MyItemIds
 
     ..setScalingValue(2.00)
     ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
     ..setAttackDamage1(3955)
     ..setAttack1DamageNumberofDice(1)
     ..setAttack1DamageSidesperDie(4)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.400)
-    ..setAttack1AttackType(AttackType.Chaos)
+    ..setChaosAttackType1()
+
     ..setTurnRate(0.60)
-    ..setFoodCost(2)
-    ..setGoldCost(170)
-    ..setDefenseBase(156)
-    ..setDefenseUpgradeBonus(54)
-    ..setGoldBounty(2400)
-    ..setGoldBountyAwardedNumberofDice(4)
-    ..setGoldBountyAwardedSidesperDie(3)
+
+    ..setGoldBounty(6500, 10700)
     ..setHpRel(147000, 0.02)
-    ..setManaInitialAmount(300)
-    ..setManaMaximum(300)
-    ..setManaRegeneration(0.75)
+    ..setMp(300, 1)
 
     ..addItemDropTable(dropTable_Bosses_100_104)
 
