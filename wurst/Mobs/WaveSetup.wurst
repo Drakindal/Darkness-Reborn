@@ -22,49 +22,6 @@ let bigBossWaveList = new LinkedList<BossWaves>
 
 @compiletime
 function initCreepStats()
-	CREEP_LEFT_SPIDER                   .addUnitBaseDamageBlock(blockType.PostResistances, 12)
-	CREEP_LEFT_MUD_GOLEM                .addUnitBaseDamageBlock(blockType.PostResistances, 14)
-	CREEP_LEFT_MURLOC_TIDERUNNER        .addUnitBaseDamageBlock(blockType.PostResistances, 16)
-	CREEP_LEFT_TIMBER_WOLF              .addUnitBaseDamageBlock(blockType.PostResistances, 18)
-	CREEP_LEFT_CRAB_SHORECRAWLER        .addUnitBaseDamageBlock(blockType.PostResistances, 24)
-	CREEP_LEFT_FACELESS_ONE_TRICKSTER   .addUnitBaseDamageBlock(blockType.PostResistances, 28)
-	CREEP_LEFT_SPITTING_SPIDER          .addUnitBaseDamageBlock(blockType.PostResistances, 32)
-	CREEP_LEFT_ROCK_GOLEM               .addUnitBaseDamageBlock(blockType.PostResistances, 34)
-	CREEP_LEFT_MURGUL_SHADOWCASTER      .addUnitBaseDamageBlock(blockType.PostResistances, 30)
-	CREEP_LEFT_POLAR_FURBOLG            .addUnitBaseDamageBlock(blockType.PostResistances, 40)
-	CREEP_LEFT_GHOST                    .addUnitBaseDamageBlock(blockType.PostResistances, 35)
-	CREEP_LEFT_FACELESS_ONE_DEATHBRINGER.addUnitBaseDamageBlock(blockType.PostResistances, 80)
-	CREEP_LEFT_BROOD_MOTHER             .addUnitBaseDamageBlock(blockType.PostResistances, 120)
-	CREEP_LEFT_GRANITE_GOLEM            .addUnitBaseDamageBlock(blockType.PostResistances, 150)
-	CREEP_LEFT_TURTLE                   .addUnitBaseDamageBlock(blockType.PostResistances, 300)
-	CREEP_LEFT_GIANT_POLAR_BEAR         .addUnitBaseDamageBlock(blockType.PostResistances, 400)
-	CREEP_LEFT_STORM_WYRM               .addUnitBaseDamageBlock(blockType.PostResistances, 450)
-	CREEP_LEFT_SKELETON_WARRIOR         .addUnitBaseDamageBlock(blockType.PostResistances, 500)
-	CREEP_LEFT_FOREST_TROLL_WARLOCK     .addUnitBaseDamageBlock(blockType.PostResistances, 550)
-	CREEP_LEFT_DIRE_MAMMOTH             .addUnitBaseDamageBlock(blockType.PostResistances, 600)
-	CREEP_LEFT_FEL_RAVAGER              .addUnitBaseDamageBlock(blockType.PostResistances, 650)
-	CREEP_LEFT_DALARAN_REJECT           .addUnitBaseDamageBlock(blockType.PostResistances, 700)
-	CREEP_LEFT_VILE_TORMENTOR           .addUnitBaseDamageBlock(blockType.PostResistances, 650)
-	CREEP_LEFT_ELDER_VOIDWALKER         .addUnitBaseDamageBlock(blockType.PostResistances, 1000)
-
-	CREEP_LEFT_GHOST
-	..addUnitBaseRes(resType.Magical , 0.15)
-	..addUnitBaseRes(resType.Physical, 0.80)
-
-	CREEP_LEFT_MUD_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.25)
-	..addUnitBaseRes(resType.Physical, 0.15)
-	CREEP_LEFT_ROCK_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.60)
-	..addUnitBaseRes(resType.Physical, 0.80)
-	CREEP_LEFT_GRANITE_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.80)
-	..addUnitBaseRes(resType.Physical, 0.80)
-	
-	CREEP_LEFT_TURTLE
-	..addUnitBaseRes(resType.Physical, 0.80)
-	..addUnitBaseRes(resType.Magical , 0.20)
-
 	CREEP_ELITE_FROSTY_THE_SNOWMAN.addUnitBaseRes(resType.Magical, 0.40)
 	CREEP_ELITE_ICE_REVENANT..addUnitBaseRes(resType.Magical, 0.60)
 

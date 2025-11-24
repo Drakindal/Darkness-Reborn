@@ -17,10 +17,13 @@ class ResPenPair
     real pen = 0
 
     function calcDamage(real unreducedDamage) returns real
-        let reducedByRes   = unreducedDamage * res
-        let plain          = unreducedDamage - reducedByRes
-        let penetrated     = pen * reducedByRes
-        return plain + penetrated
+        let reducedByRes = unreducedDamage * res
+        let plain        = unreducedDamage - reducedByRes
+        let penetrated   = pen * reducedByRes
+        var totalDmg     = plain
+        if (penetrated > 0)
+            totalDmg += penetrated
+        return totalDmg
 
     function clear()
         res = 0

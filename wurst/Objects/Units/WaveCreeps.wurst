@@ -1,6 +1,5 @@
 package WaveCreeps
 
-import UnitObjEditing
 import MyUnitIds
 import UnitIds
 import ObjectIds

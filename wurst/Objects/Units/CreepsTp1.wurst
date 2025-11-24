@@ -19,14 +19,15 @@ import ItemDrops
 
     ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(24)
-    ..setAttack1DamageNumberofDice(5)
-    ..setAttack1DamageSidesperDie(2)
+    ..setAttackDamage1(25, 35)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
 
-    ..setGoldBounty(39)
-    ..setHp(355, 0.5)
+    ..setGoldBounty(35, 41)
+    ..setHp(350, 5)
+    ..addRes(resType.Physical, 0.08)
+    ..addRes(resType.Magical,  0.06)
+    ..addBlockFlat(blockType.PostResistances, 8)
 
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -44,19 +45,21 @@ import ItemDrops
     ..setSelectionScale(1.75)
 
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(28)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(2)
+    ..setAttack1CooldownTime(1.7)
+    ..setAttackDamage1(28, 62)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     
     ..setSpeedBase(240)
     ..setCollisionSize(31.00)
+    ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBounty(39)
-    ..setHp(425, 0.5)
+    ..setGoldBounty(42, 54)
+    ..setHp(480, 0)
     ..setMp(300, 0.75)
+    ..addRes(resType.Physical, 0.40)
+    ..addRes(resType.Magical,  0.15)
+    ..addBlockFlat(blockType.PostResistances, 25)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -73,18 +76,19 @@ import ItemDrops
     ..setSelectionScale(1.00)
     
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(25)
-    ..setAttack1DamageNumberofDice(5)
-    ..setAttack1DamageSidesperDie(2)
+    ..setAttack1CooldownTime(1.3)
+    ..setAttackDamage1(30, 44)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.660)
     
     ..setSpeedBase(270)
     ..setCollisionSize(31.00)
 
-    ..setGoldBounty(39)
-    ..setHp(395, 0.5)
+    ..setGoldBounty(38, 46)
+    ..setHp(420, 10)
+    ..addRes(resType.Physical, 0.10)
+    ..addRes(resType.Magical,  0.08)
+    ..addBlockChance(blockType.PostResistances, 0.25, 80)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -105,17 +109,20 @@ import ItemDrops
     ..setSelectionScale(1.10)
 
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(22)
-    ..setAttack1DamageNumberofDice(6)
-    ..setAttack1DamageSidesperDie(3)
+    ..setAttack1CooldownTime(1.1)
+    ..setAttackDamage1(25, 41)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     
     ..setSpeedBase(350)
     ..setTurnRate(0.60)
-    ..setGoldBounty(39)
-    ..setHp(455, 0.5)
+
+    ..setGoldBounty(38, 46)
+    ..setHp(380, 14)
+    ..addRes(resType.Physical, 0.08)
+    ..addRes(resType.Magical,  0.08)
+    ..addBlockFlat(blockType.PostResistances, 15)
+    ..addBlockChance(blockType.PostResistances, 0.05, 30)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -132,18 +139,20 @@ import ItemDrops
     ..setSelectionScale(1.20)
 
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(55)
-    ..setAttack1DamageNumberofDice(3)
-    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1CooldownTime(1.55)
+    ..setAttackDamage1(62, 74)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.500)
     
     ..setSpeedBase(270)
     ..setCollisionSize(31.00)
 
-    ..setGoldBounty(69)
-    ..setHp(1000, 0.5)
+    ..setGoldBounty(65, 80)
+    ..setHp(1100, 35)
+    ..addRes(resType.Physical, 0.25)
+    ..addRes(resType.Magical,  0.10)
+    ..addBlockFlat(blockType.PostResistances, 35)
+    ..addBlockChance(blockType.PostResistances, 0.15, 75)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -160,18 +169,20 @@ import ItemDrops
     ..setSelectionScale(1.40)
 
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(88)
-    ..setAttack1DamageNumberofDice(7)
-    ..setAttack1DamageSidesperDie(3)
+    ..setAttack1CooldownTime(1.05)
+    ..setAttackDamage1(72, 103)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
     
     ..setSpeedBase(300)
 
-    ..setGoldBounty(89)
-    ..setHp(1750, 3.0)
+    ..setGoldBounty(85, 98)
+    ..setHp(1750, 70)
     ..setMp(300, 0.75)
+    ..addRes(resType.Physical, 0.25)
+    ..addRes(resType.Magical,  0.45)
+    ..addBlockFlat(blockType.PostResistances, 25)
+    ..addBlockChance(blockType.PostResistances, 0.25, 45)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -189,10 +200,8 @@ import ItemDrops
     ..setSelectionScale(1.50)
 
     ..setRangedAttack1(500)
-    ..setAttack1CooldownTime(1.80)
-    ..setAttack1DamageBase(99)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(8)
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(121, 154)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\ChimaeraAcidMissile\\ChimaeraAcidMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -202,9 +211,13 @@ import ItemDrops
     
     ..setSpeedBase(270)
 
-    ..setGoldBounty(84)
-    ..setHp(1650, 0.5)
-    
+    ..setGoldBounty(87, 103)
+    ..setHp(1650, 15)
+    ..addRes(resType.Physical, 0.20)
+    ..addRes(resType.Magical,  0.15)
+    ..addBlockFlat(blockType.PostResistances, 25)
+    ..addBlockChance(blockType.PostResistances, 0.05, 80)
+
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
         ITEM_FLARE_GUN,
@@ -220,20 +233,22 @@ import ItemDrops
     ..setSelectionScale(1.85)
 
     ..setMeleeAttack1()
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(88)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(5)
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(136, 212)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.300)
         
     ..setSpeedBase(270)
+    ..setArmorType(ArmorType.Fortified)
 
-    ..setGoldBounty(89)
-    ..setHp(1700, 0.5)
+    ..setGoldBounty(120, 165)
+    ..setHp(1700, 0)
     ..setMp(400, 1.0)
+    ..addRes(resType.Physical, 0.60)
+    ..addRes(resType.Magical,  0.35)
+    ..addBlockFlat(blockType.PostResistances, 80)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -251,10 +266,8 @@ import ItemDrops
     ..setSelectionScale(1.50)
 
     ..setRangedAttack1(500)
-    ..setAttack1CooldownTime(1.80)
-    ..setAttack1DamageBase(105)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1CooldownTime(1.45)
+    ..setAttackDamage1(105, 132)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\MurgulMagicMissile\\MurgulMagicMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.700)
@@ -265,9 +278,13 @@ import ItemDrops
     ..setMovementType(MovementType.Amphipic)
     ..setCollisionSize(31.00)
 
-    ..setGoldBounty(94)
-    ..setHp(1850, 0.5)
+    ..setGoldBounty(91, 133)
+    ..setHp(1850, 30)
     ..setMp(400, 1.0)
+    ..addRes(resType.Physical, 0.35)
+    ..addRes(resType.Magical,  0.55)
+    ..addBlockFlat(blockType.PostResistances, 45)
+    ..addBlockChance(blockType.PostResistances, 0.15, 50)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -283,10 +300,8 @@ import ItemDrops
     ..setSelectionScale(1.00)
 
     ..setRangedAttack1(350)
-    ..setAttack1CooldownTime(1.35)
-    ..setAttack1DamageBase(111)
-    ..setAttack1DamageNumberofDice(2)
-    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1CooldownTime(1.25)
+    ..setAttackDamage1(122, 175)
     ..setAttack1ProjectileArc(0.10)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.300)
@@ -294,8 +309,14 @@ import ItemDrops
     
     ..setSpeedBase(300)
 
-    ..setGoldBounty(94)
-    ..setHp(2255, 0.5)
+    ..setGoldBounty(148, 172)
+    ..setHpRel(2950, 0.07)
+    ..addRes(resType.Physical, 0.25)
+    ..addRes(resType.Magical,  0.20)
+    ..addBlockFlat(blockType.PostResistances, 23)
+    ..addBlockChance(blockType.PostResistances, 0.25, 40)
+    ..addBlockChance(blockType.PostResistances, 0.15, 150)
+    ..addBlockChance(blockType.PostResistances, 0.05, 550)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -311,10 +332,8 @@ import ItemDrops
     ..setSelectionScale(1.00)
 
     ..setRangedAttack1(400)
-    ..setAttack1CooldownTime(1.80)
-    ..setAttack1DamageBase(134)
-    ..setAttack1DamageNumberofDice(1)
-    ..setAttack1DamageSidesperDie(5)
+    ..setAttack1CooldownTime(1.50)
+    ..setAttackDamage1(172, 247)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\BansheeMissile\\BansheeMissile.mdl")
     ..setAttack1AnimationBackswingPoint(0.510)
@@ -327,9 +346,11 @@ import ItemDrops
     ..setMovementType(MovementType.Hover)
     ..setCollisionSize(16.00)
 
-    ..setGoldBounty(159)
-    ..setHp(3750, 0.5)
+    ..setGoldBounty(190, 220)
+    ..setHpRel(3450, 0.01)
     ..setMp(300, 0.75)
+    ..addRes(resType.Physical, 0.65)
+    ..addRes(resType.Magical,  0.35)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
@@ -346,10 +367,8 @@ import ItemDrops
 
     ..setMeleeAttack1()
     ..setChaosAttackType1()
-    ..setAttack1CooldownTime(1.50)
-    ..setAttack1DamageBase(255)
-    ..setAttack1DamageNumberofDice(3)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1CooldownTime(1.20)
+    ..setAttackDamage1(238, 325)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\NecromancerMissile\\NecromancerMissile.mdl")
     ..setAttack1ProjectileHomingEnabled(true)
     ..setAttack1WeaponType(WeaponType.Missile)
@@ -360,9 +379,14 @@ import ItemDrops
     ..setSpeedBase(300)
     ..setCollisionSize(48.00)
 
-    ..setGoldBounty(239)
-    ..setHp(4750, 5.0)
+    ..setGoldBounty(210, 270)
+    ..setHpRel(4750, 0.03)
     ..setMp(1000, 1.25)
+    ..addRes(resType.Physical, 0.45)
+    ..addRes(resType.Magical,  0.65)
+    ..addBlockFlat(blockType.PostResistances, 35)
+    ..addBlockChance(blockType.PostResistances, 0.22, 85)
+    ..addBlockChance(blockType.PostResistances, 0.15, 260)
     
     ..addRespawnTime(RESPAWN_TIME_NORMAL_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_NORMAL_CREEPS)..populate(
