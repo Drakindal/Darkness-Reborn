@@ -48,7 +48,7 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Shield.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(130))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addHp(5000))
     ..addStats(addAbilityGetHpOnDamage(500, 0.3))
     ..addComponents(
@@ -64,7 +64,7 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Plate.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(190))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addHp(3000))
     ..addStats(addInt(200))
     ..addStats(addAbilityGetMpOnDamage(1, 0.2))
@@ -85,7 +85,8 @@ import DebugVar
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNLancelot_Helm.blp")
     ..setClassification("Artifact")
     ..addStats(addAbilityDealAoeDamage(10000, 600, customDamageType.Magical, 2500, 30))
-    ..addStats(addArmor(100))
+    ..addStats(addRes(resType.Physical, 0.2))
+    ..addStats(addRes(resType.Magical, 0.2))
     ..addStats(addHp(5000))
     ..addStats(addHpReg(50))
     ..addComponents(

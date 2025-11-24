@@ -19,7 +19,8 @@ import RecipeItems
     ..addStats(addInt(12))
     ..addStats(addHp(500))
     ..addStats(addHpReg(7))
-    ..addStats(addArmor(15))
+    ..addStats(addRes(resType.Physical, 0.03))
+    ..addStats(addRes(resType.Magical, 0.03))
     ..addComponents(
     ITEM_SCROLL_OF_FUSION,
     ITEM_BELT_OF_GIANT_STRENGTH,
@@ -39,7 +40,8 @@ import RecipeItems
     ..addStats(addInt(40))
     ..addStats(addHp(500))
     ..addStats(addHpReg(7))
-    ..addStats(addArmor(15))
+    ..addStats(addRes(resType.Physical, 0.03))
+    ..addStats(addRes(resType.Magical, 0.03))
     ..addComponents(
     ITEM_SCROLL_OF_FUSION,
     ITEM_ROBE_OF_MAGI,
@@ -188,7 +190,7 @@ import RecipeItems
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Short Sword.blp")
     ..setClassification("Permanent")
     ..addStats(addAgi(130))
-    ..addStats(addArmor(40))
+    ..addStats(addRes(resType.Physical, 0.05))
     ..addStats(addDamage(240))
     ..addComponents(
     ITEM_SCROLL_OF_FUSION,

@@ -84,7 +84,7 @@ import MyUnitIds
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNJew_Organe.blp")
 
     ..addStats(addAllStats(600))
-    ..addStats(addArmor(300))
+    ..addStats(addRes(resType.Physical, 0.25))
 
     ..addStats(addSpikes(1.5))
 

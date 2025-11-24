@@ -56,7 +56,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (1).blp")    
         ..setClassification("Purchasable")
         ..addStats(addAgi(455))
-        ..addStats(addArmor(20))
+        ..addStats(addRes(resType.Physical, 0.01))
         ..addStats(addEvasion(0.10))
         ..addComponents(
         ITEM_EMERALD_RING,
@@ -69,7 +69,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (6).blp")    
         ..setClassification("Purchasable")
         ..addStats(addAgi(555))
-        ..addStats(addArmor(50))
+        ..addStats(addRes(resType.Physical, 0.02))
         ..addStats(addEvasion(0.18))
         ..addComponents(
         ITEM_ICE_RING,
@@ -81,7 +81,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (7).blp")    
         ..setClassification("Purchasable")
         ..addStats(addAgi(1100))
-        ..addStats(addArmor(80))
+        ..addStats(addRes(resType.Physical, 0.03))
         ..addStats(addDamage(500))
         ..addStats(addEvasion(0.26))
         ..addComponents(
@@ -95,7 +95,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (8).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(2200))
-        ..addStats(addArmor(120))
+        ..addStats(addRes(resType.Physical, 0.04))
         ..addStats(addDamage(1000))
         ..addStats(addEvasion(0.35))
         ..addComponents(
@@ -110,7 +110,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(2400))
-        ..addStats(addArmor(160))
+        ..addStats(addRes(resType.Physical, 0.05))
         ..addStats(addDamage(2500))
         ..addStats(addEvasion(0.4))
         ..addComponents(
@@ -125,7 +125,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(2650))
-        ..addStats(addArmor(180))
+        ..addStats(addRes(resType.Physical, 0.06))
         ..addStats(addDamage(5600))
         ..addStats(addEvasion(0.45))
         ..register()
@@ -134,7 +134,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(2900))
-        ..addStats(addArmor(200))
+        ..addStats(addRes(resType.Physical, 0.07))
         ..addStats(addDamage(9200))
         ..addStats(addEvasion(0.50))
         ..register()
@@ -143,7 +143,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBelt (5).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(3250))
-        ..addStats(addArmor(220))
+        ..addStats(addRes(resType.Physical, 0.08))
         ..addStats(addDamage(12600))
         ..addStats(addEvasion(0.55))
         ..register()
@@ -153,7 +153,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (8).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(3600))
-        ..addStats(addArmor(250))
+        ..addStats(addRes(resType.Physical, 0.1))
         ..addStats(addDamage(15400))
         ..addStats(addEvasion(0.64))
         ..register()

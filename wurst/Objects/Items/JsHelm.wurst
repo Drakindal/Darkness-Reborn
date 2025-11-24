@@ -13,36 +13,36 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_HELM_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(5))
         ..addStats(addHpReg(5))
         ..addStats(addRes(resType.Magical, 0.05))
+        ..addStats(addRes(resType.Physical, 0.05))
         ..register()
 
     //I08A
         new MyItemDefinition(ITEM_FORGE_HELM_L2)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(15))
         ..addStats(addHpReg(15))
-        ..addStats(addRes(resType.Magical, 0.15))
+        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.1))
         ..register()
 
     //I08B
         new MyItemDefinition(ITEM_FORGE_HELM_L3)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(25))
         ..addStats(addHpReg(25))
-        ..addStats(addRes(resType.Magical, 0.25))
+        ..addStats(addRes(resType.Magical, 0.13))
+        ..addStats(addRes(resType.Physical, 0.13))
         ..register()
 
     //I08C
         new MyItemDefinition(ITEM_FORGE_HELM_L4)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(45))
         ..addStats(addHpReg(45))
-        ..addStats(addRes(resType.Magical, 0.45))
+        ..addStats(addRes(resType.Magical, 0.2))
+        ..addStats(addRes(resType.Physical, 0.2))
         ..register()
         addItemInBoxForDebug = false
 
@@ -50,9 +50,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_DREAD_HELM_L1, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(10))
         ..addStats(addHpReg(10))
-        ..addStats(addRes(resType.Magical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.1))
         ..addComponents(
         ITEM_FORGE_HELM_L1,
         ITEM_RING_OF_REGENERATION)
@@ -62,9 +62,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_DREAD_HELM_L2, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(20))
         ..addStats(addHpReg(20))
-        ..addStats(addRes(resType.Magical, 0.20))
+        ..addStats(addRes(resType.Magical, 0.15))
+        ..addStats(addRes(resType.Physical, 0.15))
         ..addComponents(
         ITEM_DREAD_HELM_L1,
         ITEM_BLADEBANE_ARMOR)
@@ -74,9 +74,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_DREAD_HELM_L3, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(50))
         ..addStats(addHpReg(50))
-        ..addStats(addRes(resType.Magical, 0.40))
+        ..addStats(addRes(resType.Magical, 0.25))
+        ..addStats(addRes(resType.Physical, 0.25))
         ..addComponents(
         ITEM_DREAD_HELM_L2,
         ITEM_AMULET_OF_SPELL_SHIELD,
@@ -87,9 +87,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_DREAD_HELM_L4, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(100))
         ..addStats(addHpReg(100))
-        ..addStats(addRes(resType.Magical, 0.50))
+        ..addStats(addRes(resType.Magical, 0.3))
+        ..addStats(addRes(resType.Physical, 0.3))
         ..addComponents(
         ITEM_DREAD_HELM_L3,
         ITEM_BLOOD_GEM,
@@ -100,9 +100,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_DREAD_HELM_L5, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addArmor(200))
         ..addStats(addHpReg(200))
-        ..addStats(addRes(resType.Magical, 0.70))
+        ..addStats(addRes(resType.Magical, 0.35))
+        ..addStats(addRes(resType.Physical, 0.35))
         ..addComponents(
         ITEM_DREAD_HELM_L4,
         ITEM_FORGE_HELM_L3,
@@ -114,9 +114,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_BERSERKERS_HELM, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkersHelm.blp")    
         ..setClassification("Campaign")
-        ..addStats(addArmor(350))
         ..addStats(addHpReg(300))
-        ..addStats(addRes(resType.Magical, 0.80))
+        ..addStats(addRes(resType.Universal, 0.3))
         ..addComponents(
         ITEM_DREAD_HELM_L5,
         ITEM_FORGE_HELM_L4,

@@ -135,7 +135,7 @@ import DebugVar
     ..setClassification("Permanent")
     ..addStats(addDamage(65))
     ..addStats(addAttackSpeed(0.6))
-    ..addStats(addArmorOnHit(-30))
+    ..addStats(addPen(penType.Physical, 0.2))
     ..addComponents(
     ITEM_ORB_OF_CORRUPTION,
     ITEM_SIMPLE_SWORD,
@@ -168,7 +168,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNrcgs.blp")
     ..setClassification("Permanent")
-    ..addStats(addArmor(50))
+    ..addStats(addRes(resType.Physical, 0.04))
+    ..addStats(addRes(resType.Magical, 0.04))
     ..addStats(addAllStats(30))
     ..addStats(addHp(2000))
     ..addStats(addDamageBlock(blockType.PostResistances, 600))
@@ -186,7 +187,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNElectricrune.blp")
     ..setClassification("Permanent")
-    ..addStats(addArmor(150))
+    ..addStats(addRes(resType.Physical, 0.08))
+    ..addStats(addRes(resType.Magical, 0.08))
     ..addStats(addAllStats(50))
     ..addStats(addDamageBlock(blockType.PostResistances, 3000))
     ..addComponents(
@@ -203,7 +205,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArcanum Protector.blp")
     ..setClassification("Permanent")
-    ..addStats(addArmor(100))
+    ..addStats(addRes(resType.Physical, 0.06))
+    ..addStats(addRes(resType.Magical, 0.06))
     ..addStats(addStr(80))
     ..addStats(addAgi(50))
     ..addStats(addInt(50))

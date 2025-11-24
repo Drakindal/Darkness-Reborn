@@ -103,7 +103,7 @@ import DebugVar
     ..setClassification("Artifact")
     ..addStats(addDamage(400))
     ..addStats(addAttackSpeed(1))
-    ..addStats(addArmorOnHit(-80))
+    ..addStats(addPen(penType.Physical, 0.25))
     ..addComponents(
     ITEM_MIDNIGHT_BLADE,
     ITEM_GLOVES_OF_SPEED,
@@ -135,8 +135,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNShinyArmor.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(100))
-    ..addStats(addRes(resType.Magical, 0.30))
+    ..addStats(addRes(resType.Physical, 0.2))
+    ..addStats(addRes(resType.Magical, 0.2))
     ..addStats(addHp(3000))
     ..addStats(addHpReg(20))
     ..addComponents(
@@ -153,7 +153,7 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSpikedArmor.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(200))
+    ..addStats(addRes(resType.Physical, 0.2))
     ..addStats(addHp(100))
     ..addStats(addSpikes(0.5))
     ..addComponents(
@@ -170,8 +170,8 @@ import DebugVar
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHoly Armor.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(200))
-    ..addStats(addRes(resType.Magical, 0.60))
+    ..addStats(addRes(resType.Physical, 0.22))
+    ..addStats(addRes(resType.Magical, 0.22))
     ..addStats(addHp(5000))
     ..addStats(addHpReg(40))
     ..addStats("Permanently changes your armor type to 'Hero' if picked up".setColor("|c643a9bae"))

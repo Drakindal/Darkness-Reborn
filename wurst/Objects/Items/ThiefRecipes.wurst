@@ -110,7 +110,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_INHERITED_ARMOR, blacksmithJackedList, -1)
         ..setClassification("Artifact")
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif6x.blp")
-        ..addStats(addArmor(350))
+        ..addStats(addRes(resType.Physical, 0.15))
+        ..addStats(addRes(resType.Magical, 0.15))
         ..addStats(addHpReg(350))
         ..addComponents(
         ITEM_ARMOR_OF_HELL,

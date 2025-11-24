@@ -224,7 +224,8 @@ import DebugVar
         new MyItemDefinition(ITEM_ARMOR_OF_SACRED)
         ..setClassification("PowerUp")
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif61.blp")
-        ..addStats(addArmor(3))
+        ..addStats(addRes(resType.Physical, 0.02))
+        ..addStats(addRes(resType.Magical, 0.02))
         ..addStats(addHpReg(7))
         ..register()
 
@@ -232,7 +233,8 @@ import DebugVar
         new MyItemDefinition(ITEM_THIEF_SILVER_ARMOR)
         ..setClassification("PowerUp")
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif63.blp")
-        ..addStats(addArmor(15))
+        ..addStats(addRes(resType.Physical, 0.04))
+        ..addStats(addRes(resType.Magical, 0.04))
         ..addStats(addHpReg(25))
         ..register()
 
@@ -240,7 +242,8 @@ import DebugVar
         new MyItemDefinition(ITEM_SILVER_SPLIT_ARMOR)
         ..setClassification("Charged")
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNTheif65.blp")
-        ..addStats(addArmor(110))
+        ..addStats(addRes(resType.Physical, 0.06))
+        ..addStats(addRes(resType.Magical, 0.06))
         ..addStats(addHpReg(150))
         ..register()
 
