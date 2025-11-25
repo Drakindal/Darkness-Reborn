@@ -3,6 +3,9 @@ import DamageTarget
 import Abilities
 import Waves
 import RotationProjectile
+import MyUnitIds
+import StandardTextTags
+import MyColors
 
 public function unit.startTidal()
     startWave(this, Abilities.crushingWaveMissile, 1.5, 3, 2, 0.5, 125) (unit hit) ->
@@ -23,3 +26,10 @@ public function unit.startTreant3()
     let rotation = new RotationProjectile()
     rotation.rotationCreation(this, Abilities.rockBoltMissile, 0.2, 4, 8, 1000, 0.44, 0.78, 2.3) (unit hitUnit) ->
         this.damageTargetCode(1750, hitUnit, null, -1, customDamageType.Magical)
+
+public function checkZiggurat(unit src, unit targ)
+    if (targ.getTypeId() == CREEP_BOSS_TOWER_L5_ZIGGURAT and GetRandomInt(2, 100) == 2)
+        src.kill()
+        src..addStr(-30)..addAgi(-20)..addInt(-20)
+        standardTextTag(src.getPos(), "Ziggurat has drained your soul!".setColor("|cff68e65a"))
+        

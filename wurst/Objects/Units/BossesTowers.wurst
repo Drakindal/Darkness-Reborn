@@ -130,7 +130,7 @@ import MyItemIds
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(CREEP_BOSS_TOWER_L5, "Ziggurat", 0, UnitIds.ziggurat)
+    new MyCreepDefinition(CREEP_BOSS_TOWER_L5_ZIGGURAT, "Ziggurat", 0, UnitIds.ziggurat)
     ..setNormalAbilities(commaList('Abgs'))
 
     ..setScalingValue(1.50)
