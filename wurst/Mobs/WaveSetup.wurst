@@ -25,31 +25,6 @@ function initCreepStats()
 	CREEP_ELITE_FROSTY_THE_SNOWMAN.addUnitBaseRes(resType.Magical, 0.40)
 	CREEP_ELITE_ICE_REVENANT..addUnitBaseRes(resType.Magical, 0.60)
 
-	WAVE_MOB[1]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[2]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.50)
-	WAVE_MOB[3]..addUnitBaseRes(resType.Magical, 0.30)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[4]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.20)
-
-	WAVE_MOB[5]..addUnitBaseRes(resType.Magical, 0.15)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[6]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.80)
-	WAVE_MOB[7]..addUnitBaseRes(resType.Magical, 0.25)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[8]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[9]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[10]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[11]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_MOB[12]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[13]..addUnitBaseRes(resType.Magical, 0.01)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[14]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_MOB[15]..addUnitBaseRes(resType.Magical, 0.15)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_MOB[16]..addUnitBaseRes(resType.Magical, 0.09)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[17]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[18]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_MOB[19]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.60)
-	WAVE_MOB[20]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-
 	WAVE_BOSS[1]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.00)
 	WAVE_BOSS[2]..addUnitBaseRes(resType.Magical, 0.20)..addUnitBasePen(penType.Physical, 0.10)
 	WAVE_BOSS[3]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.05)
