@@ -22,9 +22,6 @@ let bigBossWaveList = new LinkedList<BossWaves>
 
 @compiletime
 function initCreepStats()
-	CREEP_ELITE_FROSTY_THE_SNOWMAN.addUnitBaseRes(resType.Magical, 0.40)
-	CREEP_ELITE_ICE_REVENANT..addUnitBaseRes(resType.Magical, 0.60)
-
 	WAVE_BOSS[1]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.00)
 	WAVE_BOSS[2]..addUnitBaseRes(resType.Magical, 0.20)..addUnitBasePen(penType.Physical, 0.10)
 	WAVE_BOSS[3]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.05)

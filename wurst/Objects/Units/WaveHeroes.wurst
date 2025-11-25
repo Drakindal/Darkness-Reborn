@@ -36,6 +36,9 @@ import MyAbilityIds
     ..setGoldBounty(35200, 46800)
     ..setHpRel(525000, 0.006)
     ..setMp(46000, 10)
+    ..addRes(resType.Physical, 0.99)
+    ..addRes(resType.Magical,  0.95)
+    ..addBlockFlat(blockType.PostResistances, 4200)
 
 // ----------------------------------------------------------------------------
 
@@ -65,6 +68,9 @@ import MyAbilityIds
     ..setGoldBounty(48200, 64800)
     ..setHpRel(685000, 0.007)
     ..setMp(52000, 10)
+    ..addRes(resType.Physical, 1.05)
+    ..addRes(resType.Magical,  0.96)
+    ..addBlockFlat(blockType.PostResistances, 5000)
 
 // ----------------------------------------------------------------------------
 
@@ -94,8 +100,11 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Divine)
     
     ..setGoldBounty(56000, 75000)
-    ..setHpRel(794000, 0.01)
+    ..setHpRel(794000, 0.010)
     ..setMp(66000, 10)
+    ..addRes(resType.Physical, 1.09)
+    ..addRes(resType.Magical,  0.97)
+    ..addBlockFlat(blockType.PostResistances, 5800)
 
 // ----------------------------------------------------------------------------
 
@@ -123,8 +132,11 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Divine)
     
     ..setGoldBounty(82000, 156000)
-    ..setHpRel(855000, 0.007)
+    ..setHpRel(855000, 0.015)
     ..setMp(76000, 10)
+    ..addRes(resType.Physical, 1.19)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 7000)
 
 // ----------------------------------------------------------------------------
 
@@ -152,8 +164,11 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Divine)
 
     ..setGoldBounty(115000, 216000)
-    ..setHpRel(1155000, 0.002)
+    ..setHpRel(1155000, 0.02)
     ..setMp(86000, 10)
+    ..addRes(resType.Physical, 1.29)
+    ..addRes(resType.Magical,  0.99)
+    ..addBlockFlat(blockType.PostResistances, 8500)
 
 // ----------------------------------------------------------------------------
 
@@ -176,7 +191,10 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Fortified)
     
     ..setGoldBounty(1, 315000)
-    ..setHp(888000, 330)
+    ..setHpRel(888000, 0.01)
+    ..addRes(resType.Physical, 1.39)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 28000)
 
 // ----------------------------------------------------------------------------
 
@@ -198,6 +216,9 @@ import MyAbilityIds
     ..setGoldBounty(33)
     ..setHpRel(2666666, 0.00666)
     ..setMp(30000, 10)
+    ..addRes(resType.Physical, 3.33) // 333%
+    ..addRes(resType.Magical,  1.09)
+    ..addBlockFlat(blockType.PostResistances, 8500)
 
 // ----------------------------------------------------------------------------
     
@@ -225,6 +246,9 @@ import MyAbilityIds
     
     ..setGoldBounty(358000, 625000)
     ..setHpRel(8025000, 0.008)
+    ..addRes(resType.Physical, 1.59)
+    ..addRes(resType.Magical,  1.09)
+    ..addBlockFlat(blockType.PostResistances, 11500)
 
 // ----------------------------------------------------------------------------
 
@@ -245,6 +269,9 @@ import MyAbilityIds
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Fortified)
+    ..addRes(resType.Physical, 1.799) // 80% = Dark steel sword + Battle Axe L5 + Crystal Knife
+    ..addRes(resType.Magical,  1.19)
+    ..addBlockFlat(blockType.PostResistances, 15500)
     
     ..setGoldBounty(928000, 1835000)
     ..setHpRel(35025000, 0.003)

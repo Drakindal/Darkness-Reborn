@@ -33,6 +33,9 @@ import MyItemIds
     ..setGoldBounty(1500, 2500)
     ..setHpRel(65000, 0.01)
     ..setMp(50000, 1.25)
+    ..addRes(resType.Physical, 0.80)
+    ..addRes(resType.Magical,  0.75)
+    ..addBlockFlat(blockType.PostResistances, 560)
 
     ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
     ..addItemDropTable(new ItemDropTableChance(DROP_CHANCE_ELITE_CREEPS_NORMAL)..populate(
@@ -62,6 +65,9 @@ import MyItemIds
 
     ..setGoldBounty(1700, 2700)
     ..setHpRel(85000, 0.01)
+    ..addRes(resType.Physical, 0.80)
+    ..addRes(resType.Magical,  0.85)
+    ..addBlockFlat(blockType.PostResistances, 660)
     
     ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -97,6 +103,9 @@ import MyItemIds
     ..setGoldBounty(2500, 5600)
     ..setHpRel(150000, 0.02)
     ..setMp(500, 1.25)
+    ..addRes(resType.Physical, 0.80)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 960)
     
     ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -135,6 +144,9 @@ import MyItemIds
     ..setGoldBounty(1800, 3800)
     ..setHpRel(225000, 0.03)
     ..setMp(600, 1.5)
+    ..addRes(resType.Physical, 0.92)
+    ..addRes(resType.Magical,  0.88)
+    ..addBlockFlat(blockType.PostResistances, 740)
     
     ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -183,6 +195,9 @@ import MyItemIds
     ..setGoldBounty(3500, 9200)
     ..setHpRel(300000, 0.05)
     ..setMp(10000, 1.5)
+    ..addRes(resType.Physical, 0.95)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 1140)
     
     ..addRespawnTime(RESPAWN_TIME_ELITE_CREEPS)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -219,7 +234,13 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Hero)
     ..setGoldBounty(6500, 8500)
-    ..setHp(165000, 0.005)
+    ..setHpRel(165000, 0.01)
+    ..addRes(resType.Physical, 0.85)
+    ..addRes(resType.Magical,  0.80)
+    ..addBlockFlat(blockType.PostResistances, 570)
+    ..addBlockChance(blockType.PostResistances, 0.40, 1140)
+    ..addBlockChance(blockType.PostResistances, 0.25, 12000)
+    ..addBlockChance(blockType.PostResistances, 0.10, 25000)
     
     ..addRespawnTime(RESPAWN_TIME_GOLD_FARM)
 
@@ -242,7 +263,13 @@ import MyItemIds
     ..setTurnRate(0.60)
     ..setArmorType(ArmorType.Hero)
     ..setGoldBounty(9500, 14200)
-    ..setHpRel(225000, 0.0125)
+    ..setHpRel(225000, 0.025)
+    ..addRes(resType.Physical, 0.95)
+    ..addRes(resType.Magical,  0.90)
+    ..addBlockFlat(blockType.PostResistances, 1140)
+    ..addBlockChance(blockType.PostResistances, 0.45, 2460)
+    ..addBlockChance(blockType.PostResistances, 0.30, 27500)
+    ..addBlockChance(blockType.PostResistances, 0.15, 45000)
     
     ..addRespawnTime(RESPAWN_TIME_GOLD_FARM)
 
@@ -269,7 +296,10 @@ import MyItemIds
     ..setArmorType(ArmorType.Fortified)
     
     ..setGoldBounty(11500, 36200)
-    ..setHpRel(564000, 0.02)
+    ..setHpRel(564000, 0.028)
+    ..addRes(resType.Physical, 0.97)
+    ..addRes(resType.Magical,  0.94)
+    ..addBlockFlat(blockType.PostResistances, 6680)
     
     ..addRespawnTime(RESPAWN_TIME_GOLD_FARM2)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -305,8 +335,11 @@ import MyItemIds
     ..setArmorType(ArmorType.Fortified)
     
     ..setGoldBounty(62000, 242000)
-    ..setHpRel(1525000, 0.01)
+    ..setHpRel(1525000, 0.03)
     ..setMp(95000, 10)
+    ..addRes(resType.Physical, 0.98)
+    ..addRes(resType.Magical,  0.80)
+    ..addBlockFlat(blockType.PostResistances, 7200)
     
     ..addRespawnTime(RESPAWN_TIME_BOSSES)
     ..addItemDropTable(new ItemDropTableMultiple()
@@ -344,8 +377,11 @@ import MyItemIds
     ..setArmorType(ArmorType.Fortified)
     
     ..setGoldBounty(90000, 140000)
-    ..setHp(5125000, 0.005)
+    ..setHpRel(5125000, 0.03)
     ..setMp(52000, 10)
+    ..addRes(resType.Physical, 0.98)
+    ..addRes(resType.Magical,  0.86)
+    ..addBlockFlat(blockType.PostResistances, 8600)
     
     ..addRespawnTime(RESPAWN_TIME_GOLD_FARM3)
     ..addItemDropTable(new ItemDropTableMultiple()

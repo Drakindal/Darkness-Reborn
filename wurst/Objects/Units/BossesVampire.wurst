@@ -32,6 +32,9 @@ import MyItemIds
     ..setGoldBounty(35000, 96000)
     ..setHpRel(865000, 0.05)
     ..setMp(1000, 1)
+    ..addRes(resType.Physical, 0.95)
+    ..addRes(resType.Magical,  0.90)
+    ..addBlockFlat(blockType.PostResistances, 3400)
 
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable(5)..populate(
@@ -75,6 +78,9 @@ import MyItemIds
     ..setGoldBounty(165000, 282000)
     ..setHpRel(1235000, 0.08)
     ..setMp(1000, 1)
+    ..addRes(resType.Physical, 0.99)
+    ..addRes(resType.Magical,  0.96)
+    ..addBlockFlat(blockType.PostResistances, 8700)
 
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable()..populate(

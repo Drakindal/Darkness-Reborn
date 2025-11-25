@@ -33,6 +33,9 @@ import ItemDrops
     ..setGoldBounty(168000, 326000)
     ..setHpRel(2850000, 0.02)
     ..setMp(45000, 1)
+    ..addRes(resType.Physical, 0.92)
+    ..addRes(resType.Magical,  0.92)
+    ..addBlockFlat(blockType.PostResistances, 3400)
     
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable()..populate(
@@ -76,6 +79,9 @@ import ItemDrops
     ..setGoldBounty(368000, 826000)
     ..setHpRel(5850000, 0.025)
     ..setMp(45000, 1)
+    ..addRes(resType.Physical, 0.995)
+    ..addRes(resType.Magical,  0.995)
+    ..addBlockFlat(blockType.PostResistances, 14400)
 
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable()..populate(
@@ -127,6 +133,9 @@ import ItemDrops
     ..setGoldBounty(912000, 1862000)
     ..setHpRel(10852000, 0.03)
     ..setMp(55000, 1)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 18400)
 
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable(2)..populate(
@@ -176,6 +185,9 @@ import ItemDrops
     ..setGoldBounty(2862000, 4962000)
     ..setHpRel(15177000, 0.033)
     ..setMp(65000, 1)
+    ..addRes(resType.Physical, 1.55)
+    ..addRes(resType.Magical,  1.55)
+    ..addBlockFlat(blockType.PostResistances, 38400)
     
     ..addItemDropTable(new ItemDropTableMultiple()
     ..addDropTable(new ItemDropTable(2)..populate(
