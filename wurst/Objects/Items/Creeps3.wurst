@@ -30,6 +30,7 @@ import DebugVar
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNHeartOfAszune.blp") 
     ..setClassification("Artifact")
     ..addStats(addAllStats(80))
+    ..addStats(addPen(penType.Magical, 0.05))
     ..setStockMaximum(99)
     ..register()
 
@@ -51,7 +52,7 @@ import DebugVar
     ..addStats(addDamage(240))
     ..addStats(addAttackSpeed(1.2))
     ..addStats(addAllStats(20))
-    ..addStats(addArmorOnHit(-65))
+    ..addStats(addPen(penType.Physical, 0.05))
     ..setStockMaximum(99)
     ..register()
 
@@ -70,8 +71,8 @@ import DebugVar
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNI (5).blp") 
     ..setClassification("Artifact")
     ..addStats(addRevive(10, 60))
-    ..addStats(addArmor(100))
-    ..addStats(addRes(resType.Magical, 0.30))
+    ..addStats(addRes(resType.Physical, 0.14))
+    ..addStats(addRes(resType.Magical, 0.14))
     ..setStockMaximum(99)
     ..register()
 
@@ -88,6 +89,7 @@ import DebugVar
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWeaver.blp")
     ..setClassification("Artifact")
     ..addStats(addInt(380))
+    ..addStats(addPen(penType.Magical, 0.05))
     ..setStockMaximum(99)
     ..register()
 
@@ -96,7 +98,7 @@ import DebugVar
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWeaver 03.blp")
     ..setClassification("Artifact")
     ..addStats(addStr(350))
-    ..addStats(addPen(penType.Physical, 0.01))
+    ..addStats(addPen(penType.Physical, 0.05))
     ..setStockMaximum(99)
     ..register()
 
@@ -106,7 +108,7 @@ import DebugVar
     ..setActivelyUsed(true)
     ..setClassification("Miscellaneous")
     ..addStats(addAbilityManaShield(4))
-    ..addStats(addArmor(180))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addInt(480))
     ..addStats(addMp(8000))
     ..setStockMaximum(99)
@@ -116,8 +118,8 @@ import DebugVar
     new MyItemDefinition(ITEM_MENELAUS)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNInjusticePlate.blp")
     ..setClassification("Artifact")
-    ..addStats(addArmor(240))
-    ..addStats(addRes(resType.Magical, 0.70))
+    ..addStats(addRes(resType.Physical, 0.25))
+    ..addStats(addRes(resType.Magical, 0.25))
     ..addStats(addHp(2500))
     ..addStats(addMovementSpeed(200))
     ..setStockMaximum(99)
@@ -130,7 +132,7 @@ import DebugVar
     ..addStats(addDamage(700))
     ..addStats(addAttackSpeed(1.4))
     ..addStats(addHp(1000))
-    ..addStats(addArmorOnHit(-120))
+    ..addStats(addPen(penType.Physical, 0.15))
     ..setStockMaximum(99)
     ..register()
 

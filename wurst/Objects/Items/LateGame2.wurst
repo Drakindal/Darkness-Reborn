@@ -107,6 +107,7 @@ import DebugVar
     ..addStats(addInt(280))
     ..addStats(addAttackSpeed(2.4))
     ..addStats(addMpReg(2))
+    ..addStats(addPen(penType.Magical, 0.15))
     ..addComponents(
     ITEM_MYSTERY_GREEN_STAFF,
     ITEM_THUNDERLIZARD_DIAMOND)

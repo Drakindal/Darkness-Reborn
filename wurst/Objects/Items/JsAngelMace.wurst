@@ -277,9 +277,9 @@ import DebugVar
         ..addStats(addHpReg(500))
         ..addStats(addMp(40000))
         ..addStats(addMpReg(6))
-        ..addStats(addRes(resType.Universal, 0.1))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Universal, 0.05))
+        ..addStats(addRes(resType.Physical, 0.08))
+        ..addStats(addRes(resType.Magical, 0.08))
         ..addComponents(
         ITEM_RAIN_SWORD_L5,
         ITEM_VAMPIRELLA_L5,

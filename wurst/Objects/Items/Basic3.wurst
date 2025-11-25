@@ -35,6 +35,7 @@ import MyItemIds
     ..setGoldCost(1250)
     ..addStats(addDamage(15))
     ..addStats(addMpOnHit(0.02))
+    ..addStats(addPen(penType.Magical, 0.05))
     ..addHotKey()
     ..register()
 

@@ -207,7 +207,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
         ..setClassification("Campaign")
         ..addStats(addDamage(10000))
-        ..addStats(addPen(penType.Physical, 0.08))
+        ..addStats(addPen(penType.Physical, 0.06))
         ..register()
 
     //I0FL
@@ -215,7 +215,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
         ..setClassification("Campaign")
         ..addStats(addDamage(12000))
-        ..addStats(addPen(penType.Physical, 0.12))
+        ..addStats(addPen(penType.Physical, 0.08))
         ..register()
 
     //I0FN
@@ -223,7 +223,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")
         ..setClassification("Campaign")
         ..addStats(addDamage(16000))
-        ..addStats(addPen(penType.Physical, 0.16))
+        ..addStats(addPen(penType.Physical, 0.1))
         ..register()
 
         addItemInBoxForDebug = DEBUG
@@ -232,7 +232,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")    
         ..setClassification("Campaign")
         ..addStats(addDamage(22000))
-        ..addStats(addPen(penType.Physical, 0.20))
+        ..addStats(addPen(penType.Physical, 0.12))
         ..register()
         
         addItemInBoxForDebug = false

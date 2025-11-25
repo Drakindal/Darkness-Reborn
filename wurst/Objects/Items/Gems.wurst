@@ -74,6 +74,7 @@ import MyUnitIds
     ..addStats(addAbilitySummonInfernoUnit(15000, 600, UNIT_SUMMON_INFERNAL, "Summon infernal", 120, 4000, 140))
 
     ..addStats(addAllStats(300))
+    ..addStats(addPen(penType.Magical, 0.1))
 
     ..addHotKey()
     ..initGem(255, 255, 0, "Red Item.mdl")
@@ -84,7 +85,7 @@ import MyUnitIds
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNJew_Organe.blp")
 
     ..addStats(addAllStats(600))
-    ..addStats(addRes(resType.Physical, 0.25))
+    ..addStats(addRes(resType.Physical, 0.15))
 
     ..addStats(addSpikes(1.5))
 
@@ -101,8 +102,8 @@ import MyUnitIds
     ..setModelUsed("Green Item.mdl")
 
     ..addStats(addAllStats(600))
-    ..addStats(addArmor(240))
-    ..addStats(addRes(resType.Magical, 0.50))
+    ..addStats(addRes(resType.Physical, 0.15))
+    ..addStats(addRes(resType.Magical, 0.15))
 
     ..addStats(addRevive(7, 30))
 
@@ -160,6 +161,7 @@ import MyUnitIds
 
     ..addStats(addAllStats(900))
     ..addStats(addMpReg(3))
+    ..addStats(addPen(penType.Magical, 0.15))
 
     ..addComponents(
     ITEM_PERFECT_RUBYSTONE,
@@ -176,6 +178,7 @@ import MyUnitIds
     ..addStats(addAbilityDamageStunActive(5000, 15, 8, 4000, 30))
 
     ..addStats(addAllStats(300))
+    ..addStats(addPen(penType.Magical, 0.15))
 
     ..addComponents(
     ITEM_PERFECT_RUBYSTONE,

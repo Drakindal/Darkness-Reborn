@@ -63,8 +63,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(20))
-        ..addStats(addRes(resType.Magical, 0.15))
-        ..addStats(addRes(resType.Physical, 0.15))
+        ..addStats(addRes(resType.Magical, 0.13))
+        ..addStats(addRes(resType.Physical, 0.13))
         ..addComponents(
         ITEM_DREAD_HELM_L1,
         ITEM_BLADEBANE_ARMOR)
@@ -75,8 +75,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(50))
-        ..addStats(addRes(resType.Magical, 0.25))
-        ..addStats(addRes(resType.Physical, 0.25))
+        ..addStats(addRes(resType.Magical, 0.15))
+        ..addStats(addRes(resType.Physical, 0.15))
         ..addComponents(
         ITEM_DREAD_HELM_L2,
         ITEM_AMULET_OF_SPELL_SHIELD,
@@ -88,8 +88,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(100))
-        ..addStats(addRes(resType.Magical, 0.3))
-        ..addStats(addRes(resType.Physical, 0.3))
+        ..addStats(addRes(resType.Magical, 0.2))
+        ..addStats(addRes(resType.Physical, 0.2))
         ..addComponents(
         ITEM_DREAD_HELM_L3,
         ITEM_BLOOD_GEM,
@@ -101,8 +101,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(200))
-        ..addStats(addRes(resType.Magical, 0.35))
-        ..addStats(addRes(resType.Physical, 0.35))
+        ..addStats(addRes(resType.Magical, 0.25))
+        ..addStats(addRes(resType.Physical, 0.25))
         ..addComponents(
         ITEM_DREAD_HELM_L4,
         ITEM_FORGE_HELM_L3,

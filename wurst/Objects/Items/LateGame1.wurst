@@ -103,7 +103,7 @@ import DebugVar
     ..setClassification("Artifact")
     ..addStats(addDamage(400))
     ..addStats(addAttackSpeed(1))
-    ..addStats(addPen(penType.Physical, 0.25))
+    ..addStats(addPen(penType.Physical, 0.15))
     ..addComponents(
     ITEM_MIDNIGHT_BLADE,
     ITEM_GLOVES_OF_SPEED,

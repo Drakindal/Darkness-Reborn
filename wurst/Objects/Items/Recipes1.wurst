@@ -163,7 +163,7 @@ import RecipeItems
     )
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Composite Armor.blp")
     ..setClassification("Permanent")
-    ..addStats(addRes(resType.Universal, 0.04))
+    ..addStats(addRes(resType.Universal, 0.1))
     ..addStats(addAllStats(20))
     ..addStats(addHpReg(10))
     ..addStats(addMpReg(1))
@@ -185,8 +185,8 @@ import RecipeItems
     ..setClassification("Permanent")
     ..addStats(addAllStats(12))
     ..addStats(addHp(300))
-    ..addStats(addRes(resType.Physical, 0.02))
-    ..addStats(addRes(resType.Magical, 0.02))
+    ..addStats(addRes(resType.Physical, 0.05))
+    ..addStats(addRes(resType.Magical, 0.05))
     ..addStats(addHpReg(5))
     ..addComponents(
     ITEM_RING_OF_REGENERATION,
@@ -207,8 +207,8 @@ import RecipeItems
     ..addStats(addInt(12))
     ..addStats(addHp(500))
     ..addStats(addHpReg(7))
-    ..addStats(addRes(resType.Physical, 0.03))
-    ..addStats(addRes(resType.Magical, 0.03))
+    ..addStats(addRes(resType.Physical, 0.1))
+    ..addStats(addRes(resType.Magical, 0.1))
     ..addComponents(
     ITEM_SCROLL_OF_FUSION,
     ITEM_JADE_RING,

@@ -60,7 +60,7 @@ import DebugVar
     ..setStockMaximum(2)
     ..setStockReplenishInterval(45)
     ..addStats(addAllStats(600))
-    ..addStats(addPen(penType.Physical, 0.35))
+    ..addStats(addPen(penType.Physical, 0.2))
     ..addHotKey()
     ..register()
 
@@ -74,6 +74,7 @@ import DebugVar
     ..addStats(addInt(1350))
     ..setStockMaximum(2)
     ..setStockReplenishInterval(45)
+    ..addStats(addPen(penType.Magical, 0.1))
     ..addStats(addAbilityDealDamageStats(15, 0.15, statsType.Int, customDamageType.Magical))
     ..addHotKey()
     ..register()

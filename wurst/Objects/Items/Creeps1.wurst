@@ -71,7 +71,7 @@ import DebugVar
     new MyItemDefinition(ITEM_SKULL_SHIELD)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNGrimWard.blp")
     ..addStats(addAllStats(5))
-    ..addStats(addArmor(5))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..setStockMaximum(99)
     ..register()
 
@@ -86,14 +86,14 @@ import DebugVar
     new MyItemDefinition(ITEM_ANCIENT_FIGURINE)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNClayFigurine.blp")
     ..addStats(addAllStats(4))
-    ..addStats(addArmor(4))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..setStockMaximum(99)
     ..register()
 
 //I06I
     new MyItemDefinition(ITEM_SPIDER_SILK_BROACH)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSpiderSilkBroach.blp")
-    ..addStats(addArmor(5))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addMp(200))
     ..setStockMaximum(99)
     ..register()
@@ -101,7 +101,7 @@ import DebugVar
 //I03B
     new MyItemDefinition(ITEM_BATTLE_STANDARD)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNOrcBattleStandard.blp")
-    ..addStats(addArmor(5))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addHp(100))
     ..setStockMaximum(99)
     ..register()
@@ -109,7 +109,7 @@ import DebugVar
 //I03D
     new MyItemDefinition(ITEM_BLADEBANE_ARMOR)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorGolem.blp")
-    ..addStats(addArmor(7))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addHpReg(7))
     ..setStockMaximum(99)
     ..register()
@@ -136,6 +136,7 @@ import DebugVar
     ..setActivelyUsed(true)
     ..addStats(addAbilityDamageStunActive(500, 0, 2, 500, 5))
     ..addStats(addInt(12))
+    ..addStats(addPen(penType.Magical, 0.02))
     ..setStockMaximum(99)
     ..register()
 
@@ -180,7 +181,7 @@ import DebugVar
 //I07A
     new MyItemDefinition(ITEM_HALF_MOON_ARMOR)
     ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNMoonArmor.blp")
-    ..addStats(addArmor(5))
+    ..addStats(addRes(resType.Physical, 0.1))
     ..addStats(addAllStats(5))
     ..addStats(addHp(300))
     ..setStockMaximum(99)

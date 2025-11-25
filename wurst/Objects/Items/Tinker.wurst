@@ -38,7 +38,7 @@ import DebugVar
     ..setClassification("Artifact")
     ..addStats(addDamage(2000))
     ..addStats(addAttackSpeed(2.2))
-    ..addStats(addPen(penType.Physical, 0.4))
+    ..addStats(addPen(penType.Physical, 0.25))
     ..addComponents(
     ITEM_DARK_STEEL_SWORD,
     ITEM_CRYSTAL_SWORD)

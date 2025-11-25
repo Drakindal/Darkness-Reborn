@@ -113,6 +113,7 @@ import DebugVar
     ..addStats(addMp(3000))
     ..addStats(addMpReg(1.5))
     ..addStats(addMpOnHit(0.06))
+    ..addStats(addPen(penType.Magical, 0.08))
     ..addComponents(
     ITEM_MEDALLION_OF_COURAGE,
     ITEM_PENDANT_OF_MANA,
@@ -182,6 +183,7 @@ import DebugVar
     ..addStats(addInt(180))
     ..addStats(addAttackSpeed(1.8))
     ..addStats(addMpReg(1))
+    ..addStats(addPen(penType.Magical, 0.07))
     ..addComponents(
     ITEM_SEER_STAFF,
     ITEM_RING_OF_ARCHMAGI,
@@ -220,6 +222,7 @@ import DebugVar
     ..addStats(addMovementSpeed(522))
     ..addStats(addAttackSpeed(1.2))
     ..addStats(addMpOnHit(0.10))
+    ..addStats(addPen(penType.Magical, 0.2))
     ..addComponents(
     ITEM_SOUL_OF_KILJEADEN,
     ITEM_ARKENSTONE_FRAGMENT)

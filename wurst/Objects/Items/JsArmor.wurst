@@ -13,7 +13,7 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_ARMOR_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.02))
+        ..addStats(addRes(resType.Universal, 0.1))
         ..addStats(addHp(500))
         ..register()
 
@@ -21,7 +21,7 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_ARMOR_L2)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.04))
+        ..addStats(addRes(resType.Universal, 0.12))
         ..addStats(addHp(1200))
         ..register()
 
@@ -29,7 +29,7 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_ARMOR_L3)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.06))
+        ..addStats(addRes(resType.Universal, 0.14))
         ..addStats(addHp(1900))
         ..register()
 
@@ -37,7 +37,7 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_ARMOR_L4)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.08))
+        ..addStats(addRes(resType.Universal, 0.16))
         ..addStats(addHp(2600))
         ..register()
         
@@ -47,7 +47,7 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_ROYAL_ARMOR_L1, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.08))
+        ..addStats(addRes(resType.Universal, 0.12))
         ..addStats(addHp(800))
         ..addComponents(
         ITEM_FORGE_ARMOR_L1,
@@ -58,7 +58,7 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_ROYAL_ARMOR_L2, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.1))
+        ..addStats(addRes(resType.Universal, 0.14))
         ..addStats(addHp(1900))
         ..addComponents(
         ITEM_ROYAL_ARMOR_L1,
@@ -69,7 +69,7 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_ROYAL_ARMOR_L3, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.1))
+        ..addStats(addRes(resType.Universal, 0.16))
         ..addStats(addRes(resType.Physical, 0.1))
         ..addStats(addHp(2600))
         ..addComponents(

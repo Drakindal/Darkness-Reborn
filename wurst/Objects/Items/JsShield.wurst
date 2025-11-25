@@ -113,7 +113,7 @@ import DebugVar
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Magical, 0.14))
         ..addStats(addRes(resType.Physical, 0.14))
-        ..addStats(addDamageBlock(blockType.PostResistances, 6000))
+        ..addStats(addDamageBlock(blockType.PostResistances, 3500))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L5,
         ITEM_SACRED_SHIELD,
@@ -127,7 +127,7 @@ import DebugVar
         ..setClassification("Campaign")
         ..addStats(addRes(resType.Magical, 0.16))
         ..addStats(addRes(resType.Physical, 0.16))
-        ..addStats(addDamageBlock(blockType.PostResistances, 12000))
+        ..addStats(addDamageBlock(blockType.PostResistances, 5000))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L6,
         ITEM_IRON_SHIELD,

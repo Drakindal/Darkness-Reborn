@@ -164,6 +164,7 @@ import DebugVar
         ..addStats(addInt(400))
         ..addStats(addAttackSpeed(3))
         ..addStats(addMpReg(3.5))
+        ..addStats(addPen(penType.Magical, 0.25))
         ..addComponents(
         ITEM_MYSTERY_BLUE_STAFF,
         ITEM_DOOMS_GRAND_STAFF)

@@ -12,7 +12,7 @@ public function unit.checkType(MyUnitType myType) returns bool
     switch myType
         case MyUnitType.StructureMechUnit
             return (this.isType(UNIT_TYPE_STRUCTURE) or this.isType(UNIT_TYPE_MECHANICAL))
-    // Compiler error will occur if you remove `return false` below
-    return false
+        default
+            return false
 
 // ----------------------------------------------------------------------------

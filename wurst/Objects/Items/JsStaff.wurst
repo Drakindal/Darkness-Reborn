@@ -135,6 +135,7 @@ import DebugVar
         ..addStats(addInt(180))
         ..addStats(addMpReg(2.5))
         ..addStats(addAbilityDealDamageStats(3, 0.12, statsType.Int, customDamageType.Magical))
+        ..addStats(addPen(penType.Magical, 0.1))
         ..addComponents(
         ITEM_GOLDEN_STAFF_L3,
         ITEM_FORGE_STAFF_L3,
@@ -149,6 +150,7 @@ import DebugVar
         ..addStats(addInt(250))
         ..addStats(addMpReg(3))
         ..addStats(addAbilityDealDamageStats(5, 0.18, statsType.Int, customDamageType.Magical))
+        ..addStats(addPen(penType.Magical, 0.15))
         ..addComponents(
         ITEM_NERUBIAN_STAFF_L1,
         ITEM_FORGE_STAFF_L4,
@@ -164,6 +166,7 @@ import DebugVar
         ..addStats(addInt(400))
         ..addStats(addMpReg(4))
         ..addStats(addAbilityDealDamageStats(8, 0.25, statsType.Int, customDamageType.Magical))
+        ..addStats(addPen(penType.Magical, 0.25))
         ..addComponents(
         ITEM_DEAD_EYES,
         ITEM_BOOK_OF_RAIN,
