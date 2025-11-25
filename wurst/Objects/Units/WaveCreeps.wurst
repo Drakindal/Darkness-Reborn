@@ -24,6 +24,9 @@ import AbilityObjEditing
 
     ..setGoldBounty(30, 36)
     ..setHpRel(400, 0.02)
+    ..addRes(resType.Physical, 0.06)
+    ..addRes(resType.Magical,  0.02)
+    ..addBlockFlat(blockType.PostResistances, 14)
 
 // ----------------------------------------------------------------------------
 
@@ -39,6 +42,9 @@ import AbilityObjEditing
 
     ..setGoldBounty(34, 40)
     ..setHpRel(600, 0.02)
+    ..addRes(resType.Physical, 0.10)
+    ..addRes(resType.Magical,  0.08)
+    ..addBlockFlat(blockType.PostResistances, 27)
 
 // ----------------------------------------------------------------------------
 
@@ -57,6 +63,9 @@ import AbilityObjEditing
     
     ..setGoldBounty(36, 44)
     ..setHpRel(900, 0.02)
+    ..addRes(resType.Physical, 0.15)
+    ..addRes(resType.Magical,  0.11)
+    ..addBlockFlat(blockType.PostResistances, 38)
 
 // ----------------------------------------------------------------------------
 
@@ -80,6 +89,9 @@ import AbilityObjEditing
 
     ..setGoldBounty(42, 50)
     ..setHpRel(1300, 0.022)
+    ..addRes(resType.Physical, 0.21)
+    ..addRes(resType.Magical,  0.36)
+    ..addBlockFlat(blockType.PostResistances, 40)
 
 // ----------------------------------------------------------------------------
 
@@ -97,6 +109,12 @@ import AbilityObjEditing
 
     ..setGoldBounty(50, 60)
     ..setHpRel(1800, 0.025)
+    ..addRes(resType.Physical, 0.27)
+    ..addRes(resType.Magical,  0.27)
+    ..addBlockFlat(blockType.PostResistances, 68)
+    ..addBlockChance(blockType.PostResistances, 0.45, 160)
+    ..addBlockChance(blockType.PostResistances, 0.25, 340)
+    ..addBlockChance(blockType.PostResistances, 0.08, 5400)
 
 // ----------------------------------------------------------------------------
 
@@ -120,6 +138,12 @@ import AbilityObjEditing
     ..setGoldBounty(55, 63)
     ..setHpRel(2400, 0.03)
     ..setMp(250, 0.63)
+    ..addRes(resType.Physical, 0.35)
+    ..addRes(resType.Magical,  0.55)
+    ..addBlockFlat(blockType.PostResistances, 87)
+    ..addBlockChance(blockType.PostResistances, 0.35, 290)
+    ..addBlockChance(blockType.PostResistances, 0.20, 860)
+    ..addBlockChance(blockType.PostResistances, 0.08, 12000)
 
 // ----------------------------------------------------------------------------
 
@@ -136,11 +160,15 @@ import AbilityObjEditing
     ..setAttack1AnimationDamagePoint(0.660)
     ..setAttack1AttackType(AttackType.Hero)
 
-    ..setSpeedBase(390)
+    ..setSpeedBase(410)
     ..setMovementType(MovementType.Horse)
     
     ..setGoldBounty(68, 78)
     ..setHpRel(3100, 0.03)
+    ..addRes(resType.Physical, 0.45)
+    ..addRes(resType.Magical,  0.75)
+    ..addBlockFlat(blockType.PostResistances, 140)
+    ..addBlockChance(blockType.PostResistances, 0.21, 470)
 
 // ----------------------------------------------------------------------------
 
@@ -151,8 +179,8 @@ import AbilityObjEditing
     ..setSelectionScale(1.00)
 
     ..setRangedAttack1(720)
-    ..setAttack1CooldownTime(1.60)
-    ..setAttackDamage1(122, 146)
+    ..setAttack1CooldownTime(1.1)
+    ..setAttackDamage1(162, 193)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\Rifle\\RifleImpact.mdl")
     ..setAttack1ProjectileHomingEnabled(false)
@@ -167,6 +195,9 @@ import AbilityObjEditing
 
     ..setGoldBounty(78, 86)
     ..setHpRel(3900, 0.032)
+    ..addRes(resType.Physical, 0.40)
+    ..addRes(resType.Magical,  0.35)
+    ..addBlockFlat(blockType.PostResistances, 100)
 
 // ----------------------------------------------------------------------------
 
@@ -178,15 +209,20 @@ import AbilityObjEditing
 
     ..setMeleeAttack1()
     ..setAttack1CooldownTime(1.35)
-    ..setAttackDamage1(158, 196)
+    ..setAttackDamage1(188, 236)
     ..setAttack1AnimationBackswingPoint(0.640)
     ..setAttack1AnimationDamagePoint(0.330)
     ..setAttack1AttackType(AttackType.Chaos)
 
     ..setTurnRate(0.60)
+    ..setSpeedBase(330)
     
     ..setGoldBounty(87, 106)
     ..setHpRel(4800, 0.055)
+    ..addRes(resType.Physical, 0.44)
+    ..addRes(resType.Magical,  0.39)
+    ..addBlockFlat(blockType.PostResistances, 100)
+    ..addBlockChance(blockType.PostResistances, 0.32, 240)
 
 // ----------------------------------------------------------------------------
 
@@ -220,6 +256,9 @@ import AbilityObjEditing
     ..setManaInitialAmount(75)
     ..setManaMaximum(300)
     ..setManaRegeneration(0.75)
+    ..addRes(resType.Physical, 0.36)
+    ..addRes(resType.Magical,  0.90)
+    ..addBlockFlat(blockType.PostResistances, 120)
 
 // ----------------------------------------------------------------------------
 
@@ -243,6 +282,10 @@ import AbilityObjEditing
 
     ..setGoldBounty(126, 148)
     ..setHpRel(6900, 0.07)
+    ..addRes(resType.Physical, 0.60)
+    ..addRes(resType.Magical,  0.80)
+    ..addBlockFlat(blockType.PostResistances, 380)
+    ..addBlockChance(blockType.PostResistances, 0.32, 670)
 
 // ----------------------------------------------------------------------------
 
@@ -266,6 +309,9 @@ import AbilityObjEditing
 
     ..setGoldBounty(146, 166)
     ..setHpRel(8100, 0.04)
+    ..addRes(resType.Physical, 0.65)
+    ..addRes(resType.Magical,  0.60)
+    ..addBlockFlat(blockType.PostResistances, 340)
 
 // ----------------------------------------------------------------------------
 
@@ -288,9 +334,10 @@ import AbilityObjEditing
     
     ..setGoldBounty(168, 182)
     ..setHpRel(9400, 0.05)
-    ..setManaInitialAmount(75)
-    ..setManaMaximum(200)
-    ..setManaRegeneration(0.72)
+    ..setMp(200, 1)
+    ..addRes(resType.Physical, 0.40)
+    ..addRes(resType.Magical,  0.99)
+    ..addBlockFlat(blockType.PostResistances, 240)
 
 // ----------------------------------------------------------------------------
 
@@ -312,6 +359,9 @@ import AbilityObjEditing
     
     ..setGoldBounty(177, 205)
     ..setHpRel(12800, 0.065)
+    ..addRes(resType.Physical, 0.60)
+    ..addRes(resType.Magical,  0.60)
+    ..addBlockFlat(blockType.PostResistances, 360)
 
 // ----------------------------------------------------------------------------
 
@@ -333,10 +383,14 @@ import AbilityObjEditing
 
     ..setGoldBounty(194, 212)
     ..setHpRel(12400, 0.07)
+    ..addRes(resType.Physical, 0.70)
+    ..addRes(resType.Magical,  0.85)
+    ..addBlockFlat(blockType.PostResistances, 420)
+    ..addBlockChance(blockType.PostResistances, 0.32, 920)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_MOB_15, "Wyvern", 9, UnitIds.riderlesswyvern)
+    new MyCreepDefinition(WAVE_MOB_15, "Primal Wyvern", 9, UnitIds.riderlesswyvern)
     ..setScalingValue(1.00)
     ..setSelectionScale(1.75)
 
@@ -354,6 +408,9 @@ import AbilityObjEditing
     
     ..setGoldBounty(236, 262)
     ..setHpRel(16000, 0.05)
+    ..addRes(resType.Physical, 0.75)
+    ..addRes(resType.Magical,  0.70)
+    ..addBlockFlat(blockType.PostResistances, 460)
 
 // ----------------------------------------------------------------------------
 
@@ -372,6 +429,9 @@ import AbilityObjEditing
     
     ..setGoldBounty(256, 292)
     ..setHpRel(16300, 0.10)
+    ..addRes(resType.Physical, 0.65)
+    ..addRes(resType.Magical,  0.90)
+    ..addBlockFlat(blockType.PostResistances, 460)
 
 // ----------------------------------------------------------------------------
 
@@ -393,9 +453,10 @@ import AbilityObjEditing
     
     ..setGoldBounty(275, 320)
     ..setHpRel(18700, 0.02)
-    ..setManaInitialAmount(150)
-    ..setManaMaximum(150)
-    ..setManaRegeneration(1.25)
+    ..setMp(150, 1.25)
+    ..addRes(resType.Physical, 0.85)
+    ..addRes(resType.Magical,  0.95)
+    ..addBlockFlat(blockType.PostResistances, 640)
 
 // ----------------------------------------------------------------------------
 
@@ -406,7 +467,7 @@ import AbilityObjEditing
     ..setSelectionScale(2.00)
 
     ..setRangedAttack1(350)
-    ..setAttack1CooldownTime(1.30)
+    ..setAttack1CooldownTime(1.50)
     ..setAttackDamage1(2120, 3960)
     ..setAttack1ProjectileArc(0.15)
     ..setAttack1ProjectileArt("None")
@@ -417,10 +478,14 @@ import AbilityObjEditing
     
     ..setTurnRate(0.60)
     ..setMovementType(MovementType.Amphipic)
+
     ..setCollisionSize(48.00)
     
     ..setGoldBounty(313, 368)
     ..setHpRel(21300, 0.10)
+    ..addRes(resType.Physical, 0.95)
+    ..addRes(resType.Magical,  0.90)
+    ..addBlockFlat(blockType.PostResistances, 850)
 
 // ----------------------------------------------------------------------------
 
@@ -432,7 +497,7 @@ import AbilityObjEditing
     
     ..setRangedAttack1(520)
     ..setAttack1CooldownTime(0.80)
-    ..setAttackDamage1(1540, 1960)
+    ..setAttackDamage1(1940, 2560)
     ..setAttack1ProjectileArc(0.00)
     ..setAttack1ProjectileArt("Abilities\\Weapons\\WingedSerpentMissile\\WingedSerpentMissile.mdl")
     ..setAttack1AnimationBackswingPoint(1.000)
@@ -448,5 +513,8 @@ import AbilityObjEditing
     ..setManaInitialAmount(50)
     ..setManaMaximum(200)
     ..setManaRegeneration(0.50)
+    ..addRes(resType.Physical, 0.95)
+    ..addRes(resType.Magical,  0.95)
+    ..addBlockFlat(blockType.PostResistances, 1160)
 
 // ----------------------------------------------------------------------------
