@@ -4,10 +4,11 @@ import UnitObjEditing
 import ObjectIds
 import MyItemDefinition
 import MyColors
-import ItemDrops
+import public ItemDrops
 import RespawnCreeps
 import DS_DataCompileTime
 import public DamageTypes
+import public MyItemIds
 
 // ----------------------------------------------------------------------------
 
