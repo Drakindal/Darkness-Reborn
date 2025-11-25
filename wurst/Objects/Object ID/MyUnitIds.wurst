@@ -301,7 +301,7 @@ public constant CREEP_BOSS_TOWER_L1 = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L2 = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L3 = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L4 = compiletime(UNIT_ID_GEN.next())
-public constant CREEP_BOSS_TOWER_L5 = compiletime(UNIT_ID_GEN.next())
+public constant CREEP_BOSS_TOWER_L5_ZIGGURAT = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L6 = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L7 = compiletime(UNIT_ID_GEN.next())
 public constant CREEP_BOSS_TOWER_L8 = compiletime(UNIT_ID_GEN.next())
@@ -545,7 +545,7 @@ init
     BOSS_CREEP[16] = CREEP_BOSS_TOWER_L2
     BOSS_CREEP[17] = CREEP_BOSS_TOWER_L3
     BOSS_CREEP[18] = CREEP_BOSS_TOWER_L4
-    BOSS_CREEP[19] = CREEP_BOSS_TOWER_L5
+    BOSS_CREEP[19] = CREEP_BOSS_TOWER_L5_ZIGGURAT
     BOSS_CREEP[20] = CREEP_BOSS_TOWER_L6
     BOSS_CREEP[21] = CREEP_BOSS_TOWER_L7
     BOSS_CREEP[22] = CREEP_BOSS_TOWER_L8

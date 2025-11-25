@@ -4,8 +4,11 @@ import UnitObjEditing
 import ObjectIds
 import MyItemDefinition
 import MyColors
-import ItemDrops
+import public ItemDrops
 import RespawnCreeps
+import DS_DataCompileTime
+import public DamageTypes
+import public MyItemIds
 
 // ----------------------------------------------------------------------------
 
@@ -97,6 +100,18 @@ module ModuleUnitDefinition
         ..setTooltipBasic("Tp to" + name + " [Level {0}]".format(lvl.toString()).setColor(colAbilityLevel))
         ..setTooltipExtended("Teleports you to the {0}.\n\n".format(name) +
         dropTable.getDescription())
+
+    function addRes(resType resType, real value)
+        u.newId.addUnitBaseRes(resType, value)
+        
+    function addPen(penType penType, real value)
+        u.newId.addUnitBasePen(penType, value)
+
+    function addBlockFlat(blockType blockType, real value)
+        u.newId.addUnitBaseDamageBlock(blockType, value)
+
+    function addBlockChance(blockType blockType, real chance, real value)
+        u.newId.addUnitBaseChanceBlock(blockType, chance, value)
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

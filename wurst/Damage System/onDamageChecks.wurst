@@ -13,12 +13,14 @@ import Pitlord_E
 import DeathKnight_R
 import Warden_T
 import ShadowHunter_DamageBuffs
+import TowerAbilities
 
 // ----------------------------------------------------------------------------
 
 public function autoAttackPreChecks(unit src, unit targ)
     warden_T_checks(src, targ)
     shadowHunter_checks(src, targ)
+    checkZiggurat(src, targ)
 
 public function autoAttackPostChecks(unit _src, unit _targ)
 
@@ -31,6 +33,7 @@ public function magicDamageChecks(unit src, unit targ)
     if(targ.getAbilityLevel(UTHER_ABILITY_3) > 0)
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
     shadowHunter_checks(src, targ)
+    checkZiggurat(src, targ)
 
 // ----------------------------------------------------------------------------
 // PHYSICAL DAMAGE CHECKS

@@ -22,77 +22,6 @@ let bigBossWaveList = new LinkedList<BossWaves>
 
 @compiletime
 function initCreepStats()
-	CREEP_LEFT_SPIDER                   .addUnitBaseDamageBlock(blockType.PostResistances, 12)
-	CREEP_LEFT_MUD_GOLEM                .addUnitBaseDamageBlock(blockType.PostResistances, 14)
-	CREEP_LEFT_MURLOC_TIDERUNNER        .addUnitBaseDamageBlock(blockType.PostResistances, 16)
-	CREEP_LEFT_TIMBER_WOLF              .addUnitBaseDamageBlock(blockType.PostResistances, 18)
-	CREEP_LEFT_CRAB_SHORECRAWLER        .addUnitBaseDamageBlock(blockType.PostResistances, 24)
-	CREEP_LEFT_FACELESS_ONE_TRICKSTER   .addUnitBaseDamageBlock(blockType.PostResistances, 28)
-	CREEP_LEFT_SPITTING_SPIDER          .addUnitBaseDamageBlock(blockType.PostResistances, 32)
-	CREEP_LEFT_ROCK_GOLEM               .addUnitBaseDamageBlock(blockType.PostResistances, 34)
-	CREEP_LEFT_MURGUL_SHADOWCASTER      .addUnitBaseDamageBlock(blockType.PostResistances, 30)
-	CREEP_LEFT_POLAR_FURBOLG            .addUnitBaseDamageBlock(blockType.PostResistances, 40)
-	CREEP_LEFT_GHOST                    .addUnitBaseDamageBlock(blockType.PostResistances, 35)
-	CREEP_LEFT_FACELESS_ONE_DEATHBRINGER.addUnitBaseDamageBlock(blockType.PostResistances, 80)
-	CREEP_LEFT_BROOD_MOTHER             .addUnitBaseDamageBlock(blockType.PostResistances, 120)
-	CREEP_LEFT_GRANITE_GOLEM            .addUnitBaseDamageBlock(blockType.PostResistances, 150)
-	CREEP_LEFT_TURTLE                   .addUnitBaseDamageBlock(blockType.PostResistances, 300)
-	CREEP_LEFT_GIANT_POLAR_BEAR         .addUnitBaseDamageBlock(blockType.PostResistances, 400)
-	CREEP_LEFT_STORM_WYRM               .addUnitBaseDamageBlock(blockType.PostResistances, 450)
-	CREEP_LEFT_SKELETON_WARRIOR         .addUnitBaseDamageBlock(blockType.PostResistances, 500)
-	CREEP_LEFT_FOREST_TROLL_WARLOCK     .addUnitBaseDamageBlock(blockType.PostResistances, 550)
-	CREEP_LEFT_DIRE_MAMMOTH             .addUnitBaseDamageBlock(blockType.PostResistances, 600)
-	CREEP_LEFT_FEL_RAVAGER              .addUnitBaseDamageBlock(blockType.PostResistances, 650)
-	CREEP_LEFT_DALARAN_REJECT           .addUnitBaseDamageBlock(blockType.PostResistances, 700)
-	CREEP_LEFT_VILE_TORMENTOR           .addUnitBaseDamageBlock(blockType.PostResistances, 650)
-	CREEP_LEFT_ELDER_VOIDWALKER         .addUnitBaseDamageBlock(blockType.PostResistances, 1000)
-
-	CREEP_LEFT_GHOST
-	..addUnitBaseRes(resType.Magical , 0.15)
-	..addUnitBaseRes(resType.Physical, 0.80)
-
-	CREEP_LEFT_MUD_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.25)
-	..addUnitBaseRes(resType.Physical, 0.15)
-	CREEP_LEFT_ROCK_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.60)
-	..addUnitBaseRes(resType.Physical, 0.80)
-	CREEP_LEFT_GRANITE_GOLEM
-	..addUnitBaseRes(resType.Magical , 0.80)
-	..addUnitBaseRes(resType.Physical, 0.80)
-	
-	CREEP_LEFT_TURTLE
-	..addUnitBaseRes(resType.Physical, 0.80)
-	..addUnitBaseRes(resType.Magical , 0.20)
-
-	CREEP_ELITE_FROSTY_THE_SNOWMAN.addUnitBaseRes(resType.Magical, 0.40)
-	CREEP_ELITE_ICE_REVENANT..addUnitBaseRes(resType.Magical, 0.60)
-
-	WAVE_MOB[1]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[2]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.50)
-	WAVE_MOB[3]..addUnitBaseRes(resType.Magical, 0.30)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[4]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.20)
-
-	WAVE_MOB[5]..addUnitBaseRes(resType.Magical, 0.15)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[6]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.80)
-	WAVE_MOB[7]..addUnitBaseRes(resType.Magical, 0.25)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[8]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[9]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[10]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[11]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_MOB[12]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[13]..addUnitBaseRes(resType.Magical, 0.01)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_MOB[14]..addUnitBaseRes(resType.Magical, 0.10)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_MOB[15]..addUnitBaseRes(resType.Magical, 0.15)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_MOB[16]..addUnitBaseRes(resType.Magical, 0.09)..addUnitBasePen(penType.Physical, 0.00)
-
-	WAVE_MOB[17]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.00)
-	WAVE_MOB[18]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_MOB[19]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.60)
-	WAVE_MOB[20]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.00)
-
 	WAVE_BOSS[1]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.00)
 	WAVE_BOSS[2]..addUnitBaseRes(resType.Magical, 0.20)..addUnitBasePen(penType.Physical, 0.10)
 	WAVE_BOSS[3]..addUnitBaseRes(resType.Magical, 0.00)..addUnitBasePen(penType.Physical, 0.05)
@@ -218,39 +147,6 @@ function initCreepStats()
 	WAVE_BOSS[103]..addUnitBaseRes(resType.Magical, 0.60)..addUnitBasePen(penType.Physical, 0.50)
 	WAVE_BOSS[104]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.30)
 	WAVE_BOSS[105]..addUnitBaseRes(resType.Magical, 0.40)..addUnitBasePen(penType.Physical, 0.15)
-
-	WAVE_HERO_0.addUnitBaseRes(resType.Magical, 0.60)
-	WAVE_HERO_1.addUnitBaseRes(resType.Magical, 0.60)
-	WAVE_HERO_2.addUnitBaseRes(resType.Magical, 0.60)
-	WAVE_HERO_3.addUnitBaseRes(resType.Magical, 0.60)
-	WAVE_HERO_4.addUnitBaseRes(resType.Magical, 0.60)
-	WAVE_HERO_5.addUnitBaseRes(resType.Magical, 0.90)
-	WAVE_HERO_6..addUnitBaseRes(resType.Magical, 0.70)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_7..addUnitBaseRes(resType.Magical, 0.60)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_HERO_8..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_HERO_9..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_HERO_10..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_HERO_11..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.30)
-	WAVE_HERO_12..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_13..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.30)
-	WAVE_HERO_14..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_HERO_15..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.10)
-	WAVE_HERO_16..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_17..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.20)
-	WAVE_HERO_18..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_19..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_20..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_21..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_22..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_23..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_24..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_25..addUnitBaseRes(resType.Magical, 0.80)
-	WAVE_HERO_26..addUnitBaseRes(resType.Magical, 0.90)..addUnitBasePen(penType.Physical, 0.15)
-	WAVE_HERO_27..addUnitBaseRes(resType.Magical, 0.80)..addUnitBasePen(penType.Physical, 0.40)
-	WAVE_HERO_28.addUnitBaseRes(resType.Magical, 0.99)
-	WAVE_HERO_29.addUnitBaseRes(resType.Magical, 0.80)
-	FINAL_BOSS..addUnitBaseRes(resType.Magical, 0.90)..addUnitBasePen(penType.Physical, 0.25)
-
 
 class Waves
 	int unitID

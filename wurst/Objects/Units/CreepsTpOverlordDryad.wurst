@@ -26,6 +26,9 @@ import MyCreepDefinition
     
     ..setGoldBounty(280, 320)
     ..setHpRel(8200, 0.08)
+    ..addRes(resType.Physical, 0.70)
+    ..addRes(resType.Magical,  0.60)
+    ..addBlockFlat(blockType.PostResistances, 450)
     
 // ----------------------------------------------------------------------------
 
@@ -49,5 +52,8 @@ import MyCreepDefinition
     
     ..setGoldBounty(720, 1360)
     ..setHpRel(15200, 0.04)
+    ..addRes(resType.Physical, 0.80)
+    ..addRes(resType.Magical,  0.85)
+    ..addBlockFlat(blockType.PostResistances, 650)
 
 // ----------------------------------------------------------------------------

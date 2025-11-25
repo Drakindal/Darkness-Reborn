@@ -6,11 +6,14 @@ import UnitIds
 import ObjectIds
 import MyCreepDefinition
 import MyAbilityIds
+import AbilityIds
+import Units
+import ItemDrops
 
 // ----------------------------------------------------------------------------
 
 @compiletime function defineUnits()
-    new MyCreepDefinition(WAVE_HERO_0, "Ysera", 50, UnitIds.greendragon)
+    new EnemyHeroDefinition(WAVE_HERO_0, "Fallen Ysera", 50, UnitIds.greendragon)
     ..setNormalAbilities(commaList('A0ZK', CREEP_ABILITY_101))
 
     ..setScalingValue(2.50)
@@ -36,10 +39,13 @@ import MyAbilityIds
     ..setGoldBounty(35200, 46800)
     ..setHpRel(525000, 0.006)
     ..setMp(46000, 10)
+    ..addRes(resType.Physical, 0.99)
+    ..addRes(resType.Magical,  0.95)
+    ..addBlockFlat(blockType.PostResistances, 4200)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_1, "Malygos", 52, UnitIds.azuredragon)
+    new EnemyHeroDefinition(WAVE_HERO_1, "Fallen Malygos", 52, UnitIds.azuredragon)
     ..setNormalAbilities(commaList('A0ZJ', CREEP_ABILITY_101, CREEP_ABILITY_102))
 
     ..setScalingValue(2.50)
@@ -65,10 +71,13 @@ import MyAbilityIds
     ..setGoldBounty(48200, 64800)
     ..setHpRel(685000, 0.007)
     ..setMp(52000, 10)
+    ..addRes(resType.Physical, 1.05)
+    ..addRes(resType.Magical,  0.96)
+    ..addBlockFlat(blockType.PostResistances, 5000)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_2, "Nozdormu", 54, UnitIds.bronzedragon)
+    new EnemyHeroDefinition(WAVE_HERO_2, "Fallen Nozdormu", 54, UnitIds.bronzedragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_103))
 
     ..setScalingValue(2.50)
@@ -94,12 +103,15 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Divine)
     
     ..setGoldBounty(56000, 75000)
-    ..setHpRel(794000, 0.01)
+    ..setHpRel(794000, 0.010)
     ..setMp(66000, 10)
+    ..addRes(resType.Physical, 1.09)
+    ..addRes(resType.Magical,  0.97)
+    ..addBlockFlat(blockType.PostResistances, 5800)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_3, "Neltharion", 56, UnitIds.blackdragon)
+    new EnemyHeroDefinition(WAVE_HERO_3, "Fallen Neltharion", 56, UnitIds.blackdragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_103))
 
     ..setScalingValue(2.50)
@@ -122,13 +134,16 @@ import MyAbilityIds
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Divine)
     
-    ..setGoldBounty(82000, 156000)
-    ..setHpRel(855000, 0.007)
+    ..setGoldBounty(82000, 116000)
+    ..setHpRel(855000, 0.015)
     ..setMp(76000, 10)
+    ..addRes(resType.Physical, 1.19)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 7000)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_4, "Alexstrasza", 58, UnitIds.reddragon)
+    new EnemyHeroDefinition(WAVE_HERO_4, "Fallen Alexstrasza", 58, UnitIds.reddragon)
     ..setNormalAbilities(commaList(CREEP_ABILITY_101, CREEP_ABILITY_104, CREEP_ABILITY_103))
 
     ..setScalingValue(2.50)
@@ -151,13 +166,16 @@ import MyAbilityIds
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Divine)
 
-    ..setGoldBounty(115000, 216000)
-    ..setHpRel(1155000, 0.002)
+    ..setGoldBounty(95000, 125000)
+    ..setHpRel(1155000, 0.02)
     ..setMp(86000, 10)
+    ..addRes(resType.Physical, 1.29)
+    ..addRes(resType.Magical,  0.99)
+    ..addBlockFlat(blockType.PostResistances, 8500)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_5, "BIG BOSS Goblin Boom! Boom!", 80, UnitIds.goblinsapper)
+    new EnemyHeroDefinition(WAVE_HERO_5, "BIG BOSS Goblin Boom! Boom!", 80, UnitIds.goblinsapper)
     ..setNormalAbilities(commaList('Aasl'))
 
     ..setScalingValue(4.00)
@@ -176,11 +194,14 @@ import MyAbilityIds
     ..setArmorType(ArmorType.Fortified)
     
     ..setGoldBounty(1, 315000)
-    ..setHp(888000, 330)
+    ..setHpRel(888000, 0.01)
+    ..addRes(resType.Physical, 1.39)
+    ..addRes(resType.Magical,  0.98)
+    ..addBlockFlat(blockType.PostResistances, 28000)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_6, "Death", 100, UnitIds.ghoul)
+    new EnemyHeroDefinition(WAVE_HERO_6, "Death", 100, UnitIds.ghoul)
     ..setNormalAbilities(commaList('A0B1', 'A0NL', CREEP_ABILITY_21, CREEP_ABILITY_10))
 
     ..setScalingValue(2.00)
@@ -195,13 +216,671 @@ import MyAbilityIds
     
     ..setArmorType(ArmorType.Hero)
     
-    ..setGoldBounty(33)
+    ..setGoldBounty(333333)
     ..setHpRel(2666666, 0.00666)
     ..setMp(30000, 10)
+    ..addRes(resType.Physical, 3.33) // 333%
+    ..addRes(resType.Magical,  1.09)
+    ..addBlockFlat(blockType.PostResistances, 10000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_7, "Death King", 105, UnitIds.paladin)
+    ..setNormalAbilities(commaList('A0NQ', 'A0NL', CREEP_ABILITY_5, CREEP_ABILITY_6, 'A0M2', 'A0DF', AbilityIds.inventory))
+    ..setModelFile("Units\\Arthas Frostmourne\\KingArthas.mdx")
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.40)
+    ..setSelectionScale(1.40)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.80)
+    ..setAttackDamage1(4200, 7300)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.567)
+    ..setAttack1AnimationDamagePoint(0.433)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Fortified)
+
+    ..setGoldBounty(155000, 175000)
+    ..setHpRel(3512000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.05)
+    ..addRes(resType.Magical,  1.05)
+    ..addBlockFlat(blockType.PostResistances, 14000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_HOLY_GOLD_SHIELD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_8, "Fallen Jacksmith", 110, UnitIds.paladin)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.25)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.80)
+    ..setAttackDamage1(4700, 7900)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.567)
+    ..setAttack1AnimationDamagePoint(0.433)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setDefenseBase(2)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(175000, 205000)
+    ..setHpRel(4202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.10)
+    ..addRes(resType.Magical,  1.10)
+    ..addBlockFlat(blockType.PostResistances, 18000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_HOLY_ARMOR))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_9, "Fallen Beastmaster", 115, UnitIds.beastmaster)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.80)
+    ..setAttackDamage1(5200, 8400)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(195000, 225000)
+    ..setHpRel(4702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 22000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_BEASTMASTER_CARD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_10, "Fallen Satyr", 120, UnitIds.blademaster)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setModelFile(Units.satyrTrickster1)
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.50)
+    ..setSelectionScale(1.25)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.57)
+    ..setAttackDamage1(5800, 9000)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.840)
+    ..setAttack1AnimationDamagePoint(0.330)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(215000, 245000)
+    ..setHpRel(5202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 26000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_SOUL_BLAME))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_11, "Fallen Warden", 125, UnitIds.warden)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(6300, 9500)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\WardenMissile\\WardenMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(235000, 265000)
+    ..setHpRel(5702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 30000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_WARDEN_CARD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_12, "Fallen Blademaster", 130, UnitIds.blademaster)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.25)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.37)
+    ..setAttackDamage1(6850, 10100)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.840)
+    ..setAttack1AnimationDamagePoint(0.330)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(255000, 285000)
+    ..setHpRel(6202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 34000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_BLADEMASTER_CARD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_13, "Beastman", 135, UnitIds.taurenchieftain)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.10)
+    ..setSelectionScale(2.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(7200, 10300)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.970)
+    ..setAttack1AnimationDamagePoint(0.360)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(255000, 285000)
+    ..setHpRel(6202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 38000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_TAUREN_CARD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_14, "Fallen Wolfman", 140, UnitIds.blademaster)
+    ..setNormalAbilities(commaList(ABILITY_HERO_TP, AbilityIds.inventory, 'A0SB'))
+    ..setModelFile("Units\\Werewolf\\Wolf2.mdx")
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.25)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.66)
+    ..setAttackDamage1(7600, 10800)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.840)
+    ..setAttack1AnimationDamagePoint(0.330)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(275000, 305000)
+    ..setHpRel(6702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 42000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(
+        ITEM_DESTROY_SWORD,
+        ITEM_STRIKE_AXE
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_15, "Fallen Mountain King", 145, UnitIds.mountainking)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.25)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.82)
+    ..setAttackDamage1(8100, 11200)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.650)
+    ..setAttack1AnimationDamagePoint(0.350)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(295000, 325000)
+    ..setHpRel(7202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 46000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(
+        ITEM_MOUNTAIN_KING_CARD,
+        ITEM_PLATINUM_HAMMER    
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_16, "Fallen Dark Ranger", 150, UnitIds.darkranger)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+    
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(1.80)
+    ..setAttackDamage1(8700, 11600)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\Arrow\\ArrowMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.300)
+    ..setAttack1AnimationDamagePoint(0.700)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(315000, 345000)
+    ..setHpRel(7702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(
+        ITEM_TITANIUM,
+        ITEM_DARKNESS
+    ))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_17, "Ancient Dreadlord", 155, UnitIds.dreadlord)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(9300, 11900)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.550)
+    ..setAttack1AnimationDamagePoint(0.550)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.50)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(335000, 365000)
+    ..setHpRel(8202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_SKULL_OF_MALGANIS))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_18, "Lord of terror", 160, UnitIds.pitlord)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(2.50)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.65)
+    ..setAttackDamage1(9700, 12300)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.800)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(355000, 385000)
+    ..setHpRel(8202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_PITLORD_CARD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_19, "Fallen Ranger", 165, UnitIds.sylvanuswindrunner)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.10)
+    ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(850)
+    ..setAttack1CooldownTime(1.86)
+    ..setAttackDamage1(10100, 12800)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\MoonPriestessMissile\\MoonPriestessMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.580)
+    ..setAttack1AnimationDamagePoint(0.700)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(375000, 395000)
+    ..setHpRel(8702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_SPHERE_OF_CHAOS))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_20, "Ancient Demon Prince", 170, UnitIds.demonhunter)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.30)
+    ..setAttackDamage1(10700, 13400)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\DemonHunterMissile\\DemonHunterMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(true)
+    ..setAttack1AnimationBackswingPoint(0.600)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.50)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(395000, 415000)
+    ..setHpRel(9202000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_CRYSTAL_DUAL_SWORD))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_21, "Shadows Stealer", 175, UnitIds.shadowhunter)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Intelligence")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.20)
+
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(1.88)
+    ..setAttackDamage1(11200, 13900)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\ShadowHunterMissile\\ShadowHunterMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.500)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(400100, 450100)
+    ..setHpRel(9702000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+    
+    ..addItemDropTable(new ItemDropTable()..populate(ITEM_LANCELOT_SET))
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_22, "Shadow", 180, UnitIds.blademaster)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.25)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(1.37)
+    ..setAttackDamage1(11600, 14300)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(9)
+    ..setAttack1AnimationBackswingPoint(0.840)
+    ..setAttack1AnimationDamagePoint(0.330)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(450100, 500100)
+    ..setHpRel(10002000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_23, "Priestess of the Darkness", 185, UnitIds.priestessofthemoon)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Agility")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(2.25)
+
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(1.70)
+    ..setAttackDamage1(12000, 14500)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\MoonPriestessMissile\\MoonPriestessMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.700)
+    ..setAttack1AnimationDamagePoint(0.300)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.40)
+    ..setMovementType(MovementType.Horse)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(500100, 550100)
+    ..setHpRel(10512000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_24, "Naga the Sea Witch", 190, UnitIds.seawitch)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Intelligence")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(1.60)
+    ..setAttackDamage1(12400, 15100)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1ProjectileArc(0.08)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\NagaArrowMissile\\NagaArrowMissile.mdl")
+    ..setAttack1ProjectileHomingEnabled(false)
+    ..setAttack1AnimationBackswingPoint(0.540)
+    ..setAttack1AnimationDamagePoint(0.730)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Amphipic)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(550100, 600100)
+    ..setHpRel(11012000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_25, "Time Wizard", 195, UnitIds.jaina)
+    ..setNormalAbilities(commaList(AbilityIds.inventory))
+    ..setPrimaryAttribute("Intelligence")
+
+    ..setScalingValue(1.00)
+    ..setSelectionScale(1.50)
+
+    ..setRangedAttack1(600)
+    ..setAttack1CooldownTime(1.82)
+    ..setAttackDamage1(13200, 16400)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(4)
+    ..setAttack1ProjectileArc(0.15)
+    ..setAttack1ProjectileArt("Abilities\\Weapons\\FireBallMissile\\FireBallMissile.mdl")
+    ..setAttack1AnimationBackswingPoint(0.400)
+    ..setAttack1AnimationDamagePoint(0.550)
+    ..setAttack1AttackType(AttackType.Magic)
+
+    ..setTurnRate(0.50)
+    ..setArmorType(ArmorType.Large)
+
+    ..setGoldBounty(600100, 650100)
+    ..setHpRel(11512000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_26, "Death Eyes", 200, UnitIds.paladin)
+    ..setNormalAbilities(commaList('A0DU', 'A0M2', 'A0DT', AbilityIds.inventory, 'A0DF', 'Arsk'))
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(3.00)
+    ..setSelectionScale(3.00)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.80)
+    ..setAttackDamage1(14700, 17500)
+    ..setAttack1DamageNumberofDice(2)
+    ..setAttack1DamageSidesperDie(6)
+    ..setAttack1AnimationBackswingPoint(0.567)
+    ..setAttack1AnimationDamagePoint(0.433)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setTurnRate(0.60)
+    ..setArmorType(ArmorType.Fortified)
+
+    ..setGoldBounty(650100, 700100)
+    ..setHpRel(12012000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(WAVE_HERO_27, "Cronus", 205, UnitIds.paladin)
+    ..setNormalAbilities(commaList('A0NH', 'A0M2', AbilityIds.inventory, 'A0NJ', CREEP_ABILITY_2, 'A0NM', 'Nbls'))
+    ..setModelFile(Units.arthaswithSword)
+    ..setPrimaryAttribute("Strength")
+
+    ..setScalingValue(3.00)
+    ..setSelectionScale(3.00)
+    
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(3.00)
+    ..setAttackDamage1(19600, 21200)
+    ..setAttack1DamageNumberofDice(6)
+    ..setAttack1DamageSidesperDie(5)
+    ..setAttack1AnimationBackswingPoint(1.770)
+    ..setAttack1AnimationDamagePoint(2.100)
+    ..setAttack1AttackType(AttackType.Magic)
+    
+    ..setTurnRate(0.60)
+    ..setCollisionSize(125.00)
+    ..setArmorType(ArmorType.Divine)
+
+    ..setGoldBounty(700100, 750100)
+    ..setHpRel(16012000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
 
 // ----------------------------------------------------------------------------
     
-    new MyCreepDefinition(WAVE_HERO_28, "RA", 120, UnitIds.phoenix)
+    new EnemyHeroDefinition(WAVE_HERO_28, "RA", 210, UnitIds.phoenix)
     ..setNormalAbilities(commaList('A0DM', 'ACrk', 'A0XT', 'A0XV'))
 
     ..setScalingValue(2.00)
@@ -223,12 +902,16 @@ import MyAbilityIds
     ..setCollisionSize(8.00)
     ..setArmorType(ArmorType.Fortified)
     
-    ..setGoldBounty(358000, 625000)
-    ..setHpRel(8025000, 0.008)
+    ..setGoldBounty(850100, 12001000)
+    ..setHpRel(24012000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
 
 // ----------------------------------------------------------------------------
 
-    new MyCreepDefinition(WAVE_HERO_29, "Shadow Infernal", 140, UnitIds.infernal)
+    new EnemyHeroDefinition(WAVE_HERO_29, "Shadow Infernal", 215, UnitIds.infernal)
     ..setNormalAbilities(commaList('ACrk', 'A0XW', 'A0YQ', CREEP_ABILITY_2))
 
     ..setScalingValue(2.50)
@@ -245,8 +928,41 @@ import MyAbilityIds
     ..setTurnRate(0.40)
     ..setCollisionSize(48.00)
     ..setArmorType(ArmorType.Fortified)
+    ..addRes(resType.Physical, 1.799) // 80% = Dark steel sword + Battle Axe L5 + Crystal Knife
+    ..addRes(resType.Magical,  1.19)
+    ..addBlockFlat(blockType.PostResistances, 15500)
     
     ..setGoldBounty(928000, 1835000)
-    ..setHpRel(35025000, 0.003)
+    ..setHpRel(35025000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
+
+// ----------------------------------------------------------------------------
+
+    new EnemyHeroDefinition(FINAL_BOSS, "Darkness Lord", 220, UnitIds.admiralproudmoore)
+    ..setNormalAbilities(commaList(AbilityIds.inventory, 'A0DF', 'Arsk'))
+
+    ..setScalingValue(2.00)
+    ..setSelectionScale(1.10)
+
+    ..setMeleeAttack1()
+    ..setAttack1CooldownTime(0.80)
+    ..setAttackDamage1(112000, 365000)
+    ..setAttack1AnimationBackswingPoint(0.567)
+    ..setAttack1AnimationDamagePoint(0.433)
+    ..setAttack1AttackType(AttackType.Chaos)
+
+    ..setTurnRate(0.60)
+    ..setMovementType(MovementType.Foot)
+    ..setArmorType(ArmorType.Divine)
+    
+    ..setGoldBounty(1) // :)
+    ..setHpRel(65025000, 0.02)
+    ..setMp(115000, 10)
+    ..addRes(resType.Physical, 1.15)
+    ..addRes(resType.Magical,  1.15)
+    ..addBlockFlat(blockType.PostResistances, 50000)
 
 // ----------------------------------------------------------------------------
