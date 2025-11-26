@@ -21,22 +21,6 @@ public function addShops()
     posY = posY + dividend
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_BASIC_ITEMS1, posX, posY, 270.000) // Basic Items 1
 
-    posX = GetRectCenterX(gg_rct_ShopRight) - 150
-    posMax = GetRectMaxY(gg_rct_ShopRight)
-    posMin = GetRectMinY(gg_rct_ShopRight)
-    dividend = (posMax - posMin) / 4
-    posY = posMin + 100
-
-    let endGameBosses = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP4, posX, posY, 270.000) // End-game bosses
-    posY = posY + dividend
-    let eliteGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP3, posX, posY, 270.000) // Elite hunting grounds
-    posY = posY + dividend
-    let intermediateGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP2, posX, posY, 270.000) // Intermediate hunting grounds
-    posY = posY + dividend
-    let easyGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP1, posX, posY, 270.000) // Easy hunting grounds
-    
-    teleportToMobs(easyGrounds, intermediateGrounds, eliteGrounds, endGameBosses)
-
     posX = GetRectCenterX(gg_rct_ShopLeft) - 150
     posMax = GetRectMaxY(gg_rct_ShopLeft)
     posMin = GetRectMinY(gg_rct_ShopLeft)
@@ -51,7 +35,7 @@ public function addShops()
     posY = posY + dividend
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_RECIPES1, posX, posY, 270.000) // Recipe Shop 1
 
-    posX = GetRectCenterX(gg_rct_ShopRight) + 150
+    posX = GetRectCenterX(gg_rct_ShopRight)
     posMax = GetRectMaxY(gg_rct_ShopRight)
     posMin = GetRectMinY(gg_rct_ShopRight)
     dividend = (posMax - posMin) / 4
@@ -64,5 +48,26 @@ public function addShops()
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS2, posX, posY, 270.000) // Late Game Items
     posY = posY + dividend
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_SHOP_LATE_GAME_ITEMS1, posX, posY, 270.000) // Late Game Items
+
+// ----------------------------------------------------------------------------
+// CreepsTp
+// ----------------------------------------------------------------------------
+
+    posX = GetRectCenterX(gg_rct_CreepsTpShops)
+    posMax = GetRectMaxY(gg_rct_CreepsTpShops)
+    posMin = GetRectMinY(gg_rct_CreepsTpShops)
+    dividend = (posMax - posMin) / 4
+    posY = posMin + 100
+
+
+    let endGameBosses = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP4, posX, posY, 270.000) // End-game bosses
+    posY = posY + dividend
+    let eliteGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP3, posX, posY, 270.000) // Elite hunting grounds
+    posY = posY + dividend
+    let intermediateGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP2, posX, posY, 270.000) // Intermediate hunting grounds
+    posY = posY + dividend
+    let easyGrounds = CreateUnit(PLAYER_ALLY_BASE, BUILDING_CREEPS_TP1, posX, posY, 270.000) // Easy hunting grounds
+    
+    teleportToMobs(easyGrounds, intermediateGrounds, eliteGrounds, endGameBosses)
 
 // ----------------------------------------------------------------------------

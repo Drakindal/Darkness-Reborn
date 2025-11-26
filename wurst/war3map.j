@@ -69,7 +69,7 @@ globals
     rect                    gg_rct_HeroPicker          = null
     rect                    gg_rct_DiscardPile         = null
     rect                    gg_rct_ShopLeft            = null
-    rect                    gg_rct_ShopRight           = null
+    rect                    gg_rct_CreepsTpShops       = null
     rect                    gg_rct_EnterTinkerArea     = null
     rect                    gg_rct_LeaveTinkerArea     = null
     rect                    gg_rct_TidecallerEntrance  = null
@@ -80,6 +80,7 @@ globals
     camerasetup             gg_cam_CameraHeroPick      = null
     camerasetup             gg_cam_CameraHeroPicked    = null
     trigger                 gg_trg_GameSpeed           = null
+    rect                    gg_rct_ShopRight           = null
 endglobals
 
 function InitGlobals takes nothing returns nothing
@@ -153,14 +154,15 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_HeroPicker = Rect( -9152.0, -12000.0, -9088.0, -11936.0 )
     set gg_rct_DiscardPile = Rect( -448.0, -5696.0, 160.0, -5344.0 )
     set gg_rct_ShopLeft = Rect( -2112.0, -5152.0, -1632.0, -4224.0 )
-    set gg_rct_ShopRight = Rect( -192.0, -5152.0, 288.0, -4224.0 )
+    set gg_rct_CreepsTpShops = Rect( 320.0, -5184.0, 544.0, -4288.0 )
     set gg_rct_EnterTinkerArea = Rect( -992.0, -6304.0, -800.0, -6112.0 )
     set gg_rct_LeaveTinkerArea = Rect( -992.0, -7584.0, -800.0, -7392.0 )
     set gg_rct_TidecallerEntrance = Rect( -1184.0, -10976.0, -480.0, -10848.0 )
-    set gg_rct_BlockTinkerBuildings = Rect( -1728.0, -5728.0, -128.0, -2208.0 )
+    set gg_rct_BlockTinkerBuildings = Rect( -1664.0, -5728.0, -128.0, -2208.0 )
     set gg_rct_CleanItemsArea2 = Rect( -5376.0, -416.0, 3648.0, 5920.0 )
     set gg_rct_CleanItemsArea3 = Rect( -1728.0, -3584.0, -32.0, -384.0 )
     set gg_rct_DebugBlacksmith = Rect( -1056.0, -4288.0, -800.0, -4032.0 )
+    set gg_rct_ShopRight = Rect( -2336.0, -5152.0, -2112.0, -4224.0 )
 endfunction
 
 //***************************************************************************
