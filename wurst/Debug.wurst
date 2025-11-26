@@ -36,7 +36,7 @@ public function initDebug()
 
     CreateUnit(PLAYER_ALLY_BASE, BUILDING_TINKER_SHOP_LUMBER, posX + 200, posY + 400, 270.000)
     ..addPermanentAbility(AbilityIds.invulnerable)
-    
+
     // Spawn supportive heroes
 
     // thief
@@ -74,7 +74,7 @@ public function initDebug()
     ..addItemToSlot(ITEM_LANCELOT_SET, 3)
     ..addItemToSlot(ITEM_PERFECT_EMERALD, 4)
     ..addItemToSlot(ITEM_VAMPIRELLA_L5, 5)
-
+    
     EventListener.add(EVENT_PLAYER_CHAT_FILTER) -> 
         let setLvlLength = "-sl".length()
         if EventData.getChatMessage().substring(0, setLvlLength).toLowerCase() == "-sl"

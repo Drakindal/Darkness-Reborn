@@ -203,3 +203,24 @@ public class MyHeroDefinition extends HeroDefinition
         setAttack1AttackType(AttackType.Chaos)
 
 // ----------------------------------------------------------------------------
+
+// Reduces stats of the unit.
+// str, agi and intelligence should be negative or zero.
+// Prevents from zero or negative stats that makes unit an immortal.
+public function unit.addNegativeStats(int str, int agi, int intelligence)
+    if (this.getStr(false) <= -str)
+        this.setStr(1)
+    else
+        this.addStr(str)
+
+    if (this.getAgi(false) <= -agi)
+        this.setAgi(1)
+    else
+        this.addAgi(agi)
+        
+    if (this.getInt(false) <= -intelligence)
+        this.setInt(1)
+    else
+        this.addInt(intelligence)
+
+// ----------------------------------------------------------------------------

@@ -6,6 +6,14 @@ import RotationProjectile
 import MyUnitIds
 import StandardTextTags
 import MyColors
+import DummyCaster
+import Orders
+import MyAbilityIds
+import SoundUtils
+import ClosureTimers
+import MyHeroDefinition
+import Units
+import ClosureForGroups
 
 public function unit.startTidal()
     startWave(this, Abilities.crushingWaveMissile, 1.5, 3, 2, 0.5, 125) (unit hit) ->
@@ -27,9 +35,51 @@ public function unit.startTreant3()
     rotation.rotationCreation(this, Abilities.rockBoltMissile, 0.2, 4, 8, 1000, 0.44, 0.78, 2.3) (unit hitUnit) ->
         this.damageTargetCode(1750, hitUnit, null, -1, customDamageType.Magical)
 
+constant zigguratSound = new SoundDefinition(Sounds.zigguratWhat)
+constant int zigguratSoundDuration = 2200
+constant zigguratColor = "|cff68e65a"
+
 public function checkZiggurat(unit src, unit targ)
-    if (targ.getTypeId() == CREEP_BOSS_TOWER_L5_ZIGGURAT and GetRandomInt(2, 100) == 2)
-        src.kill()
-        src..addStr(-30)..addAgi(-20)..addInt(-20)
-        standardTextTag(src.getPos(), "Ziggurat has drained your soul!".setColor("|cff68e65a"))
-        
+    if (targ.getTypeId() == CREEP_BOSS_TOWER_L5_ZIGGURAT and GetRandomInt(1, 100) <= 3)
+        new DummyCaster()
+        ..owner(targ.getOwner())
+        ..origin(src.getPos())
+        ..castTarget(CREEP_BOOS_TOWER_L5_ZIGGURAT_ABILITY_DUMMY, 1, OrderIds.chainlightning, targ)
+
+        let p = src.getOwner()
+        src
+        ..kill()
+        ..addNegativeStats(-30, -20, -20)
+        targ
+        ..setMaxHP(targ.getMaxHP().toInt() + 80000)
+        ..addHP(155000)
+
+        zigguratSound.playForPlayer(p)
+        doPeriodicallyTimed(zigguratSoundDuration.toReal()/1000, 6.5) (CallbackCounted cb) ->
+            zigguratSound.playForPlayer(p)
+
+        standardTextTag(targ.getPos(), "Your soul is mine!".setColor(zigguratColor))
+
+        printTimedToPlayer("You awaken an ancient demon caged in the old ziggurat that drained your soul! Only powerful mages have an outside chance to break the curse of the ziggurat without getting killed by the demon.\nYou permanently lost 30 str, 20 int and 20 agi. Also ziggurat became a stronger.".setColor(zigguratColor), 12, src.getOwner())
+
+public function checkMeteorsTower(unit _src, unit targ)
+    if (targ.getTypeId() == CREEP_BOSS_TOWER_L8)
+        let radius_infernal_drop = 900
+        let radius_damage = 450.0
+        let meteors_number = 3
+
+        for i = 1 to meteors_number
+            // polar coordinates
+            let phi = GetRandomReal(0, 359.9)
+            let rho = GetRandomInt(0, radius_infernal_drop)
+
+            let x = rho * Cos(phi)
+            let y = rho * Sin(phi)
+            let pos = vec2(x, y) + targ.getPos()
+
+            flashEffect(Units.infernalBirth, pos)
+
+            forUnitsInRange(pos, radius_damage) (unit u) ->
+                if (u.isEnemyOf(targ))
+                    targ.damageTargetCode(12000, u, null, -1, customDamageType.PhysicalRanged)
+                    targ.damageTargetCode(6000,  u, null, -1, customDamageType.Magical)

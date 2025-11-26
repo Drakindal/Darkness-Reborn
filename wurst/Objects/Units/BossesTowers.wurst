@@ -141,7 +141,7 @@ import MyItemIds
     ..setStructure()
 
     ..setGoldBounty(78000, 135000)
-    ..setHpRel(1468000, 0.01)
+    ..setHpRel(1465000, 0.01)
     ..addRes(resType.Physical, 0.94)
     ..addRes(resType.Magical,  1.00)
     ..addBlockFlat(blockType.PostResistances, 3700)

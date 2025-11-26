@@ -8,6 +8,7 @@ import MyAbilityIds
 import Abilities
 import DeathKnight_CollectSouls
 import ClosureEvents
+import DamageTarget
 
 // true => Unholy Link is active
 bool unholyLink = false
@@ -46,8 +47,10 @@ public function checkDeathKnightR(unit _src, unit targ)
                 dkHpAfterDmg = minDkHp
                 
                 // Reduce the Death Knight souls by 5 to save Death Knight from death.
-                if (souls <= 5)
+                if (souls < 5)
                     souls = 0
+                    // Not enough souls, deal damage to the death knight.
+                    _src.damageTargetCode(5000, deathKnightHero, null, -1, customDamageType.Magical)
                 else
                     souls -= 5
                 printTimedToPlayer("Unholy Link is broken. The Death Knight lost 5 souls!", 10, deathKnightHero.getOwner())

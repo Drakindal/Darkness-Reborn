@@ -448,6 +448,8 @@ public constant CREEP_ABILITY_108 = compiletime(ABIL_ID_GEN.next())
 public constant CREEP_ABILITY_109 = compiletime(ABIL_ID_GEN.next())
 public constant CREEP_ABILITY_110 = compiletime(ABIL_ID_GEN.next())
 
+public constant CREEP_BOOS_TOWER_L5_ZIGGURAT_ABILITY_DUMMY = compiletime(ABIL_ID_GEN.next())
+
 // ----------------------------------------------------------------------------
 
 public constant REDUCE_ARMOR_80_BOSS = compiletime(ABIL_ID_GEN.next())

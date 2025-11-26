@@ -21,6 +21,7 @@ public function autoAttackPreChecks(unit src, unit targ)
     warden_T_checks(src, targ)
     shadowHunter_checks(src, targ)
     checkZiggurat(src, targ)
+    checkMeteorsTower(src, targ)
 
 public function autoAttackPostChecks(unit _src, unit _targ)
 
@@ -34,6 +35,7 @@ public function magicDamageChecks(unit src, unit targ)
         DamageCustomEvent.setAmount(DamageCustomEvent.getAmount() * (1-0.02*targ.getAbilityLevel(UTHER_ABILITY_3)))
     shadowHunter_checks(src, targ)
     checkZiggurat(src, targ)
+    checkMeteorsTower(src, targ)
 
 // ----------------------------------------------------------------------------
 // PHYSICAL DAMAGE CHECKS
