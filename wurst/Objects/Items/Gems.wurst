@@ -74,7 +74,7 @@ import MyUnitIds
     ..addStats(addAbilitySummonInfernoUnit(15000, 600, UNIT_SUMMON_INFERNAL, "Summon infernal", 120, 4000, 140))
 
     ..addStats(addAllStats(300))
-    ..addStats(addPen(penType.Magical, 0.1))
+    ..addStats(addPen(penType.Magical, 0.10))
 
     ..addHotKey()
     ..initGem(255, 255, 0, "Red Item.mdl")

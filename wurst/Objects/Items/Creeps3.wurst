@@ -108,7 +108,7 @@ import DebugVar
     ..setActivelyUsed(true)
     ..setClassification("Miscellaneous")
     ..addStats(addAbilityManaShield(4))
-    ..addStats(addRes(resType.Physical, 0.1))
+    ..addStats(addRes(resType.Physical, 0.10))
     ..addStats(addInt(480))
     ..addStats(addMp(8000))
     ..setStockMaximum(99)

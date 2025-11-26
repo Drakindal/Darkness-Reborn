@@ -222,7 +222,7 @@ import DebugVar
     ..addStats(addMovementSpeed(522))
     ..addStats(addAttackSpeed(1.2))
     ..addStats(addMpOnHit(0.10))
-    ..addStats(addPen(penType.Magical, 0.2))
+    ..addStats(addPen(penType.Magical, 0.20))
     ..addComponents(
     ITEM_SOUL_OF_KILJEADEN,
     ITEM_ARKENSTONE_FRAGMENT)

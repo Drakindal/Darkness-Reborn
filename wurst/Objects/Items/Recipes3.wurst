@@ -135,7 +135,7 @@ import DebugVar
     ..setClassification("Permanent")
     ..addStats(addDamage(65))
     ..addStats(addAttackSpeed(0.6))
-    ..addStats(addPen(penType.Physical, 0.1))
+    ..addStats(addPen(penType.Physical, 0.10))
     ..addComponents(
     ITEM_ORB_OF_CORRUPTION,
     ITEM_SIMPLE_SWORD,

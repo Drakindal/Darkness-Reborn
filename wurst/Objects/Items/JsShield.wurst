@@ -87,8 +87,8 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_PLATINUM_SHIELD_L4, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmorUPG3.BLP")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Magical, 0.1))
-        ..addStats(addRes(resType.Physical, 0.1))
+        ..addStats(addRes(resType.Magical, 0.10))
+        ..addStats(addRes(resType.Physical, 0.10))
         ..addStats(addDamageBlock(blockType.PostResistances, 1200))
         ..addComponents(
         ITEM_PLATINUM_SHIELD_L3,

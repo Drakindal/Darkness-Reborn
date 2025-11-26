@@ -153,7 +153,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNRingA (8).blp")    
         ..setClassification("Campaign")
         ..addStats(addAgi(3600))
-        ..addStats(addRes(resType.Physical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
         ..addStats(addDamage(15400))
         ..addStats(addEvasion(0.64))
         ..register()

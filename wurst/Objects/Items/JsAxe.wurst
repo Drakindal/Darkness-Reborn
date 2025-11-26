@@ -223,7 +223,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNAX.blp")
         ..setClassification("Campaign")
         ..addStats(addDamage(16000))
-        ..addStats(addPen(penType.Physical, 0.1))
+        ..addStats(addPen(penType.Physical, 0.10))
         ..register()
 
         addItemInBoxForDebug = DEBUG

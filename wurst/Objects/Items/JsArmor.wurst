@@ -13,7 +13,7 @@ import DebugVar
         new MyItemDefinition(ITEM_FORGE_ARMOR_L1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorFinal.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.1))
+        ..addStats(addRes(resType.Universal, 0.10))
         ..addStats(addHp(500))
         ..register()
 
@@ -70,7 +70,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.16))
-        ..addStats(addRes(resType.Physical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
         ..addStats(addHp(2600))
         ..addComponents(
         ITEM_ROYAL_ARMOR_L2,
@@ -82,8 +82,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmor2.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.05))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(2500))
         ..addStats(addHpReg(50))
         ..addComponents(
@@ -96,8 +96,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmor2.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.06))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(3800))
         ..addStats(addHpReg(100))
         ..addComponents(
@@ -110,8 +110,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNArmor2.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.07))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(6000))
         ..addStats(addHpReg(150))
         ..addComponents(
@@ -123,9 +123,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_ROYAL_ARMOR_L4, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
-        ..addStats(addRes(resType.Universal, 0.1))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Universal, 0.10))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(3800))
         ..addComponents(
         ITEM_ROYAL_ARMOR_L3,
@@ -137,8 +137,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor1.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.12))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(5000))
         ..addComponents(
         ITEM_ROYAL_ARMOR_L4,
@@ -151,8 +151,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTN_cr_MarineArmor2.blp")    
         ..setClassification("Purchasable")
         ..addStats(addRes(resType.Universal, 0.15))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(10000))
         ..addComponents(
         ITEM_ROYAL_ARMOR_L5,
@@ -177,9 +177,9 @@ import DebugVar
         new MyItemWithCraftInfoDefinition(ITEM_BERSERKERS_ARMOR, jackSmithRecipe, -1)
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkersArmor.blp")    
         ..setClassification("Campaign")
-        ..addStats(addRes(resType.Universal, 0.2))
-        ..addStats(addRes(resType.Physical, 0.1))
-        ..addStats(addRes(resType.Magical, 0.1))
+        ..addStats(addRes(resType.Universal, 0.20))
+        ..addStats(addRes(resType.Physical, 0.10))
+        ..addStats(addRes(resType.Magical, 0.10))
         ..addStats(addHp(20000))
         ..addComponents(
         ITEM_DRONE_ARMOR,

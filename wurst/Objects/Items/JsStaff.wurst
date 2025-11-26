@@ -135,7 +135,7 @@ import DebugVar
         ..addStats(addInt(180))
         ..addStats(addMpReg(2.5))
         ..addStats(addAbilityDealDamageStats(3, 0.12, statsType.Int, customDamageType.Magical))
-        ..addStats(addPen(penType.Magical, 0.1))
+        ..addStats(addPen(penType.Magical, 0.10))
         ..addComponents(
         ITEM_GOLDEN_STAFF_L3,
         ITEM_FORGE_STAFF_L3,

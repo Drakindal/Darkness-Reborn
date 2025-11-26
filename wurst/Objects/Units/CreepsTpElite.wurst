@@ -322,9 +322,7 @@ import MyItemIds
 
     ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(10000)
-    ..setAttack1DamageNumberofDice(5)
-    ..setAttack1DamageSidesperDie(6)
+    ..setAttackDamage1(10400, 15200)
     ..setAttack1AnimationBackswingPoint(0.370)
     ..setAttack1AnimationDamagePoint(0.230)
     ..setAttack1AttackType(AttackType.Magic)
@@ -364,9 +362,7 @@ import MyItemIds
 
     ..setMeleeAttack1()
     ..setAttack1CooldownTime(0.10)
-    ..setAttack1DamageBase(15211)
-    ..setAttack1DamageNumberofDice(9)
-    ..setAttack1DamageSidesperDie(9)
+    ..setAttackDamage1(15200, 21500)
     ..setAttack1AnimationBackswingPoint(0.300)
     ..setAttack1AnimationDamagePoint(0.600)    
     ..setChaosAttackType1()

@@ -23,8 +23,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(15))
-        ..addStats(addRes(resType.Magical, 0.1))
-        ..addStats(addRes(resType.Physical, 0.1))
+        ..addStats(addRes(resType.Magical, 0.10))
+        ..addStats(addRes(resType.Physical, 0.10))
         ..register()
 
     //I08B
@@ -41,8 +41,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNSteelPlateArmorHelmetFinal.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(45))
-        ..addStats(addRes(resType.Magical, 0.2))
-        ..addStats(addRes(resType.Physical, 0.2))
+        ..addStats(addRes(resType.Magical, 0.20))
+        ..addStats(addRes(resType.Physical, 0.20))
         ..register()
         addItemInBoxForDebug = false
 
@@ -51,8 +51,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(10))
-        ..addStats(addRes(resType.Magical, 0.1))
-        ..addStats(addRes(resType.Physical, 0.1))
+        ..addStats(addRes(resType.Magical, 0.10))
+        ..addStats(addRes(resType.Physical, 0.10))
         ..addComponents(
         ITEM_FORGE_HELM_L1,
         ITEM_RING_OF_REGENERATION)
@@ -88,8 +88,8 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNWater Battle Helmet.blp")    
         ..setClassification("Purchasable")
         ..addStats(addHpReg(100))
-        ..addStats(addRes(resType.Magical, 0.2))
-        ..addStats(addRes(resType.Physical, 0.2))
+        ..addStats(addRes(resType.Magical, 0.20))
+        ..addStats(addRes(resType.Physical, 0.20))
         ..addComponents(
         ITEM_DREAD_HELM_L3,
         ITEM_BLOOD_GEM,
@@ -115,7 +115,7 @@ import DebugVar
         ..setInterfaceIcon("ReplaceableTextures\\CommandButtons\\BTNBerserkersHelm.blp")    
         ..setClassification("Campaign")
         ..addStats(addHpReg(300))
-        ..addStats(addRes(resType.Universal, 0.3))
+        ..addStats(addRes(resType.Universal, 0.30))
         ..addComponents(
         ITEM_DREAD_HELM_L5,
         ITEM_FORGE_HELM_L4,

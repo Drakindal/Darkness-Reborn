@@ -62,7 +62,7 @@ import MyItemIds
     ..setClassification("PowerUp")
     ..setCanBeSoldToMerchants(true)
     ..setGoldCost(300)
-    ..addStats(addRes(resType.Universal, 0.1))
+    ..addStats(addRes(resType.Universal, 0.10))
     ..addHotKey()
     ..register()
 
